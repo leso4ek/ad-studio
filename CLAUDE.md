@@ -37,6 +37,11 @@ A YouTube channel that **explains scary sci-fi stories** (mostly original ones) 
 - ffmpeg ≥ 7 for `mux.sh`: build.sh uses the static ffmpeg that the pip package **imageio-ffmpeg** ships (9.x), symlinked first on PATH; the system ffprobe 6.1 is fine for probing
 - [ ] The MY-STYLES 15–30 s style demo film (`test.mp4`) is still pending
 
+## Ads and Higgsfield (added Nov 2026)
+- **`skills/story-ad-playbook/`**: story ads that sell without feeling like ads. Seven rules (hook in 1–3 s, all five acts, a character we identify with, the product causes the turn, plant/pulse/reveal/tag, one emotion, kind contrast and honest claims), ten premises → one, Story Spine, five acts on the clock (15/30/60/90 s, serials), brand map, three hooks, scorecard, and a **story bible** handoff. Research and sources: `research/story-ad-research.md`.
+- **`skills/higgsfield-director/`**: turns the story bible into Higgsfield pictures and video in any style. Its full base method is the uploaded "Higgsfield Expert" skill, kept at `skills/higgsfield-director/reference/higgsfield-expert-base.md` (frontmatter removed so it is not a second skill; **one third-party affiliate/pricing link removed**). Adds the prompt header the top contest films use, an ads module (product element, reveal stage, end card as a spelled still, 9:16 safe zones, hook A/B), nine style packs and budget calibration. Analysis of the top Talent Contest films: `research/higgsfield-contest-analysis.md`.
+- Higgsfield connector: not connected yet (the user will add it). Allowed hosts added to the Default environment for reading Higgsfield pages: higgsfield.ai, assets/l10n/cdn/fnf-api-gw.higgsfield.ai, images.higgs.ai, d2ol7oe51mr4n9.cloudfront.net.
+
 ## Environment notes
 - Cloud container, temporary: **commit and push** after each work block.
 - Allowed hosts were added to the Default environment for ElevenLabs/Kling/Hugging Face (see SKILL.md §2b). Fonts-in-use / Slant / evamonkey pages were not reachable during the research; REFERENCES.md cites them from search excerpts.

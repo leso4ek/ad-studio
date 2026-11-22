@@ -18,8 +18,8 @@ fi
 LIB=$(sh "$SKILLS/lemo-opuscar/scripts/setup.sh" | sed -n 's/^LIB=//p' | tail -1)
 echo "LIB=$LIB"
 
-# 2. our channel skill
-ln -sfn "$REPO/skills/scary-scifi-explainer" "$SKILLS/scary-scifi-explainer"
+# 2. our skills (scary-scifi-explainer, story-ad-playbook, higgsfield-director, …)
+for d in "$REPO"/skills/*/; do ln -sfn "${d%/}" "$SKILLS/$(basename "$d")"; done   # every skill in this repo
 
 # 3. our style, registered where the library looks for user styles
 mkdir -p "$HOME/lemo-my-styles"
