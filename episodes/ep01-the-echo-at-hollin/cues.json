@@ -1,0 +1,114 @@
+[
+ {
+  "t0": 3.4,
+  "t1": 10.35,
+  "text": "In August 1999, a small radio array in Hollin Valley picked up a distress call.",
+  "who": "N",
+  "speech_est": 6.4
+ },
+ {
+  "t0": 10.4,
+  "t1": 16.75,
+  "text": "It came from Pathlight Two, a probe that had been dead for nine years.",
+  "who": "N",
+  "speech_est": 6.0
+ },
+ {
+  "t0": 16.8,
+  "t1": 20.95,
+  "text": "The voices on it belonged to the night crew.",
+  "who": "N",
+  "speech_est": 3.8
+ },
+ {
+  "t0": 24.6,
+  "t1": 28.48,
+  "text": "This is Hollin. Do not answer us.",
+  "who": "MARA (playback)",
+  "speech_est": 3.3
+ },
+ {
+  "t0": 28.6,
+  "t1": 33.03,
+  "text": "The file was timestamped twelve days in the future.",
+  "who": "N",
+  "speech_est": 3.8
+ },
+ {
+  "t0": 34.4,
+  "t1": 38.4,
+  "text": "The next file described the vending machine breaking.",
+  "who": "N",
+  "speech_est": 3.4
+ },
+ {
+  "t0": 39.6,
+  "t1": 43.9,
+  "text": "The next morning, it broke. Exactly as described.",
+  "who": "N",
+  "speech_est": 3.7
+ },
+ {
+  "t0": 48.6,
+  "t1": 55.03,
+  "text": "Each new file arrived closer to the present. Then came one dated tonight.",
+  "who": "N",
+  "speech_est": 5.8
+ },
+ {
+  "t0": 55.2,
+  "t1": 59.93,
+  "text": "Dev is gone. Mara, whatever you do, don't reply.",
+  "who": "DEV (playback)",
+  "speech_est": 4.1
+ },
+ {
+  "t0": 60.6,
+  "t1": 66.95,
+  "text": "Station protocol required a reply to any signal. Three systems had to agree.",
+  "who": "N",
+  "speech_est": 5.8
+ },
+ {
+  "t0": 67.0,
+  "t1": 71.3,
+  "text": "Mara voted no. The third system voted yes.",
+  "who": "N",
+  "speech_est": 3.7
+ },
+ {
+  "t0": 76.0,
+  "t1": 80.0,
+  "text": "Investigators later found the timestamps were never dates.",
+  "who": "N",
+  "speech_est": 3.4
+ },
+ {
+  "t0": 81.0,
+  "t1": 87.98,
+  "text": "They were a countdown: the distance of something, closing every time the array was heard.",
+  "who": "N",
+  "speech_est": 6.4
+ },
+ {
+  "t0": 90.4,
+  "t1": 97.68,
+  "text": "The call was never a warning. It was bait, spoken in voices they would trust.",
+  "who": "N",
+  "speech_est": 6.7
+ },
+ {
+  "t0": 97.8,
+  "t1": 100.53,
+  "text": "Neither technician was ever found.",
+  "who": "N",
+  "speech_est": 2.1
+ },
+ {
+  "t0": 102.4,
+  "t1": 108.41,
+  "text": "The array still transmits, every night at 3:12 a.m. In their voices.",
+  "who": "N",
+  "speech_est": 5.4
+ }
+]

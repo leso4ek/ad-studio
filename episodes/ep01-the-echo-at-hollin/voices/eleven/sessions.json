@@ -1,0 +1,32 @@
+{
+ "flow_id": "R8qCsfbxm81Yv0gYQiVe",
+ "model": "eleven_multilingual_v2",
+ "voices": {
+  "N": "nPczCjzI2devNBz1zQrb (Brian, premade)",
+  "MARA": "EXAVITQu4vr4xnSDxMaL (Sarah, premade)",
+  "DEV": "iP95p4xoKVk53GoZ742B (Chris, premade)"
+ },
+ "lines": {
+  "02": "Ku2d8ggxtSMYXowviBEx",
+  "03": "4v4dD47pzgrnUA5lWLnG",
+  "04": "8WlxrTOqRuvIofGx8pcX",
+  "05": "O8ioONgbgZy9UG0a0SiM",
+  "06": "1EAdPdkpziCCyeJYMZ2T",
+  "07": "UFL7n7hPc14sOstfMqWF",
+  "08": "uVwRByXGMv8iThbpnyuE",
+  "10": "fmwMbi6PRuHcg8NW3tHs",
+  "12": "LGLcVGwgdaaeiSk0KWeI",
+  "13": "ZcFGedEOy0Uh9usB0OMA",
+  "14": "apuSYfa7FDU2iccyDKUw",
+  "01": "wrt6716Lhe48Ms4R6yk4",
+  "09": "p6tsVJ0M5rSC8kW2c56m",
+  "11": "vwWCXR19VTbcBhM9u7AW",
+  "15": "PUr88N7fHXRvw8AbmhRG",
+  "16": "IczSYfIHDBN9FHdHNni5"
+ },
+ "pending": [],
+ "retakes": {
+  "08": "v1 slurred dated->day to",
+  "09": "v1 Mara heard as Amara"
+ }
+}

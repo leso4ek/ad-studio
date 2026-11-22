@@ -1,0 +1,115 @@
+[
+ {
+  "id": "01",
+  "text": "In August 1999, a small radio array in Hollin Valley picked up a distress call.",
+  "voice": "am_michael",
+  "speed": 0.96,
+  "lang": "en-us"
+ },
+ {
+  "id": "02",
+  "text": "It came from Pathlight Two, a probe that had been dead for nine years.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "03",
+  "text": "The voices on it belonged to the night crew.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "04",
+  "text": "This is Hollin. Do not answer us.",
+  "voice": "af_bella",
+  "speed": 0.92,
+  "lang": "en-us"
+ },
+ {
+  "id": "05",
+  "text": "The file was timestamped twelve days in the future.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "06",
+  "text": "The next file described the vending machine breaking.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "07",
+  "text": "The next morning, it broke. Exactly as described.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "08",
+  "text": "Each new file arrived closer to the present. Then came one dated tonight.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "09",
+  "text": "Dev is gone. Mara, whatever you do, don't reply.",
+  "voice": "am_adam",
+  "speed": 0.92,
+  "lang": "en-us"
+ },
+ {
+  "id": "10",
+  "text": "Station protocol required a reply to any signal. Three systems had to agree.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "11",
+  "text": "Mara voted no. The third system voted yes.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "12",
+  "text": "Investigators later found the timestamps were never dates.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "13",
+  "text": "They were a countdown: the distance of something, closing every time the array was heard.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "14",
+  "text": "The call was never a warning. It was bait, spoken in voices they would trust.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "15",
+  "text": "Neither technician was ever found.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us"
+ },
+ {
+  "id": "16",
+  "text": "The array still transmits, every night at three twelve a.m. In their voices.",
+  "voice": "am_michael",
+  "speed": 0.88,
+  "lang": "en-us",
+  "asr": "The array still transmits, every night at 3.12 a.m. In their voices."
+ }
+]

@@ -1,0 +1,11 @@
+{
+ "slug": "apocalypse-anime-90s",
+ "en": "90s Apocalypse Anime",
+ "cn": "90年代末世动画",
+ "based_on": "cel-anime-80s",
+ "borrows": ["text-flash-cuts", "hologram-hud"],
+ "library_version": "f9e2042",
+ "created": "2026-11-22",
+ "line": "Late-90s apocalyptic TV cel anime: squeezed heavy-serif flash cards, red alarm interfaces, power lines and cicadas, and unbearably long still holds.",
+ "line_cn": "90年代末世电视赛璐璐动画：压扁的粗衬线闪切字卡、红色警报界面、电线杆与蝉鸣，以及漫长到令人不安的静止镜头。"
+}
