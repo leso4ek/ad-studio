@@ -6,3 +6,9 @@ __pycache__/
 episodes/*/out/
 episodes/*/frames/stills/
 .DS_Store
+episodes/*/film/out/
+episodes/*/film/kling3/
+episodes/*/film/stills/
+episodes/*/film/events.json
+episodes/*/ep*-[a-z]*[a-z].mp4
+!episodes/*/*-preview720.mp4

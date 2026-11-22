@@ -3,35 +3,35 @@
 In August 1999, a small radio array in Hollin Valley picked up a distress call.
 
 2
-00:00:10,400 --> 00:00:16,750
+00:00:10,400 --> 00:00:15,769
 It came from Pathlight Two, a probe that had been dead for nine years.
 
 3
-00:00:16,800 --> 00:00:20,950
+00:00:16,800 --> 00:00:19,932
 The voices on it belonged to the night crew.
 
 4
-00:00:24,600 --> 00:00:28,480
+00:00:24,600 --> 00:00:27,355
 This is Hollin. Do not answer us.
 
 5
-00:00:28,600 --> 00:00:33,030
+00:00:28,600 --> 00:00:32,273
 The file was timestamped twelve days in the future.
 
 6
-00:00:34,400 --> 00:00:38,400
+00:00:34,400 --> 00:00:38,234
 The next file described the vending machine breaking.
 
 7
-00:00:39,600 --> 00:00:43,900
+00:00:39,600 --> 00:00:43,882
 The next morning, it broke. Exactly as described.
 
 8
-00:00:48,600 --> 00:00:55,030
+00:00:48,600 --> 00:00:54,239
 Each new file arrived closer to the present. Then came one dated tonight.
 
 9
-00:00:55,200 --> 00:00:59,930
+00:00:55,200 --> 00:00:58,875
 Dev is gone. Mara, whatever you do, don't reply.
 
 10
@@ -39,25 +39,26 @@ Dev is gone. Mara, whatever you do, don't reply.
 Station protocol required a reply to any signal. Three systems had to agree.
 
 11
-00:01:07,000 --> 00:01:11,300
+00:01:07,000 --> 00:01:11,239
 Mara voted no. The third system voted yes.
 
 12
-00:01:16,000 --> 00:01:20,000
+00:01:16,000 --> 00:01:20,544
 Investigators later found the timestamps were never dates.
 
 13
-00:01:21,000 --> 00:01:27,980
+00:01:21,000 --> 00:01:27,292
 They were a countdown: the distance of something, closing every time the array was heard.
 
 14
-00:01:30,400 --> 00:01:37,680
+00:01:30,400 --> 00:01:36,414
 The call was never a warning. It was bait, spoken in voices they would trust.
 
 15
-00:01:37,800 --> 00:01:40,530
+00:01:37,800 --> 00:01:40,794
 Neither technician was ever found.
 
 16
-00:01:42,400 --> 00:01:48,410
+00:01:42,400 --> 00:01:48,384
 The array still transmits, every night at 3:12 a.m. In their voices.
+

@@ -31,8 +31,10 @@ A YouTube channel that **explains scary sci-fi stories** (mostly original ones) 
 - [x] VO, ElevenLabs: all 16 lines (`voices/eleven/`; the flow billed ~1.1k credits at 1 per character, while the account counter showed 125/10,000 right after, probably lagging; free tier, $0 overage; lines 08/09 retaken), timed track `voices/voiceover_eleven.mp3`
 - [x] VO, Kokoro comparison: `voices/kokoro/`, `voices/voiceover_kokoro.mp3`. Both pass the Whisper small.en check (except the known false alarms)
 - [x] Kling tests (95 credits; 812 left): `kling/clip1_sunset.mp4` (from the shot-2 frame), `clip2_night.mp4` (shot 17), `clip3_control_room.mp4` (shot 3, text-to-video). Notes: Kling adds a push-in despite "locked"; extra red lights; clip 3 shows two men (Mara must be a woman: say so next time).
-- [ ] Choose a VO (ElevenLabs vs Kokoro) and which Kling clips to keep
-- [ ] Score (score.py: chorale, pedal, alarm), animation page for all 18 shots, readcheck, render, mix, mux. **Needs ffmpeg 7+** (the container has 6.1; install a static ffmpeg 7 build or mux elsewhere)
+- [x] Chosen by the user: VO = **Kokoro**; Kling = **only the control-room clip** (shot 3); everything else code-drawn
+- [x] **Film**: `film/` (page `main.js` + `scenes2.js`, `mix.py`, `build.sh`). One command: `sh film/build.sh` (`VOICE=eleven` for the ElevenLabs take). Output `ep01-the-echo-at-hollin.mp4` + `-poster.jpg`. The timing changes made during the build are listed at the end of TREATMENT.md
+- [x] **Rendered** (round 3): `ep01-the-echo-at-hollin.mp4`, 1920×1080, 24 fps, 120.0 s, −14.2 LUFS, peak −1.5 dBFS, 100 MB (master, NOT in git: over GitHub's 100 MB limit; re-run `sh film/build.sh`, 14 min picture render on 4 cores) + `-preview720.mp4` (5 MB, in git) + `-poster.jpg` (thumbnail). readcheck: all held texts pass
+- ffmpeg ≥ 7 for `mux.sh`: build.sh uses the static ffmpeg that the pip package **imageio-ffmpeg** ships (9.x), symlinked first on PATH; the system ffprobe 6.1 is fine for probing
 - [ ] The MY-STYLES 15–30 s style demo film (`test.mp4`) is still pending
 
 ## Environment notes

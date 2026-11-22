@@ -116,3 +116,11 @@ Framing rule: the horizon in the lower third in every exterior; captions in the 
 ## Production notes
 - Voice: Kokoro (`core/tts/tts.py`), offline; the narrator `am_michael` at speed 0.88; Mara `af_bella` and Dev `am_adam` at 0.92, band-passed in the mix. Check every line with `asr_check.py` (an `asr` override for "3:12 a.m.").
 - ffmpeg 7+ is needed for the final `mux.sh` (this container has 6.1).
+
+## Changes made while building the film (round 3)
+- Shot 13 (vote → TRANSMITTING) now runs to **71.7**; the alarm appears at **69.3** so TRANSMITTING stays up 2.4 s (reading time).
+- Shot 14 Cross Light is **71.7–73.6**: the beam 71.7–72.15, the cross arm from 72.15, **impact and 2 inverted frames at 72.4**, white to 73.6.
+- The Long Silence (shot 17) is **97.4–117.5** (20.1 s); the final card DON'T ANSWER. is **117.5–120** (2.5 s, the reading time for 13 characters).
+- WHERE / CLOSER are printed on the paper of the collapse shot (84.5–86.5, 87.5–89.5), not full-frame cards, because a caption is on screen.
+- Shot 3 uses the Kling clip `kling/clip3_control_room.mp4` (slowed to 6.4 s). Voice = Kokoro; captions re-timed to the real line lengths (`film/tools/cues_from_voice.py`).
+- Cicadas return under the final card and stop dead at 120.0.
