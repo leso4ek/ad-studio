@@ -39,3 +39,20 @@ export async function pillow(cfg, src, out, maxSide = 2048) {
   if (r.code !== 0) throw new Error(`resize failed: ${r.err.slice(-300)}`);
   return out;
 }
+
+/** Queue any API-format workflow on ComfyUI with input overrides {"node.input": value}; resolves the history outputs. */
+export async function runWorkflow(cfg, wfPath, overrides = {}, { onText, timeoutMin = 60 } = {}) {
+  const wf = JSON.parse(fs.readFileSync(wfPath, 'utf8'));
+  for (const [k, v] of Object.entries(overrides)) { const [n, inp] = k.split('.'); wf[n].inputs[inp] = v; }
+  for (const n of Object.values(wf)) delete n._meta;
+  const q = await (await fetch(`${cfg.comfy.url}/prompt`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: wf }) })).json();
+  if (!q.prompt_id) throw new Error(`ComfyUI refused the workflow: ${JSON.stringify(q.node_errors || q.error || q).slice(0, 400)}`);
+  const t0 = Date.now();
+  while (Date.now() - t0 < timeoutMin * 60e3) {
+    const h = (await (await fetch(`${cfg.comfy.url}/history/${q.prompt_id}`)).json())[q.prompt_id];
+    if (h?.status?.status_str === 'error') { const m = (h.status.messages || []).find(x => x[0] === 'execution_error'); throw new Error(`ComfyUI: ${m ? `${m[1].node_type}: ${m[1].exception_message}` : 'workflow failed'}`); }
+    if (h?.status?.completed) { const texts = Object.values(h.outputs || {}).flatMap(o => o.text || []); texts.forEach(t => onText?.(t)); return { outputs: h.outputs, texts }; }
+    await sleep(2000);
+  }
+  throw new Error('ComfyUI timed out');
+}

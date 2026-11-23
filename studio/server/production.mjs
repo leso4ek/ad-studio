@@ -10,6 +10,8 @@ import { emit } from './bus.mjs';
 import * as orx from './engines/openrouter.mjs';
 import * as blender from './engines/blender.mjs';
 import * as render from './engines/render.mjs';
+import * as comfy from './engines/comfy.mjs';
+import { REPO } from './util.mjs';
 
 let CFG = null; const jobs = new Map();
 export function initProduction(cfg) { CFG = cfg; }
@@ -200,3 +202,31 @@ export async function styleKeys(adDir, slug, id, { confirm, n = 2, which = ['fir
   } finally { unlock(slug); }
 }
 export function chooseKey(adDir, slug, id, which, file) { const p = plan(adDir), s = p.shots.find(x => x.id === id); s.keys = { ...(s.keys || {}), [which]: file }; return save(adDir, slug, p); }
+
+/** Finish the chosen take: ComfyUI (colour match to the reference frame + Real-ESRGAN to 1920 tall) or ffmpeg (Lanczos only). Free. */
+export async function finish(adDir, slug, id) {
+  lock(slug, `finish ${id}`);
+  try {
+    const p = plan(adDir), s = p.shots.find(x => x.id === id);
+    if (!s.chosen) throw new Error('choose a take first');
+    const src = path.join(adDir, s.chosen), out = dir(adDir, 'final', `${id}.mp4`); fs.mkdirSync(path.dirname(out), { recursive: true });
+    // the grade reference: the first shot's chosen first keyframe (or this shot's), so every shot moves toward one look
+    const ref0 = p.shots.find(x => x.keys?.first)?.keys?.first, ref = ref0 ? path.join(adDir, ref0) : null;
+    let engine = 'ffmpeg';
+    const a = await comfy.available(CFG);
+    if (a.ok && ref) {
+      emit('engine', { slug, stage: 'production', engine: 'comfy', text: `finish ${id}: colour match + Real-ESRGAN` });
+      await comfy.runWorkflow(CFG, path.join(REPO, 'comfy', 'adstudio', 'workflows', 'finish_shot.json'), { '1.video_path': src, '1.reference_image': ref, '4.dest': out },
+        { onText: t => emit('engine', { slug, stage: 'production', engine: 'comfy', text: String(t).slice(0, 200) }) });
+      engine = 'comfy';
+    } else {
+      emit('engine', { slug, stage: 'production', engine: 'ffmpeg', text: `finish ${id}: ${a.ok ? 'no reference frame' : a.why} → ffmpeg Lanczos upscale`, level: 'warn' });
+      const ff = await ffmpeg7(CFG);
+      const r = await run(ff, ['-y', '-v', 'error', '-i', src, '-vf', 'scale=1080:1920:flags=lanczos,unsharp=5:5:0.4', '-c:v', 'libx264', '-crf', '17', '-pix_fmt', 'yuv420p', '-c:a', 'copy', out]);
+      if (r.code !== 0) throw new Error(r.err.slice(-300));
+    }
+    const p2 = plan(adDir), s2 = p2.shots.find(x => x.id === id);
+    s2.final = { file: path.relative(adDir, out), engine, at: now() }; s2.status = 'finished'; save(adDir, slug, p2);
+    return s2.final;
+  } finally { unlock(slug); }
+}

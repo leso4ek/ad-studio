@@ -82,6 +82,7 @@ const routes = [
   ['GET', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/estimate$/, (req, res, [, s, id]) => send(res, 200, PR.estimate(P.adDir(s), id))],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/previz$/, (req, res, [, s, id]) => { bg(s, () => PR.previz(P.adDir(s), s, id)); send(res, 202, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/take$/, async (req, res, [, s, id]) => { const b = await body(req); if (!b.confirm) return send(res, 400, { error: 'confirm the estimate first', ...PR.estimate(P.adDir(s), id) }); bg(s, () => PR.take(P.adDir(s), s, id, b)); send(res, 202, { ok: true }); }],
+  ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/finish$/, (req, res, [, s, id]) => { bg(s, () => PR.finish(P.adDir(s), s, id)); send(res, 202, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/keys$/, async (req, res, [, s, id]) => { const b = await body(req); bg(s, () => PR.styleKeys(P.adDir(s), s, id, b)); send(res, 202, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)\/keys\/choose$/, async (req, res, [, s, id]) => { const b = await body(req); send(res, 200, PR.chooseKey(P.adDir(s), s, id, b.which, b.file)); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/assets\/([\w-]+)\/make$/, async (req, res, [, s, id]) => { const b = await body(req); bg(s, () => PR.makeAsset(P.adDir(s), s, id, b)); send(res, 202, { ok: true }); }],

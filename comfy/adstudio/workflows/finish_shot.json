@@ -1,0 +1,6 @@
+{
+ "1": {"class_type": "AdStudioColorMatch", "_meta": {"title": "Colour match to the reference frame"}, "inputs": {"video_path": "", "reference_image": "", "strength": 0.7}},
+ "2": {"class_type": "UpscaleModelLoader", "_meta": {"title": "Upscale model (local)"}, "inputs": {"model_name": "RealESRGAN_x2plus.pth"}},
+ "3": {"class_type": "KidStudioUpscaleVideo", "_meta": {"title": "Upscale to 1920 tall (local GPU)"}, "inputs": {"video_path": ["1", 0], "target_height": 1920, "chunk_frames": 8, "filename_prefix": "adstudio/finished", "upscale_model": ["2", 0]}},
+ "4": {"class_type": "AdStudioSaveTo", "_meta": {"title": "Save where the app expects it"}, "inputs": {"path": ["3", 0], "dest": ""}}
+}

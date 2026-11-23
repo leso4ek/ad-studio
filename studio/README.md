@@ -51,6 +51,24 @@ Then open http://127.0.0.1:5170.
 - `--voicestudio` installs VoiceStudio with its own installer from voicestudio.sh. It is third-party, so say yes knowingly. Ad Studio uses it first for voices.
 - `--comfy` installs ComfyUI, used only to clean up a product photo you supply.
 
+## Shot board: previz → Seedance 2.5 (the "let it cook" route)
+Switch the header to **Shot board** after the bible is approved. Each shot goes through these steps, and every paid step shows its cost and waits for your OK:
+
+1. **Element sheets** for characters, the product and places. These are the consistency anchors, made with an image model through OpenRouter.
+   - The product sheet is far better with a free **Blender render of the product** as its reference (`production/blender/asset-product.json`).
+   - You choose one sheet per element.
+2. **Previz** of the shot: the code-drawn animatic without text or captions, or a **Blender** render of `production/blender/<shot>.json`.
+3. **Motion mode:**
+   - **styled keyframes** (works today): the image model repaints the previz's first and last frames in the final look with your sheets. You pick a first and a last, and Seedance animates between them.
+   - **previz video:** the clip itself as the motion reference. OpenRouter accepts video references only as public HTTPS links, so set `media.publicBase` to a bucket you upload previz clips to.
+   - **prompt only.**
+4. **Takes:** Seedance 2.5 Flash 480p for drafts (about $0.07/s), Seedance 2.5 for finals. The prompt is built from the bible in the winners' block structure and you can edit it freely. Shots can chain, continuing from the previous shot's last frame. You pick a take.
+5. **Finish shot** (free): ComfyUI `comfy/adstudio` workflow `finish_shot` colour-matches the take to the first approved keyframe and upscales it with Real-ESRGAN to 1920 tall. Without ComfyUI, an ffmpeg Lanczos upscale.
+
+**Budget:** a hard cap (`budget.capUsd`, default $10). Every call is estimated first and logged in `studio/.ledger.jsonl`, and a call that would pass the cap is refused. `ADSTUDIO_MOCK=1` makes free placeholders for testing.
+
+**Blender:** `studio/blender/adlib.py` builds a shot from JSON: products, toy characters, plants, primitives for mechanisms, 3D text, rooms or a cyclorama, real lenses and camera keys, light rigs, and five looks (clay, toy, clean, x-ray, blueprint). It runs as `blender -b --factory-startup -P studio/blender/run_shot.py -- shot.json out/`. For interactive fixes, use the Blender Lab MCP add-on (Blender 5.1+) with your local Claude session.
+
 ## How Claude is wired in
 Each decision stage runs **Claude Code headless** in the ad's folder:
 

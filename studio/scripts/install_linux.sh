@@ -30,7 +30,13 @@ if [ "$VS" = 1 ]; then
   if curl -fsS --max-time 2 http://127.0.0.1:3900/health >/dev/null 2>&1; then echo "already running on :3900"
   else curl -fsSL https://voicestudio.sh/install | sh; echo "Start VoiceStudio once, download a voice model in its Model Manager, then Ad Studio uses it first."; fi
 fi
-if [ "$CF" = 1 ]; then say "ComfyUI (optional product-photo cleanup)"; bash "$REPO/comfy/kidstudio/scripts/install_linux.sh"; fi
+if [ "$CF" = 1 ]; then
+  say "ComfyUI (finishing passes: colour match + upscale; product-photo cleanup)"
+  bash "$REPO/comfy/kidstudio/scripts/install_linux.sh"
+  ln -sfn "$REPO/comfy/adstudio/custom_nodes/adstudio" "${COMFY_DIR:-$HOME/ComfyUI}/custom_nodes/adstudio" && echo "linked the Ad Studio ComfyUI nodes"
+fi
+if command -v blender >/dev/null; then echo "Blender: $(blender -b --factory-startup --version 2>/dev/null | head -1) (used headless for previz and 3D shots)"
+else echo "Blender not on PATH: set blender.bin in studio/config.local.json to your Blender 5.1+ binary for the 3D route."; fi
 
 cat > "$STUDIO/scripts/start_studio.sh" <<EOS
 #!/usr/bin/env bash

@@ -118,7 +118,11 @@ function Shot({ s, i, plan, slug, base, bust, act, busy }) {
         {s.takes.length > 0 && <div className="videos" style={{ marginTop: 10 }}>{s.takes.map(t => <figure key={t.n} style={{ margin: 0 }}>
           <video src={file(slug, t.file, bust)} controls preload="metadata" style={{ width: 150, aspectRatio: '9/16', borderRadius: 8, background: '#000', outline: s.chosen === t.file ? '3px solid var(--ok)' : 'none' }} />
           <figcaption className="row" style={{ marginTop: 4 }}><span className="chip">take {t.n}{t.mock ? ' · mock' : ''} · ${t.cost.toFixed(2)}</span>
-            <button className="btn" onClick={() => act(() => post(`${base}/shots/${s.id}`, { chosen: t.file }))}>{s.chosen === t.file ? '✓ chosen' : 'Choose'}</button></figcaption></figure>)}</div>}
+            <button className="btn" onClick={() => act(() => post(`${base}/shots/${s.id}`, { chosen: t.file }))}>{s.chosen === t.file ? '✓ chosen' : 'Choose'}</button></figcaption></figure>)}
+          {s.chosen && <figure style={{ margin: 0 }}>
+            {s.final ? <video src={file(slug, s.final.file, bust)} controls preload="metadata" style={{ width: 150, aspectRatio: '9/16', borderRadius: 8, background: '#000', outline: '3px solid var(--accent)' }} /> : <div className="empty" style={{ width: 150, padding: 10, border: '1px dashed var(--line)', borderRadius: 8 }}>not finished</div>}
+            <figcaption className="row" style={{ marginTop: 4 }}>{s.final && <span className="chip ok">final · {s.final.engine}</span>}
+              <button className="btn" disabled={busy} onClick={() => act(() => post(`${base}/shots/${s.id}/finish`))} title="Free: colour match + upscale (ComfyUI), or a Lanczos upscale (ffmpeg)">Finish shot</button></figcaption></figure>}</div>}
       </div>
     </div>
   </motion.div>;

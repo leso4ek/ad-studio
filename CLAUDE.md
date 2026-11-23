@@ -80,6 +80,8 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - **OpenRouter takes video references only as public HTTPS URLs**, never data URLs. The "previz video" motion mode therefore needs `media.publicBase` (a bucket). **"Styled keyframes" mode works now:** the image model repaints the previz's first and last frames using the element sheets, then Seedance interpolates between them.
   - **A Blender render of the product as a reference** fixed wrong product sheets; the image model copied the shape and colours.
   - **Result:** `ads/first-story-ad/production/takes/s1_t01.mp4`, 4 s at 480×854, consistent character, product and place, $0.27. Total spent $0.58.
+  - **Finish shot:** `comfy/adstudio` (`AdStudioColorMatch` + kidstudio Real-ESRGAN upscale + `AdStudioSaveTo`, workflow `finish_shot.json`) produced `production/final/s1.mp4` at 1080×1920, free. Without ComfyUI it falls back to an ffmpeg Lanczos upscale.
+  - **Third-party skills:** taste-skill (MIT) and unslop (CC BY 4.0, credit Damir Sokolovsky) are cloned by `bootstrap.sh` into `~/.cache/ad-studio-skills` and linked as skills; they are not copied into the repo.
 
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.

@@ -92,8 +92,8 @@
           "mode": "keyframes"
         }
       ],
-      "chosen": null,
-      "status": "review",
+      "chosen": "production/takes/s1_t01.mp4",
+      "status": "finished",
       "notes": "",
       "keyOptions": {
         "first": [
@@ -108,6 +108,11 @@
       "keys": {
         "first": "production/keys/s1_first_1795466618880_2.png",
         "last": "production/keys/s1_last_1795466683197_1.png"
+      },
+      "final": {
+        "file": "production/final/s1.mp4",
+        "engine": "comfy",
+        "at": "2026-11-23T21:08:19.443Z"
       }
     },
     {
@@ -206,5 +211,5 @@
       "notes": ""
     }
   ],
-  "updated": "2026-11-23T20:47:27.730Z"
+  "updated": "2026-11-23T21:08:19.443Z"
 }

@@ -21,6 +21,16 @@ echo "LIB=$LIB"
 # 2. our skills (scary-scifi-explainer, story-ad-playbook, higgsfield-director, …)
 for d in "$REPO"/skills/*/; do ln -sfn "${d%/}" "$SKILLS/$(basename "$d")"; done   # every skill in this repo
 
+# 2b. third-party skills the editing playbook builds on (cloned, not copied: they keep their own licences)
+#     taste-skill (MIT, Leonxlnx) and unslop (CC BY 4.0, Damir Sokolovsky, github.com/heydamir/unslop)
+EXT="$HOME/.cache/ad-studio-skills"; mkdir -p "$EXT"
+for r in leonxlnx/taste-skill heydamir/unslop; do
+  d="$EXT/$(basename $r)"
+  [ -d "$d/.git" ] && git -C "$d" pull -q --ff-only || git clone -q --depth 1 "https://github.com/$r" "$d" || echo "could not fetch $r (offline?)"
+done
+[ -d "$EXT/taste-skill/skills/taste-skill" ] && ln -sfn "$EXT/taste-skill/skills/taste-skill" "$SKILLS/design-taste-frontend"
+[ -d "$EXT/unslop/skills/unslop" ] && ln -sfn "$EXT/unslop/skills/unslop" "$SKILLS/unslop"
+
 # 3. our styles, registered where the library looks for user styles
 mkdir -p "$HOME/lemo-my-styles"
 README="$HOME/lemo-my-styles/README.md"
