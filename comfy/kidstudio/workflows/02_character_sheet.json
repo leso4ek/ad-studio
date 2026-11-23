@@ -1,0 +1,55 @@
+{
+ "1": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "Sheet prompt from bible"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "character:hazel"
+  }
+ },
+ "2": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "4 takes"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "16:9",
+   "n": 4,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 7
+  }
+ },
+ "3": {
+  "class_type": "KidStudioSaveElement",
+  "_meta": {
+   "title": "Save the take you pick (set take, queue again)"
+  },
+  "inputs": {
+   "images": [
+    "2",
+    0
+   ],
+   "take": 0,
+   "kind": "character",
+   "name": "hazel",
+   "overwrite": false
+  }
+ },
+ "99": {
+  "class_type": "KidStudioBudget",
+  "_meta": {
+   "title": "Budget (spent vs cap)"
+  },
+  "inputs": {
+   "refresh": 0
+  }
+ }
+}

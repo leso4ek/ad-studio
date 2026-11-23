@@ -1,0 +1,66 @@
+{
+ "1": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot prompt (change shot_number)"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 1,
+   "safety": "block"
+  }
+ },
+ "2": {
+  "class_type": "KidStudioLoadElements",
+  "_meta": {
+   "title": "References for this shot"
+  },
+  "inputs": {
+   "elements": [
+    "1",
+    2
+   ]
+  }
+ },
+ "3": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Seedance draft"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "1",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "1",
+    3
+   ],
+   "estimate_only": false,
+   "reference_images": [
+    "2",
+    0
+   ],
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "99": {
+  "class_type": "KidStudioBudget",
+  "_meta": {
+   "title": "Budget (spent vs cap)"
+  },
+  "inputs": {
+   "refresh": 0
+  }
+ }
+}

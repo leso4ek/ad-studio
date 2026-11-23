@@ -1,0 +1,44 @@
+{
+ "1": {
+  "class_type": "KidStudioPickClip",
+  "_meta": {
+   "title": "Approved take"
+  },
+  "inputs": {
+   "shot_id": "s01",
+   "take": 1,
+   "folder": "shots"
+  }
+ },
+ "2": {
+  "class_type": "UpscaleModelLoader",
+  "_meta": {
+   "title": "Upscale model (local)"
+  },
+  "inputs": {
+   "model_name": "RealESRGAN_x2plus.pth"
+  }
+ },
+ "3": {
+  "class_type": "KidStudioUpscaleVideo",
+  "_meta": {
+   "title": "Upscale to 1080p (local GPU)"
+  },
+  "inputs": {
+   "video_path": [
+    "1",
+    0
+   ],
+   "target_height": 1080,
+   "chunk_frames": 8,
+   "filename_prefix": [
+    "1",
+    1
+   ],
+   "upscale_model": [
+    "2",
+    0
+   ]
+  }
+ }
+}

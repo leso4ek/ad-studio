@@ -1,0 +1,94 @@
+{
+ "1": {
+  "class_type": "KidStudioPickClip",
+  "_meta": {
+   "title": "Previous shot's approved take"
+  },
+  "inputs": {
+   "shot_id": "s03",
+   "take": 1,
+   "folder": "shots"
+  }
+ },
+ "2": {
+  "class_type": "KidStudioFrameFromVideo",
+  "_meta": {
+   "title": "Its last frame"
+  },
+  "inputs": {
+   "video_path": [
+    "1",
+    0
+   ],
+   "which": "last"
+  }
+ },
+ "3": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Next shot"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 4,
+   "safety": "block"
+  }
+ },
+ "4": {
+  "class_type": "KidStudioLoadElements",
+  "_meta": {
+   "title": "References"
+  },
+  "inputs": {
+   "elements": [
+    "3",
+    2
+   ]
+  }
+ },
+ "5": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Seedance continues from that frame"
+  },
+  "inputs": {
+   "prompt": [
+    "3",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "3",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "3",
+    3
+   ],
+   "estimate_only": false,
+   "reference_images": [
+    "4",
+    0
+   ],
+   "first_frame": [
+    "2",
+    0
+   ],
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "99": {
+  "class_type": "KidStudioBudget",
+  "_meta": {
+   "title": "Budget (spent vs cap)"
+  },
+  "inputs": {
+   "refresh": 0
+  }
+ }
+}

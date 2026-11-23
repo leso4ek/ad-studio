@@ -1,0 +1,187 @@
+{
+ "1": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "oak_exterior: prompt"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "place:oak_exterior"
+  }
+ },
+ "2": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "oak_exterior: 4 takes"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "16:9",
+   "n": 4,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 11
+  }
+ },
+ "3": {
+  "class_type": "KidStudioSaveElement",
+  "_meta": {
+   "title": "oak_exterior: save pick"
+  },
+  "inputs": {
+   "images": [
+    "2",
+    0
+   ],
+   "take": 0,
+   "kind": "place",
+   "name": "oak_exterior",
+   "overwrite": false
+  }
+ },
+ "11": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "hazel_room: prompt"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "place:hazel_room"
+  }
+ },
+ "12": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "hazel_room: 4 takes"
+  },
+  "inputs": {
+   "prompt": [
+    "11",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "16:9",
+   "n": 4,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 12
+  }
+ },
+ "13": {
+  "class_type": "KidStudioSaveElement",
+  "_meta": {
+   "title": "hazel_room: save pick"
+  },
+  "inputs": {
+   "images": [
+    "12",
+    0
+   ],
+   "take": 0,
+   "kind": "place",
+   "name": "hazel_room",
+   "overwrite": false
+  }
+ },
+ "21": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "night_garden: prompt"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "place:night_garden"
+  }
+ },
+ "22": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "night_garden: 4 takes"
+  },
+  "inputs": {
+   "prompt": [
+    "21",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "16:9",
+   "n": 4,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 13
+  }
+ },
+ "23": {
+  "class_type": "KidStudioSaveElement",
+  "_meta": {
+   "title": "night_garden: save pick"
+  },
+  "inputs": {
+   "images": [
+    "22",
+    0
+   ],
+   "take": 0,
+   "kind": "place",
+   "name": "night_garden",
+   "overwrite": false
+  }
+ },
+ "31": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "jar_lantern: prompt"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "prop:jar_lantern"
+  }
+ },
+ "32": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "jar_lantern: 4 takes"
+  },
+  "inputs": {
+   "prompt": [
+    "31",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "1:1",
+   "n": 4,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 14
+  }
+ },
+ "33": {
+  "class_type": "KidStudioSaveElement",
+  "_meta": {
+   "title": "jar_lantern: save pick"
+  },
+  "inputs": {
+   "images": [
+    "32",
+    0
+   ],
+   "take": 0,
+   "kind": "prop",
+   "name": "jar_lantern",
+   "overwrite": false
+  }
+ },
+ "99": {
+  "class_type": "KidStudioBudget",
+  "_meta": {
+   "title": "Budget (spent vs cap)"
+  },
+  "inputs": {
+   "refresh": 0
+  }
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "1": {
+  "class_type": "KidStudioNarration",
+  "_meta": {
+   "title": "Narrator (Kokoro, local)"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "voice": "af_heart",
+   "speed": 0.88
+  }
+ },
+ "2": {
+  "class_type": "PreviewAudio",
+  "_meta": {
+   "title": "Listen"
+  },
+  "inputs": {
+   "audio": [
+    "1",
+    1
+   ]
+  }
+ }
+}

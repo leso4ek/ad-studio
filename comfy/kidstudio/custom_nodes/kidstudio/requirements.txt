@@ -1,0 +1,4 @@
+requests>=2.31
+imageio-ffmpeg>=0.5
+soundfile>=0.12
+kokoro-onnx>=0.4

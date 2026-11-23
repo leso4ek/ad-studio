@@ -1,0 +1,314 @@
+{
+ "1": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 1"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 1,
+   "safety": "block"
+  }
+ },
+ "101": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 1"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "1",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "1",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "2": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 2"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 2,
+   "safety": "block"
+  }
+ },
+ "102": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 2"
+  },
+  "inputs": {
+   "prompt": [
+    "2",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "2",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "2",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "3": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 3"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 3,
+   "safety": "block"
+  }
+ },
+ "103": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 3"
+  },
+  "inputs": {
+   "prompt": [
+    "3",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "3",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "3",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "4": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 4"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 4,
+   "safety": "block"
+  }
+ },
+ "104": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 4"
+  },
+  "inputs": {
+   "prompt": [
+    "4",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "4",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "4",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "5": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 5"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 5,
+   "safety": "block"
+  }
+ },
+ "105": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 5"
+  },
+  "inputs": {
+   "prompt": [
+    "5",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "5",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "5",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "6": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 6"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 6,
+   "safety": "block"
+  }
+ },
+ "106": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 6"
+  },
+  "inputs": {
+   "prompt": [
+    "6",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "6",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "6",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "7": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 7"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 7,
+   "safety": "block"
+  }
+ },
+ "107": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 7"
+  },
+  "inputs": {
+   "prompt": [
+    "7",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "7",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "7",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ },
+ "8": {
+  "class_type": "KidStudioShotFromBible",
+  "_meta": {
+   "title": "Shot 8"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "shot_number": 8,
+   "safety": "block"
+  }
+ },
+ "108": {
+  "class_type": "KidStudioOpenRouterVideo",
+  "_meta": {
+   "title": "Estimate shot 8"
+  },
+  "inputs": {
+   "prompt": [
+    "8",
+    0
+   ],
+   "model": "bytedance/seedance-2.5-flash",
+   "seconds": [
+    "8",
+    1
+   ],
+   "resolution": "480p",
+   "aspect_ratio": "16:9",
+   "generate_audio": true,
+   "filename_prefix": [
+    "8",
+    3
+   ],
+   "estimate_only": true,
+   "reference_video_path": "",
+   "reference_audio_path": "",
+   "seed": 1
+  }
+ }
+}

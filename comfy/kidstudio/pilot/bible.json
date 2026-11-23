@@ -1,0 +1,148 @@
+{
+  "title": "Hazel and the Gentle Night",
+  "slug": "hazel-gentle-night",
+  "logline": "When her jar lantern goes out at bedtime, a small hedgehog peeks outside and finds the night is full of soft little lights.",
+  "lesson": "The dark can be gentle; a little moonlight is company.",
+  "audience": "ages 2-6, bedtime",
+  "aspect": "16:9",
+  "style_pack": "soft3d",
+  "draft": {"model": "bytedance/seedance-2.5-flash", "resolution": "480p"},
+  "final": {"method": "upscale the approved 480p take to 1080p locally; re-roll only hero shots s05 and s08 at 720p with bytedance/seedance-2.5"},
+  "ambience": "a soft evening breeze, distant crickets",
+  "narrator": {"voice": "af_heart", "speed": 0.88},
+  "characters": [
+    {
+      "id": "hazel",
+      "name": "Hazel",
+      "element": "character:hazel",
+      "sheet": "a small young hedgehog girl, about knee-high to an adult, with a round body, a soft cream face and belly, warm chestnut-brown spines that are soft and rounded like a plush toy, big dark gentle eyes with a small white highlight, a tiny button nose and small rosy cheeks",
+      "outfit": "light blue cotton pajamas with tiny white star dots, the sleeves rolled up once, bare feet",
+      "description": "a small hedgehog girl with soft, rounded chestnut-brown spines, a cream face and big dark gentle eyes, in light blue pajamas with tiny white star dots.",
+      "states": "Her pajama sleeves are rolled up once in every shot."
+    }
+  ],
+  "places": [
+    {
+      "id": "oak",
+      "name": "the old oak",
+      "element": "place:oak_exterior",
+      "sheet": "the foot of a huge old oak tree in a quiet meadow at dusk, with a small round wooden door and one round glowing window set between its roots, tufts of grass, a few clover flowers and a little stone path leading to the door",
+      "lights": "Warm golden light glows from the round window; the dusk sky is soft lavender and peach; a soft cool fill comes from the sky"
+    },
+    {
+      "id": "room",
+      "name": "Hazel's room",
+      "element": "place:hazel_room",
+      "sheet": "a small, cozy round bedroom inside a tree: curved wooden walls with visible wood grain, a little bed with a patchwork quilt on the left, a small wooden nightstand beside the bed, a round window with soft cream curtains on the right wall, and a knitted rug on the wooden floor",
+      "lights": "A small jar lantern on the nightstand gives the warm main light; soft blue moonlight edges the closed curtains"
+    },
+    {
+      "id": "garden",
+      "name": "the night garden",
+      "element": "place:night_garden",
+      "sheet": "a quiet garden at night seen from a low round window: a small pond with lily pads, tall grass and clover, a few round toadstools, the big round moon low in a deep blue sky, and dozens of tiny glowing fireflies drifting above the grass",
+      "lights": "Soft silver moonlight from the upper right, tiny warm firefly glows, gentle blue shadows"
+    }
+  ],
+  "props": [
+    {
+      "id": "lantern",
+      "name": "the jar lantern",
+      "element": "prop:jar_lantern",
+      "sheet": "a small glass jar lantern with a twisted wire handle and a cork lid, a tiny warm glowing light inside, sized to be held in two small paws"
+    }
+  ],
+  "shots": [
+    {
+      "id": "s01", "seconds": 8, "cast": [], "place": "oak", "props": [],
+      "goal": "Create an 8-second calm opening: the old oak at dusk, and its little round window glowing warm. A sense of a safe home.",
+      "scene": "Dusk in a quiet meadow. The huge old oak stands in the middle; its round window glows warm and golden between the roots. Soft lavender and peach sky.",
+      "geography": "The oak fills the center of the frame, the round window just right of center at the bottom, the little door left of it. Nobody is outside.",
+      "stages": [
+        {"from": 0, "to": 8, "name": "the old oak", "camera": "Wide, low at grass height, a slow gentle glide toward the round window.", "action": "A soft breeze moves the grass and a few clover flowers; one leaf drifts down slowly past the window, which glows steadily warm."}
+      ],
+      "ambience": "a soft evening breeze, distant crickets",
+      "consistency": "The window glows the same warm gold the whole time.",
+      "narration": [{"at": 1.0, "text": "At the bottom of the old oak tree, there is a little round window."}]
+    },
+    {
+      "id": "s02", "seconds": 9, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create a 9-second cozy scene: Hazel tucked in bed, her jar lantern glowing on the nightstand; she gives a big, slow yawn.",
+      "scene": "Hazel's small round bedroom at night. The jar lantern on the nightstand is the warm main light; the curtains of the round window are closed, edged with soft blue moonlight.",
+      "geography": "Hazel lies in her bed on the left of the frame under the patchwork quilt, her head on the pillow facing the camera. The nightstand with the glowing jar lantern stands just right of the bed. The round window is in the background on the right.",
+      "stages": [
+        {"from": 0, "to": 9, "name": "a big yawn", "camera": "Medium shot at bed height, holding still, then a very slow push toward Hazel.", "action": "Hazel snuggles under the quilt, gives one big, slow yawn with her eyes squeezed shut, then opens her eyes sleepily and looks at the warm glow of her jar lantern."}
+      ],
+      "consistency": "The jar lantern glows steadily on the nightstand the whole time.",
+      "narration": [{"at": 1.0, "text": "Behind it lives Hazel, a small hedgehog with a very big yawn."}]
+    },
+    {
+      "id": "s03", "seconds": 8, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create an 8-second gentle moment: the jar lantern's light flickers softly and goes out; Hazel's eyes open a little wider, curious rather than afraid.",
+      "scene": "The same bedroom. The jar lantern is the warm main light until it goes out; then only soft blue moonlight from the edges of the closed curtains lights the room.",
+      "geography": "The jar lantern sits on the nightstand in the foreground on the right; Hazel is in bed behind it on the left, softly out of focus at first.",
+      "stages": [
+        {"from": 0, "to": 4, "name": "the lantern", "camera": "Close on the jar lantern on the nightstand, Hazel soft in the background.", "action": "The tiny light inside the jar flickers gently three times, dims, and goes out softly; the room turns a soft moonlit blue.", "end": "Cut on the last flicker to a close shot of Hazel."},
+        {"from": 4, "to": 8, "name": "a small oh", "camera": "Close on Hazel in bed, at pillow height, holding still.", "action": "In the soft blue light Hazel's eyes open a little wider, her ears perk up and she makes a small, round 'oh' with her mouth, then slowly sits up, holding the edge of the quilt."}
+      ],
+      "consistency": "After the light goes out it stays out. The room is calm and softly lit by blue moonlight, never dark or frightening.",
+      "narration": [{"at": 0.5, "text": "Every night, her jar lantern glows until she falls asleep."}, {"at": 5.4, "text": "Tonight, it flickers out."}]
+    },
+    {
+      "id": "s04", "seconds": 9, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create a 9-second scene: Hazel climbs out of bed and tiptoes across the knitted rug to the round window, holding her dark jar lantern in both paws.",
+      "scene": "The same bedroom in soft blue moonlight. The jar lantern is dark now.",
+      "geography": "The bed is on the left, the round window with closed cream curtains on the right; Hazel crosses the knitted rug from left to right.",
+      "stages": [
+        {"from": 0, "to": 9, "name": "tiptoe", "camera": "Medium wide, at Hazel's height, gliding slowly sideways with her from left to right.", "action": "Hazel slides out of bed, picks up the dark jar lantern from the nightstand with both paws and tiptoes across the knitted rug toward the round window, small careful steps, until she stands in front of the closed curtains."}
+      ],
+      "consistency": "Hazel holds the dark jar lantern in both paws from the moment she picks it up.",
+      "narration": [{"at": 1.0, "text": "Hazel isn't sure about the dark. She tiptoes to the window."}]
+    },
+    {
+      "id": "s05", "seconds": 10, "cast": ["hazel"], "place": "garden", "props": ["lantern"],
+      "goal": "Create a 10-second gentle reveal: Hazel opens the curtain and sees the night garden full of soft glowing fireflies under the moon.",
+      "scene": "Night. Through Hazel's round window: the garden with the pond, the tall grass and the big round moon, dozens of tiny fireflies drifting above the grass. Soft silver moonlight.",
+      "geography": "Hazel stands at the round window, seen first from behind her shoulder; the garden is outside, beyond the glass.",
+      "stages": [
+        {"from": 0, "to": 4, "name": "the curtain", "camera": "Over Hazel's shoulder from behind, at her height, holding still.", "action": "Hazel tucks the jar lantern under one arm and with her free paw slowly pulls the cream curtain aside.", "end": "Cut as the curtain opens to the view outside."},
+        {"from": 4, "to": 10, "name": "the night garden", "camera": "Wide view of the garden through the round window, a very slow drift toward the pond.", "action": "The moonlit garden is full of tiny warm fireflies drifting and blinking softly above the grass and the pond; their reflections twinkle on the water."}
+      ],
+      "consistency": "The fireflies are tiny points of warm light, never insects in close-up.",
+      "narration": [{"at": 2.5, "text": "She peeks outside..."}, {"at": 5.0, "text": "and the night is full of soft little lights."}]
+    },
+    {
+      "id": "s06", "seconds": 8, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create an 8-second tender moment: a single firefly floats up to the window glass and blinks; Hazel blinks back and smiles.",
+      "scene": "Hazel at the round window, the curtain open, soft silver moonlight on her face; tiny firefly lights in the garden behind the glass.",
+      "geography": "Hazel is on the left of the frame in a three-quarter view, facing the window on the right; one firefly floats just outside the glass.",
+      "stages": [
+        {"from": 0, "to": 8, "name": "hello", "camera": "Close-up of Hazel's face at the window, from about 45 degrees to her side, holding still.", "action": "A single firefly drifts up outside the glass and blinks its warm light twice; Hazel slowly blinks back twice, and a small, delighted smile spreads across her face, the firefly lights reflected in her eyes."}
+      ],
+      "consistency": "Only one firefly comes close; the others stay small and far away.",
+      "narration": [{"at": 1.0, "text": "A firefly blinks hello. Hazel blinks back."}]
+    },
+    {
+      "id": "s07", "seconds": 10, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create a 10-second calm scene: Hazel leaves the curtain open a little, and a soft stripe of moonlight lies across her bed as she climbs back in, hugging the jar lantern.",
+      "scene": "The bedroom with the curtain open a little; a soft silver stripe of moonlight falls from the round window across the knitted rug and onto the bed.",
+      "geography": "The window is on the right, the bed on the left; the stripe of moonlight connects them across the floor.",
+      "stages": [
+        {"from": 0, "to": 10, "name": "the moon stripe", "camera": "Medium wide, at bed height, a slow glide from the window toward the bed.", "action": "Hazel leaves the curtain open a little, pads back across the rug through the stripe of moonlight, climbs into bed and snuggles under the quilt, hugging the dark jar lantern, the moonlight stripe lying softly across her quilt."}
+      ],
+      "consistency": "The curtain stays open a little; the moonlight stripe stays on the bed.",
+      "narration": [{"at": 1.0, "text": "She leaves the curtain open, just a little, so the moon can keep her company."}]
+    },
+    {
+      "id": "s08", "seconds": 14, "cast": ["hazel"], "place": "room", "props": ["lantern"],
+      "goal": "Create a 14-second peaceful ending: Hazel falls asleep in the stripe of moonlight; a firefly glows softly outside the window; long, quiet hold.",
+      "scene": "The bedroom at night, calm and blue, the moonlight stripe across the bed. Outside the round window, one firefly glows softly.",
+      "geography": "Hazel sleeps in her bed in the lower half of the frame; the round window with the firefly is in the upper right.",
+      "stages": [
+        {"from": 0, "to": 14, "name": "goodnight", "camera": "From above the bed, looking gently down, a very slow pull back and rise that ends with Hazel and the window both in the frame; then a long still hold.", "action": "Hazel's eyes slowly close and her breathing gets slow and even, the jar lantern hugged under her chin; outside the window the firefly glows softly on and off, slower and slower."}
+      ],
+      "consistency": "Hazel stays asleep from the moment her eyes close. Nothing else moves in the room.",
+      "narration": [{"at": 2.0, "text": "The dark isn't empty, Hazel thinks. It is full of friends."}, {"at": 9.0, "text": "Goodnight, little lights."}]
+    }
+  ]
+}

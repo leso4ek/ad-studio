@@ -1,0 +1,118 @@
+{
+ "1": {
+  "class_type": "KidStudioElementFromBible",
+  "_meta": {
+   "title": "Hazel's sheet prompt"
+  },
+  "inputs": {
+   "bible_path": "pilot/bible.json",
+   "element": "character:hazel"
+  }
+ },
+ "2": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "Seedream 5.5"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "bytedance-seed/seedream-5-5",
+   "aspect_ratio": "16:9",
+   "n": 1,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 1
+  }
+ },
+ "3": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "Nano Banana 2.1"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "google/gemini-nano-banana-2.1",
+   "aspect_ratio": "16:9",
+   "n": 1,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 1
+  }
+ },
+ "4": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "GPT Image 2.6 Flare"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "openai/gpt-image-2.6-flare",
+   "aspect_ratio": "16:9",
+   "n": 1,
+   "resolution": "2K",
+   "custom_model": "",
+   "seed": 1
+  }
+ },
+ "5": {
+  "class_type": "KidStudioOpenRouterImage",
+  "_meta": {
+   "title": "FLUX 3"
+  },
+  "inputs": {
+   "prompt": [
+    "1",
+    0
+   ],
+   "model": "black-forest-labs/flux-3-image",
+   "aspect_ratio": "16:9",
+   "n": 1,
+   "resolution": "1K",
+   "custom_model": "",
+   "seed": 1
+  }
+ },
+ "6": {
+  "class_type": "KidStudioCompareGrid",
+  "_meta": {
+   "title": "Compare: pick the model"
+  },
+  "inputs": {
+   "labels": "Seedream 5.5\nNano Banana 2.1\nGPT Image 2.6 Flare\nFLUX 3",
+   "image_1": [
+    "2",
+    0
+   ],
+   "image_2": [
+    "3",
+    0
+   ],
+   "image_3": [
+    "4",
+    0
+   ],
+   "image_4": [
+    "5",
+    0
+   ]
+  }
+ },
+ "99": {
+  "class_type": "KidStudioBudget",
+  "_meta": {
+   "title": "Budget (spent vs cap)"
+  },
+  "inputs": {
+   "refresh": 0
+  }
+ }
+}
