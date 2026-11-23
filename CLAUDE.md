@@ -65,5 +65,6 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
 - Next cut, from the scorecard: show the capful being poured (needs a watering-can prop), keep the fern's change modest, give Juno one specific detail, add motion in the first 0.3 s, and fill the sides of the 16:9 cut.
 
 ## Environment notes
+- **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.
 - Allowed hosts were added to the Default environment for ElevenLabs/Kling/Hugging Face (see SKILL.md §2b). Fonts-in-use / Slant / evamonkey pages were not reachable during the research; REFERENCES.md cites them from search excerpts.
