@@ -13,7 +13,15 @@ import * as inbox from './engines/inbox.mjs';
 const DECIDERS = { claude, inbox };
 const jobs = new Map();
 let CFG = null;
-export function initPipeline(cfg) { CFG = cfg; fs.mkdirSync(cfg.adsDir, { recursive: true }); }
+export function initPipeline(cfg) {
+  CFG = cfg; fs.mkdirSync(cfg.adsDir, { recursive: true });
+  // a restart ends every job: stages left 'running' go back to 'idle' so the run can resume from them
+  for (const d of fs.readdirSync(cfg.adsDir)) {
+    const f = path.join(cfg.adsDir, d, 'project.json'), p = readJSON(f); if (!p) continue;
+    let hit = false; for (const s of Object.values(p.stages)) if (s.status === 'running') { s.status = 'idle'; s.error = 'interrupted by a server restart: press Continue'; hit = true; }
+    if (hit) writeJSON(f, p);
+  }
+}
 
 // ---------- store ----------
 export const adDir = slug => path.join(CFG.adsDir, slug);

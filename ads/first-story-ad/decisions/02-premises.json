@@ -1,0 +1,87 @@
+{
+  "stage": "premises",
+  "at": "2026-11-23T17:59:42.191Z",
+  "output": {
+    "premises": [
+      {
+        "id": "p1",
+        "logline": "Every Sunday Juno and her droopy plant have a silent standoff over the watering can; one capful ends the guessing for both of them.",
+        "emotion": "quiet relief",
+        "productRole": "The capful replaces her water-and-hope guessing with one clear routine.",
+        "hookIdea": "A woman and a plant staring each other down, title card 'Sunday standoff'."
+      },
+      {
+        "id": "p2",
+        "logline": "A new flat-sitter inherits a windowsill of plants and a note that just says 'feed them'; Sprigly's label is the only instruction that makes sense.",
+        "emotion": "panic to calm",
+        "productRole": "The dose on the label turns a vague note into a plan.",
+        "hookIdea": "A sticky note: 'feed them.' Feed them WHAT?"
+      },
+      {
+        "id": "p3",
+        "logline": "Two flatmates argue about how much plant food is 'a bit'; the measuring cap settles it.",
+        "emotion": "playful annoyance",
+        "productRole": "One capful per litre ends the argument.",
+        "hookIdea": "'A splash.' 'A glug.' Two people, one plant, no agreement."
+      },
+      {
+        "id": "p4",
+        "logline": "An office plant everyone forgets is adopted by the intern, who sets a fortnightly reminder and a capful.",
+        "emotion": "small pride",
+        "productRole": "A routine simple enough to keep at work.",
+        "hookIdea": "A plant on a desk with a name tag nobody reads."
+      },
+      {
+        "id": "p5",
+        "logline": "A grandad who 'just knows' plants teaches his grandson the old way, and the grandson shows him the cap that measures it.",
+        "emotion": "warmth between generations",
+        "productRole": "It writes down what grandad does by feel.",
+        "hookIdea": "'You feel it in your thumb.' Close-up of a green thumb."
+      },
+      {
+        "id": "p6",
+        "logline": "A plant narrates its own life in a flat: two weeks of hopeful glances at the owner until feeding day finally comes.",
+        "emotion": "gentle comedy",
+        "productRole": "It gives the owner a day to remember: feeding day.",
+        "hookIdea": "POV of a plant: 'Day 14. Still waiting.'"
+      },
+      {
+        "id": "p7",
+        "logline": "A busy nurse coming off night shifts only has thirty seconds for her plants; one capful fits.",
+        "emotion": "tired tenderness",
+        "productRole": "A thirty-second routine that fits a hard week.",
+        "hookIdea": "A clock at 7:02 am and a coat still on."
+      },
+      {
+        "id": "p8",
+        "logline": "A café owner's window plants look tired in the photos customers post; she starts a fortnightly feeding ritual before opening.",
+        "emotion": "pride in a small business",
+        "productRole": "A routine she can hand to staff: one capful per litre.",
+        "hookIdea": "A phone photo of a café window, zoom to the sad plant in the corner."
+      },
+      {
+        "id": "p9",
+        "logline": "A man buys a plant to prove he can look after something, then realises he doesn't know how; the bottle tells him in one line.",
+        "emotion": "vulnerable to capable",
+        "productRole": "The one-line dose makes care feel doable.",
+        "hookIdea": "'I can keep a plant alive.' He can't. Yet."
+      },
+      {
+        "id": "p10",
+        "logline": "A child asks why the plant looks sad; the parent, unsure, finds the answer on a bottle and they make feeding day their thing.",
+        "emotion": "shared wonder (adult audience)",
+        "productRole": "A clear routine a parent can share.",
+        "hookIdea": "'Is the plant sad?' A small voice, a big question."
+      }
+    ],
+    "chosen": "p1",
+    "runnerUp": "p3",
+    "reason": "The Sunday standoff fits in one look: a tired person and a tired plant face to face. It has one emotion, relief, and the turn comes from Sprigly's honest benefit, one capful and no guessing, not from a miracle. It all happens on a kitchen windowsill, which the kit draws well. The flatmates' argument (p3) is the runner-up and would make a good second ad."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 30041
+  },
+  "warnings": []
+}

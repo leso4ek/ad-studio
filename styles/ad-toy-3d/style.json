@@ -1,0 +1,16 @@
+{
+ "slug": "ad-toy-3d",
+ "en": "Toy 3D",
+ "cn": "玩具3D",
+ "based_on": "brick-toy",
+ "borrows": [
+  "glass-product",
+  "white-model"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-23",
+ "line": "A hand-built soft-toy diorama in three.js: rounded matte shapes, a real floor, soft key light and contact shadows.",
+ "line_cn": "three.js 手作软玩具微缩场景：圆润哑光造型、真实地面、柔和主光与接触阴影。",
+ "engine": "studio/kit"
+}

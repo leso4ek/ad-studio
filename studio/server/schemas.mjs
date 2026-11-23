@@ -9,7 +9,7 @@ export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon',
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
 export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'];
 export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed'];
-export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree'];
+export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree'];
 export const ANIMS = ['bob', 'float', 'breathe', 'pop', 'pulse', 'slide-l', 'slide-r', 'slide-up', 'drop', 'exit-l', 'exit-r', 'shake', 'wobble', 'spin', 'wave', 'talk', 'reveal', 'fade-in', 'fade-out'];
 const hex = { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' };
 
@@ -79,7 +79,7 @@ export const bible = S({
   music: S({ mood: { type: 'string', enum: ['warm', 'bouncy', 'jazzy', 'lofi', 'bright', 'tender'] }, bpm: num() }, ['mood']),
   sfx: arr(S({ t: num(), type: str() }, ['t', 'type'])),
   variants: S({ hooks: arr(S({ id: { type: 'string', enum: ['A', 'B', 'C'] }, shots: arr({ type: 'object' }) }, ['id', 'shots'])) }),
-  custom: { type: 'boolean' },
+  custom: { type: 'boolean' }, reason: str('why this shot plan, two or three sentences'),
 }, ['slug', 'style', 'dur', 'product', 'cast', 'places', 'shots', 'vo', 'endcard', 'music']);
 
 export const frames = S({

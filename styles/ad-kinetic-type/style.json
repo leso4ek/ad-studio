@@ -1,0 +1,15 @@
+{
+ "slug": "ad-kinetic-type",
+ "en": "Kinetic Type",
+ "cn": "动态字体",
+ "based_on": "swiss-motion",
+ "borrows": [
+  "text-flash-cuts"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-23",
+ "line": "The words are the camera: bold type slams in word by word over colour fields, pictogram people, and the product as a clean hero.",
+ "line_cn": "文字即镜头：粗体字逐词砸入纯色背景，象形小人，产品作为干净的主角。",
+ "engine": "studio/kit"
+}

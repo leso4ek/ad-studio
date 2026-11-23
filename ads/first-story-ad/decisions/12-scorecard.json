@@ -1,0 +1,62 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-23T18:15:29.741Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 Hook in 1-3 s",
+        "score": 4,
+        "note": "'Sunday standoff.' and the face-off read at a glance, but the first half-second is static: nothing moves before the card pops."
+      },
+      {
+        "rule": "2 All five acts",
+        "score": 4,
+        "note": "Standoff, guessing, reveal, routine and tag are all there; act 4 (the change) is thin, one shot of her holding the bottle."
+      },
+      {
+        "rule": "3 A character we identify with",
+        "score": 3,
+        "note": "The Sunday-guessing situation is relatable, but Juno has no specific detail of her own beyond the bun and the frown."
+      },
+      {
+        "rule": "4 The product causes the turn",
+        "score": 4,
+        "note": "Reading the cap is the turn and the line lands, but we never see the actual capful being poured, the action the claim is about."
+      },
+      {
+        "rule": "5 Plant / pulse / reveal / tag",
+        "score": 5,
+        "note": "Bottle planted in shot 1, pulsing in shot 2, revealed at 8.3 s, tagged on the end card and in the last voice line."
+      },
+      {
+        "rule": "6 One emotion",
+        "score": 4,
+        "note": "Relief carries it; the evening shot with the mug lands it gently."
+      },
+      {
+        "rule": "7 Kind contrast and honest claims",
+        "score": 4,
+        "note": "Every claim is a label fact and nobody is mocked, but the upright fern in act 4 lightly implies a result the brief rules out promising."
+      }
+    ],
+    "total": 28,
+    "verdict": "A clear, honest, finished 20 s story ad; good enough to test, with an obvious next cut.",
+    "bestHook": "B",
+    "fixes": [
+      "Show the capful: add a watering-can prop to the kit and a 1.5 s shot of the cap filling and pouring in act 3.",
+      "Keep the fern's change modest, the same fern only less droopy, and put the change on Juno: she ticks a 'feed day' note on the fridge.",
+      "Give Juno one specific detail (a name tag on the pot, 'Fernando'; a sticky-note calendar) so she becomes someone.",
+      "Start moving in the first 0.3 s: the fern twitches, or Juno leans in, before the hook card pops.",
+      "16:9 cut: widen the place with props on the empty sides, and make the end-card product larger.",
+      "Test hook B first ('How much is a bit?'): it names the problem the cap solves; keep A as the control.",
+      "The s4 caption repeats the card word for word; for the sound-off feed, show the caption or the card, not both."
+    ],
+    "reason": "28/35. The structure and the brand map are strong and the claims are clean. The weakest points are the generic character and the turn that is read rather than shown, and both are cheap to fix in the bible."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 38049
+  },
+  "warnings": []
+}

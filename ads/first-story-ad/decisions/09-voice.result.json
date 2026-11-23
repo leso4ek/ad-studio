@@ -1,0 +1,21 @@
+{
+  "stage": "voice",
+  "at": "2026-11-23T18:09:41.770Z",
+  "summary": "7 lines by kokoro; speech check: pass",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 2.893,
+    "l02": 1.993,
+    "l03": 1.376,
+    "l04": 2.706,
+    "l05": 1.984,
+    "l06": 1.058,
+    "l07": 2.153
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": true,
+    "report": "OK   l01 | Every Sunday, Juneau and her fern have a standoff. → Every Sunday, Juneau and her fern have a standoff. \nOK   l02 | She waters, she guesses, she hopes. → She waters, she guesses, she hopes. \nOK   l03 | And the fern still sulks. → and the fern still sulks. \nOK   l04 | Then she reads the cap, one cap full per liter. → Then she reads the cap, one cap full per liter. \nOK   l05 | Every two weeks. No more guessing. → Every two weeks, no more guessing. \nOK   l06 | Stand off over. → Stand off over. \nOK   l07 | Sprigly, one cap full, no guessing. → Sprigly, one cap full no guessing. \nmismatches: 0 (lang=en, model=base)"
+  },
+  "warnings": []
+}

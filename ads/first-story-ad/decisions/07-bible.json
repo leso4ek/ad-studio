@@ -1,0 +1,539 @@
+{
+  "stage": "bible",
+  "at": "2026-11-23T18:08:05.651Z",
+  "output": {
+    "title": "Sprigly · Sunday standoff",
+    "style": "ad-paper-cutout",
+    "dur": 20,
+    "stylePara": "Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.",
+    "product": {
+      "name": "Sprigly",
+      "kind": "bottle",
+      "label": "SPRIGLY",
+      "colors": {
+        "body": "#3E8E5A",
+        "cap": "#F2C14E",
+        "label": "#FFF6E5",
+        "labelInk": "#234D33",
+        "accent": "#E8613C"
+      }
+    },
+    "cast": {
+      "juno": {
+        "skin": "#E2A784",
+        "hair": "#3A2418",
+        "hairStyle": "bun",
+        "top": "#E07A4F",
+        "bottom": "#3D5A80",
+        "build": "slim",
+        "role": "she, 30s, small flat, loves her fern"
+      }
+    },
+    "places": {
+      "kitchen": {
+        "kind": "kitchen",
+        "time": "day"
+      },
+      "evening": {
+        "kind": "kitchen",
+        "time": "dusk"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3,
+        "act": 1,
+        "beat": "hook",
+        "place": "kitchen",
+        "camera": {
+          "zoom": [
+            1,
+            1.05
+          ]
+        },
+        "layers": [
+          {
+            "type": "char",
+            "id": "juno",
+            "x": 0.3,
+            "y": 0.9,
+            "scale": 1.2,
+            "pose": "annoyed",
+            "face": "right",
+            "anim": [
+              "breathe"
+            ]
+          },
+          {
+            "type": "prop",
+            "kind": "fern-droopy",
+            "x": 0.72,
+            "y": 0.71,
+            "scale": 2.4,
+            "anim": [
+              "wobble:.3"
+            ]
+          },
+          {
+            "type": "product",
+            "id": "bottle",
+            "x": 0.93,
+            "y": 0.71,
+            "scale": 0.42
+          },
+          {
+            "type": "text",
+            "id": "hook",
+            "role": "hook",
+            "text": "Sunday\nstandoff.",
+            "x": 0.42,
+            "y": 0.27,
+            "size": 0.13,
+            "anim": [
+              "pop"
+            ],
+            "l16": {
+              "y": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "t0": 3,
+        "t1": 5.5,
+        "act": 2,
+        "beat": "pulse",
+        "place": "kitchen",
+        "layers": [
+          {
+            "type": "char",
+            "id": "juno",
+            "x": 0.38,
+            "y": 0.9,
+            "scale": 1.2,
+            "pose": "think",
+            "face": "right",
+            "anim": [
+              "bob"
+            ]
+          },
+          {
+            "type": "prop",
+            "kind": "fern-droopy",
+            "x": 0.74,
+            "y": 0.71,
+            "scale": 2.4
+          },
+          {
+            "type": "prop",
+            "kind": "drop",
+            "x": 0.7,
+            "y": 0.5,
+            "scale": 0.5,
+            "t0": 0.6,
+            "anim": [
+              "drop"
+            ]
+          },
+          {
+            "type": "product",
+            "id": "bottle",
+            "x": 0.93,
+            "y": 0.71,
+            "scale": 0.42,
+            "anim": [
+              "pulse"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "card",
+            "text": "A splash?\nA glug?",
+            "x": 0.44,
+            "y": 0.27,
+            "size": 0.11,
+            "w": 0.74,
+            "t0": 0
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "t0": 5.5,
+        "t1": 8,
+        "act": 2,
+        "beat": "story",
+        "place": "kitchen",
+        "camera": {
+          "zoom": [
+            1,
+            1.08
+          ],
+          "focus": [
+            0.1,
+            0.6
+          ]
+        },
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "fern-droopy",
+            "x": 0.5,
+            "y": 0.86,
+            "scale": 4.2,
+            "anim": [
+              "breathe"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "Still sulking.",
+            "x": 0.45,
+            "y": 0.22,
+            "size": 0.11,
+            "w": 0.74
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "t0": 8,
+        "t1": 11.5,
+        "act": 3,
+        "beat": "reveal",
+        "place": "studio",
+        "trans": "wipe",
+        "layers": [
+          {
+            "type": "product",
+            "id": "hero",
+            "x": 0.47,
+            "y": 0.8,
+            "scale": 1.3,
+            "t0": 0.25,
+            "anim": [
+              "reveal",
+              "float:.4"
+            ]
+          },
+          {
+            "type": "prop",
+            "kind": "leaf",
+            "x": 0.2,
+            "y": 0.62,
+            "scale": 1.2,
+            "t0": 0.6,
+            "anim": [
+              "pop",
+              "float"
+            ]
+          },
+          {
+            "type": "prop",
+            "kind": "sparkle",
+            "x": 0.72,
+            "y": 0.42,
+            "scale": 0.7,
+            "t0": 0.9,
+            "anim": [
+              "pop",
+              "pulse"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c3",
+            "role": "card",
+            "text": "One capful\nper litre.",
+            "x": 0.45,
+            "y": 0.22,
+            "size": 0.11,
+            "w": 0.74,
+            "t0": 0.5
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "t0": 11.5,
+        "t1": 14,
+        "act": 4,
+        "beat": "pulse",
+        "place": "kitchen",
+        "layers": [
+          {
+            "type": "char",
+            "id": "juno",
+            "x": 0.36,
+            "y": 0.9,
+            "scale": 1.2,
+            "pose": "hold",
+            "face": "right",
+            "anim": [
+              "bob"
+            ]
+          },
+          {
+            "type": "product",
+            "id": "inhand",
+            "x": 0.37,
+            "y": 0.8,
+            "scale": 0.4,
+            "z": 2
+          },
+          {
+            "type": "prop",
+            "kind": "fern",
+            "x": 0.75,
+            "y": 0.71,
+            "scale": 2.4,
+            "anim": [
+              "float:.2"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c4",
+            "role": "card",
+            "text": "Every two weeks.",
+            "x": 0.45,
+            "y": 0.22,
+            "size": 0.1,
+            "w": 0.76,
+            "t0": 0
+          }
+        ]
+      },
+      {
+        "id": "s6",
+        "t0": 14,
+        "t1": 16.5,
+        "act": 4,
+        "beat": "story",
+        "place": "evening",
+        "trans": "fade",
+        "layers": [
+          {
+            "type": "char",
+            "id": "juno",
+            "x": 0.33,
+            "y": 0.9,
+            "scale": 1.2,
+            "pose": "happy",
+            "face": "right",
+            "anim": [
+              "breathe"
+            ]
+          },
+          {
+            "type": "prop",
+            "kind": "fern",
+            "x": 0.72,
+            "y": 0.71,
+            "scale": 2.4
+          },
+          {
+            "type": "prop",
+            "kind": "mug",
+            "x": 0.55,
+            "y": 0.71,
+            "scale": 0.9
+          },
+          {
+            "type": "prop",
+            "kind": "steam",
+            "x": 0.555,
+            "y": 0.64,
+            "scale": 0.6,
+            "anim": [
+              "float"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c5",
+            "role": "card",
+            "text": "Sunday, solved.",
+            "x": 0.45,
+            "y": 0.22,
+            "size": 0.1,
+            "w": 0.76
+          }
+        ]
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "lines": [
+        {
+          "id": "l01",
+          "text": "Every Sunday, Juno and her fern have a standoff.",
+          "at": 0.3,
+          "speaker": "narrator",
+          "asr": "Every Sunday, Juneau and her fern have a standoff."
+        },
+        {
+          "id": "l02",
+          "text": "She waters, she guesses, she hopes.",
+          "at": 3.4,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l03",
+          "text": "And the fern still sulks.",
+          "at": 5.9,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l04",
+          "text": "Then she reads the cap. One capful per litre.",
+          "at": 8.5,
+          "speaker": "narrator",
+          "asr": "Then she reads the cap, one cap full per liter."
+        },
+        {
+          "id": "l05",
+          "text": "Every two weeks. No more guessing.",
+          "at": 11.8,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l06",
+          "text": "Standoff over.",
+          "at": 14.4,
+          "speaker": "narrator",
+          "asr": "Stand off over."
+        },
+        {
+          "id": "l07",
+          "text": "Sprigly. One capful, no guessing.",
+          "at": 16.9,
+          "speaker": "narrator",
+          "asr": "Sprigly, one cap full, no guessing."
+        }
+      ]
+    },
+    "captions": true,
+    "endcard": {
+      "t0": 16.5,
+      "logo": "Sprigly",
+      "line": "One capful. No guessing.",
+      "cta": "Houseplant feed"
+    },
+    "music": {
+      "mood": "warm",
+      "bpm": 92
+    },
+    "sfx": [],
+    "variants": {
+      "hooks": [
+        {
+          "id": "B",
+          "shots": [
+            {
+              "id": "s1",
+              "layers": [
+                {
+                  "type": "char",
+                  "id": "juno",
+                  "x": 0.32,
+                  "y": 0.9,
+                  "scale": 1.2,
+                  "pose": "think",
+                  "face": "right",
+                  "anim": [
+                    "breathe"
+                  ]
+                },
+                {
+                  "type": "prop",
+                  "kind": "fern-droopy",
+                  "x": 0.72,
+                  "y": 0.71,
+                  "scale": 2.4
+                },
+                {
+                  "type": "product",
+                  "id": "bottle",
+                  "x": 0.93,
+                  "y": 0.71,
+                  "scale": 0.42
+                },
+                {
+                  "type": "text",
+                  "id": "hookB",
+                  "role": "hook",
+                  "text": "How much\nis 'a bit'?",
+                  "x": 0.43,
+                  "y": 0.27,
+                  "size": 0.12,
+                  "w": 0.76,
+                  "anim": [
+                    "pop"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "shots": [
+            {
+              "id": "s1",
+              "camera": {
+                "zoom": [
+                  1.02,
+                  1.1
+                ],
+                "focus": [
+                  0.05,
+                  0.6
+                ]
+              },
+              "layers": [
+                {
+                  "type": "prop",
+                  "kind": "fern-droopy",
+                  "x": 0.5,
+                  "y": 0.88,
+                  "scale": 4.2,
+                  "anim": [
+                    "breathe"
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "hookC",
+                  "role": "hook",
+                  "text": "Day 14.\nStill guessing.",
+                  "x": 0.43,
+                  "y": 0.27,
+                  "size": 0.12,
+                  "w": 0.76,
+                  "anim": [
+                    "pop"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "slug": "first-story-ad"
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 3003
+  },
+  "warnings": []
+}

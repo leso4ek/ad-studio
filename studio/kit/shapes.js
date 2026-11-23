@@ -23,7 +23,7 @@ export const POSES = {
   wave:      { la: .15, ra: 2.6, tilt: .06, lean: 0, eyes: 'arc', mouth: 'smile', brows: 'up' },
   think:     { la: .2, ra: 2.9, tilt: .1, lean: 0, eyes: 'up', mouth: 'flat', brows: 'one' },
   cheer:     { la: 2.7, ra: 2.7, tilt: 0, lean: 0, eyes: 'arc', mouth: 'grin', brows: 'up' },
-  hold:      { la: 1.05, ra: 1.05, tilt: .02, lean: 0, eyes: 'dot', mouth: 'smile', brows: 'flat' },
+  hold:      { la: -.42, ra: -.42, tilt: .02, lean: 0, eyes: 'dot', mouth: 'smile', brows: 'flat' },
   annoyed:   { la: .5, ra: .5, tilt: -.05, lean: 0, eyes: 'half', mouth: 'flat', brows: 'angry' },
 };
 
@@ -167,6 +167,21 @@ export function prop(kind, color) {
     case 'alarm': o.push({ s: 'ellipse', x: -.3, y: -.86, rx: .16, ry: .12, m: 'propB' }, { s: 'ellipse', x: .3, y: -.86, rx: .16, ry: .12, m: 'propB' }, ...prop('clock'), { s: 'cap', x1: -.3, y1: -.08, x2: -.38, y2: 0, r: .04, m: 'propB' }, { s: 'cap', x1: .3, y1: -.08, x2: .38, y2: 0, r: .04, m: 'propB' }); break;
     case 'phone': o.push({ s: 'rrect', x: 0, y: -.5, w: .5, h: 1, r: .08, m: 'ink' }, { s: 'rrect', x: 0, y: -.5, w: .42, h: .86, r: .05, m: 'screen' }); break;
     case 'plant': o.push({ s: 'poly', m: 'propB', pts: [[-.22, 0], [.22, 0], [.28, -.35], [-.28, -.35]] }); for (const [a, l] of [[-.6, .55], [-.2, .7], [.25, .65], [.65, .5]]) o.push({ s: 'ellipse', x: Math.sin(a) * l * .55, y: -.35 - Math.cos(a) * l * .55, rx: .1, ry: .26, rot: a, m: 'plant' }); break;
+    case 'fern': case 'fern-droopy': {
+      const droop = kind === 'fern-droopy';
+      o.push({ s: 'poly', m: 'propB', pts: [[-.2, 0], [.2, 0], [.26, -.3], [-.26, -.3]] }, { s: 'rrect', x: 0, y: -.31, w: .58, h: .06, r: .02, m: 'propB' });
+      const fronds = droop ? [[-1.9, .5], [-1.4, .58], [1.45, .56], [1.95, .48], [-.6, .44], [.7, .46]] : [[-.95, .62], [-.45, .72], [0, .78], [.45, .72], [.95, .62], [-.2, .55], [.25, .55]];
+      for (const [a, l] of fronds) {
+        const pts = []; const n = 7;
+        for (let i = 0; i <= n; i++) { const u = i / n, bend = droop ? u * u * .9 : u * u * .25, ang = a + Math.sign(a || 1) * bend; pts.push([Math.sin(ang) * l * u, -.33 - Math.cos(ang) * l * u]); }
+        o.push({ s: 'stroke', pts, w: .035, m: 'plant2' });
+        for (let i = 1; i <= n; i++) {
+          const [x0, y0] = pts[i - 1], [x, y] = pts[i], dir = Math.atan2(y - y0, x - x0), sz = .085 * (1 - i / n * .55);
+          for (const side of [-1, 1]) { const b = dir + side * (droop ? 1.15 : 1.0); o.push({ s: 'ellipse', x: x + Math.cos(b) * sz * .9, y: y + Math.sin(b) * sz * .9 + (droop ? sz * .35 : 0), rx: sz, ry: sz * .38, rot: b, m: side > 0 ? 'plant' : 'plant2' }); }
+        }
+      }
+      break;
+    }
     case 'lamp': o.push({ s: 'poly', m: 'propA', pts: [[-.3, -.95], [.3, -.95], [.4, -.65], [-.4, -.65]] }, { s: 'cap', x1: 0, y1: -.65, x2: 0, y2: -.06, r: .035, m: 'ink' }, { s: 'rrect', x: 0, y: -.04, w: .4, h: .08, r: .03, m: 'ink' }); break;
     case 'bed': o.push({ s: 'rrect', x: 0, y: -.22, w: 2.2, h: .3, r: .06, m: 'wood' }, { s: 'rrect', x: .05, y: -.42, w: 2, h: .2, r: .08, m: 'propA' }, { s: 'rrect', x: -.82, y: -.52, w: .42, h: .18, r: .08, m: 'white' }, { s: 'rrect', x: -1.08, y: -.5, w: .1, h: 1, r: .04, m: 'wood' }); break;
     case 'desk': o.push({ s: 'rrect', x: 0, y: -.62, w: 1.8, h: .08, r: .02, m: 'wood' }, { s: 'rrect', x: -.8, y: -.3, w: .08, h: .6, r: .02, m: 'wood' }, { s: 'rrect', x: .8, y: -.3, w: .08, h: .6, r: .02, m: 'wood' }); break;

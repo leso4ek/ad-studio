@@ -1,0 +1,37 @@
+{
+  "stage": "final",
+  "at": "2026-11-23T18:14:51.669Z",
+  "summary": "4 file(s): first-story-ad-9x16.mp4, first-story-ad-16x9.mp4, first-story-ad-hookB.mp4, first-story-ad-hookC.mp4",
+  "probes": {
+    "9x16": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/first-story-ad/out/first-story-ad-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         2.5 LU\n    Peak:       -1.5 dBFS"
+    },
+    "16x9": {
+      "w": 1920,
+      "h": 1080,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/first-story-ad/out/first-story-ad-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         2.5 LU\n    Peak:       -1.5 dBFS"
+    },
+    "hookB": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true
+    },
+    "hookC": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true
+    }
+  }
+}

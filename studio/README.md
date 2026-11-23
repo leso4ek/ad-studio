@@ -1,0 +1,122 @@
+# Ad Studio
+
+Ad Studio is a local app that turns a product into a finished **story ad** in an original, code-drawn style. There is no AI image or video generation anywhere in it. **Claude makes every decision**, and you watch the whole process live: the pipeline, Claude's reasoning, its tool calls, the frames, the voice, the checks and the finished files.
+
+![The app at the style gate](docs/app-style-gate.png)
+
+## What it does
+Twelve stages. The first seven are mostly Claude's; the gates wait for you.
+
+| # | Stage | Who | What comes out |
+|---|---|---|---|
+| 1 | Brief | Claude | product, honest proof, allowed claims (a fictional product if you want one) |
+| 2 | Premises | Claude | ten situations → one, with the reason |
+| 3 | Hooks | Claude | hooks A/B/C for the first 1–3 s; the lead plus two test variants |
+| 4 | Story | Claude | Story Spine and five acts on the clock |
+| 5 | Brand map | Claude + lint | plant, pulse, reveal, tag; every claim tied to a proof |
+| 6 | Style | Claude, **gate** | one of the five styles below |
+| 7 | Bible | Claude + checks | the whole ad as data: shots, layers, voice lines, end card, hook variants |
+| 8 | Style frames | engines + Claude, **gate** | one frame per shot (9:16 and 16:9); Claude reviews them and fixes the bible |
+| 9 | Voice | engines | VoiceStudio → Kokoro → ElevenLabs (free tier); speech check; captions and `.srt` |
+| 10 | Animatic | engines, **gate** | a low-resolution cut with sound; reading-time and safe-zone checks |
+| 11 | Final | engines | 1080×1920 and 1920×1080 masters at −14 LUFS, hook variants, poster |
+| 12 | Scorecard | Claude | the playbook's seven rules scored 1–5; `out/REPORT.md` |
+
+**The five styles** are all original and drawn in code from the same bible, so any story works in any of them. Each has its guide in `styles/<slug>/STYLE.md`.
+
+| Paper Cut-out | Riso Print | Mid-century Toon | Kinetic Type | Toy 3D |
+|---|---|---|---|---|
+| ![](../styles/ad-paper-cutout/styleframe.jpg) | ![](../styles/ad-riso-print/styleframe.jpg) | ![](../styles/ad-midcentury-toon/styleframe.jpg) | ![](../styles/ad-kinetic-type/styleframe.jpg) | ![](../styles/ad-toy-3d/styleframe.jpg) |
+
+## Install on your Linux PC (with your local Claude Code session)
+Tell your local Claude Code session:
+
+> Install Ad Studio from `studio/` in this repo: run `bash studio/scripts/install_linux.sh`, start it, and open http://127.0.0.1:5170. Then make a new ad.
+
+Or do it yourself:
+
+```bash
+bash studio/scripts/install_linux.sh
+```
+
+```bash
+bash studio/scripts/start_studio.sh
+```
+
+Then open http://127.0.0.1:5170.
+
+**Needs:** Node 20+, Python 3.11+, git and ffmpeg, plus the `claude` CLI logged in. The installer fetches the Lemo-Opuscar library, Kokoro, Whisper, and an ffmpeg 9 through imageio-ffmpeg.
+
+**Optional:**
+- `--voicestudio` installs VoiceStudio with its own installer from voicestudio.sh. It is third-party, so say yes knowingly. Ad Studio uses it first for voices.
+- `--comfy` installs ComfyUI, used only to clean up a product photo you supply.
+
+## How Claude is wired in
+Each decision stage runs **Claude Code headless** in the ad's folder:
+
+```
+claude -p "<stage prompt>" --output-format stream-json --json-schema '<the stage schema>'
+       --session-id/--resume <one session per ad> --append-system-prompt <skills/ad-studio-director/SKILL.md>
+       --strict-mcp-config --permission-mode acceptEdits --allowedTools Read Write Edit Glob Grep "Bash(node:*)" "Bash(python3:*)"
+```
+
+- **One session per ad.** Claude keeps the context from stage to stage.
+- **Live in the app.** The stream (text, tool calls, results) goes to the **Claude live** pane.
+- **Checked answers.** Each answer is checked against the stage's JSON Schema, the claims lint (no absolutes, health claims, pressure or real brands) and the bible checks (shots tile the clock, voice fits, cast exists). A failed answer gets one repair turn.
+- **Fallback: the decision inbox.** If the CLI isn't there or fails, the question waits in `ads/<slug>/decisions/pending/`. Any Claude session can answer it:
+
+  ```bash
+  node studio/bin/inbox.mjs list
+  ```
+
+  Then `node studio/bin/inbox.mjs show <slug> <stage>` and `node studio/bin/inbox.mjs answer <slug> <stage> answer.json`. The answer is schema-checked.
+- **Cost.** Headless calls use your Claude Code login. The app shows Claude Code's own "list price" estimate per decision; on a subscription it is part of your plan. Choose the model and effort in `studio/config.local.json` (`claude.model`, `claude.effort`).
+
+## Controls
+- **Autopilot:** Claude decides and the run goes on, stopping only at the three gates.
+- **Step:** every decision waits for **Looks good, continue**.
+- **Auto gates:** also approves the gates. Use it for a quick full run.
+- **Pick another:** click a different premise, hook or style. The app records that you overrode Claude, and the later stages become stale.
+- **Redo…:** re-runs a stage with an optional note for Claude, e.g. "make the hook a question". The later stages become stale and run again.
+- **Engines:** shows each engine's health, the fallback chains, and which keys are set.
+
+## Engines and fallbacks (`config.json`, override in `config.local.json`)
+
+| Need | Chain |
+|---|---|
+| decisions | `claude` (Claude Code CLI) → `inbox` |
+| voice | `voicestudio` (http://127.0.0.1:3900, OpenAI-compatible `/v1/audio/speech`) → `kokoro` (CPU) → `elevenlabs` (off; free tier; `ELEVENLABS_API_KEY` in `studio/.env`) |
+| speech check | `voicestudio` (`/v1/audio/transcriptions`) → `whisper` (faster-whisper) |
+| product photo | `comfy` (upscale workflow on your ComfyUI) → `pillow` |
+| picture | `lemo` (Lemo-Opuscar `core/render`, headless Chromium) |
+
+Every fallback taken is recorded on its stage and shown with a ⤷ in the pipeline.
+
+## Files
+
+```
+studio/
+  server/      main.mjs (HTTP + SSE), pipeline.mjs (runner), stages.mjs (prompts, auto stages, report), schemas.mjs, lint.mjs, validate.mjs
+  server/engines/  claude.mjs, inbox.mjs, render.mjs, voice.mjs, audio.mjs, comfy.mjs
+  kit/         the ad page: page.js (bible → frames), shapes.js (people, products, props, places), styles/*.js, fonts/ (OFL)
+  web/         the app (React + Motion + GSAP; built to web/dist)
+  tools/       mix.py (synthesized score + foley + voice), safecheck.mjs
+  bin/inbox.mjs, scripts/install_linux.sh, scripts/start_studio.sh, tests/
+ads/<slug>/    project.json, brief.json, bible.json, decisions/, frames/, voice/, audio/, out/ (masters, .srt, poster, REPORT.md), log.jsonl
+```
+
+Everything an ad needs is in its folder. `log.jsonl` is the full event log, so the app can show you the whole run again later.
+
+## Tests
+
+```bash
+cd studio && npm test
+```
+
+The tests cover the schemas, the lint, the bible checks, caption timing, voice casting, stale marking, overrides and the claude → inbox fallback.
+
+## Credits and licences
+- **Fonts** (all SIL OFL): Fredoka, Anton, Space Mono, Josefin Sans, Pacifico, Inter, Archivo Black and Baloo 2. The licence files are in `kit/fonts/`.
+- **The interface** was built following the MIT-licensed design skills from freshtechbro/claudedesignskills (modern-web-design, motion-framer, gsap-scrolltrigger).
+- **VoiceStudio** (AGPL-3.0) is called over its local API; no code from it is included.
+- **Rendering** uses the Lemo-Opuscar library's tools.

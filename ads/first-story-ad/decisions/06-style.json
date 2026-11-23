@@ -1,0 +1,32 @@
+{
+  "stage": "style",
+  "at": "2026-11-23T18:01:03.307Z",
+  "output": {
+    "style": "ad-paper-cutout",
+    "reason": "A houseplant feed sold on calm and care suits layered card stock: the leaves, the windowsill and the green bottle look handmade and warm, and the stop-motion jitter gives the 'standoff' a gentle comic timing without shouting.",
+    "alternatives": [
+      {
+        "style": "ad-midcentury-toon",
+        "why_not": "Witty and kitchen-friendly, but its jazzy confidence pushes the tone toward a sales pitch; good for the flatmates premise later."
+      },
+      {
+        "style": "ad-toy-3d",
+        "why_not": "Friendly, but glossy toy shapes make a plant feed feel like a gadget."
+      },
+      {
+        "style": "ad-riso-print",
+        "why_not": "The three-ink palette fights the greens the product's story depends on."
+      },
+      {
+        "style": "ad-kinetic-type",
+        "why_not": "Great for the claim line, but loses the two-character standoff that makes the hook."
+      }
+    ]
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 10011
+  },
+  "warnings": []
+}

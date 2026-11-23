@@ -43,7 +43,8 @@ test('bible checks: tiling, end card, cast, voice fit', () => {
 test('captions: chunks of ≤ 38 characters, ordered, no overlaps, valid srt', () => {
   const lines = [{ id: 'a', text: 'Every day at three, Ava runs out of steam and the afternoon drags on', at: 0.4 }, { id: 'b', text: 'Then she found a calmer cup.', at: 5 }];
   const cues = buildCues(lines, { a: 4.2, b: 1.8 }, null);
-  assert.ok(cues.every(c => c.text.length <= 38));
+  assert.ok(cues.every(c => c.text.length <= 56));
+  assert.ok(!cues.some(c => /\b(a|the|her|and)$/.test(c.text)), 'no chunk ends on a dangling word here');
   for (let i = 0; i < cues.length - 1; i++) assert.ok(cues[i].t1 <= cues[i + 1].t0 + 1e-9);
   assert.match(srt(cues), /^1\n00:00:00,400 --> /);
 });

@@ -1,0 +1,15 @@
+{
+ "slug": "ad-midcentury-toon",
+ "en": "Mid-century Toon",
+ "cn": "中世纪卡通",
+ "based_on": "midcentury-toon",
+ "borrows": [
+  "rubber-hose"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-23",
+ "line": "Flat 1950s/60s colour planes with an off-register ink line, atomic starbursts and boomerangs on the walls, limited animation and script hooks.",
+ "line_cn": "五六十年代平涂色块、错位墨线、墙上的原子星与回旋镖图案、有限动画与手写体标题。",
+ "engine": "studio/kit"
+}

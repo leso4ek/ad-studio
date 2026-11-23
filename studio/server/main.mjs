@@ -3,7 +3,7 @@
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
-import { loadConfig, loadEnv, readJSON, STUDIO, which } from './util.mjs';
+import { loadConfig, loadEnv, readJSON, STUDIO, REPO, which } from './util.mjs';
 import { initBus, subscribe, emit } from './bus.mjs';
 import * as P from './pipeline.mjs';
 import { STAGES, STYLE_LINES } from './stages.mjs';
@@ -70,6 +70,7 @@ const routes = [
     }
     send(res, 500, { error: 'no photo engine' });
   }],
+  ['GET', /^\/styleframes\/(ad-[\w-]+)\.jpg$/, (req, res, [, s]) => serveFile(req, res, path.join(REPO, 'styles', s, 'styleframe.jpg'))],
   ['GET', /^\/files\/([\w-]+)\/(.+)$/, (req, res, [, s, rel]) => { const f = inside(P.adDir(s), decodeURIComponent(rel)); f ? serveFile(req, res, f) : send(res, 403, { error: 'outside the ad' }); }],
 ];
 

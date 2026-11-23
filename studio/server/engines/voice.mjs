@@ -118,9 +118,15 @@ export function buildCues(lines, durs, words) {
   const cues = [];
   for (const L of lines) {
     const d = durs[L.id] || 0, t0 = L.at, wl = words?.[L.id];
-    const parts = []; let cur = '';
-    for (const w of L.text.split(/\s+/)) { if ((cur + ' ' + w).trim().length > 38 && cur) { parts.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); }
-    if (cur) parts.push(cur);
+    // sentences first; a sentence longer than 56 characters (two caption lines) splits at a comma, else in balanced halves
+    const parts = [];
+    for (const sent of L.text.match(/[^.!?]+[.!?]*\s*/g) || [L.text]) {
+      const t = sent.trim(); if (!t) continue;
+      if (t.length <= 56) { parts.push(t); continue; }
+      const c = t.indexOf(', ', t.length * .3);
+      if (c > 0 && c < t.length * .7) { parts.push(t.slice(0, c + 1)); parts.push(t.slice(c + 2)); continue; }
+      const w = t.split(' '), half = Math.ceil(w.length / 2); parts.push(w.slice(0, half).join(' ')); parts.push(w.slice(half).join(' '));
+    }
     const total = parts.reduce((s, p) => s + p.length, 0); let acc = 0, wi = 0;
     for (const p of parts) {
       const n = p.split(' ').length;

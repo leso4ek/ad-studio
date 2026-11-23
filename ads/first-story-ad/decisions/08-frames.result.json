@@ -1,0 +1,16 @@
+{
+  "stage": "frames",
+  "at": "2026-11-23T18:08:19.705Z",
+  "summary": "approved as drawn",
+  "review": {
+    "verdict": "approve",
+    "changed": false,
+    "notes": [
+      {
+        "shot": "all",
+        "issue": "Only timing changed (cards held longer, end card 3.5 s); layouts are the ones approved in the first review."
+      }
+    ],
+    "reason": "Same frames as the approved review at the new shot times: hook, guessing, sulking fern, a clear reveal with the cap visible, Juno holding the bottle, the calm evening and the end card all still read."
+  }
+}

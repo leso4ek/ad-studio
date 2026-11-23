@@ -67,7 +67,7 @@ Brief: ${J(dec(ctx, 'brief'))}
 Hooks (lead ${dec(ctx, 'hooks')?.lead}; the others go in variants.hooks as replacements for the hook shot): ${J(dec(ctx, 'hooks')?.hooks)}
 Story: ${J(dec(ctx, 'story'))}
 Brand map: ${J(dec(ctx, 'brandmap'))}
-Rules: shots tile 0 → endcard.t0 with no gaps; the end card runs from endcard.t0 to dur (2.5-3.5 s); every on-screen text stays inside the safe zone (x 0.05-0.86, y 0.14-0.80 of the frame) and long enough to read (characters/15 + 1.5 s); voice lines must fit before the next line starts (about 2.6 words per second at speed 0.95) and should end before the end card logo; product colours from the brief.
+Rules: shots tile 0 → endcard.t0 with no gaps; the end card runs from endcard.t0 to dur (2.5-3.5 s); every on-screen text stays inside the safe zone (x 0.05-0.86, y 0.14-0.80 of the frame) and long enough to read (characters/15 + 1.5 s); voice lines must fit before the next line starts (about 2.9 words per second at speed 0.95) and should end before the end card logo; product colours from the brief.
 Return the complete bible JSON.` },
 
   { id: 'frames', n: 8, title: 'Style frames', kind: 'auto', gate: true },
@@ -97,8 +97,8 @@ export function checkBible(b) {
   for (const s of shots) if (s.place && s.place !== 'studio' && !b.places?.[s.place]) errs.push(`${s.id}: place "${s.place}" is not in places`);
   const lines = [...(b.vo?.lines || [])].sort((x, y) => x.at - y.at);
   for (let i = 0; i < lines.length; i++) {
-    const words = lines[i].text.split(/\s+/).length, est = words / 2.6, next = lines[i + 1]?.at ?? b.dur;
-    if (lines[i].at + est > next + .2) errs.push(`voice line ${lines[i].id} (~${est.toFixed(1)} s) runs into the next line at ${next}`);
+    const words = lines[i].text.split(/\s+/).length, est = words / 2.9 / ((b.vo?.speed || .95) / .95), next = lines[i + 1]?.at ?? b.dur;
+    if (lines[i].at + est > next + .3) errs.push(`voice line ${lines[i].id} (~${est.toFixed(1)} s) runs into the next line at ${next}`);
     if (lines[i].speaker && lines[i].speaker !== 'narrator' && !b.cast?.[lines[i].speaker]) errs.push(`voice line ${lines[i].id}: speaker "${lines[i].speaker}" is not in cast`);
   }
   return errs;
@@ -109,6 +109,7 @@ export const AUTO = {
   async frames(ctx) {
     const b = ctx.bible(), times = [...b.shots.map(s => +(s.t0 + (s.t1 - s.t0) * .6).toFixed(2)), +(b.endcard.t0 + 1.5).toFixed(2)];
     const shoot = async (tag) => {
+      const fdir = path.join(ctx.adDir, 'frames'); if (fs.existsSync(fdir)) for (const f of fs.readdirSync(fdir)) if (/^[fw]_.*\.jpg$/.test(f)) fs.rmSync(path.join(fdir, f));
       const files = await render.stills(ctx.cfg, ctx.adDir, times, { aspect: '9:16', q: 'nosub=1', prefix: 'f_', slug: ctx.slug, stage: 'frames', signal: ctx.signal });
       const sheet = path.join(ctx.adDir, 'frames', 'sheet.jpg');
       await run(path.join(ctx.cfg.lib, '.venv', 'bin', 'python'), ['-I', path.join(ctx.cfg.lib, 'core', 'render', 'sheet.py'), sheet, ...files, '--cols', String(Math.min(6, files.length)), '--w', '360']);

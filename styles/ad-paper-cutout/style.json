@@ -1,0 +1,15 @@
+{
+ "slug": "ad-paper-cutout",
+ "en": "Paper Cut-out",
+ "cn": "剪纸拼贴",
+ "based_on": "paper-popup",
+ "borrows": [
+  "papercut-red"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-23",
+ "line": "Layered card-stock ads: soft lamp shadows under every piece, hand-cut edges, stop-motion on twos with a small jitter.",
+ "line_cn": "层叠卡纸广告：每片纸下柔和的台灯阴影、手工裁切边缘、一拍二的定格动画与轻微抖动。",
+ "engine": "studio/kit"
+}

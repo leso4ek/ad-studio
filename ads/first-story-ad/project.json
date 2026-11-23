@@ -1,0 +1,283 @@
+{
+  "slug": "first-story-ad",
+  "title": "First story ad",
+  "created": "2026-11-23T17:58:27.005Z",
+  "updated": "2026-11-23T18:15:29.743Z",
+  "mode": "autopilot",
+  "autoGates": false,
+  "decider": "inbox",
+  "userBrief": {
+    "fictional": true,
+    "seconds": 20,
+    "aspect": "9:16"
+  },
+  "stages": {
+    "brief": {
+      "status": "done",
+      "started": "2026-11-23T17:58:31.986Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "claude",
+      "finished": "2026-11-23T17:59:05.897Z",
+      "ms": 33911,
+      "summary": "Sprigly: A liquid houseplant feed with seaweed extract, dosed with a measuring cap.",
+      "warnings": [],
+      "result": {},
+      "approvedAt": "2026-11-23T17:59:12.148Z"
+    },
+    "premises": {
+      "status": "done",
+      "started": "2026-11-23T17:59:12.149Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T17:59:42.192Z",
+      "ms": 30043,
+      "summary": "Every Sunday Juno and her droopy plant have a silent standoff over the watering can; one capful ends the guessing for both of them.",
+      "warnings": [],
+      "result": {}
+    },
+    "hooks": {
+      "status": "done",
+      "started": "2026-11-23T17:59:42.193Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:05.224Z",
+      "ms": 23031,
+      "summary": "lead A: \"Sunday standoff.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-23T18:00:05.225Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:52.290Z",
+      "ms": 47065,
+      "summary": "relief · turn: Sprigly's measuring cap turns her guess into one clear step (one capful per litre, every two weeks), so feeding stops being a worry.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "done",
+      "started": "2026-11-23T18:00:52.290Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:53.294Z",
+      "ms": 1004,
+      "summary": "reveal at 8.6s · tag \"One capful. No guessing.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-23T18:00:53.294Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:01:03.307Z",
+      "ms": 10013,
+      "summary": "ad-paper-cutout",
+      "warnings": [],
+      "result": {},
+      "approvedAt": "2026-11-23T18:02:23.282Z"
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-23T18:08:02.635Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:08:05.653Z",
+      "ms": 3018,
+      "summary": "6 shots, 7 voice lines, 20s",
+      "warnings": [],
+      "result": {}
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-23T18:08:05.654Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_1.8.jpg",
+        "frames/f_4.5.jpg",
+        "frames/f_7.jpg",
+        "frames/f_10.1.jpg",
+        "frames/f_13.jpg",
+        "frames/f_15.5.jpg",
+        "frames/f_18.jpg",
+        "frames/sheet.jpg",
+        "frames/w_1.8.jpg",
+        "frames/w_10.1.jpg",
+        "frames/w_18.jpg"
+      ],
+      "finished": "2026-11-23T18:08:19.705Z",
+      "ms": 14051,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "changed": false,
+          "notes": [
+            {
+              "shot": "all",
+              "issue": "Only timing changed (cards held longer, end card 3.5 s); layouts are the ones approved in the first review."
+            }
+          ],
+          "reason": "Same frames as the approved review at the new shot times: hook, guessing, sulking fern, a clear reveal with the cap visible, Juno holding the bottle, the calm evening and the end card all still read."
+        }
+      },
+      "approvedAt": "2026-11-23T18:08:21.670Z"
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-23T18:09:30.029Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-23T18:09:30.054Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/cues.json",
+        "out/first-story-ad.srt"
+      ],
+      "finished": "2026-11-23T18:09:41.771Z",
+      "ms": 11742,
+      "summary": "7 lines by kokoro; speech check: pass",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 2.893,
+          "l02": 1.993,
+          "l03": 1.376,
+          "l04": 2.706,
+          "l05": 1.984,
+          "l06": 1.058,
+          "l07": 2.153
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | Every Sunday, Juneau and her fern have a standoff. → Every Sunday, Juneau and her fern have a standoff. \nOK   l02 | She waters, she guesses, she hopes. → She waters, she guesses, she hopes. \nOK   l03 | And the fern still sulks. → and the fern still sulks. \nOK   l04 | Then she reads the cap, one cap full per liter. → Then she reads the cap, one cap full per liter. \nOK   l05 | Every two weeks. No more guessing. → Every two weeks, no more guessing. \nOK   l06 | Stand off over. → Stand off over. \nOK   l07 | Sprigly, one cap full, no guessing. → Sprigly, one cap full no guessing. \nmismatches: 0 (lang=en, model=base)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "done",
+      "started": "2026-11-23T18:09:41.771Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-23T18:09:57.616Z",
+      "ms": 15845,
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:hook            at 0.00s   15 chars  need 2.50s  got 3.00s  \"Sunday\\nstandoff.\"\nOK  s2:c1              at 3.00s   14 chars  need 2.43s  got 2.52s  \"A splash?\\nA glug?\"\nOK  s3:c2              at 5.52s   13 chars  need 2.37s  got 2.48s  \"Still sulking.\"\nOK  s4:c3              at 8.52s   18 chars  need 2.70s  got 3.00s  \"One capful\\nper litre.\"\nOK  s5:c4              at 11.52s   14 chars  need 2.43s  got 2.52s  \"Every two weeks.\"\nOK  s6:c5              at 14.04s   14 chars  need 2.43s  got 2.48s  \"Sunday, solved.\"\nOK  end:logo           at 16.68s    7 chars  need 1.97s  got 3.32s  \"Sprigly\"\nOK  end:line           at 16.96s   21 chars  need 2.90s  got 3.04s  \"One capful. No guessing.\"\nOK  end:cta            at 17.28s   14 chars  need 2.43s  got 2.72s  \"Houseplant feed\"\n--  s1:label           at 0.00s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s2:label           at 3.00s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s4:label           at 8.28s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s5:label           at 11.52s  passing (pass: true), not timed  \"SPRIGLY\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      },
+      "approvedAt": "2026-11-23T18:10:08.914Z"
+    },
+    "final": {
+      "status": "done",
+      "started": "2026-11-23T18:10:08.916Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/first-story-ad-9x16.mp4",
+        "out/first-story-ad-16x9.mp4",
+        "out/first-story-ad-hookB.mp4",
+        "out/first-story-ad-hookC.mp4",
+        "out/first-story-ad-poster.jpg",
+        "out/first-story-ad.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-23T18:14:51.669Z",
+      "ms": 282753,
+      "summary": "4 file(s): first-story-ad-9x16.mp4, first-story-ad-16x9.mp4, first-story-ad-hookB.mp4, first-story-ad-hookC.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/first-story-ad/out/first-story-ad-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         2.5 LU\n    Peak:       -1.5 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/first-story-ad/out/first-story-ad-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         2.5 LU\n    Peak:       -1.5 dBFS"
+          },
+          "hookB": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          },
+          "hookC": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          }
+        }
+      }
+    },
+    "scorecard": {
+      "status": "done",
+      "started": "2026-11-23T18:14:51.690Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:15:29.743Z",
+      "ms": 38053,
+      "summary": "28/35 · A clear, honest, finished 20 s story ad; good enough to test, with an obvious next cut.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
+    }
+  },
+  "claudeSession": "47039d2d-0126-45f3-abaf-75aea5d15694"
+}

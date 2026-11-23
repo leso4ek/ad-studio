@@ -168,7 +168,7 @@ function TEXTS(t) {
 }
 function endTexts() {
   const e = bible.endcard || {}, o = [];
-  const y = LANDSCAPE ? { logo: .3, line: .47, cta: .62 } : { logo: .58, line: .66, cta: .73 };
+  const y = LANDSCAPE ? { logo: .3, line: .47, cta: .62 } : { logo: .54, line: .615, cta: .675 };   // above the caption band (≈ .72-.79)
   const x = LANDSCAPE ? .5 : .46;
   if (e.logo) o.push({ type: 'text', id: 'logo', role: 'logo', text: e.logo, x, y: y.logo, w: .8, t0: .15, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
   if (e.line) o.push({ type: 'text', id: 'line', role: 'sub', text: e.line, x, y: y.line, w: .78, t0: .45, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
@@ -190,7 +190,7 @@ async function render(t) {
   const cam = camera(shot, lt);
   R.cam = cam;
   if (shot.end) {
-    await style.scene(R, { shot, layers: resolveLayers({ ...shot, layers: [{ type: 'product', id: 'hero', x: LANDSCAPE ? -.05 : .5, y: LANDSCAPE ? .78 : .5, scale: LANDSCAPE ? 1.9 : 1.15, anim: ['reveal', 'float:.5'], ...(bible.endcard?.product || {}) }] }, lt), cam, end: true });
+    await style.scene(R, { shot, layers: resolveLayers({ ...shot, layers: [{ type: 'product', id: 'hero', x: LANDSCAPE ? -.05 : .5, y: LANDSCAPE ? .78 : .46, scale: LANDSCAPE ? 1.9 : 1.05, anim: ['reveal', 'float:.5'], ...(bible.endcard?.product || {}) }] }, lt), cam, end: true });
     for (const l of endTexts()) { const t0 = l.t0 ?? 0; if (lt >= t0) style.text(R, layoutText(l, lt - t0), lt - t0); }
   } else {
     const layers = resolveLayers(shot, lt);

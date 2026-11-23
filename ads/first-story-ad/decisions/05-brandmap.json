@@ -1,0 +1,45 @@
+{
+  "stage": "brandmap",
+  "at": "2026-11-23T18:00:53.294Z",
+  "output": {
+    "plant": {
+      "t": 1.5,
+      "how": "The green Sprigly bottle sits at the far end of the windowsill in the hook shot, unmentioned."
+    },
+    "pulses": [
+      {
+        "t": 5.5,
+        "how": "While Juno guesses with the watering can, the bottle is in frame on the counter behind her."
+      }
+    ],
+    "reveal": {
+      "t": 8.6,
+      "how": "Juno spots the bottle, a small pop, and the bottle fills the frame with the cap glowing: 'One capful per litre.'"
+    },
+    "tag": {
+      "t": 17.2,
+      "line": "One capful. No guessing."
+    },
+    "claims": [
+      {
+        "text": "One capful per litre",
+        "basis": "Dose is one capful (5 ml) per litre of water"
+      },
+      {
+        "text": "Every two weeks in spring and summer",
+        "basis": "Label directions: feed every two weeks in spring and summer, monthly in autumn and winter"
+      },
+      {
+        "text": "With seaweed extract",
+        "basis": "Contains seaweed extract plus NPK 3-1-2"
+      }
+    ],
+    "reason": "The bottle is in every act before the reveal, so the reveal pays off something we already saw. Each claim is a label fact; nothing promises growth or a rescue, as the brief's 'never say' list requires."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001
+  },
+  "warnings": []
+}

@@ -42,6 +42,28 @@ A YouTube channel that **explains scary sci-fi stories** (mostly original ones) 
 - **`skills/higgsfield-director/`**: turns the story bible into Higgsfield pictures and video in any style. Its full base method is the uploaded "Higgsfield Expert" skill, kept at `skills/higgsfield-director/reference/higgsfield-expert-base.md` (frontmatter removed so it is not a second skill; **one third-party affiliate/pricing link removed**). Adds the prompt header the top contest films use, an ads module (product element, reveal stage, end card as a spelled still, 9:16 safe zones, hook A/B), nine style packs and budget calibration. Analysis of the top Talent Contest films: `research/higgsfield-contest-analysis.md`.
 - Higgsfield connector: not connected yet (the user will add it). Allowed hosts added to the Default environment for reading Higgsfield pages: higgsfield.ai, assets/l10n/cdn/fnf-api-gw.higgsfield.ai, images.higgs.ai, d2ol7oe51mr4n9.cloudfront.net.
 
+## Ad Studio: code-drawn story ads (round 7, Nov 2026, the current direction)
+The user dropped YouTube kids' videos as too expensive and went back to **story ads**, with **no AI-looking generation**. The stack:
+- **`studio/`**, the local web app (Node server + React/Motion/GSAP interface) on http://127.0.0.1:5170. Install with `bash studio/scripts/install_linux.sh` and start with `bash studio/scripts/start_studio.sh`; docs in `studio/README.md`; tests with `cd studio && npm test`.
+- **12 stages:** brief → premises → hooks → story → brand map → style (gate) → bible → style frames (gate) → voice → animatic (gate) → final → scorecard.
+- **Claude makes every decision.** It runs headless as `claude -p` with `--json-schema`, one resumed session per ad, and the stream shown live in the app. The fallback is the **decision inbox** (`node studio/bin/inbox.mjs list|show|answer`), which a Claude session answers.
+- **The skill is `skills/ad-studio-director/`**, the per-stage rules and the **bible format**. It builds on `skills/story-ad-playbook`.
+- **Five original styles,** drawn in code from one bible by `studio/kit/` (page.js + shapes.js + styles/*.js), with docs in `styles/ad-*/STYLE.md`:
+  - `ad-paper-cutout`, `ad-riso-print`, `ad-midcentury-toon`, `ad-kinetic-type`, `ad-toy-3d` (three.js);
+  - all registered in `~/lemo-my-styles/` by `bootstrap.sh`.
+- **Fallback chains** (`studio/config.json`): voice VoiceStudio (debpalash, local API :3900, AGPL: call it, never copy it) → Kokoro → ElevenLabs free tier (off by default); speech check VoiceStudio → Whisper; product photo ComfyUI → Pillow.
+- **Reference repos:**
+  - github.com/higgsfield-ai/higgsfield is an LLM-training/GPU tool, not the video product. Ad Studio's pipeline is rebuilt from `research/higgsfield-contest-analysis.md` instead.
+  - The interface follows the MIT freshtechbro/claudedesignskills (modern-web-design, motion-framer, gsap).
+- **Checks every ad passes:** schema, claims lint (no absolutes, health claims, pressure or real brands), bible checks (tiling, voice fit at ~2.9 words/s), reading time (`readcheck`), safe zones (9:16 text inside x .05–.86, y .14–.80), speech check (use `asr` per line for Whisper spellings), −14 LUFS.
+- **Kid Studio** (`comfy/kidstudio/`, the ComfyUI + OpenRouter Seedance pack for kids' videos) is **parked**. Workflows 01–05 and 09 were mock-tested; 06–08 were not.
+
+### Ad 01: "Sprigly · Sunday standoff" (`ads/first-story-ad/`): a fictional houseplant feed, paper cut-out, 20 s
+- Brief by real headless Claude Code (about $0.50 at list price). The other decisions went through the decision inbox, answered by Claude in the cloud session.
+- One redo of the bible: the animatic's reading-time check failed, so the shots were re-timed and `asr` fields added. Frames reviewed once (cap hidden at the reveal, the hold pose, the CTA wrap).
+- Outputs in `out/`: the 9:16 and 16:9 masters (20.0 s, −14.1 LUFS, peak −1.5 dBFS), hooks B and C, `.srt`, poster, `REPORT.md`. Scorecard 28/35; test hook B first.
+- Next cut, from the scorecard: show the capful being poured (needs a watering-can prop), keep the fern's change modest, give Juno one specific detail, add motion in the first 0.3 s, and fill the sides of the 16:9 cut.
+
 ## Environment notes
 - Cloud container, temporary: **commit and push** after each work block.
 - Allowed hosts were added to the Default environment for ElevenLabs/Kling/Hugging Face (see SKILL.md §2b). Fonts-in-use / Slant / evamonkey pages were not reachable during the research; REFERENCES.md cites them from search excerpts.

@@ -1,0 +1,15 @@
+{
+ "slug": "ad-riso-print",
+ "en": "Riso Print",
+ "cn": "孔版印刷",
+ "based_on": "risograph",
+ "borrows": [
+  "silkscreen-poster"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-23",
+ "line": "Ads printed frame by frame in three spot inks: halftone screens, knock-outs, misregistration, ink starvation and paper grain.",
+ "line_cn": "三色专色逐帧印刷的广告：网点、镂空、套色偏移、缺墨与纸张颗粒。",
+ "engine": "studio/kit"
+}

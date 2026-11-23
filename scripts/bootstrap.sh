@@ -21,15 +21,15 @@ echo "LIB=$LIB"
 # 2. our skills (scary-scifi-explainer, story-ad-playbook, higgsfield-director, …)
 for d in "$REPO"/skills/*/; do ln -sfn "${d%/}" "$SKILLS/$(basename "$d")"; done   # every skill in this repo
 
-# 3. our style, registered where the library looks for user styles
+# 3. our styles, registered where the library looks for user styles
 mkdir -p "$HOME/lemo-my-styles"
-ln -sfn "$REPO/styles/apocalypse-anime-90s" "$HOME/lemo-my-styles/apocalypse-anime-90s"
 README="$HOME/lemo-my-styles/README.md"
-if ! grep -q 'apocalypse-anime-90s' "$README" 2>/dev/null; then
-  [ -f "$README" ] || printf '# My styles\n\n| English | 中文 | Slug | Base | What it is | Folder |\n|---|---|---|---|---|---|\n' > "$README"
-  echo "| 90s Apocalypse Anime | 90年代末世动画 | apocalypse-anime-90s | cel-anime-80s | late-90s apocalyptic cel anime: squeezed serif flash cards, red alarm UI, power lines, long still holds | $REPO/styles/apocalypse-anime-90s |" >> "$README"
-fi
+[ -f "$README" ] || printf '# My styles\n\n| English | 中文 | Slug | Base | What it is | Folder |\n|---|---|---|---|---|---|\n' > "$README"
+for d in "$REPO"/styles/*/; do
+  slug=$(basename "$d"); ln -sfn "${d%/}" "$HOME/lemo-my-styles/$slug"
+  grep -q "| $slug |" "$README" || python3 -c "import json,sys;j=json.load(open(sys.argv[1]));print(f\"| {j['en']} | {j['cn']} | {j['slug']} | {j['based_on']} | {j['line']} | {sys.argv[2]} |\")" "$d/style.json" "${d%/}" >> "$README"
+done
 
 # 4. packages (core renders; voice = Kokoro + Whisper check)
 [ -n "$SKIP_DEPS" ] || sh "$SKILLS/lemo-opuscar/scripts/setup.sh" deps voice
-echo "ready: style + skills linked; read CLAUDE.md"
+echo "ready: styles + skills linked; read CLAUDE.md (Ad Studio: studio/README.md)"

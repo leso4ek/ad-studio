@@ -117,7 +117,7 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
   - `y` ≈ 0.80–0.92 to stand on the floor (the floor line is at 0.70; lower means nearer the camera).
 - `product`: `scale` 0.3 (in a hand) to 1.6 (hero). 1 ≈ 30 % of the frame height. Use `anim: ["reveal"]` once, at the turn.
 - `prop`:
-  - kinds: mug, steam, clock, alarm, phone, plant, lamp, bed, desk, laptop, book, bag, sun, moon, cloud, star, sparkle, heart, arrow, drop, leaf, zzz, chair, sofa, tree;
+  - kinds: mug, steam, clock, alarm, phone, plant, fern, fern-droopy, lamp, bed, desk, laptop, book, bag, sun, moon, cloud, star, sparkle, heart, arrow, drop, leaf, zzz, chair, sofa, tree;
   - `scale` 1 ≈ 12 % of the frame height; `color` is optional.
 - `text`:
   - `role`: hook, card, label, price, sub, small or cta;
@@ -134,12 +134,13 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
 
 **Text and safe zones (9:16)**
 - Keep every text box inside x 0.05–0.86 and y 0.14–0.80: the TikTok/Reels interface covers the rest. Captions sit at y ≈ 0.75, so don't put on-screen text there while someone speaks.
-- Reading time: on screen for at least characters ÷ 15 + 1.5 s.
+- Reading time: on screen for at least characters ÷ 15 + 1.5 s. A card with `t0` > 0 loses that time, so short shots need `t0: 0`. The end-card line appears at +0.45 s and the call to action at +0.75 s: a 3.4 s end card covers a 21-character line.
 - At most two text layers per shot. Never over a face.
 
 **Voice**
-- About 2.6 words a second at speed 0.95. Each line ends before the next starts, and the last line ends before the end card logo (or is the tag line itself).
+- About 2.9 words a second at speed 0.95 (Kokoro). Each line ends before the next starts, and the last line ends before the end card logo (or is the tag line itself).
 - `speaker`: narrator, or a cast id (their mouth moves).
+- `asr`: optional. It sets what the speech check should expect when Whisper spells a word its own way. Use it for invented names, compounds and units, e.g. `"asr": "Every Sunday, Juneau and her fern have a standoff."`.
 - Kokoro voices: af_heart (narrator default), af_bella, af_nicole, bf_emma, am_michael, am_adam, bm_george.
 
 **Hook variants**
