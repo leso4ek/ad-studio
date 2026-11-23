@@ -191,12 +191,12 @@ async function render(t) {
   R.cam = cam;
   if (shot.end) {
     await style.scene(R, { shot, layers: resolveLayers({ ...shot, layers: [{ type: 'product', id: 'hero', x: LANDSCAPE ? -.05 : .5, y: LANDSCAPE ? .78 : .46, scale: LANDSCAPE ? 1.9 : 1.05, anim: ['reveal', 'float:.5'], ...(bible.endcard?.product || {}) }] }, lt), cam, end: true });
-    for (const l of endTexts()) { const t0 = l.t0 ?? 0; if (lt >= t0) style.text(R, layoutText(l, lt - t0), lt - t0); }
+    if (!qs.get('notext')) for (const l of endTexts()) { const t0 = l.t0 ?? 0; if (lt >= t0) style.text(R, layoutText(l, lt - t0), lt - t0); }
   } else {
     const layers = resolveLayers(shot, lt);
     if (custom.shots?.[shot.custom]) await custom.shots[shot.custom](R, { shot, layers, cam, lt });
     else await style.scene(R, { shot, layers, cam });
-    for (const p of layers) if (p.layer.type === 'text') style.text(R, layoutText(p.layer, p.llt), p.llt);
+    if (!qs.get('notext')) for (const p of layers) if (p.layer.type === 'text') style.text(R, layoutText(p.layer, p.llt), p.llt);
   }
   // transition into this shot
   const tr = shot.trans || 'cut';

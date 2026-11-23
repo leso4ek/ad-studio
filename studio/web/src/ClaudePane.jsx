@@ -6,7 +6,7 @@ const time = at => at ? new Date(at).toLocaleTimeString([], { hour: '2-digit', m
 export default function ClaudePane({ events, running, pending, slug }) {
   const [filter, setFilter] = useState('claude');
   const box = useRef(null), stick = useRef(true);
-  const list = events.filter(e => filter === 'all' ? true : filter === 'claude' ? (e.type === 'claude' || e.type === 'decision' || e.type === 'gate') : (e.type === 'engine' || e.type === 'job' || e.type === 'stage'));
+  const list = events.filter(e => filter === 'all' ? true : filter === 'claude' ? (e.type === 'claude' || e.type === 'decision' || e.type === 'gate') : (e.type === 'engine' || e.type === 'job' || e.type === 'stage' || e.type === 'production'));
   useEffect(() => { const b = box.current; if (b && stick.current) b.scrollTop = b.scrollHeight; }, [list.length]);
   return (
     <>
@@ -44,6 +44,7 @@ function Ev({ e }) {
   if (e.type === 'gate') return <div className="ev gate">{meta}{e.kind === 'gate' ? 'Waiting for your approval' : e.kind === 'review' ? 'Waiting for your review' : e.kind === 'approved' ? 'Approved' : 'Gate auto-approved'}{e.text ? `: ${e.text}` : ''}</div>;
   if (e.type === 'engine') return <div className={`ev engine${e.level === 'warn' ? ' warn' : ''}`}>{meta}{e.text}</div>;
   if (e.type === 'job') return <div className={`ev job${e.kind === 'error' ? ' errorev' : ''}`}>{meta}run {e.kind}{e.text ? `: ${e.text}` : ''}</div>;
+  if (e.type === 'production') return e.kind === 'plan' ? null : <div className={`ev ${e.kind === 'error' ? 'errorev' : 'decision'}`}>{meta}shot board: {e.kind}{e.text ? `: ${e.text}` : ''}</div>;
   if (e.type === 'stage') return <div className="ev stage">{meta}{e.state?.status}{e.state?.summary ? ` · ${e.state.summary}` : ''}</div>;
   return null;
 }

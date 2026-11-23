@@ -5,6 +5,7 @@ import PipelineMap from './PipelineMap.jsx';
 import ClaudePane from './ClaudePane.jsx';
 import StageDetail from './StageDetail.jsx';
 import Timeline from './Timeline.jsx';
+import ShotBoard from './ShotBoard.jsx';
 import { NewAd, Settings } from './Dialogs.jsx';
 
 const init = { meta: null, ads: [], slug: null, ad: null, events: [], selected: null, health: null, bust: 0 };
@@ -25,6 +26,7 @@ function reducer(s, a) {
 export default function App() {
   const [s, d] = useReducer(reducer, init);
   const [dlg, setDlg] = useState(null);
+  const [view, setView] = useState('pipeline');
   const [now, setNow] = useState(0);            // playhead (seconds) shared by the preview video and the timeline
   const slugRef = useRef(null); slugRef.current = s.slug;
   const refreshT = useRef(null);
@@ -79,6 +81,10 @@ export default function App() {
           {s.ads.map(a => <option key={a.slug} value={a.slug}>{a.title} · {a.slug}</option>)}
         </select>
         <button className="btn" onClick={() => setDlg('new')}>New ad</button>
+        {s.ad && <div className="seg" role="group" aria-label="View">
+          <button aria-pressed={view === 'pipeline'} onClick={() => setView('pipeline')}>Pipeline</button>
+          <button aria-pressed={view === 'board'} onClick={() => setView('board')} title="Previz → Seedance takes → your pick, shot by shot">Shot board</button>
+        </div>}
         <div className="spacer" />
         {p && <>
           <span className="chip" title="stages done">{doneCount}/{stages.length}</span>
@@ -105,8 +111,9 @@ export default function App() {
         </nav>
         <section className="col center" aria-live="polite">
           <AnimatePresence mode="wait">
-            <motion.div key={(s.slug || '') + selected} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: .18 }}>
-              {s.ad ? <StageDetail ad={s.ad} meta={s.meta} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} />
+            <motion.div key={(s.slug || '') + view + (view === 'board' ? '' : selected)} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: .18 }}>
+              {s.ad && view === 'board' ? <ShotBoard slug={s.slug} events={s.events} />
+                : s.ad ? <StageDetail ad={s.ad} meta={s.meta} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} />
                 : <div className="empty">{s.ads.length ? 'Loading…' : <>No ads yet. <button className="btn primary" onClick={() => setDlg('new')}>Make the first ad</button></>}</div>}
             </motion.div>
           </AnimatePresence>
