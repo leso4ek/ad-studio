@@ -12,3 +12,15 @@ episodes/*/film/stills/
 episodes/*/film/events.json
 episodes/*/ep*-[a-z]*[a-z].mp4
 !episodes/*/*-preview720.mp4
+# Ad Studio
+studio/node_modules/
+studio/web/dist/
+studio/.tools/
+studio/.env
+studio/config.local.json
+ads/*/page/
+ads/*/out/video-*.mp4
+ads/*/out/animatic-video.mp4
+ads/*/out/sheet/
+ads/*/decisions/pending/
+ads/*/decisions/answers/

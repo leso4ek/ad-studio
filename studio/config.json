@@ -1,0 +1,19 @@
+{
+  "port": 5170,
+  "adsDir": "../ads",
+  "lib": "~/lemo-opuscar",
+  "claude": { "bin": "claude", "model": "", "effort": "", "fallbackModel": "", "maxTurns": 30 },
+  "inbox": { "timeoutMin": 240 },
+  "chains": {
+    "decide": ["claude", "inbox"],
+    "voice": ["voicestudio", "kokoro", "elevenlabs"],
+    "asr": ["voicestudio", "whisper"],
+    "photo": ["comfy", "pillow"]
+  },
+  "voicestudio": { "url": "http://127.0.0.1:3900", "voice": "" },
+  "elevenlabs": { "enabled": false, "model": "eleven_multilingual_v2", "voices": { "narrator": "nPczCjzI2devNBz1zQrb" } },
+  "comfy": { "url": "http://127.0.0.1:8188", "upscaleModel": "RealESRGAN_x2plus.pth" },
+  "render": { "workers": 4 },
+  "final": { "variants": true },
+  "whisperModel": "base"
+}

@@ -1,0 +1,233 @@
+{
+  "slug": "style-test",
+  "title": "Style test",
+  "style": "ad-paper-cutout",
+  "dur": 12,
+  "product": {
+    "name": "Lumo Tea",
+    "kind": "jar",
+    "label": "LUMO",
+    "colors": {
+      "body": "#F6C445",
+      "cap": "#2F6E5B",
+      "label": "#FFF8E8",
+      "labelInk": "#2F6E5B",
+      "accent": "#E8553E"
+    }
+  },
+  "cast": {
+    "ava": {
+      "skin": "#E9A77F",
+      "hair": "#2B1D18",
+      "hairStyle": "bob",
+      "top": "#3F7F8C",
+      "bottom": "#2F3A57"
+    },
+    "ben": {
+      "skin": "#9C6A4A",
+      "hair": "#1E1512",
+      "hairStyle": "short",
+      "top": "#E2754F",
+      "bottom": "#5B4636",
+      "build": "round"
+    }
+  },
+  "places": {
+    "kitchen": {
+      "kind": "kitchen",
+      "time": "day"
+    },
+    "street": {
+      "kind": "street",
+      "time": "dusk",
+      "props": [
+        {
+          "kind": "sun",
+          "x": 0.75,
+          "y": 0.42,
+          "scale": 1.6
+        },
+        {
+          "kind": "cloud",
+          "x": 0.25,
+          "y": 0.2,
+          "scale": 1.4
+        }
+      ]
+    }
+  },
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 4,
+      "place": "kitchen",
+      "camera": {
+        "zoom": [
+          1,
+          1.06
+        ]
+      },
+      "layers": [
+        {
+          "type": "prop",
+          "kind": "mug",
+          "x": 0.3,
+          "y": 0.7,
+          "scale": 1.1,
+          "z": 0.71
+        },
+        {
+          "type": "prop",
+          "kind": "steam",
+          "x": 0.31,
+          "y": 0.62,
+          "scale": 0.8,
+          "anim": [
+            "float"
+          ],
+          "z": 0.72
+        },
+        {
+          "type": "char",
+          "id": "ava",
+          "x": 0.6,
+          "y": 0.86,
+          "scale": 1.15,
+          "pose": "tired",
+          "face": "left",
+          "anim": [
+            "breathe"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "hook",
+          "role": "hook",
+          "text": "3 pm.\nAgain.",
+          "x": 0.45,
+          "y": 0.27,
+          "anim": [
+            "pop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 4,
+      "t1": 8,
+      "place": "studio",
+      "trans": "wipe",
+      "layers": [
+        {
+          "type": "product",
+          "id": "jar",
+          "x": 0.5,
+          "y": 0.66,
+          "scale": 1.5,
+          "anim": [
+            "reveal"
+          ]
+        },
+        {
+          "type": "prop",
+          "kind": "leaf",
+          "x": 0.25,
+          "y": 0.5,
+          "scale": 1,
+          "anim": [
+            "float"
+          ]
+        },
+        {
+          "type": "prop",
+          "kind": "sparkle",
+          "x": 0.75,
+          "y": 0.35,
+          "scale": 0.8,
+          "anim": [
+            "pop",
+            "pulse"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "c1",
+          "role": "card",
+          "text": "A calm cup",
+          "x": 0.5,
+          "y": 0.22,
+          "t0": 0.6
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 8,
+      "t1": 10,
+      "place": "street",
+      "trans": "iris",
+      "layers": [
+        {
+          "type": "char",
+          "id": "ben",
+          "x": 0.3,
+          "y": 0.84,
+          "scale": 1,
+          "pose": "wave",
+          "face": "right",
+          "anim": [
+            "wave"
+          ]
+        },
+        {
+          "type": "char",
+          "id": "ava",
+          "x": 0.68,
+          "y": 0.84,
+          "scale": 1,
+          "pose": "hold",
+          "face": "left",
+          "anim": [
+            "bob"
+          ]
+        },
+        {
+          "type": "product",
+          "id": "p",
+          "x": 0.6,
+          "y": 0.66,
+          "scale": 0.35
+        }
+      ]
+    }
+  ],
+  "endcard": {
+    "t0": 10,
+    "logo": "LUMO",
+    "line": "Slow tea for fast days",
+    "cta": "Try a calm cup"
+  },
+  "sfx": [],
+  "vo": {
+    "voice": "af_heart",
+    "speed": 0.95,
+    "lines": [
+      {
+        "id": "l01",
+        "text": "Every day at three, Ava runs out of steam.",
+        "at": 0.4
+      },
+      {
+        "id": "l02",
+        "text": "Hey Ava! New tea?",
+        "at": 8.2,
+        "speaker": "ben"
+      }
+    ]
+  },
+  "music": {
+    "mood": "warm"
+  }
+}
