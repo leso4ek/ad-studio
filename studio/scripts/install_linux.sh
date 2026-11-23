@@ -35,7 +35,7 @@ if [ "$CF" = 1 ]; then say "ComfyUI (optional product-photo cleanup)"; bash "$RE
 cat > "$STUDIO/scripts/start_studio.sh" <<EOS
 #!/usr/bin/env bash
 # Starts Ad Studio on http://127.0.0.1:\${PORT:-5170}
-cd "$STUDIO" && exec node server/main.mjs
+cd "$STUDIO" && NODE_USE_ENV_PROXY=1 exec node server/main.mjs
 EOS
 chmod +x "$STUDIO/scripts/start_studio.sh"
 say "Done"

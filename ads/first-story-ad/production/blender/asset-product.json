@@ -1,0 +1,8 @@
+{ "size": [1536, 864], "fps": 24, "seconds": 0.05, "engine": "cycles", "samples": 32, "look": "clean",
+  "world": {"kind": "cyclorama", "color": "#8E8E8E", "floor": "#8E8E8E"}, "lights": "soft",
+  "camera": {"lens": 50, "keys": [{"t": 0, "at": [0, -2.4, 0.42], "look": [0, 0, 0.17]}]},
+  "objects": [
+    {"id": "front", "kind": "product", "shape": "bottle", "label": "SPRIGLY", "height": 0.34, "at": [-0.42, 0, 0], "colors": {"body": "#3E8E5A", "cap": "#F2C14E", "label": "#FFF6E5", "labelInk": "#234D33"}},
+    {"id": "three", "kind": "product", "shape": "bottle", "label": "SPRIGLY", "height": 0.34, "at": [0, 0, 0], "rot": [0, 0, 35], "colors": {"body": "#3E8E5A", "cap": "#F2C14E", "label": "#FFF6E5", "labelInk": "#234D33"}},
+    {"id": "back", "kind": "product", "shape": "bottle", "label": "SPRIGLY", "height": 0.34, "at": [0.42, 0, 0], "rot": [0, 0, 180], "colors": {"body": "#3E8E5A", "cap": "#F2C14E", "label": "#FFF6E5", "labelInk": "#234D33"}}
+  ] }

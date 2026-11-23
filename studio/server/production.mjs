@@ -56,7 +56,8 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   const p = { slug, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, stylePara: bible.stylePara, motionMode: 'video', ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
   if (!p.assets.length) {
     for (const [id, c] of Object.entries(bible.cast || {})) p.assets.push({ id: `char-${id}`, kind: 'character', desc: `${id}: ${c.role || 'character'}, hair ${c.hairStyle} ${c.hair}, top ${c.top}, trousers ${c.bottom}`, files: [], chosen: null, status: 'todo' });
-    p.assets.push({ id: 'product', kind: 'product', desc: `${bible.product.name} ${bible.product.kind} with the label "${bible.product.label}"`, files: [], chosen: null, status: 'todo' });
+    const pc = bible.product.colors || {};
+    p.assets.push({ id: 'product', kind: 'product', desc: `${bible.product.name}: a ${bible.product.kind} with a ${pc.body || ''} body, a ${pc.cap || ''} cap and a ${pc.label || ''} label printed "${bible.product.label}" in ${pc.labelInk || 'dark'} letters`, files: [], chosen: null, status: 'todo' });
     for (const [id, pl] of Object.entries(bible.places || {})) p.assets.push({ id: `place-${id}`, kind: 'place', desc: `${pl.kind} at ${pl.time || 'day'}, empty, wide three-quarter view`, files: [], chosen: null, status: 'todo' });
   }
   for (const s of bible.shots) {
@@ -158,10 +159,10 @@ export async function makeAsset(adDir, slug, id, { prompt, model, n = 2, confirm
     if (source === 'blender') {
       const spec = dir(adDir, 'blender', `asset-${id}.json`); if (!fs.existsSync(spec)) throw new Error(`write production/blender/asset-${id}.json first`);
       const r = await blender.renderShot(CFG, spec, dir(adDir, 'blender', `asset-${id}`), { stills: [1], slug, stage: 'production' });
-      const f = `${base}_${(a.files.length + 1)}.png`; fs.copyFileSync(path.join(r.dir, 'f_0001.png'), f); files = [f];
+      const f = `${base}_blender_${a.files.length + 1}.png`; fs.copyFileSync(path.join(r.dir, 'f_0001.png'), f); files = [f];
     } else {
       if (!confirm) throw new Error('element sheets cost money: confirm with the estimate first');
-      const refImages = (a.refs || []).map(r => path.join(adDir, r));
+      const refImages = [...(a.refs || []), ...a.files.filter(f => /_blender_/.test(f))].map(r => path.join(adDir, r));
       const r = await orx.image(CFG, { model: model || p.settings.imageModel, prompt: prompt || sheetPrompt(a, p), aspect: a.kind === 'place' ? '9:16' : '16:9', n, refImages, out: `${base}_${Date.now()}` }, { slug, stage: 'production', what: `${slug} ${id}` });
       files = r.files;
     }
@@ -173,7 +174,7 @@ export async function makeAsset(adDir, slug, id, { prompt, model, n = 2, confirm
 export function sheetPrompt(a, p) {
   const style = p.settings.stylePara || '';
   if (a.kind === 'character') return `Character reference sheet: ${a.desc}. Four views side by side (front, three-quarter, side, back), full body, neutral pose, flat mid-grey background, even flat light, no text. ${style}`;
-  if (a.kind === 'product') return `Product reference sheet: ${a.desc}. Front, three-quarter and back views on a flat mid-grey background, even studio light, label text exactly as given, no other text. ${style}`;
+  if (a.kind === 'product') return `Product reference sheet: ${a.desc}. ${a.files.some(f => /_blender_/.test(f)) ? 'Copy the exact shape, proportions and colours of the bottle in the reference render. ' : ''}Three views (front, three-quarter, back) of the same single product on a flat mid-grey background, even studio light, nothing else in frame, label text exactly as given, no other text. ${style}`;
   return `Location plate: ${a.desc}. No people. ${style}`;
 }
 export function chooseAsset(adDir, slug, id, file) { const p = plan(adDir), a = p.assets.find(x => x.id === id); a.chosen = file; a.status = 'approved'; return save(adDir, slug, p); }

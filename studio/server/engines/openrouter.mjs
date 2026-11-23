@@ -83,7 +83,12 @@ export async function video(cfg, p, { slug, stage, signal, what } = {}) {
   if (p.lastFrame) frames.push({ type: 'image_url', image_url: { url: dataUrl(p.lastFrame) }, frame_type: 'last_frame' });
   if (frames.length) body.frame_images = frames;
   const refs = (p.refImages || []).slice(0, 4).map(f => ({ type: 'image_url', image_url: { url: dataUrl(f) } }));
-  if (p.refVideo) refs.push({ type: 'video_url', video_url: { url: dataUrl(p.refVideo) } });
+  if (p.refVideo) {
+    // OpenRouter takes video references only as public HTTPS URLs (Nov 2026): a local previz must be hosted first
+    const url = /^https:\/\//.test(p.refVideo) ? p.refVideo : cfg.media?.publicBase ? `${cfg.media.publicBase.replace(/\/$/, '')}/${path.basename(p.refVideo)}` : null;
+    if (!url) throw new Error('a video reference must be a public HTTPS URL: set media.publicBase in config.local.json (a bucket you upload previz clips to), or use the "styled keyframes" motion mode');
+    refs.push({ type: 'video_url', video_url: { url } });
+  }
   if (p.refAudio) refs.push({ type: 'audio_url', audio_url: { url: dataUrl(p.refAudio) } });
   if (refs.length) body.input_references = refs;
   const job = await api('POST', '/videos', body, { timeout: 300000 });
@@ -118,14 +123,20 @@ export async function image(cfg, p, { slug, stage, what } = {}) {
     return { files, cost: 0, estimate: est, mock: true };
   }
   guard(cfg, est, what || 'image');
-  const body = { model, prompt: p.prompt, n, ...(p.aspect ? { aspect_ratio: p.aspect } : {}) };
-  if (refs.length) body.input_references = refs.slice(0, 6).map(f => ({ type: 'image_url', image_url: { url: dataUrl(f) } }));
-  const id = `img-${Date.now()}`;
-  log({ kind: 'image', job: id, model, estimate: est, status: 'submitted', slug, what });
-  const r = await api('POST', '/images', body, { timeout: 300000 });
-  const files = (r.data || []).map((d, i) => { const f = `${p.out}_${i + 1}.${(d.media_type || 'image/png').split('/')[1].replace('jpeg', 'jpg')}`; fs.writeFileSync(f, Buffer.from(d.b64_json, 'base64')); return f; });
-  const cost = +((r.usage || {}).cost ?? est);
-  log({ kind: 'image', job: id, status: 'completed', cost, files });
+  // one request per image: several providers (Seedream) accept only n = 1
+  const files = []; let cost = 0;
+  for (let i = 0; i < n; i++) {
+    const body = { model, prompt: p.prompt, n: 1, seed: (p.seed ?? 7) + i, ...(p.aspect ? { aspect_ratio: p.aspect } : {}) };
+    if (refs.length) body.input_references = refs.slice(0, 6).map(f => ({ type: 'image_url', image_url: { url: dataUrl(f) } }));
+    const id = `img-${Date.now()}-${i}`, one = estimateImage(model, refs.length);
+    log({ kind: 'image', job: id, model, estimate: one, status: 'submitted', slug, what });
+    let r;
+    try { r = await api('POST', '/images', body, { timeout: 300000 }); }
+    catch (e) { log({ kind: 'image', job: id, status: 'failed_free', error: String(e.message).slice(0, 200) }); throw e; }
+    for (const d of r.data || []) { const f = `${p.out}_${files.length + 1}.${(d.media_type || 'image/png').split('/')[1].replace('jpeg', 'jpg')}`; fs.writeFileSync(f, Buffer.from(d.b64_json, 'base64')); files.push(f); }
+    const c = +((r.usage || {}).cost ?? one); cost += c;
+    log({ kind: 'image', job: id, status: 'completed', cost: c, files: files.slice(-1) });
+  }
   emit('engine', { slug, stage, engine: 'openrouter', text: `${files.length} image(s) from ${model}, $${cost.toFixed(3)}` });
-  return { files, cost, estimate: est };
+  return { files, cost: +cost.toFixed(4), estimate: est };
 }

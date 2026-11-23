@@ -1,0 +1,18 @@
+{
+ "job": "gen-vid-1795466757-jwQ4q4i02bU04l4dcAco",
+ "model": "bytedance/seedance-2.5-flash",
+ "seconds": 4,
+ "resolution": "480p",
+ "aspect": "9:16",
+ "cost": 0.27181,
+ "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80; image 2 is Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters; image 3 is kitchen at day, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: exactly 1 person: juno (she, 30s, small flat, loves her fern). No one else in frame.\nPLACE: kitchen, day, a small warm flat kitchen with a window over the counter.\nACTION: juno stands left, annoyed pose, facing right; a fern droopy right; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle (body #3E8E5A, cap #F2C14E, label #FFF6E5, labelInk #234D33, accent #E8613C), label \"SPRIGLY\". Never change its shape or colours.\nCAMERA: slow push-in.\n(The words \"Sunday standoff.\" are added later in the edit; leave clean space in the upper third.)",
+ "refs": {
+  "images": [
+   "/home/user/scifi-explainer-studio/ads/first-story-ad/production/assets/char-juno_1795466303774_1.png",
+   "/home/user/scifi-explainer-studio/ads/first-story-ad/production/assets/product_1795466537866_1.png"
+  ],
+  "video": null,
+  "first": "/home/user/scifi-explainer-studio/ads/first-story-ad/production/keys/s1_first_1795466618880_2.png",
+  "last": "/home/user/scifi-explainer-studio/ads/first-story-ad/production/keys/s1_last_1795466683197_1.png"
+ }
+}

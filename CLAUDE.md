@@ -64,6 +64,23 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
 - Outputs in `out/`: the 9:16 and 16:9 masters (20.0 s, −14.1 LUFS, peak −1.5 dBFS), hooks B and C, `.srt`, poster, `REPORT.md`. Scorecard 28/35; test hook B first.
 - Next cut, from the scorecard: show the capful being poured (needs a watering-can prop), keep the fern's change modest, give Juno one specific detail, add motion in the first 0.3 s, and fill the sides of the 16:9 cut.
 
+## Ad Studio v2 (round 9, in progress): previz → Seedance, real-hit research, three formats
+- **Plan:** `/root/.claude/plans/…fluffy-nebula.md`, milestones M0–M5. Budget for OpenRouter tests in the cloud: **$10** total; the ledger is at `studio/.ledger.jsonl` (gitignored) and the cap is `budget.capUsd`.
+- **M0 research:**
+  - `research/watch-kit/README.md` is the prompt for the user's PC session: claude-video "watch" skill, TikTok/YouTube teardowns.
+  - `research/teardowns/` holds 5 Higgsfield contest films, watched in the cloud. Measured cut rates: 1.9–5.7 cuts per 10 s; first cut at 2.7–12 s; openings are a contrarian VO line, a spectacle-then-"Cut!" reversal, or wordless tension inserts.
+  - **Waiting on:** the PC teardowns, which unblock the M0 synthesis, M1 (bible v2) and M2 (style catalogue).
+- **M3 production (built):**
+  - **Blender:** `studio/blender/adlib.py` + `run_shot.py`, the bpy 5.1 library (products, toy characters, ferns, meshes, 3D text, rooms/cyclorama, lenses and camera keys, light rigs, looks clay/toy/clean/xray/blueprint). The cloud uses the pip `bpy` 5.1.2 in `studio/.tools/bpyenv`; the PC uses Blender 5.1+ headless. Workbench and EEVEE need EGL (`apt install libegl1 libgl1 libegl-mesa0`).
+  - **OpenRouter:** `engines/openrouter.mjs` (Seedance video, images, estimates, hard cap, mock mode `ADSTUDIO_MOCK=1`).
+  - **Shot board:** `production.mjs` + the "Shot board" view: element sheets → previz → styled keyframes → takes → pick, every paid step confirmed.
+- **What we learned from the first real test (shot s1 of Sprigly):**
+  - Node's fetch needs `NODE_USE_ENV_PROXY=1` behind a proxy; `start_studio.sh` sets it. In the cloud, run with `OPENROUTER_API_KEY=proxy-injected` (the proxy holds the real key).
+  - **Seedream 5.5 accepts n = 1 only**, so the engine loops one request per image.
+  - **OpenRouter takes video references only as public HTTPS URLs**, never data URLs. The "previz video" motion mode therefore needs `media.publicBase` (a bucket). **"Styled keyframes" mode works now:** the image model repaints the previz's first and last frames using the element sheets, then Seedance interpolates between them.
+  - **A Blender render of the product as a reference** fixed wrong product sheets; the image model copied the shape and colours.
+  - **Result:** `ads/first-story-ad/production/takes/s1_t01.mp4`, 4 s at 480×854, consistent character, product and place, $0.27. Total spent $0.58.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.
