@@ -54,7 +54,7 @@ async function health() {
 const routes = [
   ['GET', /^\/api\/events$/, (req, res) => subscribe(res)],
   ['GET', /^\/api\/health$/, async (req, res) => send(res, 200, await health())],
-  ['GET', /^\/api\/meta$/, (req, res) => send(res, 200, { stages: STAGES.map(({ id, n, title, kind, gate }) => ({ id, n, title, kind, gate: !!gate })), styles: STYLE_LINES })],
+  ['GET', /^\/api\/meta$/, (req, res) => send(res, 200, { stages: STAGES.map(({ id, n, title, kind, gate, optional, paid }) => ({ id, n, title, kind, gate: !!gate, optional: !!optional, paid: !!paid })), styles: STYLE_LINES })],
   ['GET', /^\/api\/ads$/, (req, res) => send(res, 200, P.listAds())],
   ['POST', /^\/api\/ads$/, async (req, res) => { const b = await body(req); const p = P.createAd(b); if (b.start !== false) P.runFrom(p.slug).catch(e => emit('job', { slug: p.slug, kind: 'error', text: e.message })); send(res, 201, p); }],
   ['GET', /^\/api\/ads\/([\w-]+)$/, (req, res, [, s]) => { const st = P.adState(s); st ? send(res, 200, st) : send(res, 404, { error: 'no such ad' }); }],

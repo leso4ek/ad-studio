@@ -98,7 +98,7 @@ export default function App() {
           </select>
           {running ? <button className="btn" onClick={() => api.cancel(s.slug)}>Cancel</button>
             : waitingStage ? <button className="btn primary" onClick={() => setFollow(true)}>Review: {waitingStage.title}</button>
-            : <button className="btn primary" onClick={() => api.run(s.slug).then(() => setFollow(true))} disabled={doneCount === stages.length}>{doneCount ? 'Continue' : 'Run'}</button>}
+            : <button className="btn primary" onClick={() => api.run(s.slug).then(() => setFollow(true))} disabled={stages.filter(x => !x.optional).every(x => st[x.id]?.status === 'done')}>{doneCount ? 'Continue' : 'Run'}</button>}
         </>}
         <button className="btn ghost" onClick={() => { setDlg('settings'); api.health().then(health => d({ type: 'health', health })); }} aria-label="Settings and engines">Engines</button>
       </header>

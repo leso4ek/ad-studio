@@ -2,7 +2,7 @@ import { useState, Fragment } from 'react';
 import { motion } from 'motion/react';
 import { api, file } from './api.js';
 
-const STATUS = { idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
+const STATUS = { offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
 
 export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
@@ -18,7 +18,7 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
     <div>
       <div className="row" style={{ justifyContent: 'space-between', marginBottom: 12 }}>
         <div>
-          <h2>Stage {st.n} of 12 · {st.kind === 'decide' ? 'Claude decides' : 'engines'}{st.gate ? ' · gate' : ''}</h2>
+          <h2>Stage {st.n} of {meta.stages.length} · {st.kind === 'decide' ? 'Claude decides' : 'engines'}{st.gate ? ' · gate' : ''}{st.optional ? ' · optional' : ''}{st.paid ? ' · paid' : ''}</h2>
           <h3>{st.title}</h3>
           <div className="row" style={{ color: 'var(--muted)' }}>
             <span className={`chip ${x.status === 'done' ? 'ok' : x.status === 'error' ? 'err' : waiting ? 'gate' : ''}`}>{STATUS[x.status] || x.status}</span>
@@ -32,7 +32,8 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
         <div className="row">
           {waiting && <button className="btn primary" disabled={busy} onClick={() => act(() => api.approve(slug, id))}>{x.status === 'gate' ? 'Approve & continue' : 'Looks good, continue'}</button>}
           {['done', 'gate', 'review', 'error', 'stale'].includes(x.status) && !ad.running && <button className="btn" disabled={busy} onClick={() => setRedo(r => !r)}>Redo…</button>}
-          {['idle', 'stale', 'error'].includes(x.status) && !ad.running && <button className="btn" disabled={busy} onClick={() => act(() => api.run(slug, id))}>Run from here</button>}
+          {st.paid && ['idle', 'offer', 'stale', 'error', 'done'].includes(x.status) && !ad.running && ad.project.stages.final?.status === 'done' && <button className="btn primary" disabled={busy} title="MiroFish simulated viewers on a cheap OpenRouter model; stopped automatically at the cap" onClick={() => confirm('Run the audience test? It spends up to $1 of OpenRouter (usually less) and takes 10-30 minutes.') && act(() => api.run(slug, id))}>{x.status === 'done' ? 'Run it again (≤ $1)' : 'Run the audience test (≤ $1)'}</button>}
+          {!st.paid && ['idle', 'stale', 'error'].includes(x.status) && !ad.running && <button className="btn" disabled={busy} onClick={() => act(() => api.run(slug, id))}>Run from here</button>}
         </div>
       </div>
       {redo && <motion.div className="card" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
@@ -154,6 +155,15 @@ function Body({ id, ad, rec, x, slug, bust, onNow, choose, waiting }) {
       <div className="card"><h2>{o.total}/35 · {o.verdict}</h2><table className="shots"><tbody>{o.scores.map((s, i) => <tr key={i}><td>{s.rule}</td><td><Bar v={s.score} /></td><td>{s.note}</td></tr>)}</tbody></table>
         <p><b>Test first:</b> hook {o.bestHook}</p><ul>{o.fixes.map((f, i) => <li key={i}>{f}</li>)}</ul>
         <a className="btn" href={file(slug, 'out/REPORT.md')} target="_blank" rel="noreferrer">Open REPORT.md</a></div></> : <Pending x={x} />;
+    case 'audience': return o ? <>
+      <div className="card hero"><div className="who">◆ Claude read MiroFish's report{o.mock ? ' (mock run)' : ''} · {o.stats?.agents ?? '?'} simulated viewers · {o.stats?.rounds ?? '?'} rounds · ${(o.costUsd || 0).toFixed(2)} of OpenRouter · confidence {o.confidence}</div><div className="reason">{o.reason}</div></div>
+      <div className="card"><h2>Simulated audience</h2><table className="shots"><tbody>
+        {[['stopScroll', 'Stops scrolling'], ['watchThrough', 'Watches to the end'], ['brandRecall', 'Remembers the brand'], ['trust', 'Believes the claims'], ['clickIntent', 'Wants to click']].map(([k, l]) => <tr key={k}><td>{l}</td><td><Bar v={o.scores[k]} /></td></tr>)}
+      </tbody></table><p><b>Opening that worked best:</b> {o.bestHook}</p>
+        <p style={{ color: 'var(--muted)', fontSize: 13 }}>Simulated viewers are language-model agents: read this as a smoke test next to the scorecard, not as real audience data.</p></div>
+      <div className="card"><h2>What they said</h2>{o.comments.map((c, i) => <div key={i} style={{ fontSize: 14, margin: '6px 0' }}><span className={`chip ${c.tone === 'positive' ? 'ok' : c.tone === 'negative' ? 'err' : ''}`}>{c.who}</span> {c.text}</div>)}</div>
+      <div className="card"><h2>Fixes</h2><ul>{o.fixes.map((f, i) => <li key={i}>{f}</li>)}</ul>{o.risks?.length > 0 && <><h2>Risks</h2><ul>{o.risks.map((f, i) => <li key={i}>{f}</li>)}</ul></>}
+        <div className="row"><a className="btn" href={file(slug, 'out/audience/report.md')} target="_blank" rel="noreferrer">MiroFish report</a><a className="btn" href={file(slug, 'out/audience/dossier.md')} target="_blank" rel="noreferrer">What the viewers were shown</a></div></div></> : <div className="empty">{x.status === 'running' ? 'Simulating viewers… follow the steps in the live pane.' : x.status === 'error' ? 'The audience test stopped (above).' : 'Optional: after the final, simulated viewers react to the ad (MiroFish, about $0.10-1).'}</div>;
     default: return null;
   }
 }

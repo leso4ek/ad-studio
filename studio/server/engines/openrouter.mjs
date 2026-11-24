@@ -15,7 +15,7 @@ const VIDEO_PRICE = { 'bytedance/seedance-2.5': { '480p': 10.7e-6, '720p': 10.7e
 const SIZES = { '480p': { '9:16': [480, 854], '16:9': [854, 480], '1:1': [640, 640] }, '720p': { '9:16': [720, 1280], '16:9': [1280, 720], '1:1': [960, 960] }, '1080p': { '9:16': [1080, 1920], '16:9': [1920, 1080] } };
 const IMAGE_PRICE = { 'bytedance-seed/seedream-5-5': 0.02, 'google/gemini-nano-banana-2.1': 0.05, 'openai/gpt-image-2.6-flare': 0.08, 'black-forest-labs/flux-3-image': 0.048, 'qwen/qwen-image-2': 0.03, 'recraft/recraft-v4': 0.035 };
 
-const LEDGER = path.join(STUDIO, '.ledger.jsonl');
+const LEDGER = process.env.ADSTUDIO_LEDGER || path.join(STUDIO, '.ledger.jsonl');
 export const mock = cfg => !!(cfg.openrouter?.mock || process.env.ADSTUDIO_MOCK === '1');
 const key = () => loadEnv().OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY || '';
 
@@ -35,6 +35,7 @@ export function spent() {
   for (const e of ledger()) byJob.set(e.job || e.id, { ...(byJob.get(e.job || e.id) || {}), ...e });
   return +[...byJob.values()].reduce((s, e) => s + (e.status === 'completed' ? (e.cost ?? e.estimate ?? 0) : e.status === 'submitted' ? (e.estimate ?? 0) : 0), 0).toFixed(3);
 }
+export function record(e) { log(e); }
 function log(e) { fs.appendFileSync(LEDGER, JSON.stringify({ at: new Date().toISOString(), ...e }) + '\n'); }
 function guard(cfg, est, what) {
   const cap = cfg.budget?.capUsd ?? 10, s = spent();

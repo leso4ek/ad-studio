@@ -78,6 +78,8 @@ Return the complete bible JSON.` },
     prompt: ctx => `Stage 12 · Score the finished ad (skill §12) against the story-ad-playbook's seven rules, 1-5 each with a one-line note:
 1 hook in 1-3 s, 2 all five acts, 3 a character we identify with, 4 the product causes the turn, 5 plant/pulse/reveal/tag, 6 one emotion, 7 kind contrast and honest claims.
 Look at out/final-sheet.jpg (frames every 2 s of the 9:16 master) and read bible.json, voice/cues.json and out/checks.json. Total = sum. Say which hook variant you'd test first and what you'd fix in a next cut.` },
+  // optional and paid (about $0.10-1 of OpenRouter): runs only when the user starts it (runFrom 'audience')
+  { id: 'audience', n: 13, title: 'Audience test', kind: 'auto', optional: true, paid: true },
 ];
 
 // ---------- checks Claude's bible must pass before the stage counts ----------
@@ -204,6 +206,50 @@ Check against the bible and the style: is the hook readable at a glance, is the 
     ctx.files('final', [...out, `out/${ctx.slug}-poster.jpg`, `out/${ctx.slug}.srt`, 'out/final-sheet.jpg']);
     return { summary: `${out.length} file(s): ${out.map(f => path.basename(f)).join(', ')}`, probes };
   },
+};
+
+// ---------- stage 13: the audience test ----------
+// Token economy: the dossier is built by code; Claude is called twice, each time in a fresh one-off session at low
+// effort without the skill prompt, with only what it needs (the brief's audience for setup, the report for the read).
+AUTO.audience = async function audience(ctx) {
+  const MF = await import('./engines/mirofish.mjs');
+  const a = await MF.available(ctx.cfg); if (!a.ok) throw new Error(a.why);
+  const brief = readJSON(path.join(ctx.adDir, 'brief.json'), {}), b = ctx.bible(), hooks = dec(ctx, 'hooks') || {};
+  const lean = { fresh: true, noSkill: true, noTools: true, effort: 'low', maxTurns: 2 };
+  // the setup is cached next to the run: a retry (or a second run of the same cut) costs no new Claude call
+  const setupFile = path.join(ctx.adDir, 'out', 'audience', 'setup.json'), bibleFile = path.join(ctx.adDir, 'bible.json');
+  const cached = fs.existsSync(setupFile) && fs.statSync(setupFile).mtimeMs > fs.statSync(bibleFile).mtimeMs ? readJSON(setupFile) : null;
+  const setup = cached || (await ctx.decide('audience-setup', `You set up a simulated-audience test (MiroFish) of a finished ${b.dur}-second vertical video ad. Do not read any files.
+Product: ${brief.product?.name}: ${brief.product?.what}
+Audience in the brief: ${J(brief.audience || {})}
+Openings: ${(hooks.hooks || []).map(h => `${h.id} "${h.onScreen}"`).join(', ')}
+Write (1) the requirement paragraph MiroFish will simulate, in plain English, and (2) 3-5 viewer segments that would really see this ad in a TikTok/Reels feed: mostly the target audience, plus one sceptical or indifferent group. No real brands or people. Answer with JSON matching the schema; "reason" is one sentence.`, SCHEMAS.audienceSetup, lean)).output;
+  if (!cached) writeJSON(setupFile, setup);
+  const dossier = MF.buildDossier(ctx.adDir, { segments: setup.segments, question: setup.requirement });
+  const outDir = path.join(ctx.adDir, 'out', 'audience');
+  const interview = `You just saw a ${b.dur}-second ad for ${brief.product?.name} in your feed (described in the material you know). Answer in 2-4 sentences, in your own voice: did you stop or keep scrolling in the first seconds, and why? What do you remember (the brand name, what it does)? Do you believe what it says? Would you try it? Which opening would have stopped you: ${(hooks.hooks || []).map(h => `${h.id} "${h.onScreen}"`).join(', ')}?`;
+  const res = await MF.runTest(ctx.cfg, { dossier, requirement: setup.requirement, interview, name: `${b.title} · audience`, outDir }, { slug: ctx.slug, signal: ctx.signal });
+  const said = (res.interviews || []).slice(0, 16).map(r => `- ${r.agent}: ${r.text.slice(0, 400)}`).join('\n');
+  const posts = res.posts.slice().sort((x, y) => (y.likes || 0) - (x.likes || 0)).slice(0, 12).map(p => `- ${p.author}: ${p.text}`).join('\n');
+  const verdict = (await ctx.decide('audience', `Read this simulated-audience report about a ${b.dur}-second ad for ${brief.product?.name} and turn it into a verdict. Do not read any files.
+Simulated viewers are language-model agents, so treat this as a smoke test: low or medium confidence, never high.\nMiroFish's own config step seeds the first posts and may already guess the winning opening; only pick bestHook if the viewers' reactions (not just the seed posts or the report's framing) favour it.
+Scores 1-5: stopScroll (would they stop in the first 2 s), watchThrough, brandRecall (would they remember "${brief.product?.name}"), trust (do they believe the claims), clickIntent. bestHook: A, B or C if the report supports one, else "unclear". comments: 3-8 short representative viewer comments taken or condensed from the posts/report (label who). fixes: concrete changes to the ad. risks: misreadings or complaints.
+
+MIROFISH REPORT (truncated):
+${res.report.slice(0, 14000)}
+
+TOP SIMULATED POSTS:
+${posts || '(none)'}
+
+INTERVIEWS (every simulated viewer was asked the same question after the run):
+${said || '(none)'}
+Answer with JSON matching the schema; "reason" is two sentences.`, SCHEMAS.audience, lean)).output;
+  const rec = { stage: 'audience', at: new Date().toISOString(), output: { ...verdict, costUsd: res.costUsd, stats: res.stats, setup, mock: !!res.mock } };
+  writeJSON(path.join(ctx.adDir, 'decisions', '13-audience.json'), rec);
+  writeJSON(path.join(outDir, 'verdict.json'), rec.output);
+  ctx.files('audience', ['out/audience/setup.json', 'out/audience/dossier.md', 'out/audience/report.md', 'out/audience/verdict.json']);
+  const sc = verdict.scores;
+  return { summary: `stop ${sc.stopScroll} · watch ${sc.watchThrough} · recall ${sc.brandRecall} · trust ${sc.trust} · click ${sc.clickIntent} · hook ${verdict.bestHook} · $${(res.costUsd || 0).toFixed(2)}`, costUsd: res.costUsd, stats: res.stats };
 };
 
 /** After the scorecard: REPORT.md for people. */

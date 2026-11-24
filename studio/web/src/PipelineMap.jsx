@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const LABEL = { idle: 'waiting', running: 'running', review: 'your review', gate: 'your approval', done: 'done', error: 'error', stale: 'stale' };
+const LABEL = { offer: 'optional', idle: 'waiting', running: 'running', review: 'your review', gate: 'your approval', done: 'done', error: 'error', stale: 'stale' };
 const fmt = ms => ms ? (ms < 60000 ? `${(ms / 1000).toFixed(1)} s` : `${Math.floor(ms / 60000)} m ${Math.round(ms % 60000 / 1000)} s`) : '';
 
 /** The twelve stages as a rail: the filled part of the rail is animated with GSAP as stages finish, the running node pulses. */
@@ -44,6 +44,7 @@ export default function PipelineMap({ stages, state, selected, onSelect }) {
               <span className="t">{s.title}
                 {s.kind === 'decide' && <span className="chip claude" title="Claude decides">Claude</span>}
                 {s.gate && <span className="chip gate" title="Waits for your approval">gate</span>}
+                {s.paid && <span className="chip" title="Optional, spends OpenRouter credit after you confirm">paid</span>}
                 {fb > 0 && <span className="chip warn" title={(x.fallbacks || []).map(f => `${f.engine}: ${f.why}`).join('\n')}>⤷ {fb}</span>}
               </span>
               <span className="s">{LABEL[x.status] || x.status}{eng ? ` · ${eng}` : ''}{x.ms ? ` · ${fmt(x.ms)}` : ''}{x.summary ? ` · ${x.summary}` : ''}</span>

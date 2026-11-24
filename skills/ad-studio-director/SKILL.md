@@ -174,6 +174,20 @@ If a check fails, the user may send you back to the bible with a note. Fix exact
 - Score the seven playbook rules 1–5 from `out/final-sheet.jpg`, the bible, the cues and `out/checks.json`. Be strict: a 5 means it could not be better.
 - Name the hook variant to test first, and up to eight concrete fixes for a next cut.
 
+## 13 · Audience test (optional, paid, MiroFish)
+Runs only when the user starts it after the final; it spends at most `mirofish.capUsd` ($1) of OpenRouter. MiroFish (AGPL) is a separate local service; `integrations/mirofish/` patches it to use a local SQLite graph instead of Zep Cloud.
+- **`audience-setup`** (low effort, no files, no tools): one requirement paragraph and 3–5 viewer segments.
+  - Most segments are the brief's audience at different levels of skill and interest; one is sceptical or indifferent.
+  - Each segment's mindset says how they scroll, what stops them, and one honest doubt.
+  - Segments become entities in MiroFish's graph, so they become simulated viewers. More segments make a bigger swarm and cost more.
+- **The dossier** (`out/audience/dossier.md`) is built by code: what a viewer sees and hears, second by second, plus the product facts, the openings and the segments. It never includes the scorecard or the brief's internal reasoning, so the viewers aren't primed.
+- **`audience`** (low effort): read only MiroFish's report and the top simulated posts.
+  - Scores 1–5: stop-scroll, watch-through, brand recall, trust, click intent.
+  - The best opening, only if the report supports one; otherwise `unclear`.
+  - 3–8 representative comments, labelled by segment and tone; concrete fixes; risks (misreadings, complaints).
+  - **Confidence is low or medium, never high.** The viewers are language-model agents: the test catches confusion, mistrust and forgettable branding, but it does not predict real views or sales.
+  - Where the audience test and the scorecard agree, that's a strong signal for the next cut. Where they disagree, say so and prefer the scorecard on craft and the audience on clarity.
+
 ## Shot board prompts (Seedance route)
 - When the app asks for `production-prompts`, write every shot's prompt the way `skills/higgsfield-director` §"Reference-assigned prompts" says.
   - `refs` lists element ids, most important first; each chosen view becomes one reference image, max 6 in total.

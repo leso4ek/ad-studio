@@ -3,7 +3,9 @@
 import fs from 'fs';
 import path from 'path';
 
-const clients = new Set();
+const clients = new Set(), listeners = new Set();
+/** In-process listeners (the CLI tools print events with this). */
+export const onEvent = f => { listeners.add(f); return () => listeners.delete(f); };
 let adsDir = null;
 export function initBus(dir) { adsDir = dir; }
 
@@ -20,6 +22,7 @@ export function emit(type, data = {}) {
   const ev = { type, at: new Date().toISOString(), ...data };
   const line = `data: ${JSON.stringify(ev)}\n\n`;
   for (const c of clients) c.write(line);
+  for (const f of listeners) try { f(ev); } catch { /* a listener never breaks a run */ }
   if (data.slug && adsDir) {
     try { fs.appendFileSync(path.join(adsDir, data.slug, 'log.jsonl'), JSON.stringify(ev) + '\n'); } catch { /* ad folder not there yet */ }
   }

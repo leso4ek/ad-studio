@@ -7,6 +7,7 @@
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
+import os from 'os';
 import { run, which, readJSON, writeJSON, REPO, STUDIO } from '../util.mjs';
 import { emit } from '../bus.mjs';
 
@@ -38,28 +39,31 @@ function summarize(ev) {
 }
 
 /** decide({slug, adDir, stage, prompt, schema}) → {output, meta} */
-export async function decide(cfg, { slug, adDir, stage, prompt, schema, signal }) {
-  const proj = readJSON(path.join(adDir, 'project.json'), {});
+export async function decide(cfg, { slug, adDir, stage, prompt, schema, signal, opts = {} }) {
+  // opts.fresh: a new one-off session (not the ad's long resumed one) · opts.noSkill: skip the skill system prompt
+  // opts.noTools: see below · opts.effort / opts.maxTurns: per-call overrides. Used where token use matters (the audience test).
+  const proj = opts.fresh ? {} : readJSON(path.join(adDir, 'project.json'), {});
   const bin = cfg.claude?.bin || 'claude';
   const resume = !!proj.claudeSession;
   const sid = proj.claudeSession || crypto.randomUUID();
   const skill = path.join(REPO, 'skills', 'ad-studio-director', 'SKILL.md');
   const args = ['-p', prompt, '--output-format', 'stream-json', '--verbose', '--json-schema', JSON.stringify(schema),
     ...(resume ? ['--resume', sid] : ['--session-id', sid]),
-    '--append-system-prompt', fs.readFileSync(skill, 'utf8'),
+    ...(opts.noSkill ? [] : ['--append-system-prompt', fs.readFileSync(skill, 'utf8')]),
     '--strict-mcp-config', '--permission-mode', 'acceptEdits',
-    '--allowedTools', 'Read', 'Write', 'Edit', 'Glob', 'Grep', 'Bash(node:*)', 'Bash(python3:*)', 'Bash(ls:*)',
-    '--add-dir', path.join(STUDIO, 'kit'), '--add-dir', path.join(REPO, 'skills'), '--add-dir', path.join(REPO, 'research'), '--add-dir', path.join(REPO, 'styles'),
-    '--max-turns', String(cfg.claude?.maxTurns || 30)];
+    // opts.noTools: no tools at all and a neutral cwd (no project CLAUDE.md): ~3.5k context tokens instead of ~40k
+    ...(opts.noTools ? ['--tools', ''] : ['--allowedTools', 'Read', 'Write', 'Edit', 'Glob', 'Grep', 'Bash(node:*)', 'Bash(python3:*)', 'Bash(ls:*)',
+      '--add-dir', path.join(STUDIO, 'kit'), '--add-dir', path.join(REPO, 'skills'), '--add-dir', path.join(REPO, 'research'), '--add-dir', path.join(REPO, 'styles')]),
+    '--max-turns', String(opts.maxTurns || cfg.claude?.maxTurns || 30)];
   if (cfg.claude?.model) args.push('--model', cfg.claude.model);
-  if (cfg.claude?.effort) args.push('--effort', cfg.claude.effort);
+  if (opts.effort || cfg.claude?.effort) args.push('--effort', opts.effort || cfg.claude.effort);
   if (cfg.claude?.fallbackModel) args.push('--fallback-model', cfg.claude.fallbackModel);
   // the session id is saved before the call, so a crash still resumes the same conversation
-  writeJSON(path.join(adDir, 'project.json'), { ...readJSON(path.join(adDir, 'project.json'), {}), claudeSession: sid });
+  if (!opts.fresh) writeJSON(path.join(adDir, 'project.json'), { ...readJSON(path.join(adDir, 'project.json'), {}), claudeSession: sid });
   emit('claude', { slug, stage, kind: 'start', text: `${resume ? 'resuming' : 'starting'} Claude Code session ${sid.slice(0, 8)}` });
   let result = null;
   const r = await run(bin, args, {
-    cwd: adDir, signal,
+    cwd: opts.noTools ? os.tmpdir() : adDir, signal,
     onLine: (line, which) => {
       if (which === 'err') { if (line.trim()) emit('claude', { slug, stage, kind: 'stderr', text: line.slice(0, 300) }); return; }
       let ev; try { ev = JSON.parse(line); } catch { return; }

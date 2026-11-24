@@ -93,4 +93,20 @@ export const scorecard = S({
   total: num(), verdict: str(), fixes: arr(str(), 0, 8), bestHook: { type: 'string', enum: ['A', 'B', 'C'] }, reason: str(),
 });
 
-export const SCHEMAS = { brief, premises, hooks, story, brandmap, style, bible, frames, scorecard };
+// stage 13: the audience test (MiroFish). Setup = the simulation question + viewer segments; verdict = read of its report.
+const int15 = { type: 'integer', minimum: 1, maximum: 5 };
+export const audienceSetup = S({
+  requirement: str('one paragraph for MiroFish: who sees the ad where, and what to predict (stop scrolling, watch to the end, remember the brand, trust the claims, want to buy, which opening works best)'),
+  segments: arr(S({ name: str(), who: str(), mindset: str('how they scroll, what makes them stop or skip, one honest doubt') }), 3, 5),
+  reason: str(),
+});
+export const audience = S({
+  scores: S({ stopScroll: int15, watchThrough: int15, brandRecall: int15, trust: int15, clickIntent: int15 }),
+  bestHook: { type: 'string', enum: ['A', 'B', 'C', 'unclear'] },
+  comments: arr(S({ who: str(), text: str(), tone: { type: 'string', enum: ['positive', 'neutral', 'negative'] } }), 3, 8),
+  fixes: arr(str(), 1, 5), risks: arr(str(), 0, 5),
+  confidence: { type: 'string', enum: ['low', 'medium'], description: 'a simulation, never high' },
+  reason: str(),
+});
+
+export const SCHEMAS = { brief, premises, hooks, story, brandmap, style, bible, frames, scorecard, audienceSetup, audience };

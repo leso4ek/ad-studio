@@ -73,13 +73,13 @@ function context(slug, signal) {
     fallback(stage, engine, why) { const s = project(slug).stages[stage]; setStage(slug, stage, { fallbacks: [...(s.fallbacks || []), { engine, why, at: now() }] }); emit('engine', { slug, stage, engine, text: `${engine} unavailable: ${why} → next in chain`, level: 'warn' }); },
     engine(stage, name) { setStage(slug, stage, { engine: name }); },
     validateBible: async b => [...validate(SCHEMAS.bible, b), ...checkBible(b), ...lintBible(b).filter(i => i.level === 'error').map(i => `${i.where}: ${i.why} ("${i.match}")`)],
-    decide: (sub, prompt, schema) => decide(slug, sub, prompt, schema, signal),
+    decide: (sub, prompt, schema, opts) => decide(slug, sub, prompt, schema, signal, opts),
   };
   return ctx;
 }
 
 /** Runs the decide chain (claude → inbox, or the ad's own choice) for one question. */
-async function decide(slug, stage, prompt, schema, signal) {
+async function decide(slug, stage, prompt, schema, signal, opts) {
   const p = project(slug), chain = p.decider ? [p.decider] : CFG.chains.decide;
   let lastErr = null;
   for (const name of chain) {
@@ -89,7 +89,7 @@ async function decide(slug, stage, prompt, schema, signal) {
     if (!a.ok) { if (known) context(slug).fallback(owner, name, a.why); else emit('engine', { slug, stage, engine: name, text: `${name} unavailable: ${a.why} → next`, level: 'warn' }); continue; }
     try {
       if (known) context(slug).engine(owner, name);
-      return await eng.decide(CFG, { slug, adDir: adDir(slug), stage, prompt, schema, signal });
+      return await eng.decide(CFG, { slug, adDir: adDir(slug), stage, prompt, schema, signal, opts });
     } catch (e) {
       if (signal?.aborted) throw e;
       lastErr = e; if (known) context(slug).fallback(owner, name, e.message.slice(0, 300)); else emit('engine', { slug, stage, engine: name, text: e.message.slice(0, 300), level: 'warn' });
@@ -140,8 +140,9 @@ export async function runFrom(slug, startId = null, { note } = {}) {
     let i = startId ? idx(startId) : STAGES.findIndex(s => p0.stages[s.id]?.status !== 'done');
     if (i < 0) { emit('job', { slug, kind: 'idle', text: 'all stages done' }); return; }
     for (; i < STAGES.length; i++) {
-      const st = STAGES[i], cur = project(slug).stages[st.id];
+      const st = STAGES[i], cur = project(slug).stages[st.id] || { status: 'idle' };
       if (cur.status === 'done') continue;
+      if (st.optional && i !== idx(startId)) { setStage(slug, st.id, { status: 'offer' }); emit('gate', { slug, stage: st.id, kind: 'offer', text: `${st.title} is optional${st.paid ? ' and paid' : ''}: start it from its card` }); break; }
       if (cur.status === 'gate' || cur.status === 'review') break;
       job.stage = st.id;
       const t0 = Date.now();
@@ -223,4 +224,4 @@ export function cancel(slug) { const j = jobs.get(slug); if (j) j.ac.abort(); re
 export function setMode(slug, patch) { return saveProject(slug, p => Object.assign(p, patch)); }
 
 /** Ask the decide chain (Claude CLI → inbox) a question outside the 12 stages, e.g. the shot board's prompts. */
-export const decideFor = (slug, stage, prompt, schema, signal) => decide(slug, stage, prompt, schema, signal);
+export const decideFor = (slug, stage, prompt, schema, signal, opts) => decide(slug, stage, prompt, schema, signal, opts);

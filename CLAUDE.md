@@ -102,6 +102,30 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
 - **Results:** `takes/s4_t01.mp4` (prompt only) and `takes/s1_t03.mp4` (blockout layout) are consistent with the elements; `takes/s1_final04.mp4` is the 720p final ($0.93). Total OpenRouter spend: $2.49.
 - **Sheets:** Juno portraits drifted from her turnaround, so we kept only the turnaround. The kitchen "reverse" views come out as wider angles of the same room (still useful as view 2).
 
+### Round 10b: MiroFish audience test (stage 13, optional, paid ≤ $1)
+- **What it is:** MiroFish (AGPL) runs as its own service in `~/mirofish`, on :5001, outside the repo.
+  - Install with `studio/scripts/install_mirofish.sh`, start with `start_mirofish.sh`.
+  - Run with `node studio/bin/audience.mjs <slug>` or the app's stage 13 card.
+- **No Zep:** the user declined a Zep key; never ask again. `integrations/mirofish/` (AGPL) holds the local graph:
+  - `local_graph.py` is a SQLite `LocalZep` with LLM extraction per chunk and BM25 search;
+  - `apply.sh` adds 4 lines to `get_zep_client()` when `MIROFISH_LOCAL_GRAPH=1`;
+  - `ZEP_API_KEY=local` is a placeholder.
+  - Tests: MiroFish's 129 tests pass with the patch off; with it on, only the 3 Zep-constructor tests fail. Our contract test passes.
+- **Model:** `deepseek/deepseek-v4.1-flash-1017` ($0.03 in / $0.20 out per million tokens).
+  - Extraction runs with reasoning off and costs about $0.00025 per chunk.
+  - The model returns types in any letter case, so types are matched case-insensitively.
+- **Settings that matter:**
+  - **`maxRounds` 24** (one simulated day): rounds are hours from midnight, and viewers sleep 00–05h, so 5 rounds simulate nobody.
+  - **`platform: parallel`** (Twitter + Reddit): the single-platform scripts never write `simulation_end`, so their run-status never completes.
+  - **Tokenizer:** the simulation needs tiktoken files from `openaipublic.blob.core.windows.net` (host added to the Default environment). They are cached in `~/mirofish/tiktoken_cache` (`TIKTOKEN_CACHE_DIR`).
+  - **Language:** send `Accept-Language: en`, or MiroFish writes Chinese.
+- **Token economy:**
+  - The dossier is built by code.
+  - Claude makes 2 calls with `{fresh, noSkill, noTools, effort: low}`: about 3.5k context tokens and about $0.03 list per call, against about $0.11 for a default call.
+  - The setup is cached in `out/audience/setup.json`.
+  - With `decider: inbox` (Sprigly), a cloud Claude session answers both calls instead.
+- **Cost guard:** OpenRouter's `GET /api/v1/key` usage is read before and during the run. Past the cap, `/simulation/stop` is called and the run fails. A SIGINT/SIGTERM closes the ledger entry with the measured cost.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.

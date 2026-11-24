@@ -69,6 +69,38 @@ Switch the header to **Shot board** after the bible is approved. Each shot goes 
 
 **Blender:** `studio/blender/adlib.py` builds a shot from JSON: products, toy characters, plants, primitives for mechanisms, 3D text, rooms or a cyclorama, real lenses and camera keys, light rigs, and five looks (clay, toy, clean, x-ray, blueprint). It runs as `blender -b --factory-startup -P studio/blender/run_shot.py -- shot.json out/`. For interactive fixes, use the Blender Lab MCP add-on (Blender 5.1+) with your local Claude session.
 
+## Audience test: simulated viewers with MiroFish (stage 13, optional, paid)
+After the final, **Run the audience test (≤ $1)** shows the finished ad, as text, to a swarm of simulated viewers in [MiroFish](https://github.com/666ghj/MiroFish). It then reads MiroFish's report back as a verdict card:
+- scores for stop-scroll, watch-through, brand recall, trust and click intent;
+- the opening that worked best;
+- representative comments, fixes and risks.
+
+The viewers are language-model agents, so treat the result as a smoke test for clarity and trust. It is not real audience data.
+
+```bash
+bash studio/scripts/install_mirofish.sh
+```
+
+```bash
+bash studio/scripts/start_mirofish.sh
+```
+
+```bash
+node studio/bin/audience.mjs <slug>
+```
+
+The first command installs MiroFish into `~/mirofish`, outside this repo. It is AGPL-3.0 and runs as its own service on :5001. The last command runs the test without the app.
+
+- **No Zep account:** `integrations/mirofish/` swaps MiroFish's Zep Cloud graph for a local SQLite one. See its README.
+- **Cheap viewers:** the simulated viewers run on DeepSeek v4.1 Flash through OpenRouter. Put your own key in `~/mirofish/.env`.
+- **Token economy:**
+  - The dossier (what a viewer sees and hears, second by second) is built by code.
+  - Claude is called twice, each time in a one-off session with no tools, no skill prompt and low effort: about 3.5k context tokens instead of about 40k.
+  - The setup is cached in `out/audience/setup.json`, so a retry costs no Claude call.
+- **Cost guard:** spend is read from OpenRouter's key usage while the run goes. Past `mirofish.capUsd` ($1) the simulation is stopped, and every run is logged in the ledger.
+- **Rounds:** 24 rounds is one simulated day. Viewers sleep from midnight to 05:00, so fewer than about 10 rounds simulate nobody; rounds where nobody is awake cost nothing.
+- **Platforms:** Twitter and Reddit run together (`parallel`). That is MiroFish's default, and the only runner that reports when it has finished.
+
 ## How Claude is wired in
 Each decision stage runs **Claude Code headless** in the ad's folder:
 
@@ -137,4 +169,5 @@ The tests cover the schemas, the lint, the bible checks, caption timing, voice c
 - **Fonts** (all SIL OFL): Fredoka, Anton, Space Mono, Josefin Sans, Pacifico, Inter, Archivo Black and Baloo 2. The licence files are in `kit/fonts/`.
 - **The interface** was built following the MIT-licensed design skills from freshtechbro/claudedesignskills (modern-web-design, motion-framer, gsap-scrolltrigger).
 - **VoiceStudio** (AGPL-3.0) is called over its local API; no code from it is included.
+- **MiroFish** (AGPL-3.0) runs as a separate local service called over HTTP. The patch in `integrations/mirofish/` modifies it and is therefore AGPL-3.0; Ad Studio's own code doesn't include or import it.
 - **Rendering** uses the Lemo-Opuscar library's tools.

@@ -63,5 +63,14 @@
   },
   "blender": {
     "bin": ""
+  },
+  "mirofish": {
+    "url": "http://127.0.0.1:5001",
+    "capUsd": 1,
+    "maxRounds": 24,
+    "platform": "parallel",
+    "parallelProfiles": 5,
+    "timeoutMin": 60,
+    "mock": false
   }
 }
