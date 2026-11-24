@@ -174,6 +174,13 @@ If a check fails, the user may send you back to the bible with a note. Fix exact
 - Score the seven playbook rules 1–5 from `out/final-sheet.jpg`, the bible, the cues and `out/checks.json`. Be strict: a 5 means it could not be better.
 - Name the hook variant to test first, and up to eight concrete fixes for a next cut.
 
+## Shot board prompts (Seedance route)
+- When the app asks for `production-prompts`, write every shot's prompt the way `skills/higgsfield-director` §"Reference-assigned prompts" says.
+  - `refs` lists element ids, most important first; each chosen view becomes one reference image, max 6 in total.
+  - The REFERENCES block names each image in exactly that order, using the element's role line.
+- `layoutRef: true` only when blocking matters: who stands where, product placement, a precise action. The previz middle still is then the last reference, positioning only. Otherwise rely on prompting alone.
+- Never ask for first or last frames.
+
 ## Running and extending Ad Studio
 - **Start:**
 

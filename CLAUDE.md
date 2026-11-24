@@ -83,6 +83,25 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - **Finish shot:** `comfy/adstudio` (`AdStudioColorMatch` + kidstudio Real-ESRGAN upscale + `AdStudioSaveTo`, workflow `finish_shot.json`) produced `production/final/s1.mp4` at 1080×1920, free. Without ComfyUI it falls back to an ffmpeg Lanczos upscale.
   - **Third-party skills:** taste-skill (MIT) and unslop (CC BY 4.0, credit Damir Sokolovsky) are cloned by `bootstrap.sh` into `~/.cache/ad-studio-skills` and linked as skills; they are not copied into the repo.
 
+### Round 10: the Higgsfield way (24 Nov 2026)
+- **TikTok in the cloud:**
+  - `research/tools/vidget.py` (yt-dlp in `research/tools/.venv`, with a page-JSON fallback) downloads TikToks. The hosts `www.tiktok.com` and `v16-webapp-prime.us.tiktok.com` were added to the Default environment.
+  - Account listings work; the `/shortdrama` hub does not (it renders in JavaScript from more hosts), so short-drama episode links have to come from the user.
+- **Teardowns:**
+  - the user's 3 links + @1hidden_by_design's top 3, plus `research/teardowns/TOOLS.md`;
+  - **@viralex.aii editing stack = Remotion + HyperFrames + FFmpeg (libass) + faster-whisper + yt-dlp**, with the 3-prompt workflow;
+  - **@whatif.sim = Claude writes the code that builds the 3D world** (no AI video), checks its own frames, renders locally;
+  - **@1hidden_by_design = one continuous 3D shot, 75–88 s, "If you… But… So…" chain, one-word centre captions.**
+- **Seedance, the Higgsfield way:**
+  - **Elements** with role lines and 1–3 views; extra views are made *from* the approved view.
+  - **Claude writes 300–900-word prompts** in blocks (FORMAT, STYLE, CAMERA, MUSIC: FALSE, CUT POLICY, MOTION, numbered REFERENCES, BLOCKING, timed ACTION, CAST RULE, NO TEXT, CONTINUITY), through `POST /production/prompts` → the decide chain.
+  - **Draft (Flash 480p) → final (Seedance 2.5 720p, same prompt, references and seed).** First/last frames and motion video are gone.
+- **Lesson:**
+  - a **coloured previz still as the layout reference makes Seedance copy its flat look**;
+  - the fix is a **grey blockout** (`previz/<id>_layout.png`, from `ffmpeg format=gray,gblur,edgedetect`) with the role "CONTEXTUAL POSITIONING ONLY… take no colours, shapes or style from it". Use it only when blocking matters.
+- **Results:** `takes/s4_t01.mp4` (prompt only) and `takes/s1_t03.mp4` (blockout layout) are consistent with the elements; `takes/s1_final04.mp4` is the 720p final ($0.93). Total OpenRouter spend: $2.49.
+- **Sheets:** Juno portraits drifted from her turnaround, so we kept only the turnaround. The kitchen "reverse" views come out as wider angles of the same room (still useful as view 2).
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.

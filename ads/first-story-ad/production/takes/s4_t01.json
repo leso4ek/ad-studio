@@ -1,0 +1,16 @@
+{
+ "job": "gen-vid-1795507840-djBmyYTZ234vOYklpZKb",
+ "model": "bytedance/seedance-2.5-flash",
+ "seconds": 4,
+ "resolution": "480p",
+ "aspect": "9:16",
+ "cost": 0.27181,
+ "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 50 mm lens, low angle at counter height, a slow push-in toward the bottle, ending on a hero close-up.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: the Sprigly bottle stands alone in the centre of the frame on the kitchen counter, label facing the camera, the window glowing softly behind it; the kitchen falls into a soft, warm blur.\nACTION: 0–1 s: the bottle stands still in morning light. 1–2.5 s: a beam of window light slides across the counter and lands on the bottle; the yellow cap catches a soft highlight. 2.5–4 s: the camera settles on a clean hero close-up, the SPRIGLY label crisp and readable, a few paper dust motes drifting in the light. The bottle itself never moves or changes.\nCAST RULE: no people in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nPRODUCT: Sprigly: green body, yellow cap, cream label printed SPRIGLY. Never change its shape, colours or label; the label text must stay exactly SPRIGLY.\nCONTINUITY: the same bottle as in shot s1, where it stood at the end of the counter.",
+ "refs": {
+  "images": [
+   "/home/user/scifi-explainer-studio/ads/first-story-ad/production/assets/product_1795466537866_1.png",
+   "/home/user/scifi-explainer-studio/ads/first-story-ad/production/assets/place-kitchen_1795507272861_1.png",
+   "/home/user/scifi-explainer-studio/ads/first-story-ad/production/assets/place-kitchen_1795507369986_2.png"
+  ]
+ }
+}

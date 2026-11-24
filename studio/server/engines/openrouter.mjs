@@ -82,7 +82,7 @@ export async function video(cfg, p, { slug, stage, signal, what } = {}) {
   if (p.firstFrame) frames.push({ type: 'image_url', image_url: { url: dataUrl(p.firstFrame) }, frame_type: 'first_frame' });
   if (p.lastFrame) frames.push({ type: 'image_url', image_url: { url: dataUrl(p.lastFrame) }, frame_type: 'last_frame' });
   if (frames.length) body.frame_images = frames;
-  const refs = (p.refImages || []).slice(0, 4).map(f => ({ type: 'image_url', image_url: { url: dataUrl(f) } }));
+  const refs = (p.refImages || []).slice(0, cfg.openrouter?.maxRefs || 6).map(f => ({ type: 'image_url', image_url: { url: dataUrl(f) } }));
   if (p.refVideo) {
     // OpenRouter takes video references only as public HTTPS URLs (Nov 2026): a local previz must be hosted first
     const url = /^https:\/\//.test(p.refVideo) ? p.refVideo : cfg.media?.publicBase ? `${cfg.media.publicBase.replace(/\/$/, '')}/${path.basename(p.refVideo)}` : null;

@@ -7,6 +7,8 @@
     "resolution": "480p",
     "aspect": "9:16",
     "imageModel": "bytedance-seed/seedream-5-5",
+    "finalModel": "bytedance/seedance-2.5",
+    "finalResolution": "720p",
     "stylePara": "Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.",
     "motionMode": "keyframes"
   },
@@ -17,11 +19,18 @@
       "desc": "juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80",
       "files": [
         "production/assets/char-juno_1795466303774_1.png",
-        "production/assets/char-juno_1795466303774_2.png"
+        "production/assets/char-juno_1795466303774_2.png",
+        "production/assets/char-juno_1795507423561_1.png",
+        "production/assets/char-juno_1795507423561_2.png"
       ],
       "chosen": "production/assets/char-juno_1795466303774_1.png",
-      "status": "approved",
-      "prompt": "Character reference sheet: juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80. Four views side by side (front, three-quarter, side, back), full body, neutral pose, flat mid-grey background, even flat light, no text. Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter."
+      "status": "review",
+      "prompt": "The exact same character shown in reference image 1 (juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80). Show a head-and-shoulders portrait, front, neutral expression, flat mid-grey background. Preserve identity, proportions, colours and every detail exactly; do not redesign anything. Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.",
+      "name": "juno",
+      "picks": [
+        "production/assets/char-juno_1795466303774_1.png"
+      ],
+      "role": "STRICT JUNO IDENTITY: face, hair, body proportions and costume exactly as shown"
     },
     {
       "id": "product",
@@ -36,23 +45,43 @@
       ],
       "chosen": "production/assets/product_1795466537866_1.png",
       "status": "approved",
-      "prompt": "Product reference sheet: Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters. Copy the exact shape, proportions and colours of the bottle in the reference render. Three views (front, three-quarter, back) of the same single product on a flat mid-grey background, even studio light, nothing else in frame, label text exactly as given, no other text. Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter."
+      "prompt": "Product reference sheet: Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters. Copy the exact shape, proportions and colours of the bottle in the reference render. Three views (front, three-quarter, back) of the same single product on a flat mid-grey background, even studio light, nothing else in frame, label text exactly as given, no other text. Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.",
+      "name": "Sprigly",
+      "picks": [
+        "production/assets/product_1795466537866_1.png"
+      ],
+      "role": "EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it"
     },
     {
       "id": "place-kitchen",
       "kind": "place",
       "desc": "kitchen at day, empty, wide three-quarter view",
-      "files": [],
-      "chosen": null,
-      "status": "todo"
+      "files": [
+        "production/assets/place-kitchen_1795507272861_1.png",
+        "production/assets/place-kitchen_1795507272861_2.png",
+        "production/assets/place-kitchen_1795507369986_1.png",
+        "production/assets/place-kitchen_1795507369986_2.png"
+      ],
+      "chosen": "production/assets/place-kitchen_1795507272861_1.png",
+      "status": "approved",
+      "name": "kitchen",
+      "picks": [
+        "production/assets/place-kitchen_1795507272861_1.png",
+        "production/assets/place-kitchen_1795507369986_2.png"
+      ],
+      "role": "STRICT KITCHEN ENVIRONMENT: architecture, materials, colours and lighting exactly as shown",
+      "prompt": "The exact same place shown in reference image 1 (kitchen at day, empty, wide three-quarter view). Show the reverse angle of the same room, as if the camera turned around 180 degrees, same furniture, materials and light. Preserve identity, proportions, colours and every detail exactly; do not redesign anything. Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter."
     },
     {
       "id": "place-evening",
       "kind": "place",
-      "desc": "kitchen at dusk, empty, wide three-quarter view",
+      "desc": "the same kitchen at dusk, warm low sun through the window",
       "files": [],
       "chosen": null,
-      "status": "todo"
+      "status": "todo",
+      "name": "evening",
+      "picks": [],
+      "role": "STRICT EVENING ENVIRONMENT: architecture, materials, colours and lighting exactly as shown"
     }
   ],
   "shots": [
@@ -64,16 +93,15 @@
       "route": "seedance",
       "refs": [
         "char-juno",
-        "product",
-        "place-kitchen"
+        "place-kitchen",
+        "product"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80; image 2 is Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters; image 3 is kitchen at day, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: exactly 1 person: juno (she, 30s, small flat, loves her fern). No one else in frame.\nPLACE: kitchen, day, a small warm flat kitchen with a window over the counter.\nACTION: juno stands left, annoyed pose, facing right; a fern droopy right; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle (body #3E8E5A, cap #F2C14E, label #FFF6E5, labelInk #234D33, accent #E8613C), label \"SPRIGLY\". Never change its shape or colours.\nCAMERA: slow push-in.\n(The words \"Sunday standoff.\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "previz",
+      "layoutRef": true,
+      "seed": 81243209,
       "previz": {
         "kind": "kit",
         "file": "production/previz/s1.mp4",
-        "at": "2026-11-23T20:37:31.562Z"
+        "at": "2026-11-24T08:13:17.515Z"
       },
       "takes": [
         {
@@ -90,30 +118,74 @@
           ],
           "firstFrame": "production/keys/s1_first_1795466618880_2.png",
           "mode": "keyframes"
+        },
+        {
+          "n": 2,
+          "kind": "draft",
+          "file": "production/takes/s1_t02.mp4",
+          "cost": 0.27181,
+          "job": "gen-vid-1795507666-QaOlIZfqzZlunmjQs9Jy",
+          "mock": false,
+          "at": "2026-11-24T08:10:34.793Z",
+          "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, a slow steady push-in of about 10% over the whole shot, ending on a medium two-shot of Juno and the fern.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\n- reference image 4: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 5: CONTEXTUAL POSITIONING ONLY: who stands where, spacing, the fern and bottle placement and the camera side. NOT a starting frame, not a style reference.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: Sunday morning light from the window. Juno stands on the left third of the frame, full figure, feet on the floor, three-quarter to the right, facing the counter. On the counter at the right: a small blue pot with a droopy fern whose fronds hang limp over the rim; at the far right end of the counter the small Sprigly bottle stands upright, unnoticed, in soft focus. The counter edge runs across the lower middle of the frame; the window is centred above it. Keep the upper third of the frame calm and uncluttered.\nACTION: 0–1 s: Juno and the fern face each other in silence, like a standoff; Juno's arms hang, her brows pull down, her mouth flat. 1–2.5 s: she narrows her eyes and leans her head slightly forward; one droopy frond twitches and sags a little lower, as if answering. 2.5–4 s: she exhales through her nose, shoulders dropping a fraction; the fern does not move. Small, restrained acting: no big gestures, no turning to camera.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the Sprigly bottle stays exactly where it is at the right end of the counter (it will be revealed later); the fern stays droopy; the same morning light as the kitchen references.",
+          "seed": 81243209,
+          "refs": [
+            "production/assets/char-juno_1795466303774_1.png",
+            "production/assets/place-kitchen_1795507272861_1.png",
+            "production/assets/place-kitchen_1795507369986_2.png",
+            "production/assets/product_1795466537866_1.png",
+            "production/previz/s1_mid.png"
+          ]
+        },
+        {
+          "n": 3,
+          "kind": "draft",
+          "file": "production/takes/s1_t03.mp4",
+          "cost": 0.27181,
+          "job": "gen-vid-1795508000-N2zX9dLx3iakm5ct67LA",
+          "mock": false,
+          "at": "2026-11-24T08:15:32.242Z",
+          "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, a slow steady push-in of about 10% over the whole shot, ending on a medium two-shot of Juno and the fern.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\n- reference image 4: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 5: CONTEXTUAL POSITIONING ONLY: a grey blockout sketch; use it only for who stands where, spacing, the fern and bottle placement and the camera side. NOT a starting frame; take no colours, shapes or style from it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: Sunday morning light from the window. Juno stands on the left third of the frame, full figure, feet on the floor, three-quarter to the right, facing the counter. On the counter at the right: a small blue pot with a droopy fern whose fronds hang limp over the rim; at the far right end of the counter the small Sprigly bottle stands upright, unnoticed, in soft focus. The counter edge runs across the lower middle of the frame; the window is centred above it. Keep the upper third of the frame calm and uncluttered.\nACTION: 0–1 s: Juno and the fern face each other in silence, like a standoff; Juno's arms hang, her brows pull down, her mouth flat. 1–2.5 s: she narrows her eyes and leans her head slightly forward; one droopy frond twitches and sags a little lower, as if answering. 2.5–4 s: she exhales through her nose, shoulders dropping a fraction; the fern does not move. Small, restrained acting: no big gestures, no turning to camera.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the Sprigly bottle stays exactly where it is at the right end of the counter (it will be revealed later); the fern stays droopy; the same morning light as the kitchen references.",
+          "seed": 81243209,
+          "refs": [
+            "production/assets/char-juno_1795466303774_1.png",
+            "production/assets/place-kitchen_1795507272861_1.png",
+            "production/assets/place-kitchen_1795507369986_2.png",
+            "production/assets/product_1795466537866_1.png",
+            "production/previz/s1_layout.png"
+          ]
+        },
+        {
+          "n": 4,
+          "kind": "final",
+          "file": "production/takes/s1_final04.mp4",
+          "cost": 0.93411,
+          "job": "gen-vid-1795508148-HEIV6i0Y2mWuzQcUG4gx",
+          "mock": false,
+          "at": "2026-11-24T08:20:01.004Z",
+          "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, a slow steady push-in of about 10% over the whole shot, ending on a medium two-shot of Juno and the fern.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\n- reference image 4: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 5: CONTEXTUAL POSITIONING ONLY: a grey blockout sketch; use it only for who stands where, spacing, the fern and bottle placement and the camera side. NOT a starting frame; take no colours, shapes or style from it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: Sunday morning light from the window. Juno stands on the left third of the frame, full figure, feet on the floor, three-quarter to the right, facing the counter. On the counter at the right: a small blue pot with a droopy fern whose fronds hang limp over the rim; at the far right end of the counter the small Sprigly bottle stands upright, unnoticed, in soft focus. The counter edge runs across the lower middle of the frame; the window is centred above it. Keep the upper third of the frame calm and uncluttered.\nACTION: 0–1 s: Juno and the fern face each other in silence, like a standoff; Juno's arms hang, her brows pull down, her mouth flat. 1–2.5 s: she narrows her eyes and leans her head slightly forward; one droopy frond twitches and sags a little lower, as if answering. 2.5–4 s: she exhales through her nose, shoulders dropping a fraction; the fern does not move. Small, restrained acting: no big gestures, no turning to camera.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the Sprigly bottle stays exactly where it is at the right end of the counter (it will be revealed later); the fern stays droopy; the same morning light as the kitchen references.",
+          "seed": 81243209,
+          "refs": [
+            "production/assets/char-juno_1795466303774_1.png",
+            "production/assets/place-kitchen_1795507272861_1.png",
+            "production/assets/place-kitchen_1795507369986_2.png",
+            "production/assets/product_1795466537866_1.png",
+            "production/previz/s1_layout.png"
+          ]
         }
       ],
-      "chosen": "production/takes/s1_t01.mp4",
-      "status": "finished",
+      "chosen": "production/takes/s1_t03.mp4",
+      "status": "review",
       "notes": "",
-      "keyOptions": {
-        "first": [
-          "production/keys/s1_first_1795466618880_1.png",
-          "production/keys/s1_first_1795466618880_2.png"
-        ],
-        "last": [
-          "production/keys/s1_last_1795466683197_1.png",
-          "production/keys/s1_last_1795466683197_2.png"
-        ]
-      },
-      "keys": {
-        "first": "production/keys/s1_first_1795466618880_2.png",
-        "last": "production/keys/s1_last_1795466683197_1.png"
-      },
+      "promptBy": "claude",
+      "promptEdited": false,
       "final": {
         "file": "production/final/s1.mp4",
         "engine": "comfy",
         "at": "2026-11-23T21:08:19.443Z"
-      }
+      },
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, a slow steady push-in of about 10% over the whole shot, ending on a medium two-shot of Juno and the fern.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\n- reference image 4: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 5: CONTEXTUAL POSITIONING ONLY: a grey blockout sketch; use it only for who stands where, spacing, the fern and bottle placement and the camera side. NOT a starting frame; take no colours, shapes or style from it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: Sunday morning light from the window. Juno stands on the left third of the frame, full figure, feet on the floor, three-quarter to the right, facing the counter. On the counter at the right: a small blue pot with a droopy fern whose fronds hang limp over the rim; at the far right end of the counter the small Sprigly bottle stands upright, unnoticed, in soft focus. The counter edge runs across the lower middle of the frame; the window is centred above it. Keep the upper third of the frame calm and uncluttered.\nACTION: 0–1 s: Juno and the fern face each other in silence, like a standoff; Juno's arms hang, her brows pull down, her mouth flat. 1–2.5 s: she narrows her eyes and leans her head slightly forward; one droopy frond twitches and sags a little lower, as if answering. 2.5–4 s: she exhales through her nose, shoulders dropping a fraction; the fern does not move. Small, restrained acting: no big gestures, no turning to camera.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the Sprigly bottle stays exactly where it is at the right end of the counter (it will be revealed later); the fern stays droopy; the same morning light as the kitchen references.",
+      "finalTake": "production/takes/s1_final04.mp4"
     },
     {
       "id": "s2",
@@ -123,17 +195,20 @@
       "route": "seedance",
       "refs": [
         "char-juno",
-        "product",
-        "place-kitchen"
+        "place-kitchen",
+        "product"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80; image 2 is Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters; image 3 is kitchen at day, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: exactly 1 person: juno (she, 30s, small flat, loves her fern). No one else in frame.\nPLACE: kitchen, day, a small warm flat kitchen with a window over the counter.\nACTION: juno stands left, think pose, facing right; a fern droopy right; a drop right; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle (body #3E8E5A, cap #F2C14E, label #FFF6E5, labelInk #234D33, accent #E8613C), label \"SPRIGLY\". Never change its shape or colours.\nCAMERA: locked off, eye level.\n(The words \"A splash? A glug?\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "none",
+      "layoutRef": false,
+      "seed": 81243210,
       "previz": null,
       "takes": [],
       "chosen": null,
       "status": "todo",
-      "notes": ""
+      "notes": "",
+      "promptBy": "claude",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, locked off, medium shot of Juno at the counter.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\n- reference image 4: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: the same kitchen and light. Juno stands at the counter on the left, the droopy fern in its blue pot centre-right, the Sprigly bottle at the far right edge of the counter, partly out of focus.\nACTION: 0–1.5 s: Juno tips a small watering can over the fern, unsure, pouring a short splash, then stopping. 1.5–3 s: she hesitates, tilts her head, pours a second, bigger glug. 3–4 s: she sets the can down and scratches the back of her head, frowning at the fern, which stays limp. Hands and the can in clear view; water drops visible.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the bottle never moves and nobody looks at it yet; Juno's outfit and bun exactly as the reference."
     },
     {
       "id": "s3",
@@ -144,14 +219,17 @@
       "refs": [
         "place-kitchen"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is kitchen at day, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nPLACE: kitchen, day, a small warm flat kitchen with a window over the counter.\nACTION: a fern droopy centre.\nCAMERA: slow push-in.\n(The words \"Still sulking.\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "none",
+      "layoutRef": false,
+      "seed": 81243211,
       "previz": null,
       "takes": [],
       "chosen": null,
       "status": "todo",
-      "notes": ""
+      "notes": "",
+      "promptBy": "claude",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 50 mm lens, close-up on the fern on the counter, very slow push-in.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: close-up of the small blue pot on the kitchen counter, the droopy paper fern filling the frame, window light from behind.\nACTION: 0–4 s: the fern's fronds sag slowly, one frond drops a little lower with a tiny paper rustle; a single water drop slides off a leaf onto the counter. Nothing else moves.\nCAST RULE: no people in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: the same pot, fern and counter as in the previous shots."
     },
     {
       "id": "s4",
@@ -160,16 +238,37 @@
       "seconds": 4,
       "route": "seedance",
       "refs": [
-        "product"
+        "product",
+        "place-kitchen"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: no people; the product is the subject.\nPLACE: studio, day.\nACTION: the bottle is revealed large in the centre, light blooming behind it; a leaf left; a sparkle right.\nPRODUCT: Sprigly, a bottle (body #3E8E5A, cap #F2C14E, label #FFF6E5, labelInk #234D33, accent #E8613C), label \"SPRIGLY\". Never change its shape or colours.\nCAMERA: locked off, eye level.\n(The words \"One capful per litre.\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "none",
+      "layoutRef": false,
+      "seed": 81243212,
       "previz": null,
-      "takes": [],
+      "takes": [
+        {
+          "n": 1,
+          "kind": "draft",
+          "file": "production/takes/s4_t01.mp4",
+          "cost": 0.27181,
+          "job": "gen-vid-1795507840-djBmyYTZ234vOYklpZKb",
+          "mock": false,
+          "at": "2026-11-24T08:12:35.235Z",
+          "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 50 mm lens, low angle at counter height, a slow push-in toward the bottle, ending on a hero close-up.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: the Sprigly bottle stands alone in the centre of the frame on the kitchen counter, label facing the camera, the window glowing softly behind it; the kitchen falls into a soft, warm blur.\nACTION: 0–1 s: the bottle stands still in morning light. 1–2.5 s: a beam of window light slides across the counter and lands on the bottle; the yellow cap catches a soft highlight. 2.5–4 s: the camera settles on a clean hero close-up, the SPRIGLY label crisp and readable, a few paper dust motes drifting in the light. The bottle itself never moves or changes.\nCAST RULE: no people in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nPRODUCT: Sprigly: green body, yellow cap, cream label printed SPRIGLY. Never change its shape, colours or label; the label text must stay exactly SPRIGLY.\nCONTINUITY: the same bottle as in shot s1, where it stood at the end of the counter.",
+          "seed": 81243212,
+          "refs": [
+            "production/assets/product_1795466537866_1.png",
+            "production/assets/place-kitchen_1795507272861_1.png",
+            "production/assets/place-kitchen_1795507369986_2.png"
+          ]
+        }
+      ],
       "chosen": null,
-      "status": "todo",
-      "notes": ""
+      "status": "review",
+      "notes": "",
+      "promptBy": "claude",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 50 mm lens, low angle at counter height, a slow push-in toward the bottle, ending on a hero close-up.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: the Sprigly bottle stands alone in the centre of the frame on the kitchen counter, label facing the camera, the window glowing softly behind it; the kitchen falls into a soft, warm blur.\nACTION: 0–1 s: the bottle stands still in morning light. 1–2.5 s: a beam of window light slides across the counter and lands on the bottle; the yellow cap catches a soft highlight. 2.5–4 s: the camera settles on a clean hero close-up, the SPRIGLY label crisp and readable, a few paper dust motes drifting in the light. The bottle itself never moves or changes.\nCAST RULE: no people in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nPRODUCT: Sprigly: green body, yellow cap, cream label printed SPRIGLY. Never change its shape, colours or label; the label text must stay exactly SPRIGLY.\nCONTINUITY: the same bottle as in shot s1, where it stood at the end of the counter."
     },
     {
       "id": "s5",
@@ -182,14 +281,17 @@
         "product",
         "place-kitchen"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80; image 2 is Sprigly: a bottle with a #3E8E5A green body, a #F2C14E yellow cap and a #FFF6E5 cream label printed \"SPRIGLY\" in #234D33 dark green letters; image 3 is kitchen at day, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: exactly 1 person: juno (she, 30s, small flat, loves her fern). No one else in frame.\nPLACE: kitchen, day, a small warm flat kitchen with a window over the counter.\nACTION: juno stands left, hold pose, facing right; the bottle is small on the left; a fern right.\nPRODUCT: Sprigly, a bottle (body #3E8E5A, cap #F2C14E, label #FFF6E5, labelInk #234D33, accent #E8613C), label \"SPRIGLY\". Never change its shape or colours.\nCAMERA: locked off, eye level.\n(The words \"Every two weeks.\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "none",
+      "layoutRef": true,
+      "seed": 81243213,
       "previz": null,
       "takes": [],
       "chosen": null,
       "status": "todo",
-      "notes": ""
+      "notes": "",
+      "promptBy": "claude",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, locked off, medium shot.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: EXACT SPRIGLY BOTTLE: green body, yellow cap, cream label printed SPRIGLY; shape, proportions and colours exactly as shown; never redesign it.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 4: CONTEXTUAL POSITIONING ONLY: a grey blockout sketch; use it only for who stands where, spacing, the fern and bottle placement and the camera side. NOT a starting frame; take no colours, shapes or style from it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: Juno stands centre-left at the counter holding the Sprigly bottle in both hands at waist height; the fern in its pot on the counter to the right, already a little less droopy.\nACTION: 0–1.5 s: Juno unscrews the yellow cap and turns it upside down: it is a small measuring cup. 1.5–3 s: she pours exactly one capful into the watering can, carefully, eyes on the line. 3–4 s: she looks at the fern and gives a small satisfied nod.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: Juno's outfit and bun as before; the bottle exactly as the reference."
     },
     {
       "id": "s6",
@@ -199,17 +301,22 @@
       "route": "seedance",
       "refs": [
         "char-juno",
-        "place-evening"
+        "place-kitchen"
       ],
-      "prompt": "4-second vertical 9:16 shot, one continuous take, no cuts. No music, no subtitles, no on-screen text, no logos other than the product label. Motion at real-time speed.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nREFERENCES: image 1 is juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80; image 2 is kitchen at dusk, empty, wide three-quarter view. Keep every face, outfit, colour and the product exactly as in the references.\nMOTION: start exactly on the first frame and end exactly on the last frame; move naturally between them.\nCAST: exactly 1 person: juno (she, 30s, small flat, loves her fern). No one else in frame.\nPLACE: kitchen, dusk, a small warm flat kitchen with a window over the counter.\nACTION: juno stands left, happy pose, facing right; a fern right; a mug centre; a steam centre.\nCAMERA: locked off, eye level.\n(The words \"Sunday, solved.\" are added later in the edit; leave clean space in the upper third.)",
-      "promptEdited": false,
-      "firstFrame": "none",
+      "layoutRef": false,
+      "seed": 81243214,
       "previz": null,
       "takes": [],
       "chosen": null,
       "status": "todo",
-      "notes": ""
+      "notes": "",
+      "promptBy": "claude",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter. Everything is handmade paper and card: visible paper fibres, slightly uneven cut edges, small soft drop shadows between layers, matte surfaces, no plastic shine, no photoreal skin.\nCAMERA: 35 mm lens, eye level, a very slow pull-out.\nMUSIC: FALSE. No music, no score. Diegetic sound only: paper rustle, a soft room tone.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement with the slight stepped rhythm of stop-motion on twos; natural weight; never floaty, never jerky; no slow motion.\nREFERENCES:\n- reference image 1: STRICT JUNO IDENTITY: face, hair (dark brown bun with loose strands), body proportions and costume (rust-orange t-shirt, blue-grey cuffed trousers, cream flat shoes) exactly as shown.\n- reference image 2: STRICT KITCHEN ENVIRONMENT, view 1: window above the counter, sage-green cabinets, open shelves, pendant lamp; materials, colours and lighting exactly as shown.\n- reference image 3: STRICT KITCHEN ENVIRONMENT, view 2: the same kitchen from a wider angle; use it to keep the room consistent when the camera sees more of it.\nPreserve complete character, product and location consistency with the references throughout the shot.\nSETTING AND BLOCKING: the same kitchen in warm late-afternoon light; Juno stands on the left with a mug in her hand; the fern on the counter to the right stands upright and healthy.\nACTION: 0–2 s: Juno sips from her mug and glances at the fern. 2–4 s: she smiles softly; one fern frond sways gently in the warm light, as if relaxed. Calm, quiet, no big gestures.\nCAST RULE: exactly 1 person (Juno). Nobody else in frame.\nNO TEXT: no subtitles, no captions, no on-screen words, no logos other than the printed SPRIGLY label.\n\nCONTINUITY: same room, warmer light than the morning shots; the fern's pot and position unchanged."
     }
   ],
-  "updated": "2026-11-23T21:08:19.443Z"
+  "updated": "2026-11-24T08:20:01.004Z",
+  "promptsReason": "Every shot names its references in send order with the elements' role lines: Juno's approved turnaround, the two kitchen views, and the Blender-checked bottle. Blocking matters in s1 (the standoff: Juno left, fern and bottle right) and s5 (the bottle in her hands), so those get the previz still as a positioning-only last reference; the rest rely on prompting. No first or last frames. Motion is written second by second, with the stop-motion rhythm and real-time speed spelled out so the paper look stays handmade.",
+  "promptsBy": "inbox"
 }

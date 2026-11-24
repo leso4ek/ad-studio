@@ -62,6 +62,40 @@ Write every multi-shot Seedance prompt in this order. The base explains each blo
 - **Negatives:** the base rule stands for objects (never name a thing you do not want). The top films did keep three kinds of standing "no": no music, no subtitles, and the rendering mode the look must avoid ("no 3D, no CGI, no smooth interpolation" for hand-drawn anime). Keep those; nothing else.
 - **Length:** the winners wrote 7,000–20,000 characters for a scene. Stay under about 10,000 unless tested; cut repeated mood words before any prop, position or state.
 
+## Reference-assigned prompts (how the contest creators keep everything consistent)
+
+Measured from the generation records of The Date, Last Signal, Out of Character and Omokage (`research/teardowns/`, `research/higgsfield-contest-analysis.md`). Ad Studio's shot board works this way.
+
+1. **Elements first.**
+   - Every character, place, product and recurring prop is made once as approved images: a character portrait + turnaround, a place wide + reverse/detail angle, a product in 2–3 views.
+   - Extra angles are always generated **from the approved image** ("the exact same coupe shown in the reference… rear three-quarter view; preserve proportions, paint, chrome").
+   - Products are better with a 3D render as the first reference.
+2. **2–6 reference images per shot**, in a fixed order, each with a **role line** that says what to copy from it:
+   - `STRICT <NAME> IDENTITY: face, hair, body proportions and costume exactly as shown`
+   - `STRICT <PLACE> ENVIRONMENT: architecture, materials, colours and lighting exactly as shown`
+   - `EXACT <PRODUCT> PRODUCT: shape, proportions, colours and label exactly as shown; never redesign it`
+   - When blocking matters, add a rough layout image **last**: `CONTEXTUAL POSITIONING ONLY: who stands where, spacing, product placement, camera side. NOT a starting frame, not a style reference`.
+3. **No first/last frames, no motion-control video.** They degrade the picture. Consistency comes from the references; motion comes from words.
+4. **A long, structured prompt** (the winners' medians are 744–1,144 words; aim for 400–900), in this block order:
+   ```
+   FORMAT: 8 seconds, 1 shot (or 2 shots), vertical 9:16, 24 fps.
+   STYLE: <the locked style paragraph, verbatim, identical in every shot>
+   CAMERA: <lens> + one move (locked / slow push-in / handheld following …)
+   MUSIC: FALSE. Diegetic sound only.
+   CUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.
+   MOTION SPEED AND QUALITY: real-time speed, natural weight, smooth and continuous; no slow motion.
+   REFERENCES:
+   - reference image 1: <role line>
+   - reference image 2: <role line> …  (exactly in the order the images are sent)
+   SETTING AND BLOCKING: where everyone and everything is, left/right/depth, eyelines.
+   ACTION: 0–2 s … 2–5 s … 5–8 s … (one clear beat per span; hands and objects in detail)
+   CAST RULE: exactly N people (names). Nobody else in frame.
+   NO TEXT: no subtitles, captions, on-screen words or logos other than the printed label.
+   CONTINUITY: what must match the previous and next shot (props in hand, light, weather).
+   ```
+5. **Drafts, then finals.** Draft at 480p with Seedance 2.5 Flash, pick the draft, then re-make it **with the same prompt, references and seed** at 720p/1080p. Last Signal made 20 drafts for 5 finals.
+6. **Length.** 6–15 s per generation is the sweet spot; put 2 shots inside one generation only when they share a place. Words on screen are added in the edit, never generated.
+
 ## Ads: the product and the brand
 
 The story skill sets a **brand map** (plant, pulse, reveal, tag). Shoot it like this:

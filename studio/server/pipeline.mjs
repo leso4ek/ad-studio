@@ -85,14 +85,14 @@ async function decide(slug, stage, prompt, schema, signal) {
   for (const name of chain) {
     const eng = DECIDERS[name]; if (!eng) continue;
     const a = await eng.available(CFG);
-    const owner = STAGES.find(s => s.id === stage) ? stage : stage.replace(/-.*/, '');
-    if (!a.ok) { context(slug).fallback(owner, name, a.why); continue; }
+    const owner = STAGES.find(s => s.id === stage) ? stage : stage.replace(/-.*/, ''), known = STAGES.some(s => s.id === owner);
+    if (!a.ok) { if (known) context(slug).fallback(owner, name, a.why); else emit('engine', { slug, stage, engine: name, text: `${name} unavailable: ${a.why} → next`, level: 'warn' }); continue; }
     try {
-      context(slug).engine(owner, name);
+      if (known) context(slug).engine(owner, name);
       return await eng.decide(CFG, { slug, adDir: adDir(slug), stage, prompt, schema, signal });
     } catch (e) {
       if (signal?.aborted) throw e;
-      lastErr = e; context(slug).fallback(owner, name, e.message.slice(0, 300));
+      lastErr = e; if (known) context(slug).fallback(owner, name, e.message.slice(0, 300)); else emit('engine', { slug, stage, engine: name, text: e.message.slice(0, 300), level: 'warn' });
     }
   }
   throw lastErr || new Error('no decision engine available');
@@ -221,3 +221,6 @@ export async function redo(slug, id, { note } = {}) {
 
 export function cancel(slug) { const j = jobs.get(slug); if (j) j.ac.abort(); return !!j; }
 export function setMode(slug, patch) { return saveProject(slug, p => Object.assign(p, patch)); }
+
+/** Ask the decide chain (Claude CLI → inbox) a question outside the 12 stages, e.g. the shot board's prompts. */
+export const decideFor = (slug, stage, prompt, schema, signal) => decide(slug, stage, prompt, schema, signal);
