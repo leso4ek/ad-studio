@@ -124,6 +124,18 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - Claude makes 2 calls with `{fresh, noSkill, noTools, effort: low}`: about 3.5k context tokens and about $0.03 list per call, against about $0.11 for a default call.
   - The setup is cached in `out/audience/setup.json`.
   - With `decider: inbox` (Sprigly), a cloud Claude session answers both calls instead.
+- **The flow that works:**
+  1. Start with `enable_graph_memory_update: true`, so the posts reach the local graph that the report agent searches.
+  2. Wait until `twitter_completed && reddit_completed`; `runner_status` stays "running" because the process is kept alive for interviews.
+  3. Run `interview/all` with one question that doesn't name the brand.
+  4. Call `close-env`; `report/generate` returns 409 until the run is terminal and the graph writes drain, so the engine retries.
+  5. Generate the report.
+  - Checkpoints in `out/audience/run.json`: a rerun on the same dossier resumes after the last finished phase.
+- **Sprigly v1 result:** stop 3 · watch 4 · recall 2 · trust 3 · click 2 · opening unclear · $0.30 (`out/audience/`, card in `card.png`).
+  - The viewers believed the concrete dose, but doubted "every two weeks" without the season and doubted "seaweed extract". They remembered the rule more than the name, and asked "which cap?". With no size, price or stockist, purchase intent stayed low.
+  - This agrees with the scorecard's "show the pour" fix.
+  - All the MiroFish attempts while debugging cost about $0.60 together. OpenRouter key total: $3.17.
+- **Noise:** 7 of the 16 agents weren't viewers: the brand, TikTok, Reels, Shorts, a platform account, the style name and Juno. The dossier wording is now fixed for that.
 - **Cost guard:** OpenRouter's `GET /api/v1/key` usage is read before and during the run. Past the cap, `/simulation/stop` is called and the run fails. A SIGINT/SIGTERM closes the ledger entry with the measured cost.
 
 ## Environment notes

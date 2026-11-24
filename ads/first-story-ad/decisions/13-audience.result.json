@@ -1,0 +1,13 @@
+{
+  "stage": "audience",
+  "at": "2026-11-24T10:02:10.469Z",
+  "summary": "stop 3 · watch 4 · recall 2 · trust 3 · click 2 · hook unclear · $0.30",
+  "costUsd": 0.2972,
+  "stats": {
+    "agents": 16,
+    "rounds": 24,
+    "actions": 440,
+    "twitter": 168,
+    "reddit": 272
+  }
+}

@@ -227,7 +227,9 @@ Write (1) the requirement paragraph MiroFish will simulate, in plain English, an
   if (!cached) writeJSON(setupFile, setup);
   const dossier = MF.buildDossier(ctx.adDir, { segments: setup.segments, question: setup.requirement });
   const outDir = path.join(ctx.adDir, 'out', 'audience');
-  const interview = `You just saw a ${b.dur}-second ad for ${brief.product?.name} in your feed (described in the material you know). Answer in 2-4 sentences, in your own voice: did you stop or keep scrolling in the first seconds, and why? What do you remember (the brand name, what it does)? Do you believe what it says? Would you try it? Which opening would have stopped you: ${(hooks.hooks || []).map(h => `${h.id} "${h.onScreen}"`).join(', ')}?`;
+  // never name the brand here: the question would hand the viewers the answer to "what do you remember"
+  const category = String(brief.product?.what || 'a product').replace(new RegExp(brief.product?.name || '^$', 'gi'), 'it').split(/[,.]/)[0].replace(/^A /, 'a ');
+  const interview = `You just saw a ${b.dur}-second ad for ${category} in your feed (described in the material you know). Answer in 2-4 sentences, in your own voice: did you stop or keep scrolling in the first seconds, and why? What do you remember: which brand was it, and what does it do? Do you believe what it says? Would you try it? Which opening would have stopped you: ${(hooks.hooks || []).map(h => `${h.id} "${h.onScreen}"`).join(', ')}?`;
   const res = await MF.runTest(ctx.cfg, { dossier, requirement: setup.requirement, interview, name: `${b.title} · audience`, outDir }, { slug: ctx.slug, signal: ctx.signal });
   const said = (res.interviews || []).slice(0, 16).map(r => `- ${r.agent}: ${r.text.slice(0, 400)}`).join('\n');
   const posts = res.posts.slice().sort((x, y) => (y.likes || 0) - (x.likes || 0)).slice(0, 12).map(p => `- ${p.author}: ${p.text}`).join('\n');
@@ -241,7 +243,7 @@ ${res.report.slice(0, 14000)}
 TOP SIMULATED POSTS:
 ${posts || '(none)'}
 
-INTERVIEWS (every simulated viewer was asked the same question after the run):
+INTERVIEWS (every simulated agent was asked the same question after the run; MiroFish also makes agents of the brand, the characters and platforms, so weigh only the viewer groups):
 ${said || '(none)'}
 Answer with JSON matching the schema; "reason" is two sentences.`, SCHEMAS.audience, lean)).output;
   const rec = { stage: 'audience', at: new Date().toISOString(), output: { ...verdict, costUsd: res.costUsd, stats: res.stats, setup, mock: !!res.mock } };

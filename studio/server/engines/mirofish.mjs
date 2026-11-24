@@ -38,13 +38,15 @@ export function buildDossier(adDir, { segments = [], question = '' } = {}) {
   const said = (t0, t1) => lines.filter(l => l.at >= t0 - .05 && l.at < t1 - .05).map(l => `"${l.text}"`).join(' ');
   const out = [];
   out.push(`# Ad under test: ${b.title}`, '');
-  out.push(`A ${b.dur}-second vertical video ad (${brief.format?.aspect || '9:16'}) that appears between other videos in short-video feeds (TikTok, Instagram Reels, YouTube Shorts). Many people watch with the sound off; every spoken line is also burned in as a caption. People can scroll past at any second.`, '');
+  // no platform names: MiroFish turns every named organisation into an agent, and platforms are not viewers
+  out.push(`A ${b.dur}-second vertical video ad (${brief.format?.aspect || '9:16'}) that appears between other videos in the short-video feed on people's phones. Many people watch with the sound off; every spoken line is also burned in as a caption. People can scroll past at any second.`, '');
   const what = String(pr.what || 'a product').replace(/\.$/, ''), lower = what[0].toLowerCase() + what.slice(1);
   out.push(`## The product`, `${pr.name} is ${/^[A-Z](?![A-Z])/.test(what) ? lower : what}, from a new brand. ${brief.benefit || pr.benefit || ''}`.trim());
   for (const p of pr.proof || brief.proof || []) out.push(`- ${p}`);
   out.push('', `The ad only claims: ${(dec('brandmap')?.claims || []).map(c => `"${c.text}"`).join(', ') || 'what the label says'}.`, '');
   out.push(`## Who it is made for`, `${aud.who || ''}. The moment: ${aud.moment || ''}. Their problem: ${aud.pain || ''}.`.trim(), '');
-  out.push(`## Look and sound`, `${b.stylePara || ''} Music: ${b.music?.mood || 'none'}${b.music?.bpm ? `, about ${b.music.bpm} bpm` : ''}. One narrator voice.`, '');
+  const look = String(b.stylePara || '').replace(/^([^:]{0,60}):\s*/, (m, g) => `${g.toLowerCase()}, `);  // a style 'name' reads as an entity: keep it as plain description
+  out.push(`## Look and sound`, `The picture is drawn like this: ${look} Music: ${b.music?.mood || 'none'}${b.music?.bpm ? `, about ${b.music.bpm} bpm` : ''}. One narrator voice.`, '');
   out.push(`## What the viewer sees and hears, second by second`);
   for (const s of [...b.shots].sort((x, y) => x.t0 - y.t0)) {
     const seen = [], texts = [];
@@ -65,7 +67,7 @@ export function buildDossier(adDir, { segments = [], question = '' } = {}) {
     out.push('');
   }
   if (segments.length) {
-    out.push(`## The viewers in this feed`);
+    out.push(`## The viewers in this feed`, `Only these groups of viewers react and post. The product, its brand, the character${Object.keys(cast).length > 1 ? 's' : ''} in the ad and its drawing style are parts of the ad, not people who post.`);
     for (const g of segments) out.push(`- ${g.name}: ${g.who} ${g.mindset || ''}`.trim());
     out.push('');
   }
@@ -204,7 +206,9 @@ export async function runTest(cfg, p, { slug, signal, onStep = () => {} } = {}) 
       const iv = await mf(c, 'POST', '/api/simulation/interview/all', { simulation_id: ids.simulation_id, prompt: p.interview || 'You just saw this ad in your feed. Did you stop or keep scrolling, and why? What do you remember about it? Would you try the product?', platform: c.interviewPlatform || 'twitter', timeout: 300 })
         .catch(e => ({ error: e.message }));
       const res = iv.result?.results || iv.results || {};
-      const list = Object.values(res).map(r => ({ agent: r.agent_name || r.name || `viewer ${r.agent_id}`, agent_id: r.agent_id, platform: r.platform, text: String(r.response || r.answer || '').slice(0, 900) })).filter(r => r.text);
+      const prof = await mf(c, 'GET', `/api/simulation/${ids.simulation_id}/profiles?platform=${c.interviewPlatform || 'twitter'}`).catch(() => ({}));
+      const names = Object.fromEntries((prof.profiles || []).map(x => [String(x.user_id ?? x.agent_id), x.name || x.username]));
+      const list = Object.values(res).map(r => ({ agent: r.agent_name || names[String(r.agent_id)] || `viewer ${r.agent_id}`, agent_id: r.agent_id, platform: r.platform, text: String(r.response || r.answer || '').slice(0, 900) })).filter(r => r.text);
       fs.writeFileSync(path.join(outDir, 'interviews.json'), JSON.stringify(iv.error ? { error: iv.error } : list, null, 1));
       mark('interviewed'); await check();
     }

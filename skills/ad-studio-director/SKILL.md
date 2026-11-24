@@ -187,6 +187,10 @@ Runs only when the user starts it after the final; it spends at most `mirofish.c
   - 3–8 representative comments, labelled by segment and tone; concrete fixes; risks (misreadings, complaints).
   - **Confidence is low or medium, never high.** The viewers are language-model agents: the test catches confusion, mistrust and forgettable branding, but it does not predict real views or sales.
   - Where the audience test and the scorecard agree, that's a strong signal for the next cut. Where they disagree, say so and prefer the scorecard on craft and the audience on clarity.
+- **Known noise. Weigh only the viewer groups.**
+  - MiroFish makes an agent of every named entity: the brand, the characters, platforms, even a style name. The dossier avoids naming platforms and says these are parts of the ad, but some still appear.
+  - Its config step seeds the first posts and may already "predict" the winning opening. Pick `bestHook` only if the viewers' own reactions favour it.
+  - The interview question never names the brand, so the recall answers stay honest.
 
 ## Shot board prompts (Seedance route)
 - When the app asks for `production-prompts`, write every shot's prompt the way `skills/higgsfield-director` §"Reference-assigned prompts" says.

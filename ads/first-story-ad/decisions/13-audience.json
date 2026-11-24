@@ -1,0 +1,106 @@
+{
+  "stage": "audience",
+  "at": "2026-11-24T10:02:10.467Z",
+  "output": {
+    "scores": {
+      "stopScroll": 3,
+      "watchThrough": 4,
+      "brandRecall": 2,
+      "trust": 3,
+      "clickIntent": 2
+    },
+    "bestHook": "unclear",
+    "comments": [
+      {
+        "who": "Guilty plant owner",
+        "text": "One capful of what, in how much water, and does it still count if we already forgot for two months?",
+        "tone": "neutral"
+      },
+      {
+        "who": "New plant parent",
+        "text": "'One capful per litre' sounds doable. The ad called me out, I might try it.",
+        "tone": "positive"
+      },
+      {
+        "who": "New plant parent",
+        "text": "Is it the small cap or the big cap? And does winter change the every-two-weeks bit?",
+        "tone": "neutral"
+      },
+      {
+        "who": "Practical shopper",
+        "text": "No bottle size, no price, no stockist, so there's nothing to compare against the supermarket bottle.",
+        "tone": "negative"
+      },
+      {
+        "who": "Plant hobbyist",
+        "text": "NPK 3-1-2 is weak and 'seaweed extract' is a buzzword unless you say what's in it. Pass.",
+        "tone": "negative"
+      },
+      {
+        "who": "Ad-weary scroller",
+        "text": "Swiped at 'sponsored', then came back for two seconds because the paper fern was genuinely well made.",
+        "tone": "positive"
+      },
+      {
+        "who": "Plant owner",
+        "text": "The droopy fern turning healthy reads in two seconds with the sound off, and that's rare.",
+        "tone": "positive"
+      }
+    ],
+    "fixes": [
+      "Put the name on the rule: show 'Sprigly' in the same frame as 'One capful per litre' at the reveal, and say it earlier ('Then she reads the Sprigly cap'), so viewers leave with the brand and not only the dose.",
+      "Show the capful being poured into a watering can with '5 ml cap · 1 litre' on screen; it answers the most repeated question (which cap, how much water).",
+      "Caption the full label rule, 'Every two weeks · spring and summer', instead of 'Every two weeks.'; the shorter line read as year-round and made the careful viewers doubt it.",
+      "Give the end card one purchase anchor: '250 ml makes 50 L' plus where to buy (and the price once it is set).",
+      "Say what seaweed extract is for in five plain words, or drop it from the on-screen claims; hobbyists dismissed it as a buzzword."
+    ],
+    "risks": [
+      "Viewers remember the dosing rule but not the brand: the ad can teach a habit another bottle profits from.",
+      "'Every two weeks' without the season does not match the label's winter direction, which the brand had to correct in replies.",
+      "The A/B/C opening debate became a conversation about the ad's craft, not about the product.",
+      "Expert plant owners read NPK 3-1-2 as weak; this cut is for beginners and should not be targeted at hobbyist audiences."
+    ],
+    "confidence": "low",
+    "reason": "The swarm stopped and watched mostly for the paper craft, and it believed the concrete dose, but it doubted the unstated season and the seaweed claim and remembered the rule more than the name; with no size, price or stockist, purchase intent stayed low. Confidence is low: several agents were the platform, a studio account and Juno herself rather than viewers, the seed posts already guessed an opening (so no winner is picked), and the interview question named the brand, which inflates recall in the interviews.",
+    "costUsd": 0.2972,
+    "stats": {
+      "agents": 16,
+      "rounds": 24,
+      "actions": 440,
+      "twitter": 168,
+      "reddit": 272
+    },
+    "setup": {
+      "requirement": "A 20-second vertical paper cut-out video ad for Sprigly, a new liquid houseplant feed dosed with a measuring cap, appears between other short videos in the TikTok and Instagram Reels feeds of adults who keep houseplants, many watching with the sound off and captions on. Predict how these viewers react on social media: whether they stop scrolling in the first two seconds, whether they watch to the end, whether they remember the name Sprigly afterwards, whether they believe the simple claims (one capful per litre, every two weeks, with seaweed extract), whether they want to try or buy it, what they would comment or ask, and which of the three openings (A 'Sunday standoff.', B 'How much is a bit?', C 'Day 14. Still guessing.') would hold attention best.",
+      "segments": [
+        {
+          "name": "Guilty plant owners",
+          "who": "Adults in their 20s and 30s renting small flats with three to eight houseplants, who love them but have never fed them properly.",
+          "mindset": "Scroll fast in the evening; stop for anything that names a problem they feel guilty about, like a droopy plant. Doubt: does feed actually help, or is it light and watering?"
+        },
+        {
+          "name": "Plant hobbyists",
+          "who": "Keen indoor gardeners with large collections who follow plant-care accounts and already use fertiliser.",
+          "mindset": "Stop for plant content but judge it hard; they look for the NPK numbers and dose. Doubt: why switch from what they already use, and what does it cost per litre?"
+        },
+        {
+          "name": "New plant parents",
+          "who": "People who bought their first one or two plants this year, often as decor, and are anxious about killing them.",
+          "mindset": "Save and share simple how-to videos; a clear rule like 'one capful' appeals. Doubt: is this another thing they need to buy?"
+        },
+        {
+          "name": "Practical shoppers",
+          "who": "Busy adults who buy houseplant supplies at the supermarket or online when something looks wrong.",
+          "mindset": "Skip most ads in under a second unless the product is obvious and the price feels fair. Doubt: what is it, where do they get it, and how much is it?"
+        },
+        {
+          "name": "Ad-weary scrollers",
+          "who": "Viewers with no strong interest in plants who see the ad by chance and dislike sponsored posts.",
+          "mindset": "Swipe away from anything that looks like an ad; might stay only for a charming visual or a joke. Doubt: why is this in their feed at all?"
+        }
+      ],
+      "reason": "Four segments match the brief's audience at different levels of skill and interest, and one indifferent group shows whether the ad holds attention beyond the target."
+    },
+    "mock": false
+  }
+}
