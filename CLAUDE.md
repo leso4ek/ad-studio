@@ -45,7 +45,7 @@ A YouTube channel that **explains scary sci-fi stories** (mostly original ones) 
 ## Ad Studio: code-drawn story ads (round 7, Nov 2026, the current direction)
 The user dropped YouTube kids' videos as too expensive and went back to **story ads**, with **no AI-looking generation**. The stack:
 - **`studio/`**, the local web app (Node server + React/Motion/GSAP interface) on http://127.0.0.1:5170. Install with `bash studio/scripts/install_linux.sh` and start with `bash studio/scripts/start_studio.sh`; docs in `studio/README.md`; tests with `cd studio && npm test`.
-- **12 stages:** brief → premises → hooks → story → brand map → style (gate) → bible → style frames (gate) → voice → animatic (gate) → final → scorecard.
+- **Stages** (story ad): brief → premises → hooks → story → brand map → style (gate) → direction → bible → style frames (gate) → voice → animatic (gate) → final → scorecard → audience (optional). Other formats add or skip stages (round 12).
 - **Claude makes every decision.** It runs headless as `claude -p` with `--json-schema`, one resumed session per ad, and the stream shown live in the app. The fallback is the **decision inbox** (`node studio/bin/inbox.mjs list|show|answer`), which a Claude session answers.
 - **The skill is `skills/ad-studio-director/`**, the per-stage rules and the **bible format**. It builds on `skills/story-ad-playbook`.
 - **Five original styles,** drawn in code from one bible by `studio/kit/` (page.js + shapes.js + styles/*.js), with docs in `styles/ad-*/STYLE.md`:
@@ -175,6 +175,58 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - **Audience test v2:** stop 3 · watch 4 · recall 3 (v1: 2) · trust 3 · click 2 · opening C · $0.27. Price is still the purchase blocker.
   - **The reused setup paragraph named the platforms,** so they became agents again. Every text MiroFish reads now goes through `noPlatforms()`.
   - **Simulated recall is a ceiling:** all agents know the product from the graph.
+
+### Round 12: 3D formats and "Recreate a video" (25 Nov 2026)
+- **Formats** (`project.format`, chosen in the New ad dialog). Stages that don't apply show as skipped.
+  - `story-ad`: as before.
+  - `3d-skit`: style fixed to `ad-voxel-3d`, with no style gate.
+  - `3d-explainer`: adds the **3D world** stage after the bible.
+  - `recreate`: adds **Source** (code) and **Analysis** (Claude) at the start and has no premises.
+  - Cut-rate checks depend on the format: explainer 0.8–3.5 per 10 s and same-size shots allowed; recreate follows the original.
+- **`ad-voxel-3d`** (three.js, built by a subagent):
+  - box-built characters with face decals, blinking and talking mouths, and listeners who turn toward the speaker;
+  - `cast.<id>.kind: "plant"` makes a talking potted fern;
+  - a dark stage with bokeh lights;
+  - `overlay.steps` draws a top bar at y .14–.20 (**cards go at y ≥ .285 under it**);
+  - `captionMode: "words"` shows 1–3 words with one yellow emphasis word;
+  - about 0.7 s a frame on cloud CPU.
+- **Blender explainer builders** in `studio/blender/adlib.py` (subagent), documented in `studio/blender/README.md` with the example `examples/fern_water.json` (+ preview mp4 and contact sheet):
+  - parts: cutaway, pot, pipe, tank, grate, roots (drink), plant, liquid (fill/flow/fall);
+  - keys on any part: `appear`/`vanish`/`glow`;
+  - one continuous `camera.path`.
+  - **Cloud EEVEE:** about 12 s a frame at 50 %, about 5 s at 40 % (8 samples). Use a GPU on the PC.
+- **The world stage:**
+  1. Claude writes the adlib spec (+ an optional script).
+  2. One still per beat is rendered, and Claude reviews them (2 rounds at most).
+  3. The whole move is rendered, then cut into JPEG **plates** in `production/plates/world/`.
+- **Plates** (`shot.plate`, in `kit/page.js`): a rendered or generated clip drawn under the words, captions and end card. "Use picked clips in the edit" on the shot board turns chosen takes into plates.
+- **Recreate:**
+  - **Upload** a video of 60 s or less, up to 12 reference images with role and label, and a prompt (looks, wardrobe, items, product, notes).
+  - **Modes:** remake, transfer or mixed.
+  - **Rights:** a tick box gates every Genjutsu route.
+  - **`engines/analyse.mjs`:**
+    - cuts from **local peaks of the scene score** (a fixed threshold missed cuts inside one drawn set);
+    - first/middle/last stills and contact sheets;
+    - motion 0–1 with pan/tilt/handheld on 64-px grey frames;
+    - a faster-whisper transcript (`studio/tools/transcribe.py`) and loudness.
+  - **Router** (`routeFor`): `kit`, `three`, `blender`, `blender→genjutsu`, `seedance` or `genjutsu`. Mixed mode sends a shot to Genjutsu only when people move (> .2) or motion is strong (> .4).
+- **Higgsfield Genjutsu** (`engines/higgsfield.mjs`, **mock-tested only**: the hosts are blocked in the cloud and no paid tests ran this round):
+  - presigned upload, then `POST higgsfield/genjutsu/motion-transfer/v1.0` with `Authorization: Key id:secret`, then polling `requests/{id}/status`;
+  - Light mode is 15 s and Object Swap paths are configurable; API base in `higgsfield.api`;
+  - `HIGGSFIELD_KEY=id:secret` goes in `studio/.env`;
+  - its own cap `budget.higgsfieldCapUsd` ($5) and its own ledger entries; OpenRouter spend leaves them out;
+  - prices about $0.154/s at 480p, $0.34/s at 720p, $0.83/s at 1080p.
+  - **Shot board:** consecutive Genjutsu shots merge into **4–30 s spans**. Uploaded references replace the generated element they stand for and go first, in upload order. Prompts stay short.
+- **Proofs:**
+  - **`ads/sprigly-recreate/`:** v1's video was found by code as exactly 7 shots and remade as a voxel skit, with Juno and a talking fern and steps. **Scorecard 32/35** (v2 had 30); the voice was tuned through 4 redos.
+  - **`ads/sprigly-transfer/`:** Genjutsu end to end in mock mode (3 spans, about $0.77–0.92 each at 480p if real).
+  - **`ads/fern-water-explainer/`:** the 3D explainer through the app.
+  - All of round 12 cost $0.
+- **Lessons:**
+  - Kokoro voices mishear short rare words ("glug" from bm_lewis, "sulking" from bm_george); use full phrases.
+  - The inbox deletes an old answer when a new request opens, so stage answers and feed them in when the pending file appears.
+  - A stage marked done is skipped by "run from": use Redo.
+  - `ffmpeg7()` now swaps its link atomically, because parallel tests raced on it.
 
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
