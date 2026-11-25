@@ -16,6 +16,8 @@ export const api = {
   cancel: (s) => fetch(`/api/ads/${s}/cancel`, { method: 'POST' }).then(j),
   recreate: (s, b) => fetch(`/api/ads/${s}/recreate`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(j),
   plates: (s) => fetch(`/api/ads/${s}/production/plates`, { method: 'POST' }).then(j),
+  series: (s) => fetch(`/api/series/${s}`).then(j),
+  runSeries: (s, all = true) => fetch(`/api/series/${s}/run`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ all }) }).then(j),
   mode: (s, b) => fetch(`/api/ads/${s}/mode`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(j),
 };
 export const file = (slug, rel, bust) => `/files/${slug}/${rel}${bust ? `?v=${bust}` : ''}`;

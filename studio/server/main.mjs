@@ -92,6 +92,9 @@ const routes = [
   ['POST', /^\/api\/ads\/([\w-]+)\/recreate$/, async (req, res, [, s]) => { try { send(res, 200, { recreate: P.patchRecreate(s, await body(req)).recreate }); } catch (e) { send(res, 400, { error: e.message }); } }],
   ['GET', /^\/api\/ads\/([\w-]+)\/analysis$/, (req, res, [, s]) => { const a = readJSON(path.join(P.adDir(s), 'source', 'analysis', 'analysis.json')); a ? send(res, 200, a) : send(res, 404, { error: 'not analysed yet' }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/plates$/, (req, res, [, s]) => { bg(s, () => PR.usePlates(P.adDir(s), s)); send(res, 202, { ok: true }); }],
+  // short-drama series: its episodes, and running them one after another
+  ['GET', /^\/api\/series\/([\w-]+)$/, (req, res, [, s]) => send(res, 200, { episodes: P.episodesOf(s) })],
+  ['POST', /^\/api\/series\/([\w-]+)\/run$/, async (req, res, [, s]) => { const b = await body(req); P.runSeries(s, { all: b.all !== false }).catch(e => emit('job', { slug: s, kind: 'error', text: e.message })); send(res, 202, { ok: true }); }],
   // production: the shot board (previz → takes → pick), element sheets, budget
   ['GET', /^\/api\/budget$/, (req, res) => send(res, 200, PR.budget())],
   ['GET', /^\/api\/ads\/([\w-]+)\/production$/, (req, res, [, s]) => send(res, 200, { plan: PR.plan(P.adDir(s)), busy: PR.busy(s), budget: PR.budget(), recreate: P.project(s)?.recreate || null })],

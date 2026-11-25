@@ -2,18 +2,19 @@ import { useState, Fragment } from 'react';
 import { motion } from 'motion/react';
 import { api, file } from './api.js';
 import { RecreateSource, AnalysisDecision } from './Recreate.jsx';
+import { SeriesBible, Episodes } from './Series.jsx';
 
 const STATUS = { skipped: 'not part of this format', offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
 
-export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
+export default function StageDetail({ ad, meta, id, bust, onNow, refresh, onOpen }) {
   const st = meta?.stages.find(s => s.id === id); if (!st) return null;
   const x = ad.project.stages[id] || { status: 'idle' }, rec = ad.decisions[id], slug = ad.project.slug;
   const waiting = x.status === 'gate' || x.status === 'review';
   const [note, setNote] = useState(''), [redo, setRedo] = useState(false), [busy, setBusy] = useState(false);
   const act = async (fn) => { setBusy(true); try { await fn(); } catch (e) { alert(e.message); } setBusy(false); refresh(); };
   const choose = (choice) => waiting && act(() => api.approve(slug, id, choice));
-  const P = { ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh };
+  const P = { ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh, onOpen };
 
   return (
     <div>
@@ -57,9 +58,11 @@ function Why({ rec }) {
   return <div className="card hero"><div className="who">◆ Claude{rec.meta?.engine === 'inbox' ? ' (via the decision inbox)' : ''}{rec.note ? ` · redo note: "${rec.note}"` : ''}</div><div className="reason">{rec.output.reason}</div></div>;
 }
 
-function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh }) {
+function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh, onOpen }) {
   const o = rec?.output;
   switch (id) {
+    case 'series': return o ? <SeriesBible rec={rec} /> : <Pending x={x} />;
+    case 'episodes': return <Episodes slug={slug} onOpen={onOpen} />;
     case 'source': return <RecreateSource ad={ad} meta={meta} slug={slug} x={x} refresh={refresh} />;
     case 'analysis': return o ? <AnalysisDecision rec={rec} slug={slug} /> : <Pending x={x} />;
     case 'world': return (x.outputs || []).length ? <>

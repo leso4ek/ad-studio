@@ -118,7 +118,7 @@ export default function App() {
             <motion.div key={(s.slug || '') + view + (view === 'pipeline' ? selected : '')} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: .18 }}>
               {s.ad && view === 'board' ? <ShotBoard slug={s.slug} events={s.events} />
                 : view === 'memory' ? <Memory slug={s.slug} />
-                : s.ad ? <StageDetail ad={s.ad} meta={s.meta} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} />
+                : s.ad ? <StageDetail ad={s.ad} meta={s.meta} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} onOpen={slug => { d({ type: 'slug', slug }); setFollow(true); }} />
                 : <div className="empty">{s.ads.length ? 'Loading…' : <>No ads yet. <button className="btn primary" onClick={() => setDlg('new')}>Make the first ad</button></>}</div>}
             </motion.div>
           </AnimatePresence>

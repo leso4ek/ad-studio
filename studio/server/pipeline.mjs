@@ -43,13 +43,13 @@ export function listAds() {
     .sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
 }
 
-export function createAd({ name, brief = {}, mode = 'autopilot', autoGates = false, decider, format = 'story-ad', recreate }) {
+export function createAd({ name, brief = {}, mode = 'autopilot', autoGates = false, decider, format = 'story-ad', recreate, parent, episode, slug: wanted }) {
   if (!FORMATS.includes(format)) throw new Error(`unknown format ${format}`);
   if (recreate?.mode && !RECREATE_MODES.includes(recreate.mode)) throw new Error(`unknown recreate mode ${recreate.mode}`);
-  let slug = slugify(name || brief.product || 'new-ad'), k = 2;
-  while (fs.existsSync(adDir(slug))) slug = `${slugify(name || 'new-ad')}-${k++}`;
+  let slug = wanted || slugify(name || brief.product || brief.topic || brief.idea || 'new-ad'), k = 2;
+  const base = slug; while (fs.existsSync(adDir(slug))) slug = `${base}-${k++}`;
   fs.mkdirSync(path.join(adDir(slug), 'decisions'), { recursive: true });
-  const p = { slug, title: name || 'New ad', created: now(), updated: now(), mode, autoGates, decider: decider || null, format, ...(format === 'recreate' ? { recreate: { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {}, ...(recreate || {}) } } : {}), userBrief: brief, stages: Object.fromEntries(STAGES.map(s => [s.id, { status: 'idle' }])) };
+  const p = { slug, title: name || 'New ad', created: now(), updated: now(), mode, autoGates, decider: decider || null, format, ...(parent ? { parent, episode } : {}), ...(format === 'recreate' ? { recreate: { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {}, ...(recreate || {}) } } : {}), userBrief: brief, stages: Object.fromEntries(STAGES.map(s => [s.id, { status: 'idle' }])) };
   writeJSON(pj(slug), p);
   emit('ad', { slug, kind: 'created', title: p.title });
   return p;
@@ -85,6 +85,12 @@ function context(slug, signal) {
     engine(stage, name) { setStage(slug, stage, { engine: name }); },
     validateBible: async b => [...validate(SCHEMAS.bible, b), ...checkBible(b), ...lintBible(b).filter(i => i.level === 'error').map(i => `${i.where}: ${i.why} ("${i.match}")`)],
     decide: (sub, prompt, schema, opts) => decide(slug, sub, prompt, schema, signal, opts),
+    // a child project (short-drama episode) that inherits the parent's decider, mode and gates; reused when it exists
+    createChild({ suffix, ...o }) {
+      const p = project(slug), want = `${slug}-${suffix}`;
+      if (fs.existsSync(pj(want))) return project(want);
+      return createAd({ ...o, slug: want, parent: slug, mode: p.mode, autoGates: p.autoGates, decider: p.decider });
+    },
   };
   return ctx;
 }
@@ -297,4 +303,22 @@ export function patchRecreate(slug, patch) {
     if (patch.removeRef) p.recreate.refs = (p.recreate.refs || []).filter(r => r.file !== patch.removeRef);
     if (patch.refLabel) p.recreate.refs = (p.recreate.refs || []).map(r => r.file === patch.refLabel.file ? { ...r, label: patch.refLabel.label ?? r.label, role: patch.refLabel.role ?? r.role } : r);
   });
+}
+
+/** short-drama series: its episodes in order, with a status line each */
+export function episodesOf(slug) {
+  return listAds().map(a => project(a.slug)).filter(p => p?.parent === slug).sort((a, b) => a.episode - b.episode)
+    .map(p => ({ slug: p.slug, episode: p.episode, title: p.title, running: jobs.has(p.slug), done: Object.entries(p.stages).filter(([, s]) => ['done', 'skipped'].includes(s.status)).length,
+      waiting: Object.entries(p.stages).find(([, s]) => ['gate', 'review', 'error'].includes(s.status))?.[0] || null, final: fs.existsSync(path.join(adDir(p.slug), 'out', `${p.slug}-9x16.mp4`)) ? `out/${p.slug}-9x16.mp4` : null }));
+}
+/** run the episodes one after another (each stops at its gates like any video); all = keep going after one finishes */
+export async function runSeries(slug, { all = true } = {}) {
+  for (const e of episodesOf(slug)) {
+    const p = project(e.slug), open = Object.values(p.stages).some(s => !['done', 'skipped', 'offer'].includes(s.status));
+    if (!open) continue;
+    if (jobs.has(e.slug)) return;
+    await runFrom(e.slug);
+    const after = project(e.slug);
+    if (Object.values(after.stages).some(s => ['gate', 'review', 'error'].includes(s.status)) || !all) return;
+  }
 }

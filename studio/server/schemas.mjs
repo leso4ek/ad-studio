@@ -7,7 +7,7 @@ const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined 
 
 export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book', 'ad-voxel-3d'];
 // round 12: what an ad is made as, and how each shot is made
-export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-episode'];
+export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-series', 'drama-episode'];
 /** formats that sell nothing by default (a sponsor product stays optional) */
 export const VIDEO_FORMATS = ['explainer', 'drama-episode'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
@@ -40,6 +40,21 @@ export const topicBrief = S({
   sponsor: S({ name: str(), what: str() }, []), reason: str(),
 }, ['topic', 'question', 'audience', 'angle', 'facts', 'format', 'tone', 'channel', 'cta', 'reason']);
 
+// short-drama series: one series bible, then N episode projects that share its cast, places and style
+const look = S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex,
+  build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, kind: { type: 'string', enum: ['person', 'plant'] } }, ['skin', 'hairStyle']);
+export const seriesBible = S({
+  title: str('the series title'), logline: str('one sentence: who wants what, against what'), genre: str(), tone: str(), hookPromise: str('what the viewer is promised if they keep watching'),
+  characters: arr(S({ id: str('lowercase cast id'), name: str(), role: str('she/he/they, age, what they do'), want: str(), fear: str(), secret: str(), look, voice: str('a Kokoro voice id, e.g. af_heart, am_michael, bf_emma, bm_george') },
+    ['id', 'name', 'role', 'want', 'fear', 'look', 'voice']), 2, 6),
+  places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] } }, ['kind']) },
+  arc: str('the season arc in 3-5 sentences'),
+  episodes: arr(S({ n: { type: 'integer', minimum: 1 }, title: str(), hook: str('the first 2-3 s: from episode 2 on, it re-hooks the last cliffhanger'), beats: arr(str(), 3, 7),
+    cliffhanger: S({ moment: str('what we see in the last second'), line: str('the last spoken line, or ""'), question: str('the open question the viewer is left with') }), seconds: { type: 'number', minimum: 30, maximum: 50 } },
+    ['n', 'title', 'hook', 'beats', 'cliffhanger', 'seconds']), 1, 20),
+  reason: str(),
+}, ['title', 'logline', 'genre', 'tone', 'hookPromise', 'characters', 'places', 'arc', 'episodes', 'reason']);
+
 export const premises = S({
   premises: arr(S({ id: str(), logline: str(), emotion: str(), productRole: str('how the product causes the turn'), hookIdea: str() }), 6, 12),
   chosen: str('id of the chosen premise'), reason: str(), runnerUp: str(),
@@ -65,6 +80,8 @@ export const style = S({
   style: { type: 'string', enum: STYLES }, reason: str(),
   seedanceStyle: { type: 'string', pattern: '^[a-z0-9-]+$', description: 'the catalogue style for the Seedance route of the same ad (optional)' },
   alternatives: arr(S({ style: { type: 'string', enum: STYLES }, why_not: str() }), 1, 4),
+  palette: { type: 'object', description: 'optional colour overrides for the kit style (keys of its palette: bg, ink, accent, accent2, …) to match a style the user described' },
+  customLook: S({ name: str(), stylePara: str('the STYLE paragraph for the Seedance route'), motion: str(), avoid: arr(str(), 0, 8) }, ['name', 'stylePara'], { description: 'a look the user described, for the Seedance route (no studio, show or artist names)' }),
 }, ['style', 'reason', 'alternatives']);
 
 // stage 7 · Direction (DirectorSKILL method: a shot is a story decision; blocking before framing; continuity locks)
@@ -122,7 +139,7 @@ export const bible = S({
   product: S({ name: str(), kind: { type: 'string', enum: PRODUCT_KINDS }, label: str(), colors: { type: 'object' } }, ['name', 'kind']),
   cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str(), kind: { type: 'string', enum: ['person', 'plant'], description: 'plant: a talking potted fern (ad-voxel-3d only); top = leaves, bottom = pot' } }, ['skin', 'hairStyle']) },
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
-  palette: { type: 'object' }, fontOverride: S({ display: str('a font family from studio/kit/fonts'), body: str() }, []),
+  palette: { type: 'object' },
   shots: arr(shot, 3, 18),
   vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id') }, ['id', 'text', 'at']), 1, 14) }, ['lines']),
   captions: { type: 'boolean' },
@@ -192,4 +209,4 @@ export const world = S({
   notes: arr(str(), 0, 12), reason: str(),
 }, ['spec', 'script', 'beats', 'verdict', 'reason']);
 
-export const SCHEMAS = { analysis, world, topicBrief, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
+export const SCHEMAS = { analysis, world, topicBrief, seriesBible, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };

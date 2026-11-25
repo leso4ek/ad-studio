@@ -41,17 +41,57 @@ export const FIXED_STYLE = { '3d-skit': 'ad-voxel-3d', '3d-explainer': 'ad-voxel
 export const CUT_RATE = { 'story-ad': [1.8, 6.5], explainer: [1.2, 6.5], 'drama-episode': [1.5, 7], '3d-skit': [1.2, 6.5], '3d-explainer': [.8, 3.5], recreate: null };
 export function appliesTo(st, project) {
   const f = project?.format || 'story-ad', t = f === 'recreate' ? (project.recreate?.target || 'story-ad') : f;
+  if ((st.skip || []).includes(f)) return false;
   return !st.formats || st.formats.includes(f) || (st.targets || []).includes(t);
+}
+// ---------- short-drama series: the parent's decisions, read by its episodes ----------
+const parentDecision = (ctx, id) => {
+  const par = ctx.project?.parent; if (!par) return null;
+  const dir = path.join(ctx.cfg.adsDir, par, 'decisions'); if (!fs.existsSync(dir)) return null;
+  const f = fs.readdirSync(dir).find(x => new RegExp(`^\\d+-${id}\\.json$`).test(x)); return f ? readJSON(path.join(dir, f))?.output : null;
+};
+export const seriesOf = ctx => parentDecision(ctx, 'series');
+export const episodeOf = ctx => { const sb = seriesOf(ctx), n = ctx.project?.episode; return sb && n ? { sb, n, ep: sb.episodes.find(e => e.n === n), prev: sb.episodes.find(e => e.n === n - 1), next: sb.episodes.find(e => e.n === n + 1), last: n === sb.episodes.length } : null; };
+export const secondsOf = ctx => fmt(ctx) === 'drama-episode' ? (episodeOf(ctx)?.ep?.seconds || ctx.project?.userBrief?.seconds || 40) : (ctx.decision?.('brief')?.format?.seconds || ctx.project?.userBrief?.seconds || 20);
+/** an episode's bible inherits the series' cast, voices, places and palette: continuity is enforced by code, not by asking */
+export function seriesLocks(ctx, o) {
+  const e = episodeOf(ctx); if (!e) return o;
+  const cast = Object.fromEntries(e.sb.characters.map(c => [c.id, { ...c.look, role: c.role, voice: c.voice }]));
+  const style = parentDecision(ctx, 'style');
+  return { ...o, format: 'drama-episode', cast, places: { ...e.sb.places, ...(o.places || {}) }, ...(style?.palette ? { palette: style.palette } : {}), ...(style?.style ? { style: style.style } : {}),
+    endcard: { ...(o.endcard || {}), logo: e.last ? e.sb.title : `Part ${e.n + 1}`, line: undefined, cta: undefined } };
+}
+/** cliffhanger rules: the episode cuts on its most interesting moment */
+export function checkDrama(b) {
+  const errs = [], end = b.endcard?.t0 ?? b.dur, lines = [...(b.vo?.lines || [])].sort((x, y) => x.at - y.at);
+  if (b.dur < 30 || b.dur > 52) errs.push(`a drama episode runs 30-50 s (+ the tag); this one is ${b.dur} s`);
+  if (b.endcard && (b.dur - end < 2 || b.dur - end > 3)) errs.push('the "Part N" tag runs 2-3 s');
+  if (b.endcard?.line || b.endcard?.cta) errs.push('the tag shows only "Part N": no line, no call to action after the cliffhanger');
+  const last = lines.at(-1);
+  if (last) {
+    const ends = last.at + last.text.split(/\s+/).length / 2.9;
+    if (ends < end - 2.5) errs.push(`the last line ends ${(end - ends).toFixed(1)} s before the cut: cut within 1.5-2.5 s of the cliffhanger, no resolution after it`);
+  }
+  return errs;
 }
 const FORMAT_RULES = {
   '3d-skit': 'FORMAT 3D skit (voxel stage): two characters built from boxes talk it through on a dark stage with soft bokeh lights; the product is a voxel prop. Dialogue: short lines that alternate between the two (speaker = their cast id), close-ups that alternate between speakers with slow push-ins, a wide for the reveal; about 2-3 cuts per 10 s. When the story is a method, number it: overlay.steps = [{t0, t1, label "STEP 1", title 1-2 words}] at the top (y 0.14-0.20), so while a step shows put cards at y 0.285 or lower. Captions are 1-3 words at a time (captionMode "words"). A non-human speaker is a cast entry with kind "plant" (top = leaves, bottom = pot; skin = leaf colour, hairStyle "bald").',
   '3d-explainer': 'FORMAT 3D explainer: ONE continuous camera (no cuts) glides through a 3D world that is built layer by layer, dips into a cutaway (a cross-section of the ground or the object) and comes back. Narration is a chain: "If you… But… So…", a new problem every 4-6 s and the part that fixes it appears on that beat; about 2.8 words per second; one recurring small prop for continuity. Every fact must be true and sourced (put the sources in reason). Captions: one word at a time in the centre (captionMode "words"). The shots of the bible are the BEATS of that one camera move: the picture comes from one Blender render, so shot layers are texts only.',
   'story-ad': '',
+  'drama-episode': 'FORMAT short-drama episode: a vertical micro-drama, 30-50 s, dialogue between the series characters (speaker = their cast id; their voices are fixed), close-ups and two-shots, a cut every 2-4 s, tension rising every beat. From episode 2 on, the first 2-3 s re-hook the previous cliffhanger. The episode CUTS ON ITS MOST INTERESTING MOMENT: the last line or reveal lands within 1.5 s of the cut, nothing resolves after it, then only a 2-3 s "Part N" tag (no line, no call to action). Captions 1-3 words (captionMode "words").',
   explainer: 'FORMAT explainer (a video, not an ad): one question the viewer never asked but wants answered, answered in plain steps with drawn diagrams, labels and simple characters. Narration as a chain (If you… But… So…) or "3 things"; a new beat every 4-6 s; every fact from the topic brief and nothing else. No product unless the brief has a sponsor (then only a short tag at the end). The end card shows the channel name and the call to action, no product. Captions: 1-3 words at a time (captionMode "words") unless the style reads better with lines.',
 };
 function formatBlock(ctx) {
   const t = target(ctx), r = rc(ctx), out = [];
   if (FORMAT_RULES[t]) out.push(FORMAT_RULES[t]);
+  const e = fmt(ctx) === 'drama-episode' && episodeOf(ctx);
+  if (e) {
+    out.push(`SERIES "${e.sb.title}": ${e.sb.logline} Genre ${e.sb.genre}; tone ${e.sb.tone}. Arc: ${e.sb.arc}`);
+    out.push(`CHARACTERS (cast ids are fixed): ${J(e.sb.characters.map(c => ({ id: c.id, name: c.name, role: c.role, want: c.want, fear: c.fear, secret: c.secret })))}. Places: ${J(e.sb.places)}`);
+    out.push(`THIS IS EPISODE ${e.n} of ${e.sb.episodes.length} (${e.ep.seconds} s): ${J(e.ep)}`);
+    if (e.prev) out.push(`The previous episode ended on: ${J(e.prev.cliffhanger)}. Re-hook it in the first 2-3 s.`);
+    out.push(e.next ? `The next episode opens with: ${e.next.hook}` : 'This is the season finale: it may resolve the arc, but still cut on a final turn.');
+  }
   if (fmt(ctx) === 'recreate') {
     const a = ctx.decision('analysis')?.output;
     out.push(`RECREATE (mode ${r.mode || 'remake'}${r.rights ? ', the user owns the source video' : ', no rights to the footage: rebuild the structure only, never reuse it'}): follow the uploaded video's structure, timing, shot sizes, moves and rhythm, with our cast, wardrobe, items and product from the user's prompt.`);
@@ -94,7 +134,13 @@ ${(r.refs || []).length ? `The user's reference images (look at each): ${(r.refs
 The user's prompt (what the characters look like, wear and carry, the product, notes): ${promptOf(r) || '(none: keep the roles, invent original people and an original fictional product)'}
 The user chose mode "${r.mode || 'remake'}" (remake = rebuild with our tools; transfer = Higgsfield Genjutsu keeps the original motion and swaps the look from the reference images; mixed = per shot)${r.rights ? '' : '; the user has NOT confirmed rights to the footage, so nothing of it may be reused'}.
 Keep the code's shot ids and times (merge two only if the code split one shot); fill size, subject, angle, move, action, on-screen text, voice, people, complexity (low: one subject, simple gesture; mid: two subjects or a moving camera; high: crowds, physics, fast action) and physics. Map every character, prop, the product and the places to what they become in our version. Describe the look in neutral words: never name studios, shows, artists, real people or brands. Recommend a mode and a target format (you only advise: the user's mode stands).`; } },
-  { id: 'brief', n: 1, title: 'Brief', kind: 'decide', schema: 'brief', lint: true, schemaFor: p => (p?.format === 'explainer' ? 'topicBrief' : 'brief'),
+  // short-drama series (the parent): the series bible, the shared style, then the episodes are created
+  { id: 'series', n: 1, title: 'Series bible', kind: 'decide', schema: 'seriesBible', formats: ['drama-series'], gate: true,
+    prompt: ctx => { const u = ctx.project.userBrief || {}; return `Short-drama series · the series bible (skill §Short drama; story-ad-playbook "serials").
+The user's idea: ${J({ idea: u.idea, genre: u.genre, tone: u.tone })}. Exactly ${u.episodes || 3} episodes of about ${u.seconds || 40} s each (30-50 s).
+Original characters and world only (no real people, brands, shows or plots). 2-6 characters, each with a want, a fear and a secret, a look (kit colours) and a Kokoro voice (female: af_heart, af_bella, af_nicole, bf_emma; male: am_michael, am_adam, bm_george, bm_lewis), each voice used once.
+Every episode: a hook (from episode 2 on, it re-hooks the last cliffhanger), 3-7 beats with rising tension, and a cliffhanger: the exact last moment, the last line and the open question. The season arc pays off in the last episode, which still ends on a final turn.${playbook('drama-episode')}`; } },
+  { id: 'brief', n: 1, title: 'Brief', kind: 'decide', schema: 'brief', lint: true, skip: ['drama-series', 'drama-episode'], schemaFor: p => (p?.format === 'explainer' ? 'topicBrief' : 'brief'),
     prompt: ctx => target(ctx) === 'explainer' ? `Stage 1 · Topic brief (skill §Explainer).\n${formatBlock(ctx)}The user's topic and wishes: ${J(ctx.project.userBrief || {})}\nLength ${ctx.project.userBrief?.seconds || 45} s, ${ctx.project.userBrief?.aspect || '9:16'}. Find the one question, the surprising angle and 3-6 facts, each with a checkable source (no invented numbers; say "about" when a figure varies). Channel name and call to action for the end card.${playbook('explainer')}` : `Stage 1 · Brief (skill §1).
 ${formatBlock(ctx)}
 The user's brief (may be empty or partial): ${J(ctx.project.userBrief || {})}
@@ -106,18 +152,18 @@ Format: ${ctx.project.userBrief?.aspect || '9:16'}, ${fmt(ctx) === 'recreate' ? 
 ${formatBlock(ctx)}Brief: ${J(dec(ctx, 'brief'))}
 ${target(ctx) === '3d-explainer' ? 'For the explainer, a premise is a question the viewer has never asked but wants answered ("Where does the water go when…"), answered by showing how a thing works inside.\n' : ''}Write 10 different premises (different situations, not ten versions of one). In each the product must CAUSE the turn. Pick one by the playbook's test (relatable character, one emotion, a turn only this product causes, shootable in our code-drawn kit: places ${['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'].join(', ')}).` },
 
-  { id: 'hooks', n: 3, title: 'Hooks', kind: 'decide', schema: 'hooks',
+  { id: 'hooks', n: 3, title: 'Hooks', kind: 'decide', schema: 'hooks', skip: ['drama-series', 'drama-episode'],
     prompt: ctx => `Stage 3 · Three hooks for the first 1-3 seconds (skill §3).
 Brief: ${J(dec(ctx, 'brief'))}
 ${formatBlock(ctx)}${target(ctx) === 'explainer' ? `The question: ${J({ question: dec(ctx, 'brief')?.question, angle: dec(ctx, 'brief')?.angle })}. Hooks are the question asked three ways (a direct question, a surprising fact, a "you never noticed" image).` : fmt(ctx) === 'recreate' ? `Hook A reproduces the original opening (${J(ctx.decision('analysis')?.output?.hook)}) with our cast and product; B and C are variants of other types.` : `Chosen premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
 Write hooks A, B, C of different types (odd image / conflict mid-action / question / number / POV). On-screen text max 6 words. Choose the lead hook; the other two become A/B test variants.` },
 
-  { id: 'story', n: 4, title: 'Story', kind: 'decide', schema: 'story',
+  { id: 'story', n: 4, title: 'Story', kind: 'decide', schema: 'story', skip: ['drama-series'],
     prompt: ctx => `Stage 4 · Story Spine and the five acts on the clock (skill §4).
 ${formatBlock(ctx)}Brief: ${J(dec(ctx, 'brief'))}
-${target(ctx) === 'explainer' ? 'Build the chain from the topic brief\'s facts only (no new facts): act 1 the question, acts 2-4 the steps (each beat answers the last and raises the next), act 5 the payoff and the loop/CTA. "turn" = the moment the answer clicks.' : fmt(ctx) === 'recreate' ? 'Follow the original beats from the analysis, act for act; the product causes the turn where the original turns.' : `Premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
+${fmt(ctx) === 'drama-episode' ? 'Turn this episode\'s outline into five acts on the clock: act 1 the hook (or the re-hook), acts 2-4 rising tension, act 5 the cliffhanger, which ends at the cut. "turn" = the moment that sets up the cliffhanger. No product.' : target(ctx) === 'explainer' ? 'Build the chain from the topic brief\'s facts only (no new facts): act 1 the question, acts 2-4 the steps (each beat answers the last and raises the next), act 5 the payoff and the loop/CTA. "turn" = the moment the answer clicks.' : fmt(ctx) === 'recreate' ? 'Follow the original beats from the analysis, act for act; the product causes the turn where the original turns.' : `Premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
 Lead hook: ${J((dec(ctx, 'hooks')?.hooks || []).find(h => h.id === dec(ctx, 'hooks')?.lead))}
-Total ${dec(ctx, 'brief')?.format?.seconds || 20} s.${target(ctx) === '3d-explainer' ? ' The acts group the If/But/So beats (each act 1-3 beats).' : target(ctx) === '3d-skit' ? ' The acts are the steps of the conversation.' : ''} Five acts with t0/t1 covering 0 → end with no gaps; act 1 starts with the hook at 0. The product causes the turn in act 3 or 4. One emotion.` },
+Total ${secondsOf(ctx)} s.${target(ctx) === '3d-explainer' ? ' The acts group the If/But/So beats (each act 1-3 beats).' : target(ctx) === '3d-skit' ? ' The acts are the steps of the conversation.' : ''} Five acts with t0/t1 covering 0 → end with no gaps; act 1 starts with the hook at 0. The product causes the turn in act 3 or 4. One emotion.` },
 
   { id: 'brandmap', n: 5, title: 'Brand map', kind: 'decide', schema: 'brandmap', lint: true, formats: ['story-ad', '3d-skit', '3d-explainer', 'recreate'],
     prompt: ctx => `Stage 5 · Brand map and claims (skill §5): plant early, pulse, reveal at the climax, tag at the end.
@@ -126,19 +172,19 @@ Story: ${J(dec(ctx, 'story'))}
 Every claim must cite which proof in the brief backs it. No absolutes, no health claims, no pressure, no real brands.` },
 
   { id: 'style', n: 6, title: 'Style', kind: 'decide', schema: 'style', gate: true,
-    fixed: ctx => FIXED_STYLE[target(ctx)] && { style: FIXED_STYLE[target(ctx)], reason: `the ${target(ctx)} format is drawn in ${FIXED_STYLE[target(ctx)]}${target(ctx) === '3d-explainer' ? ' (texts and the end card; the picture is the Blender world)' : ''}`, alternatives: [{ style: 'ad-toy-3d', why_not: 'not the voxel look of this format' }], seedanceStyle: rc(ctx).seedanceStyle || (target(ctx) === '3d-explainer' ? '3d-animation' : 'low-poly') },
+    fixed: ctx => fmt(ctx) === 'drama-episode' ? parentDecision(ctx, 'style') : FIXED_STYLE[target(ctx)] && { style: FIXED_STYLE[target(ctx)], reason: `the ${target(ctx)} format is drawn in ${FIXED_STYLE[target(ctx)]}${target(ctx) === '3d-explainer' ? ' (texts and the end card; the picture is the Blender world)' : ''}`, alternatives: [{ style: 'ad-toy-3d', why_not: 'not the voxel look of this format' }], seedanceStyle: rc(ctx).seedanceStyle || (target(ctx) === '3d-explainer' ? '3d-animation' : 'low-poly') },
     prompt: ctx => `Stage 6 · Choose the ad style (skill §6). The original code-drawn styles:
 ${STYLES.map(s => `- ${s}: ${STYLE_LINES[s]}`).join('\n')}
 Brief: ${J(dec(ctx, 'brief'))}
 Story emotion: ${dec(ctx, 'story')?.emotion}; audience: ${J(dec(ctx, 'brief')?.audience)}
-${rc(ctx).style ? `The user asked for ${rc(ctx).style} in the recreate form; use it unless it clearly hurts the ad.` : ''}${fmt(ctx) === 'recreate' ? `The original's look: ${ctx.decision('analysis')?.output?.look}.\n` : ''}${ctx.project.userBrief?.style ? `The user prefers ${ctx.project.userBrief.style}; follow it unless it clearly hurts the ad (then say why).` : ''}
+${fmt(ctx) === 'drama-series' ? `This style is shared by every episode of the series ${J({ title: dec(ctx, 'series')?.title, genre: dec(ctx, 'series')?.genre, tone: dec(ctx, 'series')?.tone })}.${ctx.project.userBrief?.customStyle ? ` The user described their own style: "${ctx.project.userBrief.customStyle}". Pick the nearest kit style and set "palette" (keys bg, ink, accent, accent2, skin…) to match it; also write "customLook" (a STYLE paragraph, motion and avoid list, no studio/show/artist names) for the Seedance route.` : ''}\n` : ''}${rc(ctx).style ? `The user asked for ${rc(ctx).style} in the recreate form; use it unless it clearly hurts the ad.` : ''}${fmt(ctx) === 'recreate' ? `The original's look: ${ctx.decision('analysis')?.output?.look}.\n` : ''}${ctx.project.userBrief?.style ? `The user prefers ${ctx.project.userBrief.style}; follow it unless it clearly hurts the ad (then say why).` : ''}
 Pick the style that fits the product and the emotion; give one honest reason and why not for the others you considered.
 Also name seedanceStyle: the catalogue look for the AI-video (Seedance) route of the same ad, from: ${CATALOG.load().map(e => `${e.slug} (${e.traits[0]})`).join('; ')}.` },
 
-  { id: 'direction', n: 7, title: 'Direction', kind: 'decide', schema: 'direction', check: 'direction', post: (ctx, o) => routeShots(ctx, o),
+  { id: 'direction', n: 7, title: 'Direction', kind: 'decide', schema: 'direction', check: 'direction', skip: ['drama-series'], post: (ctx, o) => routeShots(ctx, o),
     prompt: ctx => `Stage 7 · Direct the ad (skill §Direction; method from the cinematic-director skill).
 Read ONLY these files of the director skill (folder ${directorDir(ctx.cfg)}): assets/shot-plan-template.md, references/product-and-macro.md, and in references/genre-playbooks.md only "How to use a playbook" and the commercial section. Read nothing else from it.
-${formatBlock(ctx)}${fmt(ctx) === 'recreate' ? `Shot table of the original (follow it: same order, sizes, moves and rhythm; put each original segment in source {t0, t1}${rc(ctx).mode === 'transfer' ? '; MOTION TRANSFER: keep every shot\'s t0/t1 equal to its source times, because the picture is the original motion re-skinned by Genjutsu; route "genjutsu"' : ''}): ${J(ctx.decision('analysis')?.output?.shots)}\n` : ''}Style: ${dec(ctx, 'style')?.style} (${STYLE_LINES[dec(ctx, 'style')?.style] || ''}). Duration ${dec(ctx, 'brief')?.format?.seconds || 20} s, 9:16.
+${formatBlock(ctx)}${fmt(ctx) === 'recreate' ? `Shot table of the original (follow it: same order, sizes, moves and rhythm; put each original segment in source {t0, t1}${rc(ctx).mode === 'transfer' ? '; MOTION TRANSFER: keep every shot\'s t0/t1 equal to its source times, because the picture is the original motion re-skinned by Genjutsu; route "genjutsu"' : ''}): ${J(ctx.decision('analysis')?.output?.shots)}\n` : ''}Style: ${dec(ctx, 'style')?.style} (${STYLE_LINES[dec(ctx, 'style')?.style] || ''}). Duration ${secondsOf(ctx)} s, 9:16.
 Brief: ${J(dec(ctx, 'brief'))}
 Lead hook: ${J((dec(ctx, 'hooks')?.hooks || []).find(h => h.id === dec(ctx, 'hooks')?.lead))}
 Story: ${J(dec(ctx, 'story'))}
@@ -147,9 +193,9 @@ What the kit camera can do: sizes ${SHOT_SIZES.join('/')} framed on a subject (a
 Rules: every shot has a story function and says what the viewer now understands; blocking before framing; one move or none per shot; never two consecutive shots with the same size on the same subject; 2-6 cuts per 10 s (end card excluded), faster in the hook and the turn; the product keeps one screen side (locks.productSide) except a centred reveal; plan where the words go (textZone) so cards never cover a face or the product label; shots tile 0 → the end card. Do not name real films, shots or people in any text the viewer sees.${playbook(target(ctx))}
 Routes (how each shot is made; leave route out and the motion router decides): kit (code-drawn), three (the three.js stage: few objects, gestures, simple moves), blender (complex 3D: layered builds, flow, many objects, a long camera path), blender→genjutsu (a Blender motion re-skinned photoreal by Genjutsu, paid), seedance (complex live action from element sheets, paid), genjutsu (an uploaded segment re-skinned, paid, rights needed). Mark complexity low/mid/high and physics when it matters.` },
 
-  { id: 'bible', n: 8, title: 'Bible', kind: 'decide', schema: 'bible', lint: true, check: 'bible',
+  { id: 'bible', n: 8, title: 'Bible', kind: 'decide', schema: 'bible', lint: true, check: 'bible', skip: ['drama-series'],
     prompt: ctx => `Stage 7 · Write the ad bible (skill §7: the bible format, the kit's places, props, poses, anims, layout rules and safe zones).
-${formatBlock(ctx)}Slug "${ctx.slug}". Style: ${dec(ctx, 'style')?.style}. Duration ${dec(ctx, 'brief')?.format?.seconds || 20} s, 9:16 (1080×1920; a 16:9 version is laid out from the same bible, use l16 overrides only where needed).
+${formatBlock(ctx)}Slug "${ctx.slug}". Style: ${dec(ctx, 'style')?.style}. Duration ${secondsOf(ctx)} s, 9:16 (1080×1920; a 16:9 version is laid out from the same bible, use l16 overrides only where needed).
 Brief: ${J(dec(ctx, 'brief'))}
 Hooks (lead ${dec(ctx, 'hooks')?.lead}; the others go in variants.hooks as replacements for the hook shot): ${J(dec(ctx, 'hooks')?.hooks)}
 Story: ${J(dec(ctx, 'story'))}
@@ -160,21 +206,22 @@ For every direction shot write one bible shot with the same id, t0, t1 and trans
 Rules: shots tile 0 → endcard.t0 with no gaps; the end card runs from endcard.t0 to dur (2.5-3.5 s); every on-screen text stays inside the safe zone (x 0.05-0.86, y 0.14-0.80 of the frame) and long enough to read (characters/15 + 1.5 s); voice lines must fit before the next line starts (about 2.9 words per second at speed 0.95) and should end before the end card logo; product colours from the brief.
 ${target(ctx) !== 'story-ad' ? 'Set captionMode "words".' : ''}${(rc(ctx).mode === 'transfer' || target(ctx) === '3d-explainer') ? ' The picture of every shot comes from a plate (Genjutsu takes or the Blender world), so shot layers are text cards only; places and cast are still listed for the end card and the element sheets.' : ''}
 ${playbook(target(ctx), 1200)}
-Return the complete bible JSON.`, post: (ctx, o) => ({ ...o, format: fmt(ctx), ...(target(ctx) !== 'story-ad' ? { captionMode: o.captionMode || 'words' } : {}),
+Return the complete bible JSON.`, post: (ctx, o) => seriesLocks(ctx, { ...o, format: fmt(ctx), ...(target(ctx) !== 'story-ad' ? { captionMode: o.captionMode || 'words' } : {}),
       shots: o.shots.map(s => { const d = (ctx.decision('direction')?.output?.shots || []).find(x => x.id === s.id); return d ? { ...s, ...(d.route ? { route: d.route } : {}), ...(d.source ? { source: d.source } : {}) } : s; }) }) },
   // 3D explainer: Claude writes the world as code, checks a still per beat, then the world is rendered into a plate
   { id: 'world', n: 8, title: '3D world', kind: 'auto', formats: ['3d-explainer'], targets: ['3d-explainer'] },
 
-  { id: 'frames', n: 9, title: 'Style frames', kind: 'auto', gate: true },
-  { id: 'voice', n: 10, title: 'Voice', kind: 'auto' },
-  { id: 'animatic', n: 11, title: 'Animatic', kind: 'auto', gate: true },
-  { id: 'final', n: 12, title: 'Final', kind: 'auto' },
-  { id: 'scorecard', n: 13, title: 'Scorecard', kind: 'decide', schema: 'scorecard', after: 'report',
+  { id: 'episodes', n: 9, title: 'Episodes', kind: 'auto', formats: ['drama-series'] },
+  { id: 'frames', n: 9, title: 'Style frames', kind: 'auto', gate: true, skip: ['drama-series'] },
+  { id: 'voice', n: 10, title: 'Voice', kind: 'auto', skip: ['drama-series'] },
+  { id: 'animatic', n: 11, title: 'Animatic', kind: 'auto', gate: true, skip: ['drama-series'] },
+  { id: 'final', n: 12, title: 'Final', kind: 'auto', skip: ['drama-series'] },
+  { id: 'scorecard', n: 13, title: 'Scorecard', kind: 'decide', schema: 'scorecard', after: 'report', skip: ['drama-series'],
     prompt: ctx => `Stage 12 · Score the finished video (skill §12), 1-5 each with a one-line note, against these seven rules:
 ${RUBRIC[target(ctx)] || RUBRIC['story-ad']}
 Look at out/final-sheet.jpg (frames every 2 s of the 9:16 master) and read bible.json, voice/cues.json and out/checks.json. Total = sum. Say which hook variant you'd test first and what you'd fix in a next cut.` },
   // optional and paid (about $0.10-1 of OpenRouter): runs only when the user starts it (runFrom 'audience')
-  { id: 'audience', n: 14, title: 'Audience test', kind: 'auto', optional: true, paid: true },
+  { id: 'audience', n: 14, title: 'Audience test', kind: 'auto', optional: true, paid: true, skip: ['drama-series', 'drama-episode', 'explainer'] },
 ];
 
 // ---------- checks Claude's bible must pass before the stage counts ----------
@@ -205,6 +252,7 @@ export function checkBible(b) {
     if (lines[i].speaker && lines[i].speaker !== 'narrator' && !b.cast?.[lines[i].speaker]) errs.push(`voice line ${lines[i].id}: speaker "${lines[i].speaker}" is not in cast`);
   }
   errs.push(...checkDirected(b, b.format));
+  if (b.format === 'drama-episode') errs.push(...checkDrama(b));
   return errs;
 }
 
@@ -259,6 +307,15 @@ export function routeShots(ctx, o) {
 
 // ---------- automatic stages ----------
 export const AUTO = {
+  /** short-drama series: one project per episode (format drama-episode, parent = the series) */
+  async episodes(ctx) {
+    const sb = ctx.decision('series')?.output; if (!sb) throw new Error('no series bible');
+    const made = [];
+    for (const ep of sb.episodes) made.push(ctx.createChild({ suffix: `ep${String(ep.n).padStart(2, '0')}`, name: `${sb.title} · Ep ${ep.n}`, format: 'drama-episode', episode: ep.n, brief: { seconds: ep.seconds } }));
+    ctx.files('episodes', made.map(p => `../${p.slug}`));
+    return { summary: `${made.length} episode(s): ${made.map(p => p.slug).join(', ')}`, episodes: made.map(p => p.slug) };
+  },
+
   /** recreate: read the uploaded video by code (free): shots, stills, contact sheets, motion, words, loudness */
   async source(ctx) {
     const r = rc(ctx), src = r.source ? path.join(ctx.adDir, r.source) : null;
