@@ -98,6 +98,17 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   }
   // recreate: the user's reference images are elements already chosen (they come first in every reference list)
   const proj = readJSON(path.join(adDir, 'project.json'), {});
+  // short drama: sheets approved in another episode of the same series are copied in (same character, same look)
+  if (proj.parent) {
+    const ads = path.dirname(adDir);
+    for (const sib of fs.readdirSync(ads).filter(d => d !== path.basename(adDir) && readJSON(path.join(ads, d, 'project.json'))?.parent === proj.parent)) {
+      for (const sa of plan(path.join(ads, sib))?.assets || []) {
+        const mine = p.assets.find(a => a.id === sa.id); if (!mine || mine.picks?.length || !sa.picks?.length) continue;
+        const picks = sa.picks.map(rel => { const to = path.join('production', 'assets', `${sib}__${path.basename(rel)}`); fs.mkdirSync(path.join(adDir, 'production', 'assets'), { recursive: true }); fs.copyFileSync(path.join(ads, sib, rel), path.join(adDir, to)); return to; });
+        Object.assign(mine, { files: [...new Set([...(mine.files || []), ...picks])], picks, chosen: picks[0], status: 'approved', role: sa.role || mine.role, from: sib });
+      }
+    }
+  }
   const fresh = [];
   for (const [i, r] of (proj.recreate?.refs || []).entries()) {
     const id = `ref-${i + 1}`; if (p.assets.some(a => a.id === id)) continue;

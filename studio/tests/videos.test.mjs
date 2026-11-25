@@ -83,3 +83,20 @@ test('short drama: the episodes stage creates child projects that inherit cast, 
   assert.equal(S.seriesLocks({ ...ectx, project: P.project(eps[2].slug) }, { endcard: { t0: 1, logo: 'x' }, shots: [] }).endcard.logo, 'Night Shift', 'the finale shows the series title');
   fs.rmSync(tmp, { recursive: true, force: true });
 });
+
+test('short drama: an episode board reuses the character sheets approved in another episode', async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'eps-'));
+  const bible = JSON.parse(fs.readFileSync(new URL('../kit/test/bible.json', import.meta.url)));
+  for (const e of ['s-ep01', 's-ep02']) { fs.mkdirSync(path.join(tmp, e, 'production', 'assets'), { recursive: true }); fs.writeFileSync(path.join(tmp, e, 'bible.json'), JSON.stringify(bible)); fs.writeFileSync(path.join(tmp, e, 'project.json'), JSON.stringify({ slug: e, parent: 's', format: 'drama-episode', stages: {} })); }
+  fs.writeFileSync(path.join(tmp, 's-ep01', 'production', 'assets', 'ava.png'), 'png');
+  const { loadConfig } = await import('../server/util.mjs');
+  const PR = await import('../server/production.mjs'); PR.initProduction(loadConfig());
+  const p1 = PR.init(path.join(tmp, 's-ep01'), 's-ep01');
+  const id = p1.assets.find(a => a.kind === 'character').id;
+  PR.chooseAsset(path.join(tmp, 's-ep01'), 's-ep01', id, 'production/assets/ava.png');
+  const p2 = PR.init(path.join(tmp, 's-ep02'), 's-ep02');
+  const a2 = p2.assets.find(a => a.id === id);
+  assert.equal(a2.status, 'approved'); assert.equal(a2.from, 's-ep01');
+  assert.ok(fs.existsSync(path.join(tmp, 's-ep02', a2.chosen)));
+  fs.rmSync(tmp, { recursive: true, force: true });
+});
