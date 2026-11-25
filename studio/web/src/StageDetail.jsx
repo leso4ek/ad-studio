@@ -12,7 +12,7 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
   const [note, setNote] = useState(''), [redo, setRedo] = useState(false), [busy, setBusy] = useState(false);
   const act = async (fn) => { setBusy(true); try { await fn(); } catch (e) { alert(e.message); } setBusy(false); refresh(); };
   const choose = (choice) => waiting && act(() => api.approve(slug, id, choice));
-  const P = { ad, rec, x, slug, bust, onNow, choose, waiting };
+  const P = { ad, meta, rec, x, slug, bust, onNow, choose, waiting };
 
   return (
     <div>
@@ -55,7 +55,7 @@ function Why({ rec }) {
   return <div className="card hero"><div className="who">◆ Claude{rec.meta?.engine === 'inbox' ? ' (via the decision inbox)' : ''}{rec.note ? ` · redo note: "${rec.note}"` : ''}</div><div className="reason">{rec.output.reason}</div></div>;
 }
 
-function Body({ id, ad, rec, x, slug, bust, onNow, choose, waiting }) {
+function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting }) {
   const o = rec?.output;
   switch (id) {
     case 'brief': return o ? <>
@@ -94,7 +94,7 @@ function Body({ id, ad, rec, x, slug, bust, onNow, choose, waiting }) {
       <div className="card"><h2>Claims and their basis</h2>{o.claims.map((c, i) => <div key={i}>“{c.text}” <span style={{ color: 'var(--muted)' }}>← {c.basis}</span></div>)}</div></> : <Pending x={x} />;
     case 'style': return o ? <>
       <Why rec={rec} />
-      <div className="opts">{['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d'].map(s => {
+      <div className="opts">{Object.keys(meta?.styles || {}).map(s => {
         const alt = o.alternatives.find(a => a.style === s);
         return <button key={s} className="opt" aria-pressed={s === o.style} onClick={() => choose(s)} disabled={!waiting && s !== o.style}>
           <img src={`/styleframes/${s}.jpg`} alt="" style={{ width: '100%', aspectRatio: '9/16', objectFit: 'cover', borderRadius: 7, marginBottom: 6, background: '#000' }} onError={e => { e.currentTarget.style.display = 'none'; }} />

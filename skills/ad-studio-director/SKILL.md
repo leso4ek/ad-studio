@@ -73,6 +73,9 @@ Pick by product and emotion; the user approves this gate. Say why not for the ot
 | `ad-midcentury-toon` | flat 50s/60s planes, off-register line, atomic shapes, script hooks | nostalgic, witty, kitchen and home objects |
 | `ad-kinetic-type` | words slam in over bold colour fields, pictogram people | punchy, claim-led, cheapest to change, TikTok |
 | `ad-toy-3d` | soft-toy diorama in three.js, matte rounded shapes, real floor and light | friendly-premium, gadgets, family products (adult audience) |
+| `ad-manga-panels` | black-and-white page, screentone, speed lines, sound effects, balloons, shots split into panels; brand colour the only colour | energetic, funny, youthful, gadgets, snacks |
+| `ad-scifi-toon` | thick boiling ink, flat cel shadow, big tired eyes, dirty suburban colour, sparing gadget glow | deadpan comedy, everyday products made to feel like gadgets |
+| `ad-crayon-book` | wax crayon on toothy paper, hatched fills, wobbly same-hue outlines, hand lettering | tender, warm, family, food, gifts, wellbeing (adult audience) |
 
 ## 7 · The bible (the whole ad as data)
 Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0 = left, 1 = right; `y` 0 = top, 1 = bottom. A layer's `x, y` is its **feet / base** (characters, products, props) or its **centre** (text). Times are seconds; layer `t0/t1` are **relative to the shot**.

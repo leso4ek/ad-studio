@@ -1,0 +1,15 @@
+{
+ "slug": "ad-manga-panels",
+ "en": "Manga Panels",
+ "cn": "漫画分格",
+ "based_on": "manga-panels",
+ "borrows": [
+  "comic-history"
+ ],
+ "size": "1080x1920",
+ "library_version": "8ca0dd8",
+ "created": "2026-11-24",
+ "line": "Black-and-white manga pages that move: ink outlines, screentone dots, focus and gloom lines, slammed sound effects, speech balloons, shots split into slanted panels, and the product's brand colour as the only colour.",
+ "line_cn": "会动的黑白漫画页：墨线勾边、网点纸、集中线与阴郁线、逐字砸入的拟声字、对话气泡、斜分格的镜头，产品的品牌色是唯一的颜色。",
+ "engine": "studio/kit"
+}

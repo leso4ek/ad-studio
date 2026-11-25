@@ -16,6 +16,9 @@ export const STYLE_LINES = {
   'ad-midcentury-toon': 'Mid-century Toon: flat 1950s/60s colour planes, off-register line, atomic shapes, jazzy holds. Nostalgic, witty, everyday objects.',
   'ad-kinetic-type': 'Kinetic Type: words slam in over bold colour fields, pictogram people, the product as a clean hero. Fast, cheap, punchy claims, TikTok.',
   'ad-toy-3d': 'Toy 3D: a soft-toy diorama in three.js, rounded matte shapes, real floor and light. Friendly, premium-playful, gadgets, kids-and-family (adult audience).',
+  'ad-manga-panels': 'Manga Panels: black-and-white comic page, screentone, speed and focus lines, sound effects, speech balloons, shots split into panels; the brand colour is the only colour. Energetic, funny, youthful products, gadgets, snacks.',
+  'ad-scifi-toon': 'Sitcom Toon: thick boiling ink lines, flat cel shadow, big tired eyes, dirty suburban colour, sparing gadget glow and zaps. Deadpan comedy, everyday products made to feel like gadgets, adult humour.',
+  'ad-crayon-book': 'Crayon Picture Book: wax crayon on toothy paper, hatched fills, wobbly same-hue outlines, hand-lettered words. Tender, warm, family, food, gifts, wellbeing (adult audience).',
 };
 
 const J = o => JSON.stringify(o, null, 1);

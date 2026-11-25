@@ -1,0 +1,13 @@
+{
+ "slug": "ad-crayon-book",
+ "en": "Crayon Picture Book",
+ "cn": "蜡笔绘本",
+ "based_on": "crayon-book",
+ "borrows": [],
+ "size": "1080x1920",
+ "library_version": "8ca0dd8",
+ "created": "2026-11-24",
+ "line": "Picture-book ads in wax crayon on toothy cream paper: hatched fills that slip past wobbly same-hue outlines, hand-lettered words on blank paper, on twos with a gentle boil.",
+ "line_cn": "蜡笔绘本广告：奶油色粗纹纸上的蜡笔排线上色，颜色溢出同色系抖动描边，手写文字落在留白纸面上，一拍二并带轻微线条抖动。",
+ "engine": "studio/kit"
+}

@@ -7,3 +7,7 @@
 @font-face { font-family: 'Inter'; src: url('Inter.ttf') format('truetype'); font-weight: 100 900; }
 @font-face { font-family: 'Archivo Black'; src: url('ArchivoBlack-Regular.ttf') format('truetype'); font-weight: 400; }
 @font-face { font-family: 'Baloo 2'; src: url('Baloo2.ttf') format('truetype'); font-weight: 400 800; }
+@font-face { font-family: 'Gaegu'; src: url('Gaegu-Bold.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'Patrick Hand'; src: url('PatrickHand-Regular.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Bangers'; src: url('Bangers-Regular.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Comic Neue'; src: url('ComicNeue-Bold.woff2') format('woff2'); font-weight: 700; }

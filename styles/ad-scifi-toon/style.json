@@ -1,0 +1,13 @@
+{
+ "slug": "ad-scifi-toon",
+ "en": "Sitcom Toon",
+ "cn": "情景喜剧卡通",
+ "based_on": "scifi-toon",
+ "borrows": [],
+ "size": "1080x1920",
+ "library_version": "8ca0dd8",
+ "created": "2026-11-24",
+ "line": "Adult-sitcom cartoon ads: thick boiling ink outlines, flat fills with one hard cel shadow, big tired eyes with tiny pupils, dirty suburban colour and a sparing mint gadget glow.",
+ "line_cn": "成人情景喜剧卡通广告：粗而抖动的墨线、平涂加一层硬边赛璐璐阴影、带小瞳孔的疲惫大眼、略脏的郊区色彩，以及克制的薄荷色小装置光效。",
+ "engine": "studio/kit"
+}
