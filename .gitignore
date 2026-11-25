@@ -38,3 +38,4 @@ ads/*/frames/plate_*.jpg
 ads/*/production/source/
 ads/*/out/.*_segs-*/
 ads/*/out/*.lock
+downloads/

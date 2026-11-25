@@ -2,6 +2,16 @@
 
 A YouTube channel that **explains scary sci-fi stories** (mostly original ones) in a **late-90s apocalyptic TV anime** look: squeezed heavy-serif flash cards, red alarm interfaces, power lines and cicadas, unbearably long still holds. Films are made **in code** with the Lemo-Opuscar library (github.com/lemomo-ai/lemo-opuscar), plus external voice (ElevenLabs / Kokoro) and optional AI clips (Kling).
 
+## How to talk to the user (round 13)
+The user asked for the **i-have-adhd** skill (MIT, ayghri; linked by `bootstrap.sh`). Write every reply in that mode:
+1. Lead with the next action or the result.
+2. Numbered steps, one action each.
+3. At most 5 items per list.
+4. Concrete times ("about 10 min").
+5. End with one next step the user can do in under 2 min.
+
+No preamble. The same goes for the app's short texts (stage summaries, live-pane notes).
+
 ## Start of every session
 1. `sh scripts/bootstrap.sh`: installs the lemo-opuscar skill and library (`~/lemo-opuscar`, printed as `LIB=`), registers our style in `~/lemo-my-styles/`, links our skill into `.claude/skills/`, and installs the core + voice packages.
 2. For episode work, use the **scary-scifi-explainer** skill (`skills/scary-scifi-explainer/SKILL.md`). It layers the channel rules on top of `$LIB/AGENTS.md` + `$LIB/DIRECTOR.md`.
