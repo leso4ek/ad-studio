@@ -1,0 +1,231 @@
+{
+  "stage": "bible",
+  "at": "2026-11-25T19:08:24.833Z",
+  "output": {
+    "slug": "fern-water-explainer",
+    "title": "Where does the water go? (3D explainer)",
+    "style": "ad-voxel-3d",
+    "format": "3d-explainer",
+    "dur": 18,
+    "stylePara": "A clean, softly lit 3D cutaway: a terracotta pot cut in half on a pale ledge, soil layers, white roots and blue water, one continuous camera.",
+    "product": {
+      "name": "Sprigly",
+      "kind": "bottle",
+      "label": "SPRIGLY",
+      "colors": {
+        "body": "#3E8E5A",
+        "cap": "#F2C14E",
+        "label": "#FFF6E5",
+        "labelInk": "#234D33",
+        "accent": "#E8613C"
+      }
+    },
+    "cast": {},
+    "places": {
+      "kitchen": {
+        "kind": "kitchen",
+        "time": "day"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3,
+        "act": 1,
+        "beat": "hook",
+        "place": "kitchen",
+        "camera": {
+          "size": "WS",
+          "subject": "pot",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "establishing",
+        "reason": "A fern in a pot cut in half; a spout tips in.",
+        "textZone": "top",
+        "route": "blender",
+        "layers": [
+          {
+            "type": "text",
+            "id": "h",
+            "role": "card",
+            "text": "Where does\nit go?",
+            "x": 0.47,
+            "y": 0.215,
+            "size": 0.1,
+            "w": 0.76
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "t0": 3,
+        "t1": 6.5,
+        "act": 2,
+        "beat": "story",
+        "place": "kitchen",
+        "camera": {
+          "size": "MS",
+          "subject": "pot",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "insert",
+        "reason": "Water pours in and the top soil darkens.",
+        "textZone": "top",
+        "route": "blender",
+        "layers": []
+      },
+      {
+        "id": "s3",
+        "t0": 6.5,
+        "t1": 10,
+        "act": 3,
+        "beat": "story",
+        "place": "kitchen",
+        "camera": {
+          "size": "CU",
+          "subject": "roots",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "close-up",
+        "reason": "The roots light up where the water reaches them.",
+        "textZone": "top",
+        "route": "blender",
+        "layers": [
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "card",
+            "text": "Roots\ndrink.",
+            "x": 0.47,
+            "y": 0.215,
+            "size": 0.1,
+            "w": 0.76
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "t0": 10,
+        "t1": 13,
+        "act": 4,
+        "beat": "story",
+        "place": "kitchen",
+        "camera": {
+          "size": "CU",
+          "subject": "gravel",
+          "angle": "eye",
+          "move": "tilt-down"
+        },
+        "function": "insert",
+        "reason": "The extra sinks through the gravel and out of the hole.",
+        "textZone": "top",
+        "route": "blender",
+        "layers": [
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "The rest\ndrains.",
+            "x": 0.47,
+            "y": 0.215,
+            "size": 0.1,
+            "w": 0.76
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "t0": 13,
+        "t1": 15,
+        "act": 4,
+        "beat": "story",
+        "place": "kitchen",
+        "camera": {
+          "size": "WS",
+          "subject": "pot",
+          "angle": "eye",
+          "move": "pull"
+        },
+        "function": "aftermath",
+        "reason": "The saucer holds the run-off; the fern a touch perkier.",
+        "textZone": "top",
+        "route": "blender",
+        "layers": []
+      }
+    ],
+    "captions": true,
+    "captionMode": "words",
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "lines": [
+        {
+          "id": "l01",
+          "text": "If you water a fern, where does it all go?",
+          "at": 0.2,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l02",
+          "text": "The top soil soaks it up first.",
+          "at": 3.7,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l03",
+          "text": "But only the roots can drink it.",
+          "at": 6.6,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l04",
+          "text": "So the extra sinks through the gravel",
+          "at": 9.6,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l05",
+          "text": "and drains into the saucer.",
+          "at": 12.2,
+          "speaker": "narrator"
+        },
+        {
+          "id": "l06",
+          "text": "Sprigly. One capful per litre.",
+          "at": 15.4,
+          "speaker": "narrator",
+          "asr": "Sprigly, one cap full per liter."
+        }
+      ]
+    },
+    "endcard": {
+      "t0": 15,
+      "logo": "Sprigly",
+      "line": "One capful per litre.",
+      "cta": "250 ml makes 50 L"
+    },
+    "music": {
+      "mood": "tender",
+      "bpm": 76
+    },
+    "sfx": [],
+    "reason": "Five beats of one continuous Blender move under word captions; three short cards name the stops; the brand waits for the end card."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwwhvqld4ra",
+      "Lmwvsri1899d"
+    ]
+  },
+  "warnings": []
+}

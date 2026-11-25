@@ -1,0 +1,152 @@
+{
+  "slug": "fern-water-explainer",
+  "title": "Fern water explainer",
+  "created": "2026-11-25T19:08:09.997Z",
+  "updated": "2026-11-25T19:09:01.285Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "3d-explainer",
+  "userBrief": {
+    "fictional": true,
+    "seconds": 18,
+    "aspect": "9:16",
+    "product": "Sprigly houseplant feed (fictional)"
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "done",
+      "started": "2026-11-25T19:08:09.998Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:13.010Z",
+      "ms": 3012,
+      "summary": "Sprigly: A liquid houseplant feed with seaweed extract, dosed with a measuring cap.",
+      "warnings": [],
+      "result": {}
+    },
+    "premises": {
+      "status": "done",
+      "started": "2026-11-25T19:08:13.011Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:15.016Z",
+      "ms": 2005,
+      "summary": "Where does the water go when you water your fern? A cutaway pot follows it from the spout to the saucer.",
+      "warnings": [],
+      "result": {}
+    },
+    "hooks": {
+      "status": "done",
+      "started": "2026-11-25T19:08:15.016Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:17.020Z",
+      "ms": 2004,
+      "summary": "lead A: \"Where does it go?\"",
+      "warnings": [],
+      "result": {}
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-25T19:08:17.020Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:19.029Z",
+      "ms": 2009,
+      "summary": "curiosity · turn: The cutaway shows the feed can only reach the roots in the water, which is why Sprigly is dosed per litre.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "done",
+      "started": "2026-11-25T19:08:19.810Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:20.817Z",
+      "ms": 1007,
+      "summary": "reveal at 15.2s · tag \"One capful per litre.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-25T19:08:20.817Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-25T19:08:20.820Z",
+      "ms": 3,
+      "summary": "ad-voxel-3d",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-25T19:08:20.820Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:22.826Z",
+      "ms": 2006,
+      "summary": "5 shots · Water, and the feed in it, reaches the roots and the rest drains away: you can see it in a pot cut in half.",
+      "warnings": [],
+      "result": {}
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-25T19:08:22.827Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:08:24.834Z",
+      "ms": 2007,
+      "summary": "5 shots, 6 voice lines, 18s",
+      "warnings": [],
+      "result": {}
+    },
+    "world": {
+      "status": "running",
+      "started": "2026-11-25T19:08:24.835Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "production/blender/world-check/f_0036.png",
+        "production/blender/world-check/f_0114.png",
+        "production/blender/world-check/f_0198.png",
+        "production/blender/world-check/f_0276.png",
+        "production/blender/world-check/f_0336.png"
+      ]
+    },
+    "frames": {
+      "status": "idle"
+    },
+    "voice": {
+      "status": "idle"
+    },
+    "animatic": {
+      "status": "idle"
+    },
+    "final": {
+      "status": "idle"
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

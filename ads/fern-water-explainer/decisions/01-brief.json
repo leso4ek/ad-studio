@@ -1,0 +1,67 @@
+{
+  "stage": "brief",
+  "at": "2026-11-25T19:08:13.009Z",
+  "output": {
+    "product": {
+      "name": "Sprigly",
+      "kind": "bottle",
+      "what": "A liquid houseplant feed with seaweed extract, dosed with a measuring cap.",
+      "benefit": "Feeding your houseplants takes one capful in the watering can every two weeks, with no guessing.",
+      "proof": [
+        "Contains seaweed extract plus nitrogen, phosphorus and potassium (NPK 3-1-2)",
+        "Dose is one capful (5 ml) per litre of water",
+        "Label directions: feed every two weeks in spring and summer, monthly in autumn and winter",
+        "250 ml bottle makes 50 litres of feed",
+        "Glass bottle; refill pouches sold separately"
+      ],
+      "label": "SPRIGLY",
+      "colors": {
+        "body": "#3E8E5A",
+        "cap": "#F2C14E",
+        "label": "#FFF6E5",
+        "labelInk": "#234D33",
+        "accent": "#E8613C"
+      }
+    },
+    "audience": {
+      "who": "Adults in flats with a few houseplants who care about them but aren't expert gardeners",
+      "moment": "Sunday-morning watering, when they spot a droopy, pale-leaved plant on the windowsill and don't know what it needs",
+      "pain": "They water and hope, unsure how much to feed or how often, and feel quietly guilty when a plant looks tired"
+    },
+    "claims": [
+      "One capful per litre: no measuring spoons, no guessing",
+      "Feed every two weeks in the growing season",
+      "Made with seaweed extract and NPK nutrients",
+      "One 250 ml bottle makes 50 litres of feed",
+      "Refillable glass bottle"
+    ],
+    "noClaims": [
+      "Saves or revives dying plants",
+      "Promises any certain growth or result",
+      "Superlatives or rankings against other feeds",
+      "Organic, natural or eco-friendly claims beyond the listed facts",
+      "Safe for pets or children",
+      "Plants double in size, or any specific growth figure",
+      "Invented reviews or user counts",
+      "Urgency lines or scarcity talk about stock"
+    ],
+    "format": {
+      "aspect": "9:16",
+      "seconds": 18
+    },
+    "tone": "Calm, curious, matter-of-fact: a quiet \"huh, so that is where it goes\" explainer, no selling until the end card.",
+    "fictional": true,
+    "reason": "A 3D explainer earns attention with the inside of something ordinary; watering a fern is the moment the Sprigly audience already has, and showing where water and feed go makes the dose rule make sense without a claim about results."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 3003,
+    "lessons": [
+      "Lmwvsri187t7",
+      "Lmwvsri18pzv",
+      "Lmwvufwh3jg8"
+    ]
+  },
+  "warnings": []
+}

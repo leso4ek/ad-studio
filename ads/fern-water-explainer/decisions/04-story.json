@@ -1,0 +1,66 @@
+{
+  "stage": "story",
+  "at": "2026-11-25T19:08:19.027Z",
+  "output": {
+    "spine": [
+      "Every week you water your fern.",
+      "You never see where the water goes.",
+      "Until the pot is cut in half.",
+      "Because of that, you see the top soil soak it up and the roots drink.",
+      "Because of that, you see the extra sink through the gravel and drain into the saucer.",
+      "Until finally you know why feed goes in the water, at the dose per litre."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "The question",
+        "t0": 0,
+        "t1": 3,
+        "beats": "If you water a fern, where does it all go?"
+      },
+      {
+        "act": 2,
+        "name": "Soil",
+        "t0": 3,
+        "t1": 6.5,
+        "beats": "The top soil soaks it up first."
+      },
+      {
+        "act": 3,
+        "name": "Roots",
+        "t0": 6.5,
+        "t1": 10,
+        "beats": "But only the roots can drink it."
+      },
+      {
+        "act": 4,
+        "name": "Drainage",
+        "t0": 10,
+        "t1": 15,
+        "beats": "So the extra sinks through the gravel and drains into the saucer; feed in the water rides along."
+      },
+      {
+        "act": 5,
+        "name": "Tag",
+        "t0": 15,
+        "t1": 18,
+        "beats": "End card: Sprigly, one capful per litre."
+      }
+    ],
+    "turn": "The cutaway shows the feed can only reach the roots in the water, which is why Sprigly is dosed per litre.",
+    "emotion": "curiosity",
+    "reason": "An If/But/So chain with a new stop every 3-4 s; every step is plain horticulture (water soaks the top layer, roots take it up, excess drains through the gravel layer and the drainage hole)."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2005,
+    "lessons": [
+      "Lmwvsri18vpf",
+      "Lmwvsri18w55",
+      "Lmwwhvqldsq5",
+      "Lmwvtnh4elr2"
+    ]
+  },
+  "warnings": []
+}

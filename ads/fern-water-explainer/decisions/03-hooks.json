@@ -1,0 +1,43 @@
+{
+  "stage": "hooks",
+  "at": "2026-11-25T19:08:17.019Z",
+  "output": {
+    "hooks": [
+      {
+        "id": "A",
+        "type": "question",
+        "onScreen": "Where does it go?",
+        "visual": "A calm fern in a pot cut in half, a spout tipping in from the top of frame.",
+        "vo": "If you water a fern, where does it all go?"
+      },
+      {
+        "id": "B",
+        "type": "odd image",
+        "onScreen": "Half a pot.",
+        "visual": "The camera already gliding toward the cutaway face, roots visible.",
+        "vo": "If you water a fern, where does it all go?"
+      },
+      {
+        "id": "C",
+        "type": "number",
+        "onScreen": "1 litre. 4 stops.",
+        "visual": "The spout above the pot, the saucer below.",
+        "vo": "If you water a fern, where does it all go?"
+      }
+    ],
+    "lead": "A",
+    "reason": "A is the format's natural opening, a plain question over a plain object; B and C test an odd image and a number."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2000,
+    "lessons": [
+      "Lmwvsri18maj",
+      "Lmwvufwh2ztj",
+      "Lmwvsri18gbt",
+      "Lmwvufwh3ksy"
+    ]
+  },
+  "warnings": []
+}

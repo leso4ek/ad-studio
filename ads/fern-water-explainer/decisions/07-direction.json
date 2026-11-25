@@ -1,0 +1,163 @@
+{
+  "stage": "direction",
+  "at": "2026-11-25T19:08:22.826Z",
+  "output": {
+    "thesis": "Water, and the feed in it, reaches the roots and the rest drains away: you can see it in a pot cut in half.",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3,
+        "learns": "A fern in a pot cut in half; a spout tips in."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3,
+        "t1": 6.5,
+        "learns": "Water pours in and the top soil darkens."
+      },
+      {
+        "id": "b3",
+        "block": "turn",
+        "t0": 6.5,
+        "t1": 10,
+        "learns": "The roots light up where the water reaches them."
+      },
+      {
+        "id": "b4",
+        "block": "demonstration",
+        "t0": 10,
+        "t1": 13,
+        "learns": "The extra sinks through the gravel and out of the hole."
+      },
+      {
+        "id": "b5",
+        "block": "payoff",
+        "t0": 13,
+        "t1": 15,
+        "learns": "The saucer holds the run-off; the fern a touch perkier."
+      }
+    ],
+    "book": {
+      "grammar": "One continuous camera: glide in, dip into the cutaway, follow the water down, pull back out. No cuts; the beats are moments of one move.",
+      "light": "Soft daylight from the left, a gentle rim, light fog.",
+      "palette": "Terracotta, soil browns, green fronds; water the only blue.",
+      "performance": "Objects only: water, roots, gravel.",
+      "rhythm": "A new stop every 3-4 s.",
+      "sound": "A pour, a soft trickle, a drip into the saucer."
+    },
+    "locks": {
+      "identity": {},
+      "productSide": "centre",
+      "screenDirection": "the cut face always toward camera",
+      "light": "daylight from the left"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "pot",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "A fern in a pot cut in half; a spout tips in.",
+        "reason": "A fern in a pot cut in half; a spout tips in.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "blender",
+        "complexity": "high",
+        "physics": true
+      },
+      {
+        "id": "s2",
+        "t0": 3,
+        "t1": 6.5,
+        "beat": "b2",
+        "function": "insert",
+        "size": "MS",
+        "subject": "pot",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Water pours in and the top soil darkens.",
+        "reason": "Water pours in and the top soil darkens.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "blender",
+        "complexity": "high",
+        "physics": true
+      },
+      {
+        "id": "s3",
+        "t0": 6.5,
+        "t1": 10,
+        "beat": "b3",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "roots",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The roots light up where the water reaches them.",
+        "reason": "The roots light up where the water reaches them.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "blender",
+        "complexity": "high",
+        "physics": true
+      },
+      {
+        "id": "s4",
+        "t0": 10,
+        "t1": 13,
+        "beat": "b4",
+        "function": "insert",
+        "size": "CU",
+        "subject": "gravel",
+        "angle": "eye",
+        "move": "tilt-down",
+        "blocking": "The extra sinks through the gravel and out of the hole.",
+        "reason": "The extra sinks through the gravel and out of the hole.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "blender",
+        "complexity": "high",
+        "physics": true
+      },
+      {
+        "id": "s5",
+        "t0": 13,
+        "t1": 15,
+        "beat": "b5",
+        "function": "aftermath",
+        "size": "WS",
+        "subject": "pot",
+        "angle": "eye",
+        "move": "pull",
+        "blocking": "The saucer holds the run-off; the fern a touch perkier.",
+        "reason": "The saucer holds the run-off; the fern a touch perkier.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "blender",
+        "complexity": "high",
+        "physics": true
+      }
+    ],
+    "reason": "Five stops of one continuous Blender move, timed to the If/But/So lines; the camera dips into the cutaway for the roots and the gravel, where the explanation lives."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}

@@ -1,0 +1,59 @@
+{
+  "stage": "premises",
+  "at": "2026-11-25T19:08:15.015Z",
+  "output": {
+    "premises": [
+      {
+        "id": "p1",
+        "logline": "Where does the water go when you water your fern? A cutaway pot follows it from the spout to the saucer.",
+        "emotion": "curiosity",
+        "productRole": "feed travels with the water, so the dose per litre is what reaches the roots",
+        "hookIdea": "the question over a perfectly normal pot"
+      },
+      {
+        "id": "p2",
+        "logline": "Why a fern droops: the cutaway shows dry roots under wet-looking soil.",
+        "emotion": "surprise",
+        "productRole": "regular feeding in the water",
+        "hookIdea": "the soil looks wet; the roots are dry"
+      },
+      {
+        "id": "p3",
+        "logline": "What a drainage hole is for, shown as a flood that has nowhere to go.",
+        "emotion": "relief",
+        "productRole": "the extra drains away with the excess feed",
+        "hookIdea": "a pot with no hole fills like a bath"
+      },
+      {
+        "id": "p4",
+        "logline": "One litre of water, followed drop by drop through a pot.",
+        "emotion": "curiosity",
+        "productRole": "one capful per litre",
+        "hookIdea": "a litre jug pours into a pot cut in half"
+      },
+      {
+        "id": "p5",
+        "logline": "Roots drink from the bottom up? No: from where the water reaches.",
+        "emotion": "surprise",
+        "productRole": "feed in the water reaches the same roots",
+        "hookIdea": "a myth card"
+      },
+      {
+        "id": "p6",
+        "logline": "What the saucer is telling you after watering.",
+        "emotion": "curiosity",
+        "productRole": "feeding with the water at the label rate",
+        "hookIdea": "zoom on a full saucer"
+      }
+    ],
+    "chosen": "p1",
+    "reason": "p1 is the question most owners never ask but instantly want answered, it maps onto one continuous camera move from spout to saucer, and the product fits honestly: feed rides along in the water.",
+    "runnerUp": "p4"
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002
+  },
+  "warnings": []
+}

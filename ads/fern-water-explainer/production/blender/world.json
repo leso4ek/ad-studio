@@ -1,0 +1,759 @@
+{
+ "fps": 24,
+ "frame_start": 1,
+ "frame_end": 360,
+ "resolution": [
+  1080,
+  1920
+ ],
+ "title": "Where does the water go when you water your fern?",
+ "size": [
+  1080,
+  1920
+ ],
+ "seconds": 15,
+ "engine": "eevee",
+ "samples": 8,
+ "look": "real",
+ "percent": 40,
+ "world": {
+  "kind": "void",
+  "color": "#DDE8EE",
+  "strength": 0.9
+ },
+ "lights": {
+  "kind": "daylight",
+  "sun": [
+   -35,
+   48
+  ],
+  "energy": 3,
+  "fill": 0.9,
+  "rim": 1.2
+ },
+ "camera": {
+  "dof": true,
+  "fstop": 4,
+  "clip": 0.01,
+  "path": [
+   {
+    "t": 0,
+    "at": [
+     0,
+     -0.7,
+     0.34
+    ],
+    "look": [
+     0,
+     0,
+     0.2
+    ],
+    "lens": 40
+   },
+   {
+    "t": 3,
+    "at": [
+     0.1,
+     -0.62,
+     0.54
+    ],
+    "look": [
+     0.04,
+     0,
+     0.22
+    ],
+    "lens": 40
+   },
+   {
+    "t": 6.5,
+    "at": [
+     0.03,
+     -0.36,
+     0.17
+    ],
+    "look": [
+     0,
+     0,
+     0.13
+    ],
+    "lens": 35
+   },
+   {
+    "t": 9.6,
+    "at": [
+     0.01,
+     -0.4,
+     0.13
+    ],
+    "look": [
+     0,
+     0,
+     0.1
+    ],
+    "lens": 50
+   },
+   {
+    "t": 11.4,
+    "at": [
+     -0.01,
+     -0.42,
+     0.12
+    ],
+    "look": [
+     0,
+     0,
+     0.09
+    ],
+    "lens": 50
+   },
+   {
+    "t": 13.6,
+    "at": [
+     -0.07,
+     -0.76,
+     0.38
+    ],
+    "look": [
+     0,
+     0,
+     0.2
+    ],
+    "lens": 40
+   },
+   {
+    "t": 15,
+    "at": [
+     -0.09,
+     -0.8,
+     0.4
+    ],
+    "look": [
+     0,
+     0,
+     0.2
+    ],
+    "lens": 40
+   }
+  ]
+ },
+ "objects": [
+  {
+   "id": "ledge",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    1.6,
+    0.42,
+    0.05
+   ],
+   "at": [
+    0,
+    0.02,
+    -0.025
+   ],
+   "color": "#F1EDE6",
+   "bevel": 0.006
+  },
+  {
+   "id": "wall_l",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    1.2,
+    0.12,
+    1.6
+   ],
+   "at": [
+    -0.92,
+    0.29,
+    0.75
+   ],
+   "color": "#E9E1D6",
+   "bevel": 0.004
+  },
+  {
+   "id": "wall_r",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    1.2,
+    0.12,
+    1.6
+   ],
+   "at": [
+    0.92,
+    0.29,
+    0.75
+   ],
+   "color": "#E9E1D6",
+   "bevel": 0.004
+  },
+  {
+   "id": "wall_top",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    0.64,
+    0.12,
+    0.5
+   ],
+   "at": [
+    0,
+    0.29,
+    1.3
+   ],
+   "color": "#E9E1D6",
+   "bevel": 0.004
+  },
+  {
+   "id": "frame_l",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    0.04,
+    0.06,
+    1.05
+   ],
+   "at": [
+    -0.3,
+    0.31,
+    0.52
+   ],
+   "color": "#FAFAF7",
+   "bevel": 0.004
+  },
+  {
+   "id": "frame_r",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    0.04,
+    0.06,
+    1.05
+   ],
+   "at": [
+    0.3,
+    0.31,
+    0.52
+   ],
+   "color": "#FAFAF7",
+   "bevel": 0.004
+  },
+  {
+   "id": "frame_mid",
+   "kind": "mesh",
+   "primitive": "cube",
+   "dims": [
+    0.6,
+    0.06,
+    0.035
+   ],
+   "at": [
+    0,
+    0.31,
+    0.62
+   ],
+   "color": "#FAFAF7",
+   "bevel": 0.004
+  },
+  {
+   "id": "outside",
+   "kind": "mesh",
+   "primitive": "plane",
+   "dims": [
+    8,
+    6,
+    1
+   ],
+   "at": [
+    0,
+    3.5,
+    1
+   ],
+   "rot": [
+    90,
+    0,
+    0
+   ],
+   "color": "#BFD9C2",
+   "material": "emissive",
+   "emit": 1.2
+  },
+  {
+   "id": "pot",
+   "kind": "pot",
+   "radius": 0.1,
+   "bottomRadius": 0.078,
+   "height": 0.2,
+   "wall": 0.008,
+   "cut": 180,
+   "color": "#C2673F",
+   "fill": 0.86,
+   "hole": 0.01,
+   "lift": 0.03,
+   "saucer": {
+    "radius": 0.118,
+    "height": 0.022
+   },
+   "layers": [
+    {
+     "name": "potting-mix",
+     "preset": "perlite-mix",
+     "thickness": 0.06,
+     "specks": 70,
+     "speckSize": 0.0045
+    },
+    {
+     "name": "root-zone",
+     "preset": "soil",
+     "thickness": 0.06,
+     "specks": 25,
+     "speckSize": 0.004
+    },
+    {
+     "name": "gravel",
+     "preset": "gravel",
+     "pebbles": 55,
+     "pebbleSize": 0.012
+    }
+   ]
+  },
+  {
+   "id": "roots",
+   "kind": "roots",
+   "at": [
+    0,
+    0,
+    0.207
+   ],
+   "depth": 0.115,
+   "spread": 0.07,
+   "count": 8,
+   "thick": 0.0028,
+   "branch": 0.8,
+   "color": "#E3CFA6",
+   "drink": {
+    "t": 6.3,
+    "dur": 2.2,
+    "color": "#7FDBFF",
+    "strength": 2.2
+   }
+  },
+  {
+   "id": "fern",
+   "kind": "plant",
+   "at": [
+    0,
+    0.01,
+    0.207
+   ],
+   "length": 0.3,
+   "fronds": 16,
+   "droopKeys": [
+    {
+     "t": 0,
+     "v": 0.6
+    },
+    {
+     "t": 12.2,
+     "v": 0.6
+    },
+    {
+     "t": 14.4,
+     "v": 0.12
+    }
+   ],
+   "sway": 1.2,
+   "open": 120,
+   "segments": 16
+  },
+  {
+   "id": "spout",
+   "kind": "pipe",
+   "path": [
+    [
+     0.42,
+     0.03,
+     0.62
+    ],
+    [
+     0.16,
+     0.03,
+     0.44
+    ],
+    [
+     0.075,
+     0.03,
+     0.4
+    ]
+   ],
+   "radius": 0.011,
+   "bend": 0.03,
+   "color": "#2F7D5B",
+   "appear": {
+    "t": 2.2,
+    "how": "drop",
+    "dur": 0.7,
+    "dist": 0.25
+   },
+   "vanish": {
+    "t": 6.4,
+    "how": "rise",
+    "dur": 0.6,
+    "dist": 0.3
+   }
+  },
+  {
+   "id": "pour",
+   "kind": "liquid",
+   "mode": "fall",
+   "from": [
+    0.078,
+    0.03,
+    0.395
+   ],
+   "to": [
+    0.06,
+    0.03,
+    0.208
+   ],
+   "arc": [
+    0.012,
+    0,
+    0
+   ],
+   "radius": 0.0055,
+   "start": 3,
+   "stop": 6,
+   "splash": true,
+   "drips": 2
+  },
+  {
+   "id": "puddle",
+   "kind": "liquid",
+   "mode": "fill",
+   "shape": "sector",
+   "cut": 180,
+   "radius": 0.088,
+   "height": 0.003,
+   "at": [
+    0,
+    0,
+    0.207
+   ],
+   "level": [
+    {
+     "t": 3.2,
+     "v": 0
+    },
+    {
+     "t": 3.8,
+     "v": 1
+    },
+    {
+     "t": 6.2,
+     "v": 1
+    },
+    {
+     "t": 7.2,
+     "v": 0
+    }
+   ]
+  },
+  {
+   "id": "soak",
+   "kind": "liquid",
+   "mode": "fill",
+   "dir": "down",
+   "shape": "sector",
+   "cut": 180,
+   "material": "wet",
+   "color": "#2A1B10",
+   "radius": 0.0752,
+   "radiusTop": 0.0883,
+   "height": 0.12,
+   "at": [
+    0,
+    -0.0007,
+    0.2069
+   ],
+   "level": [
+    {
+     "t": 3.4,
+     "v": 0
+    },
+    {
+     "t": 6.5,
+     "v": 0.5
+    },
+    {
+     "t": 8.5,
+     "v": 0.85
+    },
+    {
+     "t": 9.6,
+     "v": 1
+    }
+   ]
+  },
+  {
+   "id": "trickle1",
+   "kind": "liquid",
+   "mode": "flow",
+   "path": [
+    [
+     -0.04,
+     -0.0025,
+     0.205
+    ],
+    [
+     -0.033,
+     -0.0025,
+     0.17
+    ],
+    [
+     -0.045,
+     -0.0025,
+     0.13
+    ],
+    [
+     -0.036,
+     -0.0025,
+     0.09
+    ]
+   ],
+   "radius": 0.0016,
+   "start": 3.6,
+   "stop": 9.4,
+   "speed": 0.03,
+   "dashes": 3
+  },
+  {
+   "id": "trickle2",
+   "kind": "liquid",
+   "mode": "flow",
+   "path": [
+    [
+     0.02,
+     -0.0025,
+     0.205
+    ],
+    [
+     0.03,
+     -0.0025,
+     0.16
+    ],
+    [
+     0.018,
+     -0.0025,
+     0.12
+    ],
+    [
+     0.026,
+     -0.0025,
+     0.085
+    ]
+   ],
+   "radius": 0.0016,
+   "start": 3.9,
+   "stop": 9.6,
+   "speed": 0.028,
+   "dashes": 3
+  },
+  {
+   "id": "trickle3",
+   "kind": "liquid",
+   "mode": "flow",
+   "path": [
+    [
+     0.062,
+     -0.0025,
+     0.205
+    ],
+    [
+     0.055,
+     -0.0025,
+     0.165
+    ],
+    [
+     0.064,
+     -0.0025,
+     0.125
+    ],
+    [
+     0.052,
+     -0.0025,
+     0.088
+    ]
+   ],
+   "radius": 0.0016,
+   "start": 3.5,
+   "stop": 9.2,
+   "speed": 0.032,
+   "dashes": 3
+  },
+  {
+   "id": "gravel_wet",
+   "kind": "liquid",
+   "mode": "fill",
+   "dir": "down",
+   "shape": "sector",
+   "cut": 180,
+   "material": "wet",
+   "color": "#3A3632",
+   "radius": 0.0695,
+   "radiusTop": 0.0752,
+   "height": 0.042,
+   "at": [
+    0,
+    -0.0007,
+    0.0769
+   ],
+   "level": [
+    {
+     "t": 9.4,
+     "v": 0
+    },
+    {
+     "t": 10.6,
+     "v": 1
+    }
+   ]
+  },
+  {
+   "id": "drain1",
+   "kind": "liquid",
+   "mode": "flow",
+   "path": [
+    [
+     -0.035,
+     -0.003,
+     0.08
+    ],
+    [
+     -0.02,
+     -0.003,
+     0.06
+    ],
+    [
+     -0.004,
+     -0.003,
+     0.045
+    ],
+    [
+     0,
+     -0.003,
+     0.03
+    ]
+   ],
+   "radius": 0.002,
+   "start": 9.6,
+   "stop": 12.6,
+   "speed": 0.05,
+   "dashes": 2
+  },
+  {
+   "id": "drain2",
+   "kind": "liquid",
+   "mode": "flow",
+   "path": [
+    [
+     0.03,
+     -0.003,
+     0.08
+    ],
+    [
+     0.02,
+     -0.003,
+     0.06
+    ],
+    [
+     0.004,
+     -0.003,
+     0.045
+    ],
+    [
+     0,
+     -0.003,
+     0.03
+    ]
+   ],
+   "radius": 0.002,
+   "start": 9.8,
+   "stop": 12.8,
+   "speed": 0.05,
+   "dashes": 2
+  },
+  {
+   "id": "drip",
+   "kind": "liquid",
+   "mode": "fall",
+   "from": [
+    0,
+    0.004,
+    0.036
+   ],
+   "to": [
+    0,
+    0.004,
+    0.006
+   ],
+   "radius": 0.0035,
+   "start": 10.4,
+   "stop": 12.9,
+   "splash": true,
+   "drips": 3
+  },
+  {
+   "id": "saucer_water",
+   "kind": "liquid",
+   "mode": "fill",
+   "shape": "sector",
+   "cut": 180,
+   "radius": 0.106,
+   "height": 0.013,
+   "at": [
+    0,
+    0,
+    0.0055
+   ],
+   "level": [
+    {
+     "t": 10.5,
+     "v": 0
+    },
+    {
+     "t": 13.5,
+     "v": 1
+    }
+   ]
+  },
+  {
+   "id": "pebble",
+   "kind": "pebble",
+   "size": 0.022,
+   "at": [
+    -0.2,
+    -0.08,
+    0
+   ],
+   "seed": 4
+  },
+  {
+   "id": "dry_leaf",
+   "kind": "leaf",
+   "size": 0.06,
+   "color": "#B9873F",
+   "at": [
+    0.19,
+    -0.1,
+    0.002
+   ],
+   "rot": [
+    0,
+    0,
+    35
+   ]
+  }
+ ]
+}

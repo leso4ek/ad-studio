@@ -1,0 +1,44 @@
+{
+  "stage": "brandmap",
+  "at": "2026-11-25T19:08:20.816Z",
+  "output": {
+    "plant": {
+      "t": 15.2,
+      "how": "The explainer does not sell; the bottle first appears on the end card."
+    },
+    "pulses": [
+      {
+        "t": 13.5,
+        "how": "The voice says feed rides along in the water: the category, not the brand."
+      }
+    ],
+    "reveal": {
+      "t": 15.2,
+      "how": "End card: the Sprigly bottle, \"One capful per litre.\""
+    },
+    "tag": {
+      "t": 16.2,
+      "line": "One capful per litre."
+    },
+    "claims": [
+      {
+        "text": "One capful per litre",
+        "basis": "Dose is one capful (5 ml) per litre of water"
+      }
+    ],
+    "reason": "An explainer that sells in the middle stops being an explainer; the brand lands once, at the end, on the one claim the cutaway made sensible."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1002,
+    "lessons": [
+      "Lmwvtnh4ev3l",
+      "Lmwvsri18g98",
+      "Lmwvsri18h4z",
+      "Lmwvsri1885p",
+      "Lmwvufwh2c9l"
+    ]
+  },
+  "warnings": []
+}
