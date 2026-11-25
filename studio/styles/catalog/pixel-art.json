@@ -32,13 +32,14 @@
     "pixel glyphs that read as fake text"
   ],
   "sheets": "Each character as a sprite sheet: front, side and back idle frames plus a 4-frame walk, on a flat background, with the palette listed and the sprite height in pixels stated in the prompt; places as tile-based room screens; the product as a small sprite with its colours mapped to the palette.",
-  "risk": "The hardest style here for Seedance: a video model works in continuous space, so the grid melts, pixel sizes mix and motion slides smoothly between positions. Keep the camera locked, motion small and clips 3-5 s; then in post downsample each frame to the target grid (nearest-neighbour), re-quantise to the palette and step the timing to threes, which restores most of the look. For hero shots, consider animating the approved sprites in code instead.",
+  "risk": "The hardest style here for Seedance: a video model works in continuous space, so the grid melts, pixel sizes mix and motion slides smoothly between positions. Keep the camera locked, motion small and clips 3-5 s; then in post downsample each frame to the target grid (nearest-neighbour), re-quantise to the palette and step the timing to threes, which restores most of the look. For hero shots, consider animating the approved sprites in code instead. Example test (Nov 2026): The Seedream example came out as a smooth illustration, not on a pixel grid: for real pixel art, snap frames to the grid and palette afterwards or animate hero shots in code.",
   "models": {
     "sheets": "bytedance-seed/seedream-5-5",
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Pixel art still at a low native resolution with hard square pixels: a compact sprite of a woman in her thirties with a large head, a dark pixel bun and an orange top holds a tiny green glass bottle with a yellow cap, standing in a sunny tile-based kitchen with a clear floor line; a droopy pixel fern sags on the windowsill; a 20-colour palette, ordered dithering in the sunlight patch, hue-shifted shadows, one-pixel dark outlines, no anti-aliasing. Vertical 9:16. No text."
+    "prompt": "Pixel art still at a low native resolution with hard square pixels: a compact sprite of a woman in her thirties with a large head, a dark pixel bun and an orange top holds a tiny green glass bottle with a yellow cap, standing in a sunny tile-based kitchen with a clear floor line; a droopy pixel fern sags on the windowsill; a 20-colour palette, ordered dithering in the sunlight patch, hue-shifted shadows, one-pixel dark outlines, no anti-aliasing. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/pixel-art.jpg"
   },
   "sources": [
     {

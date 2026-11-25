@@ -38,7 +38,8 @@
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Comic-book art still: a woman in her thirties with a dark bun and an orange top, drawn in heavy tapered black ink, holds a small green glass bottle with a yellow cap up toward the low camera in a heroic foreshortened pose, in a sunny kitchen rendered with hard spot blacks; a droopy fern sags on the windowsill behind her; one hard sunlight key from the window, flat saturated colour with one cel shadow tone, feathered hatching, faint print texture, tilted framing. Vertical 9:16. No text."
+    "prompt": "Comic-book art still: a woman in her thirties with a dark bun and an orange top, drawn in heavy tapered black ink, holds a small green glass bottle with a yellow cap up toward the low camera in a heroic foreshortened pose, in a sunny kitchen rendered with hard spot blacks; a droopy fern sags on the windowsill behind her; one hard sunlight key from the window, flat saturated colour with one cel shadow tone, feathered hatching, faint print texture, tilted framing. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/comic-book.jpg"
   },
   "sources": [
     {

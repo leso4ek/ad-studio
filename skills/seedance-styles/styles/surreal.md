@@ -31,13 +31,15 @@ Locked wide frames with deep perspective and a low horizon, or one very slow dol
 Characters in front, three-quarter and side in the calm painted realism, normal proportions; the place as a wide showing the scale rule (what is giant, what is tiny) and a detail view; the product in its exact shape and colours at normal scale and at the shot's warped scale.
 
 ## Where Seedance goes wrong in this style
-Seedance treats 'surreal' as permission to morph everything, which turns faces and the product into melting shapes; name exactly one impossible thing per shot and say 'everything else stays solid and still'. The warped scale also drifts back to normal over a long clip, so state the scale in BLOCKING ('the fern's leaves reach the ceiling, twice her height') and keep clips short.
+Seedance treats 'surreal' as permission to morph everything, which turns faces and the product into melting shapes; name exactly one impossible thing per shot and say 'everything else stays solid and still'. The warped scale also drifts back to normal over a long clip, so state the scale in BLOCKING ('the fern's leaves reach the ceiling, twice her height') and keep clips short. Example test (Nov 2026): The Seedream example barely bent reality: name the one impossible thing per shot (e.g. "the fern is taller than the window") instead of the word "surreal".
 
 ## Models
 Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2.5` (draft on Flash 480p, final on 2.5 720p with the same prompt, references and seed).
 
 ## Example still (our own generation)
 Prompt: Painted surrealist still in calm oil realism: a woman in her thirties with a dark bun and an orange top stands holding a small green glass bottle with a yellow cap in a sunny kitchen whose floor runs on to a far horizon; on the windowsill a droopy fern has grown so large its drooping leaves arch over her head and touch the ceiling; long hard late-afternoon shadows, a luminous pale sky through the window, fine canvas weave. Vertical 9:16. No text.
+
+![Surreal](../../../studio/styles/catalog/examples/surreal.jpg)
 
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Surreal Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Prime-time animated sitcom still: a simplified woman in her thirties with a dark bun and an orange top, uniform black outlines, big white eyes with small dot pupils and a deadpan expression, holds a small green glass bottle with a yellow cap at chest height; an ordinary sunny suburban kitchen drawn in thinner lines with plain unlabeled jars, a fridge and a sink, a droopy fern on the windowsill; flat bright TV colours, no shading, eye-level medium shot. Vertical 9:16. No text.
 
+![Adult Animated Sitcom](../../../studio/styles/catalog/examples/adult-sitcom.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Adult Sitcom Style)](https://kling.ai/blog/cartoon-styles-for-ai)

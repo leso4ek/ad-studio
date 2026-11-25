@@ -38,7 +38,8 @@
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Die-cut sticker art still: a chunky, cute sticker of a woman in her thirties with dot eyes, a round dark bun and an orange top holds a small green glass bottle with a yellow cap, beside a separate sticker of a droopy fern in a pot and a simple sunny kitchen window sticker, all on a plain pale yellow background; thick dark outlines, wide white die-cut borders, flat bright fills, small gloss highlights, soft drop shadows, no fine detail. Vertical 9:16. No text."
+    "prompt": "Die-cut sticker art still: a chunky, cute sticker of a woman in her thirties with dot eyes, a round dark bun and an orange top holds a small green glass bottle with a yellow cap, beside a separate sticker of a droopy fern in a pot and a simple sunny kitchen window sticker, all on a plain pale yellow background; thick dark outlines, wide white die-cut borders, flat bright fills, small gloss highlights, soft drop shadows, no fine detail. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/sticker.jpg"
   },
   "sources": [
     {

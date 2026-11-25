@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Stylized 3D animated still: a sculpted woman in her thirties with an oversized head, a big round dark bun and a soft orange top holds a small green glass bottle with a yellow cap in both large hands, standing in a simplified sunny kitchen whose rounded cupboards echo her shapes; beside her a droopy fern with chunky leaves sags on the windowsill; warm key light through the window, cool rim on her shoulder, tinted soft shadows, painted materials, no realistic skin. Vertical 9:16. No text.
 
+![Stylized 3D](../../../studio/styles/catalog/examples/stylized-3d.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Stylized 3D Style)](https://kling.ai/blog/cartoon-styles-for-ai)

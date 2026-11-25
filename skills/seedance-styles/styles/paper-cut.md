@@ -31,13 +31,15 @@ Front-on rostrum or tabletop camera, locked or on a slow slider; focus pulls bet
 Each character is shown as its set of cut pieces laid flat (head, body, limbs, two mouth shapes) and assembled front and profile; the place is shown as its layer stack from the front and at a slight angle so the gaps read; the product is a cut-paper version in its exact colours, with the label as plain shapes.
 
 ## Where Seedance goes wrong in this style
-Seedance wants to give paper characters volume and turn them in 3D, and to let the paper grain slide across pieces as they move; repeat 'flat paper layers on fixed planes, rotate only on pin joints, stepped on twos' in MOTION and keep the camera frontal. Three-quarter turns are the weak spot: plan profile or front poses.
+Seedance wants to give paper characters volume and turn them in 3D, and to let the paper grain slide across pieces as they move; repeat 'flat paper layers on fixed planes, rotate only on pin joints, stepped on twos' in MOTION and keep the camera frontal. Three-quarter turns are the weak spot: plan profile or front poses. Example test (Nov 2026): The Seedream example read as a 3D diorama with props: repeat "flat layered paper pieces, no 3D objects" and keep depth to stacked layers.
 
 ## Models
 Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2.5` (draft on Flash 480p, final on 2.5 720p with the same prompt, references and seed).
 
 ## Example still (our own generation)
 Prompt: Layered paper-cut still on a tabletop set: a flat cut-out woman in her thirties with a dark paper bun and an orange card top, jointed with tiny pins, holds a small green tissue-and-card bottle with a yellow cap; a sunny kitchen built from four layers of matte coloured card with a warm side lamp casting small shadows between layers, a droopy fern of torn green paper on the windowsill; white cut edges, paper grain, shallow depth of field. Vertical 9:16. No text.
+
+![Paper Cut](../../../studio/styles/catalog/examples/paper-cut.jpg)
 
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Paper Cut Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Collectible toy-figure still, macro product photography: a small satin vinyl figure of a woman in her thirties with a large head, a moulded dark bun, painted eyes and a glossy orange top holds a tiny green glass bottle with a yellow cap in mitten-like hands, standing in a miniature sunny kitchen diorama; a droopy miniature fern sags on the windowsill; soft-box key with a clean rim, crisp plastic highlights, faint mould seams, shallow depth of field, unmarked base. Vertical 9:16. No text.
 
+![Toy Figure](../../../studio/styles/catalog/examples/toy-figure.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Toy Figure Style)](https://kling.ai/blog/cartoon-styles-for-ai)

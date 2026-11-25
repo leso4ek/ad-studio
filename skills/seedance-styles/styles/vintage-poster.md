@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Mid-century screen-print poster still on aged cream paper: a woman in her thirties with a dark bun and an orange top as a bold flat silhouette holds a small green glass bottle with a yellow cap toward the viewer; a sunny kitchen simplified to oversized flat shapes, a huge window as a mustard disc, a droopy fern on the windowsill in dark green ink; four flat inks, slight misregistration, halftone midtones, faded scuffed edges, an empty paper band at the top. Vertical 9:16. No text.
 
+![Vintage Poster](../../../studio/styles/catalog/examples/vintage-poster.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Vintage Poster Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Comic-book art still: a woman in her thirties with a dark bun and an orange top, drawn in heavy tapered black ink, holds a small green glass bottle with a yellow cap up toward the low camera in a heroic foreshortened pose, in a sunny kitchen rendered with hard spot blacks; a droopy fern sags on the windowsill behind her; one hard sunlight key from the window, flat saturated colour with one cel shadow tone, feathered hatching, faint print texture, tilted framing. Vertical 9:16. No text.
 
+![Comic Book](../../../studio/styles/catalog/examples/comic-book.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Comic Book Style)](https://kling.ai/blog/cartoon-styles-for-ai)

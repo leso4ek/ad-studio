@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Mid-century modern limited-animation still: a geometric woman in her thirties made of a triangle body and an oval head, with a dark bun and an orange top, angular thin arms and dot eyes, holds a small green glass bottle with a yellow cap; a flat stylised sunny kitchen with flattened perspective, mustard and teal cabinets and a starburst clock shape, beside a droopy fern on the windowsill drawn as drooping angular leaves; thin off-register outlines, flat colour, dry-brush texture on cream. Vertical 9:16. No text.
 
+![Mid-Century Modern](../../../studio/styles/catalog/examples/midcentury-modern.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Mid-Century Modern Style)](https://kling.ai/blog/cartoon-styles-for-ai)

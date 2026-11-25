@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Pop-art print still: a woman in her thirties with a dark bun and an orange top, simplified to bold shapes with thick black outlines and glossy high-contrast lips, holds a small green glass bottle with a yellow cap up like an icon, in a sunny kitchen of flat yellow and cyan blocks; a droopy fern on the windowsill is shaded with enlarged halftone dots; red diagonal line screens in the shadows, slightly off-register silkscreen colour, solid hot-pink wall. Vertical 9:16. No text.
 
+![Pop Art](../../../studio/styles/catalog/examples/pop-art.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Pop Art Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Die-cut sticker art still: a chunky, cute sticker of a woman in her thirties with dot eyes, a round dark bun and an orange top holds a small green glass bottle with a yellow cap, beside a separate sticker of a droopy fern in a pot and a simple sunny kitchen window sticker, all on a plain pale yellow background; thick dark outlines, wide white die-cut borders, flat bright fills, small gloss highlights, soft drop shadows, no fine detail. Vertical 9:16. No text.
 
+![Sticker](../../../studio/styles/catalog/examples/sticker.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Sticker Style)](https://kling.ai/blog/cartoon-styles-for-ai)

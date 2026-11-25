@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Hand-drawn 2D cartoon still: a round, friendly woman in her thirties with a dark bun and an orange top, drawn in a tapered dark ink line with flat cel colours and one soft shadow tone, holds up a small green glass bottle with a yellow cap and a white highlight on the glass; she stands in a sunny gouache-painted kitchen with soft unlined edges, beside a droopy cartoon fern on the windowsill whose leaves sag comically; warm daylight palette, big expressive eyes, clear silhouette. Vertical 9:16. No text.
 
+![Classic Cartoon](../../../studio/styles/catalog/examples/classic-cartoon.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Classic Cartoon Style)](https://kling.ai/blog/cartoon-styles-for-ai)

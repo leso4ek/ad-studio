@@ -2,8 +2,18 @@
   "slug": "mixed-media",
   "name": "Mixed Media",
   "family": "experimental",
-  "traits": ["a real photographed space with drawn and painted characters", "ink line, acrylic paint and photography in one frame", "digital marks (scribbles, highlights, arrows) drawn over the image", "each medium keeping its own texture"],
-  "bestFor": ["a drawn character in a real world", "products shown as the one real thing in a drawn story", "explainers that point at things", "creative, design-led brands"],
+  "traits": [
+    "a real photographed space with drawn and painted characters",
+    "ink line, acrylic paint and photography in one frame",
+    "digital marks (scribbles, highlights, arrows) drawn over the image",
+    "each medium keeping its own texture"
+  ],
+  "bestFor": [
+    "a drawn character in a real world",
+    "products shown as the one real thing in a drawn story",
+    "explainers that point at things",
+    "creative, design-led brands"
+  ],
   "suits": "any physical product that should look real (bottles, cosmetics, gadgets); creative, modern, honest brands",
   "stylePara": "Mixed-media animation: the kitchen and the product are real photographs with natural daylight and true materials, while the woman and the plant are hand-drawn in a confident black ink line and filled with loose acrylic paint that leaves brush strokes and gaps; a few white and yellow digital marker marks (swooshes, small stars, a circle) are drawn over the photo to show energy and attention; the drawn parts cast soft painted shadows onto the real surfaces; each medium keeps its own texture, with photo grain, paint strokes and clean digital strokes, and never blends into one look.",
   "rendering": {
@@ -15,14 +25,27 @@
   },
   "motion": "The photographed world moves in real time (light, steam, a smooth camera); the drawn character is animated on twos with a slight line boil; marker marks draw themselves on in a few frames and fade off; the two timings stay distinct, which is the point of the style.",
   "camera": "Real-camera moves in the photo world (a slow push-in, a gentle slide); drawn elements stick to the surfaces they touch; handheld only if the shot calls for it; no orbits that would show the drawings are flat.",
-  "avoid": ["the drawn woman turning into a photoreal person", "the real product redrawn as a cartoon", "everything melting into one painted filter", "digital marks that spell words or arrows labelled with text", "a different ink style in each shot"],
+  "avoid": [
+    "the drawn woman turning into a photoreal person",
+    "the real product redrawn as a cartoon",
+    "everything melting into one painted filter",
+    "digital marks that spell words or arrows labelled with text",
+    "a different ink style in each shot"
+  ],
   "sheets": "Two kinds of element: the woman and the fern as drawn sheets (front, three-quarter, side) in the ink-and-acrylic look; the kitchen and the product as real photographs or photoreal renders. In every role line say which element is drawn and which is photographic.",
   "risk": "Seedance's strongest pull is to unify the media: either the drawn woman becomes photoreal or the whole frame gets a painted filter. Give each reference a role line that names its medium ('drawn in ink and acrylic, keep drawn' / 'real photograph, keep photographic') and repeat it in CONTINUITY. Doodled marks can turn into text or numbers; describe them as shapes only.",
-  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "models": {
+    "sheets": "bytedance-seed/seedream-5-5",
+    "video": "bytedance/seedance-2.5"
+  },
   "example": {
-    "prompt": "Mixed-media still: a real photograph of a sunny kitchen with natural window light, and in it a hand-drawn woman in her thirties with a dark bun and an orange top in bold black ink line and loose acrylic paint, holding a real photographed small green glass bottle with a yellow cap; a drawn droopy fern in painted greens sits on the real windowsill, casting a painted shadow; a few white and yellow digital marker swooshes and stars around the bottle. Vertical 9:16. No text."
+    "prompt": "Mixed-media still: a real photograph of a sunny kitchen with natural window light, and in it a hand-drawn woman in her thirties with a dark bun and an orange top in bold black ink line and loose acrylic paint, holding a real photographed small green glass bottle with a yellow cap; a drawn droopy fern in painted greens sits on the real windowsill, casting a painted shadow; a few white and yellow digital marker swooshes and stars around the bottle. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/mixed-media.jpg"
   },
   "sources": [
-    { "title": "Kling AI · Cartoon Styles for AI (Mixed Media Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+    {
+      "title": "Kling AI · Cartoon Styles for AI (Mixed Media Style)",
+      "url": "https://kling.ai/blog/cartoon-styles-for-ai"
+    }
   ]
 }

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Vector cartoon still: a woman in her thirties with big expressive eyes, a round dark bun and an orange top, drawn in smooth curves with uniform dark outlines, holds a small green glass bottle with a yellow cap in a sunny flat-coloured kitchen built from layered shapes; a droopy fern with rounded leaves sags on the windowsill; flat fills from a palette of ten colours, one hard shadow shape and one highlight per form, no texture, a soft yellow background gradient. Vertical 9:16. No text.
 
+![Vector Cartoon](../../../studio/styles/catalog/examples/vector-cartoon.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Vector Cartoon Style)](https://kling.ai/blog/cartoon-styles-for-ai)

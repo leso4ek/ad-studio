@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Graphite pencil sketch still on off-white sketchbook paper: a woman in her thirties with a dark bun and a top shaded as a mid-grey, drawn in a soft pressure-varied line with construction lines left in, holds a small glass bottle that is the only colour in the frame, coloured-pencil green with a yellow cap; a sunny kitchen sketched in loose hatching that fades into bare paper at the edges, a droopy fern on the windowsill in smudged graphite; eraser ghosts. Vertical 9:16. No text.
 
+![Pencil Sketch](../../../studio/styles/catalog/examples/pencil-sketch.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Pencil Sketch Style)](https://kling.ai/blog/cartoon-styles-for-ai)

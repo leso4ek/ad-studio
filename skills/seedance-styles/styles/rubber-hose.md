@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: 1930s rubber hose cartoon still: a bouncy cartoon woman in her thirties with a dark bun and an orange top, long boneless tube arms, pie-cut eyes and white gloves, holds a small green glass bottle with a yellow cap; she stands in a simply drawn sunny kitchen with slightly wobbly perspective, beside a droopy fern on the windowsill whose fronds hang like limp noodles; thick black ink lines, faded two-strip colours of muted orange, teal and cream, film grain and soft vignette. Vertical 9:16. No text.
 
+![Rubber Hose](../../../studio/styles/catalog/examples/rubber-hose.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Rubber Hose Style)](https://kling.ai/blog/cartoon-styles-for-ai)

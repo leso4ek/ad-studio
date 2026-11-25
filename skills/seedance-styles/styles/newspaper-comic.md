@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Daily newspaper comic-strip drawing: a simple woman in her thirties with dot eyes, a round nose, a dark bun and an orange top holds up a small green glass bottle with a yellow cap and frowns at a droopy fern on the windowsill, in a minimal sunny kitchen of a floor line, a window frame and one cupboard on empty cream paper; uniform round-nib pen line, flat muted colours slightly off-register, fine newsprint dots, flat frontal staging, single full-frame panel. Vertical 9:16. No text.
 
+![Newspaper Comic](../../../studio/styles/catalog/examples/newspaper-comic.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Newspaper Comic Style)](https://kling.ai/blog/cartoon-styles-for-ai)

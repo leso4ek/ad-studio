@@ -38,7 +38,8 @@
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Collectible toy-figure still, macro product photography: a small satin vinyl figure of a woman in her thirties with a large head, a moulded dark bun, painted eyes and a glossy orange top holds a tiny green glass bottle with a yellow cap in mitten-like hands, standing in a miniature sunny kitchen diorama; a droopy miniature fern sags on the windowsill; soft-box key with a clean rim, crisp plastic highlights, faint mould seams, shallow depth of field, unmarked base. Vertical 9:16. No text."
+    "prompt": "Collectible toy-figure still, macro product photography: a small satin vinyl figure of a woman in her thirties with a large head, a moulded dark bun, painted eyes and a glossy orange top holds a tiny green glass bottle with a yellow cap in mitten-like hands, standing in a miniature sunny kitchen diorama; a droopy miniature fern sags on the windowsill; soft-box key with a clean rim, crisp plastic highlights, faint mould seams, shallow depth of field, unmarked base. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/toy-figure.jpg"
   },
   "sources": [
     {

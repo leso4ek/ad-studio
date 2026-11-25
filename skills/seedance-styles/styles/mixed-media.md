@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Mixed-media still: a real photograph of a sunny kitchen with natural window light, and in it a hand-drawn woman in her thirties with a dark bun and an orange top in bold black ink line and loose acrylic paint, holding a real photographed small green glass bottle with a yellow cap; a drawn droopy fern in painted greens sits on the real windowsill, casting a painted shadow; a few white and yellow digital marker swooshes and stars around the bottle. Vertical 9:16. No text.
 
+![Mixed Media](../../../studio/styles/catalog/examples/mixed-media.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Mixed Media Style)](https://kling.ai/blog/cartoon-styles-for-ai)

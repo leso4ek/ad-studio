@@ -2,8 +2,18 @@
   "slug": "3d-animation",
   "name": "3D Animation",
   "family": "3d-stopmotion",
-  "traits": ["modelled, rounded forms with appealing stylised proportions", "smooth surfaces with soft subsurface skin and clean materials", "dimensional depth with soft depth of field", "volumetric light, warm bounce and clear rim light"],
-  "bestFor": ["character-led family stories", "products shown in true shape and material", "warm, emotional turns", "mascots with personality"],
+  "traits": [
+    "modelled, rounded forms with appealing stylised proportions",
+    "smooth surfaces with soft subsurface skin and clean materials",
+    "dimensional depth with soft depth of field",
+    "volumetric light, warm bounce and clear rim light"
+  ],
+  "bestFor": [
+    "character-led family stories",
+    "products shown in true shape and material",
+    "warm, emotional turns",
+    "mascots with personality"
+  ],
   "suits": "almost any physical product, especially bottles, packaging, toys, devices and food; warm, family-friendly, optimistic brands",
   "stylePara": "Stylised 3D animated feature look: characters are modelled with rounded, appealing proportions, slightly large heads and eyes, simplified hands and soft sculpted hair masses; skin has soft subsurface scattering, fabrics show gentle fibre texture, glass and plastic read as clean physical materials; dimensional depth with a soft depth of field; warm key light, cool fill, a clear rim light separating each figure, warm bounce light from surfaces and visible volumetric light shafts through windows; rich but controlled colour; global illumination and soft contact shadows ground everything.",
   "rendering": {
@@ -15,14 +25,27 @@
   },
   "motion": "Full character animation at 24 fps on ones: clear anticipation, follow-through and overlapping action in hair and clothes, gentle squash and stretch on faces, appealing arcs; weight and timing exaggerated a little past real life; eyes and brows carry the acting.",
   "camera": "Virtual-camera grammar used with restraint: a slow dolly or crane, a gentle push-in on emotion, rack focus between product and face, a low-angle wide for scale; physically plausible moves, no impossible spins.",
-  "avoid": ["photoreal humans with real skin pores", "uncanny realistic eyes on stylised faces", "glossy plastic-toy skin", "faces changing shape between shots", "printed fake text on packaging and signs"],
+  "avoid": [
+    "photoreal humans with real skin pores",
+    "uncanny realistic eyes on stylised faces",
+    "glossy plastic-toy skin",
+    "faces changing shape between shots",
+    "printed fake text on packaging and signs"
+  ],
   "sheets": "Each character sheet is a 3D turnaround render (front, three-quarter, side, back) in neutral grey studio light, plus two expressions; places get a wide and a reverse render in the scene's lighting; the product is a clean 3D render with exact shape, materials and label colours, ideally from our own Blender model.",
   "risk": "Seedance holds this style well, but faces drift between shots (eye spacing, nose shape, hair volume); send the turnaround in every shot. It can push toward photorealism in close-ups; repeat 'stylised 3D animated, rounded proportions'. Labels warp on rotating products; keep the label toward the lens and cut in the real packshot if needed.",
-  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "models": {
+    "sheets": "bytedance-seed/seedream-5-5",
+    "video": "bytedance/seedance-2.5"
+  },
   "example": {
-    "prompt": "Stylised 3D animated still: a woman in her thirties with a dark sculpted bun and an orange knit top, rounded appealing proportions and expressive eyes, holds a small green glass bottle with a yellow cap whose glass catches warm light; a sunny modelled kitchen with soft depth of field and volumetric light shafts through the window, a droopy fern on the windowsill, warm key, cool fill, a clear rim light, soft contact shadows on the counter. Vertical 9:16. No text."
+    "prompt": "Stylised 3D animated still: a woman in her thirties with a dark sculpted bun and an orange knit top, rounded appealing proportions and expressive eyes, holds a small green glass bottle with a yellow cap whose glass catches warm light; a sunny modelled kitchen with soft depth of field and volumetric light shafts through the window, a droopy fern on the windowsill, warm key, cool fill, a clear rim light, soft contact shadows on the counter. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/3d-animation.jpg"
   },
   "sources": [
-    { "title": "Kling AI · Cartoon Styles for AI (3D Animation Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+    {
+      "title": "Kling AI · Cartoon Styles for AI (3D Animation Style)",
+      "url": "https://kling.ai/blog/cartoon-styles-for-ai"
+    }
   ]
 }

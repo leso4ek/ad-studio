@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: 1980s-90s broadcast cartoon still on painted cels: a woman in her thirties with a dark bun and an orange top, chunky heroic silhouette and thick black outlines, holds up a small green glass bottle with a yellow cap in a triumphant low-angle pose, a sharp white highlight on the glass; behind her a sunny painted kitchen with an airbrushed blue sky in the window and a droopy fern on the windowsill; bold colours, one hard cel shadow per surface, light film grain. Vertical 9:16. No text.
 
+![Saturday Morning Cartoon](../../../studio/styles/catalog/examples/saturday-morning.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Saturday Morning Style)](https://kling.ai/blog/cartoon-styles-for-ai)

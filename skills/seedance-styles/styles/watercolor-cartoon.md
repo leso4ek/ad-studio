@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Hand-painted watercolour cartoon still on cold-press paper: a woman in her thirties with a dark bun and an orange top, drawn in a loose sepia brush line, holds a small green glass bottle with a yellow cap; a sunny kitchen in pale washes with bare white paper for the window light, violet-blue wash shadows with hard dried edges, a droopy fern on the windowsill painted in two greens with soft blooms; visible paper grain and granulation. Vertical 9:16. No text.
 
+![Watercolor Cartoon](../../../studio/styles/catalog/examples/watercolor-cartoon.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Watercolor Cartoon Style)](https://kling.ai/blog/cartoon-styles-for-ai)

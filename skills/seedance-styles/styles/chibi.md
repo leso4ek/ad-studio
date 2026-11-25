@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Chibi super-deformed anime still: a tiny woman in her thirties drawn two-and-a-half heads tall, with a huge round head, a dark bun, an orange top, big sparkly eyes and pink blush ovals, hugs a small green glass bottle with a yellow cap that looks comically big in her mitten hands; a simple sunny kitchen with soft painted shapes, a droopy fern on the windowsill sagging dramatically, one drawn sweat drop beside her head; clean thick line, flat bright colour with one soft shadow. Vertical 9:16. No text.
 
+![Chibi](../../../studio/styles/catalog/examples/chibi.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Chibi Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Picture-book illustration still: a rounded, big-headed woman in her thirties with a dark bun and an orange top, drawn in a warm wobbly brown ink line, holds up a small green glass bottle with a yellow cap; a sunny kitchen painted in opaque gouache with gently leaning cupboards and golden window light, a droopy fern on the windowsill with coloured-pencil hatching in its shadows; soft page vignette, matte colours. Vertical 9:16. No text.
 
+![Storybook](../../../studio/styles/catalog/examples/storybook.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Storybook Style)](https://kling.ai/blog/cartoon-styles-for-ai)

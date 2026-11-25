@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Stop-motion claymation still: a plasticine woman in her thirties with a dark bun and an orange jumper holds a small green glass bottle with a yellow cap, standing in a miniature felt-and-card kitchen beside a droopy plasticine fern on the windowsill; warm practical lamp light, shallow depth of field, visible thumbprints, matte colours. Vertical 9:16. No text.
 
+![Clay Animation](../../../studio/styles/catalog/examples/clay-animation.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Clay Animation Style)](https://kling.ai/blog/cartoon-styles-for-ai)

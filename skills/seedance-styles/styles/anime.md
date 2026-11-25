@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Modern TV anime still: a woman in her thirties with a dark bun and an orange top, clean thin lines, large eyes with two highlight dots and a gentle smile, holds a small green glass bottle with a yellow cap catching a sharp highlight; a detailed hand-painted sunny kitchen with soft bloom on the window and light falling across the counter, a droopy fern on the windowsill with tired leaves; two-tone cel shading, plain unlabeled jars, balanced warm colour. Vertical 9:16. No text.
 
+![Anime](../../../studio/styles/catalog/examples/anime.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Anime Style)](https://kling.ai/blog/cartoon-styles-for-ai)

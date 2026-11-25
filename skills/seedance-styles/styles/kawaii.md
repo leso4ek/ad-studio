@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Kawaii cute illustration still: a soft rounded woman in her thirties with a dark bun and an orange top, dot eyes set low, a tiny smile and pink blush ovals, cradles a small green glass bottle with a yellow cap; a pastel sunny kitchen of rounded peach and mint shapes, beside a droopy fern on the windowsill with a tiny sad dot-eyed face, two small stars and a cloud floating above; thick rounded dark-brown outlines, flat pastel colour, lots of breathing room. Vertical 9:16. No text.
 
+![Kawaii](../../../studio/styles/catalog/examples/kawaii.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Kawaii Style)](https://kling.ai/blog/cartoon-styles-for-ai)

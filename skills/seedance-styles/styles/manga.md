@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Black-and-white manga panel: a woman in her thirties with a dark bun drawn in solid black ink and a top shaded in mid-grey screentone (her orange top rendered as tone), holds a small glass bottle with a pale cap close to the camera, the glass shown with white highlights and gradient tone; behind her a sunny kitchen inked with fine hatching, white sunlight across the counter, and a droopy fern on the windowsill in drooping inked fronds; strong contrast, dot screentones, faint focus lines toward the bottle, paper grain. Vertical 9:16. No text.
 
+![Manga](../../../studio/styles/catalog/examples/manga.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Manga Style)](https://kling.ai/blog/cartoon-styles-for-ai)

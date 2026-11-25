@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Cut-and-paste collage still on a flat board: a woman in her thirties with a dark bun cut from a black-and-white photograph, her orange top cut from flat orange paper, holds a bright cut-out of a small green glass bottle with a yellow cap; a sunny kitchen assembled from faded photo scraps and kraft card at mismatched scales, a droopy fern from a halftone print on the windowsill; white scissor borders, torn edges, tape strips, small drop shadows. Vertical 9:16. No text.
 
+![Collage](../../../studio/styles/catalog/examples/collage.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Collage Style)](https://kling.ai/blog/cartoon-styles-for-ai)

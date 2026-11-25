@@ -38,7 +38,8 @@
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Pop-art print still: a woman in her thirties with a dark bun and an orange top, simplified to bold shapes with thick black outlines and glossy high-contrast lips, holds a small green glass bottle with a yellow cap up like an icon, in a sunny kitchen of flat yellow and cyan blocks; a droopy fern on the windowsill is shaded with enlarged halftone dots; red diagonal line screens in the shadows, slightly off-register silkscreen colour, solid hot-pink wall. Vertical 9:16. No text."
+    "prompt": "Pop-art print still: a woman in her thirties with a dark bun and an orange top, simplified to bold shapes with thick black outlines and glossy high-contrast lips, holds a small green glass bottle with a yellow cap up like an icon, in a sunny kitchen of flat yellow and cyan blocks; a droopy fern on the windowsill is shaded with enlarged halftone dots; red diagonal line screens in the shadows, slightly off-register silkscreen colour, solid hot-pink wall. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/pop-art.jpg"
   },
   "sources": [
     {

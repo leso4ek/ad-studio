@@ -38,7 +38,8 @@
     "video": "bytedance/seedance-2.5"
   },
   "example": {
-    "prompt": "Vector cartoon still: a woman in her thirties with big expressive eyes, a round dark bun and an orange top, drawn in smooth curves with uniform dark outlines, holds a small green glass bottle with a yellow cap in a sunny flat-coloured kitchen built from layered shapes; a droopy fern with rounded leaves sags on the windowsill; flat fills from a palette of ten colours, one hard shadow shape and one highlight per form, no texture, a soft yellow background gradient. Vertical 9:16. No text."
+    "prompt": "Vector cartoon still: a woman in her thirties with big expressive eyes, a round dark bun and an orange top, drawn in smooth curves with uniform dark outlines, holds a small green glass bottle with a yellow cap in a sunny flat-coloured kitchen built from layered shapes; a droopy fern with rounded leaves sags on the windowsill; flat fills from a palette of ten colours, one hard shadow shape and one highlight per form, no texture, a soft yellow background gradient. Vertical 9:16. No text.",
+    "file": "studio/styles/catalog/examples/vector-cartoon.jpg"
   },
   "sources": [
     {

@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Mid-century retro-futurist illustration still: a woman in her thirties with a dark bun and an orange top, drawn in clean tapered ink lines with stylised long proportions, holds a small green glass bottle with a yellow cap; a sunny kitchen of tomorrow with a bubble-domed appliance, chrome trim, a starburst clock and a glass wall onto upswept towers, a droopy fern on the windowsill; flat gouache turquoise, coral and cream, painted chrome bands, light print grain. Vertical 9:16. No text.
 
+![Retro-Futuristic](../../../studio/styles/catalog/examples/retro-futuristic.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Retro-Futuristic Style)](https://kling.ai/blog/cartoon-styles-for-ai)

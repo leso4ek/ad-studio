@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Hand-drawn doodle still on white sketchbook paper: a simple bean-bodied woman in her thirties with dot eyes, a scribbled dark bun and an orange top coloured with a streaky marker fill, holds up a small green glass bottle with a yellow cap with sparkle marks around it; a sunny kitchen suggested by a few sketchy black felt-tip lines and a yellow-scribbled sun in the window, a droopy fern on the windowsill with little sweat drops; overshooting lines, lots of white paper. Vertical 9:16. No text.
 
+![Doodle](../../../studio/styles/catalog/examples/doodle.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Doodle Style)](https://kling.ai/blog/cartoon-styles-for-ai)

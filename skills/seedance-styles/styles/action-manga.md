@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Action manga still in colour: a woman in her thirties with a dark bun and an orange top thrusts a small green glass bottle with a yellow cap toward the lens in extreme foreshortening, her hand and the bottle huge in the foreground, low dramatic angle with a tilted horizon; a sunny kitchen behind her breaking into radial inked speed lines, a droopy fern on the windowsill caught in rim light; heavy tapered ink lines, sharp hatching, hard cel shadows, a white impact burst behind the cap. Vertical 9:16. No text.
 
+![Action Manga](../../../studio/styles/catalog/examples/action-manga.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Action Manga Style)](https://kling.ai/blog/cartoon-styles-for-ai)

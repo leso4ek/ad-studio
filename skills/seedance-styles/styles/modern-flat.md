@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Modern flat illustration still: a pared-back woman in her thirties with a small head, two dot eyes, a dark bun and long simple limbs in an orange top holds a small green glass bottle with a yellow cap, standing in a sunny kitchen reduced to soft neutral colour blocks; a droopy fern of simple geometric leaves sags on the windowsill; no outlines, almost no shading, one flat shadow shape, subtle grain, generous negative space, editorial composition. Vertical 9:16. No text.
 
+![Modern Flat](../../../studio/styles/catalog/examples/modern-flat.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Modern Flat Style)](https://kling.ai/blog/cartoon-styles-for-ai)

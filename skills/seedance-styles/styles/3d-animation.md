@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Stylised 3D animated still: a woman in her thirties with a dark sculpted bun and an orange knit top, rounded appealing proportions and expressive eyes, holds a small green glass bottle with a yellow cap whose glass catches warm light; a sunny modelled kitchen with soft depth of field and volumetric light shafts through the window, a droopy fern on the windowsill, warm key, cool fill, a clear rim light, soft contact shadows on the counter. Vertical 9:16. No text.
 
+![3D Animation](../../../studio/styles/catalog/examples/3d-animation.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (3D Animation Style)](https://kling.ai/blog/cartoon-styles-for-ai)

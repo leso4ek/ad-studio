@@ -39,5 +39,7 @@ Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2
 ## Example still (our own generation)
 Prompt: Hand-inked cartoon on paper: a woman in her thirties with a dark bun and an orange top, drawn in a wiry pressure-varied pen line, holds a small green glass bottle with a yellow cap and peers at a droopy fern on the windowsill, in a sunny kitchen built from cross-hatched cupboards and a stippled floor; loose orange and green watercolour washes under the line, white paper showing where the sun falls, visible paper grain, one small ink blot. Vertical 9:16. No text.
 
+![Ink Cartoon](../../../studio/styles/catalog/examples/ink-cartoon.jpg)
+
 ## Sources (look, don't copy)
 - [Kling AI · Cartoon Styles for AI (Ink Cartoon Style)](https://kling.ai/blog/cartoon-styles-for-ai)
