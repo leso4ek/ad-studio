@@ -53,7 +53,12 @@
           "size": 0.1,
           "w": 0.76
         }
-      ]
+      ],
+      "plate": {
+        "dir": "plates/world",
+        "fps": 24,
+        "start": 0
+      }
     },
     {
       "id": "s2",
@@ -72,7 +77,12 @@
       "reason": "Water pours in and the top soil darkens.",
       "textZone": "top",
       "route": "blender",
-      "layers": []
+      "layers": [],
+      "plate": {
+        "dir": "plates/world",
+        "fps": 24,
+        "start": 3
+      }
     },
     {
       "id": "s3",
@@ -102,7 +112,12 @@
           "size": 0.1,
           "w": 0.76
         }
-      ]
+      ],
+      "plate": {
+        "dir": "plates/world",
+        "fps": 24,
+        "start": 6.5
+      }
     },
     {
       "id": "s4",
@@ -132,7 +147,12 @@
           "size": 0.1,
           "w": 0.76
         }
-      ]
+      ],
+      "plate": {
+        "dir": "plates/world",
+        "fps": 24,
+        "start": 10
+      }
     },
     {
       "id": "s5",
@@ -151,7 +171,12 @@
       "reason": "The saucer holds the run-off; the fern a touch perkier.",
       "textZone": "top",
       "route": "blender",
-      "layers": []
+      "layers": [],
+      "plate": {
+        "dir": "plates/world",
+        "fps": 24,
+        "start": 13
+      }
     }
   ],
   "captions": true,

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "l01",
+    "text": "If you water a fern, where does it all go?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "The top soil soaks it up first.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "But only the roots can drink it.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "So the extra sinks through the gravel",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "and drains into the saucer.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "Sprigly. One capful per litre.",
+    "voice": "af_heart",
+    "speed": 0.95
+  }
+]

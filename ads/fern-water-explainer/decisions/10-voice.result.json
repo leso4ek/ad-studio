@@ -1,0 +1,20 @@
+{
+  "stage": "voice",
+  "at": "2026-11-25T19:58:53.495Z",
+  "summary": "6 lines by kokoro; speech check: FAIL",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 2.175,
+    "l02": 1.818,
+    "l03": 1.607,
+    "l04": 1.834,
+    "l05": 1.495,
+    "l06": 2.046
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": false,
+    "report": "OK   l01 | If you water a fern, where does it all go? → If you water a fern, where does it all go? \nDIFF l02 | The top soil soaks it up first. → The topsoil soaks it up first. \nOK   l03 | But only the roots can drink it. → But only the roots can drink it. \nOK   l04 | So the extra sinks through the gravel → So the extra sinks through the gravel. \nOK   l05 | and drains into the saucer. → and drains into the saucer. \nOK   l06 | Sprigly, one cap full per liter. → Sprigly, one cap full per liter. \nmismatches: 1 (lang=en, model=base)"
+  },
+  "warnings": []
+}

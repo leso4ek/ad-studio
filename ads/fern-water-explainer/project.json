@@ -2,7 +2,7 @@
   "slug": "fern-water-explainer",
   "title": "Fern water explainer",
   "created": "2026-11-25T19:08:09.997Z",
-  "updated": "2026-11-25T19:09:01.285Z",
+  "updated": "2026-11-25T19:58:53.495Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -117,27 +117,108 @@
       "result": {}
     },
     "world": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-25T19:08:24.835Z",
       "error": null,
       "fallbacks": [],
       "engine": "inbox",
       "outputs": [
+        "production/previz/world.mp4",
         "production/blender/world-check/f_0036.png",
         "production/blender/world-check/f_0114.png",
         "production/blender/world-check/f_0198.png",
         "production/blender/world-check/f_0276.png",
         "production/blender/world-check/f_0336.png"
-      ]
+      ],
+      "finished": "2026-11-25T19:58:10.614Z",
+      "ms": 2985779,
+      "summary": "world rendered: 360 frames at 40%",
+      "warnings": [],
+      "result": {
+        "frames": 360,
+        "notes": []
+      }
     },
     "frames": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-25T19:58:10.615Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_1.8.jpg",
+        "frames/f_5.1.jpg",
+        "frames/f_8.6.jpg",
+        "frames/f_11.8.jpg",
+        "frames/f_14.2.jpg",
+        "frames/f_16.5.jpg",
+        "frames/sheet.jpg",
+        "frames/w_1.8.jpg",
+        "frames/w_11.8.jpg",
+        "frames/w_16.5.jpg"
+      ],
+      "finished": "2026-11-25T19:58:18.318Z",
+      "ms": 7703,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "notes": [],
+          "changed": false,
+          "reason": "The plate shows each stop clearly; cards sit in the top zone above the pot and the word captions do not cover the roots."
+        }
+      }
     },
     "voice": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-25T19:58:18.319Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-25T19:58:18.321Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/cues.json",
+        "out/fern-water-explainer.srt"
+      ],
+      "finished": "2026-11-25T19:58:53.495Z",
+      "ms": 35176,
+      "summary": "6 lines by kokoro; speech check: FAIL",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 2.175,
+          "l02": 1.818,
+          "l03": 1.607,
+          "l04": 1.834,
+          "l05": 1.495,
+          "l06": 2.046
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": false,
+          "report": "OK   l01 | If you water a fern, where does it all go? → If you water a fern, where does it all go? \nDIFF l02 | The top soil soaks it up first. → The topsoil soaks it up first. \nOK   l03 | But only the roots can drink it. → But only the roots can drink it. \nOK   l04 | So the extra sinks through the gravel → So the extra sinks through the gravel. \nOK   l05 | and drains into the saucer. → and drains into the saucer. \nOK   l06 | Sprigly, one cap full per liter. → Sprigly, one cap full per liter. \nmismatches: 1 (lang=en, model=base)"
+        }
+      }
     },
     "animatic": {
-      "status": "idle"
+      "status": "running",
+      "started": "2026-11-25T19:58:53.495Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null
     },
     "final": {
       "status": "idle"
