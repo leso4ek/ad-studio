@@ -80,6 +80,7 @@ test('the motion router', () => {
   assert.notEqual(r({ motion: { score: .1 } }, { format: 'recreate', mode: 'transfer', rights: false }), 'genjutsu', 'never without rights');
   assert.equal(r({ motion: { score: .5 }, people: true }, { format: 'recreate', mode: 'mixed', rights: true }), 'genjutsu');
   assert.equal(r({ motion: { score: .05 } }, { format: 'recreate', mode: 'mixed', rights: true, target: '3d-skit' }), 'three');
+  assert.equal(r({ motion: { score: .1 }, people: true }, { format: 'recreate', mode: 'mixed', rights: true, target: '3d-skit' }), 'three', 'a still shot with people is remade free');
 });
 
 test('higgsfield: estimate, presigned upload without credentials, submit with Key auth, poll, download, ledger, cap', async () => {

@@ -1,8 +1,9 @@
 import { useState, Fragment } from 'react';
 import { motion } from 'motion/react';
 import { api, file } from './api.js';
+import { RecreateSource, AnalysisDecision } from './Recreate.jsx';
 
-const STATUS = { offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
+const STATUS = { skipped: 'not part of this format', offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
 
 export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
@@ -12,7 +13,7 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
   const [note, setNote] = useState(''), [redo, setRedo] = useState(false), [busy, setBusy] = useState(false);
   const act = async (fn) => { setBusy(true); try { await fn(); } catch (e) { alert(e.message); } setBusy(false); refresh(); };
   const choose = (choice) => waiting && act(() => api.approve(slug, id, choice));
-  const P = { ad, meta, rec, x, slug, bust, onNow, choose, waiting };
+  const P = { ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh };
 
   return (
     <div>
@@ -56,9 +57,15 @@ function Why({ rec }) {
   return <div className="card hero"><div className="who">◆ Claude{rec.meta?.engine === 'inbox' ? ' (via the decision inbox)' : ''}{rec.note ? ` · redo note: "${rec.note}"` : ''}</div><div className="reason">{rec.output.reason}</div></div>;
 }
 
-function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting }) {
+function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting, refresh }) {
   const o = rec?.output;
   switch (id) {
+    case 'source': return <RecreateSource ad={ad} meta={meta} slug={slug} x={x} refresh={refresh} />;
+    case 'analysis': return o ? <AnalysisDecision rec={rec} slug={slug} /> : <Pending x={x} />;
+    case 'world': return (x.outputs || []).length ? <>
+      <div className="card"><h2>The world, one still per beat</h2><p style={{ color: 'var(--muted)', fontSize: 13 }}>{x.summary}</p>
+        {(x.outputs || []).filter(f => f.endsWith('.mp4')).map(f => <video key={f} src={file(slug, f, bust)} controls preload="metadata" style={{ width: 220, borderRadius: 8, background: '#000', marginRight: 10 }} />)}
+        <div className="row" style={{ marginTop: 8 }}>{(x.outputs || []).filter(f => f.endsWith('.png')).map(f => <img key={f} src={file(slug, f, bust)} alt="" style={{ width: 120, borderRadius: 6 }} />)}</div></div></> : <Pending x={x} />;
     case 'brief': return o ? <>
       <Why rec={rec} />
       <div className="card"><dl className="kv">

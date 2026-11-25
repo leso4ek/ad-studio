@@ -14,6 +14,8 @@ export const api = {
   approve: (s, id, choice) => fetch(`/api/ads/${s}/stages/${id}/approve`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(choice === undefined ? {} : { choice }) }).then(j),
   redo: (s, id, note) => fetch(`/api/ads/${s}/stages/${id}/redo`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ note }) }).then(j),
   cancel: (s) => fetch(`/api/ads/${s}/cancel`, { method: 'POST' }).then(j),
+  recreate: (s, b) => fetch(`/api/ads/${s}/recreate`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(j),
+  plates: (s) => fetch(`/api/ads/${s}/production/plates`, { method: 'POST' }).then(j),
   mode: (s, b) => fetch(`/api/ads/${s}/mode`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(j),
 };
 export const file = (slug, rel, bust) => `/files/${slug}/${rel}${bust ? `?v=${bust}` : ''}`;

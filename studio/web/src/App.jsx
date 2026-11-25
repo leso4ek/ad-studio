@@ -58,7 +58,9 @@ export default function App() {
   }, [s.slug, loadAd]);
 
   // follow the pipeline: select the running stage, else the first that waits for the user
-  const stages = s.meta?.stages || [];
+  // only the stages of this ad's format (recreate adds Source + Analysis; the 3D explainer adds the world; recreate skips Premises)
+  const fmtOf = p => p?.format || 'story-ad', tgtOf = p => fmtOf(p) === 'recreate' ? (p.recreate?.target || 'story-ad') : fmtOf(p);
+  const stages = (s.meta?.stages || []).filter(x => { const sf = s.meta?.stageFormats?.[x.id]; return !sf || sf.formats.includes(fmtOf(s.ad?.project)) || sf.targets.includes(tgtOf(s.ad?.project)); });
   const st = s.ad?.project?.stages || {};
   const focus = useMemo(() => {
     const running = stages.find(x => st[x.id]?.status === 'running');

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const LABEL = { offer: 'optional', idle: 'waiting', running: 'running', review: 'your review', gate: 'your approval', done: 'done', error: 'error', stale: 'stale' };
+const LABEL = { skipped: 'not in this format', offer: 'optional', idle: 'waiting', running: 'running', review: 'your review', gate: 'your approval', done: 'done', error: 'error', stale: 'stale' };
 const fmt = ms => ms ? (ms < 60000 ? `${(ms / 1000).toFixed(1)} s` : `${Math.floor(ms / 60000)} m ${Math.round(ms % 60000 / 1000)} s`) : '';
 
 /** The twelve stages as a rail: the filled part of the rail is animated with GSAP as stages finish, the running node pulses. */
@@ -39,7 +39,7 @@ export default function PipelineMap({ stages, state, selected, onSelect }) {
         return (
           <button key={s.id} className={`node st-${x.status}`} aria-current={selected === s.id} onClick={() => onSelect(s.id)}
             title={`${s.title}: ${LABEL[x.status] || x.status}${x.error ? ` — ${x.error}` : ''}`}>
-            <span className="dot">{x.status === 'done' ? '✓' : x.status === 'error' ? '!' : s.n}</span>
+            <span className="dot">{x.status === 'done' ? '✓' : x.status === 'error' ? '!' : s.n === 0 ? 'R' : s.n}</span>
             <span>
               <span className="t">{s.title}
                 {s.kind === 'decide' && <span className="chip claude" title="Claude decides">Claude</span>}

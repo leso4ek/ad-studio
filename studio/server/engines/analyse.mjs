@@ -116,7 +116,8 @@ export function mergeSpans(shots, { min = 4, max = 30 } = {}) {
  */
 export function routeFor(shot, ctx = {}) {
   const fmt = ctx.format || 'story-ad', mode = ctx.mode || 'remake', score = shot.motion?.score ?? 0, cx = shot.complexity || 'low';
-  if ((mode === 'transfer' || (mode === 'mixed' && (shot.people || score > .35))) && ctx.rights && fmt === 'recreate') return { route: 'genjutsu', why: 'motion transfer of the original segment (rights confirmed)' };
+  // mixed: Genjutsu only where its price buys something: people who move, or strong motion; still shots are remade free
+  if ((mode === 'transfer' || (mode === 'mixed' && ((shot.people && score > .2) || score > .4))) && ctx.rights && fmt === 'recreate') return { route: 'genjutsu', why: 'motion transfer of the original segment (rights confirmed)' };
   const complex = cx === 'high' || shot.physics || (cx === 'mid' && score > .45);
   const target = fmt === 'recreate' ? (ctx.target || 'story-ad') : fmt;
   if (target === '3d-explainer') return complex || shot.physics ? { route: ctx.photoreal ? 'blender→genjutsu' : 'blender', why: 'a built 3D world with layers, flow or a long camera path' } : { route: 'blender', why: 'the explainer world is one Blender scene' };

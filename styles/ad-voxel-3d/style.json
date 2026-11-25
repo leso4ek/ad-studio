@@ -1,0 +1,14 @@
+{
+ "slug": "ad-voxel-3d",
+ "en": "Voxel Stage",
+ "cn": "体素舞台",
+ "based_on": "ad-toy-3d",
+ "borrows": [
+  "text-flash-cuts"
+ ],
+ "size": "1080x1920",
+ "created": "2026-11-25",
+ "line": "Blocky box-built people, plants and products talk it through on a dark indigo stage with out-of-focus light dots, a warm key and a cool rim; close-ups alternate between speakers.",
+ "line_cn": "方块搭成的人物、植物和产品在深靛蓝舞台上对话：失焦光斑、暖色主光与冷色轮廓光，特写在说话者之间交替。",
+ "engine": "studio/kit"
+}

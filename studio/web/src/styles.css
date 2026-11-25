@@ -136,3 +136,11 @@ table.shots th { color: var(--faint); font-weight: 600; font-size: 11.5px; text-
 .modal input[type=text], .modal select, .modal textarea { background: var(--panel2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; color: var(--ink); }
 .health { display: grid; gap: 6px; }
 .health .h { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 6px 8px; border-radius: 8px; background: var(--panel2); font-size: 13px; }
+
+/* recreate form (round 12): stacked fields outside the modal */
+.form label:not(.tog) { display: grid; gap: 4px; margin-bottom: 12px; color: var(--muted); font-size: 13px; }
+.form input[type=text], .form select, .form textarea { background: var(--panel2); border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; color: var(--ink); width: 100%; box-sizing: border-box; }
+.form label.tog select { width: auto; }
+.refs { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+.tbl th { text-align: left; color: var(--muted); font-weight: 500; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.tbl td { padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }

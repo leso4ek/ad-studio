@@ -25,7 +25,7 @@ export default function ShotBoard({ slug, events }) {
       <button className="btn primary" onClick={() => act(() => post(`${base}/init`))}>Set up the shot board</button>
       {err && <div className="err-box" style={{ marginTop: 10 }}>{err}</div>}
     </div>);
-  const { plan, budget, busy } = d, S = plan.settings;
+  const { plan, budget, busy, recreate } = d, S = plan.settings;
   const set = patch => act(() => post(`${base}/settings`, patch));
   return (
     <div>
@@ -37,27 +37,38 @@ export default function ShotBoard({ slug, events }) {
           <label className="tog">Finals <select className="adpick" value={S.finalResolution || '720p'} onChange={e => set({ finalResolution: e.target.value })}><option>720p</option><option>1080p</option></select></label>
           <button className="btn" disabled={!!busy} onClick={() => act(() => post(`${base}/prompts`))} title="Claude writes every shot's prompt in the creators' format (free on your Claude plan)">Claude writes the prompts</button>
           <button className="btn ghost" onClick={() => act(() => post(`${base}/init`))} title="Re-read the bible (keeps Claude's/your prompts and takes)">Sync with bible</button>
+          <button className="btn" disabled={!!busy} onClick={() => act(() => post(`${base}/plates`))} title="Free: every shot with a chosen take (or a Blender render) becomes the picture of the edit; then run the Animatic and Final stages again">Use picked clips in the edit</button>
         </div>
-        <Budget b={budget} />
+        <div><Budget b={budget} />{budget.higgsfield && (plan.shots.some(x => GENJUTSU(x.route)) || budget.higgsfield.spent > 0) && <Budget b={budget.higgsfield} label="Higgsfield" />}</div>
       </div>
       {busy && <div className="card"><span className="pulse" /> {busy}… (follow it in the live pane)</div>}
       {err && <div className="err-box" style={{ marginBottom: 12 }}>{err}</div>}
       {plan.promptsReason && <div className="card hero"><div className="who">◆ Claude{plan.promptsBy === 'inbox' ? ' (via the decision inbox)' : ''} wrote the prompts</div><div className="reason">{plan.promptsReason}</div></div>}
 
+      {plan.shots.some(x => GENJUTSU(x.route)) && <div className="card row">
+        <h2 style={{ margin: 0 }}>Genjutsu</h2>
+        <label className="tog">Mode <select className="adpick" value={S.genjutsuMode || 'motion-transfer'} onChange={e => set({ genjutsuMode: e.target.value })}>
+          <option value="motion-transfer">Motion Transfer (4-30 s)</option><option value="light">Light (first 15 s, keeps the audio)</option><option value="object-swap">Object Swap</option></select></label>
+        <label className="tog">Drafts <select className="adpick" value={S.genjutsuResolution || '480p'} onChange={e => set({ genjutsuResolution: e.target.value })}><option>480p</option><option>720p</option></select></label>
+        <label className="tog">Finals <select className="adpick" value={S.genjutsuFinalResolution || '720p'} onChange={e => set({ genjutsuFinalResolution: e.target.value })}><option>720p</option><option>1080p</option></select></label>
+        <span style={{ fontSize: 12, color: 'var(--muted)' }}>about $0.15/s at 480p, $0.34/s at 720p, $0.83/s at 1080p · each take asks first</span>
+      </div>}
       <Looks S={S} set={set} busy={!!busy} />
       <h2>Elements: the consistency anchors (choose 1–3 views each)</h2>
       <div className="opts" style={{ marginBottom: 18 }}>{plan.assets.map(a => <Element key={a.id} a={a} base={base} slug={slug} bust={bust} act={act} S={S} busy={!!busy} />)}</div>
 
       <h2>Shots</h2>
-      <div style={{ display: 'grid', gap: 14 }}>{plan.shots.map(s => <Shot key={s.id} s={s} plan={plan} slug={slug} base={base} bust={bust} act={act} busy={!!busy} />)}</div>
+      <div style={{ display: 'grid', gap: 14 }}>{plan.shots.map(s => <Shot key={s.id} s={s} plan={plan} recreate={recreate} slug={slug} base={base} bust={bust} act={act} busy={!!busy} />)}</div>
     </div>
   );
 }
 
-function Budget({ b }) {
+const GENJUTSU = r => r === 'genjutsu' || r === 'blender→genjutsu';
+const ROUTES = [['seedance', 'Seedance (paid)'], ['kit', 'Code-drawn (free)'], ['three', 'three.js stage (free)'], ['blender', 'Blender (free)'], ['blender→genjutsu', 'Blender → Genjutsu (paid)'], ['genjutsu', 'Genjutsu from the upload (paid)']];
+function Budget({ b, label = 'OpenRouter' }) {
   const pct = Math.min(100, b.spent / b.cap * 100);
-  return <div style={{ minWidth: 200 }} title="Hard cap: a paid call that would pass it is refused">
-    <div style={{ fontSize: 12, color: 'var(--muted)' }}>{b.mock ? 'MOCK MODE · ' : ''}spent ${b.spent.toFixed(2)} of ${b.cap.toFixed(2)}</div>
+  return <div style={{ minWidth: 200, marginBottom: 4 }} title="Hard cap: a paid call that would pass it is refused">
+    <div style={{ fontSize: 12, color: 'var(--muted)' }}>{label} · {b.mock ? 'MOCK MODE · ' : ''}spent ${b.spent.toFixed(2)} of ${b.cap.toFixed(2)}</div>
     <div style={{ height: 6, background: 'var(--line)', borderRadius: 4, marginTop: 4 }}><div style={{ width: `${pct}%`, height: '100%', background: pct > 80 ? 'var(--err)' : 'var(--ok)', borderRadius: 4 }} /></div>
   </div>;
 }
@@ -92,32 +103,35 @@ function Element({ a, base, slug, bust, act, S, busy }) {
   </div>;
 }
 
-function Shot({ s, plan, slug, base, bust, act, busy }) {
+function Shot({ s, plan, recreate, slug, base, bust, act, busy }) {
   const [prompt, setPrompt] = useState(s.prompt), dirty = prompt !== s.prompt;
   useEffect(() => setPrompt(s.prompt), [s.prompt]);
   const refs = (s.refs || []).flatMap(id => { const a = plan.assets.find(x => x.id === id); const v = a?.picks?.length ? a.picks.slice(0, 2) : a?.chosen ? [a.chosen] : []; return v.length ? v.map((f, i) => ({ id, f, label: `${a.name}${v.length > 1 ? ` ${i + 1}` : ''}` })) : [{ id, f: null, label: `${a?.name || id} (no view yet)` }]; });
   if (s.layoutRef) refs.push({ id: 'layout', f: s.previz ? `production/previz/${s.id}_layout.png` : null, label: 'layout (positioning only)' });
   const gen = async kind => {
     const e = await fetch(`${base}/shots/${s.id}/estimate?kind=${kind}`).then(j);
-    if (confirm(`${kind === 'final' ? 'Final' : 'Draft'} of ${s.id}: ${s.seconds} s, ${e.model.split('/')[1]}, ${e.resolution}.\nAbout $${e.estimate.toFixed(2)}${e.mock ? ' (mock mode: free)' : ''}. Spent so far $${e.spent.toFixed(2)} of $${e.cap.toFixed(2)}.`))
+    if (confirm(`${kind === 'final' ? 'Final' : 'Draft'} of ${s.id}: ${e.seconds || s.seconds} s, ${e.engine === 'higgsfield' ? e.model : e.model.split('/')[1]}, ${e.resolution}.\nAbout $${e.estimate.toFixed(2)}${e.mock ? ' (mock mode: free)' : ''}. Spent so far $${e.spent.toFixed(2)} of $${e.cap.toFixed(2)}.`))
       act(() => post(`${base}/shots/${s.id}/take`, { confirm: true, kind }));
   };
   const drafts = s.takes.filter(t => t.kind !== 'final'), finals = s.takes.filter(t => t.kind === 'final');
   return <motion.div className="card" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
     <div className="row" style={{ justifyContent: 'space-between', marginBottom: 8 }}>
-      <div className="row"><b>{s.id}</b><span style={{ color: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 12 }}>{s.t0}–{s.t1} s · generate {s.seconds} s · seed {s.seed}</span>
+      <div className="row"><b>{s.id}</b><span style={{ color: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: 12 }}>{s.t0}–{s.t1} s · generate {s.seconds} s{GENJUTSU(s.route) ? '' : ` · seed ${s.seed}`}</span>
+        {s.span && <span className="chip" title="Consecutive Genjutsu shots are sent as one segment of 4-30 s">covers {s.covers.join(', ')} · source {s.source.t0.toFixed(1)}–{s.source.t1.toFixed(1)} s</span>}
         <span className={`chip ${s.status === 'finished' ? 'ok' : s.status === 'review' ? 'gate' : s.status === 'error' ? 'err' : ''}`}>{s.status}</span>
         <span className={`chip ${s.promptBy === 'claude' ? 'claude' : ''}`}>{s.promptEdited ? 'prompt edited by you' : s.promptBy === 'claude' ? 'prompt by Claude' : 'template prompt'}</span></div>
       <div className="row">
         <label className="tog" title="On: the previz middle still goes along as a positioning-only reference (never a frame). Off: prompting only."><input type="checkbox" checked={!!s.layoutRef} onChange={e => act(() => post(`${base}/shots/${s.id}`, { layoutRef: e.target.checked }))} />blocking matters</label>
         <select className="adpick" value={s.route} onChange={e => act(() => post(`${base}/shots/${s.id}`, { route: e.target.value }))} aria-label="Route">
-          <option value="seedance">Seedance (paid)</option><option value="kit">Code-drawn (free)</option><option value="blender">Blender (free)</option></select>
+          {ROUTES.filter(([k]) => k !== 'genjutsu' || (recreate?.rights && recreate?.source) || s.route === 'genjutsu').map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
       </div>
     </div>
     <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr', gap: 14 }}>
       <div>
-        {s.previz ? <video src={file(slug, s.previz.file, bust)} controls muted loop style={{ width: 150, aspectRatio: '9/16', borderRadius: 8, background: '#000' }} /> : <div className="empty" style={{ padding: 16, border: '1px dashed var(--line)', borderRadius: 8, fontSize: 12 }}>previz (only needed when blocking matters)</div>}
-        <button className="btn" style={{ marginTop: 6, width: '100%' }} disabled={busy} onClick={() => act(() => post(`${base}/shots/${s.id}/previz`))}>{s.previz ? 'Redo previz' : 'Make previz'}</button>
+        {s.route === 'genjutsu' && recreate?.source ? <><video src={`${file(slug, recreate.source)}#t=${(s.source || s).t0},${(s.source || s).t1}`} controls muted preload="metadata" style={{ width: 150, aspectRatio: '9/16', objectFit: 'cover', borderRadius: 8, background: '#000' }} />
+          <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>the source segment: Genjutsu keeps its motion</div></>
+        : s.previz ? <video src={file(slug, s.previz.file, bust)} controls muted loop style={{ width: 150, aspectRatio: '9/16', borderRadius: 8, background: '#000' }} /> : <div className="empty" style={{ padding: 16, border: '1px dashed var(--line)', borderRadius: 8, fontSize: 12 }}>previz (only needed when blocking matters)</div>}
+        {s.route !== 'genjutsu' && <button className="btn" style={{ marginTop: 6, width: '100%' }} disabled={busy} onClick={() => act(() => post(`${base}/shots/${s.id}/previz`))}>{s.previz ? 'Redo previz' : 'Make previz'}</button>}
       </div>
       <div>
         <div className="row" style={{ marginBottom: 6 }}><span style={{ fontSize: 12, color: 'var(--muted)' }}>References in order:</span>
@@ -126,8 +140,8 @@ function Shot({ s, plan, slug, base, bust, act, busy }) {
         <div className="row" style={{ marginTop: 6 }}>
           {dirty && <button className="btn" onClick={() => act(() => post(`${base}/shots/${s.id}`, { prompt }))}>Save prompt</button>}
           <span style={{ fontSize: 12, color: 'var(--muted)' }}>{prompt.split(/\s+/).length} words</span>
-          {s.route === 'seedance' && <button className="btn primary" disabled={busy || (s.layoutRef && !s.previz)} onClick={() => gen('draft')}>Draft…</button>}
-          {s.route === 'seedance' && s.chosen && <button className="btn" disabled={busy} onClick={() => gen('final')} title="Same prompt, references and seed as the chosen draft, at final quality">Make final…</button>}
+          {(s.route === 'seedance' || GENJUTSU(s.route)) && <button className="btn primary" disabled={busy || (s.layoutRef && !s.previz) || (s.route === 'blender→genjutsu' && !s.previz)} onClick={() => gen('draft')}>Draft…</button>}
+          {(s.route === 'seedance' || GENJUTSU(s.route)) && s.chosen && <button className="btn" disabled={busy} onClick={() => gen('final')} title="Same prompt, references and seed as the chosen draft, at final quality">Make final…</button>}
         </div>
         {s.error && <div className="err-box" style={{ marginTop: 8 }}>{s.error}</div>}
         {s.takes.length > 0 && <div className="videos" style={{ marginTop: 10 }}>

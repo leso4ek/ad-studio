@@ -5,7 +5,7 @@ const str = (d) => ({ type: 'string', ...(d ? { description: d } : {}) });
 const num = (d) => ({ type: 'number', ...(d ? { description: d } : {}) });
 const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined ? { minItems: min } : {}), ...(max !== undefined ? { maxItems: max } : {}) });
 
-export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book'];
+export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book', 'ad-voxel-3d'];
 // round 12: what an ad is made as, and how each shot is made
 export const FORMATS = ['story-ad', '3d-explainer', '3d-skit', 'recreate'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
@@ -107,7 +107,7 @@ export const bible = S({
   slug: str(), title: str(), style: { type: 'string', enum: STYLES }, dur: { type: 'number', minimum: 8, maximum: 60 },
   stylePara: str('the locked style paragraph'),
   product: S({ name: str(), kind: { type: 'string', enum: PRODUCT_KINDS }, label: str(), colors: { type: 'object' } }, ['name', 'kind']),
-  cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str() }, ['skin', 'hairStyle']) },
+  cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str(), kind: { type: 'string', enum: ['person', 'plant'], description: 'plant: a talking potted fern (ad-voxel-3d only); top = leaves, bottom = pot' } }, ['skin', 'hairStyle']) },
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
   palette: { type: 'object' },
   shots: arr(shot, 3, 18),

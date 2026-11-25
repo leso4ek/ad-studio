@@ -94,7 +94,7 @@ const routes = [
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/plates$/, (req, res, [, s]) => { bg(s, () => PR.usePlates(P.adDir(s), s)); send(res, 202, { ok: true }); }],
   // production: the shot board (previz → takes → pick), element sheets, budget
   ['GET', /^\/api\/budget$/, (req, res) => send(res, 200, PR.budget())],
-  ['GET', /^\/api\/ads\/([\w-]+)\/production$/, (req, res, [, s]) => send(res, 200, { plan: PR.plan(P.adDir(s)), busy: PR.busy(s), budget: PR.budget() })],
+  ['GET', /^\/api\/ads\/([\w-]+)\/production$/, (req, res, [, s]) => send(res, 200, { plan: PR.plan(P.adDir(s)), busy: PR.busy(s), budget: PR.budget(), recreate: P.project(s)?.recreate || null })],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/init$/, async (req, res, [, s]) => send(res, 200, PR.init(P.adDir(s), s, await body(req)))],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/settings$/, async (req, res, [, s]) => send(res, 200, PR.patchSettings(P.adDir(s), s, await body(req)))],
   ['POST', /^\/api\/ads\/([\w-]+)\/production\/shots\/([\w-]+)$/, async (req, res, [, s, id]) => send(res, 200, PR.patchShot(P.adDir(s), s, id, await body(req)))],

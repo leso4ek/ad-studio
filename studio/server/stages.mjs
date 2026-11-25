@@ -24,6 +24,7 @@ export const STYLE_LINES = {
   'ad-manga-panels': 'Manga Panels: black-and-white comic page, screentone, speed and focus lines, sound effects, speech balloons, shots split into panels; the brand colour is the only colour. Energetic, funny, youthful products, gadgets, snacks.',
   'ad-scifi-toon': 'Sitcom Toon: thick boiling ink lines, flat cel shadow, big tired eyes, dirty suburban colour, sparing gadget glow and zaps. Deadpan comedy, everyday products made to feel like gadgets, adult humour.',
   'ad-crayon-book': 'Crayon Picture Book: wax crayon on toothy paper, hatched fills, wobbly same-hue outlines, hand-lettered words. Tender, warm, family, food, gifts, wellbeing (adult audience).',
+  'ad-voxel-3d': 'Voxel Stage: blocky box-built characters and props on a dark stage with soft bokeh lights, alternating close-ups, a step bar and 1-3-word captions. The 3D skit format (and the texts of the 3D explainer).',
 };
 
 const J = o => JSON.stringify(o, null, 1);
