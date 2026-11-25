@@ -1,11 +1,11 @@
 ---
 name: ad-studio-director
-description: Makes every decision in Ad Studio (studio/ in this repo), the local app that turns a product brief into a finished code-drawn story ad (9:16 + 16:9, captions, hook variants) in one of five original non-AI styles (paper cut-out, riso print, mid-century toon, kinetic type, toy 3D). Use when Ad Studio calls Claude headless for a stage, when answering its decision inbox (studio/bin/inbox.mjs), or when the user asks for a story ad, product ad, hook, premise, ad script, storyboard or ad bible made with Ad Studio, or to run, debug or extend Ad Studio.
+description: Makes every decision in Ad Studio (studio/ in this repo), the local app that turns a product brief into a finished ad (9:16 + 16:9, captions, hook variants) in four formats — a code-drawn story ad in original styles (paper cut-out, riso, toon, kinetic type, toy 3D, manga, crayon…), a voxel 3D skit, a Blender 3D explainer, or a recreation of an uploaded video (analysed by code, remade with our tools or re-skinned by Higgsfield Genjutsu motion transfer). Use when Ad Studio calls Claude headless for a stage, when answering its decision inbox (studio/bin/inbox.mjs), or when the user asks for a story ad, product ad, hook, premise, ad script, storyboard or ad bible made with Ad Studio, or to run, debug or extend Ad Studio.
 ---
 
 # Ad Studio director
 
-Ad Studio runs twelve stages. Seven are decisions (yours). The rest are engines (render, voice, mix), which the app runs and you review. The app shows the user everything you write: your `reason` fields, the files you touch, your tool calls. So write reasons a person can read in five seconds.
+Ad Studio runs its stages in one of four **formats** (§Formats). A story ad runs fourteen stages. Seven are decisions (yours). The rest are engines (render, voice, mix), which the app runs and you review. The app shows the user everything you write: your `reason` fields, the files you touch, your tool calls. So write reasons a person can read in five seconds.
 
 This skill layers on two others:
 - **`skills/story-ad-playbook/SKILL.md`**, the method. Read its relevant section when a stage names it.
@@ -76,6 +76,7 @@ Pick by product and emotion; the user approves this gate. Say why not for the ot
 | `ad-manga-panels` | black-and-white page, screentone, speed lines, sound effects, balloons, shots split into panels; brand colour the only colour | energetic, funny, youthful, gadgets, snacks |
 | `ad-scifi-toon` | thick boiling ink, flat cel shadow, big tired eyes, dirty suburban colour, sparing gadget glow | deadpan comedy, everyday products made to feel like gadgets |
 | `ad-crayon-book` | wax crayon on toothy paper, hatched fills, wobbly same-hue outlines, hand lettering | tender, warm, family, food, gifts, wellbeing (adult audience) |
+| `ad-voxel-3d` | box-built voxel characters (and a talking plant, `cast.kind: "plant"`) on a dark stage with bokeh, step bar, word captions | the 3D skit format (fixed there), and the texts of the 3D explainer |
 
 ## 7 · The bible (the whole ad as data)
 Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0 = left, 1 = right; `y` 0 = top, 1 = bottom. A layer's `x, y` is its **feet / base** (characters, products, props) or its **centre** (text). Times are seconds; layer `t0/t1` are **relative to the shot**.
@@ -232,6 +233,48 @@ Runs only when the user starts it after the final; it spends at most `mirofish.c
   - The REFERENCES block names each image in exactly that order, using the element's role line.
 - `layoutRef: true` only when blocking matters: who stands where, product placement, a precise action. The previz middle still is then the last reference, positioning only. Otherwise rely on prompting alone.
 - Never ask for first or last frames.
+
+## Formats (round 12)
+`project.format` sets which stages run and what every prompt adds. Stages that don't apply show as "not in this format".
+
+| Format | Stages | The picture |
+|---|---|---|
+| `story-ad` | brief → premises → hooks → story → brand map → style → direction → bible → frames → voice → animatic → final → scorecard (→ audience) | the kit styles |
+| `3d-skit` | the same, style fixed to `ad-voxel-3d` (no gate) | the three.js voxel stage |
+| `3d-explainer` | the same + **3D world** after the bible; style fixed | one Blender render (a plate) under the words |
+| `recreate` | **source** (code) → **analysis** (you) → brief → hooks → story → … (no premises) | per shot: our tools or Genjutsu |
+
+### 3D skit
+- Two characters talk it through. Dialogue lines alternate between them (`speaker` = cast id; give each a Kokoro `voice` in its cast entry).
+- Close-ups alternate between speakers with slow push-ins; a wide or low push for the reveal; about 2–3 cuts per 10 s.
+- A method becomes numbered steps: `overlay.steps = [{t0, t1, label: "STEP 1", title: "1-2 words"}]`, drawn at y 0.14–0.20. **Put cards at y ≥ 0.285 while a step is showing**, or the bar covers their first line.
+- `captionMode: "words"`: 1–3 words at a time, centre-low, one yellow emphasis word (the product name, else a number). Add `asr` spellings as usual.
+- A non-human speaker (the fern) is `cast.<id> = { kind: "plant", skin, hairStyle: "bald", top: leaves, bottom: pot }`: it gets a face, a talking mouth and droop/lift poses.
+
+### 3D explainer
+- **The premise is a question** the viewer never asked but wants answered ("Where does the water go when…"), answered by showing the inside of a thing.
+- **Narration is a chain:** "If you… But… So…", a new problem every 4–6 s and the part that fixes it appears on that beat; about 2.8 words per second. **Every fact true and sourced** (sources in `reason`).
+- **One continuous camera.** The bible's shots are the *beats* of that one move (cut-rate check 0.8–3.5 per 10 s; same size twice is fine); their layers are text cards only, because the picture is a plate.
+- **The world stage** asks you for `world`: an adlib JSON spec (+ optional `build(scene, objs, adlib, spec)` script). Read `studio/blender/README.md` and `studio/blender/examples/fern_water.json` first. Every part has an `appear` key on its beat, the camera path passes one key per beat (glide, dip into the cutaway, return), and one small recurring prop gives continuity. Keep the centre-low band calm for the captions; no text objects.
+- Then **world-review**: look at the still of each beat; `approve`, or `revised` with the complete corrected spec. Two rounds at most, then the plate is rendered.
+
+### Recreate a video
+- **Source** (code, free): shots from local peaks of the scene score, first/middle/last stills and contact sheets, motion per shot (0–1, plus pan/tilt/handheld), word-timed transcript, loudness.
+- **Analysis** (you): keep the code's shot ids and times; fill size, subject, angle, move, action, on-screen text, voice, people, complexity, physics; map every character, prop, the product and the places to what they become from the user's prompt and reference images (`becomes`). Describe the look neutrally; never name studios, shows, artists, real people or brands. Recommend a mode and target, but **the user's mode stands**.
+- **Later stages follow the original**: hook A reproduces its opening with our cast; the story follows its beats act for act; direction keeps its order, sizes, moves and rhythm and puts each original segment in `source {t0, t1}`. In **transfer** mode keep every shot's t0/t1 equal to its source times.
+- **Rights.** Genjutsu reuses the footage, so it needs the user's tick ("I own this video or have the rights to it"). Without it, routes never become `genjutsu`; only the structure is remade.
+
+### The motion router
+Leave `route` out and code decides (`engines/analyse.mjs routeFor`); set it only when you know better.
+- `kit` — code-drawn styles, simple motion. `three` — the voxel stage: few objects, gestures, simple moves.
+- `blender` — complex 3D: layered builds, flow, many objects, a long camera path. `blender→genjutsu` — that Blender motion re-skinned photoreal from the element sheets (paid).
+- `seedance` — complex live action from element sheets (paid). `genjutsu` — an uploaded segment re-skinned (paid, rights).
+- Mixed mode sends a shot to Genjutsu only when people move (motion > 0.2) or motion is strong (> 0.4): still shots are remade for free.
+
+### Genjutsu prompts (shot board)
+- Consecutive `genjutsu` shots merge into **spans of 4–30 s** (Light: 15 s); one take per span.
+- The prompt is **short**: 1–3 sentences, ≤ 400 characters, saying who becomes whom, what they wear and hold, and the product, and that the motion, timing and camera stay. The reference images carry identity: the user's `ref-*` uploads first, up to 8 images.
+- Picked clips become **plates** under our words, captions, voice and end card ("Use picked clips in the edit", then re-run Animatic and Final).
 
 ## Running and extending Ad Studio
 - **Start:**

@@ -80,6 +80,36 @@ Switch the header to **Shot board** after the bible is approved. Each shot goes 
   - Make our own example stills with `node studio/bin/catalog-examples.mjs --yes` (paid, about $0.02 each).
 - **Style sheets:** `node studio/bin/stylesheet.mjs <style>` renders a bible in any kit style.
 
+## Formats: 3D skit, 3D explainer, Recreate a video (round 12)
+**New ad** now starts with a format.
+
+- **Story ad.** The fourteen stages as before.
+- **3D skit.** Voxel characters built from boxes talk it through on a dark stage with soft bokeh lights.
+  - The style is fixed to `ad-voxel-3d` (three.js, free), so there is no style gate.
+  - Dialogue alternates between the two speakers, each with their own Kokoro voice. A plant can talk too (`cast.<id>.kind: "plant"`).
+  - Numbered steps appear in a top bar (`overlay.steps`). Captions come 1–3 words at a time, with one word in yellow (`captionMode: "words"`).
+- **3D explainer.** One continuous camera moves through a world that is built layer by layer, with cutaways.
+  - After the bible, the **3D world** stage asks Claude to write the scene as code: the `studio/blender/adlib.py` builders plus an optional script. It renders one still per beat, Claude reviews them (up to 2 fixes), then the whole move is rendered.
+  - The render becomes the **plate** under the words, captions, voice and end card. In the cloud this is a CPU preview; on your PC, set `blender.engine` to `eevee` for GPU renders.
+- **Recreate a video.**
+  1. Upload an MP4 or MOV of up to 60 s, plus up to 12 reference images (characters, outfits, items, the product, places).
+  2. Fill in what changes: the characters' look, what they wear, the items they have, the product, and any notes.
+  3. Choose how to recreate it: **remake with our tools**, **motion transfer (Genjutsu)**, or **mixed, per shot**.
+  - **Source stage (free, local):** finds the shot cuts, takes the first, middle and last still of each shot into contact sheets, and measures motion and camera moves. It also makes a word-timed transcript (faster-whisper) and measures loudness.
+  - **Analysis stage (Claude):** fills in the shot table and maps each person, item and the product to what it becomes. The story stages then follow the original's beats, timing and shot sizes.
+  - **Rights:** Genjutsu reuses the footage, so it needs your tick: "I own this video or have the rights to it". Without it, only the structure is remade.
+- **Motion router.** Each shot gets a route. Claude can set it, or code decides from motion and complexity.
+  - Free: `kit`, `three`, `blender`.
+  - Paid: `seedance`, `genjutsu` (a segment of your upload), `blender→genjutsu` (our Blender motion, re-skinned photoreal).
+  - In mixed mode, only shots where people move go to Genjutsu.
+- **Genjutsu on the shot board.**
+  - Consecutive Genjutsu shots merge into one 4–30 s span (15 s for Light). The span's take uses the source segment, up to 8 element picks (your uploads first) and a short prompt.
+  - It shows the price and asks first: about $0.154/s at 480p, $0.34/s at 720p, $0.83/s at 1080p.
+  - **Use picked clips in the edit** turns the chosen takes into plates. Then re-run Animatic and Final.
+- **Higgsfield key:** add `HIGGSFIELD_KEY=<key id>:<key secret>` to `studio/.env`.
+  - Spending has its own hard cap, `budget.higgsfieldCapUsd` (default $5), and its own ledger entries.
+  - Set `higgsfield.mock: true` (or `ADSTUDIO_MOCK=1`) to test the flow for free with tinted placeholder clips.
+
 ## Audience test: simulated viewers with MiroFish (stage 13, optional, paid)
 After the final, **Run the audience test (≤ $1)** shows the finished ad, as text, to a swarm of simulated viewers in [MiroFish](https://github.com/666ghj/MiroFish). It then reads MiroFish's report back as a verdict card:
 - scores for stop-scroll, watch-through, brand recall, trust and click intent;

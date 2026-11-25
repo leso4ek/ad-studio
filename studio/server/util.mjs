@@ -90,6 +90,10 @@ export async function ffmpeg7(cfg) {
   const r = await run(py, ['-c', 'import imageio_ffmpeg as i; print(i.get_ffmpeg_exe())']);
   const exe = r.out.trim();
   const bin = path.join(STUDIO, '.tools', 'ffbin'); fs.mkdirSync(bin, { recursive: true });
-  const link = path.join(bin, 'ffmpeg'); try { fs.unlinkSync(link); } catch { /* none */ } fs.symlinkSync(exe, link);
+  // reuse a link that already points at the exe; else swap a new one in atomically (parallel processes call this at once)
+  const link = path.join(bin, 'ffmpeg');
+  try { if (fs.readlinkSync(link) === exe) return link; } catch { /* none yet */ }
+  const tmp = `${link}.${process.pid}.${Date.now()}`;
+  fs.symlinkSync(exe, tmp); fs.renameSync(tmp, link);
   return link;
 }

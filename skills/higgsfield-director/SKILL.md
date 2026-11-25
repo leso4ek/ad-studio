@@ -136,6 +136,16 @@ Each pack is a starting point: the image model for stills, the sheet, the locked
 
 For a 30-second ad expect roughly: 10–25 stills (elements, six model test, end card), 2–4 scene drafts per kept scene, and 2–3 finals. Price it with the connector before running, and only spend what they approve (base: Credits).
 
+## Genjutsu (video-to-video: motion transfer)
+Genjutsu keeps a source clip's **motion, camera, timing and framing** and rebuilds **who and what is in it** from 1–8 reference images. Use it when the motion is the hard part: a real performance, a dance, a complex camera move, or a Blender previz whose motion you already like.
+- **Modes:** Motion Transfer (4–30 s, longer is trimmed), **Light** (the first 15 s, keeps the source audio), and **Object Swap** (replace one object, everything else stays).
+- **Price per output second (Nov 2026):** about $0.154 at 480p, $0.34 at 720p, $0.83 at 1080p. Draft at 480p, final at 720p.
+- **Prompts are short.** The references carry identity; the prompt says only what changes and that the motion stays: "Keep the exact motion, timing and camera. The woman becomes Juno from reference 1, orange jumper; the bottle in her hand becomes the Sprigly bottle from reference 2. No on-screen text."
+- **Cut the source at whole actions.** Join short shots into one 4–30 s span rather than sending a 2 s piece; a cut inside the span is fine.
+- **References:** a clean turnaround per character, the product sheet, then a place plate if the place changes. Fewer, clearer references beat eight busy ones.
+- **Rights:** only footage the user owns or has rights to (or our own Blender renders). Never re-skin someone else's video into a copy of it.
+- **API** (Ad Studio's `engines/higgsfield.mjs`): presigned upload (`files/generate-upload-url` → PUT), `POST higgsfield/genjutsu/motion-transfer/v1.0` `{video_url, image_urls, prompt, resolution}` with `Authorization: Key ID:SECRET`, then poll `requests/{id}/status`. The key is `HIGGSFIELD_KEY=id:secret` in `studio/.env`.
+
 ## Working with the user
 
 - Follow the base's "Working with them" rules: decide the craft yourself, ask only what changes the story, one prompt per code block, say the page, model and settings under each.

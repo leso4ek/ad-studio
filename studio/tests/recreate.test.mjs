@@ -152,13 +152,16 @@ test('board: genjutsu shots merge into spans, a mock take, rights required, plat
   fs.writeFileSync(path.join(ad, 'bible.json'), JSON.stringify(bible));
   fs.copyFileSync(path.join(tmp, 'syn.mp4'), path.join(ad, 'source', 'original.mp4'));
   fs.mkdirSync(path.join(ad, 'source', 'refs'), { recursive: true }); fs.copyFileSync(path.join(tmp, 'ref.png'), path.join(ad, 'source', 'refs', 'juno.png'));
-  const proj = { slug: 'ad', format: 'recreate', recreate: { mode: 'transfer', rights: false, source: 'source/original.mp4', refs: [{ file: 'source/refs/juno.png', label: 'Juno', role: 'character' }] }, stages: {} };
+  const proj = { slug: 'ad', format: 'recreate', recreate: { mode: 'transfer', rights: false, source: 'source/original.mp4', refs: [{ file: 'source/refs/juno.png', label: 'Juno', role: 'character' }, { file: 'source/refs/juno.png', label: 'Bottle', role: 'product' }] }, stages: {} };
   fs.writeFileSync(path.join(ad, 'project.json'), JSON.stringify(proj));
   const PR = await import('../server/production.mjs'); PR.initProduction({ ...cfg, budget: { capUsd: 10, higgsfieldCapUsd: 5 } });
   const p = PR.init(ad, 'ad', { route: 'kit' });
   const span = p.shots.find(s => s.span);
   assert.ok(span, 'a span entry'); assert.equal(p.shots.length, n - (span.covers.length - 1));
   assert.ok(span.seconds >= 4); assert.equal(span.refs[0], 'ref-1', 'the user reference comes first');
+  assert.deepEqual(p.assets.slice(0, 2).map(a => a.id), ['ref-1', 'ref-2'], 'uploads keep their order');
+  const gp = PR.genjutsuPrompt(p, { cast: { juno: { role: 'she, 30s' }, fern: { kind: 'plant', role: 'the fern' } }, product: { name: 'Sprigly', kind: 'bottle', label: 'SPRIGLY' } });
+  assert.ok(/people become juno \(she\)/.test(gp) && !/people become[^.]*fern/.test(gp) && /plant stays a plant: fern/.test(gp), gp);
   assert.equal(p.assets[0].chosen, 'source/refs/juno.png');
   const est = PR.estimate(ad, span.id); assert.equal(est.engine, 'higgsfield'); assert.equal(est.estimate, hf.estimate(span.seconds, '480p'));
   await assert.rejects(PR.take(ad, 'ad', span.id, { confirm: true }), /rights/);

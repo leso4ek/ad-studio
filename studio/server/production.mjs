@@ -98,11 +98,13 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   }
   // recreate: the user's reference images are elements already chosen (they come first in every reference list)
   const proj = readJSON(path.join(adDir, 'project.json'), {});
+  const fresh = [];
   for (const [i, r] of (proj.recreate?.refs || []).entries()) {
     const id = `ref-${i + 1}`; if (p.assets.some(a => a.id === id)) continue;
     const kind = ['character', 'product', 'place', 'prop'].includes(r.role) ? r.role : 'prop';
-    p.assets.unshift({ id, name: r.label || `reference ${i + 1}`, kind, desc: r.label || 'the user\'s reference image', files: [r.file], picks: [r.file], chosen: r.file, status: 'approved', user: true });
+    fresh.push({ id, name: r.label || `reference ${i + 1}`, kind, desc: r.label || 'the user\'s reference image', files: [r.file], picks: [r.file], chosen: r.file, status: 'approved', user: true });
   }
+  p.assets.unshift(...fresh);   // in upload order, ahead of the generated elements
   for (const a of p.assets) { a.name ||= a.id.replace(/^(char|place)-/, ''); a.picks ||= a.chosen ? [a.chosen] : []; a.role ||= (ROLE[a.kind] || ROLE.prop)(a); }
   const userRefs = p.assets.filter(a => a.user).map(a => a.id);
   for (const s of bible.shots) {
@@ -138,8 +140,10 @@ export function spansOf(shots, old, slug, p, bible) {
 }
 /** Genjutsu prompts stay short: the reference images carry identity; the words name what changes and what stays. */
 export function genjutsuPrompt(p, bible) {
-  const cast = Object.entries(bible?.cast || {}).map(([id, c]) => `${id} (${c.role || 'character'})`).join(', ');
-  return [`Keep the exact motion, timing, framing and camera move of the source video.`, cast ? `The people become ${cast}, exactly as in the reference images.` : '', bible?.product ? `Any product in hand becomes ${bible.product.name}, the ${bible.product.kind} in the reference image, label "${bible.product.label}".` : '', p.settings.stylePara ? `Look: ${p.settings.stylePara.split('. ')[0]}.` : '', 'No on-screen text.'].filter(Boolean).join(' ');
+  const all = Object.entries(bible?.cast || {}), who = ([id, c]) => `${id} (${(c.role || 'character').split(/[,:;]/)[0].trim()})`;
+  const people = all.filter(([, c]) => c.kind !== 'plant').map(who).join(', '), plants = all.filter(([, c]) => c.kind === 'plant').map(([id]) => id).join(', ');
+  return [`Keep the exact motion, timing, framing and camera move of the source video.`, people ? `The people become ${people}, exactly as in the reference images.` : '',
+    plants ? `The plant stays a plant: ${plants}.` : '', bible?.product ? `Any product in hand becomes ${bible.product.name}, the ${bible.product.kind} in the reference image, label "${bible.product.label}".` : '', p.settings.stylePara ? `Look: ${p.settings.stylePara.split('. ')[0]}.` : '', 'No on-screen text.'].filter(Boolean).join(' ');
 }
 
 export function patchShot(adDir, slug, id, patch) {
