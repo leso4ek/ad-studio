@@ -172,6 +172,9 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - **Shots:** 10 shots, about 5 cuts per 10 s; the pour as an insert; the name in the reveal frame and the voice; a purchase anchor on the end card.
   - **One bible redo:** the end card was too short and two-line cards sat at y 0.20. That redo produced the memory's first real "future" lesson.
   - **Scorecard 30/35** (v1 28). Character detail is still 3: re-run from Story next.
+  - **Audience test v2:** stop 3 · watch 4 · recall 3 (v1: 2) · trust 3 · click 2 · opening C · $0.27. Price is still the purchase blocker.
+  - **The reused setup paragraph named the platforms,** so they became agents again. Every text MiroFish reads now goes through `noPlatforms()`.
+  - **Simulated recall is a ceiling:** all agents know the product from the graph.
 
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
