@@ -166,6 +166,12 @@ export function checkBible(b) {
   const last = shots[shots.length - 1];
   if (last && b.endcard && Math.abs(last.t1 - b.endcard.t0) > .01) errs.push(`the last shot must end at endcard.t0 (${b.endcard.t0})`);
   if (b.endcard && (b.dur - b.endcard.t0 < 2 || b.dur - b.endcard.t0 > 4.5)) errs.push('the end card should run 2-4.5 s');
+  // the end card's texts enter late (line at +0.45 s, cta at +0.75 s: kit/page.js endTexts) and must still be readable (chars/15 + 1.5 s)
+  if (b.endcard) for (const [k, at] of [['line', .45], ['cta', .75]]) {
+    const t = b.endcard[k]; if (!t) continue;
+    const need = t.length / 15 + 1.5, got = b.dur - b.endcard.t0 - at;
+    if (got < need - .02) errs.push(`end card ${k} "${t}" needs ${need.toFixed(1)} s on screen but gets ${got.toFixed(1)} s: start the end card earlier or make dur longer`);
+  }
   for (const s of shots) for (const l of s.layers || []) {
     if (l.type === 'char' && !b.cast?.[l.id]) errs.push(`${s.id}: character "${l.id}" is not in cast`);
     if (l.type === 'text' && !l.text) errs.push(`${s.id}: a text layer has no text`);
