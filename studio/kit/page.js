@@ -203,6 +203,28 @@ function endTexts() {
 }
 R.endTexts = endTexts;
 
+// ---------- plates: a shot whose picture is a rendered or generated clip (Genjutsu take, Blender world) ----------
+// shot.plate = { dir: 'plates/<name>', fps: 24, start: seconds into the plate at the shot start, post: false }
+// frames are plates/<name>/f_00001.jpg …; the page draws the frame (cover) instead of the style's scene, then the
+// words, captions and end card on top as usual.
+const PLATES = new Map();
+function plateImage(src) {
+  if (!PLATES.has(src)) {
+    if (PLATES.size > 48) PLATES.delete(PLATES.keys().next().value);
+    PLATES.set(src, new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; }));
+  }
+  return PLATES.get(src);
+}
+async function drawPlate(pl, lt) {
+  const fps = pl.fps || 24, i = Math.max(0, Math.floor(((pl.start || 0) + lt) * fps + 1e-6)), dir = pl.dir.replace(/\/$/, '');
+  let im = await plateImage(`${dir}/f_${String(i + 1).padStart(5, '0')}.jpg`);
+  for (let k = 1; !im && k < 6 && i - k >= 0; k++) im = await plateImage(`${dir}/f_${String(i + 1 - k).padStart(5, '0')}.jpg`);   // past the end: hold the last frames
+  g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+  if (!im) return;
+  const sc = Math.max(W / im.width, H / im.height), w = im.width * sc, h = im.height * sc;
+  g.drawImage(im, (W - w) / 2, (H - h) / 2, w, h);
+}
+
 // ---------- frame ----------
 async function render(t) {
   t = clamp(t, 0, DUR - 1e-4);
@@ -220,9 +242,10 @@ async function render(t) {
     if (!qs.get('notext')) for (const l of endTexts()) { const t0 = l.t0 ?? 0; if (lt >= t0) style.text(R, layoutText(l, lt - t0), lt - t0); }
   } else {
     const layers = resolveLayers(shot, lt);
-    if (custom.shots?.[shot.custom]) await custom.shots[shot.custom](R, { shot, layers, cam, lt });
+    if (shot.plate && !qs.get('noplate')) await drawPlate(shot.plate, lt);
+    else if (custom.shots?.[shot.custom]) await custom.shots[shot.custom](R, { shot, layers, cam, lt });
     else await style.scene(R, { shot, layers, cam });
-    cameraPost(cam);  // smear and silhouette belong to the picture, under the words
+    if (!shot.plate) cameraPost(cam);  // smear and silhouette belong to the picture, under the words
     if (!qs.get('notext')) for (const p of layers) if (p.layer.type === 'text') { const c = carryLt(shot, p.layer, lt), llt = c ?? p.llt; style.text(R, layoutText(p.layer, llt), llt); }
   }
   // transition into this shot
@@ -233,7 +256,7 @@ async function render(t) {
     const cue = cues.find(c => t >= c.t0 && t < c.t1);
     if (cue) style.caption(R, cue.text, captionBox());
   }
-  style.post && style.post(R);
+  if (style.post && !(shot.plate && shot.plate.post === false)) style.post(R);
   if (qs.get('guides')) { g.save(); g.strokeStyle = '#f0f'; g.lineWidth = 3; g.setLineDash([12, 8]); g.strokeRect(SAFE.x0, SAFE.y0, SAFE.x1 - SAFE.x0, SAFE.y1 - SAFE.y0); g.restore(); }
 }
 function captionBox() {

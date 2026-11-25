@@ -2,7 +2,8 @@
 // Every state change is written to ads/<slug>/project.json and emitted to the app.
 import fs from 'fs';
 import path from 'path';
-import { STAGES, AUTO, checkBible, checkDirection, writeReport, lintBible, lintObject } from './stages.mjs';
+import { STAGES, AUTO, checkBible, checkDirection, writeReport, lintBible, lintObject, appliesTo } from './stages.mjs';
+import { FORMATS, RECREATE_MODES } from './schemas.mjs';
 import * as MEM from './memory.mjs';
 import { SCHEMAS } from './schemas.mjs';
 import { validate } from './validate.mjs';
@@ -42,11 +43,13 @@ export function listAds() {
     .sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
 }
 
-export function createAd({ name, brief = {}, mode = 'autopilot', autoGates = false, decider }) {
+export function createAd({ name, brief = {}, mode = 'autopilot', autoGates = false, decider, format = 'story-ad', recreate }) {
+  if (!FORMATS.includes(format)) throw new Error(`unknown format ${format}`);
+  if (recreate?.mode && !RECREATE_MODES.includes(recreate.mode)) throw new Error(`unknown recreate mode ${recreate.mode}`);
   let slug = slugify(name || brief.product || 'new-ad'), k = 2;
   while (fs.existsSync(adDir(slug))) slug = `${slugify(name || 'new-ad')}-${k++}`;
   fs.mkdirSync(path.join(adDir(slug), 'decisions'), { recursive: true });
-  const p = { slug, title: name || 'New ad', created: now(), updated: now(), mode, autoGates, decider: decider || null, userBrief: brief, stages: Object.fromEntries(STAGES.map(s => [s.id, { status: 'idle' }])) };
+  const p = { slug, title: name || 'New ad', created: now(), updated: now(), mode, autoGates, decider: decider || null, format, ...(format === 'recreate' ? { recreate: { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {}, ...(recreate || {}) } } : {}), userBrief: brief, stages: Object.fromEntries(STAGES.map(s => [s.id, { status: 'idle' }])) };
   writeJSON(pj(slug), p);
   emit('ad', { slug, kind: 'created', title: p.title });
   return p;
@@ -114,12 +117,16 @@ async function runDecision(slug, st, signal, note) {
   const memOn = CFG.memory?.enabled !== false, brief = readJSON(path.join(adDir(slug), 'brief.json'), {}), styleNow = readDecision(slug, 'style')?.output?.style;
   const mem = memOn ? MEM.recall(st.id, { style: styleNow, product: brief.product?.what, context: `${brief.audience?.who || ''} ${brief.tone || ''}` }) : { text: '', ids: [] };
   if (mem.text) prompt += `\n\n${mem.text}`;
-  let res = await decide(slug, st.id, prompt, schema, signal), problems = issues(st, res.output);
+  const fixed = st.fixed?.(ctx);
+  let res = fixed ? { output: fixed, meta: { engine: 'format' } } : await decide(slug, st.id, prompt, schema, signal);
+  if (st.post) res.output = st.post(ctx, res.output);
+  let problems = issues(st, res.output, ctx.project);
   if (problems.errors.length) {
     if (memOn) MEM.logSignal({ ad: slug, stage: st.id, kind: 'repair', value: problems.errors.length, note: problems.errors.slice(0, 3).join('; ') });
     emit('decision', { slug, stage: st.id, kind: 'repair', text: problems.errors.slice(0, 6).join(' · ') });
     res = await decide(slug, st.id, `Your answer for stage ${st.id} has these problems:\n- ${problems.errors.join('\n- ')}\nReturn the corrected complete answer (same schema).`, schema, signal);
-    problems = issues(st, res.output);
+    if (st.post) res.output = st.post(ctx, res.output);
+    problems = issues(st, res.output, ctx.project);
     if (problems.errors.length) throw new Error(`still invalid after one repair: ${problems.errors.slice(0, 4).join('; ')}`);
   }
   const rec = { stage: st.id, at: now(), output: res.output, meta: { ...(res.meta || {}), lessons: mem.ids.length ? mem.ids : undefined }, warnings: problems.warnings, note: note || undefined };
@@ -132,11 +139,11 @@ async function runDecision(slug, st, signal, note) {
   return rec;
 }
 
-function issues(st, out) {
+function issues(st, out, proj = {}) {
   const errors = validate(SCHEMAS[st.schema], out), warnings = [];
   if (st.lint) for (const i of (st.id === 'bible' ? lintBible(out) : lintObject(out))) (i.level === 'error' ? errors : warnings).push(`${i.where}: ${i.why} ("${i.match}")`);
-  if (st.check === 'bible' && !errors.length) errors.push(...checkBible(out));
-  if (st.check === 'direction' && !errors.length) errors.push(...checkDirection(out));
+  if (st.check === 'bible' && !errors.length) errors.push(...checkBible({ format: proj.format, ...out }));
+  if (st.check === 'direction' && !errors.length) errors.push(...checkDirection(out, undefined, proj.format));
   if (st.id === 'premises' && out.premises && !out.premises.some(p => p.id === out.chosen)) errors.push('chosen is not one of the premise ids');
   return { errors, warnings };
 }
@@ -152,10 +159,11 @@ export async function runFrom(slug, startId = null, { note } = {}) {
   emit('job', { slug, kind: 'start', from: startId });
   try {
     const p0 = project(slug);
-    let i = startId ? idx(startId) : STAGES.findIndex(s => p0.stages[s.id]?.status !== 'done');
+    let i = startId ? idx(startId) : STAGES.findIndex(s => !['done', 'skipped'].includes(p0.stages[s.id]?.status) && appliesTo(s, p0));
     if (i < 0) { emit('job', { slug, kind: 'idle', text: 'all stages done' }); return; }
     for (; i < STAGES.length; i++) {
       const st = STAGES[i], cur = project(slug).stages[st.id] || { status: 'idle' };
+      if (!appliesTo(st, project(slug))) { if (cur.status !== 'skipped') setStage(slug, st.id, { status: 'skipped' }); continue; }
       if (cur.status === 'done') continue;
       if (st.optional && i !== idx(startId)) { setStage(slug, st.id, { status: 'offer' }); emit('gate', { slug, stage: st.id, kind: 'offer', text: `${st.title} is optional${st.paid ? ' and paid' : ''}: start it from its card` }); break; }
       if (cur.status === 'gate' || cur.status === 'review') break;
@@ -181,7 +189,7 @@ export async function runFrom(slug, startId = null, { note } = {}) {
         return;
       }
       const p = project(slug);
-      const stop = st.gate && !p.autoGates ? 'gate' : (p.mode === 'step' && st.kind === 'decide') ? 'review' : 'done';
+      const stop = st.gate && !p.autoGates && !(st.fixed && st.fixed(context(slug))) ? 'gate' : (p.mode === 'step' && st.kind === 'decide') ? 'review' : 'done';
       setStage(slug, st.id, { status: stop, finished: now(), ms: Date.now() - t0, summary: result.summary, warnings: result.warnings || [], result: slim(result) });
       if (st.gate && p.autoGates) emit('gate', { slug, stage: st.id, kind: 'auto-approved' });
       if (stop !== 'done') { emit('gate', { slug, stage: st.id, kind: stop, text: result.summary }); break; }
@@ -195,6 +203,7 @@ const slim = r => { const o = { ...r }; delete o.summary; delete o.warnings; ret
 
 function summaryOf(id, o) {
   switch (id) {
+    case 'analysis': return `${o.kind} · ${(o.shots || []).length} shots · recommends ${o.recommend?.mode} as ${o.recommend?.target}`;
     case 'brief': return `${o.product?.name}: ${o.product?.what}`;
     case 'premises': return (o.premises || []).find(p => p.id === o.chosen)?.logline || '';
     case 'hooks': return `lead ${o.lead}: "${(o.hooks || []).find(h => h.id === o.lead)?.onScreen}"`;
@@ -245,7 +254,7 @@ export async function approve(slug, id, { choice } = {}) {
 
 export function markStale(slug, id, only = null) {
   const i = idx(id);
-  saveProject(slug, p => { for (const s of STAGES.slice(i + 1)) if ((!only || only.includes(s.id)) && p.stages[s.id].status !== 'idle') p.stages[s.id].status = 'stale'; });
+  saveProject(slug, p => { for (const s of STAGES.slice(i + 1)) if ((!only || only.includes(s.id)) && p.stages[s.id] && !['idle', 'skipped'].includes(p.stages[s.id].status)) p.stages[s.id].status = 'stale'; });
   for (const s of STAGES.slice(i + 1)) emit('stage', { slug, stage: s.id, state: project(slug).stages[s.id] });
 }
 
@@ -262,3 +271,30 @@ export function setMode(slug, patch) { return saveProject(slug, p => Object.assi
 
 /** Ask the decide chain (Claude CLI → inbox) a question outside the 12 stages, e.g. the shot board's prompts. */
 export const decideFor = (slug, stage, prompt, schema, signal, opts) => decide(slug, stage, prompt, schema, signal, opts);
+
+/** recreate: store the upload (video, reference images) under ads/<slug>/source/ and update project.recreate */
+export function saveSource(slug, { kind, name, buf, label, role }) {
+  const dir = path.join(adDir(slug), 'source', kind === 'video' ? '' : 'refs'); fs.mkdirSync(dir, { recursive: true });
+  const ext = (path.extname(name || '').toLowerCase() || (kind === 'video' ? '.mp4' : '.png')).replace(/[^.a-z0-9]/g, '');
+  if (kind === 'video' && !['.mp4', '.mov', '.webm', '.m4v'].includes(ext)) throw new Error('upload an MP4, MOV or WebM video');
+  if (kind !== 'video' && !['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) throw new Error('reference images must be PNG, JPEG or WebP');
+  const base = kind === 'video' ? `original${ext}` : `${slugify(path.basename(name || 'ref', path.extname(name || ''))).slice(0, 32) || 'ref'}-${Date.now().toString(36)}${ext}`;
+  fs.writeFileSync(path.join(dir, base), buf);
+  const rel = path.relative(adDir(slug), path.join(dir, base));
+  return saveProject(slug, p => {
+    p.recreate ||= { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {} };
+    if (kind === 'video') { p.recreate.source = rel; for (const id of ['source', 'analysis']) if (p.stages[id]) p.stages[id].status = 'idle'; }
+    else p.recreate.refs = [...(p.recreate.refs || []), { file: rel, label: label || '', role: role || 'other' }].slice(-12);
+  });
+}
+export function patchRecreate(slug, patch) {
+  return saveProject(slug, p => {
+    p.recreate ||= { refs: [], prompt: {} };
+    for (const k of ['mode', 'target', 'rights', 'style', 'seedanceStyle', 'photoreal']) if (k in patch) p.recreate[k] = patch[k];
+    if (patch.mode && !RECREATE_MODES.includes(patch.mode)) throw new Error('mode must be remake, transfer or mixed');
+    if (patch.mode === 'transfer' && !(patch.rights ?? p.recreate.rights)) throw new Error('motion transfer reuses the footage: tick "I own this video or have the rights to it" first');
+    if (patch.prompt) p.recreate.prompt = { ...(p.recreate.prompt || {}), ...patch.prompt };
+    if (patch.removeRef) p.recreate.refs = (p.recreate.refs || []).filter(r => r.file !== patch.removeRef);
+    if (patch.refLabel) p.recreate.refs = (p.recreate.refs || []).map(r => r.file === patch.refLabel.file ? { ...r, label: patch.refLabel.label ?? r.label, role: patch.refLabel.role ?? r.role } : r);
+  });
+}

@@ -6,6 +6,10 @@ const num = (d) => ({ type: 'number', ...(d ? { description: d } : {}) });
 const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined ? { minItems: min } : {}), ...(max !== undefined ? { maxItems: max } : {}) });
 
 export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book'];
+// round 12: what an ad is made as, and how each shot is made
+export const FORMATS = ['story-ad', '3d-explainer', '3d-skit', 'recreate'];
+export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
+export const RECREATE_MODES = ['remake', 'transfer', 'mixed'];
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
 export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'];
 export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed'];
@@ -74,6 +78,8 @@ export const direction = S({
     size: { type: 'string', enum: SHOT_SIZES }, subject: str(), angle: { type: 'string', enum: ['eye', 'low', 'high'] }, move: { type: 'string', enum: CAM_MOVES },
     blocking: str('start → motion → end'), reason: str('what the audience now understands'), textZone: { type: 'string', enum: ['top', 'bottom', 'none'] },
     trans: { type: 'string', enum: ['cut', 'wipe', 'slide', 'iris', 'fade', 'stripes'] }, sound: str(),
+    route: { type: 'string', enum: ROUTES, description: 'how the shot is made (the motion router fills it when left out)' },
+    source: S({ t0: num(), t1: num() }, ['t0', 't1']), complexity: { type: 'string', enum: ['low', 'mid', 'high'] }, physics: { type: 'boolean' },
   }, ['id', 't0', 't1', 'function', 'size', 'subject', 'move', 'reason', 'textZone']), 4, 18),
   reason: str(),
 }, ['thesis', 'beats', 'book', 'locks', 'shots', 'reason']);
@@ -93,6 +99,8 @@ const shot = S({
   trans: { type: 'string', enum: ['cut', 'wipe', 'slide', 'iris', 'fade', 'stripes'] }, camera, bg: str(), seed: num(), custom: str(), note: str(),
   function: { type: 'string', enum: SHOT_FUNCTIONS }, reason: str('what the audience now understands'), textZone: { type: 'string', enum: ['top', 'bottom', 'none'] },
   layers: arr(layer, 0, 14),
+  route: { type: 'string', enum: ROUTES }, source: S({ t0: num(), t1: num() }, ['t0', 't1']),
+  plate: S({ dir: str('plates/<name>, frames f_00001.jpg… at fps'), fps: num(), start: num('seconds into the plate at the shot start'), post: { type: 'boolean' } }, ['dir']),
 }, ['id', 't0', 't1', 'layers']);
 
 export const bible = S({
@@ -105,6 +113,9 @@ export const bible = S({
   shots: arr(shot, 3, 18),
   vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id') }, ['id', 'text', 'at']), 1, 14) }, ['lines']),
   captions: { type: 'boolean' },
+  format: { type: 'string', enum: FORMATS },
+  captionMode: { type: 'string', enum: ['block', 'words'], description: 'words: 1-3 words at a time, centre, one yellow emphasis word' },
+  overlay: S({ steps: arr(S({ t0: num(), t1: num(), label: str('e.g. STEP 1'), title: str('1-2 words') }, ['t0', 't1', 'label', 'title']), 0, 8) }, []),
   endcard: S({ t0: num(), logo: str(), line: str(), cta: str(), bg: str() }, ['t0', 'logo']),
   music: S({ mood: { type: 'string', enum: ['warm', 'bouncy', 'jazzy', 'lofi', 'bright', 'tender'] }, bpm: num() }, ['mood']),
   sfx: arr(S({ t: num(), type: str() }, ['t', 'type'])),
@@ -139,4 +150,33 @@ export const audience = S({
   reason: str(),
 });
 
-export const SCHEMAS = { brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
+// recreate: Claude reads the code analysis (contact sheets, motion, words) and maps the user's prompt onto it
+const mapTo = str('what it becomes in our version, from the user prompt and reference images (or "keep" / "drop")');
+export const analysis = S({
+  summary: str('what the video is, in two sentences'),
+  kind: { type: 'string', enum: ['story-ad', 'explainer', 'skit', 'ugc', 'demo', 'music', 'other'] },
+  hook: S({ type: str('odd image, question, conflict, number, POV, spectacle, contrarian line…'), t1: num(), what: str() }),
+  beats: arr(S({ t0: num(), t1: num(), what: str() }), 2, 12),
+  look: str('the visual style in neutral words (no studio, show or artist names)'), rhythm: str('cut pattern and pace'),
+  shots: arr(S({ id: str(), t0: num(), t1: num(), size: { type: 'string', enum: SHOT_SIZES }, subject: str(), angle: { type: 'string', enum: ['eye', 'low', 'high'] }, move: { type: 'string', enum: CAM_MOVES },
+    action: str(), onScreen: str('text visible on screen, or ""'), voice: str(), people: { type: 'integer', minimum: 0 }, complexity: { type: 'string', enum: ['low', 'mid', 'high'] }, physics: { type: 'boolean' } },
+    ['id', 't0', 't1', 'size', 'subject', 'move', 'action', 'people', 'complexity']), 1, 40),
+  characters: arr(S({ id: str('short id, e.g. woman1'), desc: str(), wears: str(), holds: str(), becomes: mapTo }), 0, 6),
+  props: arr(S({ id: str(), desc: str(), becomes: mapTo }), 0, 10),
+  product: S({ seen: { type: 'boolean' }, desc: str(), becomes: mapTo }),
+  places: arr(S({ id: str(), desc: str(), kind: { type: 'string', enum: PLACE_KINDS } }), 1, 6),
+  refsUsed: arr(S({ file: str(), as: str('which character / item / product / place it defines') }), 0, 12),
+  recommend: S({ mode: { type: 'string', enum: RECREATE_MODES }, target: { type: 'string', enum: ['story-ad', '3d-skit', '3d-explainer'] }, why: str() }),
+  reason: str(),
+}, ['summary', 'kind', 'hook', 'beats', 'look', 'rhythm', 'shots', 'characters', 'props', 'product', 'places', 'recommend', 'reason']);
+
+// 3D explainer: the world as code (studio/blender/adlib.py builders + a build(scene, objs, adlib, spec) script)
+export const world = S({
+  spec: { type: 'object', description: 'the adlib JSON spec: render, world, lights, camera (path), objects with appear keys' },
+  script: str('optional Python: def build(scene, objs, adlib, spec) for anything the JSON cannot say; "" when not needed'),
+  beats: arr(S({ t: num(), what: str('what the viewer must see at this moment') }), 2, 12),
+  verdict: { type: 'string', enum: ['draft', 'approve', 'revised'] },
+  notes: arr(str(), 0, 12), reason: str(),
+}, ['spec', 'script', 'beats', 'verdict', 'reason']);
+
+export const SCHEMAS = { analysis, world, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };

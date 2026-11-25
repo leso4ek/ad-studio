@@ -54,7 +54,20 @@
   },
   "whisperModel": "base",
   "budget": {
-    "capUsd": 10
+    "capUsd": 10,
+    "higgsfieldCapUsd": 5
+  },
+  "higgsfield": {
+    "api": "https://platform.higgsfield.ai",
+    "mock": false,
+    "pollMs": 5000,
+    "timeoutMin": 40
+  },
+  "analyse": {
+    "whisper": true
+  },
+  "router": {
+    "allowPaid": true
   },
   "openrouter": {
     "mock": false,

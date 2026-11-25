@@ -32,7 +32,7 @@ export function ledger() {
 }
 export function spent() {
   const byJob = new Map();
-  for (const e of ledger()) byJob.set(e.job || e.id, { ...(byJob.get(e.job || e.id) || {}), ...e });
+  for (const e of ledger()) if (e.engine !== 'higgsfield') byJob.set(e.job || e.id, { ...(byJob.get(e.job || e.id) || {}), ...e });
   return +[...byJob.values()].reduce((s, e) => s + (e.status === 'completed' ? (e.cost ?? e.estimate ?? 0) : e.status === 'submitted' ? (e.estimate ?? 0) : 0), 0).toFixed(3);
 }
 export function record(e) { log(e); }

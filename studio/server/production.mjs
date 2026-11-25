@@ -2,7 +2,9 @@
 // references (element sheets), paid takes (estimated first, confirmed by you) and a chosen take.
 //   ads/<slug>/production/plan.json      the board
 //   ads/<slug>/production/previz/<shot>.mp4, takes/<shot>_tNN.mp4, assets/<id>_N.png, blender/<shot>/...
-// Routes: 'seedance' (OpenRouter, previz as motion reference) · 'kit' (code-drawn, free) · 'blender' (3D render, free)
+// Routes: 'seedance' (OpenRouter, elements as references) · 'kit' / 'three' (code-drawn, free) · 'blender' (3D render, free)
+//   · 'genjutsu' (Higgsfield motion transfer of an uploaded segment; consecutive shots merge into 4-30 s spans)
+//   · 'blender→genjutsu' (our Blender previz is the motion source, Genjutsu gives it the look of the element sheets)
 import * as CATALOG from './catalog.mjs';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +14,9 @@ import * as orx from './engines/openrouter.mjs';
 import * as blender from './engines/blender.mjs';
 import * as render from './engines/render.mjs';
 import * as comfy from './engines/comfy.mjs';
+import * as hf from './engines/higgsfield.mjs';
+import { mergeSpans } from './engines/analyse.mjs';
+import { platesFromVideo } from './stages.mjs';
 import { REPO } from './util.mjs';
 
 let CFG = null; const jobs = new Map();
@@ -84,28 +89,66 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   const bible = readJSON(path.join(adDir, 'bible.json')); if (!bible) throw new Error('no bible yet');
   const old = plan(adDir);
   const look = readJSON(path.join(adDir, 'decisions', '06-style.json'))?.output?.seedanceStyle, lookE = look && CATALOG.load().find(e => e.slug === look);
-  const p = { slug, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, finalModel: 'bytedance/seedance-2.5', finalResolution: '720p', stylePara: lookE?.stylePara || bible.stylePara, ...(lookE ? { catalogStyle: look } : {}), ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
+  const p = { slug, routeOverrides: old?.routeOverrides || {}, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, finalModel: 'bytedance/seedance-2.5', finalResolution: '720p', stylePara: lookE?.stylePara || bible.stylePara, ...(lookE ? { catalogStyle: look } : {}), ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
   if (!p.assets.length) {
     for (const [id, c] of Object.entries(bible.cast || {})) p.assets.push({ id: `char-${id}`, name: id, kind: 'character', desc: `${id}: ${c.role || 'character'}, hair ${c.hairStyle} ${c.hair}, top ${c.top}, trousers ${c.bottom}`, files: [], chosen: null, picks: [], status: 'todo' });
     const pc = bible.product.colors || {};
     p.assets.push({ id: 'product', name: bible.product.name, kind: 'product', picks: [], desc: `${bible.product.name}: a ${bible.product.kind} with a ${pc.body || ''} body, a ${pc.cap || ''} cap and a ${pc.label || ''} label printed "${bible.product.label}" in ${pc.labelInk || 'dark'} letters`, files: [], chosen: null, status: 'todo' });
     for (const [id, pl] of Object.entries(bible.places || {})) p.assets.push({ id: `place-${id}`, name: id, kind: 'place', desc: `${pl.kind} at ${pl.time || 'day'}, empty, wide three-quarter view`, files: [], chosen: null, picks: [], status: 'todo' });
   }
+  // recreate: the user's reference images are elements already chosen (they come first in every reference list)
+  const proj = readJSON(path.join(adDir, 'project.json'), {});
+  for (const [i, r] of (proj.recreate?.refs || []).entries()) {
+    const id = `ref-${i + 1}`; if (p.assets.some(a => a.id === id)) continue;
+    const kind = ['character', 'product', 'place', 'prop'].includes(r.role) ? r.role : 'prop';
+    p.assets.unshift({ id, name: r.label || `reference ${i + 1}`, kind, desc: r.label || 'the user\'s reference image', files: [r.file], picks: [r.file], chosen: r.file, status: 'approved', user: true });
+  }
   for (const a of p.assets) { a.name ||= a.id.replace(/^(char|place)-/, ''); a.picks ||= a.chosen ? [a.chosen] : []; a.role ||= (ROLE[a.kind] || ROLE.prop)(a); }
+  const userRefs = p.assets.filter(a => a.user).map(a => a.id);
   for (const s of bible.shots) {
     const prev = old?.shots?.find(x => x.id === s.id);
     const refs = [...(s.layers || []).filter(l => l.type === 'char').map(l => `char-${l.id}`), ...((s.layers || []).some(l => l.type === 'product') ? ['product'] : []), ...(bible.places?.[s.place] ? [`place-${s.place}`] : [])];
-    const shot = { id: s.id, t0: s.t0, t1: s.t1, seconds: Math.max(4, Math.round(s.t1 - s.t0)), route: prev?.route || route, refs: prev?.refs || refs,
+    const shot = { id: s.id, t0: s.t0, t1: s.t1, seconds: Math.max(4, Math.round(s.t1 - s.t0)), route: old?.routeOverrides?.[s.id] || prev?.route || s.route || route, refs: prev?.refs || [...userRefs, ...refs], ...(s.source ? { source: s.source } : {}),
       layoutRef: prev?.layoutRef ?? false, seed: prev?.seed ?? seedOf(`${slug}:${s.id}`), previz: prev?.previz || null, takes: prev?.takes || [], chosen: prev?.chosen ?? null,
       status: prev?.status || 'todo', notes: prev?.notes || '', promptBy: prev?.promptBy || 'template', promptEdited: !!prev?.promptEdited, final: prev?.final || null };
     shot.prompt = prev?.promptEdited || prev?.promptBy === 'claude' ? prev.prompt : buildPrompt(s, bible, p, refList(adDir, p, shot));
     p.shots.push(shot);
   }
+  p.shots = spansOf(p.shots, old, slug, p, bible);
   return save(adDir, slug, p);
+}
+
+/** Consecutive 'genjutsu' shots become one span entry of 4-30 s (Genjutsu Light: 15 s) cut from the source video. */
+export function spansOf(shots, old, slug, p, bible) {
+  const out = [], max = (p.settings.genjutsuMode === 'light' ? 15 : 30);
+  for (let i = 0; i < shots.length;) {
+    if (shots[i].route !== 'genjutsu') { out.push(shots[i++]); continue; }
+    const run = []; while (i < shots.length && shots[i].route === 'genjutsu') run.push(shots[i++]);
+    const spans = mergeSpans(run.map(s => ({ id: s.id, t0: s.source?.t0 ?? s.t0, t1: s.source?.t1 ?? s.t1 })), { min: hf.MIN_S, max });
+    for (const sp of spans) {
+      const covers = sp.shots, first = run.find(s => s.id === covers[0]), last = run.find(s => s.id === covers.at(-1));
+      const id = `g-${covers[0]}${covers.length > 1 ? `-${covers.at(-1)}` : ''}`, prev = old?.shots?.find(x => x.id === id);
+      out.push({ id, span: true, covers, t0: first.t0, t1: last.t1, source: { t0: sp.t0, t1: sp.t1 }, seconds: Math.ceil(sp.seconds), route: 'genjutsu',
+        refs: prev?.refs || [...new Set(run.filter(s => covers.includes(s.id)).flatMap(s => s.refs))], seed: prev?.seed ?? seedOf(`${slug}:${id}`), takes: prev?.takes || [], chosen: prev?.chosen ?? null,
+        status: prev?.status || 'todo', notes: prev?.notes || (sp.short ? `shorter than ${hf.MIN_S} s: Genjutsu pads it to ${hf.MIN_S} s` : ''), promptBy: prev?.promptBy || 'template', promptEdited: !!prev?.promptEdited,
+        prompt: prev?.prompt || genjutsuPrompt(p, bible), final: prev?.final || null, layoutRef: false, previz: null });
+    }
+  }
+  return out;
+}
+/** Genjutsu prompts stay short: the reference images carry identity; the words name what changes and what stays. */
+export function genjutsuPrompt(p, bible) {
+  const cast = Object.entries(bible?.cast || {}).map(([id, c]) => `${id} (${c.role || 'character'})`).join(', ');
+  return [`Keep the exact motion, timing, framing and camera move of the source video.`, cast ? `The people become ${cast}, exactly as in the reference images.` : '', bible?.product ? `Any product in hand becomes ${bible.product.name}, the ${bible.product.kind} in the reference image, label "${bible.product.label}".` : '', p.settings.stylePara ? `Look: ${p.settings.stylePara.split('. ')[0]}.` : '', 'No on-screen text.'].filter(Boolean).join(' ');
 }
 
 export function patchShot(adDir, slug, id, patch) {
   const p = plan(adDir), s = p.shots.find(x => x.id === id); if (!s) throw new Error('no such shot');
+  if ('route' in patch && patch.route !== s.route && (patch.route === 'genjutsu' || s.route === 'genjutsu')) {
+    // spans are rebuilt from the per-shot routes
+    p.routeOverrides = { ...(p.routeOverrides || {}) }; for (const c of s.covers || [s.id]) p.routeOverrides[c] = patch.route;
+    save(adDir, slug, p); return init(adDir, slug);
+  }
   for (const k of ['route', 'prompt', 'refs', 'layoutRef', 'notes', 'seconds']) if (k in patch) s[k] = patch[k];
   if ('prompt' in patch) s.promptEdited = true;
   if ('chosen' in patch) { s.chosen = patch.chosen; s.status = 'chosen'; }
@@ -157,13 +200,21 @@ export async function previz(adDir, slug, id) {
 }
 
 export function estimate(adDir, id, kind = 'draft') {
-  const p = plan(adDir), s = p.shots.find(x => x.id === id), m = kind === 'final' ? p.settings.finalModel : p.settings.model, r = kind === 'final' ? p.settings.finalResolution : p.settings.resolution;
+  const p0 = plan(adDir), s0 = p0.shots.find(x => x.id === id);
+  if (s0 && isGenjutsu(s0.route)) {
+    const res = kind === 'final' ? (p0.settings.genjutsuFinalResolution || '720p') : (p0.settings.genjutsuResolution || '480p'), mode = p0.settings.genjutsuMode || 'motion-transfer';
+    return { kind, engine: 'higgsfield', model: hf.MODES[mode].label, resolution: res, seconds: hf.billedSeconds(s0.seconds, mode), estimate: hf.estimate(s0.seconds, res, mode), spent: hf.spent(), cap: CFG.budget?.higgsfieldCapUsd ?? 5, mock: hf.mock(CFG) };
+  }
+  const p = p0, s = s0, m = kind === 'final' ? p.settings.finalModel : p.settings.model, r = kind === 'final' ? p.settings.finalResolution : p.settings.resolution;
   return { kind, model: m, resolution: r, estimate: orx.estimateVideo(m, r, p.settings.aspect, s.seconds), spent: orx.spent(), cap: CFG.budget?.capUsd ?? 10, mock: orx.mock(CFG) };
 }
 
 /** One paid generation; `confirm` must be true. kind 'draft' (Flash 480p) or 'final' (the chosen draft's prompt, refs and seed at final quality). */
+export const isGenjutsu = r => r === 'genjutsu' || r === 'blender→genjutsu';
 export async function take(adDir, slug, id, { confirm, kind = 'draft' } = {}) {
   if (!confirm) throw new Error('a take costs money: confirm it with the estimate first');
+  const p0 = plan(adDir), s0 = p0.shots.find(x => x.id === id);
+  if (s0 && isGenjutsu(s0.route)) return takeGenjutsu(adDir, slug, id, { kind });
   lock(slug, `${kind} ${id}`);
   try {
     const p = plan(adDir), s = p.shots.find(x => x.id === id);
@@ -193,7 +244,7 @@ export async function take(adDir, slug, id, { confirm, kind = 'draft' } = {}) {
 /** Claude writes every shot's prompt in the creators' format (decide chain: Claude CLI → inbox). Free on a Claude plan. */
 export const PROMPTS_SCHEMA = { type: 'object', required: ['shots', 'reason'], properties: {
   shots: { type: 'array', minItems: 1, items: { type: 'object', required: ['id', 'prompt', 'refs', 'layoutRef'], properties: {
-    id: { type: 'string' }, prompt: { type: 'string', minLength: 300 }, refs: { type: 'array', items: { type: 'string' }, maxItems: 5 }, layoutRef: { type: 'boolean' }, seconds: { type: 'number', minimum: 4, maximum: 15 } } } },
+    id: { type: 'string' }, prompt: { type: 'string', minLength: 40 }, refs: { type: 'array', items: { type: 'string' }, maxItems: 8 }, layoutRef: { type: 'boolean' }, seconds: { type: 'number', minimum: 4, maximum: 15 } } } },
   reason: { type: 'string' } } };
 export async function writePrompts(adDir, slug, decideFor) {
   lock(slug, 'Claude writes the shot prompts');
@@ -203,13 +254,15 @@ export async function writePrompts(adDir, slug, decideFor) {
     const q = `Shot board · write the Seedance 2.5 prompt for every shot, the way the Higgsfield contest creators do (skills/higgsfield-director §"Reference-assigned prompts").
 Bible (shots, cast, places, product, voice): ${JSON.stringify({ title: bible.title, stylePara: p.settings.stylePara, product: bible.product, cast: bible.cast, places: bible.places, shots: bible.shots.map(s => ({ id: s.id, t0: s.t0, t1: s.t1, beat: s.beat, place: s.place, camera: s.camera, layers: s.layers })), vo: bible.vo?.lines })}
 Elements (reference images, chosen by the user; each has a role line and N views): ${JSON.stringify(elements)}
-For each shot return: refs = the element ids it needs, most important first (max 5; their views are sent in that order, each view counts as one reference image, max 6 images in total); layoutRef = true only when blocking matters (who stands where, product placement, a precise action) — then the previz middle still is appended as the LAST reference with the role "${LAYOUT_ROLE}"; prompt = 400–900 words in blocks FORMAT, STYLE (the locked paragraph verbatim), CAMERA (lens + one move), MUSIC: FALSE, CUT POLICY, MOTION SPEED AND QUALITY, REFERENCES (one line per reference image in the exact order: "reference image N — <role line>"), SETTING AND BLOCKING, ACTION (timed by second), CAST RULE, NO TEXT, CONTINUITY. No first/last frames exist. Seconds 4–15 (merge neighbouring beats into one generation with 2 shots inside only when they share a place).`;
+For each shot return: refs = the element ids it needs, most important first (max 5; their views are sent in that order, each view counts as one reference image, max 6 images in total); layoutRef = true only when blocking matters (who stands where, product placement, a precise action) — then the previz middle still is appended as the LAST reference with the role "${LAYOUT_ROLE}"; prompt = 400–900 words in blocks FORMAT, STYLE (the locked paragraph verbatim), CAMERA (lens + one move), MUSIC: FALSE, CUT POLICY, MOTION SPEED AND QUALITY, REFERENCES (one line per reference image in the exact order: "reference image N — <role line>"), SETTING AND BLOCKING, ACTION (timed by second), CAST RULE, NO TEXT, CONTINUITY. No first/last frames exist. Seconds 4–15 (merge neighbouring beats into one generation with 2 shots inside only when they share a place).
+Board entries (route per entry; write prompts ONLY for the seedance and genjutsu entries): ${JSON.stringify(p.shots.map(s => ({ id: s.id, route: s.route, covers: s.covers, t0: s.t0, t1: s.t1, source: s.source, refs: s.refs })))}
+For a genjutsu entry (Higgsfield Genjutsu motion transfer of a source segment, skills/higgsfield-director §Genjutsu) the prompt is SHORT: 1-3 sentences, at most 400 characters, saying what changes (who becomes whom, what they wear and hold, the product) and that the motion, timing and camera stay; the reference images carry identity, so refs = the element ids whose views define the new look (the user's ref-* uploads first; up to 8 images in total); layoutRef false.`;
     const MEM = await import('./memory.mjs'), mem = MEM.recall('production', { style: bible?.style, context: 'seedance prompt references consistency' });
     const guide = p.settings.catalogStyle ? `\nThe look is the catalogue style "${p.settings.catalogStyle}": read skills/seedance-styles/styles/${p.settings.catalogStyle}.md (only that file) and use its STYLE block verbatim, its MOTION block and its camera habits; name only the avoid items this shot risks.` : '';
     const res = await decideFor(slug, 'production-prompts', `${q}${guide}${mem.text ? `\n\n${mem.text}` : ''}`, PROMPTS_SCHEMA);
     const p2 = plan(adDir);
     for (const x of res.output.shots) {
-      const s = p2.shots.find(y => y.id === x.id); if (!s) continue;
+      const s = p2.shots.find(y => y.id === x.id); if (!s || !['seedance', 'genjutsu', 'blender→genjutsu'].includes(s.route)) continue;
       Object.assign(s, { prompt: x.prompt, refs: x.refs.filter(id => p2.assets.some(a => a.id === id)), layoutRef: x.layoutRef, promptBy: 'claude', promptEdited: false, ...(x.seconds ? { seconds: Math.round(x.seconds) } : {}) });
     }
     p2.promptsReason = res.output.reason; p2.promptsBy = res.meta?.engine;
@@ -265,7 +318,7 @@ export function chooseAsset(adDir, slug, id, file, { add } = {}) {
   return save(adDir, slug, p);
 }
 export function patchAsset(adDir, slug, id, patch) { const p = plan(adDir), a = p.assets.find(x => x.id === id); for (const k of ['role', 'desc', 'name']) if (k in patch) a[k] = patch[k]; return save(adDir, slug, p); }
-export function budget() { return { spent: orx.spent(), cap: CFG.budget?.capUsd ?? 10, mock: orx.mock(CFG), ledger: orx.ledger().slice(-50) }; }
+export function budget() { return { spent: orx.spent(), cap: CFG.budget?.capUsd ?? 10, mock: orx.mock(CFG), ledger: orx.ledger().slice(-50), higgsfield: { spent: hf.spent(), cap: CFG.budget?.higgsfieldCapUsd ?? 5, mock: hf.mock(CFG) } }; }
 
 /** Restyle the previz first/last frames into the final look with the image model + element sheets (paid, confirm). */
 export async function styleKeys(adDir, slug, id, { confirm, n = 2, which = ['first', 'last'] } = {}) {
@@ -313,5 +366,59 @@ export async function finish(adDir, slug, id) {
     const p2 = plan(adDir), s2 = p2.shots.find(x => x.id === id);
     s2.final = { file: path.relative(adDir, out), engine, at: now() }; s2.status = 'finished'; save(adDir, slug, p2);
     return s2.final;
+  } finally { unlock(slug); }
+}
+
+/** A Genjutsu take: the source segment (or our Blender previz) + up to 8 element picks + the short prompt (paid, confirmed by the caller). */
+export async function takeGenjutsu(adDir, slug, id, { kind = 'draft' } = {}) {
+  lock(slug, `genjutsu ${id}`);
+  try {
+    const p = plan(adDir), s = p.shots.find(x => x.id === id), proj = readJSON(path.join(adDir, 'project.json'), {});
+    let src;
+    if (s.route === 'genjutsu') {
+      if (!proj.recreate?.rights) throw new Error('motion transfer reuses the uploaded footage: tick "I own this video or have the rights to it" first');
+      const orig = proj.recreate?.source && path.join(adDir, proj.recreate.source); if (!orig || !fs.existsSync(orig)) throw new Error('no source video');
+      const st = s.source || { t0: s.t0, t1: s.t1 };
+      src = (await hf.cutSegment(CFG, orig, st.t0, st.t1, dir(adDir, 'source', `${id}.mp4`), { mode: p.settings.genjutsuMode || 'motion-transfer' })).file;
+    } else {
+      if (!s.previz?.file) throw new Error('make the Blender previz first: it is the motion source');
+      src = path.join(adDir, s.previz.file);
+    }
+    const images = [];
+    for (const rid of s.refs || []) { const a = p.assets.find(x => x.id === rid); for (const f of (a?.picks?.length ? a.picks : a?.chosen ? [a.chosen] : [])) if (images.length < 8) images.push(path.join(adDir, f)); }
+    for (const f of images) if (!fs.existsSync(f)) throw new Error(`missing reference ${path.relative(adDir, f)}`);
+    const res = kind === 'final' ? (p.settings.genjutsuFinalResolution || '720p') : (p.settings.genjutsuResolution || '480p');
+    const n = s.takes.length + 1, out = dir(adDir, 'takes', `${id}_${kind === 'final' ? 'final' : 'g'}${String(n).padStart(2, '0')}.mp4`);
+    s.status = 'generating'; save(adDir, slug, p);
+    const r = await hf.transfer(CFG, { video: src, images, prompt: s.prompt, resolution: res, mode: p.settings.genjutsuMode || 'motion-transfer', seconds: s.seconds, out }, { slug, stage: 'production', what: `${slug} ${id} ${kind} ${n}` });
+    const p2 = plan(adDir), s2 = p2.shots.find(x => x.id === id);
+    s2.takes.push({ n, kind, engine: 'genjutsu', file: path.relative(adDir, out), cost: r.cost, job: r.job, mock: !!r.mock, at: now(), prompt: s.prompt, resolution: res, refs: images.map(f => path.relative(adDir, f)), source: path.relative(adDir, src) });
+    if (kind === 'final') s2.finalTake = path.relative(adDir, out);
+    s2.status = 'review'; save(adDir, slug, p2);
+    return s2.takes.at(-1);
+  } catch (e) {
+    const p3 = plan(adDir), s3 = p3.shots.find(x => x.id === id); if (s3) { s3.status = 'error'; s3.error = e.message; save(adDir, slug, p3); }
+    throw e;
+  } finally { unlock(slug); }
+}
+
+/** The edit: every board entry with a picked clip (finished > final take > chosen take > Blender previz) becomes the plate of its bible shot(s). */
+export async function usePlates(adDir, slug) {
+  lock(slug, 'plates');
+  try {
+    const p = plan(adDir), bible = readJSON(path.join(adDir, 'bible.json')), used = [];
+    for (const s of p.shots) {
+      const clip = s.final?.file || s.finalTake || s.chosen || (['blender', 'blender→genjutsu'].includes(s.route) && s.previz?.kind === 'blender' ? s.previz.file : null);
+      if (!clip || !fs.existsSync(path.join(adDir, clip))) continue;
+      const name = s.id, frames = await platesFromVideo(CFG, path.join(adDir, clip), dir(adDir, 'plates', name));
+      for (const id of s.covers || [s.id]) {
+        const b = bible.shots.find(x => x.id === id); if (!b) continue;
+        b.plate = { dir: `plates/${name}`, fps: 24, start: +Math.max(0, b.t0 - s.t0).toFixed(3), post: false };
+      }
+      used.push({ id: s.id, clip, frames });
+    }
+    writeJSON(path.join(adDir, 'bible.json'), bible);
+    emit('production', { slug, kind: 'plates', used });
+    return { used, shotsWithPlates: bible.shots.filter(x => x.plate).length, shots: bible.shots.length };
   } finally { unlock(slug); }
 }

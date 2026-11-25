@@ -22,6 +22,10 @@ export function preparePage(adDir) {
   fs.copyFileSync(path.join(adDir, 'bible.json'), path.join(page, 'bible.json'));
   const cues = path.join(adDir, 'voice', 'cues.json');
   if (fs.existsSync(cues)) fs.copyFileSync(cues, path.join(page, 'cues.json')); else fs.writeFileSync(path.join(page, 'cues.json'), '[]');
+  // plates (Genjutsu takes, Blender worlds) are served next to the page
+  const plates = path.join(adDir, 'production', 'plates'), pl = path.join(page, 'plates');
+  try { fs.unlinkSync(pl); } catch { /* none */ }
+  if (fs.existsSync(plates)) fs.symlinkSync(plates, pl);
   const custom = path.join(adDir, 'scenes', 'custom.js');
   if (fs.existsSync(custom)) fs.copyFileSync(custom, path.join(page, 'custom.js'));
   return page;

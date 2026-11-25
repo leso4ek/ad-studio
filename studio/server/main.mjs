@@ -17,6 +17,8 @@ import { engines as voice } from './engines/voice.mjs';
 import * as blender from './engines/blender.mjs';
 import * as orx from './engines/openrouter.mjs';
 import * as PR from './production.mjs';
+import * as hf from './engines/higgsfield.mjs';
+import { FORMATS, ROUTES, RECREATE_MODES } from './schemas.mjs';
 
 const cfg = loadConfig();
 initBus(cfg.adsDir); P.initPipeline(cfg); PR.initProduction(cfg);
@@ -46,17 +48,17 @@ async function health() {
   await Promise.all([
     check('claude', () => claude.available(cfg)), check('inbox', () => inbox.available(cfg)), check('lemo', () => render.available(cfg)),
     check('voicestudio', () => voice.voicestudio.available(cfg)), check('kokoro', () => voice.kokoro.available(cfg)), check('elevenlabs', () => voice.elevenlabs.available(cfg)),
-    check('comfy', () => comfy.available(cfg)), check('blender', () => blender.available(cfg)), check('openrouter', () => orx.available(cfg)),
+    check('comfy', () => comfy.available(cfg)), check('blender', () => blender.available(cfg)), check('openrouter', () => orx.available(cfg)), check('higgsfield', () => hf.available(cfg)),
     check('whisper', async () => fs.existsSync(path.join(cfg.lib, '.venv', 'bin', 'python')) && fs.readdirSync(path.join(cfg.lib, '.venv', 'lib')).some(v => fs.existsSync(path.join(cfg.lib, '.venv', 'lib', v, 'site-packages', 'faster_whisper'))) ? { ok: true, detail: 'faster-whisper' } : { ok: false, why: 'faster-whisper not installed' }),
     check('ffprobe', async () => (await which('ffprobe')) ? { ok: true } : { ok: false, why: 'install ffmpeg' }),
   ]);
-  return { engines: out, chains: cfg.chains, env: Object.fromEntries(['OPENROUTER_API_KEY', 'ELEVENLABS_API_KEY', 'VOICESTUDIO_API_KEY'].map(k => [k, !!env[k]])), claude: { model: cfg.claude.model || '(default)', effort: cfg.claude.effort || '(default)' } };
+  return { engines: out, chains: cfg.chains, env: { ...Object.fromEntries(['OPENROUTER_API_KEY', 'ELEVENLABS_API_KEY', 'VOICESTUDIO_API_KEY'].map(k => [k, !!env[k]])), HIGGSFIELD_KEY: !!hf.credentials() }, claude: { model: cfg.claude.model || '(default)', effort: cfg.claude.effort || '(default)' } };
 }
 
 const routes = [
   ['GET', /^\/api\/events$/, (req, res) => subscribe(res)],
   ['GET', /^\/api\/health$/, async (req, res) => send(res, 200, await health())],
-  ['GET', /^\/api\/meta$/, (req, res) => send(res, 200, { stages: STAGES.map(({ id, n, title, kind, gate, optional, paid }) => ({ id, n, title, kind, gate: !!gate, optional: !!optional, paid: !!paid })), styles: STYLE_LINES })],
+  ['GET', /^\/api\/meta$/, (req, res) => send(res, 200, { stages: STAGES.map(({ id, n, title, kind, gate, optional, paid }) => ({ id, n, title, kind, gate: !!gate, optional: !!optional, paid: !!paid })), styles: STYLE_LINES, formats: FORMATS, routes: ROUTES, recreateModes: RECREATE_MODES, stageFormats: Object.fromEntries(STAGES.filter(s => s.formats).map(s => [s.id, { formats: s.formats, targets: s.targets || [] }])) })],
   ['GET', /^\/api\/ads$/, (req, res) => send(res, 200, P.listAds())],
   ['POST', /^\/api\/ads$/, async (req, res) => { const b = await body(req); const p = P.createAd(b); if (b.start !== false) P.runFrom(p.slug).catch(e => emit('job', { slug: p.slug, kind: 'error', text: e.message })); send(res, 201, p); }],
   ['GET', /^\/api\/ads\/([\w-]+)$/, (req, res, [, s]) => { const st = P.adState(s); st ? send(res, 200, st) : send(res, 404, { error: 'no such ad' }); }],
@@ -80,6 +82,16 @@ const routes = [
     }
     send(res, 500, { error: 'no photo engine' });
   }],
+  // recreate: upload the source video / reference images (raw body; ?kind=video|ref&name=&label=&role=), the settings, the analysis
+  ['POST', /^\/api\/ads\/([\w-]+)\/source$/, async (req, res, [, s]) => {
+    const q = new URL(req.url, 'http://x').searchParams, kind = q.get('kind') === 'video' ? 'video' : 'ref';
+    const len = +(req.headers['content-length'] || 0); if (len > (kind === 'video' ? 400e6 : 30e6)) return send(res, 413, { error: kind === 'video' ? 'videos up to 400 MB (60 s)' : 'images up to 30 MB' });
+    try { const p = P.saveSource(s, { kind, name: q.get('name') || '', buf: await body(req, true), label: q.get('label') || '', role: q.get('role') || '' }); send(res, 200, { recreate: p.recreate }); }
+    catch (e) { send(res, 400, { error: e.message }); }
+  }],
+  ['POST', /^\/api\/ads\/([\w-]+)\/recreate$/, async (req, res, [, s]) => { try { send(res, 200, { recreate: P.patchRecreate(s, await body(req)).recreate }); } catch (e) { send(res, 400, { error: e.message }); } }],
+  ['GET', /^\/api\/ads\/([\w-]+)\/analysis$/, (req, res, [, s]) => { const a = readJSON(path.join(P.adDir(s), 'source', 'analysis', 'analysis.json')); a ? send(res, 200, a) : send(res, 404, { error: 'not analysed yet' }); }],
+  ['POST', /^\/api\/ads\/([\w-]+)\/production\/plates$/, (req, res, [, s]) => { bg(s, () => PR.usePlates(P.adDir(s), s)); send(res, 202, { ok: true }); }],
   // production: the shot board (previz → takes → pick), element sheets, budget
   ['GET', /^\/api\/budget$/, (req, res) => send(res, 200, PR.budget())],
   ['GET', /^\/api\/ads\/([\w-]+)\/production$/, (req, res, [, s]) => send(res, 200, { plan: PR.plan(P.adDir(s)), busy: PR.busy(s), budget: PR.budget() })],
