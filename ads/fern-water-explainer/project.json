@@ -2,7 +2,7 @@
   "slug": "fern-water-explainer",
   "title": "Fern water explainer",
   "created": "2026-11-25T19:08:09.997Z",
-  "updated": "2026-11-25T19:58:53.495Z",
+  "updated": "2026-11-25T20:02:30.007Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -214,20 +214,87 @@
       }
     },
     "animatic": {
-      "status": "running",
-      "started": "2026-11-25T19:58:53.495Z",
+      "status": "done",
+      "started": "2026-11-25T20:01:58.670Z",
       "error": null,
       "fallbacks": [],
-      "engine": null
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-25T20:02:30.007Z",
+      "ms": 31337,
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:h               at 0.00s   14 chars  need 2.43s  got 3.00s  \"Where does\\nit go?\"\nOK  s3:c1              at 6.52s   11 chars  need 2.23s  got 3.52s  \"Roots\\ndrink.\"\nOK  s4:c2              at 10.04s   14 chars  need 2.43s  got 3.00s  \"The rest\\ndrains.\"\nOK  end:logo           at 15.16s    7 chars  need 1.97s  got 3.34s  \"Sprigly\"\nOK  end:line           at 15.48s   18 chars  need 2.70s  got 3.02s  \"One capful per litre.\"\nOK  end:cta            at 15.76s   13 chars  need 2.37s  got 2.74s  \"250 ml makes 50 L\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
     },
     "final": {
-      "status": "idle"
+      "status": "running",
+      "started": "2026-11-25T20:02:30.007Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/fern-water-explainer-9x16.mp4",
+        "out/fern-water-explainer-16x9.mp4",
+        "out/fern-water-explainer-poster.jpg",
+        "out/fern-water-explainer.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-25T20:01:23.191Z",
+      "ms": 119017,
+      "summary": "2 file(s): fern-water-explainer-9x16.mp4, fern-water-explainer-16x9.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 18,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/fern-water-explainer/out/fern-water-explainer-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         3.0 LU\n    Peak:       -1.3 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 18,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/fern-water-explainer/out/fern-water-explainer-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         3.0 LU\n    Peak:       -1.3 dBFS"
+          }
+        }
+      }
     },
     "scorecard": {
-      "status": "idle"
+      "status": "stale",
+      "started": "2026-11-25T20:01:23.191Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T20:01:26.203Z",
+      "ms": 3012,
+      "summary": "26/35 · A clean explainer that does its job and sells softly; score it on watch time and saves rather than on the story-ad rules.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
     },
     "audience": {
-      "status": "idle"
+      "status": "stale"
     }
   }
 }

@@ -1,0 +1,58 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-25T20:01:24.195Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 Hook in 1-3 s",
+        "score": 4,
+        "note": "A plain question over a half-cut pot; the camera is moving from frame one."
+      },
+      {
+        "rule": "2 All five acts",
+        "score": 4,
+        "note": "Question, soil, roots, drainage, tag: a chain rather than a drama, as the format intends."
+      },
+      {
+        "rule": "3 A character we identify with",
+        "score": 2,
+        "note": "No character: the viewer is the character. An explainer trades this rule for curiosity."
+      },
+      {
+        "rule": "4 The product causes the turn",
+        "score": 3,
+        "note": "The cutaway makes the per-litre dose make sense, but the product only appears on the end card."
+      },
+      {
+        "rule": "5 Plant / pulse / reveal / tag",
+        "score": 3,
+        "note": "Reveal and tag only, by design: an explainer that sells in the middle stops being trusted."
+      },
+      {
+        "rule": "6 One emotion",
+        "score": 5,
+        "note": "Curiosity, answered calmly."
+      },
+      {
+        "rule": "7 Kind contrast and honest claims",
+        "score": 5,
+        "note": "Plain horticulture, no promise about results; one label claim."
+      }
+    ],
+    "total": 26,
+    "verdict": "A clean explainer that does its job and sells softly; score it on watch time and saves rather than on the story-ad rules.",
+    "fixes": [
+      "Lengthen to 45-75 s with three more stops (overwatering, a pot with no hole, the feed dose) to match the format's real length.",
+      "Put the bottle on the ledge from the first frame as a quiet plant.",
+      "Add one recurring small prop (a fallen leaf riding the water) for continuity."
+    ],
+    "bestHook": "A",
+    "reason": "The story-ad rules undervalue an explainer by design (no character, a late product); as an explainer it reads clearly and honestly."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001
+  },
+  "warnings": []
+}
