@@ -1,0 +1,229 @@
+{
+  "slug": "sprigly-transfer",
+  "routeOverrides": {},
+  "created": "2026-11-25T13:05:07.652Z",
+  "settings": {
+    "route": "kit",
+    "model": "bytedance/seedance-2.5-flash",
+    "resolution": "480p",
+    "aspect": "9:16",
+    "imageModel": "bytedance-seed/seedream-5-5",
+    "finalModel": "bytedance/seedance-2.5",
+    "finalResolution": "720p",
+    "stylePara": "Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark."
+  },
+  "assets": [
+    {
+      "id": "ref-1",
+      "name": "Juno",
+      "kind": "character",
+      "desc": "Juno",
+      "files": [
+        "source/refs/juno-mww4y7d7.png"
+      ],
+      "picks": [
+        "source/refs/juno-mww4y7d7.png"
+      ],
+      "chosen": "source/refs/juno-mww4y7d7.png",
+      "status": "approved",
+      "user": true,
+      "role": "STRICT JUNO IDENTITY: face, hair, body proportions and costume exactly as shown"
+    },
+    {
+      "id": "ref-2",
+      "name": "Sprigly bottle",
+      "kind": "product",
+      "desc": "Sprigly bottle",
+      "files": [
+        "source/refs/bottle-mww4y7fg.png"
+      ],
+      "picks": [
+        "source/refs/bottle-mww4y7fg.png"
+      ],
+      "chosen": "source/refs/bottle-mww4y7fg.png",
+      "status": "approved",
+      "user": true,
+      "role": "EXACT SPRIGLY BOTTLE PRODUCT: shape, proportions, colours and label exactly as shown; never redesign it"
+    },
+    {
+      "id": "char-fern",
+      "name": "fern",
+      "kind": "character",
+      "desc": "fern: the fern: deadpan, sulks, knows the rule, hair bald undefined, top #4E9B5C, trousers #C8643B",
+      "files": [],
+      "chosen": null,
+      "picks": [],
+      "status": "todo",
+      "role": "STRICT FERN IDENTITY: face, hair, body proportions and costume exactly as shown"
+    },
+    {
+      "id": "place-kitchen",
+      "name": "kitchen",
+      "kind": "place",
+      "desc": "kitchen at day, empty, wide three-quarter view",
+      "files": [],
+      "chosen": null,
+      "picks": [],
+      "status": "todo",
+      "role": "STRICT KITCHEN ENVIRONMENT: architecture, materials, colours and lighting exactly as shown"
+    }
+  ],
+  "shots": [
+    {
+      "id": "g-s1-s2",
+      "span": true,
+      "covers": [
+        "s1",
+        "s2"
+      ],
+      "t0": 0,
+      "t1": 5.5,
+      "source": {
+        "t0": 0,
+        "t1": 5.5
+      },
+      "seconds": 6,
+      "route": "genjutsu",
+      "refs": [
+        "ref-1",
+        "ref-2",
+        "place-kitchen"
+      ],
+      "seed": 258437944,
+      "takes": [
+        {
+          "n": 1,
+          "kind": "draft",
+          "engine": "genjutsu",
+          "file": "production/takes/g-s1-s2_g01.mp4",
+          "cost": 0,
+          "job": "mock",
+          "mock": true,
+          "at": "2026-11-25T13:05:41.171Z",
+          "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+          "resolution": "480p",
+          "refs": [
+            "source/refs/bottle-mww4y7fg.png",
+            "source/refs/juno-mww4y7d7.png"
+          ],
+          "source": "production/source/g-s1-s2.mp4"
+        }
+      ],
+      "chosen": "production/takes/g-s1-s2_g01.mp4",
+      "status": "chosen",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+      "final": null,
+      "layoutRef": false,
+      "previz": null
+    },
+    {
+      "id": "g-s3-s4",
+      "span": true,
+      "covers": [
+        "s3",
+        "s4"
+      ],
+      "t0": 5.5,
+      "t1": 11.5,
+      "source": {
+        "t0": 5.5,
+        "t1": 11.5
+      },
+      "seconds": 6,
+      "route": "genjutsu",
+      "refs": [
+        "ref-1",
+        "ref-2",
+        "place-kitchen"
+      ],
+      "seed": 258497528,
+      "takes": [
+        {
+          "n": 1,
+          "kind": "draft",
+          "engine": "genjutsu",
+          "file": "production/takes/g-s3-s4_g01.mp4",
+          "cost": 0,
+          "job": "mock",
+          "mock": true,
+          "at": "2026-11-25T13:06:22.979Z",
+          "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+          "resolution": "480p",
+          "refs": [
+            "source/refs/bottle-mww4y7fg.png",
+            "source/refs/juno-mww4y7d7.png"
+          ],
+          "source": "production/source/g-s3-s4.mp4"
+        }
+      ],
+      "chosen": "production/takes/g-s3-s4_g01.mp4",
+      "status": "chosen",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+      "final": null,
+      "layoutRef": false,
+      "previz": null
+    },
+    {
+      "id": "g-s5-s7",
+      "span": true,
+      "covers": [
+        "s5",
+        "s6",
+        "s7"
+      ],
+      "t0": 11.5,
+      "t1": 16.5,
+      "source": {
+        "t0": 11.5,
+        "t1": 16.5
+      },
+      "seconds": 5,
+      "route": "genjutsu",
+      "refs": [
+        "ref-1",
+        "ref-2",
+        "place-kitchen"
+      ],
+      "seed": 258557113,
+      "takes": [
+        {
+          "n": 1,
+          "kind": "draft",
+          "engine": "genjutsu",
+          "file": "production/takes/g-s5-s7_g01.mp4",
+          "cost": 0,
+          "job": "mock",
+          "mock": true,
+          "at": "2026-11-25T13:06:55.134Z",
+          "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+          "resolution": "480p",
+          "refs": [
+            "source/refs/bottle-mww4y7fg.png",
+            "source/refs/juno-mww4y7d7.png"
+          ],
+          "source": "production/source/g-s5-s7.mp4"
+        }
+      ],
+      "chosen": "production/takes/g-s5-s7_g01.mp4",
+      "status": "chosen",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+      "final": null,
+      "layoutRef": false,
+      "previz": null
+    }
+  ],
+  "alias": {
+    "product": "ref-2",
+    "char-juno": "ref-1"
+  },
+  "updated": "2026-11-25T19:12:17.027Z"
+}

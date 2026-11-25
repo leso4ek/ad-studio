@@ -1,0 +1,52 @@
+{
+  "stage": "brandmap",
+  "at": "2026-11-25T12:47:13.079Z",
+  "output": {
+    "plant": {
+      "t": 0.8,
+      "how": "The Sprigly bottle stands on a block shelf behind the fern in the opening wide, unmentioned."
+    },
+    "pulses": [
+      {
+        "t": 4.5,
+        "how": "Behind Juno's watering-can close-up the bottle's yellow cap catches the rim light."
+      }
+    ],
+    "reveal": {
+      "t": 8.4,
+      "how": "The fern points a leaf; the bottle fills the frame, the cap lights, and the fern says the name with the rule: 'The Sprigly cap. One capful per litre.'"
+    },
+    "tag": {
+      "t": 17.2,
+      "line": "One capful. No guessing."
+    },
+    "claims": [
+      {
+        "text": "One capful per litre",
+        "basis": "Dose is one capful (5 ml) per litre of water"
+      },
+      {
+        "text": "Every two weeks in spring and summer",
+        "basis": "Label directions: feed every two weeks in spring and summer, monthly in autumn and winter"
+      },
+      {
+        "text": "With seaweed extract",
+        "basis": "Contains seaweed extract plus NPK 3-1-2"
+      }
+    ],
+    "reason": "Same placement as the original (planted early, pulsed, revealed on the turn, tagged on the end card), and per the memory the name is said inside the rule line at the reveal. Every claim is a label fact; 250 ml makes 50 L is the purchase anchor on the end card."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2005,
+    "lessons": [
+      "Lmwvtnh4ev3l",
+      "Lmwvsri18h4z",
+      "Lmwvsri1885p",
+      "Lmwvufwh2c9l",
+      "Lmwvsri18g98"
+    ]
+  },
+  "warnings": []
+}

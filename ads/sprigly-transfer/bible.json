@@ -1,0 +1,428 @@
+{
+  "slug": "sprigly-transfer",
+  "title": "Sprigly · Sunday standoff (motion transfer, mock)",
+  "style": "ad-paper-cutout",
+  "format": "recreate",
+  "dur": 20,
+  "stylePara": "Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.",
+  "product": {
+    "name": "Sprigly",
+    "kind": "bottle",
+    "label": "SPRIGLY",
+    "colors": {
+      "body": "#3E8E5A",
+      "cap": "#F2C14E",
+      "label": "#FFF6E5",
+      "labelInk": "#234D33",
+      "accent": "#E8613C"
+    }
+  },
+  "cast": {
+    "juno": {
+      "skin": "#E2A784",
+      "hair": "#3A2418",
+      "hairStyle": "bun",
+      "top": "#E07A4F",
+      "bottom": "#3E7A52",
+      "build": "slim",
+      "role": "she, 30s, loves her fern, guesses the dose",
+      "voice": "af_heart"
+    },
+    "fern": {
+      "kind": "plant",
+      "skin": "#4E9B5C",
+      "hairStyle": "bald",
+      "top": "#4E9B5C",
+      "bottom": "#C8643B",
+      "role": "the fern: deadpan, sulks, knows the rule",
+      "voice": "am_adam"
+    }
+  },
+  "places": {
+    "kitchen": {
+      "kind": "kitchen",
+      "time": "day"
+    }
+  },
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 3,
+      "act": 1,
+      "beat": "hook",
+      "place": "kitchen",
+      "camera": {
+        "size": "WS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "push",
+        "amount": 0.4
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "hook",
+          "role": "hook",
+          "text": "Sunday\nstandoff.",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.12,
+          "w": 0.78,
+          "anim": [
+            "pop"
+          ]
+        }
+      ],
+      "function": "establishing",
+      "reason": "Two characters, one standoff, and the bottle quietly planted.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 0,
+        "t1": 3
+      },
+      "plate": {
+        "dir": "plates/g-s1-s2",
+        "fps": 24,
+        "start": 0,
+        "post": false
+      }
+    },
+    {
+      "id": "s2",
+      "t0": 3,
+      "t1": 5.5,
+      "act": 2,
+      "beat": "story",
+      "place": "kitchen",
+      "camera": {
+        "size": "MCU",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "push",
+        "amount": 0.4
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "c1",
+          "role": "card",
+          "text": "A splash?\nA glug?",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.11,
+          "w": 0.76
+        }
+      ],
+      "function": "close-up",
+      "reason": "She is guessing.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 3,
+        "t1": 5.5
+      },
+      "plate": {
+        "dir": "plates/g-s1-s2",
+        "fps": 24,
+        "start": 3,
+        "post": false
+      }
+    },
+    {
+      "id": "s3",
+      "t0": 5.5,
+      "t1": 8,
+      "act": 2,
+      "beat": "story",
+      "place": "kitchen",
+      "camera": {
+        "size": "CU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "static"
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "c2",
+          "role": "card",
+          "text": "Still\nsulking.",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.11,
+          "w": 0.76
+        }
+      ],
+      "function": "reaction",
+      "reason": "The guessing does not work, and the fern says so.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 5.5,
+        "t1": 8
+      },
+      "plate": {
+        "dir": "plates/g-s3-s4",
+        "fps": 24,
+        "start": 0,
+        "post": false
+      }
+    },
+    {
+      "id": "s4",
+      "t0": 8,
+      "t1": 11.5,
+      "act": 3,
+      "beat": "reveal",
+      "place": "studio",
+      "trans": "wipe",
+      "camera": {
+        "size": "MCU",
+        "subject": "hero",
+        "angle": "low",
+        "move": "push",
+        "amount": 0.35
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "c3",
+          "role": "card",
+          "text": "One capful\nper litre.",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.11,
+          "w": 0.76,
+          "carry": true
+        }
+      ],
+      "function": "reveal",
+      "reason": "The product causes the turn: the rule is on the cap.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 8,
+        "t1": 11.5
+      },
+      "plate": {
+        "dir": "plates/g-s3-s4",
+        "fps": 24,
+        "start": 2.5,
+        "post": false
+      }
+    },
+    {
+      "id": "s5",
+      "t0": 11.5,
+      "t1": 12.7,
+      "act": 4,
+      "beat": "pulse",
+      "place": "kitchen",
+      "camera": {
+        "size": "CU",
+        "subject": "capful",
+        "angle": "high",
+        "move": "static"
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "c3",
+          "role": "card",
+          "text": "One capful\nper litre.",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.11,
+          "w": 0.76,
+          "carry": true
+        }
+      ],
+      "function": "insert",
+      "reason": "The rule is an action anyone can copy.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 11.5,
+        "t1": 14
+      },
+      "plate": {
+        "dir": "plates/g-s5-s7",
+        "fps": 24,
+        "start": 0,
+        "post": false
+      }
+    },
+    {
+      "id": "s6",
+      "t0": 12.7,
+      "t1": 14,
+      "act": 4,
+      "beat": "story",
+      "place": "kitchen",
+      "camera": {
+        "size": "MS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "static"
+      },
+      "layers": [],
+      "function": "relation",
+      "reason": "The routine and its season.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 11.5,
+        "t1": 14
+      },
+      "plate": {
+        "dir": "plates/g-s5-s7",
+        "fps": 24,
+        "start": 1.2,
+        "post": false
+      }
+    },
+    {
+      "id": "s7",
+      "t0": 14,
+      "t1": 16.5,
+      "act": 5,
+      "beat": "story",
+      "place": "kitchen",
+      "trans": "fade",
+      "camera": {
+        "size": "MCU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "push",
+        "amount": 0.3
+      },
+      "layers": [
+        {
+          "type": "text",
+          "id": "c4",
+          "role": "card",
+          "text": "Standoff\nover.",
+          "x": 0.47,
+          "y": 0.215,
+          "size": 0.11,
+          "w": 0.76
+        }
+      ],
+      "function": "aftermath",
+      "reason": "Sunday is quiet now; the change is modest.",
+      "textZone": "top",
+      "route": "genjutsu",
+      "source": {
+        "t0": 14,
+        "t1": 16.5
+      },
+      "plate": {
+        "dir": "plates/g-s5-s7",
+        "fps": 24,
+        "start": 2.5,
+        "post": false
+      }
+    }
+  ],
+  "vo": {
+    "voice": "am_michael",
+    "speed": 0.95,
+    "lines": [
+      {
+        "id": "l01",
+        "text": "Every Sunday. Same standoff.",
+        "at": 0.3,
+        "speaker": "juno"
+      },
+      {
+        "id": "l02",
+        "text": "Same guessing.",
+        "at": 2.4,
+        "speaker": "fern"
+      },
+      {
+        "id": "l03",
+        "text": "A splash?",
+        "at": 3.5,
+        "speaker": "juno"
+      },
+      {
+        "id": "l04",
+        "text": "A glug?",
+        "at": 4.5,
+        "speaker": "fern"
+      },
+      {
+        "id": "l05",
+        "text": "Still sulking.",
+        "at": 5.8,
+        "speaker": "fern"
+      },
+      {
+        "id": "l06",
+        "text": "Read the cap. The Sprigly cap.",
+        "at": 8.2,
+        "speaker": "fern",
+        "asr": "Read the cap, the Sprigly cap."
+      },
+      {
+        "id": "l07",
+        "text": "So, one capful per litre.",
+        "at": 10.65,
+        "speaker": "juno",
+        "asr": "So one cap full per liter."
+      },
+      {
+        "id": "l08",
+        "text": "Every two weeks?",
+        "at": 12.8,
+        "speaker": "juno"
+      },
+      {
+        "id": "l09",
+        "text": "Spring and summer.",
+        "at": 13.9,
+        "speaker": "fern"
+      },
+      {
+        "id": "l10",
+        "text": "Standoff over.",
+        "at": 15.4,
+        "speaker": "juno",
+        "asr": "Stand off over."
+      },
+      {
+        "id": "l11",
+        "text": "Sprigly. One capful, no guessing.",
+        "at": 16.8,
+        "speaker": "narrator",
+        "asr": "Sprigly, one cap full, no guessing."
+      }
+    ]
+  },
+  "captions": true,
+  "captionMode": "block",
+  "endcard": {
+    "t0": 16.5,
+    "logo": "Sprigly",
+    "line": "One capful. No guessing.",
+    "cta": "250 ml makes 50 L"
+  },
+  "music": {
+    "mood": "lofi",
+    "bpm": 88
+  },
+  "sfx": [
+    {
+      "t": 0.1,
+      "type": "sting"
+    },
+    {
+      "t": 11.7,
+      "type": "pop"
+    }
+  ],
+  "reason": "The original's seven beats and their timing, recast as a voxel two-hander: the narrator's lines become dialogue between Juno and the fern, the rule arrives as three numbered steps in the top bar, and captions run one to three words at a time. The pour has its own 1.2 s insert under the carried rule card, and the payoff stays small."
+}

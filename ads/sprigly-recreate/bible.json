@@ -1,0 +1,707 @@
+{
+ "slug": "sprigly-recreate",
+ "title": "Sprigly \u00b7 Sunday standoff (voxel skit, recreated)",
+ "style": "ad-voxel-3d",
+ "format": "recreate",
+ "dur": 20,
+ "stylePara": "Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.",
+ "product": {
+  "name": "Sprigly",
+  "kind": "bottle",
+  "label": "SPRIGLY",
+  "colors": {
+   "body": "#3E8E5A",
+   "cap": "#F2C14E",
+   "label": "#FFF6E5",
+   "labelInk": "#234D33",
+   "accent": "#E8613C"
+  }
+ },
+ "cast": {
+  "juno": {
+   "skin": "#E2A784",
+   "hair": "#3A2418",
+   "hairStyle": "bun",
+   "top": "#E07A4F",
+   "bottom": "#3E7A52",
+   "build": "slim",
+   "role": "she, 30s, loves her fern, guesses the dose",
+   "voice": "af_heart"
+  },
+  "fern": {
+   "kind": "plant",
+   "skin": "#4E9B5C",
+   "hairStyle": "bald",
+   "top": "#4E9B5C",
+   "bottom": "#C8643B",
+   "role": "the fern: deadpan, sulks, knows the rule",
+   "voice": "am_adam"
+  }
+ },
+ "places": {
+  "kitchen": {
+   "kind": "kitchen",
+   "time": "day"
+  }
+ },
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0,
+   "t1": 3,
+   "act": 1,
+   "beat": "hook",
+   "place": "kitchen",
+   "camera": {
+    "size": "WS",
+    "subject": "juno",
+    "angle": "eye",
+    "move": "push",
+    "amount": 0.4
+   },
+   "layers": [
+    {
+     "type": "char",
+     "id": "juno",
+     "x": 0.3,
+     "y": 0.9,
+     "scale": 1.1,
+     "pose": "annoyed",
+     "face": "right",
+     "anim": [
+      "breathe"
+     ]
+    },
+    {
+     "type": "char",
+     "id": "fern",
+     "x": 0.7,
+     "y": 0.86,
+     "scale": 1,
+     "pose": "sad",
+     "face": "left",
+     "anim": [
+      "breathe"
+     ]
+    },
+    {
+     "type": "product",
+     "id": "bottle",
+     "x": 0.86,
+     "y": 0.7,
+     "scale": 0.35
+    },
+    {
+     "type": "text",
+     "id": "hook",
+     "role": "hook",
+     "text": "Sunday\nstandoff.",
+     "x": 0.47,
+     "y": 0.215,
+     "size": 0.12,
+     "w": 0.78,
+     "anim": [
+      "pop"
+     ]
+    }
+   ],
+   "function": "establishing",
+   "reason": "Two characters, one standoff, and the bottle quietly planted.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 0,
+    "t1": 3
+   }
+  },
+  {
+   "id": "s2",
+   "t0": 3,
+   "t1": 5.5,
+   "act": 2,
+   "beat": "story",
+   "place": "kitchen",
+   "camera": {
+    "size": "MCU",
+    "subject": "juno",
+    "angle": "eye",
+    "move": "push",
+    "amount": 0.4
+   },
+   "layers": [
+    {
+     "type": "char",
+     "id": "juno",
+     "x": 0.42,
+     "y": 0.95,
+     "scale": 1.1,
+     "pose": "think",
+     "face": "right"
+    },
+    {
+     "type": "prop",
+     "kind": "watering-can",
+     "x": 0.72,
+     "y": 0.8,
+     "scale": 1.1
+    },
+    {
+     "type": "prop",
+     "kind": "drop",
+     "x": 0.8,
+     "y": 0.72,
+     "scale": 0.4,
+     "t0": 0.6,
+     "anim": [
+      "drop"
+     ]
+    },
+    {
+     "type": "text",
+     "id": "c1",
+     "role": "card",
+     "text": "A splash?\nA glug?",
+     "x": 0.47,
+     "y": 0.215,
+     "size": 0.11,
+     "w": 0.76
+    }
+   ],
+   "function": "close-up",
+   "reason": "She is guessing.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 3,
+    "t1": 5.5
+   }
+  },
+  {
+   "id": "s3",
+   "t0": 5.5,
+   "t1": 8,
+   "act": 2,
+   "beat": "story",
+   "place": "kitchen",
+   "camera": {
+    "size": "CU",
+    "subject": "fern",
+    "angle": "eye",
+    "move": "static"
+   },
+   "layers": [
+    {
+     "type": "char",
+     "id": "fern",
+     "x": 0.5,
+     "y": 0.9,
+     "scale": 1.2,
+     "pose": "sad",
+     "face": "front"
+    },
+    {
+     "type": "text",
+     "id": "c2",
+     "role": "card",
+     "text": "Still\nsulking.",
+     "x": 0.47,
+     "y": 0.215,
+     "size": 0.11,
+     "w": 0.76
+    }
+   ],
+   "function": "reaction",
+   "reason": "The guessing does not work, and the fern says so.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 5.5,
+    "t1": 8
+   }
+  },
+  {
+   "id": "s4",
+   "t0": 8,
+   "t1": 11.5,
+   "act": 3,
+   "beat": "reveal",
+   "place": "studio",
+   "trans": "wipe",
+   "camera": {
+    "size": "MCU",
+    "subject": "hero",
+    "angle": "low",
+    "move": "push",
+    "amount": 0.35
+   },
+   "layers": [
+    {
+     "type": "product",
+     "id": "hero",
+     "x": 0.5,
+     "y": 0.8,
+     "scale": 1.2,
+     "anim": [
+      "reveal"
+     ]
+    },
+    {
+     "type": "char",
+     "id": "fern",
+     "x": 0.14,
+     "y": 0.95,
+     "scale": 0.8,
+     "pose": "point",
+     "face": "right"
+    },
+    {
+     "type": "prop",
+     "kind": "sparkle",
+     "x": 0.74,
+     "y": 0.52,
+     "scale": 0.6,
+     "t0": 0.5,
+     "anim": [
+      "pop",
+      "pulse"
+     ]
+    },
+    {
+     "type": "text",
+     "id": "c3",
+     "role": "card",
+     "text": "One capful\nper litre.",
+     "x": 0.47,
+     "y": 0.285,
+     "size": 0.11,
+     "w": 0.76,
+     "carry": true
+    }
+   ],
+   "function": "reveal",
+   "reason": "The product causes the turn: the rule is on the cap.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 8,
+    "t1": 11.5
+   }
+  },
+  {
+   "id": "s5",
+   "t0": 11.5,
+   "t1": 12.7,
+   "act": 4,
+   "beat": "pulse",
+   "place": "kitchen",
+   "camera": {
+    "size": "CU",
+    "subject": "capful",
+    "angle": "high",
+    "move": "static"
+   },
+   "layers": [
+    {
+     "type": "prop",
+     "kind": "capful",
+     "x": 0.5,
+     "y": 0.56,
+     "scale": 1.5
+    },
+    {
+     "type": "prop",
+     "kind": "watering-can",
+     "x": 0.5,
+     "y": 0.86,
+     "scale": 1.5
+    },
+    {
+     "type": "prop",
+     "kind": "drop",
+     "x": 0.5,
+     "y": 0.66,
+     "scale": 0.45,
+     "t0": 0.2,
+     "anim": [
+      "drop"
+     ]
+    },
+    {
+     "type": "text",
+     "id": "c3",
+     "role": "card",
+     "text": "One capful\nper litre.",
+     "x": 0.47,
+     "y": 0.285,
+     "size": 0.11,
+     "w": 0.76,
+     "carry": true
+    }
+   ],
+   "function": "insert",
+   "reason": "The rule is an action anyone can copy.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 11.5,
+    "t1": 14
+   }
+  },
+  {
+   "id": "s6",
+   "t0": 12.7,
+   "t1": 14,
+   "act": 4,
+   "beat": "story",
+   "place": "kitchen",
+   "camera": {
+    "size": "MS",
+    "subject": "juno",
+    "angle": "eye",
+    "move": "static"
+   },
+   "layers": [
+    {
+     "type": "char",
+     "id": "juno",
+     "x": 0.32,
+     "y": 0.9,
+     "scale": 1.1,
+     "pose": "hold",
+     "face": "right"
+    },
+    {
+     "type": "product",
+     "id": "bottle",
+     "x": 0.56,
+     "y": 0.74,
+     "scale": 0.4
+    },
+    {
+     "type": "char",
+     "id": "fern",
+     "x": 0.78,
+     "y": 0.86,
+     "scale": 1,
+     "pose": "neutral",
+     "face": "left"
+    }
+   ],
+   "function": "relation",
+   "reason": "The routine and its season.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 11.5,
+    "t1": 14
+   }
+  },
+  {
+   "id": "s7",
+   "t0": 14,
+   "t1": 16.5,
+   "act": 5,
+   "beat": "story",
+   "place": "kitchen",
+   "trans": "fade",
+   "camera": {
+    "size": "MCU",
+    "subject": "fern",
+    "angle": "eye",
+    "move": "push",
+    "amount": 0.3
+   },
+   "layers": [
+    {
+     "type": "char",
+     "id": "fern",
+     "x": 0.58,
+     "y": 0.9,
+     "scale": 1.15,
+     "pose": "happy",
+     "face": "left",
+     "anim": [
+      "breathe"
+     ]
+    },
+    {
+     "type": "char",
+     "id": "juno",
+     "x": 0.16,
+     "y": 0.95,
+     "scale": 1,
+     "pose": "happy",
+     "face": "right"
+    },
+    {
+     "type": "prop",
+     "kind": "mug",
+     "x": 0.32,
+     "y": 0.8,
+     "scale": 0.5
+    },
+    {
+     "type": "prop",
+     "kind": "steam",
+     "x": 0.32,
+     "y": 0.74,
+     "scale": 0.4,
+     "anim": [
+      "float"
+     ]
+    },
+    {
+     "type": "text",
+     "id": "c4",
+     "role": "card",
+     "text": "Standoff\nover.",
+     "x": 0.47,
+     "y": 0.285,
+     "size": 0.11,
+     "w": 0.76
+    }
+   ],
+   "function": "aftermath",
+   "reason": "Sunday is quiet now; the change is modest.",
+   "textZone": "top",
+   "route": "three",
+   "source": {
+    "t0": 14,
+    "t1": 16.5
+   }
+  }
+ ],
+ "vo": {
+  "voice": "am_michael",
+  "speed": 0.95,
+  "lines": [
+   {
+    "id": "l01",
+    "text": "Every Sunday. Same standoff.",
+    "at": 0.3,
+    "speaker": "juno"
+   },
+   {
+    "id": "l02",
+    "text": "Same guessing.",
+    "at": 2.4,
+    "speaker": "fern"
+   },
+   {
+    "id": "l03",
+    "text": "A splash?",
+    "at": 3.5,
+    "speaker": "juno"
+   },
+   {
+    "id": "l04",
+    "text": "A glug?",
+    "at": 4.5,
+    "speaker": "fern"
+   },
+   {
+    "id": "l05",
+    "text": "Still sulking.",
+    "at": 5.8,
+    "speaker": "fern"
+   },
+   {
+    "id": "l06",
+    "text": "Read the cap. The Sprigly cap.",
+    "at": 8.2,
+    "speaker": "fern",
+    "asr": "Read the cap, the Sprigly cap."
+   },
+   {
+    "id": "l07",
+    "text": "So, one capful per litre.",
+    "at": 10.65,
+    "speaker": "juno",
+    "asr": "So one cap full per liter."
+   },
+   {
+    "id": "l08",
+    "text": "Every two weeks?",
+    "at": 12.8,
+    "speaker": "juno"
+   },
+   {
+    "id": "l09",
+    "text": "Spring and summer.",
+    "at": 13.9,
+    "speaker": "fern"
+   },
+   {
+    "id": "l10",
+    "text": "Standoff over.",
+    "at": 15.4,
+    "speaker": "juno",
+    "asr": "Stand off over."
+   },
+   {
+    "id": "l11",
+    "text": "Sprigly. One capful, no guessing.",
+    "at": 16.8,
+    "speaker": "narrator",
+    "asr": "Sprigly, one cap full, no guessing."
+   }
+  ]
+ },
+ "captions": true,
+ "captionMode": "words",
+ "overlay": {
+  "steps": [
+   {
+    "t0": 8.4,
+    "t1": 11.5,
+    "label": "STEP 1",
+    "title": "Capful"
+   },
+   {
+    "t0": 11.5,
+    "t1": 12.7,
+    "label": "STEP 2",
+    "title": "Pour"
+   },
+   {
+    "t0": 12.7,
+    "t1": 16.5,
+    "label": "STEP 3",
+    "title": "Two weeks"
+   }
+  ]
+ },
+ "endcard": {
+  "t0": 16.5,
+  "logo": "Sprigly",
+  "line": "One capful. No guessing.",
+  "cta": "250 ml makes 50 L"
+ },
+ "music": {
+  "mood": "lofi",
+  "bpm": 88
+ },
+ "sfx": [
+  {
+   "t": 0.1,
+   "type": "sting"
+  },
+  {
+   "t": 11.7,
+   "type": "pop"
+  }
+ ],
+ "variants": {
+  "hooks": [
+   {
+    "id": "B",
+    "shots": [
+     {
+      "id": "s1",
+      "layers": [
+       {
+        "type": "char",
+        "id": "juno",
+        "x": 0.3,
+        "y": 0.9,
+        "scale": 1.1,
+        "pose": "annoyed",
+        "face": "right",
+        "anim": [
+         "breathe"
+        ]
+       },
+       {
+        "type": "char",
+        "id": "fern",
+        "x": 0.7,
+        "y": 0.86,
+        "scale": 1,
+        "pose": "sad",
+        "face": "left",
+        "anim": [
+         "breathe"
+        ]
+       },
+       {
+        "type": "product",
+        "id": "bottle",
+        "x": 0.86,
+        "y": 0.7,
+        "scale": 0.35
+       },
+       {
+        "type": "text",
+        "id": "hook",
+        "role": "hook",
+        "text": "How much\nis a splash?",
+        "x": 0.47,
+        "y": 0.215,
+        "size": 0.12,
+        "w": 0.78,
+        "anim": [
+         "pop"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "C",
+    "shots": [
+     {
+      "id": "s1",
+      "layers": [
+       {
+        "type": "char",
+        "id": "juno",
+        "x": 0.3,
+        "y": 0.9,
+        "scale": 1.1,
+        "pose": "annoyed",
+        "face": "right",
+        "anim": [
+         "breathe"
+        ]
+       },
+       {
+        "type": "char",
+        "id": "fern",
+        "x": 0.7,
+        "y": 0.86,
+        "scale": 1,
+        "pose": "sad",
+        "face": "left",
+        "anim": [
+         "breathe"
+        ]
+       },
+       {
+        "type": "product",
+        "id": "bottle",
+        "x": 0.86,
+        "y": 0.7,
+        "scale": 0.35
+       },
+       {
+        "type": "text",
+        "id": "hook",
+        "role": "hook",
+        "text": "Day 14.\nGuessing.",
+        "x": 0.47,
+        "y": 0.215,
+        "size": 0.12,
+        "w": 0.78,
+        "anim": [
+         "pop"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "reason": "The original's seven beats and their timing, recast as a voxel two-hander: the narrator's lines become dialogue between Juno and the fern, the rule arrives as three numbered steps in the top bar, and captions run one to three words at a time. The pour has its own 1.2 s insert under the carried rule card, and the payoff stays small."
+}

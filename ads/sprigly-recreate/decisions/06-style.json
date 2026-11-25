@@ -1,0 +1,19 @@
+{
+  "stage": "style",
+  "at": "2026-11-25T12:47:13.084Z",
+  "output": {
+    "style": "ad-voxel-3d",
+    "reason": "the 3d-skit format is drawn in ad-voxel-3d",
+    "alternatives": [
+      {
+        "style": "ad-toy-3d",
+        "why_not": "not the voxel look of this format"
+      }
+    ],
+    "seedanceStyle": "low-poly"
+  },
+  "meta": {
+    "engine": "format"
+  },
+  "warnings": []
+}

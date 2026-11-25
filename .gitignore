@@ -28,3 +28,11 @@ ads/*/out/animatic.mp4
 studio/.ledger.jsonl
 ads/*/production/blender/*/f_*.png
 ads/*/production/previz/_full.mp4
+# round 12: regenerable media (plates are frames of takes/renders; uploads stay on the machine that made them)
+ads/*/production/plates/
+ads/*/production/blender/world/
+ads/*/source/original.*
+ads/*/source/g-*.mp4
+ads/*/source/analysis/stills/
+ads/*/frames/plate_*.jpg
+ads/*/production/source/

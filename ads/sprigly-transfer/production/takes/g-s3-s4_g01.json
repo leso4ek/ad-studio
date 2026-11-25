@@ -1,0 +1,13 @@
+{
+ "job": "mock",
+ "mode": "motion-transfer",
+ "seconds": 6,
+ "resolution": "480p",
+ "estimate": 0.924,
+ "prompt": "Keep the exact motion, timing, framing and camera move of the source video. The people become juno (she, 30s, loves her fern, guesses the dose), fern (the fern: deadpan, sulks, knows the rule), exactly as in the reference images. Any product in hand becomes Sprigly, the bottle in the reference image, label \"SPRIGLY\". Look: Blocky voxel toys on a dark navy stage: box-built characters with flat square faces, matte bevelled blocks, one warm key light from the left and a cool rim from behind, soft bokeh dots in the dark.. No on-screen text.",
+ "images": [
+  "/home/user/scifi-explainer-studio/ads/sprigly-transfer/source/refs/bottle-mww4y7fg.png",
+  "/home/user/scifi-explainer-studio/ads/sprigly-transfer/source/refs/juno-mww4y7d7.png"
+ ],
+ "source": "/home/user/scifi-explainer-studio/ads/sprigly-transfer/production/source/g-s3-s4.mp4"
+}

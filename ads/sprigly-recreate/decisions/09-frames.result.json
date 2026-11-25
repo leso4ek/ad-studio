@@ -1,0 +1,22 @@
+{
+  "stage": "frames",
+  "at": "2026-11-25T12:50:30.226Z",
+  "summary": "revised: the STEP 1 bar sits on the first line of 'One capful per litre.'; the STEP 3 bar covers 'Standoff'",
+  "review": {
+    "verdict": "revised",
+    "notes": [
+      {
+        "shot": "s4",
+        "issue": "the STEP 1 bar sits on the first line of 'One capful per litre.'",
+        "fix": "the rule card moves to y 0.285, under the step bar (carried into s5 at the same place)"
+      },
+      {
+        "shot": "s7",
+        "issue": "the STEP 3 bar covers 'Standoff'",
+        "fix": "the card moves to y 0.285"
+      }
+    ],
+    "changed": true,
+    "reason": "Characters, the talking fern, the product label and the end card all read at a glance, and every card sits in the top zone away from faces. The only fault is the new step bar colliding with the cards in the steps section, so those two cards move below it; the hook and problem cards have no steps above them and stay."
+  }
+}

@@ -160,6 +160,8 @@ test('board: genjutsu shots merge into spans, a mock take, rights required, plat
   assert.ok(span, 'a span entry'); assert.equal(p.shots.length, n - (span.covers.length - 1));
   assert.ok(span.seconds >= 4); assert.equal(span.refs[0], 'ref-1', 'the user reference comes first');
   assert.deepEqual(p.assets.slice(0, 2).map(a => a.id), ['ref-1', 'ref-2'], 'uploads keep their order');
+  assert.ok(!p.assets.some(a => a.id === 'product'), 'the uploaded product replaces the generated product element');
+  assert.ok(p.shots.every(s => !(s.refs || []).includes('product')), 'shots point at the upload instead');
   const gp = PR.genjutsuPrompt(p, { cast: { juno: { role: 'she, 30s' }, fern: { kind: 'plant', role: 'the fern' } }, product: { name: 'Sprigly', kind: 'bottle', label: 'SPRIGLY' } });
   assert.ok(/people become juno \(she\)/.test(gp) && !/people become[^.]*fern/.test(gp) && /plant stays a plant: fern/.test(gp), gp);
   assert.equal(p.assets[0].chosen, 'source/refs/juno.png');

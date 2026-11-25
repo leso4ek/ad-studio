@@ -105,12 +105,22 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
     fresh.push({ id, name: r.label || `reference ${i + 1}`, kind, desc: r.label || 'the user\'s reference image', files: [r.file], picks: [r.file], chosen: r.file, status: 'approved', user: true });
   }
   p.assets.unshift(...fresh);   // in upload order, ahead of the generated elements
+  // an uploaded reference replaces the generated element it stands for (same character name; any product upload → the product)
+  const alias = {}, norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  for (const u of p.assets.filter(a => a.user)) {
+    const twin = p.assets.find(g => !g.user && g.kind === u.kind && (u.kind === 'product' || norm(u.name).split(' ')[0] === norm(g.name).split(' ')[0]) && !alias[g.id]);
+    if (twin && !twin.picks?.length) alias[twin.id] = u.id;
+  }
+  p.assets = p.assets.filter(a => !alias[a.id]);
+  const num = a => +a.id.replace('ref-', '');   // uploads first, in upload order (boards saved before this kept them reversed)
+  p.assets = [...p.assets.filter(a => a.user).sort((a, b) => num(a) - num(b)), ...p.assets.filter(a => !a.user)];
+  p.alias = { ...(old?.alias || {}), ...alias };
   for (const a of p.assets) { a.name ||= a.id.replace(/^(char|place)-/, ''); a.picks ||= a.chosen ? [a.chosen] : []; a.role ||= (ROLE[a.kind] || ROLE.prop)(a); }
   const userRefs = p.assets.filter(a => a.user).map(a => a.id);
   for (const s of bible.shots) {
     const prev = old?.shots?.find(x => x.id === s.id);
     const refs = [...(s.layers || []).filter(l => l.type === 'char').map(l => `char-${l.id}`), ...((s.layers || []).some(l => l.type === 'product') ? ['product'] : []), ...(bible.places?.[s.place] ? [`place-${s.place}`] : [])];
-    const shot = { id: s.id, t0: s.t0, t1: s.t1, seconds: Math.max(4, Math.round(s.t1 - s.t0)), route: old?.routeOverrides?.[s.id] || prev?.route || s.route || route, refs: prev?.refs || [...userRefs, ...refs], ...(s.source ? { source: s.source } : {}),
+    const shot = { id: s.id, t0: s.t0, t1: s.t1, seconds: Math.max(4, Math.round(s.t1 - s.t0)), route: old?.routeOverrides?.[s.id] || prev?.route || s.route || route, refs: normRefs(p, prev?.refs || [...userRefs, ...refs]), ...(s.source ? { source: s.source } : {}),
       layoutRef: prev?.layoutRef ?? false, seed: prev?.seed ?? seedOf(`${slug}:${s.id}`), previz: prev?.previz || null, takes: prev?.takes || [], chosen: prev?.chosen ?? null,
       status: prev?.status || 'todo', notes: prev?.notes || '', promptBy: prev?.promptBy || 'template', promptEdited: !!prev?.promptEdited, final: prev?.final || null };
     shot.prompt = prev?.promptEdited || prev?.promptBy === 'claude' ? prev.prompt : buildPrompt(s, bible, p, refList(adDir, p, shot));
@@ -120,6 +130,11 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   return save(adDir, slug, p);
 }
 
+/** A shot's reference ids: aliases resolved (an upload that replaced a generated element), no repeats, only existing elements, uploads first in upload order. */
+export function normRefs(p, list) {
+  const ids = [...new Set(list.map(id => p.alias?.[id] || id))].filter(id => p.assets.some(a => a.id === id)), up = id => /^ref-\d+$/.test(id);
+  return [...ids.filter(up).sort((a, b) => +a.slice(4) - +b.slice(4)), ...ids.filter(id => !up(id))];
+}
 /** Consecutive 'genjutsu' shots become one span entry of 4-30 s (Genjutsu Light: 15 s) cut from the source video. */
 export function spansOf(shots, old, slug, p, bible) {
   const out = [], max = (p.settings.genjutsuMode === 'light' ? 15 : 30);
@@ -131,7 +146,7 @@ export function spansOf(shots, old, slug, p, bible) {
       const covers = sp.shots, first = run.find(s => s.id === covers[0]), last = run.find(s => s.id === covers.at(-1));
       const id = `g-${covers[0]}${covers.length > 1 ? `-${covers.at(-1)}` : ''}`, prev = old?.shots?.find(x => x.id === id);
       out.push({ id, span: true, covers, t0: first.t0, t1: last.t1, source: { t0: sp.t0, t1: sp.t1 }, seconds: Math.ceil(sp.seconds), route: 'genjutsu',
-        refs: prev?.refs || [...new Set(run.filter(s => covers.includes(s.id)).flatMap(s => s.refs))], seed: prev?.seed ?? seedOf(`${slug}:${id}`), takes: prev?.takes || [], chosen: prev?.chosen ?? null,
+        refs: normRefs(p, prev?.refs || run.filter(s => covers.includes(s.id)).flatMap(s => s.refs)), seed: prev?.seed ?? seedOf(`${slug}:${id}`), takes: prev?.takes || [], chosen: prev?.chosen ?? null,
         status: prev?.status || 'todo', notes: prev?.notes || (sp.short ? `shorter than ${hf.MIN_S} s: Genjutsu pads it to ${hf.MIN_S} s` : ''), promptBy: prev?.promptBy || 'template', promptEdited: !!prev?.promptEdited,
         prompt: prev?.prompt || genjutsuPrompt(p, bible), final: prev?.final || null, layoutRef: false, previz: null });
     }

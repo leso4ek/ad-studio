@@ -1,0 +1,43 @@
+{
+  "stage": "hooks",
+  "at": "2026-11-25T12:47:09.059Z",
+  "output": {
+    "hooks": [
+      {
+        "id": "A",
+        "type": "conflict mid-action (the original's opening)",
+        "onScreen": "Sunday standoff.",
+        "visual": "Voxel Juno and the voxel fern face each other on the dark stage, a slow push-in between them like a western.",
+        "vo": "Every Sunday. Same standoff."
+      },
+      {
+        "id": "B",
+        "type": "question",
+        "onScreen": "How much is 'a splash'?",
+        "visual": "Close-up of the fern, one leaf raised like a hand, Juno blurred holding the watering can.",
+        "vo": "Every Sunday. Same standoff."
+      },
+      {
+        "id": "C",
+        "type": "plant POV, a number",
+        "onScreen": "Day 14. Still guessing.",
+        "visual": "Close-up of the fern looking up at Juno; the Sprigly bottle small behind her.",
+        "vo": "Every Sunday. Same standoff."
+      }
+    ],
+    "lead": "A",
+    "reason": "A reproduces the original's opening (the named standoff, mid-conflict) with our cast, which the recreate asks for. B puts the exact problem in the fern's mouth and is the variant to test first; C keeps the problem-first opening the v2 audience test favoured for buyers, with the bottle in frame by 1 s as memory advises."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2004,
+    "lessons": [
+      "Lmwvsri18maj",
+      "Lmwvufwh2ztj",
+      "Lmwvufwh3ksy",
+      "Lmwvsri18gbt"
+    ]
+  },
+  "warnings": []
+}

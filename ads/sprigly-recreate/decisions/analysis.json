@@ -1,0 +1,214 @@
+{
+  "stage": "analysis",
+  "at": "2026-11-25T12:45:14.144Z",
+  "output": {
+    "summary": "A 20 s paper cut-out story ad: a woman in an orange jumper and her sulking fern are locked in a weekly watering standoff until she reads the measuring cap of a green houseplant-feed bottle, and the fern perks up. Seven locked-off shots carry one bold card each, with a narrator over a light music bed.",
+    "kind": "story-ad",
+    "hook": {
+      "type": "conflict mid-action (a named standoff)",
+      "t1": 3,
+      "what": "She glares at the fern in the kitchen under the card 'Sunday standoff.' while the narrator sets up the rivalry."
+    },
+    "beats": [
+      {
+        "t0": 0,
+        "t1": 3,
+        "what": "the standoff: woman versus fern"
+      },
+      {
+        "t0": 3,
+        "t1": 8,
+        "what": "she guesses the dose (a splash? a glug?) and the fern still sulks"
+      },
+      {
+        "t0": 8,
+        "t1": 11.5,
+        "what": "the turn: the bottle is revealed in a sunburst with the rule 'one capful per litre'"
+      },
+      {
+        "t0": 11.5,
+        "t1": 16.5,
+        "what": "the routine and the payoff: every two weeks, the fern perky, the standoff over"
+      },
+      {
+        "t0": 16.5,
+        "t1": 20,
+        "what": "the end card: bottle, brand name, 'One capful. No guessing.'"
+      }
+    ],
+    "look": "Flat paper cut-out: layered card shapes with soft drop shadows, warm kitchen browns and cream, an orange-and-blue character with a big round head, heavy rounded sans-serif cards in white boxes, and a radiating yellow sunburst for the product reveal.",
+    "rhythm": "Seven locked-off shots, a cut every 2.5-3.5 s (3 per 10 s); a wipe into the reveal and a fade into the payoff; one card per shot, carried by the voice.",
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3,
+        "size": "MS",
+        "subject": "woman",
+        "angle": "eye",
+        "move": "static",
+        "action": "she frowns at the fern beside her; the bottle sits small at the right edge",
+        "onScreen": "Sunday standoff.",
+        "voice": "Every Sunday, Juno and her fern have a standoff.",
+        "people": 1,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s2",
+        "t0": 3,
+        "t1": 5.5,
+        "size": "MS",
+        "subject": "woman",
+        "angle": "eye",
+        "move": "static",
+        "action": "hand on her head, she guesses; a water drop falls",
+        "onScreen": "A splash? A glug?",
+        "voice": "She waters, she guesses, she hopes.",
+        "people": 1,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s3",
+        "t0": 5.5,
+        "t1": 8,
+        "size": "CU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "static",
+        "action": "the fern droops over the sill",
+        "onScreen": "Still sulking.",
+        "voice": "And the fern still sulks.",
+        "people": 0,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s4",
+        "t0": 8,
+        "t1": 11.5,
+        "size": "MCU",
+        "subject": "product",
+        "angle": "eye",
+        "move": "static",
+        "action": "a wipe in, then the bottle pops up in a sunburst, a leaf and a sparkle beside it",
+        "onScreen": "One capful per litre.",
+        "voice": "Then she reads the cap. One capful per litre.",
+        "people": 0,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s5",
+        "t0": 11.5,
+        "t1": 14,
+        "size": "MS",
+        "subject": "woman",
+        "angle": "eye",
+        "move": "static",
+        "action": "she holds the bottle, smiling, the fern upright beside her",
+        "onScreen": "Every two weeks.",
+        "voice": "Every two weeks. No more guessing.",
+        "people": 1,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s6",
+        "t0": 14,
+        "t1": 16.5,
+        "size": "MS",
+        "subject": "woman",
+        "angle": "eye",
+        "move": "static",
+        "action": "a fade in to an evening kitchen; she is content with a mug, the fern perky",
+        "onScreen": "Sunday, solved.",
+        "voice": "Standoff over.",
+        "people": 1,
+        "complexity": "low",
+        "physics": false
+      },
+      {
+        "id": "s7",
+        "t0": 16.5,
+        "t1": 20,
+        "size": "MCU",
+        "subject": "product",
+        "angle": "eye",
+        "move": "static",
+        "action": "a wipe to the end card: the bottle in a sunburst, the brand name and the line",
+        "onScreen": "Sprigly · One capful. No guessing. · Houseplant feed",
+        "voice": "Sprigly. One capful, no guessing.",
+        "people": 0,
+        "complexity": "low",
+        "physics": false
+      }
+    ],
+    "characters": [
+      {
+        "id": "woman1",
+        "desc": "a woman in her thirties with a dark bun and rosy cheeks",
+        "wears": "an orange jumper and blue trousers",
+        "holds": "nothing at first, then the bottle",
+        "becomes": "Juno as a voxel character from reference 1: dark bun, orange jumper, green trousers; she holds a watering can, then the Sprigly bottle"
+      }
+    ],
+    "props": [
+      {
+        "id": "fern",
+        "desc": "a potted fern on the windowsill, droopy, later perky",
+        "becomes": "keep, as a voxel fern that talks back (the second character of the skit)"
+      },
+      {
+        "id": "drop",
+        "desc": "a single water drop when she guesses",
+        "becomes": "the watering can, tipped too far"
+      },
+      {
+        "id": "mug",
+        "desc": "a steaming mug in the payoff",
+        "becomes": "keep"
+      }
+    ],
+    "product": {
+      "seen": true,
+      "desc": "a green bottle with a yellow cap and a white SPRIGLY label",
+      "becomes": "the same Sprigly bottle from reference 2, built from boxes, with its yellow measuring cap"
+    },
+    "places": [
+      {
+        "id": "kitchen",
+        "desc": "a warm kitchen with a window and a sill, brown counter",
+        "kind": "kitchen"
+      },
+      {
+        "id": "studio",
+        "desc": "a plain warm backdrop with a yellow sunburst for the reveal and the end card",
+        "kind": "studio"
+      }
+    ],
+    "refsUsed": [
+      {
+        "file": "source/refs/char-juno-1795466303774-1-mww472kz.png",
+        "as": "Juno: face, bun, orange jumper, green trousers (four-view turnaround)"
+      },
+      {
+        "file": "source/refs/product-1795466537866-1-mww473vi.png",
+        "as": "the Sprigly bottle: green body, yellow cap, white label"
+      }
+    ],
+    "recommend": {
+      "mode": "remake",
+      "target": "3d-skit",
+      "why": "Every shot is locked off with almost no motion (scores 0.05-0.19), so motion transfer would pay per second for movement there is not; the voxel stage remakes it for free, and making the fern a speaking character turns the narrated standoff into the two-character skit the user asked for."
+    },
+    "reason": "The code found the six cuts exactly where the cards change and no camera movement anywhere, which matches a code-drawn ad; the transcript misspells Juno as 'Juneau' but the cards and the user's prompt confirm the name. The user chose mixed mode; with motion this low the router will keep every shot on the free three.js route unless the user switches one to Genjutsu on the shot board."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 52123
+  },
+  "warnings": []
+}

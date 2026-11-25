@@ -1,0 +1,361 @@
+{
+  "slug": "sprigly-recreate",
+  "title": "Sprigly recreate",
+  "created": "2026-11-25T12:43:26.721Z",
+  "updated": "2026-11-25T19:06:36.772Z",
+  "mode": "autopilot",
+  "autoGates": false,
+  "decider": "inbox",
+  "format": "recreate",
+  "recreate": {
+    "mode": "mixed",
+    "target": "3d-skit",
+    "rights": true,
+    "refs": [
+      {
+        "file": "source/refs/char-juno-1795466303774-1-mww472kz.png",
+        "label": "Juno",
+        "role": "character"
+      },
+      {
+        "file": "source/refs/product-1795466537866-1-mww473vi.png",
+        "label": "Sprigly bottle",
+        "role": "product"
+      }
+    ],
+    "prompt": {
+      "characters": "The woman stays Juno (reference 1): thirties, dark bun. Build her as a voxel character.",
+      "wardrobe": "Juno: an orange jumper and green trousers, as in the reference.",
+      "items": "A watering can and the Sprigly bottle with its yellow measuring cap.",
+      "product": "Sprigly, a 250 ml houseplant feed with a yellow measuring cap: one capful per litre every two weeks in spring and summer (fictional brand).",
+      "notes": "Keep the Sunday standoff joke and the reveal of the cap; make it a two-character skit where the fern answers back."
+    },
+    "source": "source/original.mp4"
+  },
+  "userBrief": {
+    "fictional": true,
+    "seconds": 20,
+    "aspect": "9:16"
+  },
+  "stages": {
+    "source": {
+      "status": "done",
+      "started": "2026-11-25T12:44:01.519Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "source/analysis/sheet_1.jpg",
+        "source/analysis/analysis.json"
+      ],
+      "finished": "2026-11-25T12:44:22.014Z",
+      "ms": 20495,
+      "summary": "7 shots in 20.0 s (3 cuts per 10 s), 45 words, motion 0.083",
+      "warnings": [],
+      "result": {
+        "shots": 7,
+        "duration": 20
+      }
+    },
+    "analysis": {
+      "status": "done",
+      "started": "2026-11-25T12:44:22.014Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:45:14.148Z",
+      "ms": 52134,
+      "summary": "story-ad · 7 shots · recommends remake as 3d-skit",
+      "warnings": [],
+      "result": {}
+    },
+    "brief": {
+      "status": "done",
+      "started": "2026-11-25T12:46:18.957Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:47:07.051Z",
+      "ms": 48094,
+      "summary": "Sprigly: A liquid houseplant feed with seaweed extract, dosed with a measuring cap.",
+      "warnings": [],
+      "result": {}
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "done",
+      "started": "2026-11-25T12:47:07.053Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:47:09.060Z",
+      "ms": 2007,
+      "summary": "lead A: \"Sunday standoff.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-25T12:47:09.061Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:47:11.067Z",
+      "ms": 2007,
+      "summary": "relief · turn: The fern points at the Sprigly cap, and the cap's rule ends the guessing; without the bottle the standoff has no way out.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "done",
+      "started": "2026-11-25T12:47:11.068Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:47:13.080Z",
+      "ms": 2012,
+      "summary": "reveal at 8.4s · tag \"One capful. No guessing.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-25T12:47:13.082Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-25T12:47:13.084Z",
+      "ms": 2,
+      "summary": "ad-voxel-3d",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-25T12:47:13.085Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:48:05.182Z",
+      "ms": 52097,
+      "summary": "7 shots · One capful per litre ends the Sunday guessing, and you can see it: the fern points at the Sprigly cap, Juno pours one capful, and the standoff is over.",
+      "warnings": [],
+      "result": {}
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-25T12:48:05.186Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T12:49:38.367Z",
+      "ms": 93181,
+      "summary": "7 shots, 11 voice lines, 20s",
+      "warnings": [],
+      "result": {}
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-25T12:49:38.369Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_1.8.jpg",
+        "frames/f_4.5.jpg",
+        "frames/f_7.jpg",
+        "frames/f_10.1.jpg",
+        "frames/f_12.22.jpg",
+        "frames/f_13.48.jpg",
+        "frames/f_15.5.jpg",
+        "frames/f_18.jpg",
+        "frames/sheet.jpg",
+        "frames/w_1.8.jpg",
+        "frames/w_12.22.jpg",
+        "frames/w_18.jpg"
+      ],
+      "finished": "2026-11-25T12:50:30.226Z",
+      "ms": 51857,
+      "summary": "revised: the STEP 1 bar sits on the first line of 'One capful per litre.'; the STEP 3 bar covers 'Standoff'",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "revised",
+          "notes": [
+            {
+              "shot": "s4",
+              "issue": "the STEP 1 bar sits on the first line of 'One capful per litre.'",
+              "fix": "the rule card moves to y 0.285, under the step bar (carried into s5 at the same place)"
+            },
+            {
+              "shot": "s7",
+              "issue": "the STEP 3 bar covers 'Standoff'",
+              "fix": "the card moves to y 0.285"
+            }
+          ],
+          "changed": true,
+          "reason": "Characters, the talking fern, the product label and the end card all read at a glance, and every card sits in the top zone away from faces. The only fault is the new step bar colliding with the cards in the steps section, so those two cards move below it; the hook and problem cards have no steps above them and stay."
+        }
+      },
+      "approvedAt": "2026-11-25T12:50:37.971Z"
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-25T12:57:56.507Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-25T12:57:56.521Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/lines/l08.wav",
+        "voice/lines/l09.wav",
+        "voice/lines/l10.wav",
+        "voice/lines/l11.wav",
+        "voice/cues.json",
+        "out/sprigly-recreate.srt"
+      ],
+      "finished": "2026-11-25T12:58:28.473Z",
+      "ms": 31966,
+      "summary": "11 lines by kokoro; speech check: FAIL",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 1.983,
+          "l02": 0.978,
+          "l03": 0.808,
+          "l04": 0.761,
+          "l05": 1.026,
+          "l06": 1.745,
+          "l07": 1.738,
+          "l08": 1.001,
+          "l09": 1.125,
+          "l10": 1.058,
+          "l11": 2.257
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": false,
+          "report": "OK   l01 | Every Sunday. Same standoff. → Every Sunday, same standoff. \nOK   l02 | Same guessing. → same guessing \nOK   l03 | A splash? → A splash \nDIFF l04 | A glug? → A blog \nOK   l05 | Still sulking. → Still sulking. \nOK   l06 | Read the cap, the Sprigly cap. → Read the cap, the Sprigly cap. \nOK   l07 | So one cap full per liter. → So, one cap full per liter. \nOK   l08 | Every two weeks? → Every two weeks. \nOK   l09 | Spring and summer. → Spring and Summer \nOK   l10 | Stand off over. → Stand off over. \nOK   l11 | Sprigly, one cap full, no guessing. → Sprigly, one cap full, no guessing. \nmismatches: 1 (lang=en, model=base)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "done",
+      "started": "2026-11-25T12:58:28.474Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "ms": 339911,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-25T13:04:08.385Z",
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:hook            at 0.00s   15 chars  need 2.50s  got 3.00s  \"Sunday\\nstandoff.\"\nOK  s2:c1              at 3.00s   14 chars  need 2.43s  got 2.52s  \"A splash?\\nA glug?\"\nOK  s3:c2              at 5.52s   13 chars  need 2.37s  got 2.48s  \"Still\\nsulking.\"\nOK  carry:c3           at 8.00s   18 chars  need 2.70s  got 4.72s  \"One capful\\nper litre.\"\nOK  s7:c4              at 14.04s   13 chars  need 2.37s  got 2.48s  \"Standoff\\nover.\"\nOK  end:logo           at 16.68s    7 chars  need 1.97s  got 3.32s  \"Sprigly\"\nOK  end:line           at 16.96s   21 chars  need 2.90s  got 3.04s  \"One capful. No guessing.\"\nOK  end:cta            at 17.28s   13 chars  need 2.37s  got 2.72s  \"250 ml makes 50 L\"\n--  s1:label           at 0.00s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s4:label           at 8.00s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s6:label           at 12.72s  passing (pass: true), not timed  \"SPRIGLY\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      },
+      "approvedAt": "2026-11-25T13:04:25.282Z"
+    },
+    "final": {
+      "status": "done",
+      "started": "2026-11-25T13:04:25.283Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/sprigly-recreate-9x16.mp4",
+        "out/sprigly-recreate-16x9.mp4",
+        "out/sprigly-recreate-hookB.mp4",
+        "out/sprigly-recreate-hookC.mp4",
+        "out/sprigly-recreate-poster.jpg",
+        "out/sprigly-recreate.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-25T13:21:21.786Z",
+      "ms": 1016503,
+      "summary": "4 file(s): sprigly-recreate-9x16.mp4, sprigly-recreate-16x9.mp4, sprigly-recreate-hookB.mp4, sprigly-recreate-hookC.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/sprigly-recreate/out/sprigly-recreate-9x16.mp4\n    I:         -14.3 LUFS\n    LRA:         2.2 LU\n    Peak:       -1.5 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/sprigly-recreate/out/sprigly-recreate-16x9.mp4\n    I:         -14.3 LUFS\n    LRA:         2.2 LU\n    Peak:       -1.5 dBFS"
+          },
+          "hookB": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          },
+          "hookC": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          }
+        }
+      }
+    },
+    "scorecard": {
+      "status": "done",
+      "started": "2026-11-25T19:06:00.438Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T19:06:36.771Z",
+      "ms": 36333,
+      "summary": "32/35 · The recreate keeps the original's structure and timing and gains a second character: the voxel two-hander is the strongest Sprigly cut so far.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
+    },
+    "audience": {
+      "status": "offer"
+    }
+  }
+}

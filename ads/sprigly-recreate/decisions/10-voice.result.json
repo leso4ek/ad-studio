@@ -1,0 +1,25 @@
+{
+  "stage": "voice",
+  "at": "2026-11-25T12:58:28.471Z",
+  "summary": "11 lines by kokoro; speech check: FAIL",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 1.983,
+    "l02": 0.978,
+    "l03": 0.808,
+    "l04": 0.761,
+    "l05": 1.026,
+    "l06": 1.745,
+    "l07": 1.738,
+    "l08": 1.001,
+    "l09": 1.125,
+    "l10": 1.058,
+    "l11": 2.257
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": false,
+    "report": "OK   l01 | Every Sunday. Same standoff. → Every Sunday, same standoff. \nOK   l02 | Same guessing. → same guessing \nOK   l03 | A splash? → A splash \nDIFF l04 | A glug? → A blog \nOK   l05 | Still sulking. → Still sulking. \nOK   l06 | Read the cap, the Sprigly cap. → Read the cap, the Sprigly cap. \nOK   l07 | So one cap full per liter. → So, one cap full per liter. \nOK   l08 | Every two weeks? → Every two weeks. \nOK   l09 | Spring and summer. → Spring and Summer \nOK   l10 | Stand off over. → Stand off over. \nOK   l11 | Sprigly, one cap full, no guessing. → Sprigly, one cap full, no guessing. \nmismatches: 1 (lang=en, model=base)"
+  },
+  "warnings": []
+}

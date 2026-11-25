@@ -1,0 +1,59 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-25T19:06:34.760Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 Hook in 1-3 s",
+        "score": 4,
+        "note": "The face-off reads at a glance and Juno speaks from 0.3 s with the push already moving; the planted bottle is hidden behind the fern, so the product is not yet seen in the hook."
+      },
+      {
+        "rule": "2 All five acts",
+        "score": 5,
+        "note": "Standoff, the guess and the sulk, the fern pointing at the cap, the pour and the season, the quiet payoff: the original's five beats, act for act."
+      },
+      {
+        "rule": "3 A character we identify with",
+        "score": 4,
+        "note": "The talking fern is the character people will quote; Juno is still generic (no detail of her own), which kept v1 and v2 at 3."
+      },
+      {
+        "rule": "4 The product causes the turn",
+        "score": 5,
+        "note": "The fern points at the cap, the rule is said with the name, and the capful goes into the can on screen."
+      },
+      {
+        "rule": "5 Plant / pulse / reveal / tag",
+        "score": 4,
+        "note": "Reveal and tag are strong (name in the line, 250 ml makes 50 L on the end card), but the plant in s1 is covered by the fern's fronds."
+      },
+      {
+        "rule": "6 One emotion",
+        "score": 5,
+        "note": "Deadpan relief throughout; the payoff stays small, as the memory asked."
+      },
+      {
+        "rule": "7 Kind contrast and honest claims",
+        "score": 5,
+        "note": "No guilt and no scolding; the season is in the dialogue; the fern is only a little perkier."
+      }
+    ],
+    "total": 32,
+    "verdict": "The recreate keeps the original's structure and timing and gains a second character: the voxel two-hander is the strongest Sprigly cut so far.",
+    "fixes": [
+      "Move the bottle in s1 to the left of the fern (or raise it) so the plant reads in the hook.",
+      "Give Juno one detail of her own (a named watering can or a 'feed day' sticky note) and carry it into two shots.",
+      "Hold STEP 2 longer: at 1.2 s the 'Pour' bar is gone before it is read; let STEP 2 run through s6.",
+      "Test hook B ('How much is a splash?') first: it puts the exact problem in the fern's mouth."
+    ],
+    "bestHook": "B",
+    "reason": "32/35 against v2's 30: making the fern a speaker lifts the character rule for the first time, and the voxel stage keeps every rule the director stage had already won. What remains is placement (the hidden plant, a short step bar) and Juno's own detail, all cheap fixes in the bible."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 34050
+  },
+  "warnings": []
+}

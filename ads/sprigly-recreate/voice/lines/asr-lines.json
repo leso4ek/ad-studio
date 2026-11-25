@@ -1,0 +1,50 @@
+[
+  {
+    "id": "l01",
+    "text": "Every Sunday. Same standoff."
+  },
+  {
+    "id": "l02",
+    "text": "Same guessing."
+  },
+  {
+    "id": "l03",
+    "text": "A splash?"
+  },
+  {
+    "id": "l04",
+    "text": "A glug?"
+  },
+  {
+    "id": "l05",
+    "text": "Still sulking."
+  },
+  {
+    "id": "l06",
+    "text": "Read the cap. The Sprigly cap.",
+    "asr": "Read the cap, the Sprigly cap."
+  },
+  {
+    "id": "l07",
+    "text": "So, one capful per litre.",
+    "asr": "So one cap full per liter."
+  },
+  {
+    "id": "l08",
+    "text": "Every two weeks?"
+  },
+  {
+    "id": "l09",
+    "text": "Spring and summer."
+  },
+  {
+    "id": "l10",
+    "text": "Standoff over.",
+    "asr": "Stand off over."
+  },
+  {
+    "id": "l11",
+    "text": "Sprigly. One capful, no guessing.",
+    "asr": "Sprigly, one cap full, no guessing."
+  }
+]

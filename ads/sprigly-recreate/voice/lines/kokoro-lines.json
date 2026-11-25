@@ -1,0 +1,68 @@
+[
+  {
+    "id": "l01",
+    "text": "Every Sunday. Same standoff.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Same guessing.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "A splash?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "A glug?",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "Still sulking.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "Read the cap. The Sprigly cap.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "So, one capful per litre.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l08",
+    "text": "Every two weeks?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l09",
+    "text": "Spring and summer.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l10",
+    "text": "Standoff over.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l11",
+    "text": "Sprigly. One capful, no guessing.",
+    "voice": "am_michael",
+    "speed": 0.95
+  }
+]

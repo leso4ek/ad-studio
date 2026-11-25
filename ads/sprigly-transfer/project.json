@@ -1,0 +1,86 @@
+{
+  "slug": "sprigly-transfer",
+  "title": "Sprigly transfer",
+  "created": "2026-11-25T13:04:36.667Z",
+  "updated": "2026-11-25T13:04:36.930Z",
+  "mode": "autopilot",
+  "autoGates": false,
+  "decider": "inbox",
+  "format": "recreate",
+  "recreate": {
+    "mode": "transfer",
+    "target": "story-ad",
+    "rights": true,
+    "refs": [
+      {
+        "file": "source/refs/juno-mww4y7d7.png",
+        "label": "Juno",
+        "role": "character"
+      },
+      {
+        "file": "source/refs/bottle-mww4y7fg.png",
+        "label": "Sprigly bottle",
+        "role": "product"
+      }
+    ],
+    "prompt": {
+      "characters": "The woman becomes Juno from reference 1",
+      "product": "Sprigly bottle from reference 2"
+    },
+    "source": "source/original.mp4"
+  },
+  "userBrief": {},
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "idle"
+    },
+    "premises": {
+      "status": "idle"
+    },
+    "hooks": {
+      "status": "idle"
+    },
+    "story": {
+      "status": "idle"
+    },
+    "brandmap": {
+      "status": "idle"
+    },
+    "style": {
+      "status": "idle"
+    },
+    "direction": {
+      "status": "idle"
+    },
+    "bible": {
+      "status": "idle"
+    },
+    "world": {
+      "status": "idle"
+    },
+    "frames": {
+      "status": "idle"
+    },
+    "voice": {
+      "status": "idle"
+    },
+    "animatic": {
+      "status": "idle"
+    },
+    "final": {
+      "status": "idle"
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

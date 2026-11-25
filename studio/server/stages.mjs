@@ -254,7 +254,7 @@ Write the world that ONE continuous camera moves through from 0 to ${end} s at $
     let out = (await ctx.decide('world', base, SCHEMAS.world)).output, spec = write(out), notes = [];
     const beatFrames = b.shots.map(s => Math.max(1, Math.round(((s.t0 + s.t1) / 2) * fps)));
     for (let round = 0; round < 2; round++) {
-      const pre = { ...spec, render: { ...(spec.render || {}), percent: ctx.cfg.blender?.checkPercent || 30 } };
+      const ck = ctx.cfg.blender?.checkPercent || 30, pre = { ...spec, percent: ck, render: { ...(spec.render || {}), percent: ck } };   // adlib reads the top-level percent; render.percent is its alias
       const r = await blender.renderShot(ctx.cfg, pre, path.join(wdir, 'world-check'), { stills: beatFrames, slug: ctx.slug, stage: 'world', signal: ctx.signal });
       const stills = beatFrames.map(f => `production/blender/world-check/f_${String(f).padStart(4, '0')}.png`).filter(f => fs.existsSync(path.join(ctx.adDir, f)));
       ctx.files('world', stills);
@@ -268,8 +268,8 @@ Check each against its beat: is the part that the voice talks about visible and 
     // the plate: the whole continuous move, then frames for the page (1080×1920 cover)
     const full = path.join(wdir, 'world'), mp4 = path.join(ctx.adDir, 'production', 'previz', 'world.mp4');
     fs.mkdirSync(path.dirname(mp4), { recursive: true });
-    const pct = ctx.cfg.blender?.platePercent || 50;
-    await blender.renderShot(ctx.cfg, { ...spec, render: { ...(spec.render || {}), percent: pct } }, full, { mp4, slug: ctx.slug, stage: 'world', signal: ctx.signal });
+    const pct = ctx.cfg.blender?.platePercent || spec.percent || spec.render?.percent || 50;
+    await blender.renderShot(ctx.cfg, { ...spec, percent: pct, render: { ...(spec.render || {}), percent: pct } }, full, { mp4, slug: ctx.slug, stage: 'world', signal: ctx.signal });
     const n = await platesFromVideo(ctx.cfg, mp4, path.join(ctx.adDir, 'production', 'plates', 'world'));
     const nb = { ...b, shots: b.shots.map(s => ({ ...s, plate: { dir: 'plates/world', fps, start: +s.t0.toFixed(3) } })) };
     writeJSON(path.join(ctx.adDir, 'bible.json'), nb);

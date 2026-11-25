@@ -1,0 +1,65 @@
+{
+  "stage": "story",
+  "at": "2026-11-25T12:47:11.067Z",
+  "output": {
+    "spine": [
+      "Every Sunday, Juno waters her fern.",
+      "Every Sunday, she guesses: a splash, a glug.",
+      "Every Sunday, the fern sulks and says so.",
+      "Until one Sunday the fern points at the cap of the Sprigly bottle.",
+      "Because of that, Juno reads the rule: one capful per litre, every two weeks in spring and summer.",
+      "Until finally Sunday is quiet: the fern a little perkier, and nobody guessing."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Standoff",
+        "t0": 0,
+        "t1": 3,
+        "beats": "Juno and the fern face off; 'Every Sunday. Same standoff.'"
+      },
+      {
+        "act": 2,
+        "name": "The guess",
+        "t0": 3,
+        "t1": 8,
+        "beats": "Juno tips the watering can: 'A splash?' The fern: 'A glug?' It droops, deadpan: 'Still sulking.'"
+      },
+      {
+        "act": 3,
+        "name": "The cap",
+        "t0": 8,
+        "t1": 11.5,
+        "beats": "The fern points a leaf at the Sprigly bottle; the cap lights: 'One capful per litre.' STEP 1 / STEP 2."
+      },
+      {
+        "act": 4,
+        "name": "The routine",
+        "t0": 11.5,
+        "t1": 16.5,
+        "beats": "Juno pours a capful into the can: 'Every two weeks?' Fern: 'Spring and summer.' STEP 3. The fern lifts a little."
+      },
+      {
+        "act": 5,
+        "name": "Tag",
+        "t0": 16.5,
+        "t1": 20,
+        "beats": "End card: Sprigly, 'One capful. No guessing.', 250 ml makes 50 L."
+      }
+    ],
+    "turn": "The fern points at the Sprigly cap, and the cap's rule ends the guessing; without the bottle the standoff has no way out.",
+    "emotion": "relief",
+    "reason": "The acts follow the original beat for beat (0-3 standoff, 3-8 guess and sulk, 8-11.5 the cap, 11.5-16.5 routine and payoff, 16.5-20 end card). The skit format turns the narrator's lines into dialogue, and the rule arrives as three numbered steps. The payoff stays modest, as both scorecards and the audience tests asked."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvtnh4elr2",
+      "Lmwvsri18w55",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

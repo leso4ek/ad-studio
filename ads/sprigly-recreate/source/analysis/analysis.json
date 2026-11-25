@@ -1,0 +1,197 @@
+{
+  "source": "original.mp4",
+  "duration": 20,
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "aspect": "9:16",
+  "audio": {
+    "integratedLufs": -14.1,
+    "speech": true,
+    "words": 45,
+    "wordsPerSec": 2.25,
+    "musicLikely": true,
+    "gapLufs": -18.3,
+    "transcript": "Every Sunday, Juneau and her fern have a standoff. She waters, she guesses, she hopes. And the fern still sulks. Then she reads the cap, one cap full per liter. Every two weeks, no more guessing. Stand off over. Sprigly, one cap full no guessing."
+  },
+  "codec": "h264",
+  "size": 11674656,
+  "analysedAt": "2026-11-25T12:44:22.012Z",
+  "cuts": 6,
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 3,
+      "motion": {
+        "score": 0.052,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0057,
+        "residual": 0.0057
+      },
+      "stills": [
+        "analysis/stills/s1_first.jpg",
+        "analysis/stills/s1_mid.jpg",
+        "analysis/stills/s1_last.jpg"
+      ],
+      "voice": "Every Sunday, Juneau and her fern have a standoff.",
+      "wordsPerSec": 3
+    },
+    {
+      "id": "s2",
+      "t0": 3,
+      "t1": 5.5,
+      "motion": {
+        "score": 0.063,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.007,
+        "residual": 0.007
+      },
+      "stills": [
+        "analysis/stills/s2_first.jpg",
+        "analysis/stills/s2_mid.jpg",
+        "analysis/stills/s2_last.jpg"
+      ],
+      "voice": "She waters, she guesses, she hopes.",
+      "wordsPerSec": 2.4
+    },
+    {
+      "id": "s3",
+      "t0": 5.5,
+      "t1": 8,
+      "motion": {
+        "score": 0.051,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0056,
+        "residual": 0.0056
+      },
+      "stills": [
+        "analysis/stills/s3_first.jpg",
+        "analysis/stills/s3_mid.jpg",
+        "analysis/stills/s3_last.jpg"
+      ],
+      "voice": "And the fern still sulks.",
+      "wordsPerSec": 2
+    },
+    {
+      "id": "s4",
+      "t0": 8,
+      "t1": 11.5,
+      "motion": {
+        "score": 0.194,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0.019,
+          -0.005
+        ],
+        "raw": 0.0115,
+        "residual": 0.0112
+      },
+      "stills": [
+        "analysis/stills/s4_first.jpg",
+        "analysis/stills/s4_mid.jpg",
+        "analysis/stills/s4_last.jpg"
+      ],
+      "voice": "Then she reads the cap, one cap full per liter.",
+      "wordsPerSec": 2.86
+    },
+    {
+      "id": "s5",
+      "t0": 11.5,
+      "t1": 14,
+      "motion": {
+        "score": 0.048,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0053,
+        "residual": 0.0053
+      },
+      "stills": [
+        "analysis/stills/s5_first.jpg",
+        "analysis/stills/s5_mid.jpg",
+        "analysis/stills/s5_last.jpg"
+      ],
+      "voice": "Every two weeks, no more guessing.",
+      "wordsPerSec": 2.4
+    },
+    {
+      "id": "s6",
+      "t0": 14,
+      "t1": 16.5,
+      "motion": {
+        "score": 0.096,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0107,
+        "residual": 0.0107
+      },
+      "stills": [
+        "analysis/stills/s6_first.jpg",
+        "analysis/stills/s6_mid.jpg",
+        "analysis/stills/s6_last.jpg"
+      ],
+      "voice": "Stand off over.",
+      "wordsPerSec": 1.2
+    },
+    {
+      "id": "s7",
+      "t0": 16.5,
+      "t1": 20,
+      "motion": {
+        "score": 0.08,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0089,
+        "residual": 0.0089
+      },
+      "stills": [
+        "analysis/stills/s7_first.jpg",
+        "analysis/stills/s7_mid.jpg",
+        "analysis/stills/s7_last.jpg"
+      ],
+      "voice": "Sprigly, one cap full no guessing.",
+      "wordsPerSec": 1.71
+    }
+  ],
+  "sheets": [
+    "analysis/sheet_1.jpg"
+  ],
+  "rhythm": {
+    "shots": 7,
+    "cutsPer10s": 3,
+    "firstCut": 3,
+    "meanShot": 2.86
+  },
+  "motion": {
+    "mean": 0.083,
+    "moving": 0
+  }
+}

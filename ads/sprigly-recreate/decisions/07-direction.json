@@ -1,0 +1,230 @@
+{
+  "stage": "direction",
+  "at": "2026-11-25T12:48:05.181Z",
+  "output": {
+    "thesis": "One capful per litre ends the Sunday guessing, and you can see it: the fern points at the Sprigly cap, Juno pours one capful, and the standoff is over.",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3,
+        "learns": "Juno and a fern with a face are in a weekly standoff on a dark stage (the green bottle already on the shelf)."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3,
+        "t1": 8,
+        "learns": "She guesses the dose with the watering can, and the fern answers back: still sulking."
+      },
+      {
+        "id": "b3",
+        "block": "turn",
+        "t0": 8,
+        "t1": 11.5,
+        "learns": "The fern points at the Sprigly cap: one capful per litre."
+      },
+      {
+        "id": "b4",
+        "block": "demonstration",
+        "t0": 11.5,
+        "t1": 14,
+        "learns": "One capful goes into the can, every two weeks in spring and summer."
+      },
+      {
+        "id": "b5",
+        "block": "payoff",
+        "t0": 14,
+        "t1": 16.5,
+        "learns": "The fern is a little perkier and the standoff is over."
+      }
+    ],
+    "book": {
+      "grammar": "A dark voxel stage shot like a two-hander: a slow push into the standoff, then close-ups that alternate between the speakers, one low push on the reveal, a short insert for the pour; locked otherwise. No whips.",
+      "light": "One warm key from screen left, a cool rim from behind, bokeh dots in the dark; the cap gets its own warm glow at the reveal.",
+      "palette": "Dark navy stage; Juno's orange and the fern's green are the only warm notes until the cap's yellow lights at the turn.",
+      "performance": "Deadpan and small: Juno squints and tilts her head, the fern droops its leaves to sulk and lifts one leaf to point; mouths move only on their own lines.",
+      "rhythm": "Original rhythm, about one cut every 2.5 s, with the pour as a 1.2 s insert; the payoff holds 2.5 s.",
+      "sound": "A two-note sting on the standoff, a hollow tap when the leaf points, one bright glug for the pour."
+    },
+    "locks": {
+      "identity": {
+        "juno": "Juno: voxel woman, dark bun, orange jumper, green trousers; screen left facing right",
+        "fern": "the fern: voxel potted fern with square eyes and a block mouth, terracotta pot; screen right facing left"
+      },
+      "productSide": "right",
+      "screenDirection": "Juno screen left facing right; the fern and the bottle screen right",
+      "light": "warm key from screen left in every shot"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Juno screen left, the fern screen right on a block shelf, the bottle behind the fern; both glare; slow push in from frame one.",
+        "reason": "Two characters, one standoff, and the bottle quietly planted.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "two-note sting",
+        "source": {
+          "t0": 0,
+          "t1": 3
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s2",
+        "t0": 3,
+        "t1": 5.5,
+        "beat": "b2",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Juno tips the watering can, squinting: 'A splash?'",
+        "reason": "She is guessing.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "a trickle",
+        "source": {
+          "t0": 3,
+          "t1": 5.5
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s3",
+        "t0": 5.5,
+        "t1": 8,
+        "beat": "b2",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The fern's leaves droop; it answers flatly: 'Still sulking.'",
+        "reason": "The guessing does not work, and the fern says so.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "a deflating creak",
+        "source": {
+          "t0": 5.5,
+          "t1": 8
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s4",
+        "t0": 8,
+        "t1": 11.5,
+        "beat": "b3",
+        "function": "reveal",
+        "size": "MCU",
+        "subject": "product",
+        "angle": "low",
+        "move": "push",
+        "blocking": "A leaf points into frame; the bottle centred, the yellow cap lights: 'The Sprigly cap. One capful per litre.'",
+        "reason": "The product causes the turn: the rule is on the cap.",
+        "textZone": "top",
+        "trans": "wipe",
+        "sound": "hollow tap, then a shimmer",
+        "source": {
+          "t0": 8,
+          "t1": 11.5
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s5",
+        "t0": 11.5,
+        "t1": 12.7,
+        "beat": "b4",
+        "function": "insert",
+        "size": "CU",
+        "subject": "capful",
+        "angle": "high",
+        "move": "static",
+        "blocking": "One capful tips into the watering can.",
+        "reason": "The rule is an action anyone can copy.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "one bright glug",
+        "source": {
+          "t0": 11.5,
+          "t1": 14
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s6",
+        "t0": 12.7,
+        "t1": 14,
+        "beat": "b4",
+        "function": "relation",
+        "size": "MS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Juno holds the bottle and the can: 'Every two weeks?' The fern: 'Spring and summer.'",
+        "reason": "The routine and its season.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "",
+        "source": {
+          "t0": 11.5,
+          "t1": 14
+        },
+        "complexity": "low",
+        "route": "three"
+      },
+      {
+        "id": "s7",
+        "t0": 14,
+        "t1": 16.5,
+        "beat": "b5",
+        "function": "aftermath",
+        "size": "MCU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The fern lifts its leaves a little, content; Juno smiles at the edge: 'Standoff over.'",
+        "reason": "Sunday is quiet now; the change is modest.",
+        "textZone": "top",
+        "trans": "fade",
+        "sound": "the two-note sting, resolved",
+        "source": {
+          "t0": 14,
+          "t1": 16.5
+        },
+        "complexity": "low",
+        "route": "three"
+      }
+    ],
+    "reason": "The shots follow the original's order, timing and card positions (six beats, then the end card at 16.5 s), recast as a voxel two-hander: the narrator's lines become dialogue that alternates between Juno and the fern. Following the memory, the pour gets its own 1.2 s insert after the reveal, and the payoff pose stays small."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 52093,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}
