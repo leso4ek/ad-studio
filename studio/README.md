@@ -69,6 +69,17 @@ Switch the header to **Shot board** after the bible is approved. Each shot goes 
 
 **Blender:** `studio/blender/adlib.py` builds a shot from JSON: products, toy characters, plants, primitives for mechanisms, 3D text, rooms or a cyclorama, real lenses and camera keys, light rigs, and five looks (clay, toy, clean, x-ray, blueprint). It runs as `blender -b --factory-startup -P studio/blender/run_shot.py -- shot.json out/`. For interactive fixes, use the Blender Lab MCP add-on (Blender 5.1+) with your local Claude session.
 
+## Direction, memory and looks (round 11)
+- **Direction stage (7):** a director's shot list (thesis, beats, shot sizes and moves with a reason for each shot, continuity locks) that the bible must implement. The kit camera frames shot sizes on a subject and keeps every frame on the drawn set. Method: the cinematic-director skill (DirectorSKILL, MIT).
+- **Memory view:**
+  - Claude's hindsight memory is lessons distilled from each ad's outcomes; the best ones go into every decision.
+  - A lesson that shows up in 3 ads is proposed as a rule. Only your approval writes it into the skill.
+  - To add an older ad: `node studio/bin/memory-backfill.mjs <slug>`.
+- **Looks (Shot board):** 34 Seedance styles with prompt guides (`skills/seedance-styles/`). Picking one locks its style paragraph for every prompt.
+  - Check the catalogue with `node studio/bin/catalog.mjs`.
+  - Make our own example stills with `node studio/bin/catalog-examples.mjs --yes` (paid, about $0.02 each).
+- **Style sheets:** `node studio/bin/stylesheet.mjs <style>` renders a bible in any kit style.
+
 ## Audience test: simulated viewers with MiroFish (stage 13, optional, paid)
 After the final, **Run the audience test (≤ $1)** shows the finished ad, as text, to a swarm of simulated viewers in [MiroFish](https://github.com/666ghj/MiroFish). It then reads MiroFish's report back as a verdict card:
 - scores for stop-scroll, watch-through, brand recall, trust and click intent;

@@ -138,6 +138,41 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
 - **Noise:** 7 of the 16 agents weren't viewers: the brand, TikTok, Reels, Shorts, a platform account, the style name and Juno. The dossier wording is now fixed for that.
 - **Cost guard:** OpenRouter's `GET /api/v1/key` usage is read before and during the run. Past the cap, `/simulation/stop` is called and the run fails. A SIGINT/SIGTERM closes the ledger entry with the measured cost.
 
+### Round 11: a director, a hindsight memory, new styles, a Seedance catalogue (25 Nov 2026)
+- **Direction stage (7)** between Style and Bible. It uses the method of the **cinematic-director** skill (DirectorSKILL, MIT, cloned by bootstrap into `~/.cache/ad-studio-skills/DirectorSKILL`); the prompt names only the shot-plan template, product-and-macro and the commercial playbook.
+  - **The schema:** thesis, beats (what the viewer learns), director's book, continuity locks, and a shot list (size, subject, angle, move, reason, `textZone`).
+  - **Checks:** tiling, 2–6 cuts per 10 s, never the same size on the same subject twice in a row, the product keeps one screen side, and no card over a face in MCU, CU or ECU.
+  - **Decision files** are found by stage id whatever their number, so old ads still load after stages were renumbered (bible is now 8 … audience 14).
+- **Kit camera** (`studio/kit/camera.js`, pure and tested):
+  - `camera.size` EWS…ECU framed on a subject;
+  - angles eye/low/high;
+  - moves push/pull/pan/tilt/truck/whip/handheld/rack;
+  - `ots` (a soft foreground shoulder).
+  - The frame never leaves the drawn set on any parallax plane, and parallax flattens as the frame gets tighter.
+  - Old `{zoom, pan, focus}` bibles render pixel-identical.
+- **Carried cards:** the same text layer (same `id`, text and position, `carry: true`) over consecutive quick shots is one card. It keeps its clock across the cuts, and the reading check times it as one piece. That's how 1.2 s cuts stay readable.
+- **New props:** `watering-can`, `capful`.
+- **New code-drawn styles** (built by 3 subagents following the library's STYLE.md rules in our own code): `ad-manga-panels`, `ad-scifi-toon`, `ad-crayon-book`. Fonts from `@fontsource` (OFL): Bangers, Comic Neue, Gaegu, Patrick Hand. Render any style's sheet with `node studio/bin/stylesheet.mjs <style> [--bible f]`.
+- **Lemo-Opuscar licence:** following the docs to make your own films is allowed, commercial ones included. Putting the docs into a product or service run for commercial advantage needs LemoLab's commercial licence. Never copy STYLE.md text into the repo.
+- **Hindsight memory** (`studio/server/memory.mjs`, `studio/memory/`, committed): the HER idea (mfornet/hindsight-experience-replay) for an LLM.
+  - **Episodes and signals** are logged by code: repairs, checks, redo notes, overrides, approvals, frame reviews, scorecard rules, audience scores.
+  - **Relabel:** after a scorecard or an audience test, one lean Claude call turns them into real, hindsight and future lessons.
+  - **Recall:** at most about 600 tokens of lessons go into each decision and into the shot board's prompts.
+  - **Rules:** a lesson seen in 3 ads becomes a proposal, and only the user's approval writes it into the skill's "Learned rules". The app's Memory view shows all of this.
+  - **Seeded with** Sprigly v1 (`node studio/bin/memory-backfill.mjs <slug>`) and 5 Seedance lessons; 23 lessons from 2 ads after v2.
+  - Tests use a temp memory folder (`NODE_TEST_CONTEXT`).
+- **Seedance style catalogue:**
+  - **34 styles** (Kling's "Cartoon Styles for AI", 8 families), one JSON each in `studio/styles/catalog/`, written by 3 subagents.
+  - **Each has** a STYLE block, rendering, motion, camera, avoid, sheets and risk.
+  - **Check:** `node studio/bin/catalog.mjs` validates them, rejects studio and artist names, and writes `skills/seedance-styles/styles/<slug>.md`.
+  - **In the app:** a look picker on the shot board (locks the STYLE paragraph and points Claude at that one guide), and `seedanceStyle` on the Style stage.
+  - **Example stills:** `node studio/bin/catalog-examples.mjs [--yes]` (Seedream, about $0.02 each; not generated yet, waiting for the user's go-ahead).
+  - **characterdesignreferences.com** is still blocked: the host request could not be shown on the user's mobile app version. Ask again from claude.ai on a computer, then merge its "Art of Animation" styles.
+- **Sprigly v2** (`ads/sprigly-v2/`): v1's decisions up to Style, then Direction → bible → final with the memory on.
+  - **Shots:** 10 shots, about 5 cuts per 10 s; the pour as an insert; the name in the reveal frame and the voice; a purchase anchor on the end card.
+  - **One bible redo:** the end card was too short and two-line cards sat at y 0.20. That redo produced the memory's first real "future" lesson.
+  - **Scorecard 30/35** (v1 28). Character detail is still 3: re-run from Story next.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.
