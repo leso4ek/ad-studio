@@ -3,6 +3,7 @@
 // Query: ?hook=B (hook variant) &nosub=1 (no captions) &guides=1 (draw safe zones) &layout=16x9|9x16 (default: from the viewport)
 import { clamp, lerp, seg, eo, eio, back, ss } from '/core/lib.js';
 import { character, product, prop, place } from './shapes.js';
+import { directCamera } from './camera.js';
 
 const qs = new URLSearchParams(location.search);
 const W = innerWidth, H = innerHeight;
@@ -128,11 +129,27 @@ function resolveLayers(shot, lt) {
   return out.sort((p, q) => p.z - q.z);
 }
 
-function camera(shot, lt) {
-  const c = shot.camera || {}, d = shot.t1 - shot.t0, p = eio(seg(lt, 0, d));
-  const z = c.zoom ? lerp(c.zoom[0], c.zoom[1], p) : 1;
-  const px = c.pan ? lerp(c.pan[0][0], c.pan[1][0], p) : 0, py = c.pan ? lerp(c.pan[0][1], c.pan[1][1], p) : 0;
-  return { zoom: z, px, py, cx: W / 2 + (c.focus?.[0] ?? 0) * W, cy: H * (c.focus?.[1] ?? .55) };
+function camera(shot, lt) { return directCamera(shot, lt, { W, H, stage, L }); }
+
+// whip-pan smear and over-the-shoulder silhouette: drawn by the page over any style
+function cameraPost(cam) {
+  if (cam.whip) {
+    const a = Math.abs(cam.whip), dir = Math.sign(cam.whip), n = 6, snap = document.createElement('canvas');
+    snap.width = W; snap.height = H; snap.getContext('2d').drawImage(cv, 0, 0);
+    g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
+    for (let i = 1; i <= n; i++) { g.globalAlpha = .5 * a / i * 1.6; g.drawImage(snap, -dir * i * W * .025 * a, 0); }
+    g.restore();
+  }
+  if (cam.ots) {
+    const m = mats('place', null, R.time), left = cam.ots === 'left';
+    g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = .92; g.fillStyle = m.ink || '#1d1d1f';
+    if ('filter' in g) g.filter = `blur(${Math.round(W * .006)}px)`;
+    const x = left ? 0 : W, s = left ? 1 : -1;   // only the edge of a head and shoulder, out of focus, framing the subject
+    g.beginPath(); g.ellipse(x - s * W * .02, H * .5, W * .13, H * .1, 0, 0, Math.PI * 2); g.fill();            // back of the head
+    g.beginPath(); g.moveTo(x - s * W * .05, H); g.lineTo(x - s * W * .05, H * .62); g.quadraticCurveTo(x + s * W * .12, H * .6, x + s * W * .2, H * .72);
+    g.quadraticCurveTo(x + s * W * .26, H * .8, x + s * W * .27, H); g.closePath(); g.fill();                 // shoulder
+    g.restore();
+  }
 }
 
 // ---------- sound / cue events ----------
@@ -196,6 +213,7 @@ async function render(t) {
     const layers = resolveLayers(shot, lt);
     if (custom.shots?.[shot.custom]) await custom.shots[shot.custom](R, { shot, layers, cam, lt });
     else await style.scene(R, { shot, layers, cam });
+    cameraPost(cam);  // smear and silhouette belong to the picture, under the words
     if (!qs.get('notext')) for (const p of layers) if (p.layer.type === 'text') style.text(R, layoutText(p.layer, p.llt), p.llt);
   }
   // transition into this shot

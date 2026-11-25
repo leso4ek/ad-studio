@@ -102,7 +102,7 @@ test('stage 13 in mock mode: setup → dossier → run → verdict card, lean Cl
   assert.deepEqual(calls.map(c => c.stage), ['audience-setup', 'audience']);
   for (const c of calls) assert.deepEqual(c.opts, { fresh: true, noSkill: true, noTools: true, effort: 'low', maxTurns: 2 });
   assert.ok(calls.every(c => c.len < 20000), 'small prompts');
-  const v = JSON.parse(fs.readFileSync(path.join(ad, 'decisions', '13-audience.json'))).output;
+  const v = JSON.parse(fs.readFileSync(path.join(ad, 'decisions', '14-audience.json'))).output;
   assert.equal(v.bestHook, 'B'); assert.equal(v.mock, true);
   assert.ok(fs.readFileSync(path.join(ad, 'out', 'audience', 'dossier.md'), 'utf8').includes('Plant parents'));
   await AUTO.audience(ctx);  // a second run reuses the cached setup: one more Claude call, not two

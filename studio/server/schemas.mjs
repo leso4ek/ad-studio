@@ -49,6 +49,34 @@ export const style = S({
   alternatives: arr(S({ style: { type: 'string', enum: STYLES }, why_not: str() }), 1, 4),
 });
 
+// stage 7 · Direction (DirectorSKILL method: a shot is a story decision; blocking before framing; continuity locks)
+export const SHOT_SIZES = ['EWS', 'WS', 'MS', 'MCU', 'CU', 'ECU'];
+export const CAM_MOVES = ['static', 'push', 'pull', 'pan-l', 'pan-r', 'tilt-up', 'tilt-down', 'truck-l', 'truck-r', 'whip-l', 'whip-r', 'handheld', 'rack'];
+export const SHOT_FUNCTIONS = ['establishing', 'relation', 'close-up', 'insert', 'reaction', 'transition', 'aftermath', 'point-of-view', 'reveal'];
+export const LENSES = ['none', 'spielberg', 'hitchcock', 'kubrick', 'kurosawa', 'scorsese', 'fellini', 'bergman', 'tarkovsky', 'wong_kar_wai', 'nolan', 'villeneuve', 'fincher', 'refn', 'bi_gan', 'zhang_yimou', 'hou_hsiao_hsien', 'park_chan_wook', 'malick', 'michael_mann', 'coen_brothers'];
+const camera = {
+  type: 'object',
+  properties: {
+    size: { type: 'string', enum: SHOT_SIZES }, subject: str('a cast id, "product", a prop kind or a layer id'), angle: { type: 'string', enum: ['eye', 'low', 'high'] },
+    move: { type: 'string', enum: CAM_MOVES }, amount: num('0..1, default 0.5'), at: arr(num(), 2, 2), ots: { type: 'string', enum: ['left', 'right'] },
+    zoom: arr(num(), 2, 2), pan: { type: 'array' }, focus: arr(num(), 2, 2),
+  },
+};
+export const direction = S({
+  thesis: str('the claim and the single visible proof of it, as something you could photograph'),
+  lens: { type: 'string', enum: LENSES, description: 'one optional director lens; none is fine' },
+  beats: arr(S({ id: str(), block: { type: 'string', enum: ['hook', 'problem', 'demonstration', 'turn', 'proof', 'payoff', 'tag'] }, t0: num(), t1: num(), learns: str('what the viewer now understands that they did not a second ago') }), 3, 10),
+  book: S({ grammar: str('camera grammar and the allowed moves'), light: str('key direction and quality per place'), palette: str('colour script beat by beat'), performance: str(), rhythm: str('target average shot length and where it speeds up'), sound: str() }),
+  locks: S({ identity: { type: 'object', additionalProperties: str() }, productSide: { type: 'string', enum: ['left', 'right', 'centre'] }, screenDirection: str(), light: str() }),
+  shots: arr(S({
+    id: str(), t0: num(), t1: num(), beat: str(), function: { type: 'string', enum: SHOT_FUNCTIONS },
+    size: { type: 'string', enum: SHOT_SIZES }, subject: str(), angle: { type: 'string', enum: ['eye', 'low', 'high'] }, move: { type: 'string', enum: CAM_MOVES },
+    blocking: str('start → motion → end'), reason: str('what the audience now understands'), textZone: { type: 'string', enum: ['top', 'bottom', 'none'] },
+    trans: { type: 'string', enum: ['cut', 'wipe', 'slide', 'iris', 'fade', 'stripes'] }, sound: str(),
+  }, ['id', 't0', 't1', 'function', 'size', 'subject', 'move', 'reason', 'textZone']), 4, 18),
+  reason: str(),
+}, ['thesis', 'beats', 'book', 'locks', 'shots', 'reason']);
+
 const layer = {
   type: 'object', required: ['type'],
   properties: {
@@ -61,7 +89,8 @@ const layer = {
 };
 const shot = S({
   id: str(), t0: num(), t1: num(), act: { type: 'integer', minimum: 1, maximum: 5 }, beat: str('hook | plant | pulse | reveal | tag | story'), place: str(), time: { type: 'string', enum: ['day', 'dusk', 'night'] },
-  trans: { type: 'string', enum: ['cut', 'wipe', 'slide', 'iris', 'fade', 'stripes'] }, camera: { type: 'object' }, bg: str(), seed: num(), custom: str(), note: str(),
+  trans: { type: 'string', enum: ['cut', 'wipe', 'slide', 'iris', 'fade', 'stripes'] }, camera, bg: str(), seed: num(), custom: str(), note: str(),
+  function: { type: 'string', enum: SHOT_FUNCTIONS }, reason: str('what the audience now understands'), textZone: { type: 'string', enum: ['top', 'bottom', 'none'] },
   layers: arr(layer, 0, 14),
 }, ['id', 't0', 't1', 'layers']);
 
@@ -72,7 +101,7 @@ export const bible = S({
   cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str() }, ['skin', 'hairStyle']) },
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
   palette: { type: 'object' },
-  shots: arr(shot, 3, 14),
+  shots: arr(shot, 3, 18),
   vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id') }, ['id', 'text', 'at']), 1, 14) }, ['lines']),
   captions: { type: 'boolean' },
   endcard: S({ t0: num(), logo: str(), line: str(), cta: str(), bg: str() }, ['t0', 'logo']),
@@ -109,4 +138,4 @@ export const audience = S({
   reason: str(),
 });
 
-export const SCHEMAS = { brief, premises, hooks, story, brandmap, style, bible, frames, scorecard, audienceSetup, audience };
+export const SCHEMAS = { brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };

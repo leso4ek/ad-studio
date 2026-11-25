@@ -2,7 +2,7 @@
 // Every state change is written to ads/<slug>/project.json and emitted to the app.
 import fs from 'fs';
 import path from 'path';
-import { STAGES, AUTO, checkBible, writeReport, lintBible, lintObject } from './stages.mjs';
+import { STAGES, AUTO, checkBible, checkDirection, writeReport, lintBible, lintObject } from './stages.mjs';
 import { SCHEMAS } from './schemas.mjs';
 import { validate } from './validate.mjs';
 import { readJSON, writeJSON, now, slugify } from './util.mjs';
@@ -59,7 +59,13 @@ export function adState(slug) {
   return { project: p, decisions, bible: readJSON(path.join(adDir(slug), 'bible.json')), cues: readJSON(path.join(adDir(slug), 'voice', 'cues.json'), []), checks: readJSON(path.join(adDir(slug), 'out', 'checks.json')), running: jobs.has(slug) ? jobs.get(slug).stage : null, pending };
 }
 
-const decFile = (slug, id) => { const n = STAGES.find(s => s.id === id)?.n; return path.join(adDir(slug), 'decisions', `${n ? String(n).padStart(2, '0') + '-' : ''}${id}.json`); };
+// decision files are numbered by stage; reading falls back to any number, so inserting a stage never orphans old ads
+const decFile = (slug, id) => {
+  const n = STAGES.find(s => s.id === id)?.n, dir = path.join(adDir(slug), 'decisions'), want = path.join(dir, `${n ? String(n).padStart(2, '0') + '-' : ''}${id}.json`);
+  if (fs.existsSync(want) || !fs.existsSync(dir)) return want;
+  const other = fs.readdirSync(dir).find(f => new RegExp(`^\\d+-${id.replace(/[-]/g, '\\-')}\\.json$`).test(f));
+  return other ? path.join(dir, other) : want;
+};
 export const readDecision = (slug, id) => readJSON(decFile(slug, id));
 
 // ---------- the context a stage gets ----------
@@ -122,6 +128,7 @@ function issues(st, out) {
   const errors = validate(SCHEMAS[st.schema], out), warnings = [];
   if (st.lint) for (const i of (st.id === 'bible' ? lintBible(out) : lintObject(out))) (i.level === 'error' ? errors : warnings).push(`${i.where}: ${i.why} ("${i.match}")`);
   if (st.check === 'bible' && !errors.length) errors.push(...checkBible(out));
+  if (st.check === 'direction' && !errors.length) errors.push(...checkDirection(out));
   if (st.id === 'premises' && out.premises && !out.premises.some(p => p.id === out.chosen)) errors.push('chosen is not one of the premise ids');
   return { errors, warnings };
 }
@@ -184,6 +191,7 @@ function summaryOf(id, o) {
     case 'story': return `${o.emotion} · turn: ${o.turn}`;
     case 'brandmap': return `reveal at ${o.reveal?.t}s · tag "${o.tag?.line}"`;
     case 'style': return o.style;
+    case 'direction': return `${(o.shots || []).length} shots · ${o.lens && o.lens !== 'none' ? o.lens + ' lens · ' : ''}${o.thesis}`;
     case 'bible': return `${(o.shots || []).length} shots, ${(o.vo?.lines || []).length} voice lines, ${o.dur}s`;
     case 'scorecard': return `${o.total}/35 · ${o.verdict}`;
     default: return '';

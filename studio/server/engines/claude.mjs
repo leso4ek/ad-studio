@@ -10,6 +10,7 @@ import crypto from 'crypto';
 import os from 'os';
 import { run, which, readJSON, writeJSON, REPO, STUDIO } from '../util.mjs';
 import { emit } from '../bus.mjs';
+import { directorDir } from '../stages.mjs';
 
 export const id = 'claude';
 export async function available(cfg) {
@@ -53,7 +54,8 @@ export async function decide(cfg, { slug, adDir, stage, prompt, schema, signal, 
     '--strict-mcp-config', '--permission-mode', 'acceptEdits',
     // opts.noTools: no tools at all and a neutral cwd (no project CLAUDE.md): ~3.5k context tokens instead of ~40k
     ...(opts.noTools ? ['--tools', ''] : ['--allowedTools', 'Read', 'Write', 'Edit', 'Glob', 'Grep', 'Bash(node:*)', 'Bash(python3:*)', 'Bash(ls:*)',
-      '--add-dir', path.join(STUDIO, 'kit'), '--add-dir', path.join(REPO, 'skills'), '--add-dir', path.join(REPO, 'research'), '--add-dir', path.join(REPO, 'styles')]),
+      '--add-dir', path.join(STUDIO, 'kit'), '--add-dir', path.join(REPO, 'skills'), '--add-dir', path.join(REPO, 'research'), '--add-dir', path.join(REPO, 'styles'),
+      ...(fs.existsSync(directorDir(cfg)) ? ['--add-dir', directorDir(cfg)] : [])]),
     '--max-turns', String(opts.maxTurns || cfg.claude?.maxTurns || 30)];
   if (cfg.claude?.model) args.push('--model', cfg.claude.model);
   if (opts.effort || cfg.claude?.effort) args.push('--effort', opts.effort || cfg.claude.effort);

@@ -169,5 +169,6 @@ The tests cover the schemas, the lint, the bible checks, caption timing, voice c
 - **Fonts** (all SIL OFL): Fredoka, Anton, Space Mono, Josefin Sans, Pacifico, Inter, Archivo Black and Baloo 2. The licence files are in `kit/fonts/`.
 - **The interface** was built following the MIT-licensed design skills from freshtechbro/claudedesignskills (modern-web-design, motion-framer, gsap-scrolltrigger).
 - **VoiceStudio** (AGPL-3.0) is called over its local API; no code from it is included.
+- **cinematic-director** (DirectorSKILL by wuwangzhang1216, MIT) is fetched by `scripts/bootstrap.sh` into `~/.cache/ad-studio-skills/` and read by the Direction stage; it is not copied into this repo.
 - **MiroFish** (AGPL-3.0) runs as a separate local service called over HTTP. The patch in `integrations/mirofish/` modifies it and is therefore AGPL-3.0; Ad Studio's own code doesn't include or import it.
 - **Rendering** uses the Lemo-Opuscar library's tools.

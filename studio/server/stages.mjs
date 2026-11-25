@@ -2,7 +2,8 @@
 // must approve before the run goes on (style, frames, animatic). Prompts point Claude at the ad-studio-director skill.
 import fs from 'fs';
 import path from 'path';
-import { SCHEMAS, STYLES } from './schemas.mjs';
+import { SCHEMAS, STYLES, SHOT_SIZES, CAM_MOVES } from './schemas.mjs';
+import os from 'os';
 import { readJSON, writeJSON, run } from './util.mjs';
 import * as render from './engines/render.mjs';
 import * as audio from './engines/audio.mjs';
@@ -22,6 +23,7 @@ export const STYLE_LINES = {
 };
 
 const J = o => JSON.stringify(o, null, 1);
+export const directorDir = cfg => (cfg.directorSkill || '~/.cache/ad-studio-skills/DirectorSKILL').replace(/^~/, os.homedir());
 const dec = (ctx, id) => ctx.decision(id)?.output;
 
 export const STAGES = [
@@ -56,33 +58,47 @@ Story: ${J(dec(ctx, 'story'))}
 Every claim must cite which proof in the brief backs it. No absolutes, no health claims, no pressure, no real brands.` },
 
   { id: 'style', n: 6, title: 'Style', kind: 'decide', schema: 'style', gate: true,
-    prompt: ctx => `Stage 6 · Choose the ad style (skill §6). The five original code-drawn styles:
+    prompt: ctx => `Stage 6 · Choose the ad style (skill §6). The original code-drawn styles:
 ${STYLES.map(s => `- ${s}: ${STYLE_LINES[s]}`).join('\n')}
 Brief: ${J(dec(ctx, 'brief'))}
 Story emotion: ${dec(ctx, 'story')?.emotion}; audience: ${J(dec(ctx, 'brief')?.audience)}
 ${ctx.project.userBrief?.style ? `The user prefers ${ctx.project.userBrief.style}; follow it unless it clearly hurts the ad (then say why).` : ''}
 Pick the style that fits the product and the emotion; give one honest reason and why not for the others you considered.` },
 
-  { id: 'bible', n: 7, title: 'Bible', kind: 'decide', schema: 'bible', lint: true, check: 'bible',
+  { id: 'direction', n: 7, title: 'Direction', kind: 'decide', schema: 'direction', check: 'direction',
+    prompt: ctx => `Stage 7 · Direct the ad (skill §Direction; method from the cinematic-director skill).
+Read ONLY these files of the director skill (folder ${directorDir(ctx.cfg)}): assets/shot-plan-template.md, references/product-and-macro.md, and in references/genre-playbooks.md only "How to use a playbook" and the commercial section. Read nothing else from it.
+Style: ${dec(ctx, 'style')?.style} (${STYLE_LINES[dec(ctx, 'style')?.style] || ''}). Duration ${dec(ctx, 'brief')?.format?.seconds || 20} s, 9:16.
+Brief: ${J(dec(ctx, 'brief'))}
+Lead hook: ${J((dec(ctx, 'hooks')?.hooks || []).find(h => h.id === dec(ctx, 'hooks')?.lead))}
+Story: ${J(dec(ctx, 'story'))}
+Brand map: ${J(dec(ctx, 'brandmap'))}
+What the kit camera can do: sizes ${SHOT_SIZES.join('/')} framed on a subject (a cast id, "product" or a prop kind); angle eye/low/high; one move per shot (${CAM_MOVES.join(', ')}); ots left/right puts a soft foreground shoulder at the edge. People are big-headed toys: CU shows head and shoulders.
+Rules: every shot has a story function and says what the viewer now understands; blocking before framing; one move or none per shot; never two consecutive shots with the same size on the same subject; 2-6 cuts per 10 s (end card excluded), faster in the hook and the turn; the product keeps one screen side (locks.productSide) except a centred reveal; plan where the words go (textZone) so cards never cover a face or the product label; shots tile 0 → the end card. Do not name real films, shots or people in any text the viewer sees.` },
+
+  { id: 'bible', n: 8, title: 'Bible', kind: 'decide', schema: 'bible', lint: true, check: 'bible',
     prompt: ctx => `Stage 7 · Write the ad bible (skill §7: the bible format, the kit's places, props, poses, anims, layout rules and safe zones).
 Slug "${ctx.slug}". Style: ${dec(ctx, 'style')?.style}. Duration ${dec(ctx, 'brief')?.format?.seconds || 20} s, 9:16 (1080×1920; a 16:9 version is laid out from the same bible, use l16 overrides only where needed).
 Brief: ${J(dec(ctx, 'brief'))}
 Hooks (lead ${dec(ctx, 'hooks')?.lead}; the others go in variants.hooks as replacements for the hook shot): ${J(dec(ctx, 'hooks')?.hooks)}
 Story: ${J(dec(ctx, 'story'))}
 Brand map: ${J(dec(ctx, 'brandmap'))}
+Direction (implement it shot for shot): ${J(dec(ctx, 'direction')?.shots)}
+Locks: ${J(dec(ctx, 'direction')?.locks)}
+For every direction shot write one bible shot with the same id, t0, t1 and trans, camera = {size, subject, angle, move} (add amount 0.3-0.8 when the move should be gentle or strong, ots when asked), and copy function, reason and textZone; place each card/hook text in its textZone (top: y 0.16-0.30, bottom: y 0.62-0.72) and keep the subject's layer where the framing expects it.
 Rules: shots tile 0 → endcard.t0 with no gaps; the end card runs from endcard.t0 to dur (2.5-3.5 s); every on-screen text stays inside the safe zone (x 0.05-0.86, y 0.14-0.80 of the frame) and long enough to read (characters/15 + 1.5 s); voice lines must fit before the next line starts (about 2.9 words per second at speed 0.95) and should end before the end card logo; product colours from the brief.
 Return the complete bible JSON.` },
 
-  { id: 'frames', n: 8, title: 'Style frames', kind: 'auto', gate: true },
-  { id: 'voice', n: 9, title: 'Voice', kind: 'auto' },
-  { id: 'animatic', n: 10, title: 'Animatic', kind: 'auto', gate: true },
-  { id: 'final', n: 11, title: 'Final', kind: 'auto' },
-  { id: 'scorecard', n: 12, title: 'Scorecard', kind: 'decide', schema: 'scorecard', after: 'report',
+  { id: 'frames', n: 9, title: 'Style frames', kind: 'auto', gate: true },
+  { id: 'voice', n: 10, title: 'Voice', kind: 'auto' },
+  { id: 'animatic', n: 11, title: 'Animatic', kind: 'auto', gate: true },
+  { id: 'final', n: 12, title: 'Final', kind: 'auto' },
+  { id: 'scorecard', n: 13, title: 'Scorecard', kind: 'decide', schema: 'scorecard', after: 'report',
     prompt: ctx => `Stage 12 · Score the finished ad (skill §12) against the story-ad-playbook's seven rules, 1-5 each with a one-line note:
 1 hook in 1-3 s, 2 all five acts, 3 a character we identify with, 4 the product causes the turn, 5 plant/pulse/reveal/tag, 6 one emotion, 7 kind contrast and honest claims.
 Look at out/final-sheet.jpg (frames every 2 s of the 9:16 master) and read bible.json, voice/cues.json and out/checks.json. Total = sum. Say which hook variant you'd test first and what you'd fix in a next cut.` },
   // optional and paid (about $0.10-1 of OpenRouter): runs only when the user starts it (runFrom 'audience')
-  { id: 'audience', n: 13, title: 'Audience test', kind: 'auto', optional: true, paid: true },
+  { id: 'audience', n: 14, title: 'Audience test', kind: 'auto', optional: true, paid: true },
 ];
 
 // ---------- checks Claude's bible must pass before the stage counts ----------
@@ -106,6 +122,38 @@ export function checkBible(b) {
     if (lines[i].at + est > next + .3) errs.push(`voice line ${lines[i].id} (~${est.toFixed(1)} s) runs into the next line at ${next}`);
     if (lines[i].speaker && lines[i].speaker !== 'narrator' && !b.cast?.[lines[i].speaker]) errs.push(`voice line ${lines[i].id}: speaker "${lines[i].speaker}" is not in cast`);
   }
+  errs.push(...checkDirected(b));
+  return errs;
+}
+
+/** The directed-camera checks (only for bibles whose shots carry camera.size). */
+export function checkDirected(b) {
+  const errs = [], shots = [...(b.shots || [])].sort((x, y) => x.t0 - y.t0);
+  if (!shots.some(s => s.camera?.size)) return errs;
+  const perTen = (shots.length - 1) / ((b.endcard?.t0 ?? b.dur) || 1) * 10;
+  if (perTen < 1.8 || perTen > 6.5) errs.push(`cut rate ${perTen.toFixed(1)} per 10 s is outside 2-6`);
+  for (let i = 0; i < shots.length; i++) {
+    const s = shots[i], c = s.camera || {};
+    if (!c.size) errs.push(`${s.id}: no camera.size`);
+    if (!s.reason) errs.push(`${s.id}: no reason (what the viewer now understands)`);
+    const prev = shots[i - 1]?.camera;
+    if (prev && prev.size === c.size && prev.subject === c.subject) errs.push(`${s.id}: same size (${c.size}) on the same subject as the shot before`);
+    if (['MCU', 'CU', 'ECU'].includes(c.size)) for (const l of s.layers || []) if (l.type === 'text' && ['card', 'hook'].includes(l.role) && (l.y ?? .4) > .31 && (l.y ?? .4) < .6) errs.push(`${s.id}: the ${l.role} text "${String(l.text).slice(0, 20)}" sits on the subject in a ${c.size} (move it to y ≤ 0.30 or ≥ 0.62)`);
+  }
+  const sides = shots.flatMap(s => (s.layers || []).filter(l => l.type === 'product' && Math.abs((l.x ?? .5) - .5) > .12).map(l => ((l.x ?? .5) < .5 ? 'left' : 'right')));
+  if (new Set(sides).size > 1) errs.push('the product changes screen side between shots (keep one side; centre it only for the reveal)');
+  return errs;
+}
+
+export function checkDirection(o, dur) {
+  const errs = [], shots = [...(o.shots || [])].sort((x, y) => x.t0 - y.t0);
+  if (shots[0] && Math.abs(shots[0].t0) > .01) errs.push('the first shot must start at 0');
+  for (let i = 0; i < shots.length - 1; i++) {
+    if (Math.abs(shots[i].t1 - shots[i + 1].t0) > .01) errs.push(`gap or overlap between ${shots[i].id} and ${shots[i + 1].id}`);
+    if (shots[i].size === shots[i + 1].size && shots[i].subject === shots[i + 1].subject) errs.push(`${shots[i + 1].id}: same size on the same subject as ${shots[i].id}`);
+  }
+  const end = shots.at(-1)?.t1 || dur, perTen = (shots.length - 1) / (end || 1) * 10;
+  if (perTen < 1.8 || perTen > 6.5) errs.push(`cut rate ${perTen.toFixed(1)} per 10 s is outside 2-6`);
   return errs;
 }
 
@@ -124,8 +172,8 @@ export const AUTO = {
     };
     await shoot('first');
     // Claude looks at the sheet and may edit bible.json once
-    const review = await ctx.decide('frames-review', `Stage 8 · Style-frame review (skill §8). Read frames/sheet.jpg (one frame per shot + the end card, 9:16, no captions) and frames/w_*.jpg (16:9).
-Check against the bible and the style: is the hook readable at a glance, is the product recognisable, any text over a face or outside the safe zone, empty or crowded frames, poses that tell the beat, contrast. If something is wrong, edit bible.json in this folder (only bible.json) and set changed=true; otherwise approve.`, SCHEMAS.frames);
+    const review = await ctx.decide('frames-review', `Stage 9 · Style-frame review (skill §8, with the directed-frame failure checks). Read frames/sheet.jpg (one frame per shot + the end card, 9:16, no captions) and frames/w_*.jpg (16:9).
+Check against the bible and the style: is the hook readable at a glance, is the product recognisable, any text over a face or outside the safe zone, empty or crowded frames, poses that tell the beat, contrast; and for directed shots: does each frame show its shot size and subject (a CU that reads as a medium is a failure), does the shot's reason read without sound, does the product keep its screen side, does any move hide the subject. If something is wrong, edit bible.json in this folder (only bible.json) and set changed=true; otherwise approve.`, SCHEMAS.frames);
     if (review.output.changed) {
       const nb = readJSON(path.join(ctx.adDir, 'bible.json'));
       const errs = [...(await ctx.validateBible(nb))];
@@ -250,7 +298,7 @@ INTERVIEWS (every simulated agent was asked the same question after the run; Mir
 ${said || '(none)'}
 Answer with JSON matching the schema; "reason" is two sentences.`, SCHEMAS.audience, lean)).output;
   const rec = { stage: 'audience', at: new Date().toISOString(), output: { ...verdict, costUsd: res.costUsd, stats: res.stats, setup, mock: !!res.mock } };
-  writeJSON(path.join(ctx.adDir, 'decisions', '13-audience.json'), rec);
+  writeJSON(path.join(ctx.adDir, 'decisions', '14-audience.json'), rec);
   writeJSON(path.join(outDir, 'verdict.json'), rec.output);
   ctx.files('audience', ['out/audience/setup.json', 'out/audience/dossier.md', 'out/audience/report.md', 'out/audience/verdict.json']);
   const sc = verdict.scores;

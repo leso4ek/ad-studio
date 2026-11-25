@@ -101,6 +101,14 @@ function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting }) {
           <b>{s === o.style ? '★ ' : ''}{s.replace('ad-', '').replace(/-/g, ' ')}</b>{alt && <small>not this: {alt.why_not}</small>}</button>;
       })}</div>
       {waiting && <p style={{ color: 'var(--muted)' }}>This is a gate: approve Claude's style or click another. The bible keeps the story; only the look changes.</p>}</> : <Pending x={x} />;
+    case 'direction': return o ? <>
+      <Why rec={rec} />
+      <div className="card"><h2>Thesis</h2><p>{o.thesis}</p>{o.lens && o.lens !== 'none' && <p style={{ color: 'var(--muted)' }}>Lens: {o.lens.replace(/_/g, ' ')}</p>}
+        <p style={{ color: 'var(--muted)', fontSize: 13 }}>{o.book?.grammar} · {o.book?.rhythm}</p></div>
+      <div className="card"><h2>Shot list · {o.shots.length} shots</h2><table className="shots"><tbody>
+        {o.shots.map(s => <tr key={s.id}><td>{s.id}</td><td style={{ fontFamily: 'var(--mono)' }}>{s.t0}–{s.t1}</td><td><span className="chip">{s.size}</span> {s.subject}{s.angle && s.angle !== 'eye' ? ` · ${s.angle}` : ''}{s.move && s.move !== 'static' ? ` · ${s.move}` : ''}</td><td>{s.function}</td><td>{s.reason}{s.blocking ? <div style={{ color: 'var(--muted)' }}>{s.blocking}</div> : null}</td></tr>)}
+      </tbody></table></div>
+      <div className="card"><h2>Locks</h2><p>Product on the {o.locks?.productSide} · {o.locks?.screenDirection} · light: {o.locks?.light}</p></div></> : <Pending x={x} />;
     case 'bible': return ad.bible ? <>
       <Why rec={rec} />
       <div className="card"><h2>{ad.bible.title} · {ad.bible.style} · {ad.bible.dur} s</h2><p style={{ marginTop: 0, color: 'var(--muted)' }}>{ad.bible.stylePara}</p>

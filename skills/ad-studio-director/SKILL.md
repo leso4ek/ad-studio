@@ -107,7 +107,12 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
 - 3–14 shots. They tile `0 → endcard.t0` exactly, with the end card running from `endcard.t0` to `dur` (2.5–3.5 s).
 - Hold each shot 1.5–4 s, and the hook shot 2–3.5 s.
 - `trans`: `cut` (default), `wipe`, `slide`, `iris`, `fade`, `stripes`.
-- `camera`: `{ "zoom": [from, to], "pan": [[x0, y0], [x1, y1]], "focus": [dx, y] }`. Pan is a fraction of the frame; keep zoom under 1.15.
+- `camera` (directed, from the Direction stage): `{ "size": "EWS|WS|MS|MCU|CU|ECU", "subject": "<cast id>|product|<prop kind>|<layer id>", "angle": "eye|low|high", "move": "static|push|pull|pan-l|pan-r|tilt-up|tilt-down|truck-l|truck-r|whip-l|whip-r|handheld|rack", "amount": 0.5, "ots": "left|right" }`.
+  - The kit frames the subject for you: `size` decides how much of it fills the frame, and the face or label lands at about y 0.42.
+  - The frame never leaves the drawn set, so a wide frame of a small subject simply shows the whole set.
+  - Also write `function`, `reason` and `textZone` on the shot, copied from the direction.
+  - In MCU, CU and ECU shots, cards and hooks go at y ≤ 0.30 or y ≥ 0.62, never over the face or the label (checked).
+  - Legacy `{ "zoom": [from, to], "pan": [[x0, y0], [x1, y1]], "focus": [dx, y] }` still works for undirected shots. Keep that zoom under 1.15.
 - `time` (day/dusk/night) overrides the place's time.
 - `beat`: hook, plant, pulse, reveal, tag or story.
 
@@ -156,6 +161,31 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
 - Only when the kit can't draw a beat: set `"custom": true`, give the shot `"custom": "<name>"`, and write `scenes/custom.js` exporting `shots = { <name>: async (R, { shot, layers, cam, lt }) => { … } }`.
 - `R` holds `g` (the 2D context), `W`, `H`, `stage`, `mats()`, `place()`, `character()`, `product()` and `prop()`.
 - Keep it deterministic: no `Math.random`, no wall clock.
+
+## 7a · Direction (before the bible)
+The method comes from the **cinematic-director** skill (DirectorSKILL, MIT, in `~/.cache/ad-studio-skills/DirectorSKILL`). Read only the files the stage prompt names. The rules, in short:
+- **Thesis:** for an ad, it's the claim plus the one visible proof of it, something you could photograph (e.g. "one capful, poured, and the guessing ends"). Not a mood.
+- **Beats, not shots, first:** hook, problem, demonstration, turn, proof, payoff, tag. Each beat says what the viewer now understands.
+- **A shot is a story decision.** A shot without a reason is cut, not decorated. Use the nine functions: establishing, relation, close-up, insert, reaction, transition, aftermath, point-of-view, reveal.
+- **Blocking before framing:** where bodies and the product are, and how they move (start → motion → end), then the camera.
+- **One move or none per shot.** A static frame is often the stronger choice. Use moves for meaning:
+  - push in for realisation or pressure;
+  - pull out for relief or a reveal of context;
+  - whip for a fast change of idea;
+  - handheld for unease;
+  - rack to shift attention from the problem to the product.
+- **Coverage and rhythm:**
+  - vary size between consecutive shots (never the same size on the same subject twice in a row);
+  - 2–6 cuts per 10 s, fastest in the hook and the turn;
+  - inserts (ECU of the cap, the pour, the label) are short, 0.5–1.2 s;
+  - the hook's first 0.3 s must already move.
+- **Continuity locks:**
+  - the product keeps one screen side except a centred reveal;
+  - screen direction stays consistent (the plant on the right, she faces right);
+  - one light direction per place.
+- **Words have a home:** `textZone` top or bottom per shot. Cards never cover a face or the product label.
+- **Lenses (optional):** a director lens from the skill's 20 changes the grammar (e.g. symmetrical one-point frames, long held wides). Use one or none, only when it serves the product's emotion.
+  - Never name a film, director or real shot in anything the viewer sees.
 
 ## 8 · Style-frame review
 - Look at `frames/sheet.jpg` (one frame per shot and the end card) and `frames/w_*.jpg` (16:9).

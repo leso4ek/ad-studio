@@ -1,0 +1,98 @@
+// Ad Studio kit · the directed camera. Pure functions (no DOM), so node tests can check the framing math.
+// A bible shot can carry, besides the old {zoom:[a,b], pan:[[x,y],[x,y]], focus:[x,y]}:
+//   camera: { size: 'EWS'|'WS'|'MS'|'MCU'|'CU'|'ECU', subject: '<cast id>'|'product'|'<prop kind>'|'<layer id>',
+//             angle: 'eye'|'low'|'high', move: 'static'|'push'|'pull'|'pan-l'|'pan-r'|'tilt-up'|'tilt-down'|
+//             'truck-l'|'truck-r'|'whip-l'|'whip-r'|'handheld'|'rack', amount: 0..1, at: [x, y] (screen target, 0..1),
+//             ots: 'left'|'right' (over-the-shoulder silhouette) }
+// The output keeps the contract every style already uses — {zoom, px, py, cx, cy} — plus optional extras that
+// the page and style2d handle: shake {x, y}, whip (0..1 smear strength, sign = direction), blurFar/blurMid (px), ots.
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eio = t => { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+const hash = n => { n = Math.sin(n * 127.1 + 311.7) * 43758.5453; return n - Math.floor(n); };
+const vnoise = x => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return lerp(hash(i), hash(i + 1), u); };
+
+export const SIZES = ['EWS', 'WS', 'MS', 'MCU', 'CU', 'ECU'];
+export const MOVES = ['static', 'push', 'pull', 'pan-l', 'pan-r', 'tilt-up', 'tilt-down', 'truck-l', 'truck-r', 'whip-l', 'whip-r', 'handheld', 'rack'];
+// visible frame height as a multiple of the subject's height, and where on the subject the camera looks (0 = feet/base, 1 = top)
+const FRAME = {
+  person: { EWS: [5, .5], WS: [1.55, .5], MS: [1.15, .64], MCU: [.85, .72], CU: [.62, .78], ECU: [.4, .82] },  // kit people have big heads
+  thing:  { EWS: [6, .5], WS: [3.2, .5], MS: [2.1, .5], MCU: [1.6, .5], CU: [1.25, .48], ECU: [.85, .42] },
+};
+const BASE_H = { char: .42, product: .3, prop: .12 };
+
+/** The subject's box in pixels {x (centre), yBase, h, kind} from the shot's layers, or null. */
+export function subjectBox(shot, subject, { stage, L = l => l }) {
+  if (!subject) return null;
+  const layers = shot.layers || [];
+  const lay = layers.find(l => l.id === subject && l.type !== 'text') || (subject === 'product' && layers.find(l => l.type === 'product'))
+    || layers.find(l => l.type === 'prop' && l.kind === subject) || layers.find(l => l.type === 'char' && subject === 'character');
+  if (!lay) return null;
+  const ly = L(lay), h = (ly.scale ?? 1) * (BASE_H[lay.type] || .12) * stage.h;
+  return { x: stage.x0 + (ly.x ?? .5) * stage.w, yBase: stage.y0 + (ly.y ?? .72) * stage.h, h, kind: lay.type === 'char' ? 'person' : 'thing' };
+}
+
+/** The framing (zoom + offsets) that puts `size` of the subject at screen point `at`. */
+export function frame(box, size, { W, H, at }) {
+  const [mult, look] = FRAME[box.kind][size] || FRAME[box.kind].MS;
+  const zoom = clamp(H / (box.h * mult), 1, 7);  // never zoom out past the drawn set
+  const fx = box.x, fy = box.yBase - box.h * look;
+  const sx = (at?.[0] ?? .5) * W, sy = (at?.[1] ?? (box.kind === 'person' ? .42 : .48)) * H;
+  // the style transform maps world P to cx + (P.x - cx + px*W) * zoom: with cx = sx, px = (sx - fx)/W, P = F lands on sx
+  return { zoom, cx: sx, cy: sy, px: (sx - fx) / W, py: (sy - fy) / H };
+}
+
+/** The camera for frame lt (seconds into the shot). Old {zoom, pan, focus} shots keep their exact behaviour. */
+export function directCamera(shot, lt, { W, H, stage, L }) {
+  const c = shot.camera || {}, d = Math.max(.01, shot.t1 - shot.t0), p = eio(seg(lt, 0, d));
+  if (!c.size) {
+    const z = c.zoom ? lerp(c.zoom[0], c.zoom[1], p) : 1;
+    const px = c.pan ? lerp(c.pan[0][0], c.pan[1][0], p) : 0, py = c.pan ? lerp(c.pan[0][1], c.pan[1][1], p) : 0;
+    return { zoom: z, px, py, cx: W / 2 + (c.focus?.[0] ?? 0) * W, cy: H * (c.focus?.[1] ?? .55) };
+  }
+  const box = subjectBox(shot, c.subject, { stage, L }) || { x: stage.x0 + stage.w / 2, yBase: stage.y0 + stage.h * .72, h: stage.h * .42, kind: 'person' };
+  let at = c.at ? [...c.at] : null;
+  // angle: a low camera puts the subject higher in frame and drops the horizon; a high camera does the opposite
+  const tiltY = c.angle === 'low' ? -.07 : c.angle === 'high' ? .07 : 0;
+  if (tiltY) at = [at?.[0] ?? .5, (at?.[1] ?? (box.kind === 'person' ? .42 : .48)) + tiltY];
+  const f = frame(box, c.size, { W, H, at });
+  const k = c.amount ?? .5, cam = { ...f, angle: c.angle || 'eye' };
+  switch (c.move || 'static') {
+    case 'push': cam.zoom = f.zoom * lerp(1 - .28 * k, 1, p); break;
+    case 'pull': cam.zoom = f.zoom * lerp(1, 1 - .28 * k, p); break;
+    case 'pan-l': case 'pan-r': { const s = c.move === 'pan-r' ? 1 : -1; cam.px = f.px - s * lerp(-.5, .5, p) * .16 * k * 2 / f.zoom; break; }
+    case 'tilt-up': case 'tilt-down': { const s = c.move === 'tilt-up' ? -1 : 1; cam.py = f.py - s * lerp(-.5, .5, p) * .14 * k * 2 / f.zoom; break; }
+    case 'truck-l': case 'truck-r': { const s = c.move === 'truck-r' ? 1 : -1; cam.px = f.px - s * lerp(-.5, .5, p) * .3 * k / f.zoom; cam.truck = true; break; }
+    case 'whip-l': case 'whip-r': {
+      // the shot opens mid-whip: the frame arrives from the side with a smear, settles in about 0.35 s
+      const s = c.move === 'whip-r' ? 1 : -1, w = 1 - eio(seg(lt, 0, .35));
+      cam.px = f.px + s * w * .9 / f.zoom; cam.whip = s * w; break;
+    }
+    case 'handheld': break;
+    case 'rack': cam.blurFar = lerp(0, 9, eio(seg(lt, 0, Math.min(.8, d * .5)))) * k * 2 * (H / 1920); cam.blurMid = cam.blurFar * .45; break;
+  }
+  if (c.move === 'handheld' || c.shake) {
+    const a = (c.shake ?? (.5 * k + .25)) * .006, t = lt * 1.7 + (shot.seed ?? 3);
+    cam.shake = { x: (vnoise(t) - .5) * 2 * a, y: (vnoise(t + 41.3) - .5) * 2 * a };
+    cam.px += cam.shake.x / cam.zoom; cam.py += cam.shake.y / cam.zoom;
+  }
+  if (c.ots) cam.ots = c.ots;
+  cam.zoom = Math.max(1, cam.zoom);  // a pull-out on a wide frame never reveals the edge of the set
+  return keepOnSet(cam, { W, H }, !!cam.whip);
+}
+
+/** Never show past the edge of the drawn set: clamp the offsets so the visible world stays inside [0,W]×[0,H]. */
+export function keepOnSet(cam, { W, H }, loose = false) {
+  // screen s shows world P = (s - cx)/z + cx - px*W; require P(0) >= 0 and P(W) <= W (same for y)
+  const z = cam.zoom, slack = loose ? .25 : 0;
+  const pxMin = ((W - cam.cx) / z + cam.cx - W) / W - slack, pxMax = ((-cam.cx) / z + cam.cx) / W + slack;
+  const pyMin = ((H - cam.cy) / z + cam.cy - H) / H, pyMax = ((-cam.cy) / z + cam.cy) / H;
+  return { ...cam, px: clamp(cam.px, Math.min(pxMin, pxMax), Math.max(pxMin, pxMax)), py: clamp(cam.py, Math.min(pyMin, pyMax), Math.max(pyMin, pyMax)) };
+}
+
+/** Shots per 10 s, and other numbers the bible checks use. */
+export function cutStats(shots, dur) {
+  const n = shots.length;
+  return { shots: n, perTen: +(Math.max(0, n - 1) / (dur || 1) * 10).toFixed(2), sizes: shots.map(s => s.camera?.size || null) };
+}

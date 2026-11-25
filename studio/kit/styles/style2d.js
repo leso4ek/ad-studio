@@ -14,16 +14,17 @@ export function drawScene(R, { shot, layers, cam }, paintGroup, opts = {}) {
     g.translate(cam.cx, cam.cy); g.scale(lerp(1, cam.zoom, depth), lerp(1, cam.zoom, depth));
     g.translate(-cam.cx + cam.px * W * depth, -cam.cy + cam.py * H * depth);
   };
-  g.save(); camT(.55); paintGroup(R, pl.far, pm, { kind: 'place', plane: 'far', key: 'far:' + shot.place }); g.restore();
+  const blur = px => { if (px > .3 && 'filter' in g) g.filter = `blur(${px.toFixed(1)}px)`; };  // rack focus: the back planes go soft
+  g.save(); camT(.55); blur(cam.blurFar || 0); paintGroup(R, pl.far, pm, { kind: 'place', plane: 'far', key: 'far:' + shot.place }); g.restore();
   // props attached to the place (sun, clouds) come from the bible's place spec
   const extra = R.bible.places?.[shot.place]?.props || [];
-  g.save(); camT(.75);
+  g.save(); camT(.75); blur(cam.blurMid || 0);
   for (const [i, p] of extra.entries()) {
     const prims = placePrims(R.prop(p.kind, p.color), { x: R.stage.x0 + p.x * R.stage.w, y: R.stage.y0 + p.y * R.stage.h, h: (p.scale || 1) * .12 * R.stage.h, flip: p.flip ? -1 : 1 });
     paintGroup(R, prims, { ...pm, ...(p.color ? { propA: p.color, custom: p.color } : {}) }, { kind: 'prop', key: 'placeprop' + i, depth: .75 });
   }
   g.restore();
-  g.save(); camT(.8); paintGroup(R, pl.mid, pm, { kind: 'place', plane: 'mid', key: 'mid:' + shot.place }); g.restore();
+  g.save(); camT(.8); blur(cam.blurMid || 0); paintGroup(R, pl.mid, pm, { kind: 'place', plane: 'mid', key: 'mid:' + shot.place }); g.restore();
   g.save(); camT(1);
   for (const p of layers) {
     if (!p.prims) continue;

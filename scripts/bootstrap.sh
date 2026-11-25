@@ -22,14 +22,16 @@ echo "LIB=$LIB"
 for d in "$REPO"/skills/*/; do ln -sfn "${d%/}" "$SKILLS/$(basename "$d")"; done   # every skill in this repo
 
 # 2b. third-party skills the editing playbook builds on (cloned, not copied: they keep their own licences)
-#     taste-skill (MIT, Leonxlnx) and unslop (CC BY 4.0, Damir Sokolovsky, github.com/heydamir/unslop)
+#     taste-skill (MIT, Leonxlnx), unslop (CC BY 4.0, Damir Sokolovsky, github.com/heydamir/unslop)
+#     and cinematic-director (MIT, wuwangzhang1216/DirectorSKILL: the Direction stage reads its references)
 EXT="$HOME/.cache/ad-studio-skills"; mkdir -p "$EXT"
-for r in leonxlnx/taste-skill heydamir/unslop; do
+for r in leonxlnx/taste-skill heydamir/unslop wuwangzhang1216/DirectorSKILL; do
   d="$EXT/$(basename $r)"
   [ -d "$d/.git" ] && git -C "$d" pull -q --ff-only || git clone -q --depth 1 "https://github.com/$r" "$d" || echo "could not fetch $r (offline?)"
 done
 [ -d "$EXT/taste-skill/skills/taste-skill" ] && ln -sfn "$EXT/taste-skill/skills/taste-skill" "$SKILLS/design-taste-frontend"
 [ -d "$EXT/unslop/skills/unslop" ] && ln -sfn "$EXT/unslop/skills/unslop" "$SKILLS/unslop"
+[ -f "$EXT/DirectorSKILL/SKILL.md" ] && ln -sfn "$EXT/DirectorSKILL" "$SKILLS/cinematic-director"
 
 # 3. our styles, registered where the library looks for user styles
 mkdir -p "$HOME/lemo-my-styles"
