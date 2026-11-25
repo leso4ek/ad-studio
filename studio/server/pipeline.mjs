@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { STAGES, AUTO, checkBible, checkDirection, writeReport, lintBible, lintObject } from './stages.mjs';
+import * as MEM from './memory.mjs';
 import { SCHEMAS } from './schemas.mjs';
 import { validate } from './validate.mjs';
 import { readJSON, writeJSON, now, slugify } from './util.mjs';
@@ -15,6 +16,7 @@ const jobs = new Map();
 let CFG = null;
 export function initPipeline(cfg) {
   CFG = cfg; fs.mkdirSync(cfg.adsDir, { recursive: true });
+  MEM.initMemory(cfg);
   // a restart ends every job: stages left 'running' go back to 'idle' so the run can resume from them
   for (const d of fs.readdirSync(cfg.adsDir)) {
     const f = path.join(cfg.adsDir, d, 'project.json'), p = readJSON(f); if (!p) continue;
@@ -108,14 +110,20 @@ async function runDecision(slug, st, signal, note) {
   const ctx = context(slug, signal), schema = SCHEMAS[st.schema];
   let prompt = st.prompt(ctx) + `\n\nAnswer with JSON matching the schema. Put your reasoning in the "reason" field${st.id === 'bible' ? '' : ' (two or three sentences)'}.`;
   if (note) prompt += `\n\nThe user asked for a redo with this note: "${note}". Follow it.`;
+  // hindsight memory: the best lessons from past ads for this stage (≤ ~600 tokens)
+  const memOn = CFG.memory?.enabled !== false, brief = readJSON(path.join(adDir(slug), 'brief.json'), {}), styleNow = readDecision(slug, 'style')?.output?.style;
+  const mem = memOn ? MEM.recall(st.id, { style: styleNow, product: brief.product?.what, context: `${brief.audience?.who || ''} ${brief.tone || ''}` }) : { text: '', ids: [] };
+  if (mem.text) prompt += `\n\n${mem.text}`;
   let res = await decide(slug, st.id, prompt, schema, signal), problems = issues(st, res.output);
   if (problems.errors.length) {
+    if (memOn) MEM.logSignal({ ad: slug, stage: st.id, kind: 'repair', value: problems.errors.length, note: problems.errors.slice(0, 3).join('; ') });
     emit('decision', { slug, stage: st.id, kind: 'repair', text: problems.errors.slice(0, 6).join(' · ') });
     res = await decide(slug, st.id, `Your answer for stage ${st.id} has these problems:\n- ${problems.errors.join('\n- ')}\nReturn the corrected complete answer (same schema).`, schema, signal);
     problems = issues(st, res.output);
     if (problems.errors.length) throw new Error(`still invalid after one repair: ${problems.errors.slice(0, 4).join('; ')}`);
   }
-  const rec = { stage: st.id, at: now(), output: res.output, meta: res.meta, warnings: problems.warnings, note: note || undefined };
+  const rec = { stage: st.id, at: now(), output: res.output, meta: { ...(res.meta || {}), lessons: mem.ids.length ? mem.ids : undefined }, warnings: problems.warnings, note: note || undefined };
+  if (memOn) MEM.logEpisode({ ad: slug, stage: st.id, output: res.output, style: styleNow, product: brief.product?.what, attempt: MEM.episodes(slug).filter(e => e.type === 'episode' && e.stage === st.id).length + 1, note, meta: rec.meta });
   writeJSON(decFile(slug, st.id), rec);
   if (st.id === 'brief') writeJSON(path.join(adDir(slug), 'brief.json'), res.output);
   if (st.id === 'bible') writeJSON(path.join(adDir(slug), 'bible.json'), { ...res.output, slug });
@@ -160,9 +168,11 @@ export async function runFrom(slug, startId = null, { note } = {}) {
           const rec = await runDecision(slug, st, ac.signal, i === idx(startId) ? note : undefined);
           result = { summary: summaryOf(st.id, rec.output), warnings: rec.warnings };
           if (st.after === 'report') result.report = writeReport(context(slug));
+          if (st.id === 'scorecard' && CFG.memory?.enabled !== false) await learn(slug, () => MEM.signalsFromScorecard(slug, rec.output), ac.signal);
         } else {
           const r = await AUTO[st.id](context(slug, ac.signal));
           result = r;
+          if (CFG.memory?.enabled !== false) autoSignals(slug, st.id, r);
           writeJSON(path.join(adDir(slug), 'decisions', `${String(st.n).padStart(2, '0')}-${st.id}.result.json`), { stage: st.id, at: now(), ...r });
         }
       } catch (e) {
@@ -199,6 +209,22 @@ function summaryOf(id, o) {
 }
 
 /** Approve a gate or a review; `choice` overrides Claude's pick (premise id, hook letter, style slug). */
+/** Outcome signals from the automatic stages (free: no model call). */
+function autoSignals(slug, id, r) {
+  if (id === 'animatic' && r.checks) for (const [k, v] of Object.entries(r.checks)) MEM.logSignal({ ad: slug, stage: 'bible', kind: 'check', value: !!v, note: `${k} ${v ? 'pass' : 'FAIL'}` });
+  if (id === 'frames' && r.review) MEM.logSignal({ ad: slug, stage: 'direction', kind: 'review', value: (r.review.notes || []).length, note: (r.review.notes || []).map(n => n.issue).join('; ') || 'approved as drawn' });
+  if (id === 'voice' && r.check) MEM.logSignal({ ad: slug, stage: 'bible', kind: 'check', value: r.check.pass !== false, note: `speech check ${r.check.pass === false ? 'FAIL' : 'pass'}` });
+}
+/** Turns an ad's outcome into lessons (hindsight relabel). Never fails the stage it follows. */
+export async function learn(slug, addSignals, signal) {
+  try {
+    addSignals?.();
+    const r = await MEM.relabel(slug, decideFor, signal);
+    emit('engine', { slug, stage: 'memory', engine: 'memory', text: `hindsight memory: ${r.added} new lesson(s), ${r.total} in total` });
+    return r;
+  } catch (e) { emit('engine', { slug, stage: 'memory', engine: 'memory', text: `hindsight memory skipped: ${e.message.slice(0, 200)}`, level: 'warn' }); return null; }
+}
+
 export async function approve(slug, id, { choice } = {}) {
   const st = STAGES.find(s => s.id === id); if (!st) throw new Error('no such stage');
   if (choice !== undefined && st.kind === 'decide') {
@@ -208,8 +234,10 @@ export async function approve(slug, id, { choice } = {}) {
       if (id === 'style' && fs.existsSync(path.join(adDir(slug), 'bible.json'))) { const b = readJSON(path.join(adDir(slug), 'bible.json')); writeJSON(path.join(adDir(slug), 'bible.json'), { ...b, style: choice }); }
       markStale(slug, id, id === 'style' ? ['frames', 'animatic', 'final', 'scorecard'] : null);
       emit('decision', { slug, stage: id, kind: 'override', choice });
+      if (CFG.memory?.enabled !== false) MEM.logSignal({ ad: slug, stage: id, kind: 'override', value: 1, note: `user chose ${choice} instead of Claude's pick` });
     }
   }
+  if (CFG.memory?.enabled !== false && (st.kind === 'decide' || st.gate)) MEM.logSignal({ ad: slug, stage: id === 'frames' ? 'direction' : id === 'animatic' ? 'bible' : id, kind: 'approved', value: 1 });
   setStage(slug, id, { status: 'done', approvedAt: now() });
   emit('gate', { slug, stage: id, kind: 'approved' });
   if (!jobs.has(slug)) runFrom(slug).catch(e => emit('job', { slug, kind: 'error', text: e.message }));
@@ -223,6 +251,7 @@ export function markStale(slug, id, only = null) {
 
 export async function redo(slug, id, { note } = {}) {
   if (jobs.has(slug)) throw new Error('this ad is running: cancel first');
+  if (CFG.memory?.enabled !== false) MEM.logSignal({ ad: slug, stage: id, kind: 'redo', value: 1, note: note || 'redo without a note' });
   setStage(slug, id, { status: 'idle' });
   markStale(slug, id);
   runFrom(slug, id, { note }).catch(e => emit('job', { slug, kind: 'error', text: e.message }));

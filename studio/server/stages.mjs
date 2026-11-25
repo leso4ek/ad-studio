@@ -300,6 +300,7 @@ Answer with JSON matching the schema; "reason" is two sentences.`, SCHEMAS.audie
   const rec = { stage: 'audience', at: new Date().toISOString(), output: { ...verdict, costUsd: res.costUsd, stats: res.stats, setup, mock: !!res.mock } };
   writeJSON(path.join(ctx.adDir, 'decisions', '14-audience.json'), rec);
   writeJSON(path.join(outDir, 'verdict.json'), rec.output);
+  if (ctx.cfg.memory?.enabled !== false) { const P = await import('./pipeline.mjs'), M = await import('./memory.mjs'); await P.learn(ctx.slug, () => M.signalsFromAudience(ctx.slug, verdict), ctx.signal); }
   ctx.files('audience', ['out/audience/setup.json', 'out/audience/dossier.md', 'out/audience/report.md', 'out/audience/verdict.json']);
   const sc = verdict.scores;
   return { summary: `stop ${sc.stopScroll} · watch ${sc.watchThrough} · recall ${sc.brandRecall} · trust ${sc.trust} · click ${sc.clickIntent} · hook ${verdict.bestHook} · $${(res.costUsd || 0).toFixed(2)}`, costUsd: res.costUsd, stats: res.stats };

@@ -26,6 +26,7 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh }) {
             {x.ms && <span>{sec(x.ms)}</span>}
             {rec?.meta?.cost_usd_list !== undefined && <span title="Claude Code's own estimate at API list price; on a subscription it is part of your plan">≈ ${rec.meta.cost_usd_list?.toFixed(2)} list</span>}
             {rec?.meta?.turns && <span>{rec.meta.turns} turns</span>}
+            {rec?.meta?.lessons?.length > 0 && <span className="chip" title="Lessons from past ads that were in Claude's prompt (Memory view)">used {rec.meta.lessons.length} lesson{rec.meta.lessons.length > 1 ? 's' : ''}</span>}
             {rec?.overriddenBy && <span className="chip warn">you overrode Claude</span>}
           </div>
         </div>

@@ -194,7 +194,8 @@ export async function writePrompts(adDir, slug, decideFor) {
 Bible (shots, cast, places, product, voice): ${JSON.stringify({ title: bible.title, stylePara: p.settings.stylePara, product: bible.product, cast: bible.cast, places: bible.places, shots: bible.shots.map(s => ({ id: s.id, t0: s.t0, t1: s.t1, beat: s.beat, place: s.place, camera: s.camera, layers: s.layers })), vo: bible.vo?.lines })}
 Elements (reference images, chosen by the user; each has a role line and N views): ${JSON.stringify(elements)}
 For each shot return: refs = the element ids it needs, most important first (max 5; their views are sent in that order, each view counts as one reference image, max 6 images in total); layoutRef = true only when blocking matters (who stands where, product placement, a precise action) — then the previz middle still is appended as the LAST reference with the role "${LAYOUT_ROLE}"; prompt = 400–900 words in blocks FORMAT, STYLE (the locked paragraph verbatim), CAMERA (lens + one move), MUSIC: FALSE, CUT POLICY, MOTION SPEED AND QUALITY, REFERENCES (one line per reference image in the exact order: "reference image N — <role line>"), SETTING AND BLOCKING, ACTION (timed by second), CAST RULE, NO TEXT, CONTINUITY. No first/last frames exist. Seconds 4–15 (merge neighbouring beats into one generation with 2 shots inside only when they share a place).`;
-    const res = await decideFor(slug, 'production-prompts', q, PROMPTS_SCHEMA);
+    const MEM = await import('./memory.mjs'), mem = MEM.recall('production', { style: bible?.style, context: 'seedance prompt references consistency' });
+    const res = await decideFor(slug, 'production-prompts', mem.text ? `${q}\n\n${mem.text}` : q, PROMPTS_SCHEMA);
     const p2 = plan(adDir);
     for (const x of res.output.shots) {
       const s = p2.shots.find(y => y.id === x.id); if (!s) continue;

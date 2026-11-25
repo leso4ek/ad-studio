@@ -6,6 +6,7 @@ import path from 'path';
 import { loadConfig, loadEnv, readJSON, STUDIO, REPO, which } from './util.mjs';
 import { initBus, subscribe, emit } from './bus.mjs';
 import * as P from './pipeline.mjs';
+import * as MEM from './memory.mjs';
 import { STAGES, STYLE_LINES } from './stages.mjs';
 import * as claude from './engines/claude.mjs';
 import * as inbox from './engines/inbox.mjs';
@@ -62,6 +63,9 @@ const routes = [
   ['POST', /^\/api\/ads\/([\w-]+)\/run$/, async (req, res, [, s]) => { const b = await body(req); if (P.isRunning(s)) return send(res, 409, { error: 'running' }); P.runFrom(s, b.from || null).catch(e => emit('job', { slug: s, kind: 'error', text: e.message })); send(res, 202, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/stages\/([\w-]+)\/approve$/, async (req, res, [, s, id]) => { await P.approve(s, id, await body(req)); send(res, 200, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/stages\/([\w-]+)\/redo$/, async (req, res, [, s, id]) => { try { await P.redo(s, id, await body(req)); send(res, 202, { ok: true }); } catch (e) { send(res, 409, { error: e.message }); } }],
+  ['GET', /^\/api\/memory$/, (req, res) => send(res, 200, MEM.summary())],
+  ['POST', /^\/api\/memory\/proposals\/([\w-]+)$/, async (req, res, [, id]) => { const b = await body(req); send(res, 200, MEM.decideProposal(id, !!b.approve)); }],
+  ['POST', /^\/api\/ads\/([\w-]+)\/learn$/, async (req, res, [, s]) => { const r = await P.learn(s); send(res, r ? 200 : 500, r || { error: 'the relabel did not run: see the live pane' }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/cancel$/, (req, res, [, s]) => send(res, 200, { cancelled: P.cancel(s) })],
   ['POST', /^\/api\/ads\/([\w-]+)\/mode$/, async (req, res, [, s]) => { const b = await body(req); const pick = {}; for (const k of ['mode', 'autoGates', 'decider']) if (k in b) pick[k] = b[k]; send(res, 200, P.setMode(s, pick)); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/photo$/, async (req, res, [, s]) => {
