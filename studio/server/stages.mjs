@@ -13,6 +13,8 @@ import { lintBible, lintObject } from './lint.mjs';
 import { emit } from './bus.mjs';
 import * as AN from './engines/analyse.mjs';
 import * as blender from './engines/blender.mjs';
+import * as EDIT from './engines/edit.mjs';
+import { TOOL_FORMATS } from './schemas.mjs';
 import { ffmpeg7 } from './util.mjs';
 
 export const STYLE_LINES = {
@@ -42,6 +44,7 @@ export const CUT_RATE = { 'story-ad': [1.8, 6.5], explainer: [1.2, 6.5], 'drama-
 export function appliesTo(st, project) {
   const f = project?.format || 'story-ad', t = f === 'recreate' ? (project.recreate?.target || 'story-ad') : f;
   if ((st.skip || []).includes(f)) return false;
+  if (TOOL_FORMATS.includes(f) && !st.formats) return false;   // tools run only the stages that name them
   return !st.formats || st.formats.includes(f) || (st.targets || []).includes(t);
 }
 // ---------- short-drama series: the parent's decisions, read by its episodes ----------
@@ -124,7 +127,11 @@ const dec = (ctx, id) => ctx.decision(id)?.output;
 
 export const STAGES = [
   // recreate only: the uploaded video read by code (free), then by Claude
-  { id: 'source', n: 0, title: 'Source video', kind: 'auto', formats: ['recreate'] },
+  { id: 'source', n: 0, title: 'Source video', kind: 'auto', formats: ['recreate', 'edit'] },
+  // the edit tool (the @viralex.aii workflow): a style from your reference reels, Claude's edit decision list, the render
+  { id: 'edit-style', n: 1, title: 'Edit style', kind: 'auto', formats: ['edit'] },
+  { id: 'edit-plan', n: 2, title: 'Edit plan', kind: 'auto', formats: ['edit'] },
+  { id: 'edit-render', n: 3, title: 'Draft', kind: 'auto', formats: ['edit'] },
   { id: 'analysis', n: 0, title: 'Analysis', kind: 'decide', schema: 'analysis', formats: ['recreate'],
     prompt: ctx => { const a = readJSON(path.join(ctx.adDir, 'source', 'analysis', 'analysis.json'), {}), r = rc(ctx);
       return `Recreate · analyse the uploaded video (skill §Recreate).
@@ -307,6 +314,61 @@ export function routeShots(ctx, o) {
 
 // ---------- automatic stages ----------
 export const AUTO = {
+  /** edit tool · style: reference reels measured by code, then Claude writes the exact values (style.md + style.json) */
+  async 'edit-style'(ctx) {
+    const r = rc(ctx), dir = path.join(ctx.adDir, 'edit'); fs.mkdirSync(dir, { recursive: true });
+    const refs = (r.refVideos || []).filter(f => fs.existsSync(path.join(ctx.adDir, f)));
+    const measured = [];
+    for (const [i, f] of refs.entries()) {
+      const a = await AN.analyse(ctx.cfg, path.join(ctx.adDir, f), path.join(dir, 'refs', `ref${i + 1}`), { slug: ctx.slug, signal: ctx.signal });
+      measured.push({ file: f, duration: a.duration, rhythm: a.rhythm, wordsPerSec: a.audio.wordsPerSec, music: a.audio.musicLikely, sheets: a.sheets.map(x => `edit/refs/${x}`) });
+    }
+    const q = `Edit tool · the style (research/teardowns/TOOLS.md, the @viralex.aii workflow: "take inspiration, but don't copy").
+${refs.length ? `Reference reels measured by code: ${J(measured)}. Look at their contact sheets (the caption look, size and position, colours, pace).` : 'No reference reels: use the viral playbook\'s word-caption look.'}
+The user's goal for this edit: ${J(r.prompt || {})}.
+Return exact values: caption font (only the listed fonts), size and position in % of the 1080×1920 frame (keep y between 55 and 75 so the platform UI never covers them), colours, words per caption, the longest pause to keep, the music mood and level under the voice, the reframe, and style.md (the values and the why).${playbook('clip', 900)}`;
+    const out = (await ctx.decide('edit-style', q, SCHEMAS.editStyle)).output;
+    writeJSON(path.join(dir, 'style.json'), out); fs.writeFileSync(path.join(dir, 'style.md'), out.styleMd);
+    ctx.files('edit-style', ['edit/style.md', 'edit/style.json']);
+    return { summary: `${out.caption.font} ${out.caption.wordsPerCaption}-word captions at y ${out.caption.yPct} %, pauses ≤ ${out.pace.maxPause} s, ${out.music.mood} music at ${out.music.levelDb} dB` };
+  },
+
+  /** edit tool · plan: words + pauses + a proposed cut list by code; Claude decides what stays (checked: no cut inside a word) */
+  async 'edit-plan'(ctx) {
+    const r = rc(ctx), dir = path.join(ctx.adDir, 'edit'), src = path.join(ctx.adDir, r.source), style = readJSON(path.join(dir, 'style.json'), EDIT.DEFAULT_STYLE);
+    const f = await EDIT.facts(ctx.cfg, src, dir, { slug: ctx.slug, signal: ctx.signal });
+    const versions = fs.readdirSync(dir).filter(x => /^edl-v\d+\.json$/.test(x)).length, note = ctx.project.stages?.['edit-plan']?.note;
+    const prevEdl = versions ? readJSON(path.join(dir, `edl-v${versions}.json`)) : null;
+    const words = f.wordList.map(w => `${w.t0.toFixed(2)}-${w.t1.toFixed(2)} ${w.w}`).join('\n');
+    let q = `Edit tool · the edit decision list. Source ${f.duration.toFixed(1)} s, ${f.w}×${f.h}. The user's goal: ${J(r.prompt || {})}. The style: ${J({ pace: style.pace, music: style.music, reframe: style.reframe })}.
+Word times (start-end word):\n${words}
+Pauses (silencedetect): ${J(f.silences)}
+Code's proposed keep ranges (every pause over ${style.pace?.maxPause ?? .45} s cut): ${J(f.proposed)}
+Decide the keep ranges: cut pauses, slips, false starts and repeated takes (keep the better take); keep meaningful pauses (after a question, before a punchline); never cut inside a word (boundaries at word edges ± 0.06 s); never speed up the voice. Pick the emphasis words (the ones a viewer must catch), a hook title for the first 1-2 s (≤ 6 words, or "" when the first line already hooks), music on/off, and notes for edit-notes.md (what you cut and why; words you were unsure of).`;
+    if (prevEdl) q += `\nThe previous version: ${J({ keep: prevEdl.keep, title: prevEdl.title })}.`;
+    if (note) q += `\nThe user's notes on the last draft: "${note}". Follow them.`;
+    let out = (await ctx.decide('edit-plan', q, SCHEMAS.editPlan)).output, errs = EDIT.checkKeep(out.keep, f.wordList);
+    if (errs.length) { out = (await ctx.decide('edit-plan', `${q}\n\nYour last answer has these problems:\n- ${errs.join('\n- ')}\nReturn the corrected complete answer.`, SCHEMAS.editPlan)).output; errs = EDIT.checkKeep(out.keep, f.wordList); }
+    if (errs.length) throw new Error(`the edit plan still cuts badly: ${errs.slice(0, 3).join('; ')}`);
+    const v = versions + 1; writeJSON(path.join(dir, `edl-v${v}.json`), { ...out, version: v, note: note || null });
+    const kept = out.keep.reduce((s, k) => s + k.t1 - k.t0, 0);
+    ctx.files('edit-plan', [`edit/edl-v${v}.json`, 'edit/facts.json']);
+    return { summary: `v${v}: keeps ${kept.toFixed(1)} of ${f.duration.toFixed(1)} s in ${out.keep.length} ranges${out.title?.text ? ` · title "${out.title.text}"` : ''}`, version: v };
+  },
+
+  /** edit tool · render the latest plan: draft-vN.mp4 + edit-notes.md */
+  async 'edit-render'(ctx) {
+    const r = rc(ctx), dir = path.join(ctx.adDir, 'edit'), src = path.join(ctx.adDir, r.source);
+    const v = fs.readdirSync(dir).filter(x => /^edl-v\d+\.json$/.test(x)).length; if (!v) throw new Error('no edit plan yet');
+    const edl = readJSON(path.join(dir, `edl-v${v}.json`)), style = readJSON(path.join(dir, 'style.json'), EDIT.DEFAULT_STYLE), words = readJSON(path.join(dir, 'words.json'), {}).words || [];
+    const out = path.join(dir, `draft-v${v}.mp4`);
+    const res = await EDIT.render(ctx.cfg, src, words, edl, out, { style, slug: ctx.slug, signal: ctx.signal });
+    fs.writeFileSync(path.join(dir, `edit-notes-v${v}.md`), `# Edit notes · draft v${v}\n\n${(edl.notes || []).map(n => `- ${n}`).join('\n')}\n\n**Kept:** ${res.seconds} s in ${edl.keep.length} ranges. **Title:** ${edl.title?.text || '(none)'}. **Emphasis:** ${(edl.emphasis || []).join(', ')}\n\nTo revise: Redo "Edit plan" with your notes in plain words (v${v + 1}).\n`);
+    fs.mkdirSync(path.join(ctx.adDir, 'out'), { recursive: true }); fs.copyFileSync(out, path.join(ctx.adDir, 'out', `${ctx.slug}-9x16.mp4`));
+    ctx.files('edit-render', fs.readdirSync(dir).filter(x => /^(draft-v\d+\.mp4|edit-notes-v\d+\.md)$/.test(x)).sort((a, b) => +b.match(/\d+/)[0] - +a.match(/\d+/)[0]).map(x => `edit/${x}`));
+    return { summary: `draft v${v}: ${res.seconds} s, 1080×1920, word captions, −14 LUFS`, version: v };
+  },
+
   /** short-drama series: one project per episode (format drama-episode, parent = the series) */
   async episodes(ctx) {
     const sb = ctx.decision('series')?.output; if (!sb) throw new Error('no series bible');
@@ -320,7 +382,7 @@ export const AUTO = {
   async source(ctx) {
     const r = rc(ctx), src = r.source ? path.join(ctx.adDir, r.source) : null;
     if (!src || !fs.existsSync(src)) throw new Error('upload the source video first (source/…)');
-    const a = await AN.analyse(ctx.cfg, src, path.join(ctx.adDir, 'source', 'analysis'), { slug: ctx.slug, signal: ctx.signal, whisper: ctx.cfg.analyse?.whisper !== false });
+    const a = await AN.analyse(ctx.cfg, src, path.join(ctx.adDir, 'source', 'analysis'), { slug: ctx.slug, signal: ctx.signal, whisper: ctx.cfg.analyse?.whisper !== false, maxSeconds: fmt(ctx) === 'edit' ? 1800 : AN.MAX_SOURCE_S });
     ctx.files('source', [...a.sheets.map(f => `source/${f}`), 'source/analysis/analysis.json']);
     return { summary: `${a.shots.length} shots in ${a.duration.toFixed(1)} s (${a.rhythm.cutsPer10s} cuts per 10 s), ${a.audio.words} words, motion ${a.motion.mean}`, shots: a.shots.length, duration: a.duration };
   },

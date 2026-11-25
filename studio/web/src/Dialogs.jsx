@@ -15,6 +15,7 @@ const FORMATS = [
   ['explainer', 'Explainer', 'A topic video, no product: one question answered step by step in any of our styles (free).'],
   ['3d-skit', '3D skit', 'Voxel characters talk it through on a dark stage, step by step (three.js, free).'],
   ['3d-explainer', '3D explainer', 'One continuous camera through a world built layer by layer, with cutaways (Blender, free).'],
+  ['edit', 'Edit a video', 'Your footage, edited like the tutorial: pauses cut, word captions in the style of your reference reels, music, 9:16.'],
   ['recreate', 'Recreate a video', 'Upload a video and references; it is analysed and rebuilt with our tools or Genjutsu.'],
 ];
 export function NewAd({ meta, onClose, onMade }) {
@@ -28,8 +29,8 @@ export function NewAd({ meta, onClose, onMade }) {
       if (dr && !f.product.trim()) throw new Error('Write the story idea first');
       const brief = dr ? { idea: f.product, episodes: +f.episodes, seconds: +f.seconds, genre: f.genre, ...(f.style ? { style: f.style } : {}), ...(f.customStyle ? { customStyle: f.customStyle } : {}) } : ex ? { topic: f.product, seconds: +f.seconds, aspect: f.aspect, ...(f.style ? { style: f.style } : {}) } : { fictional: f.fictional, seconds: +f.seconds, aspect: f.aspect, ...(f.product ? { product: f.product } : {}), ...(f.style ? { style: f.style } : {}) };
       if (ex && !f.product.trim()) throw new Error('Write the topic first');
-      const rec = f.format === 'recreate';
-      const p = await api.create({ name: f.name || (rec ? 'Recreated video' : dr ? f.product.slice(0, 40) : ex ? f.product.slice(0, 40) : f.fictional ? 'Fictional product ad' : f.product), brief, mode: f.mode, autoGates: f.autoGates, decider: f.decider || null, format: f.format, ...(rec ? { start: false } : {}) });
+      const rec = f.format === 'recreate' || f.format === 'edit';
+      const p = await api.create({ name: f.name || (f.format === 'edit' ? 'Edit' : rec ? 'Recreated video' : dr ? f.product.slice(0, 40) : ex ? f.product.slice(0, 40) : f.fictional ? 'Fictional product ad' : f.product), brief, mode: f.mode, autoGates: f.autoGates, decider: f.decider || null, format: f.format, ...(rec ? { start: false } : {}) });
       onMade(p.slug);
     } catch (e) { alert(e.message); setBusy(false); }
   };
@@ -46,11 +47,12 @@ export function NewAd({ meta, onClose, onMade }) {
           <label style={{ flex: 2 }}>Genre and tone<input type="text" value={f.genre} onChange={e => set('genre', e.target.value)} placeholder="e.g. mystery, tense, a little funny" /></label></div>
         <label>Your own style (optional: describe it; Claude maps it onto the closest kit style + colours, and writes a Seedance look)<input type="text" value={f.customStyle} onChange={e => set('customStyle', e.target.value)} placeholder="e.g. rainy neon city, muted teal and magenta, film grain" /></label>
       </>}
-      {!['recreate', 'explainer', 'drama-series'].includes(f.format) && <><label className="tog" style={{ display: 'flex', marginBottom: 12 }}><input type="checkbox" checked={f.fictional} onChange={e => set('fictional', e.target.checked)} />Fictional product (Claude invents an honest one)</label>
+      {f.format === 'edit' && <p style={{ color: 'var(--muted)', fontSize: 13 }}>Next you upload the footage and 3-5 reference reels whose editing you like.</p>}
+      {!['recreate', 'explainer', 'drama-series', 'edit'].includes(f.format) && <><label className="tog" style={{ display: 'flex', marginBottom: 12 }}><input type="checkbox" checked={f.fictional} onChange={e => set('fictional', e.target.checked)} />Fictional product (Claude invents an honest one)</label>
       <label>{f.fictional ? 'Product idea (optional)' : 'Your product: what it is, who it is for, proof points'}<textarea rows={3} value={f.product} onChange={e => set('product', e.target.value)} placeholder={f.fictional ? 'e.g. something for slow afternoons' : 'Name, what it does, honest facts, price, where to buy'} /></label>
       </>}
       {f.format === 'recreate' && <p style={{ color: 'var(--muted)', fontSize: 13 }}>Next you upload the video and your reference images and say what changes (the characters, what they wear and carry, the product); the length follows the video.</p>}
-      {f.format !== 'recreate' && <div className="row">
+      {!['recreate', 'edit'].includes(f.format) && <div className="row">
         <label style={{ flex: 1 }}>Length<select value={f.seconds} onChange={e => set('seconds', e.target.value)}>{(f.format === 'explainer' ? [30, 45, 60, 90] : f.format === 'drama-series' ? [30, 35, 40, 45, 50] : [15, 20, 30]).map(s => <option key={s} value={s}>{s} s{f.format === 'drama-series' ? ' per episode' : ''}</option>)}</select></label>
         <label style={{ flex: 1 }}>Format<select value={f.aspect} onChange={e => set('aspect', e.target.value)}><option value="9:16">9:16 (+16:9 cut)</option><option value="16:9">16:9 (+9:16 cut)</option></select></label>
         {!f.format.startsWith('3d') ? <label style={{ flex: 2 }}>Style<select value={f.style} onChange={e => set('style', e.target.value)}><option value="">Claude chooses</option>{Object.entries(meta?.styles || {}).map(([k, v]) => <option key={k} value={k}>{v.split(':')[0]}</option>)}</select></label> : <span style={{ flex: 2, alignSelf: 'end', color: 'var(--muted)', fontSize: 13 }}>Drawn in the voxel 3D style</span>}

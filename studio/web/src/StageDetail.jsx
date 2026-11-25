@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { api, file } from './api.js';
 import { RecreateSource, AnalysisDecision } from './Recreate.jsx';
 import { SeriesBible, Episodes } from './Series.jsx';
+import { EditSource, EditDrafts } from './Edit.jsx';
 
 const STATUS = { skipped: 'not part of this format', offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
@@ -63,7 +64,10 @@ function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting, refres
   switch (id) {
     case 'series': return o ? <SeriesBible rec={rec} /> : <Pending x={x} />;
     case 'episodes': return <Episodes slug={slug} onOpen={onOpen} />;
-    case 'source': return <RecreateSource ad={ad} meta={meta} slug={slug} x={x} refresh={refresh} />;
+    case 'edit-style': return x.summary ? <div className="card"><h2>The edit style</h2><p>{x.summary}</p><a className="btn" href={file(slug, 'edit/style.md', bust)} target="_blank" rel="noreferrer">Open style.md</a></div> : <Pending x={x} />;
+    case 'edit-plan': return x.summary ? <div className="card"><h2>The edit plan</h2><p>{x.summary}</p></div> : <Pending x={x} />;
+    case 'edit-render': return <EditDrafts ad={ad} slug={slug} x={x} bust={bust} refresh={refresh} />;
+    case 'source': if (ad.project.format === 'edit') return <EditSource ad={ad} slug={slug} x={x} refresh={refresh} />; return <RecreateSource ad={ad} meta={meta} slug={slug} x={x} refresh={refresh} />;
     case 'analysis': return o ? <AnalysisDecision rec={rec} slug={slug} /> : <Pending x={x} />;
     case 'world': return (x.outputs || []).length ? <>
       <div className="card"><h2>The world, one still per beat</h2><p style={{ color: 'var(--muted)', fontSize: 13 }}>{x.summary}</p>

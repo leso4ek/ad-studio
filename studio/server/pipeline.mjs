@@ -267,7 +267,7 @@ export function markStale(slug, id, only = null) {
 export async function redo(slug, id, { note } = {}) {
   if (jobs.has(slug)) throw new Error('this ad is running: cancel first');
   if (CFG.memory?.enabled !== false) MEM.logSignal({ ad: slug, stage: id, kind: 'redo', value: 1, note: note || 'redo without a note' });
-  setStage(slug, id, { status: 'idle' });
+  setStage(slug, id, { status: 'idle', note: note || null });   // automatic stages (the edit plan) read their redo note here
   markStale(slug, id);
   runFrom(slug, id, { note }).catch(e => emit('job', { slug, kind: 'error', text: e.message }));
 }
@@ -280,16 +280,17 @@ export const decideFor = (slug, stage, prompt, schema, signal, opts) => decide(s
 
 /** recreate: store the upload (video, reference images) under ads/<slug>/source/ and update project.recreate */
 export function saveSource(slug, { kind, name, buf, label, role }) {
-  const dir = path.join(adDir(slug), 'source', kind === 'video' ? '' : 'refs'); fs.mkdirSync(dir, { recursive: true });
+  const dir = path.join(adDir(slug), 'source', kind === 'video' ? '' : kind === 'refvideo' ? 'refvideos' : 'refs'); fs.mkdirSync(dir, { recursive: true });
   const ext = (path.extname(name || '').toLowerCase() || (kind === 'video' ? '.mp4' : '.png')).replace(/[^.a-z0-9]/g, '');
-  if (kind === 'video' && !['.mp4', '.mov', '.webm', '.m4v'].includes(ext)) throw new Error('upload an MP4, MOV or WebM video');
-  if (kind !== 'video' && !['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) throw new Error('reference images must be PNG, JPEG or WebP');
-  const base = kind === 'video' ? `original${ext}` : `${slugify(path.basename(name || 'ref', path.extname(name || ''))).slice(0, 32) || 'ref'}-${Date.now().toString(36)}${ext}`;
+  if (kind !== 'ref' && !['.mp4', '.mov', '.webm', '.m4v'].includes(ext)) throw new Error('upload an MP4, MOV or WebM video');
+  if (kind === 'ref' && !['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) throw new Error('reference images must be PNG, JPEG or WebP');
+  const base = kind === 'video' ? `original${ext}` : kind === 'refvideo' ? `ref-${Date.now().toString(36)}${ext}` : `${slugify(path.basename(name || 'ref', path.extname(name || ''))).slice(0, 32) || 'ref'}-${Date.now().toString(36)}${ext}`;
   fs.writeFileSync(path.join(dir, base), buf);
   const rel = path.relative(adDir(slug), path.join(dir, base));
   return saveProject(slug, p => {
     p.recreate ||= { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {} };
-    if (kind === 'video') { p.recreate.source = rel; for (const id of ['source', 'analysis']) if (p.stages[id]) p.stages[id].status = 'idle'; }
+    if (kind === 'video') { p.recreate.source = rel; for (const id of ['source', 'analysis', 'edit-plan']) if (p.stages[id]) p.stages[id].status = 'idle'; }
+    else if (kind === 'refvideo') p.recreate.refVideos = [...(p.recreate.refVideos || []), rel].slice(-5);
     else p.recreate.refs = [...(p.recreate.refs || []), { file: rel, label: label || '', role: role || 'other' }].slice(-12);
   });
 }
@@ -300,7 +301,7 @@ export function patchRecreate(slug, patch) {
     if (patch.mode && !RECREATE_MODES.includes(patch.mode)) throw new Error('mode must be remake, transfer or mixed');
     if (patch.mode === 'transfer' && !(patch.rights ?? p.recreate.rights)) throw new Error('motion transfer reuses the footage: tick "I own this video or have the rights to it" first');
     if (patch.prompt) p.recreate.prompt = { ...(p.recreate.prompt || {}), ...patch.prompt };
-    if (patch.removeRef) p.recreate.refs = (p.recreate.refs || []).filter(r => r.file !== patch.removeRef);
+    if (patch.removeRef) { p.recreate.refs = (p.recreate.refs || []).filter(r => r.file !== patch.removeRef); p.recreate.refVideos = (p.recreate.refVideos || []).filter(f => f !== patch.removeRef); }
     if (patch.refLabel) p.recreate.refs = (p.recreate.refs || []).map(r => r.file === patch.refLabel.file ? { ...r, label: patch.refLabel.label ?? r.label, role: patch.refLabel.role ?? r.role } : r);
   });
 }

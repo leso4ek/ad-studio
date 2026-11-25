@@ -155,11 +155,11 @@ export async function transcribe(cfg, file, out, { signal } = {}) {
  * The full analysis of ads/<slug>/source/<video>. Writes source/analysis/{analysis.json, stills/, sheet_N.jpg, words.json}.
  * Returns the analysis object.
  */
-export async function analyse(cfg, src, outDir, { slug, signal, whisper = true } = {}) {
+export async function analyse(cfg, src, outDir, { slug, signal, whisper = true, maxSeconds = MAX_SOURCE_S } = {}) {
   const say = text => emit('engine', { slug, stage: 'source', engine: 'analyse', text });
   fs.mkdirSync(path.join(outDir, 'stills'), { recursive: true });
   const meta = await probe(src); say(`${meta.w}×${meta.h}, ${meta.fps} fps, ${meta.duration.toFixed(1)} s${meta.audio ? ', with audio' : ', silent'}`);
-  if (meta.duration > MAX_SOURCE_S + .5) throw new Error(`the video is ${meta.duration.toFixed(0)} s: upload at most ${MAX_SOURCE_S} s (trim it first)`);
+  if (meta.duration > maxSeconds + .5) throw new Error(`the video is ${meta.duration.toFixed(0)} s: upload at most ${maxSeconds} s (trim it first)`);
   const cuts = await detectCuts(cfg, src), shots = shotsFromCuts(cuts, meta.duration, { minShot: .5 });
   say(`${shots.length} shot(s) found (${cuts.length} scene changes)`);
   const g = await grayFrames(cfg, src), stats = motionStats(g.frames, g.w, g.h);

@@ -7,7 +7,9 @@ const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined 
 
 export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book', 'ad-voxel-3d'];
 // round 12: what an ad is made as, and how each shot is made
-export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-series', 'drama-episode'];
+export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-series', 'drama-episode', 'edit'];
+/** formats that are tools around real footage: only stages that name them run */
+export const TOOL_FORMATS = ['edit'];
 /** formats that sell nothing by default (a sponsor product stays optional) */
 export const VIDEO_FORMATS = ['explainer', 'drama-episode'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
@@ -209,4 +211,25 @@ export const world = S({
   notes: arr(str(), 0, 12), reason: str(),
 }, ['spec', 'script', 'beats', 'verdict', 'reason']);
 
-export const SCHEMAS = { analysis, world, topicBrief, seriesBible, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
+// the edit tool (the @viralex.aii workflow): a style from reference reels, then an edit decision list
+const CAPTION_FONTS = ['Archivo Black', 'Anton', 'Inter', 'Baloo 2', 'Fredoka', 'Space Mono', 'Josefin Sans'];   // the .ttf fonts in kit/fonts (libass reads ttf)
+const MOODS = ['warm', 'bouncy', 'jazzy', 'lofi', 'bright', 'tender'];
+export const editStyle = S({
+  caption: S({ font: { type: 'string', enum: CAPTION_FONTS }, sizePct: num('font size, % of frame height (4-8)'), yPct: num('vertical centre, % of height (55-75 keeps clear of the UI)'),
+    color: hex, outline: hex, outlinePx: num(), highlight: hex, wordsPerCaption: { type: 'integer', minimum: 1, maximum: 4 }, uppercase: { type: 'boolean' } }),
+  title: S({ font: { type: 'string', enum: CAPTION_FONTS }, sizePct: num(), yPct: num(), color: hex, box: str('#RRGGBBAA') }, []),
+  pace: S({ maxPause: num('longest pause kept, s (0.3-0.8)'), keepPauseAfterQuestion: num() }),
+  music: S({ mood: { type: 'string', enum: MOODS }, levelDb: num('-30…-16 dB under the voice'), use: { type: 'boolean' } }),
+  reframe: { type: 'string', enum: ['blur', 'crop', 'none'] },
+  styleMd: str('style.md: the exact values and the why, as the reference reels show them'), reason: str(),
+}, ['caption', 'pace', 'music', 'reframe', 'styleMd', 'reason']);
+export const editPlan = S({
+  keep: arr(S({ t0: num(), t1: num(), why: str() }, ['t0', 't1']), 1, 200),
+  emphasis: arr(str('a word to highlight'), 0, 30),
+  title: S({ text: str('a hook title for the first 1-2 s, ≤ 6 words, or ""'), t0: num(), t1: num() }, ['text']),
+  music: S({ use: { type: 'boolean' }, mood: { type: 'string', enum: MOODS }, levelDb: num() }, []),
+  reframe: { type: 'string', enum: ['blur', 'crop', 'none'] },
+  notes: arr(str('edit-notes.md lines: what was cut and why, doubtful words'), 0, 20), reason: str(),
+}, ['keep', 'emphasis', 'title', 'notes', 'reason']);
+
+export const SCHEMAS = { analysis, world, topicBrief, seriesBible, editStyle, editPlan, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
