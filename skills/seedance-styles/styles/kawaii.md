@@ -1,0 +1,43 @@
+# Kawaii (Anime and manga)
+<!-- generated from studio/styles/catalog/kawaii.json by studio/bin/catalog.mjs; edit the JSON -->
+
+**Looks like:** soft rounded forms with no sharp corners; minimal faces: dot eyes and a tiny mouth, placed low; pastel palette with cheerful motifs (stars, hearts, clouds, sparkles); objects and plants given small faces and personalities.
+**Best for:** character-led product ads where the product gets a face, gentle comfort and care stories, stationery, snacks and beauty, audiences who share cute content. **Products:** sweets, drinks, skincare, plant care, stationery, pet products; soft, friendly, caring brands.
+
+## STYLE block (paste verbatim into every shot prompt and every sheet prompt)
+Kawaii cute illustration in motion: every form is soft and rounded, with no sharp corners; faces are minimal, two small black dot eyes set wide and low and a tiny curved mouth, with pink blush ovals; outlines are thick, soft, rounded and dark brown rather than black; colour is a gentle pastel palette of peach, mint, butter yellow, lilac and sky blue on cream, with flat fills and a single very light shadow; cheerful motifs float in the space: small stars, clouds, hearts, sparkles; plants and objects may carry tiny faces; clean, simple, sweet compositions with lots of breathing room.
+
+## Rendering
+- Line: thick rounded dark-brown line with round caps, even weight
+- Shading: nearly flat: one very light shadow tone, blush ovals, tiny white highlight dots
+- Colour: pastel palette (peach, mint, butter, lilac, sky blue, cream); the product keeps its exact colours, softened only by the light, never recoloured
+- Texture: smooth, clean fills; optional faint paper grain
+- Lighting: soft, shadowless, cheerful daylight; no dramatic contrast
+
+## MOTION block
+Gentle, bouncy motion on twos: soft squash and stretch, little hops and wiggles, slow bobbing idle loops, motifs twinkling and floating upward; reactions are small and sweet (a happy squint, a little jump); nothing fast or sharp.
+
+## CAMERA habits
+Centred, symmetrical compositions with the subject in the middle; slow push-ins and gentle floating drifts; frontal staging; no aggressive angles or fast cuts.
+
+## Avoid (name these instances only when the shot is at risk)
+- detailed realistic faces with noses and irises
+- sharp corners and angular forms
+- harsh black outlines and deep shadows
+- dark or saturated colour palettes
+- hearts and stars turning into letters or emoji
+
+## Element sheets for consistency
+Each character sheet shows the rounded figure front, three-quarter and side with the dot-eye placement exact, in the pastel palette with a colour chip row; any object or plant with a face gets its own small sheet (face position, expressions); the product keeps its exact proportions and colours and is shown with and without a face.
+
+## Where Seedance goes wrong in this style
+Seedance adds noses, irises and more detail to minimal faces as the clip goes on, and moves dot eyes around; keep the sheet in every shot. If the product is given a face, the model may also redesign its shape or label; bind the product reference strictly and add the face only as two dots and a mouth on the label-free part. Floating motifs can multiply into clutter; name how many.
+
+## Models
+Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2.5` (draft on Flash 480p, final on 2.5 720p with the same prompt, references and seed).
+
+## Example still (our own generation)
+Prompt: Kawaii cute illustration still: a soft rounded woman in her thirties with a dark bun and an orange top, dot eyes set low, a tiny smile and pink blush ovals, cradles a small green glass bottle with a yellow cap; a pastel sunny kitchen of rounded peach and mint shapes, beside a droopy fern on the windowsill with a tiny sad dot-eyed face, two small stars and a cloud floating above; thick rounded dark-brown outlines, flat pastel colour, lots of breathing room. Vertical 9:16. No text.
+
+## Sources (look, don't copy)
+- [Kling AI · Cartoon Styles for AI (Kawaii Style)](https://kling.ai/blog/cartoon-styles-for-ai)

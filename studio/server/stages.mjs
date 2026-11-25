@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { SCHEMAS, STYLES, SHOT_SIZES, CAM_MOVES } from './schemas.mjs';
 import os from 'os';
+import * as CATALOG from './catalog.mjs';
 import { readJSON, writeJSON, run } from './util.mjs';
 import * as render from './engines/render.mjs';
 import * as audio from './engines/audio.mjs';
@@ -63,7 +64,8 @@ ${STYLES.map(s => `- ${s}: ${STYLE_LINES[s]}`).join('\n')}
 Brief: ${J(dec(ctx, 'brief'))}
 Story emotion: ${dec(ctx, 'story')?.emotion}; audience: ${J(dec(ctx, 'brief')?.audience)}
 ${ctx.project.userBrief?.style ? `The user prefers ${ctx.project.userBrief.style}; follow it unless it clearly hurts the ad (then say why).` : ''}
-Pick the style that fits the product and the emotion; give one honest reason and why not for the others you considered.` },
+Pick the style that fits the product and the emotion; give one honest reason and why not for the others you considered.
+Also name seedanceStyle: the catalogue look for the AI-video (Seedance) route of the same ad, from: ${CATALOG.load().map(e => `${e.slug} (${e.traits[0]})`).join('; ')}.` },
 
   { id: 'direction', n: 7, title: 'Direction', kind: 'decide', schema: 'direction', check: 'direction',
     prompt: ctx => `Stage 7 · Direct the ad (skill §Direction; method from the cinematic-director skill).

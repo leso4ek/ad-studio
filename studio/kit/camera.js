@@ -82,13 +82,21 @@ export function directCamera(shot, lt, { W, H, stage, L }) {
   return keepOnSet(cam, { W, H }, !!cam.whip);
 }
 
-/** Never show past the edge of the drawn set: clamp the offsets so the visible world stays inside [0,W]×[0,H]. */
+/** Never show past the edge of the drawn set, on any parallax plane. style2d draws the far, mid and front planes with
+ * zoom' = 1 + (zoom - 1)·d and offset px·d (d = .55, .75, .8, 1): clamp px/py so every plane still covers the frame. */
 export function keepOnSet(cam, { W, H }, loose = false) {
-  // screen s shows world P = (s - cx)/z + cx - px*W; require P(0) >= 0 and P(W) <= W (same for y)
-  const z = cam.zoom, slack = loose ? .25 : 0;
-  const pxMin = ((W - cam.cx) / z + cam.cx - W) / W - slack, pxMax = ((-cam.cx) / z + cam.cx) / W + slack;
-  const pyMin = ((H - cam.cy) / z + cam.cy - H) / H, pyMax = ((-cam.cy) / z + cam.cy) / H;
-  return { ...cam, px: clamp(cam.px, Math.min(pxMin, pxMax), Math.max(pxMin, pxMax)), py: clamp(cam.py, Math.min(pyMin, pyMax), Math.max(pyMin, pyMax)) };
+  const slack = loose ? .25 : 0;
+  const range = (c, p, size) => {
+    let lo = -Infinity, hi = Infinity;
+    for (const d of [.55, .75, .8, 1]) {
+      const z = 1 + (cam.zoom - 1) * d;
+      // world at screen 0 is (0 - c)/z + c - p*d*size >= 0, world at screen size is (size - c)/z + c - p*d*size <= size
+      hi = Math.min(hi, ((-c) / z + c) / (d * size) + slack);
+      lo = Math.max(lo, ((size - c) / z + c - size) / (d * size) - slack);
+    }
+    return lo <= hi ? clamp(p, lo, hi) : (lo + hi) / 2;
+  };
+  return { ...cam, px: range(cam.cx, cam.px, W), py: range(cam.cy, cam.py, H) };
 }
 
 /** Shots per 10 s, and other numbers the bible checks use. */

@@ -1,0 +1,31 @@
+{
+  "requirement": "A 20-second vertical paper cut-out video ad for Sprigly, a new liquid houseplant feed dosed with a measuring cap, appears between other short videos in the TikTok and Instagram Reels feeds of adults who keep houseplants, many watching with the sound off and captions on. Predict how these viewers react on social media: whether they stop scrolling in the first two seconds, whether they watch to the end, whether they remember the name Sprigly afterwards, whether they believe the simple claims (one capful per litre, every two weeks, with seaweed extract), whether they want to try or buy it, what they would comment or ask, and which of the three openings (A 'Sunday standoff.', B 'How much is a bit?', C 'Day 14. Still guessing.') would hold attention best.",
+  "segments": [
+    {
+      "name": "Guilty plant owners",
+      "who": "Adults in their 20s and 30s renting small flats with three to eight houseplants, who love them but have never fed them properly.",
+      "mindset": "Scroll fast in the evening; stop for anything that names a problem they feel guilty about, like a droopy plant. Doubt: does feed actually help, or is it light and watering?"
+    },
+    {
+      "name": "Plant hobbyists",
+      "who": "Keen indoor gardeners with large collections who follow plant-care accounts and already use fertiliser.",
+      "mindset": "Stop for plant content but judge it hard; they look for the NPK numbers and dose. Doubt: why switch from what they already use, and what does it cost per litre?"
+    },
+    {
+      "name": "New plant parents",
+      "who": "People who bought their first one or two plants this year, often as decor, and are anxious about killing them.",
+      "mindset": "Save and share simple how-to videos; a clear rule like 'one capful' appeals. Doubt: is this another thing they need to buy?"
+    },
+    {
+      "name": "Practical shoppers",
+      "who": "Busy adults who buy houseplant supplies at the supermarket or online when something looks wrong.",
+      "mindset": "Skip most ads in under a second unless the product is obvious and the price feels fair. Doubt: what is it, where do they get it, and how much is it?"
+    },
+    {
+      "name": "Ad-weary scrollers",
+      "who": "Viewers with no strong interest in plants who see the ad by chance and dislike sponsored posts.",
+      "mindset": "Swipe away from anything that looks like an ad; might stay only for a charming visual or a joke. Doubt: why is this in their feed at all?"
+    }
+  ],
+  "reason": "Four segments match the brief's audience at different levels of skill and interest, and one indifferent group shows whether the ad holds attention beyond the target."
+}

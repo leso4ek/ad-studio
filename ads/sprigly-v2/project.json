@@ -1,0 +1,309 @@
+{
+  "slug": "sprigly-v2",
+  "title": "Sprigly v2 · directed",
+  "created": "2026-11-23T17:58:27.005Z",
+  "updated": "2026-11-25T07:48:44.723Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "userBrief": {
+    "fictional": true,
+    "seconds": 20,
+    "aspect": "9:16"
+  },
+  "stages": {
+    "brief": {
+      "status": "done",
+      "started": "2026-11-23T17:58:31.986Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "claude",
+      "finished": "2026-11-23T17:59:05.897Z",
+      "ms": 33911,
+      "summary": "Sprigly: A liquid houseplant feed with seaweed extract, dosed with a measuring cap.",
+      "warnings": [],
+      "result": {},
+      "approvedAt": "2026-11-23T17:59:12.148Z"
+    },
+    "premises": {
+      "status": "done",
+      "started": "2026-11-23T17:59:12.149Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T17:59:42.192Z",
+      "ms": 30043,
+      "summary": "Every Sunday Juno and her droopy plant have a silent standoff over the watering can; one capful ends the guessing for both of them.",
+      "warnings": [],
+      "result": {}
+    },
+    "hooks": {
+      "status": "done",
+      "started": "2026-11-23T17:59:42.193Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:05.224Z",
+      "ms": 23031,
+      "summary": "lead A: \"Sunday standoff.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-23T18:00:05.225Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:52.290Z",
+      "ms": 47065,
+      "summary": "relief · turn: Sprigly's measuring cap turns her guess into one clear step (one capful per litre, every two weeks), so feeding stops being a worry.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "done",
+      "started": "2026-11-23T18:00:52.290Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:00:53.294Z",
+      "ms": 1004,
+      "summary": "reveal at 8.6s · tag \"One capful. No guessing.\"",
+      "warnings": [],
+      "result": {}
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-23T18:00:53.294Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-23T18:01:03.307Z",
+      "ms": 10013,
+      "summary": "ad-paper-cutout",
+      "warnings": [],
+      "result": {},
+      "approvedAt": "2026-11-23T18:02:23.282Z"
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-25T07:40:54.801Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T07:41:02.817Z",
+      "ms": 8016,
+      "summary": "10 shots, 7 voice lines, 20s",
+      "warnings": [],
+      "result": {}
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-25T07:41:02.818Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_0.72.jpg",
+        "frames/f_2.04.jpg",
+        "frames/f_3.32.jpg",
+        "frames/f_4.76.jpg",
+        "frames/f_6.06.jpg",
+        "frames/f_7.16.jpg",
+        "frames/f_9.04.jpg",
+        "frames/f_10.66.jpg",
+        "frames/f_12.66.jpg",
+        "frames/f_15.38.jpg",
+        "frames/f_18.jpg",
+        "frames/sheet.jpg",
+        "frames/w_0.72.jpg",
+        "frames/w_7.16.jpg",
+        "frames/w_18.jpg"
+      ],
+      "finished": "2026-11-25T07:41:19.575Z",
+      "ms": 16757,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "notes": [
+            {
+              "shot": "s6",
+              "issue": "The 'surprised' pose throws both arms up, bigger than the direction's 'small lift'.",
+              "fix": "Kept: it reads as comic timing at 1.1 s."
+            },
+            {
+              "shot": "s9",
+              "issue": "The 'spring and summer' subline brushes the top of Juno's bun.",
+              "fix": "Kept: still legible over the window; a next cut can frame her lower."
+            }
+          ],
+          "changed": false,
+          "reason": "Every frame shows its planned size and subject, cards now sit inside the 9:16 safe zone, the bottle keeps the right side of the sill, and the name is in frame with the rule at the reveal."
+        }
+      }
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-25T07:41:19.576Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-25T07:41:19.582Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/cues.json",
+        "out/sprigly-v2.srt"
+      ],
+      "finished": "2026-11-25T07:41:32.612Z",
+      "ms": 13036,
+      "summary": "7 lines by kokoro; speech check: pass",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 2.893,
+          "l02": 1.993,
+          "l03": 1.322,
+          "l04": 3.124,
+          "l05": 1.923,
+          "l06": 1.058,
+          "l07": 2.153
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | Every Sunday, Juneau and her fern have a standoff. → Every Sunday, Juneau and her fern have a standoff. \nOK   l02 | She waters, she guesses, she hopes. → She waters, she guesses, she hopes. \nOK   l03 | The fern still sulks. → The fern still sulks. \nOK   l04 | Then she reads the Sprigly cap, one cap full per liter. → Then she reads the Sprigly cap, one cap full per liter. \nOK   l05 | Every two weeks, spring and summer. → Every two weeks, spring and summer. \nOK   l06 | Stand off over. → Stand off over. \nOK   l07 | Sprigly, one cap full, no guessing. → Sprigly, one cap full no guessing. \nmismatches: 0 (lang=en, model=base)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "done",
+      "started": "2026-11-25T07:41:32.613Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-25T07:41:49.161Z",
+      "ms": 16548,
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  carry:hook         at 0.00s   15 chars  need 2.50s  got 2.60s  \"Sunday\\nstandoff.\"\nOK  carry:c1           at 2.60s   14 chars  need 2.43s  got 2.80s  \"A splash?\\nA glug?\"\nOK  carry:c3           at 7.60s   18 chars  need 2.70s  got 3.52s  \"One capful\\nper litre.\"\nOK  carry:c4           at 11.12s   14 chars  need 2.43s  got 2.60s  \"Every two weeks.\"\nOK  s9:c4b             at 11.12s   15 chars  need 2.50s  got 2.60s  \"spring and summer\"\nOK  carry:c5           at 13.72s   14 chars  need 2.43s  got 2.80s  \"Sunday, solved.\"\nOK  end:logo           at 16.68s    7 chars  need 1.97s  got 3.32s  \"Sprigly\"\nOK  end:line           at 16.96s   21 chars  need 2.90s  got 3.04s  \"One capful. No guessing.\"\nOK  end:cta            at 17.28s   13 chars  need 2.37s  got 2.72s  \"250 ml makes 50 L\"\n--  s1:label           at 0.00s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s5:label           at 5.40s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s7:label           at 7.60s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s9:label           at 11.12s  passing (pass: true), not timed  \"SPRIGLY\"\n--  s10:label          at 13.72s  passing (pass: true), not timed  \"SPRIGLY\"\n(node:9721) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
+    },
+    "final": {
+      "status": "done",
+      "started": "2026-11-25T07:41:49.162Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/sprigly-v2-9x16.mp4",
+        "out/sprigly-v2-16x9.mp4",
+        "out/sprigly-v2-hookB.mp4",
+        "out/sprigly-v2-hookC.mp4",
+        "out/sprigly-v2-poster.jpg",
+        "out/sprigly-v2.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-25T07:47:34.392Z",
+      "ms": 345230,
+      "summary": "4 file(s): sprigly-v2-9x16.mp4, sprigly-v2-16x9.mp4, sprigly-v2-hookB.mp4, sprigly-v2-hookC.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/sprigly-v2/out/sprigly-v2-9x16.mp4\n    I:         -14.0 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.6 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/sprigly-v2/out/sprigly-v2-16x9.mp4\n    I:         -14.0 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.6 dBFS"
+          },
+          "hookB": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          },
+          "hookC": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 20,
+            "audio": true
+          }
+        }
+      }
+    },
+    "scorecard": {
+      "status": "done",
+      "started": "2026-11-25T07:47:34.392Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "ms": 46075,
+      "finished": "2026-11-25T07:48:20.467Z",
+      "summary": "30/35 · A directed cut: varied sizes, the pour shown and the name married to the rule fix v1's two biggest gaps; the character is still generic.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
+    },
+    "audience": {
+      "status": "running",
+      "started": "2026-11-25T07:48:44.723Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-25T07:28:22.844Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-25T07:29:15.922Z",
+      "ms": 53078,
+      "summary": "10 shots · One capful, tipped into the can: the guessing ends. The proof is the pour itself, seen in close-up, with the name on the cap's bottle.",
+      "warnings": [],
+      "result": {}
+    }
+  }
+}

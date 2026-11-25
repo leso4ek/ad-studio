@@ -1,0 +1,28 @@
+{
+  "slug": "classic-cartoon",
+  "name": "Classic Cartoon",
+  "family": "traditional-2d",
+  "traits": ["rounded, pear- and bean-shaped characters built from simple volumes", "clean dark outlines that swell on curves and thin at the tips", "big readable expressions with eyes and mouths pushed past real proportions", "painted backgrounds softer and less outlined than the characters"],
+  "bestFor": ["friendly mascots", "family and household products", "comic mishaps with a clear before and after", "short gag-driven hooks"],
+  "suits": "snacks, cleaning and kitchen products, pet supplies, toys; warm, cheerful brands that can take a joke",
+  "stylePara": "Traditional hand-drawn 2D cartoon: characters are built from round, soft volumes with clear silhouettes, drawn with a dark brown-black ink line that swells on curves and tapers at the ends; flat cel colour with one soft-edged shadow tone per surface and a small white highlight on eyes and glossy objects; heads slightly large, hands simplified with four fingers, eyes big and expressive; backgrounds are painted in gouache with soft edges and no outlines, lighter and less saturated than the characters so the figures pop; warm, clear daylight palette; it looks drawn and painted by hand, frame by frame, on paper and cel.",
+  "rendering": {
+    "line": "one even dark ink line with pressure taper, thicker on the outside contour and under forms, thinner on inner details; no line on backgrounds",
+    "shading": "flat base colour plus one soft shadow shape on the side away from the light; tiny specular dots on eyes, noses and glass",
+    "colour": "warm, saturated character colours on slightly muted painted backgrounds; limited palette per character, repeated exactly; product colours exact",
+    "texture": "faint paper grain and gouache brush texture in backgrounds only; characters clean and flat",
+    "lighting": "simple, readable key light from one side; mood carried by background colour rather than complex light"
+  },
+  "motion": "Hand-drawn timing on twos, with snappy key poses, clear anticipation before every action and overshoot after it; squash and stretch on faces and bodies; one or two frame smears on fast moves; moving holds where the character keeps breathing between beats; mouths use a small set of drawn shapes.",
+  "camera": "Mostly flat staging like a stage seen from the stalls: medium and full shots, characters in profile or three-quarter; trucks across painted backgrounds, gentle push-ins on reactions; no rotating 3D camera moves.",
+  "avoid": ["smooth CG interpolation between poses", "3D shading and rim lights on the characters", "photoreal skin or hair strands", "outlines drawn around background objects", "scribbled fake lettering on jars and signs"],
+  "sheets": "Each character sheet is a hand-drawn model sheet on off-white paper: front, three-quarter, side and back in the same line weight and flat colours, plus three expressions (neutral, surprised, delighted); the product is drawn as a simplified cartoon prop that keeps its exact silhouette, cap and label colours.",
+  "risk": "Seedance tends to smooth the timing into soft 3D-like motion and add volumetric shading to faces; repeat 'hand-drawn on twos, flat cel colour with one shadow tone' in MOTION and keep clips 4-8 s. Expressions may change the face shape between shots, so send the model sheet with every shot.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Hand-drawn 2D cartoon still: a round, friendly woman in her thirties with a dark bun and an orange top, drawn in a tapered dark ink line with flat cel colours and one soft shadow tone, holds up a small green glass bottle with a yellow cap and a white highlight on the glass; she stands in a sunny gouache-painted kitchen with soft unlined edges, beside a droopy cartoon fern on the windowsill whose leaves sag comically; warm daylight palette, big expressive eyes, clear silhouette. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Classic Cartoon Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

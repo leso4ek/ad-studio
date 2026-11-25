@@ -1,0 +1,49 @@
+{
+  "slug": "pop-art",
+  "name": "Pop Art",
+  "family": "comic-graphic",
+  "traits": [
+    "flat saturated blocks of primary and fluorescent colour",
+    "enlarged halftone dots and line screens instead of shading",
+    "off-register silkscreen layers",
+    "repeated iconic forms"
+  ],
+  "bestFor": [
+    "product-as-icon reveals",
+    "fast, rhythmic hooks",
+    "bold launch and limited-edition ads"
+  ],
+  "suits": "packaged consumer goods with a strong shape and colour (drinks, snacks, cosmetics); loud, confident, fun brands",
+  "stylePara": "Pop-art print look: flat saturated blocks of primary and fluorescent colour, red, yellow, cyan and hot pink, divided by thick black outlines; shading made only of enlarged halftone dots in one or two sizes and diagonal line screens, never smooth gradients; slightly off-register silkscreen layers, so colour slips a little past the line; flat graphic backgrounds of solid colour or repeating dots and stripes; faces simplified to a few bold shapes with glossy high-contrast lips and eyes; objects presented as bold isolated icons; the product is celebrated like an icon.",
+  "rendering": {
+    "line": "thick uniform black outlines, simplified contours",
+    "shading": "halftone dots and diagonal line screens in flat tones; no gradients",
+    "colour": "primary and fluorescent flat colours with hard contrasts, deliberate off-register; product colours exact as the anchor",
+    "texture": "silkscreen ink and printed dot screens on smooth paper",
+    "lighting": "no naturalistic lighting: light is expressed as a flat lighter block or a dot screen"
+  },
+  "motion": "Graphic and rhythmic: snaps on the beat, short held poses on fours with sudden jumps, colour-swap loops where the same frame repeats in new palettes; very few in-betweens; the dot screen stays fixed and does not swim with the movement.",
+  "camera": "Flat frontal compositions and centred close-ups; static frames and graphic zoom-punches; repetition grids are built in the edit.",
+  "avoid": [
+    "halftone dots swimming or scaling during motion",
+    "soft gradient shading replacing dot screens",
+    "word bursts and onomatopoeia with fake text",
+    "photographic skin on faces",
+    "real packaging logos in a repeated grid"
+  ],
+  "sheets": "Characters as a bold front and three-quarter portrait in the print style plus a flat colour-swatch strip; the product as a centred icon on a solid colour with its exact shape and colours; one palette-variant version of the product to test repetition grids.",
+  "risk": "Halftone texture is a screen pattern that Seedance redraws every frame, so dots crawl and buzz; keep motion small, clips 3-5 s, and write 'the dot screen is fixed and does not move'. It also adds word bursts; ban them in NO TEXT. Build repeated grids and colour swaps in the edit from one good clip.",
+  "models": {
+    "sheets": "bytedance-seed/seedream-5-5",
+    "video": "bytedance/seedance-2.5"
+  },
+  "example": {
+    "prompt": "Pop-art print still: a woman in her thirties with a dark bun and an orange top, simplified to bold shapes with thick black outlines and glossy high-contrast lips, holds a small green glass bottle with a yellow cap up like an icon, in a sunny kitchen of flat yellow and cyan blocks; a droopy fern on the windowsill is shaded with enlarged halftone dots; red diagonal line screens in the shadows, slightly off-register silkscreen colour, solid hot-pink wall. Vertical 9:16. No text."
+  },
+  "sources": [
+    {
+      "title": "Kling AI · Cartoon Styles for AI (Pop Art Style)",
+      "url": "https://kling.ai/blog/cartoon-styles-for-ai"
+    }
+  ]
+}

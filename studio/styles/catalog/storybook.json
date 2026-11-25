@@ -1,0 +1,28 @@
+{
+  "slug": "storybook",
+  "name": "Storybook",
+  "family": "handcrafted",
+  "traits": ["whimsical ink linework with slightly exaggerated proportions", "simplified rounded shapes and big readable silhouettes", "painterly gouache and coloured-pencil textures", "expressive backgrounds that carry the mood of the page"],
+  "bestFor": ["family and bedtime moments", "origin stories and fables", "products for children and parents", "a narrator reading a tale aloud"],
+  "suits": "family, food, toy, book, bedding and gift products; warm, playful, trustworthy brands",
+  "stylePara": "Hand-illustrated picture-book art: characters with big heads, small hands and rounded simplified bodies drawn in a warm, wobbly ink line; colour laid in opaque gouache with dry-brush edges and coloured-pencil hatching on top for texture; backgrounds painted more loosely than the figures, their colour and shapes bending to the mood, with gently curved walls and leaning furniture; a soft vignette darkens the corners like a printed page; matte surfaces, no gloss; light is warm and painted in, with hand-drawn rim light on the characters.",
+  "rendering": {
+    "line": "warm dark-brown ink line of varied weight, a little wobbly, heavier at the bottom of shapes; interior details drawn in fine pencil",
+    "shading": "two painted tones per colour plus pencil hatching in the shadows; no smooth rendering",
+    "colour": "a harmonious picture-book palette of warm ochres, soft reds and sage greens, with one saturated accent colour per scene; product colours exact",
+    "texture": "gouache dry-brush, coloured-pencil grain, visible paper tooth, slight print vignette",
+    "lighting": "warm painted light with a hand-drawn rim; the background colour shifts to show mood (golden for comfort, blue for worry)"
+  },
+  "motion": "Animated on twos with a gentle squash and stretch and clear poses held for a beat; secondary motion in hair and leaves is soft and slow; the ink line boils very slightly between drawings; background plates stay still or move as flat layers like a pop-up page.",
+  "camera": "Framed like a book spread: wide establishing shots, slow lateral pans across a painted plate, gentle push-ins on reactions; parallax in two or three flat layers; no handheld or fast whip moves.",
+  "avoid": ["glossy 3D rendering of the characters", "realistic human proportions and skin pores", "smooth airbrushed backgrounds", "printed words on book covers, signs or packaging", "eyes and face shapes that change between shots"],
+  "sheets": "A character sheet in the same ink and gouache: front, three-quarter and side plus two expressions, with the head-to-body ratio marked so it does not drift; the place sheet is one painted wide and one detail view; the product is painted in its exact colours with the label kept as plain shapes.",
+  "risk": "Seedance tends to turn storybook characters into soft 3D family-film figures within a few seconds and to fill bookshelves and signs with fake lettering; repeat 'flat painted gouache, ink line, no 3D' in STYLE and MOTION, keep text off walls, and send a character sheet in every shot because the big-head proportion drifts.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Picture-book illustration still: a rounded, big-headed woman in her thirties with a dark bun and an orange top, drawn in a warm wobbly brown ink line, holds up a small green glass bottle with a yellow cap; a sunny kitchen painted in opaque gouache with gently leaning cupboards and golden window light, a droopy fern on the windowsill with coloured-pencil hatching in its shadows; soft page vignette, matte colours. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Storybook Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "clay-animation",
+  "name": "Clay Animation",
+  "family": "3d-stopmotion",
+  "traits": ["hand-moulded plasticine figures with visible thumbprints and tool marks", "miniature practical sets of felt, card and painted wood", "soft studio light from small practical lamps", "stepped, slightly jittery motion"],
+  "bestFor": ["mascots", "food and kitchen products", "playful family scenes", "anything that benefits from feeling handmade"],
+  "suits": "small physical products (bottles, jars, snacks, toys); warm, funny, homely brands",
+  "stylePara": "Stop-motion claymation: every character and prop is hand-moulded plasticine with visible fingerprints, slight seams and tool marks; sets are miniature practical builds of felt, painted card and wood, lit by small warm practical lamps with soft shadows; shallow depth of field like a macro lens on a tabletop set; colours are saturated but matte, never glossy; the whole film looks physically made and photographed frame by frame.",
+  "rendering": {
+    "line": "no outlines: forms read by modelling and shadow",
+    "shading": "real soft shadows from small lamps, gentle contact shadows under every object",
+    "colour": "matte saturated clay colours, slightly uneven mixing; product colours exact",
+    "texture": "thumbprints, seams, tiny dust and lint, felt fibres, card edges",
+    "lighting": "one warm key practical plus a soft fill; miniature scale shown by shallow focus"
+  },
+  "motion": "Animated on twos in small stepped jumps with a faint frame-to-frame boil in the clay surface; mouths are replacement shapes; squash and stretch is physical, not elastic.",
+  "camera": "Locked-off tabletop camera or a slow motorised slider; macro focus pulls; no impossible flying moves.",
+  "avoid": ["smooth CG interpolation", "glossy plastic or rubber surfaces", "perfectly symmetrical faces", "photoreal human skin", "printed text on clay props"],
+  "sheets": "Each character sheet shows front, three-quarter and side on a grey card backdrop, with the clay colours and the thumbprint texture visible; the product is a clay or real miniature replica with its exact label colours.",
+  "risk": "Seedance drifts to smooth 3D when the clip is long; repeat 'stepped stop-motion timing, on twos' in MOTION and keep clips 4-8 s.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Stop-motion claymation still: a plasticine woman in her thirties with a dark bun and an orange jumper holds a small green glass bottle with a yellow cap, standing in a miniature felt-and-card kitchen beside a droopy plasticine fern on the windowsill; warm practical lamp light, shallow depth of field, visible thumbprints, matte colours. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Clay Animation Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

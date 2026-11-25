@@ -3,6 +3,7 @@
 //   ads/<slug>/production/plan.json      the board
 //   ads/<slug>/production/previz/<shot>.mp4, takes/<shot>_tNN.mp4, assets/<id>_N.png, blender/<shot>/...
 // Routes: 'seedance' (OpenRouter, previz as motion reference) · 'kit' (code-drawn, free) · 'blender' (3D render, free)
+import * as CATALOG from './catalog.mjs';
 import fs from 'fs';
 import path from 'path';
 import { readJSON, writeJSON, run, ffmpeg7, now } from './util.mjs';
@@ -82,7 +83,8 @@ function describe(shot, bible) {
 export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seedance-2.5-flash', resolution = '480p', imageModel = 'bytedance-seed/seedream-5-5' } = {}) {
   const bible = readJSON(path.join(adDir, 'bible.json')); if (!bible) throw new Error('no bible yet');
   const old = plan(adDir);
-  const p = { slug, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, finalModel: 'bytedance/seedance-2.5', finalResolution: '720p', stylePara: bible.stylePara, ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
+  const look = readJSON(path.join(adDir, 'decisions', '06-style.json'))?.output?.seedanceStyle, lookE = look && CATALOG.load().find(e => e.slug === look);
+  const p = { slug, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, finalModel: 'bytedance/seedance-2.5', finalResolution: '720p', stylePara: lookE?.stylePara || bible.stylePara, ...(lookE ? { catalogStyle: look } : {}), ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
   if (!p.assets.length) {
     for (const [id, c] of Object.entries(bible.cast || {})) p.assets.push({ id: `char-${id}`, name: id, kind: 'character', desc: `${id}: ${c.role || 'character'}, hair ${c.hairStyle} ${c.hair}, top ${c.top}, trousers ${c.bottom}`, files: [], chosen: null, picks: [], status: 'todo' });
     const pc = bible.product.colors || {};
@@ -109,7 +111,15 @@ export function patchShot(adDir, slug, id, patch) {
   if ('chosen' in patch) { s.chosen = patch.chosen; s.status = 'chosen'; }
   return save(adDir, slug, p);
 }
-export function patchSettings(adDir, slug, patch) { const p = plan(adDir); Object.assign(p.settings, patch); return save(adDir, slug, p); }
+export function patchSettings(adDir, slug, patch) {
+  const p = plan(adDir);
+  if (patch.catalogStyle !== undefined) {
+    const e = patch.catalogStyle && CATALOG.load().find(x => x.slug === patch.catalogStyle);
+    if (patch.catalogStyle && !e) throw new Error(`no catalogue style "${patch.catalogStyle}"`);
+    patch = { ...patch, stylePara: e ? e.stylePara : readJSON(path.join(adDir, 'bible.json'))?.stylePara };
+  }
+  Object.assign(p.settings, patch); return save(adDir, slug, p);
+}
 
 function lock(slug, what) { if (jobs.has(slug)) throw new Error(`busy: ${jobs.get(slug)}`); jobs.set(slug, what); }
 const unlock = slug => jobs.delete(slug);
@@ -195,7 +205,8 @@ Bible (shots, cast, places, product, voice): ${JSON.stringify({ title: bible.tit
 Elements (reference images, chosen by the user; each has a role line and N views): ${JSON.stringify(elements)}
 For each shot return: refs = the element ids it needs, most important first (max 5; their views are sent in that order, each view counts as one reference image, max 6 images in total); layoutRef = true only when blocking matters (who stands where, product placement, a precise action) — then the previz middle still is appended as the LAST reference with the role "${LAYOUT_ROLE}"; prompt = 400–900 words in blocks FORMAT, STYLE (the locked paragraph verbatim), CAMERA (lens + one move), MUSIC: FALSE, CUT POLICY, MOTION SPEED AND QUALITY, REFERENCES (one line per reference image in the exact order: "reference image N — <role line>"), SETTING AND BLOCKING, ACTION (timed by second), CAST RULE, NO TEXT, CONTINUITY. No first/last frames exist. Seconds 4–15 (merge neighbouring beats into one generation with 2 shots inside only when they share a place).`;
     const MEM = await import('./memory.mjs'), mem = MEM.recall('production', { style: bible?.style, context: 'seedance prompt references consistency' });
-    const res = await decideFor(slug, 'production-prompts', mem.text ? `${q}\n\n${mem.text}` : q, PROMPTS_SCHEMA);
+    const guide = p.settings.catalogStyle ? `\nThe look is the catalogue style "${p.settings.catalogStyle}": read skills/seedance-styles/styles/${p.settings.catalogStyle}.md (only that file) and use its STYLE block verbatim, its MOTION block and its camera habits; name only the avoid items this shot risks.` : '';
+    const res = await decideFor(slug, 'production-prompts', `${q}${guide}${mem.text ? `\n\n${mem.text}` : ''}`, PROMPTS_SCHEMA);
     const p2 = plan(adDir);
     for (const x of res.output.shots) {
       const s = p2.shots.find(y => y.id === x.id); if (!s) continue;

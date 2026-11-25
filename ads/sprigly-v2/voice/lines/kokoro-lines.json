@@ -1,0 +1,44 @@
+[
+  {
+    "id": "l01",
+    "text": "Every Sunday, Juno and her fern have a standoff.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "She waters, she guesses, she hopes.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "The fern still sulks.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "Then she reads the Sprigly cap. One capful per litre.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "Every two weeks, spring and summer.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "Standoff over.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "Sprigly. One capful, no guessing.",
+    "voice": "af_heart",
+    "speed": 0.95
+  }
+]

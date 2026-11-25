@@ -1,0 +1,22 @@
+{
+  "stage": "frames",
+  "at": "2026-11-25T07:41:19.574Z",
+  "summary": "approved as drawn",
+  "review": {
+    "verdict": "approve",
+    "notes": [
+      {
+        "shot": "s6",
+        "issue": "The 'surprised' pose throws both arms up, bigger than the direction's 'small lift'.",
+        "fix": "Kept: it reads as comic timing at 1.1 s."
+      },
+      {
+        "shot": "s9",
+        "issue": "The 'spring and summer' subline brushes the top of Juno's bun.",
+        "fix": "Kept: still legible over the window; a next cut can frame her lower."
+      }
+    ],
+    "changed": false,
+    "reason": "Every frame shows its planned size and subject, cards now sit inside the 9:16 safe zone, the bottle keeps the right side of the sill, and the name is in frame with the rule at the reveal."
+  }
+}

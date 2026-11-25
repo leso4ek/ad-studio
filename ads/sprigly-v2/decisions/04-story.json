@@ -1,0 +1,61 @@
+{
+  "stage": "story",
+  "at": "2026-11-23T18:00:52.290Z",
+  "output": {
+    "spine": [
+      "Once upon a time there was Juno, who loved her fern but never knew what it needed.",
+      "Every Sunday she watered it and hoped, and every Sunday it drooped a little more.",
+      "Until one Sunday she found Sprigly: one capful per litre, every two weeks.",
+      "Because of that, feeding stopped being a guess and became one small step.",
+      "Because of that, Sunday became the easy part of her week.",
+      "Until finally the standoff ended, two calm faces at the window.",
+      "Ever since then, feeding day takes one capful and no guessing."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Standoff",
+        "t0": 0,
+        "t1": 3.5,
+        "beats": "Hook: Juno and her droopy fern face off on the windowsill. 'Sunday standoff.' The bottle is already on the shelf (plant)."
+      },
+      {
+        "act": 2,
+        "name": "Water and hope",
+        "t0": 3.5,
+        "t1": 8,
+        "beats": "She pours, shrugs and guesses; the fern stays droopy; she sighs."
+      },
+      {
+        "act": 3,
+        "name": "One capful",
+        "t0": 8,
+        "t1": 12,
+        "beats": "She notices the Sprigly bottle and reads the cap: one capful per litre. Reveal."
+      },
+      {
+        "act": 4,
+        "name": "Sunday, solved",
+        "t0": 12,
+        "t1": 17,
+        "beats": "One capful in the can, a calendar every two weeks, and Juno relaxed by the window with her fern, both at ease."
+      },
+      {
+        "act": 5,
+        "name": "Tag",
+        "t0": 17,
+        "t1": 20,
+        "beats": "End card: Sprigly. One capful. No guessing."
+      }
+    ],
+    "turn": "Sprigly's measuring cap turns her guess into one clear step (one capful per litre, every two weeks), so feeding stops being a worry.",
+    "emotion": "relief",
+    "reason": "This follows the playbook: the hook is the conflict itself, the product is planted in act 1 and causes the turn in act 3, and the change in act 4 is about her confidence, not a promised plant miracle, which keeps it inside the brief's claims."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 47064
+  },
+  "warnings": []
+}

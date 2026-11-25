@@ -10,7 +10,10 @@ export function drawScene(R, { shot, layers, cam }, paintGroup, opts = {}) {
   const { g, W, H } = R;
   const time = R.time, pm = R.mats('place', null, time);
   const pl = R.place(shot.place && R.bible.places?.[shot.place]?.kind || shot.place || 'studio', W, H, (shot.seed ?? 1));
-  const camT = (depth) => {
+  // parallax shrinks as the frame gets tighter (as with a long lens), so the planes never tear apart in close-ups
+  const flat = Math.min(1, 1.6 / Math.max(1, cam.zoom));
+  const camT = (d) => {
+    const depth = 1 - (1 - d) * flat;
     g.translate(cam.cx, cam.cy); g.scale(lerp(1, cam.zoom, depth), lerp(1, cam.zoom, depth));
     g.translate(-cam.cx + cam.px * W * depth, -cam.cy + cam.py * H * depth);
   };

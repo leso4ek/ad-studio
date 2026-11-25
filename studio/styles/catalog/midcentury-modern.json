@@ -1,0 +1,28 @@
+{
+  "slug": "midcentury-modern",
+  "name": "Mid-Century Modern",
+  "family": "traditional-2d",
+  "traits": ["figures reduced to triangles, rectangles and ovals with angular limbs", "flat colour fields with off-register outlines", "a limited palette of mustard, teal, coral and warm grey", "stylised backgrounds of boomerang shapes, starbursts and graphic furniture"],
+  "bestFor": ["design-led and premium-casual brands", "explainers of a simple routine or rule", "home, kitchen and travel products", "witty, dry narration"],
+  "suits": "homeware, coffee, plant care, travel, stationery, any product with a strong simple silhouette; tasteful, witty brands",
+  "stylePara": "1950s-60s mid-century modern limited animation: characters are built from flat geometric shapes, triangles, trapezoids and ovals, with angular thin limbs, small dot eyes and sharp noses; colour is printed flat in a limited palette of mustard yellow, teal, coral, olive and warm grey on cream; outlines are thin, angular and slightly off-register from the colour fills; backgrounds are graphic and stylised, with flattened perspective, boomerang and starburst shapes, textured dry-brush and crayon patches; no gradients, no modelled shadows; the frame feels designed like a print layout.",
+  "rendering": {
+    "line": "thin, angular, slightly broken ink line drawn with a straight edge feel; lines sometimes drift off the colour shapes",
+    "shading": "none modelled: a darker flat tone of the same hue as a geometric shadow shape, if anything",
+    "colour": "limited mid-century palette (mustard, teal, coral, olive, warm grey, cream, black); each character two or three colours; the product colour exact and allowed to stand out",
+    "texture": "dry-brush and crayon texture patches, faint paper tooth, slight printing irregularity",
+    "lighting": "graphic rather than physical: day and night carried by palette swaps, not by cast light"
+  },
+  "motion": "Limited animation on twos and threes: held poses with only the head, an arm or the mouth moving, sharp pose-to-pose snaps with little in-between, walk cycles on flat side-on planes, objects sliding in and out like cut shapes; graphic transitions where colour fields wipe across the frame.",
+  "camera": "Flat, side-on and frontal staging, characters on a single plane; horizontal pans across long painted backgrounds, straight cuts, occasional snap zoom on a held drawing; no depth moves.",
+  "avoid": ["soft gradients and airbrushed shading", "rounded, puffy character shapes", "realistic perspective rooms with vanishing points", "smooth full-animation in-betweens", "invented lettering on posters or packaging"],
+  "sheets": "Each character sheet shows front, three-quarter and side as flat geometric shapes in the exact palette on cream paper, plus a colour chip row; the product is redrawn as a flat geometric icon that keeps its exact proportions and colours; places are flat stylised layouts with a colour key.",
+  "risk": "Seedance pulls the flat graphic look toward softly shaded modern vector cartoons and invents real-room perspective in long clips; repeat 'flat colour, no gradients, flattened perspective' and keep moves to horizontal pans. Limited animation can read as frozen video, so name what moves in each time span.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Mid-century modern limited-animation still: a geometric woman in her thirties made of a triangle body and an oval head, with a dark bun and an orange top, angular thin arms and dot eyes, holds a small green glass bottle with a yellow cap; a flat stylised sunny kitchen with flattened perspective, mustard and teal cabinets and a starburst clock shape, beside a droopy fern on the windowsill drawn as drooping angular leaves; thin off-register outlines, flat colour, dry-brush texture on cream. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Mid-Century Modern Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

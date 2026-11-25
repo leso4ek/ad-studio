@@ -44,6 +44,7 @@ export default function ShotBoard({ slug, events }) {
       {err && <div className="err-box" style={{ marginBottom: 12 }}>{err}</div>}
       {plan.promptsReason && <div className="card hero"><div className="who">◆ Claude{plan.promptsBy === 'inbox' ? ' (via the decision inbox)' : ''} wrote the prompts</div><div className="reason">{plan.promptsReason}</div></div>}
 
+      <Looks S={S} set={set} busy={!!busy} />
       <h2>Elements: the consistency anchors (choose 1–3 views each)</h2>
       <div className="opts" style={{ marginBottom: 18 }}>{plan.assets.map(a => <Element key={a.id} a={a} base={base} slug={slug} bust={bust} act={act} S={S} busy={!!busy} />)}</div>
 
@@ -142,4 +143,22 @@ function Shot({ s, plan, slug, base, bust, act, busy }) {
       </div>
     </div>
   </motion.div>;
+}
+
+// the Seedance style catalogue: one look per ad; picking it locks the STYLE paragraph every prompt pastes verbatim
+function Looks({ S, set, busy }) {
+  const [list, setList] = useState(null), [open, setOpen] = useState(false);
+  useEffect(() => { fetch('/api/catalog').then(r => r.json()).then(setList).catch(() => setList([])); }, []);
+  if (!list?.length) return null;
+  const cur = list.find(e => e.slug === S.catalogStyle), fams = [...new Set(list.map(e => e.family))];
+  return <div className="card">
+    <div className="row" style={{ justifyContent: 'space-between' }}>
+      <div><h2>Look</h2><b>{cur ? cur.name : 'the bible\'s own style paragraph'}</b>{cur && <span style={{ color: 'var(--muted)' }}> · {cur.traits.slice(0, 2).join('; ')}</span>}</div>
+      <div className="row">{cur && <button className="btn ghost" disabled={busy} onClick={() => set({ catalogStyle: '' })}>Use the bible's</button>}<button className="btn" onClick={() => setOpen(o => !o)}>{open ? 'Close' : `Choose from ${list.length} styles`}</button></div>
+    </div>
+    {open && fams.map(f => <div key={f}><h3 style={{ marginTop: 12 }}>{f.replace(/-/g, ' ')}</h3>
+      <div className="opts">{list.filter(e => e.family === f).map(e => <button key={e.slug} className="opt" aria-pressed={e.slug === S.catalogStyle} disabled={busy} onClick={() => set({ catalogStyle: e.slug })} title={`${e.traits.join('; ')}\nBest for: ${e.bestFor.join(', ')}`}>
+        {e.example ? <img src={e.example} alt="" loading="lazy" style={{ width: '100%', aspectRatio: '9/16', objectFit: 'cover', borderRadius: 7, marginBottom: 6, background: '#000' }} /> : <div style={{ aspectRatio: '9/16', borderRadius: 7, marginBottom: 6, background: 'var(--line)', display: 'grid', placeItems: 'center', color: 'var(--muted)', fontSize: 12 }}>no example yet</div>}
+        <div style={{ fontWeight: 600 }}>{e.name}</div><div style={{ fontSize: 12, color: 'var(--muted)' }}>{e.bestFor.slice(0, 2).join(', ')}</div></button>)}</div></div>)}
+  </div>;
 }

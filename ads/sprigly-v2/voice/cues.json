@@ -1,0 +1,65 @@
+[
+  {
+    "t0": 0.2,
+    "t1": 3.06,
+    "text": "Every Sunday, Juno and her fern have a standoff.",
+    "speaker": "narrator",
+    "line": "l01"
+  },
+  {
+    "t0": 3.5,
+    "t1": 5.34,
+    "text": "She waters, she guesses, she hopes.",
+    "speaker": "narrator",
+    "line": "l02"
+  },
+  {
+    "t0": 5.6,
+    "t1": 6.9,
+    "text": "The fern still sulks.",
+    "speaker": "narrator",
+    "line": "l03"
+  },
+  {
+    "t0": 7.8,
+    "t1": 9.662,
+    "text": "Then she reads the Sprigly cap.",
+    "speaker": "narrator",
+    "line": "l04"
+  },
+  {
+    "t0": 9.662,
+    "t1": 11.044,
+    "text": "One capful per litre.",
+    "speaker": "narrator",
+    "line": "l04"
+  },
+  {
+    "t0": 11.3,
+    "t1": 13.14,
+    "text": "Every two weeks, spring and summer.",
+    "speaker": "narrator",
+    "line": "l05"
+  },
+  {
+    "t0": 14,
+    "t1": 15.178,
+    "text": "Standoff over.",
+    "speaker": "narrator",
+    "line": "l06"
+  },
+  {
+    "t0": 16.8,
+    "t1": 17.338,
+    "text": "Sprigly.",
+    "speaker": "narrator",
+    "line": "l07"
+  },
+  {
+    "t0": 17.338,
+    "t1": 19.073,
+    "text": "One capful, no guessing.",
+    "speaker": "narrator",
+    "line": "l07"
+  }
+]

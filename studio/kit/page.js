@@ -33,6 +33,15 @@ const ec = bible.endcard;
 if (ec && !shots.some(s => s.end)) shots.push({ id: 'end', t0: ec.t0, t1: DUR + .01, end: true, place: ec.place || 'studio', trans: ec.trans || 'wipe' });
 shots.sort((a, b) => a.t0 - b.t0);
 const shotAt = t => { let s = shots[0]; for (const x of shots) if (t >= x.t0) s = x; return s; };
+// a card with carry:true repeated (same id and text) over consecutive shots is ONE card: it keeps its clock across
+// the cuts (no re-pop) and the reading check times it as one piece — a title held over quick cuts
+const CARRY = {};
+for (let i = 0; i < shots.length; i++) for (const l of shots[i].layers || []) if (l.type === 'text' && l.carry && l.id) {
+  const prev = shots[i - 1]?.layers?.some(m => m.type === 'text' && m.carry && m.id === l.id && m.text === l.text);
+  if (!prev) CARRY[`${shots[i].id}:${l.id}`] = shots[i].t0 + (l.t0 ?? 0);
+  else CARRY[`${shots[i].id}:${l.id}`] = CARRY[`${shots[i - 1].id}:${l.id}`];
+}
+const carryLt = (shot, l, lt) => l.carry && l.id && CARRY[`${shot.id}:${l.id}`] != null ? shot.t0 + lt - CARRY[`${shot.id}:${l.id}`] : null;
 const L = (layer) => LANDSCAPE && layer.l16 ? { ...layer, ...layer.l16 } : layer;
 
 // ---------- materials ----------
@@ -178,7 +187,7 @@ function TEXTS(t) {
     const t0 = l.t0 ?? 0, t1 = l.t1 ?? (shot.t1 - shot.t0);
     if (lt < t0 || lt >= t1) continue;
     const lay = layoutText(l, lt - t0);
-    out.push({ id: `${shot.id}:${l.id || l.text.slice(0, 12)}`, text: l.text, x0: lay.box[0], y0: lay.box[1], x1: lay.box[2], y1: lay.box[3], ...(l.pass ? { pass: true } : {}) });
+    out.push({ id: l.carry && l.id ? `carry:${l.id}` : `${shot.id}:${l.id || l.text.slice(0, 12)}`, text: l.text, x0: lay.box[0], y0: lay.box[1], x1: lay.box[2], y1: lay.box[3], ...(l.pass ? { pass: true } : {}) });
   }
   for (const p of resolveLayers(shot, lt)) if (p.prims) for (const q of p.prims) if (q.s === 'text' && p.layer.type === 'product') out.push({ id: `${shot.id}:label`, text: q.text, x0: 0, y0: 0, x1: 1, y1: 1, pass: true });
   return out;
@@ -214,7 +223,7 @@ async function render(t) {
     if (custom.shots?.[shot.custom]) await custom.shots[shot.custom](R, { shot, layers, cam, lt });
     else await style.scene(R, { shot, layers, cam });
     cameraPost(cam);  // smear and silhouette belong to the picture, under the words
-    if (!qs.get('notext')) for (const p of layers) if (p.layer.type === 'text') style.text(R, layoutText(p.layer, p.llt), p.llt);
+    if (!qs.get('notext')) for (const p of layers) if (p.layer.type === 'text') { const c = carryLt(shot, p.layer, lt), llt = c ?? p.llt; style.text(R, layoutText(p.layer, llt), llt); }
   }
   // transition into this shot
   const tr = shot.trans || 'cut';

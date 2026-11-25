@@ -195,6 +195,15 @@ export function prop(kind, color) {
     case 'sparkle': o.push({ s: 'poly', m: 'accent', pts: [[0, -1], [.1, -.6], [.4, -.5], [.1, -.4], [0, 0], [-.1, -.4], [-.4, -.5], [-.1, -.6]] }); break;
     case 'heart': o.push({ s: 'poly', m: 'accent', pts: [...half(-.22, -.68, .24, .24, P * .75, P * 2.05, 12), ...half(.22, -.68, .24, .24, P * .95, P * 2.25, 12), [0, 0]] }); break;
     case 'arrow': o.push({ s: 'poly', m: 'accent', pts: [[-.5, -.38], [.1, -.38], [.1, -.55], [.5, -.3], [.1, -.05], [.1, -.22], [-.5, -.22]] }); break;
+    case 'watering-can': o.push(
+      { s: 'stroke', pts: [[.3, -.42], [.62, -.72], [.78, -.86]], w: .07, m: 'propB' },                       // spout
+      { s: 'ellipse', x: .8, y: -.88, rx: .07, ry: .05, rot: -.7, m: 'propB' },                              // rose
+      { s: 'rrect', x: -.05, y: -.32, w: .72, h: .62, r: .1, m: 'propB' },                                    // body
+      { s: 'stroke', pts: [[-.38, -.48], [-.52, -.62], [-.42, -.82], [-.05, -.8], [.12, -.64]], w: .06, m: 'propB' }); break; // handle
+    case 'capful': o.push(                                                                                     // a measuring cap tipping its dose
+      { s: 'poly', m: color ? 'custom' : 'accent2', pts: [[-.32, -.58], [.16, -.86], [.3, -.62], [-.18, -.34]] },
+      { s: 'stroke', pts: [[.26, -.72], [.36, -.5], [.38, -.25], [.38, 0]], w: .07, m: 'screen' },
+      { s: 'ellipse', x: .38, y: -.02, rx: .1, ry: .035, m: 'screen' }); break;
     case 'drop': o.push({ s: 'poly', m: 'propB', pts: [[0, -1], ...half(0, -.32, .3, .32, -P * .15, P * 1.15, 16)] }); break;
     case 'leaf': o.push({ s: 'ellipse', x: 0, y: -.5, rx: .2, ry: .48, rot: .5, m: 'plant' }, { s: 'stroke', pts: [[-.18, -.12], [.18, -.88]], w: .03, m: 'plant2' }); break;
     case 'zzz': o.push({ s: 'text', x: 0, y: -.3, text: 'z z z', size: .5, align: 'center', m: 'ink', font: 'head' }); break;

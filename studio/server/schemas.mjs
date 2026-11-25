@@ -9,7 +9,7 @@ export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon',
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
 export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'];
 export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed'];
-export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree'];
+export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree', 'watering-can', 'capful'];
 export const ANIMS = ['bob', 'float', 'breathe', 'pop', 'pulse', 'slide-l', 'slide-r', 'slide-up', 'drop', 'exit-l', 'exit-r', 'shake', 'wobble', 'spin', 'wave', 'talk', 'reveal', 'fade-in', 'fade-out'];
 const hex = { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' };
 
@@ -46,8 +46,9 @@ export const brandmap = S({
 
 export const style = S({
   style: { type: 'string', enum: STYLES }, reason: str(),
+  seedanceStyle: { type: 'string', pattern: '^[a-z0-9-]+$', description: 'the catalogue style for the Seedance route of the same ad (optional)' },
   alternatives: arr(S({ style: { type: 'string', enum: STYLES }, why_not: str() }), 1, 4),
-});
+}, ['style', 'reason', 'alternatives']);
 
 // stage 7 · Direction (DirectorSKILL method: a shot is a story decision; blocking before framing; continuity locks)
 export const SHOT_SIZES = ['EWS', 'WS', 'MS', 'MCU', 'CU', 'ECU'];
@@ -84,7 +85,7 @@ const layer = {
     pose: { type: 'string', enum: POSES }, face: { type: 'string', enum: ['left', 'right', 'front'] }, flip: { type: 'boolean' },
     anim: arr({ type: 'string', pattern: `^(${ANIMS.join('|')})(:[0-9.]+)?$` }), move: arr(num(), 1, 2), moveT: arr(num(), 2, 2), t0: num(), t1: num(),
     text: str(), role: { type: 'string', enum: ['hook', 'card', 'label', 'price', 'sub', 'small', 'cta'] }, size: num(), w: num(), align: { type: 'string', enum: ['left', 'center', 'right'] },
-    color: str(), bg: { type: 'boolean' }, bgColor: str(), rot: num(), l16: { type: 'object' }, pass: { type: 'boolean' },
+    color: str(), bg: { type: 'boolean' }, bgColor: str(), rot: num(), l16: { type: 'object' }, pass: { type: 'boolean' }, carry: { type: 'boolean', description: 'repeat the same text layer (same id, text, x, y) in consecutive shots: one card held across the cuts' },
   },
 };
 const shot = S({

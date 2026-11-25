@@ -1,0 +1,37 @@
+{
+  "stage": "hooks",
+  "at": "2026-11-23T18:00:05.224Z",
+  "output": {
+    "hooks": [
+      {
+        "id": "A",
+        "type": "odd image + conflict mid-action",
+        "onScreen": "Sunday standoff.",
+        "visual": "Juno and a droopy fern face each other across the kitchen windowsill, frozen, like a western.",
+        "vo": "Every Sunday, Juno and her fern have a standoff."
+      },
+      {
+        "id": "B",
+        "type": "question",
+        "onScreen": "How much is 'a bit'?",
+        "visual": "Juno holds the watering can, squinting, the plant drooping beside her.",
+        "vo": "Every Sunday, Juno and her fern have a standoff."
+      },
+      {
+        "id": "C",
+        "type": "plant POV, a number",
+        "onScreen": "Day 14. Still guessing.",
+        "visual": "Close on the fern by the window, Juno a blur in the background.",
+        "vo": "Every Sunday, Juno and her fern have a standoff."
+      }
+    ],
+    "lead": "A",
+    "reason": "A reads in one glance and sets up the whole story: two tired characters face to face. B leads with the exact problem Sprigly solves, so it is the strongest test variant. C adds a playful point of view for a younger feed."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 23030
+  },
+  "warnings": []
+}

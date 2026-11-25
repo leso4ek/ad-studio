@@ -112,6 +112,7 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
   - The frame never leaves the drawn set, so a wide frame of a small subject simply shows the whole set.
   - Also write `function`, `reason` and `textZone` on the shot, copied from the direction.
   - In MCU, CU and ECU shots, cards and hooks go at y ≤ 0.30 or y ≥ 0.62, never over the face or the label (checked).
+  - **A card held over quick cuts:** repeat the same text layer (same `id`, `text`, `x`, `y`) with `"carry": true` in each consecutive shot. It keeps its clock across the cuts (no re-pop), and the reading check times it as one card. That's how a 1.2 s cut rhythm keeps cards readable (characters/15 + 1.5 s).
   - Legacy `{ "zoom": [from, to], "pan": [[x0, y0], [x1, y1]], "focus": [dx, y] }` still works for undirected shots. Keep that zoom under 1.15.
 - `time` (day/dusk/night) overrides the place's time.
 - `beat`: hook, plant, pulse, reveal, tag or story.
@@ -125,7 +126,7 @@ Return the complete JSON. Coordinates are **fractions of the 9:16 frame**: `x` 0
   - `y` ≈ 0.80–0.92 to stand on the floor (the floor line is at 0.70; lower means nearer the camera).
 - `product`: `scale` 0.3 (in a hand) to 1.6 (hero). 1 ≈ 30 % of the frame height. Use `anim: ["reveal"]` once, at the turn.
 - `prop`:
-  - kinds: mug, steam, clock, alarm, phone, plant, fern, fern-droopy, lamp, bed, desk, laptop, book, bag, sun, moon, cloud, star, sparkle, heart, arrow, drop, leaf, zzz, chair, sofa, tree;
+  - kinds: mug, steam, clock, alarm, phone, plant, fern, fern-droopy, lamp, bed, desk, laptop, book, bag, sun, moon, cloud, star, sparkle, heart, arrow, drop, leaf, zzz, chair, sofa, tree, watering-can, capful (a measuring cap tipping its dose: the product's key action; set `color` to the product cap colour);
   - `scale` 1 ≈ 12 % of the frame height; `color` is optional.
 - `text`:
   - `role`: hook, card, label, price, sub, small or cta;

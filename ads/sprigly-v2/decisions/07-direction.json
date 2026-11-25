@@ -1,0 +1,240 @@
+{
+  "stage": "direction",
+  "at": "2026-11-25T07:29:15.921Z",
+  "output": {
+    "thesis": "One capful, tipped into the can: the guessing ends. The proof is the pour itself, seen in close-up, with the name on the cap's bottle.",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 2.2,
+        "learns": "Juno and her droopy fern are locked in a silent Sunday standoff (and a green bottle is already on the sill)."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 2.2,
+        "t1": 6.6,
+        "learns": "She guesses at feeding and pours blind; the fern still sulks."
+      },
+      {
+        "id": "b3",
+        "block": "turn",
+        "t0": 6.6,
+        "t1": 10,
+        "learns": "The answer was on the sill: Sprigly, one capful per litre."
+      },
+      {
+        "id": "b4",
+        "block": "demonstration",
+        "t0": 10,
+        "t1": 13.6,
+        "learns": "Exactly how much: one 5 ml cap into a litre, every two weeks in spring and summer."
+      },
+      {
+        "id": "b5",
+        "block": "payoff",
+        "t0": 13.6,
+        "t1": 17,
+        "learns": "Sunday is easy now: both of them calm at the window."
+      },
+      {
+        "id": "b6",
+        "block": "tag",
+        "t0": 17,
+        "t1": 20,
+        "learns": "Sprigly. One capful. No guessing. 250 ml makes 50 litres."
+      }
+    ],
+    "book": {
+      "grammar": "Tabletop camera on a stand: mostly locked frames, one deliberate move per shot; push-ins for realisation, a pan to follow the water, a gentle pull-out for relief. No whips: this is a calm product.",
+      "light": "Kitchen: warm morning window light from screen left, soft shadows falling right. Evening: lower amber lamp light, same direction.",
+      "palette": "Cool, slightly flat creams for the guessing (b1-b2); the bottle's green and the cap's yellow are the first saturated notes at the turn; warm amber in the payoff.",
+      "performance": "Small, deadpan, readable at a glance: narrowed eyes in the standoff, a shrug at the guess, a small lift when she sees the bottle, quiet pride at the end.",
+      "rhythm": "Average shot about 1.7 s; quickest in the hook (1.0-1.2 s) and the demonstration insert (1.2 s); the payoff holds 3.4 s so the relief lands.",
+      "sound": "Hook on a single pizzicato sting; the pour gets one bright glug; the end card loops back to the hook's two-note motif."
+    },
+    "locks": {
+      "identity": {
+        "juno": "Juno: thirties, dark hair in a bun, orange top, dark blue trousers, slim; faces right toward the window and the fern"
+      },
+      "productSide": "right",
+      "screenDirection": "Juno screen left facing right; the fern and the bottle screen right on the windowsill",
+      "light": "window light from screen left in every kitchen shot"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 1.2,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Juno stands screen left glaring right; the droopy fern sits screen right on the sill, the green bottle beside it; the camera is already pushing in at frame one.",
+        "reason": "Two characters are in a standoff, and the bottle is quietly planted on the sill.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "pizzicato sting"
+      },
+      {
+        "id": "s2",
+        "t0": 1.2,
+        "t1": 2.2,
+        "beat": "b1",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "fern-droopy",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The fern droops a little further, its leaves sagging as if sighing.",
+        "reason": "The fern is the other side of the standoff, and it is losing.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "a soft deflating creak"
+      },
+      {
+        "id": "s3",
+        "t0": 2.2,
+        "t1": 3.4,
+        "beat": "b2",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "handheld",
+        "blocking": "Juno squints, thinking, one hand on her head.",
+        "reason": "She does not know how much to feed it.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": ""
+      },
+      {
+        "id": "s4",
+        "t0": 3.4,
+        "t1": 5.2,
+        "beat": "b2",
+        "function": "relation",
+        "size": "MS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "pan-r",
+        "blocking": "Juno tilts a watering can toward the fern; a drop falls; the bottle stays in the background on the right.",
+        "reason": "She waters and hopes; the answer sits unnoticed behind the plant.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "water trickle"
+      },
+      {
+        "id": "s5",
+        "t0": 5.2,
+        "t1": 6.6,
+        "beat": "b2",
+        "function": "aftermath",
+        "size": "MCU",
+        "subject": "fern-droopy",
+        "angle": "high",
+        "move": "rack",
+        "blocking": "Looking down on the still-droopy fern; the background goes soft so the fern's sulk is all we see.",
+        "reason": "Watering alone changed nothing.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": ""
+      },
+      {
+        "id": "s6",
+        "t0": 6.6,
+        "t1": 8,
+        "beat": "b3",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "juno",
+        "angle": "low",
+        "move": "push",
+        "blocking": "Juno's eyes go to the right, to the bottle on the sill; a small lift in her face as the camera pushes in.",
+        "reason": "She has noticed the bottle: the turn starts.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "a tiny 'ting'"
+      },
+      {
+        "id": "s7",
+        "t0": 8,
+        "t1": 10,
+        "beat": "b3",
+        "function": "reveal",
+        "size": "ECU",
+        "subject": "product",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The bottle centred and still, the SPRIGLY label and the yellow cap fully visible; light warms around it.",
+        "reason": "The answer has a name and a rule: Sprigly, one capful per litre.",
+        "textZone": "top",
+        "trans": "iris",
+        "sound": "a warm chord"
+      },
+      {
+        "id": "s8",
+        "t0": 10,
+        "t1": 11.2,
+        "beat": "b4",
+        "function": "insert",
+        "size": "CU",
+        "subject": "capful",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The yellow measuring cap tips its dose into the watering can and the stream lands.",
+        "reason": "Exactly how much: one 5 ml cap per litre.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": "one bright glug"
+      },
+      {
+        "id": "s9",
+        "t0": 11.2,
+        "t1": 13.6,
+        "beat": "b4",
+        "function": "relation",
+        "size": "MS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "truck-r",
+        "blocking": "Juno, relaxed, waters the fern from the can; the bottle in her other hand, label out.",
+        "reason": "It becomes a routine: every two weeks in spring and summer.",
+        "textZone": "top",
+        "trans": "cut",
+        "sound": ""
+      },
+      {
+        "id": "s10",
+        "t0": 13.6,
+        "t1": 17,
+        "beat": "b5",
+        "function": "aftermath",
+        "size": "WS",
+        "subject": "juno",
+        "angle": "eye",
+        "move": "pull",
+        "blocking": "Evening: Juno with a mug beside a healthier (only slightly perkier) fern at the window, both calm; the camera eases back.",
+        "reason": "The standoff is over; Sunday is the easy part now.",
+        "textZone": "top",
+        "trans": "fade",
+        "sound": "the hook's two-note motif, resolved"
+      }
+    ],
+    "reason": "The plan follows the memory's lesson (varied sizes, quick hook and turn, an insert for the key action) and the director skill's product grammar: the bottle is visible from the first frame, the claim is said once and shown once with the name, and the pour gets its own short insert instead of being told in a card. The payoff holds longest so the relief lands, and the end card answers the hook's standoff."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 53072,
+    "lessons": [
+      "Lmwvsri18pvl"
+    ]
+  },
+  "warnings": []
+}

@@ -1,0 +1,43 @@
+# Stylized 3D (3D and stop-motion)
+<!-- generated from studio/styles/catalog/stylized-3d.json by studio/bin/catalog.mjs; edit the JSON -->
+
+**Looks like:** sculpted characters with pushed proportions: big heads and hands, tapered limbs; soft painted materials instead of real skin, cloth or metal; strong readable silhouettes and repeated shape language; warm key, cool rim, coloured soft shadows.
+**Best for:** character-led family stories, mascots with a lot of acting, warm comedy with one clear emotional turn. **Products:** household, food and personal-care products with simple rigid shapes; friendly, optimistic brands.
+
+## STYLE block (paste verbatim into every shot prompt and every sheet prompt)
+Stylized 3D animation: characters are sculpted with deliberately exaggerated proportions, oversized heads and hands, tapered limbs and simplified chunky noses, and every surface reads as a soft painted material rather than real skin, fabric or metal; forms are rounded and designed, with clear silhouettes; light is a warm key with a cool rim and gentle coloured bounce, shadows soft and tinted; textures are simplified, with faint brush-like detail painted into the colour; sets are simplified to match the characters and repeat their shapes; nothing aims at photographic realism.
+
+## Rendering
+- Line: no outlines: forms read through sculpted volume, rim light and silhouette
+- Shading: soft diffuse shading with gentle subsurface warmth on skin, tinted (not grey) shadows, a small soft specular only on eyes and the product
+- Colour: saturated but harmonised palette with warm skin and cool shadows; product colours exact
+- Texture: simplified painted textures, faint brush strokes, no pores, fibres only suggested
+- Lighting: three-point film lighting: warm key, cool rim, coloured bounce from the set
+
+## MOTION block
+Keyed pose-to-pose acting with clear arcs: anticipation before each action, overshoot and settle, squash and stretch on bodies but never on the product; key poses held 6-12 frames so the acting reads; full motion on ones at 24 fps, with snappy timing rather than floaty capture-like drift.
+
+## CAMERA habits
+Virtual camera that behaves like a real lens: 35-50 mm for acting, 85 mm for close-ups with shallow depth of field, slow dolly or short crane moves; one move per shot, no spinning orbits.
+
+## Avoid (name these instances only when the shot is at risk)
+- photoreal pores and skin sheen
+- floaty capture-style walk cycles
+- heads shrinking back to realistic proportions mid-shot
+- hard plastic highlights on skin
+- fake lettering on packaging and shop signs
+
+## Element sheets for consistency
+Each character sheet is a turnaround (front, three-quarter, side, back) on neutral grey plus one row of three expressions (neutral, worried, delighted); the sheet prompt states the head-to-body ratio (e.g. head about one third of body height); the product is rendered in the same soft painted shading but with its exact shape and label colours, best from a Blender render as the first reference.
+
+## Where Seedance goes wrong in this style
+Seedance normalises the exaggeration: over 8 s heads shrink, hands turn realistic and faces drift from the sheet between shots. Send the turnaround as the STRICT IDENTITY reference in every shot, repeat the proportion in STYLE and the CAST RULE, and keep the product a rigid prop that never squashes.
+
+## Models
+Sheets and places: `bytedance-seed/seedream-5-5` · video: `bytedance/seedance-2.5` (draft on Flash 480p, final on 2.5 720p with the same prompt, references and seed).
+
+## Example still (our own generation)
+Prompt: Stylized 3D animated still: a sculpted woman in her thirties with an oversized head, a big round dark bun and a soft orange top holds a small green glass bottle with a yellow cap in both large hands, standing in a simplified sunny kitchen whose rounded cupboards echo her shapes; beside her a droopy fern with chunky leaves sags on the windowsill; warm key light through the window, cool rim on her shoulder, tinted soft shadows, painted materials, no realistic skin. Vertical 9:16. No text.
+
+## Sources (look, don't copy)
+- [Kling AI · Cartoon Styles for AI (Stylized 3D Style)](https://kling.ai/blog/cartoon-styles-for-ai)

@@ -1,0 +1,28 @@
+{
+  "slug": "vintage-cartoon",
+  "name": "Vintage Cartoon",
+  "family": "retro",
+  "traits": ["bouncy rubber-hose limbs and pie-cut eyes", "faded early colour or sepia-toned monochrome", "aged film print marks: dust, scratches, flicker, gate weave", "painted watercolour backgrounds behind flat inked figures"],
+  "bestFor": ["playful, musical, slapstick stories", "heritage or 'since long ago' brands", "kitchen and household gags", "short loops with a strong rhythm"],
+  "suits": "food, drink, cleaning, household and heritage products; cheerful, nostalgic, mischievous brands",
+  "stylePara": "An early sound-era cartoon print: characters drawn with round heads, pie-cut eyes, white four-finger gloves and bendy rubber-hose arms and legs, inked in a bold even black line and filled with flat paint; colour faded to a narrow two-strip palette of salmon reds, teal greens and creamy ochres, or warm sepia monochrome; backgrounds are soft watercolour plates behind the crisp inked figures; the whole image carries film age: fine grain, dust specks, a few vertical scratches, slight exposure flicker and a soft rounded vignette in a 4:3 feel inside the vertical frame.",
+  "rendering": {
+    "line": "bold uniform black ink line, perfectly closed shapes, simple circles and curves; no line weight variation",
+    "shading": "flat fills with almost no shadow; at most a simple drop shadow on the floor",
+    "colour": "faded two-strip palette (salmon, teal, cream, black) or sepia monochrome; the product kept recognisable in a faded version of its colours",
+    "texture": "film grain, dust, scratches, light leaks at the edges, exposure flicker, slight gate weave",
+    "lighting": "flat and even, like a cel lit on a camera stand; vignette darkens the corners"
+  },
+  "motion": "Animated on ones and twos with springy rubber-hose bounce: characters idle in a constant rhythmic bob, limbs swing in smooth arcs without elbows, strong squash and stretch on every step; objects come alive and dance to the beat; the print jitters slightly in the gate.",
+  "camera": "Static stage-like framing, characters playing to the front as on a stage; trucking moves in and out on the flat background; iris-in and iris-out to open and close; no perspective-changing moves.",
+  "avoid": ["modern saturated digital colour", "clean sharp HD with no film wear", "realistic anatomy with elbows and knees", "3D shading on the characters", "title cards or lettering burned into the print"],
+  "sheets": "A model sheet in the period manner: front, three-quarter, side and two action poses in black line on a cream ground, with the rubber-hose limbs and glove shape fixed; then one coloured version in the faded palette; the product redrawn as a simple cartoon object in its faded colours.",
+  "risk": "Seedance keeps the film wear but drifts back to modern clean colour and adds elbows and realistic hands, and it may write fake title cards into the scratched print; repeat 'faded two-strip palette, rubber-hose limbs without elbows, constant bouncing rhythm' and 'no lettering'. The pie-cut eyes and gloves can read as a specific old character; keep the woman a new design with her own bun and orange top.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Early sound-era cartoon still on aged film: a rubber-hose woman in her thirties with a round head, pie-cut eyes, a dark bun and an orange top in faded salmon-orange, bold black ink line, holds up a small faded-green glass bottle with a yellow cap; a sunny kitchen painted as a soft watercolour plate, a droopy cartoon fern on the windowsill; two-strip faded palette, film grain, dust and scratches, soft vignette. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Vintage Cartoon Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

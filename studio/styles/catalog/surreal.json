@@ -1,0 +1,28 @@
+{
+  "slug": "surreal",
+  "name": "Surreal",
+  "family": "experimental",
+  "traits": ["warped scale: giant everyday objects, tiny people", "odd objects that behave impossibly but calmly", "dreamlike spaces with long shadows and endless floors", "clear, quiet light that makes the impossible believable"],
+  "bestFor": ["a 'what if' hook that stops the scroll", "the moment a product changes how the world feels", "mood pieces with one striking image", "fragrance, wellbeing and premium brands"],
+  "suits": "fragrance, drinks, wellbeing, plant and premium products; curious, poetic, confident brands",
+  "stylePara": "Painted surrealist animation: an ordinary room rendered with calm, precise oil-painting realism, but its scale and logic are wrong in one clear way at a time, such as a fern taller than the doorway, a window that opens onto a sea, a floor that runs on to a far horizon; long hard shadows from a low late-afternoon sun; smooth matte paint with soft glazes and a fine canvas weave; a clear pale sky and a deep, empty perspective; everyone behaves as if nothing is strange; colours are clean and few, with the product as the brightest object.",
+  "rendering": {
+    "line": "no outlines; edges are crisp painted edges with slight softening into shadow",
+    "shading": "smooth oil glazes with a clear single light direction and long cast shadows",
+    "colour": "a restrained palette of clear sky blues, sand, terracotta and deep greens; the product the most saturated object in frame",
+    "texture": "fine canvas weave and smooth glazed paint; no visible brush chaos",
+    "lighting": "low, raking late-afternoon sun; long hard shadows; a luminous empty sky"
+  },
+  "motion": "Slow, calm, real-time motion with long holds; impossible things happen smoothly and quietly (an object floats, a room stretches, a shadow points the wrong way) and then hold; one transformation per shot, never a chaotic morph; people move with grounded weight.",
+  "camera": "Locked wide frames with deep perspective and a low horizon, or one very slow dolly that reveals the scale change; symmetrical compositions; no handheld, no fast cuts.",
+  "avoid": ["chaotic melting morphs of every object", "neon psychedelic colours", "horror distortions of faces or hands", "more than one impossible change at once", "lettering on objects or signs"],
+  "sheets": "Characters in front, three-quarter and side in the calm painted realism, normal proportions; the place as a wide showing the scale rule (what is giant, what is tiny) and a detail view; the product in its exact shape and colours at normal scale and at the shot's warped scale.",
+  "risk": "Seedance treats 'surreal' as permission to morph everything, which turns faces and the product into melting shapes; name exactly one impossible thing per shot and say 'everything else stays solid and still'. The warped scale also drifts back to normal over a long clip, so state the scale in BLOCKING ('the fern's leaves reach the ceiling, twice her height') and keep clips short.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Painted surrealist still in calm oil realism: a woman in her thirties with a dark bun and an orange top stands holding a small green glass bottle with a yellow cap in a sunny kitchen whose floor runs on to a far horizon; on the windowsill a droopy fern has grown so large its drooping leaves arch over her head and touch the ceiling; long hard late-afternoon shadows, a luminous pale sky through the window, fine canvas weave. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Surreal Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}

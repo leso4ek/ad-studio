@@ -1,0 +1,37 @@
+{
+  "stage": "final",
+  "at": "2026-11-25T07:47:34.392Z",
+  "summary": "4 file(s): sprigly-v2-9x16.mp4, sprigly-v2-16x9.mp4, sprigly-v2-hookB.mp4, sprigly-v2-hookC.mp4",
+  "probes": {
+    "9x16": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/sprigly-v2/out/sprigly-v2-9x16.mp4\n    I:         -14.0 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.6 dBFS"
+    },
+    "16x9": {
+      "w": 1920,
+      "h": 1080,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/sprigly-v2/out/sprigly-v2-16x9.mp4\n    I:         -14.0 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.6 dBFS"
+    },
+    "hookB": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true
+    },
+    "hookC": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 20,
+      "audio": true
+    }
+  }
+}

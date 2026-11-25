@@ -1,0 +1,28 @@
+{
+  "slug": "collage",
+  "name": "Collage",
+  "family": "experimental",
+  "traits": ["cut-out photographs layered with flat coloured paper", "overlapping images at mismatched scales", "visible scissor edges, tape and glue shadows", "mixed textures: newsprint grain, halftone, kraft paper"],
+  "bestFor": ["energetic, rhythmic hooks", "lifestyle and fashion stories", "list or 'three reasons' structures", "brands that want a zine or scrapbook voice"],
+  "suits": "fashion, beauty, music, snacks, lifestyle and youth products; bold, playful, creative brands",
+  "stylePara": "Cut-and-paste collage animation: characters and props are cut from black-and-white and faded colour photographs and combined with flat shapes of coloured paper, kraft card and halftone printed scraps; pieces overlap at mismatched scales and slight angles, with white scissor borders, torn edges, strips of matte tape and small drop shadows where they lift off the board; textures mix newsprint grain, coarse halftone and paper fibre; a limited accent palette of one hot colour plus the paper tones; everything sits on a flat board lit evenly from above.",
+  "rendering": {
+    "line": "no drawn lines; shapes are defined by scissor cuts with a thin white border or a torn fibre edge",
+    "shading": "photographic shading inside each cut-out, plus small drop shadows under lifted pieces; no global lighting",
+    "colour": "desaturated photo pieces and paper neutrals with one hot accent colour; the product cut-out kept in its exact green and yellow as the brightest piece",
+    "texture": "newsprint grain, halftone dots, kraft paper, tape, glue wrinkles, slight curling",
+    "lighting": "flat even top light over the board; shadows only where pieces lift"
+  },
+  "motion": "Stop-motion cut-out on twos and threes: pieces pop on and off in single frames, slide and rotate as flat cards, and replace each other in quick swaps; heads and hands are swapped cut-outs rather than animated; a few pieces tremble slightly between frames as if re-placed by hand.",
+  "camera": "Top-down rostrum camera over the board; quick push-ins and snap zooms; pieces enter from off-frame; no 3D camera moves around the pieces.",
+  "avoid": ["seamless photoreal compositing with matched lighting", "pieces bending or turning in 3D", "a woman whose cut-out face changes between shots", "magazine headlines and printed words on the scraps", "smooth digital gradients"],
+  "sheets": "The woman as one consistent set of photo cut-outs (head front, head three-quarter, body, two hand poses) with the same white border, so the face is reused, not re-invented; the place as a collage board with its paper pieces; the product as a clean cut-out of its exact bottle.",
+  "risk": "Seedance tends to blend the pieces into one photoreal composite and to fill newsprint scraps with garbled headlines; say 'separate flat cut-outs with white borders, no blending' and 'the newsprint is texture only, no readable words'. The photographed face is the identity risk; reuse the same cut-out head from the sheet and keep her face small or in profile.",
+  "models": { "sheets": "bytedance-seed/seedream-5-5", "video": "bytedance/seedance-2.5" },
+  "example": {
+    "prompt": "Cut-and-paste collage still on a flat board: a woman in her thirties with a dark bun cut from a black-and-white photograph, her orange top cut from flat orange paper, holds a bright cut-out of a small green glass bottle with a yellow cap; a sunny kitchen assembled from faded photo scraps and kraft card at mismatched scales, a droopy fern from a halftone print on the windowsill; white scissor borders, torn edges, tape strips, small drop shadows. Vertical 9:16. No text."
+  },
+  "sources": [
+    { "title": "Kling AI · Cartoon Styles for AI (Collage Style)", "url": "https://kling.ai/blog/cartoon-styles-for-ai" }
+  ]
+}
