@@ -1,6 +1,6 @@
 {
   "stage": "scorecard",
-  "at": "2026-11-25T20:01:24.195Z",
+  "at": "2026-11-25T20:04:36.620Z",
   "output": {
     "scores": [
       {
@@ -52,7 +52,7 @@
   "meta": {
     "engine": "inbox",
     "answeredBy": "claude-session",
-    "ms": 1001
+    "ms": 2003
   },
   "warnings": []
 }

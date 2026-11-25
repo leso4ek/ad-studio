@@ -1,6 +1,6 @@
 # Where does the water go? (3D explainer)
 
-Sprigly · ad-voxel-3d · 18 s · made with Ad Studio (all LLM decisions by Claude)
+Sprigly · ad-voxel-3d · 18.5 s · made with Ad Studio (all LLM decisions by Claude)
 
 ## The ad
 - Premise: Where does the water go when you water your fern? A cutaway pot follows it from the spout to the saucer.
@@ -36,10 +36,10 @@ Test first: hook A. Fixes for a next cut:
 - Add one recurring small prop (a fallen leaf riding the water) for continuity.
 
 ## Checks
-- Reading time: see checks.json
+- Reading time: pass
 - Safe zones: 9:16 pass, 16:9 pass
-- 9x16: 1080×1920, 24/1 fps, 18 s;     I:         -14.1 LUFS
-- 16x9: 1920×1080, 24/1 fps, 18 s;     I:         -14.1 LUFS
+- 9x16: 1080×1920, 24/1 fps, 18.5 s;     I:         -14.1 LUFS
+- 16x9: 1920×1080, 24/1 fps, 18.5 s;     I:         -14.1 LUFS
 
 ## Claims and their basis
 - "One capful per litre" (basis: Dose is one capful (5 ml) per litre of water)
