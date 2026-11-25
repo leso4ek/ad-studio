@@ -110,7 +110,7 @@ async function decide(slug, stage, prompt, schema, signal, opts) {
 }
 
 async function runDecision(slug, st, signal, note) {
-  const ctx = context(slug, signal), schema = SCHEMAS[st.schema];
+  const ctx = context(slug, signal), schema = SCHEMAS[st.schemaFor?.(ctx.project) || st.schema];
   let prompt = st.prompt(ctx) + `\n\nAnswer with JSON matching the schema. Put your reasoning in the "reason" field${st.id === 'bible' ? '' : ' (two or three sentences)'}.`;
   if (note) prompt += `\n\nThe user asked for a redo with this note: "${note}". Follow it.`;
   // hindsight memory: the best lessons from past ads for this stage (≤ ~600 tokens)
@@ -140,7 +140,7 @@ async function runDecision(slug, st, signal, note) {
 }
 
 function issues(st, out, proj = {}) {
-  const errors = validate(SCHEMAS[st.schema], out), warnings = [];
+  const errors = validate(SCHEMAS[st.schemaFor?.(proj) || st.schema], out), warnings = [];
   if (st.lint) for (const i of (st.id === 'bible' ? lintBible(out) : lintObject(out))) (i.level === 'error' ? errors : warnings).push(`${i.where}: ${i.why} ("${i.match}")`);
   if (st.check === 'bible' && !errors.length) errors.push(...checkBible({ format: proj.format, ...out }));
   if (st.check === 'direction' && !errors.length) errors.push(...checkDirection(out, undefined, proj.format));
@@ -204,7 +204,7 @@ const slim = r => { const o = { ...r }; delete o.summary; delete o.warnings; ret
 function summaryOf(id, o) {
   switch (id) {
     case 'analysis': return `${o.kind} · ${(o.shots || []).length} shots · recommends ${o.recommend?.mode} as ${o.recommend?.target}`;
-    case 'brief': return `${o.product?.name}: ${o.product?.what}`;
+    case 'brief': return o.topic ? `${o.topic} · ${o.question}` : `${o.product?.name}: ${o.product?.what}`;
     case 'premises': return (o.premises || []).find(p => p.id === o.chosen)?.logline || '';
     case 'hooks': return `lead ${o.lead}: "${(o.hooks || []).find(h => h.id === o.lead)?.onScreen}"`;
     case 'story': return `${o.emotion} · turn: ${o.turn}`;

@@ -7,7 +7,9 @@ const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined 
 
 export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book', 'ad-voxel-3d'];
 // round 12: what an ad is made as, and how each shot is made
-export const FORMATS = ['story-ad', '3d-explainer', '3d-skit', 'recreate'];
+export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-episode'];
+/** formats that sell nothing by default (a sponsor product stays optional) */
+export const VIDEO_FORMATS = ['explainer', 'drama-episode'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
 export const RECREATE_MODES = ['remake', 'transfer', 'mixed'];
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
@@ -26,6 +28,17 @@ export const brief = S({
   format: S({ aspect: { type: 'string', enum: ['9:16', '16:9'] }, seconds: { type: 'number', minimum: 10, maximum: 60 } }),
   tone: str(), fictional: { type: 'boolean' }, reason: str('why this product and angle'),
 });
+
+// a video about a topic (explainer): no product, every fact sourced
+export const topicBrief = S({
+  topic: str('what the video is about, one line'), question: str('the one question the viewer wants answered'),
+  audience: S({ who: str(), knows: str('what they already know or believe') }),
+  angle: str('the surprising way in: the myth, the hidden part, the "you never noticed"'),
+  facts: arr(S({ fact: str(), source: str('a checkable source: publication, site or book') }), 3, 8),
+  format: S({ aspect: { type: 'string', enum: ['9:16', '16:9'] }, seconds: { type: 'number', minimum: 15, maximum: 90 } }),
+  tone: str(), channel: str('the channel or series name for the end card'), cta: str('the end-card call to action, e.g. "Follow for part 2"'),
+  sponsor: S({ name: str(), what: str() }, []), reason: str(),
+}, ['topic', 'question', 'audience', 'angle', 'facts', 'format', 'tone', 'channel', 'cta', 'reason']);
 
 export const premises = S({
   premises: arr(S({ id: str(), logline: str(), emotion: str(), productRole: str('how the product causes the turn'), hookIdea: str() }), 6, 12),
@@ -109,7 +122,7 @@ export const bible = S({
   product: S({ name: str(), kind: { type: 'string', enum: PRODUCT_KINDS }, label: str(), colors: { type: 'object' } }, ['name', 'kind']),
   cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str(), kind: { type: 'string', enum: ['person', 'plant'], description: 'plant: a talking potted fern (ad-voxel-3d only); top = leaves, bottom = pot' } }, ['skin', 'hairStyle']) },
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
-  palette: { type: 'object' },
+  palette: { type: 'object' }, fontOverride: S({ display: str('a font family from studio/kit/fonts'), body: str() }, []),
   shots: arr(shot, 3, 18),
   vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id') }, ['id', 'text', 'at']), 1, 14) }, ['lines']),
   captions: { type: 'boolean' },
@@ -121,7 +134,7 @@ export const bible = S({
   sfx: arr(S({ t: num(), type: str() }, ['t', 'type'])),
   variants: S({ hooks: arr(S({ id: { type: 'string', enum: ['A', 'B', 'C'] }, shots: arr({ type: 'object' }) }, ['id', 'shots'])) }),
   custom: { type: 'boolean' }, reason: str('why this shot plan, two or three sentences'),
-}, ['slug', 'style', 'dur', 'product', 'cast', 'places', 'shots', 'vo', 'endcard', 'music']);
+}, ['slug', 'style', 'dur', 'cast', 'places', 'shots', 'vo', 'endcard', 'music']);
 
 export const frames = S({
   verdict: { type: 'string', enum: ['approve', 'revised'] },
@@ -179,4 +192,4 @@ export const world = S({
   notes: arr(str(), 0, 12), reason: str(),
 }, ['spec', 'script', 'beats', 'verdict', 'reason']);
 
-export const SCHEMAS = { analysis, world, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
+export const SCHEMAS = { analysis, world, topicBrief, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };

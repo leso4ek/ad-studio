@@ -92,8 +92,8 @@ export function init(adDir, slug, { route = 'seedance', model = 'bytedance/seeda
   const p = { slug, routeOverrides: old?.routeOverrides || {}, created: old?.created || now(), settings: { route, model, resolution, aspect: '9:16', imageModel, finalModel: 'bytedance/seedance-2.5', finalResolution: '720p', stylePara: lookE?.stylePara || bible.stylePara, ...(lookE ? { catalogStyle: look } : {}), ...(old?.settings || {}) }, assets: old?.assets || [], shots: [] };
   if (!p.assets.length) {
     for (const [id, c] of Object.entries(bible.cast || {})) p.assets.push({ id: `char-${id}`, name: id, kind: 'character', desc: `${id}: ${c.role || 'character'}, hair ${c.hairStyle} ${c.hair}, top ${c.top}, trousers ${c.bottom}`, files: [], chosen: null, picks: [], status: 'todo' });
-    const pc = bible.product.colors || {};
-    p.assets.push({ id: 'product', name: bible.product.name, kind: 'product', picks: [], desc: `${bible.product.name}: a ${bible.product.kind} with a ${pc.body || ''} body, a ${pc.cap || ''} cap and a ${pc.label || ''} label printed "${bible.product.label}" in ${pc.labelInk || 'dark'} letters`, files: [], chosen: null, status: 'todo' });
+    const pc = bible.product?.colors || {};
+    if (bible.product) p.assets.push({ id: 'product', name: bible.product.name, kind: 'product', picks: [], desc: `${bible.product.name}: a ${bible.product.kind} with a ${pc.body || ''} body, a ${pc.cap || ''} cap and a ${pc.label || ''} label printed "${bible.product.label}" in ${pc.labelInk || 'dark'} letters`, files: [], chosen: null, status: 'todo' });
     for (const [id, pl] of Object.entries(bible.places || {})) p.assets.push({ id: `place-${id}`, name: id, kind: 'place', desc: `${pl.kind} at ${pl.time || 'day'}, empty, wide three-quarter view`, files: [], chosen: null, picks: [], status: 'todo' });
   }
   // recreate: the user's reference images are elements already chosen (they come first in every reference list)

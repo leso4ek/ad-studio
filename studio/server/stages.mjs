@@ -38,7 +38,7 @@ export const rc = ctx => ctx.project?.recreate || {};
 /** the format the picture is made in (a recreate is remade as one of the other three) */
 export const target = ctx => fmt(ctx) === 'recreate' ? (rc(ctx).target || 'story-ad') : fmt(ctx);
 export const FIXED_STYLE = { '3d-skit': 'ad-voxel-3d', '3d-explainer': 'ad-voxel-3d' };
-export const CUT_RATE = { 'story-ad': [1.8, 6.5], '3d-skit': [1.2, 6.5], '3d-explainer': [.8, 3.5], recreate: null };
+export const CUT_RATE = { 'story-ad': [1.8, 6.5], explainer: [1.2, 6.5], 'drama-episode': [1.5, 7], '3d-skit': [1.2, 6.5], '3d-explainer': [.8, 3.5], recreate: null };
 export function appliesTo(st, project) {
   const f = project?.format || 'story-ad', t = f === 'recreate' ? (project.recreate?.target || 'story-ad') : f;
   return !st.formats || st.formats.includes(f) || (st.targets || []).includes(t);
@@ -47,6 +47,7 @@ const FORMAT_RULES = {
   '3d-skit': 'FORMAT 3D skit (voxel stage): two characters built from boxes talk it through on a dark stage with soft bokeh lights; the product is a voxel prop. Dialogue: short lines that alternate between the two (speaker = their cast id), close-ups that alternate between speakers with slow push-ins, a wide for the reveal; about 2-3 cuts per 10 s. When the story is a method, number it: overlay.steps = [{t0, t1, label "STEP 1", title 1-2 words}] at the top (y 0.14-0.20), so while a step shows put cards at y 0.285 or lower. Captions are 1-3 words at a time (captionMode "words"). A non-human speaker is a cast entry with kind "plant" (top = leaves, bottom = pot; skin = leaf colour, hairStyle "bald").',
   '3d-explainer': 'FORMAT 3D explainer: ONE continuous camera (no cuts) glides through a 3D world that is built layer by layer, dips into a cutaway (a cross-section of the ground or the object) and comes back. Narration is a chain: "If you… But… So…", a new problem every 4-6 s and the part that fixes it appears on that beat; about 2.8 words per second; one recurring small prop for continuity. Every fact must be true and sourced (put the sources in reason). Captions: one word at a time in the centre (captionMode "words"). The shots of the bible are the BEATS of that one camera move: the picture comes from one Blender render, so shot layers are texts only.',
   'story-ad': '',
+  explainer: 'FORMAT explainer (a video, not an ad): one question the viewer never asked but wants answered, answered in plain steps with drawn diagrams, labels and simple characters. Narration as a chain (If you… But… So…) or "3 things"; a new beat every 4-6 s; every fact from the topic brief and nothing else. No product unless the brief has a sponsor (then only a short tag at the end). The end card shows the channel name and the call to action, no product. Captions: 1-3 words at a time (captionMode "words") unless the style reads better with lines.',
 };
 function formatBlock(ctx) {
   const t = target(ctx), r = rc(ctx), out = [];
@@ -58,6 +59,24 @@ function formatBlock(ctx) {
     if (r.prompt) out.push(`The user's prompt: ${J(r.prompt)}`);
   }
   return out.length ? out.join('\n') + '\n' : '';
+}
+/** The scorecard's seven rules per format (the schema stays 7 × 1-5). */
+export const RUBRIC = {
+  'story-ad': '1 hook in 1-3 s, 2 all five acts, 3 a character we identify with, 4 the product causes the turn, 5 plant/pulse/reveal/tag, 6 one emotion, 7 kind contrast and honest claims.',
+  explainer: '1 hook (the question lands in 1-3 s), 2 one clear question answered, 3 the chain: every beat causes the next, 4 facts accurate and sourced (none invented), 5 retention: a new beat or re-hook every 4-6 s, 6 visual clarity (one idea per frame, readable labels), 7 the ending (loop back or a CTA that promises more).',
+  'drama-episode': '1 hook (or re-hook of the last cliffhanger) in 1-3 s, 2 clear stakes: who wants what, 3 a character we care about, 4 a rising tension curve, 5 the cliffhanger: it cuts on the most interesting moment with an open question, 6 continuity with the series (cast, places, facts), 7 one emotion and honest content.',
+};
+/** The viral playbook's section for a format (skills/ad-studio-director/reference/viral-playbook.md, "## <format>"), embedded in prompts. */
+export function playbook(format, max = 1800) {
+  try {
+    const f = path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..', 'skills', 'ad-studio-director', 'reference', 'viral-playbook.md');
+    const md = fs.readFileSync(f, 'utf8'), keys = { explainer: ['explainer'], '3d-explainer': ['explainer'], '3d-skit': ['skit'], 'story-ad': ['ad'], recreate: ['ad'], 'drama-episode': ['drama'], series: ['drama'], clip: ['clip'] }[format] || [format];
+    for (const k of keys) {
+      const m = new RegExp(`^## [^\\n]*\\b${k}[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))`, 'im').exec(md);
+      if (m) return `\n\nVIRAL PLAYBOOK (${k}, from the research in research/viral/): ${m[1].trim().slice(0, max)}`;
+    }
+  } catch { /* no playbook yet */ }
+  return '';
 }
 const promptOf = r => r.prompt ? Object.entries(r.prompt).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('; ') : '';
 export const directorDir = cfg => (cfg.directorSkill || '~/.cache/ad-studio-skills/DirectorSKILL').replace(/^~/, os.homedir());
@@ -75,8 +94,8 @@ ${(r.refs || []).length ? `The user's reference images (look at each): ${(r.refs
 The user's prompt (what the characters look like, wear and carry, the product, notes): ${promptOf(r) || '(none: keep the roles, invent original people and an original fictional product)'}
 The user chose mode "${r.mode || 'remake'}" (remake = rebuild with our tools; transfer = Higgsfield Genjutsu keeps the original motion and swaps the look from the reference images; mixed = per shot)${r.rights ? '' : '; the user has NOT confirmed rights to the footage, so nothing of it may be reused'}.
 Keep the code's shot ids and times (merge two only if the code split one shot); fill size, subject, angle, move, action, on-screen text, voice, people, complexity (low: one subject, simple gesture; mid: two subjects or a moving camera; high: crowds, physics, fast action) and physics. Map every character, prop, the product and the places to what they become in our version. Describe the look in neutral words: never name studios, shows, artists, real people or brands. Recommend a mode and a target format (you only advise: the user's mode stands).`; } },
-  { id: 'brief', n: 1, title: 'Brief', kind: 'decide', schema: 'brief', lint: true,
-    prompt: ctx => `Stage 1 · Brief (skill §1).
+  { id: 'brief', n: 1, title: 'Brief', kind: 'decide', schema: 'brief', lint: true, schemaFor: p => (p?.format === 'explainer' ? 'topicBrief' : 'brief'),
+    prompt: ctx => target(ctx) === 'explainer' ? `Stage 1 · Topic brief (skill §Explainer).\n${formatBlock(ctx)}The user's topic and wishes: ${J(ctx.project.userBrief || {})}\nLength ${ctx.project.userBrief?.seconds || 45} s, ${ctx.project.userBrief?.aspect || '9:16'}. Find the one question, the surprising angle and 3-6 facts, each with a checkable source (no invented numbers; say "about" when a figure varies). Channel name and call to action for the end card.${playbook('explainer')}` : `Stage 1 · Brief (skill §1).
 ${formatBlock(ctx)}
 The user's brief (may be empty or partial): ${J(ctx.project.userBrief || {})}
 ${fmt(ctx) === 'recreate' && rc(ctx).prompt?.product ? `The product is the user's: "${rc(ctx).prompt.product}". Use it as described; invent nothing about it beyond a plausible label and colours from the reference images.` : ctx.project.userBrief?.fictional !== false ? 'This first ad is for a FICTIONAL product: invent an original, plausible, honest product and brand name (no real brands, no real people).' : 'Use the user\'s real product exactly as described; invent nothing about it.'}
@@ -90,17 +109,17 @@ ${target(ctx) === '3d-explainer' ? 'For the explainer, a premise is a question t
   { id: 'hooks', n: 3, title: 'Hooks', kind: 'decide', schema: 'hooks',
     prompt: ctx => `Stage 3 · Three hooks for the first 1-3 seconds (skill §3).
 Brief: ${J(dec(ctx, 'brief'))}
-${formatBlock(ctx)}${fmt(ctx) === 'recreate' ? `Hook A reproduces the original opening (${J(ctx.decision('analysis')?.output?.hook)}) with our cast and product; B and C are variants of other types.` : `Chosen premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
+${formatBlock(ctx)}${target(ctx) === 'explainer' ? `The question: ${J({ question: dec(ctx, 'brief')?.question, angle: dec(ctx, 'brief')?.angle })}. Hooks are the question asked three ways (a direct question, a surprising fact, a "you never noticed" image).` : fmt(ctx) === 'recreate' ? `Hook A reproduces the original opening (${J(ctx.decision('analysis')?.output?.hook)}) with our cast and product; B and C are variants of other types.` : `Chosen premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
 Write hooks A, B, C of different types (odd image / conflict mid-action / question / number / POV). On-screen text max 6 words. Choose the lead hook; the other two become A/B test variants.` },
 
   { id: 'story', n: 4, title: 'Story', kind: 'decide', schema: 'story',
     prompt: ctx => `Stage 4 · Story Spine and the five acts on the clock (skill §4).
 ${formatBlock(ctx)}Brief: ${J(dec(ctx, 'brief'))}
-${fmt(ctx) === 'recreate' ? 'Follow the original beats from the analysis, act for act; the product causes the turn where the original turns.' : `Premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
+${target(ctx) === 'explainer' ? 'Build the chain from the topic brief\'s facts only (no new facts): act 1 the question, acts 2-4 the steps (each beat answers the last and raises the next), act 5 the payoff and the loop/CTA. "turn" = the moment the answer clicks.' : fmt(ctx) === 'recreate' ? 'Follow the original beats from the analysis, act for act; the product causes the turn where the original turns.' : `Premise: ${J((dec(ctx, 'premises')?.premises || []).find(p => p.id === dec(ctx, 'premises')?.chosen))}`}
 Lead hook: ${J((dec(ctx, 'hooks')?.hooks || []).find(h => h.id === dec(ctx, 'hooks')?.lead))}
 Total ${dec(ctx, 'brief')?.format?.seconds || 20} s.${target(ctx) === '3d-explainer' ? ' The acts group the If/But/So beats (each act 1-3 beats).' : target(ctx) === '3d-skit' ? ' The acts are the steps of the conversation.' : ''} Five acts with t0/t1 covering 0 → end with no gaps; act 1 starts with the hook at 0. The product causes the turn in act 3 or 4. One emotion.` },
 
-  { id: 'brandmap', n: 5, title: 'Brand map', kind: 'decide', schema: 'brandmap', lint: true,
+  { id: 'brandmap', n: 5, title: 'Brand map', kind: 'decide', schema: 'brandmap', lint: true, formats: ['story-ad', '3d-skit', '3d-explainer', 'recreate'],
     prompt: ctx => `Stage 5 · Brand map and claims (skill §5): plant early, pulse, reveal at the climax, tag at the end.
 Brief: ${J(dec(ctx, 'brief'))}
 Story: ${J(dec(ctx, 'story'))}
@@ -125,7 +144,7 @@ Lead hook: ${J((dec(ctx, 'hooks')?.hooks || []).find(h => h.id === dec(ctx, 'hoo
 Story: ${J(dec(ctx, 'story'))}
 Brand map: ${J(dec(ctx, 'brandmap'))}
 What the kit camera can do: sizes ${SHOT_SIZES.join('/')} framed on a subject (a cast id, "product" or a prop kind); angle eye/low/high; one move per shot (${CAM_MOVES.join(', ')}); ots left/right puts a soft foreground shoulder at the edge. People are big-headed toys: CU shows head and shoulders.
-Rules: every shot has a story function and says what the viewer now understands; blocking before framing; one move or none per shot; never two consecutive shots with the same size on the same subject; 2-6 cuts per 10 s (end card excluded), faster in the hook and the turn; the product keeps one screen side (locks.productSide) except a centred reveal; plan where the words go (textZone) so cards never cover a face or the product label; shots tile 0 → the end card. Do not name real films, shots or people in any text the viewer sees.
+Rules: every shot has a story function and says what the viewer now understands; blocking before framing; one move or none per shot; never two consecutive shots with the same size on the same subject; 2-6 cuts per 10 s (end card excluded), faster in the hook and the turn; the product keeps one screen side (locks.productSide) except a centred reveal; plan where the words go (textZone) so cards never cover a face or the product label; shots tile 0 → the end card. Do not name real films, shots or people in any text the viewer sees.${playbook(target(ctx))}
 Routes (how each shot is made; leave route out and the motion router decides): kit (code-drawn), three (the three.js stage: few objects, gestures, simple moves), blender (complex 3D: layered builds, flow, many objects, a long camera path), blender→genjutsu (a Blender motion re-skinned photoreal by Genjutsu, paid), seedance (complex live action from element sheets, paid), genjutsu (an uploaded segment re-skinned, paid, rights needed). Mark complexity low/mid/high and physics when it matters.` },
 
   { id: 'bible', n: 8, title: 'Bible', kind: 'decide', schema: 'bible', lint: true, check: 'bible',
@@ -140,6 +159,7 @@ Locks: ${J(dec(ctx, 'direction')?.locks)}
 For every direction shot write one bible shot with the same id, t0, t1 and trans, camera = {size, subject, angle, move} (add amount 0.3-0.8 when the move should be gentle or strong, ots when asked), and copy function, reason and textZone; place each card/hook text in its textZone (top: y 0.16-0.30, bottom: y 0.62-0.72) and keep the subject's layer where the framing expects it.
 Rules: shots tile 0 → endcard.t0 with no gaps; the end card runs from endcard.t0 to dur (2.5-3.5 s); every on-screen text stays inside the safe zone (x 0.05-0.86, y 0.14-0.80 of the frame) and long enough to read (characters/15 + 1.5 s); voice lines must fit before the next line starts (about 2.9 words per second at speed 0.95) and should end before the end card logo; product colours from the brief.
 ${target(ctx) !== 'story-ad' ? 'Set captionMode "words".' : ''}${(rc(ctx).mode === 'transfer' || target(ctx) === '3d-explainer') ? ' The picture of every shot comes from a plate (Genjutsu takes or the Blender world), so shot layers are text cards only; places and cast are still listed for the end card and the element sheets.' : ''}
+${playbook(target(ctx), 1200)}
 Return the complete bible JSON.`, post: (ctx, o) => ({ ...o, format: fmt(ctx), ...(target(ctx) !== 'story-ad' ? { captionMode: o.captionMode || 'words' } : {}),
       shots: o.shots.map(s => { const d = (ctx.decision('direction')?.output?.shots || []).find(x => x.id === s.id); return d ? { ...s, ...(d.route ? { route: d.route } : {}), ...(d.source ? { source: d.source } : {}) } : s; }) }) },
   // 3D explainer: Claude writes the world as code, checks a still per beat, then the world is rendered into a plate
@@ -150,8 +170,8 @@ Return the complete bible JSON.`, post: (ctx, o) => ({ ...o, format: fmt(ctx), .
   { id: 'animatic', n: 11, title: 'Animatic', kind: 'auto', gate: true },
   { id: 'final', n: 12, title: 'Final', kind: 'auto' },
   { id: 'scorecard', n: 13, title: 'Scorecard', kind: 'decide', schema: 'scorecard', after: 'report',
-    prompt: ctx => `Stage 12 · Score the finished ad (skill §12) against the story-ad-playbook's seven rules, 1-5 each with a one-line note:
-1 hook in 1-3 s, 2 all five acts, 3 a character we identify with, 4 the product causes the turn, 5 plant/pulse/reveal/tag, 6 one emotion, 7 kind contrast and honest claims.
+    prompt: ctx => `Stage 12 · Score the finished video (skill §12), 1-5 each with a one-line note, against these seven rules:
+${RUBRIC[target(ctx)] || RUBRIC['story-ad']}
 Look at out/final-sheet.jpg (frames every 2 s of the 9:16 master) and read bible.json, voice/cues.json and out/checks.json. Total = sum. Say which hook variant you'd test first and what you'd fix in a next cut.` },
   // optional and paid (about $0.10-1 of OpenRouter): runs only when the user starts it (runFrom 'audience')
   { id: 'audience', n: 14, title: 'Audience test', kind: 'auto', optional: true, paid: true },

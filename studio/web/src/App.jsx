@@ -83,7 +83,7 @@ export default function App() {
           {!s.ads.length && <option value="">no ads yet</option>}
           {s.ads.map(a => <option key={a.slug} value={a.slug}>{a.title} · {a.slug}</option>)}
         </select>
-        <button className="btn" onClick={() => setDlg('new')}>New ad</button>
+        <button className="btn" onClick={() => setDlg('new')}>New video</button>
         {s.ad && <div className="seg" role="group" aria-label="View">
           <button aria-pressed={view === 'pipeline'} onClick={() => setView('pipeline')}>Pipeline</button>
           <button aria-pressed={view === 'board'} onClick={() => setView('board')} title="Previz → Seedance takes → your pick, shot by shot">Shot board</button>
