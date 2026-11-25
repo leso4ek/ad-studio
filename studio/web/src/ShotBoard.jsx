@@ -156,9 +156,9 @@ function Looks({ S, set, busy }) {
       <div><h2>Look</h2><b>{cur ? cur.name : 'the bible\'s own style paragraph'}</b>{cur && <span style={{ color: 'var(--muted)' }}> · {cur.traits.slice(0, 2).join('; ')}</span>}</div>
       <div className="row">{cur && <button className="btn ghost" disabled={busy} onClick={() => set({ catalogStyle: '' })}>Use the bible's</button>}<button className="btn" onClick={() => setOpen(o => !o)}>{open ? 'Close' : `Choose from ${list.length} styles`}</button></div>
     </div>
-    {open && fams.map(f => <div key={f}><h3 style={{ marginTop: 12 }}>{f.replace(/-/g, ' ')}</h3>
+    {open && fams.map(f => <div key={f}><h3 style={{ marginTop: 12 }}>{list.find(e => e.family === f)?.familyName || f}</h3>
       <div className="opts">{list.filter(e => e.family === f).map(e => <button key={e.slug} className="opt" aria-pressed={e.slug === S.catalogStyle} disabled={busy} onClick={() => set({ catalogStyle: e.slug })} title={`${e.traits.join('; ')}\nBest for: ${e.bestFor.join(', ')}`}>
-        {e.example ? <img src={e.example} alt="" loading="lazy" style={{ width: '100%', aspectRatio: '9/16', objectFit: 'cover', borderRadius: 7, marginBottom: 6, background: '#000' }} /> : <div style={{ aspectRatio: '9/16', borderRadius: 7, marginBottom: 6, background: 'var(--line)', display: 'grid', placeItems: 'center', color: 'var(--muted)', fontSize: 12 }}>no example yet</div>}
-        <div style={{ fontWeight: 600 }}>{e.name}</div><div style={{ fontSize: 12, color: 'var(--muted)' }}>{e.bestFor.slice(0, 2).join(', ')}</div></button>)}</div></div>)}
+        {e.example ? <img src={e.example} alt="" loading="lazy" style={{ width: '100%', aspectRatio: '9/16', objectFit: 'cover', borderRadius: 7, marginBottom: 6, background: '#000' }} /> : null}
+        <div style={{ fontWeight: 600 }}>{e.name}</div><div style={{ fontSize: 12, color: 'var(--muted)' }}>{e.example ? e.bestFor.slice(0, 2).join(', ') : e.traits[0]}</div></button>)}</div></div>)}
   </div>;
 }

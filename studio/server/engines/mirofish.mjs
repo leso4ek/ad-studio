@@ -103,8 +103,14 @@ export async function available(cfg) {
  * Runs one audience test. p = {dossier, requirement, name, outDir}. Returns {report, posts, stats, costUsd, ids}.
  * onStep(text) is called on each phase.
  */
+// platforms named in any text MiroFish reads become agents (TikTok, Reels…), and platforms are not viewers
+export const noPlatforms = t => String(t || '')
+  .replace(/\s*\((?:TikTok|Instagram Reels|YouTube Shorts|Instagram|YouTube|Reels|Shorts)(?:,\s*(?:TikTok|Instagram Reels|YouTube Shorts|Instagram|YouTube|Reels|Shorts))*\)/g, '')
+  .replace(/\b(?:TikTok|Instagram Reels|YouTube Shorts|Instagram|YouTube|Reels|Shorts)(?:\s*(?:\/|,|and|or)\s*(?:TikTok|Instagram Reels|YouTube Shorts|Instagram|YouTube|Reels|Shorts))*\b/g, 'short-video')
+  .replace(/short-video(?!\s+feeds?)/g, 'short-video feed');
 export async function runTest(cfg, p, { slug, signal, onStep = () => {} } = {}) {
   const c = conf(cfg), outDir = p.outDir;
+  p = { ...p, requirement: noPlatforms(p.requirement), dossier: noPlatforms(p.dossier), interview: p.interview && noPlatforms(p.interview) };
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'dossier.md'), p.dossier);
   const step = t => { onStep(t); emit('engine', { slug, stage: 'audience', engine: 'mirofish', text: t }); };

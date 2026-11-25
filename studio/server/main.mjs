@@ -64,7 +64,7 @@ const routes = [
   ['POST', /^\/api\/ads\/([\w-]+)\/run$/, async (req, res, [, s]) => { const b = await body(req); if (P.isRunning(s)) return send(res, 409, { error: 'running' }); P.runFrom(s, b.from || null).catch(e => emit('job', { slug: s, kind: 'error', text: e.message })); send(res, 202, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/stages\/([\w-]+)\/approve$/, async (req, res, [, s, id]) => { await P.approve(s, id, await body(req)); send(res, 200, { ok: true }); }],
   ['POST', /^\/api\/ads\/([\w-]+)\/stages\/([\w-]+)\/redo$/, async (req, res, [, s, id]) => { try { await P.redo(s, id, await body(req)); send(res, 202, { ok: true }); } catch (e) { send(res, 409, { error: e.message }); } }],
-  ['GET', /^\/api\/catalog$/, (req, res) => send(res, 200, CAT.load().map(e => ({ slug: e.slug, name: e.name, family: e.family, traits: e.traits, bestFor: e.bestFor, example: e.example?.file ? `/catalog/examples/${e.slug}.jpg` : null })))],
+  ['GET', /^\/api\/catalog$/, (req, res) => send(res, 200, CAT.load().map(e => ({ slug: e.slug, name: e.name, family: e.family, familyName: CAT.FAMILIES[e.family], traits: e.traits, bestFor: e.bestFor, example: e.example?.file ? `/catalog/examples/${e.slug}.jpg` : null })))],
   ['GET', /^\/catalog\/examples\/([\w-]+)\.jpg$/, (req, res, [, s]) => serveFile(req, res, path.join(CAT.CATALOG, 'examples', `${s}.jpg`))],
   ['GET', /^\/api\/memory$/, (req, res) => send(res, 200, MEM.summary())],
   ['POST', /^\/api\/memory\/proposals\/([\w-]+)$/, async (req, res, [, id]) => { const b = await body(req); send(res, 200, MEM.decideProposal(id, !!b.approve)); }],

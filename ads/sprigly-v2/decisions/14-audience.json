@@ -1,0 +1,99 @@
+{
+  "stage": "audience",
+  "at": "2026-11-25T08:09:51.645Z",
+  "output": {
+    "scores": {
+      "stopScroll": 3,
+      "watchThrough": 4,
+      "brandRecall": 3,
+      "trust": 3,
+      "clickIntent": 2
+    },
+    "bestHook": "C",
+    "comments": [
+      {
+        "who": "Guilty plant owner",
+        "text": "Remembered it because 'one capful per litre' is finally a number.",
+        "tone": "positive"
+      },
+      {
+        "who": "Ad-weary scroller",
+        "text": "The paper look kept me about three seconds; I only clocked the brand at the end card.",
+        "tone": "neutral"
+      },
+      {
+        "who": "Ad-weary scroller",
+        "text": "I remember 'Sprigly' because it sounds like sprig.",
+        "tone": "positive"
+      },
+      {
+        "who": "New plant parent",
+        "text": "Stopped because the fern looked like mine. Is one capful per litre okay for a first feed?",
+        "tone": "neutral"
+      },
+      {
+        "who": "Practical shopper",
+        "text": "No price, so there's nothing to judge.",
+        "tone": "negative"
+      },
+      {
+        "who": "Guilty plant owner",
+        "text": "I'd try it if someone told me the cost per litre without a subscription.",
+        "tone": "neutral"
+      }
+    ],
+    "fixes": [
+      "Test opening C ('Day 14. Still guessing.') against A: the guilt-prone segment that buys stops for a named failure, but show the bottle by 1 s so the curiosity gap does not hide the product.",
+      "Put a price or a cost per litre on the end card next to '250 ml makes 50 L' once it is set; it is the most repeated purchase question.",
+      "Reinforce the name once before the end card in the picture, not only the voice: print SPRIGLY on the cap in the capful insert.",
+      "Soften the guilt framing for cold viewers: the ad-weary segment read it as 'guilt dressed up as a tip'; a lighter first card line keeps the joke without the scold."
+    ],
+    "risks": [
+      "Viewers ask about pet safety and first feeds; the brief cannot claim pet safety, so answer only with label directions in comments.",
+      "'One capful, no guessing' is read by some as a promise that a capful fixes a dying plant; keep the payoff fern modest.",
+      "Simulated brand recall is inflated: every agent knows the product from the knowledge graph, so the recall score is a ceiling, not a measurement."
+    ],
+    "confidence": "low",
+    "reason": "Against v1 the directed cut moved brand recall from 2 to 3 (the name now arrives with the rule and on a mnemonic sound) while stop-scroll, trust and click held, and the simulation again found price, not creative, to be the purchase blocker. Several agents were the brand, Juno and platform accounts (the reused setup paragraph named the platforms), and all agents already know the product, so this stays a low-confidence smoke test.",
+    "costUsd": 0.2677,
+    "stats": {
+      "agents": 16,
+      "rounds": 24,
+      "actions": 465,
+      "twitter": 181,
+      "reddit": 284
+    },
+    "setup": {
+      "requirement": "A 20-second vertical paper cut-out video ad for Sprigly, a new liquid houseplant feed dosed with a measuring cap, appears between other short videos in the TikTok and Instagram Reels feeds of adults who keep houseplants, many watching with the sound off and captions on. Predict how these viewers react on social media: whether they stop scrolling in the first two seconds, whether they watch to the end, whether they remember the name Sprigly afterwards, whether they believe the simple claims (one capful per litre, every two weeks, with seaweed extract), whether they want to try or buy it, what they would comment or ask, and which of the three openings (A 'Sunday standoff.', B 'How much is a bit?', C 'Day 14. Still guessing.') would hold attention best.",
+      "segments": [
+        {
+          "name": "Guilty plant owners",
+          "who": "Adults in their 20s and 30s renting small flats with three to eight houseplants, who love them but have never fed them properly.",
+          "mindset": "Scroll fast in the evening; stop for anything that names a problem they feel guilty about, like a droopy plant. Doubt: does feed actually help, or is it light and watering?"
+        },
+        {
+          "name": "Plant hobbyists",
+          "who": "Keen indoor gardeners with large collections who follow plant-care accounts and already use fertiliser.",
+          "mindset": "Stop for plant content but judge it hard; they look for the NPK numbers and dose. Doubt: why switch from what they already use, and what does it cost per litre?"
+        },
+        {
+          "name": "New plant parents",
+          "who": "People who bought their first one or two plants this year, often as decor, and are anxious about killing them.",
+          "mindset": "Save and share simple how-to videos; a clear rule like 'one capful' appeals. Doubt: is this another thing they need to buy?"
+        },
+        {
+          "name": "Practical shoppers",
+          "who": "Busy adults who buy houseplant supplies at the supermarket or online when something looks wrong.",
+          "mindset": "Skip most ads in under a second unless the product is obvious and the price feels fair. Doubt: what is it, where do they get it, and how much is it?"
+        },
+        {
+          "name": "Ad-weary scrollers",
+          "who": "Viewers with no strong interest in plants who see the ad by chance and dislike sponsored posts.",
+          "mindset": "Swipe away from anything that looks like an ad; might stay only for a charming visual or a joke. Doubt: why is this in their feed at all?"
+        }
+      ],
+      "reason": "Four segments match the brief's audience at different levels of skill and interest, and one indifferent group shows whether the ad holds attention beyond the target."
+    },
+    "mock": false
+  }
+}

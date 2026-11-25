@@ -61,3 +61,12 @@
 {"type":"signal","at":"2026-11-25T07:48:04.438Z","ad":"sprigly-v2","stage":"brandmap","kind":"rule","value":5,"note":"5 Plant / pulse / reveal / tag: Planted on the sill at 0 s, pulsing behind the fern at 5.4 s, revealed at 7.6 s with the name filling the frame, tagged on the end card with a purchase anchor (250 ml makes 50 L)."}
 {"type":"signal","at":"2026-11-25T07:48:04.438Z","ad":"sprigly-v2","stage":"story","kind":"rule","value":4,"note":"6 One emotion: Relief carries it; the arms-up surprise at 6.5 s is a bigger gesture than the calm tone, though it reads as comic timing."}
 {"type":"signal","at":"2026-11-25T07:48:04.438Z","ad":"sprigly-v2","stage":"brief","kind":"rule","value":4,"note":"7 Kind contrast and honest claims: The season is now in the voice, the caption and a subline; the evening fern is still fully perky, which lightly implies a result the brief rules out promising."}
+{"type":"signal","at":"2026-11-25T08:09:51.653Z","ad":"sprigly-v2","stage":"hooks","kind":"audience","value":3,"note":"stopScroll 3/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"direction","kind":"audience","value":3,"note":"stopScroll 3/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"story","kind":"audience","value":4,"note":"watchThrough 4/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"direction","kind":"audience","value":4,"note":"watchThrough 4/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"brandmap","kind":"audience","value":3,"note":"brandRecall 3/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"brief","kind":"audience","value":3,"note":"trust 3/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"brandmap","kind":"audience","value":2,"note":"clickIntent 2/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"brief","kind":"audience","value":2,"note":"clickIntent 2/5"}
+{"type":"signal","at":"2026-11-25T08:09:51.654Z","ad":"sprigly-v2","stage":"audience","kind":"fixes","value":null,"note":"Test opening C ('Day 14. Still guessing.') against A: the guilt-prone segment that buys stops for a named failure, but show the bottle by 1 s so the curiosity gap does not hide the product. | Put a price or a cost per litre on the end card next to '250 ml makes 50 L' once it is set; it is the most …"}

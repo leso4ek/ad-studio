@@ -1,0 +1,283 @@
+{
+  "slug": "sprigly-v2",
+  "created": "2026-11-25T08:10:49.906Z",
+  "settings": {
+    "route": "seedance",
+    "model": "bytedance/seedance-2.5-flash",
+    "resolution": "480p",
+    "aspect": "9:16",
+    "imageModel": "bytedance-seed/seedream-5-5",
+    "finalModel": "bytedance/seedance-2.5",
+    "finalResolution": "720p",
+    "stylePara": "Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter."
+  },
+  "assets": [
+    {
+      "id": "char-juno",
+      "name": "juno",
+      "kind": "character",
+      "desc": "juno: she, 30s, small flat, loves her fern, hair bun #3A2418, top #E07A4F, trousers #3D5A80",
+      "files": [],
+      "chosen": null,
+      "picks": [],
+      "status": "todo",
+      "role": "STRICT JUNO IDENTITY: face, hair, body proportions and costume exactly as shown"
+    },
+    {
+      "id": "product",
+      "name": "Sprigly",
+      "kind": "product",
+      "picks": [],
+      "desc": "Sprigly: a bottle with a #3E8E5A body, a #F2C14E cap and a #FFF6E5 label printed \"SPRIGLY\" in #234D33 letters",
+      "files": [],
+      "chosen": null,
+      "status": "todo",
+      "role": "EXACT SPRIGLY PRODUCT: shape, proportions, colours and label exactly as shown; never redesign it"
+    },
+    {
+      "id": "place-kitchen",
+      "name": "kitchen",
+      "kind": "place",
+      "desc": "kitchen at day, empty, wide three-quarter view",
+      "files": [],
+      "chosen": null,
+      "picks": [],
+      "status": "todo",
+      "role": "STRICT KITCHEN ENVIRONMENT: architecture, materials, colours and lighting exactly as shown"
+    },
+    {
+      "id": "place-evening",
+      "name": "evening",
+      "kind": "place",
+      "desc": "kitchen at dusk, empty, wide three-quarter view",
+      "files": [],
+      "chosen": null,
+      "picks": [],
+      "status": "todo",
+      "role": "STRICT EVENING ENVIRONMENT: architecture, materials, colours and lighting exactly as shown"
+    }
+  ],
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 1.2,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "product",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819635,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. juno stands left, annoyed pose, facing right; a fern droopy right; the bottle is small on the right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands left, annoyed pose, facing right; a fern droopy right; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle; label \"SPRIGLY\". Never change its shape, colours or label.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"Sunday standoff.\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s2",
+      "t0": 1.2,
+      "t1": 2.6,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819636,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. a fern droopy centre.\nACTION: a fern droopy centre.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"Sunday standoff.\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s3",
+      "t0": 2.6,
+      "t1": 3.8,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819637,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. juno stands centre, think pose, facing right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands centre, think pose, facing right.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"A splash? A glug?\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s4",
+      "t0": 3.8,
+      "t1": 5.4,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819638,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. juno stands left, hold pose, facing right; a watering can centre; a drop right; a fern droopy right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands left, hold pose, facing right; a watering can centre; a drop right; a fern droopy right.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"A splash? A glug?\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s5",
+      "t0": 5.4,
+      "t1": 6.5,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "product",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819639,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. a fern droopy centre; the bottle is small on the right.\nCAST RULE: no people; the product is the subject.\nACTION: a fern droopy centre; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle; label \"SPRIGLY\". Never change its shape, colours or label.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label."
+    },
+    {
+      "id": "s6",
+      "t0": 6.5,
+      "t1": 7.6,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819640,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. juno stands centre, surprised pose, facing right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands centre, surprised pose, facing right.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label."
+    },
+    {
+      "id": "s7",
+      "t0": 7.6,
+      "t1": 10,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "product"
+      ],
+      "layoutRef": false,
+      "seed": 707819641,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: studio, day. the bottle is revealed large in the centre, light blooming behind it; a sparkle right.\nCAST RULE: no people; the product is the subject.\nACTION: the bottle is revealed large in the centre, light blooming behind it; a sparkle right.\nPRODUCT: Sprigly, a bottle; label \"SPRIGLY\". Never change its shape, colours or label.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"One capful per litre.\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s8",
+      "t0": 10,
+      "t1": 11.1,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819642,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. a watering can centre; a capful centre.\nACTION: a watering can centre; a capful centre.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"One capful per litre.\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s9",
+      "t0": 11.1,
+      "t1": 13.7,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "product",
+        "place-kitchen"
+      ],
+      "layoutRef": false,
+      "seed": 707819643,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, day. juno stands left, hold pose, facing right; a watering can centre; a fern right; the bottle is small on the right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands left, hold pose, facing right; a watering can centre; a fern right; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle; label \"SPRIGLY\". Never change its shape, colours or label.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"Every two weeks.\" / \"spring and summer\" are added later in the edit; keep the upper third calm.)"
+    },
+    {
+      "id": "s10",
+      "t0": 13.7,
+      "t1": 16.5,
+      "seconds": 4,
+      "route": "seedance",
+      "refs": [
+        "char-juno",
+        "product",
+        "place-evening"
+      ],
+      "layoutRef": false,
+      "seed": 467572263,
+      "previz": null,
+      "takes": [],
+      "chosen": null,
+      "status": "todo",
+      "notes": "",
+      "promptBy": "template",
+      "promptEdited": false,
+      "final": null,
+      "prompt": "FORMAT: 4 seconds, 1 shot, vertical 9:16, 24 fps.\nSTYLE: Layered card-stock paper cut-out: warm cream walls, a teal-and-sand kitchen, soft lamp shadows under every piece, cut edges catching the light, animated on twos with a gentle stop-motion jitter.\nCAMERA: 35 mm lens, locked off.\nMUSIC: FALSE. No music, no score. Diegetic sound only.\nCUT POLICY: one single continuous shot; no cuts, no dissolves, no speed ramps.\nMOTION SPEED AND QUALITY: real-time speed for every movement, natural weight, smooth and continuous, never jerky; no slow motion.\nSETTING AND BLOCKING: kitchen, dusk. juno stands left, happy pose, facing right; a fern right; a mug centre; a steam centre; the bottle is small on the right.\nCAST RULE: exactly 1 person (juno). Nobody else in frame.\nACTION: juno stands left, happy pose, facing right; a fern right; a mug centre; a steam centre; the bottle is small on the right.\nPRODUCT: Sprigly, a bottle; label \"SPRIGLY\". Never change its shape, colours or label.\nNO TEXT: no subtitles, no captions, no on-screen words or logos other than the printed product label.\n(The words \"Sunday, solved.\" are added later in the edit; keep the upper third calm.)"
+    }
+  ],
+  "updated": "2026-11-25T08:10:49.907Z"
+}

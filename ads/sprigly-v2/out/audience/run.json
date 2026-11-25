@@ -1,0 +1,12 @@
+{
+ "hash": "ad0af96eea717c37",
+ "phase": "reported",
+ "ids": {
+  "project_id": "proj_39ea801d5c4c",
+  "graph_id": "mirofish_59384f7db0b74508",
+  "entities": 16,
+  "relations": 28,
+  "simulation_id": "sim_41a17e3e1767"
+ },
+ "at": "2026-11-25T08:09:17.592Z"
+}

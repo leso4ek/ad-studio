@@ -271,3 +271,17 @@
 {"type":"job","at":"2026-11-25T07:48:44.723Z","slug":"sprigly-v2","kind":"start","from":"audience"}
 {"type":"stage","at":"2026-11-25T07:48:44.724Z","slug":"sprigly-v2","stage":"audience","state":{"status":"running","started":"2026-11-25T07:48:44.723Z","error":null,"fallbacks":[],"engine":null}}
 {"type":"engine","at":"2026-11-25T07:48:45.168Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"ontology: reading the dossier"}
+{"type":"engine","at":"2026-11-25T07:49:08.137Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"graph: extracting people, products and claims"}
+{"type":"engine","at":"2026-11-25T07:49:24.522Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"simulation: 16 entities, 28 relations → simulated viewers"}
+{"type":"engine","at":"2026-11-25T07:51:33.559Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"running 24 rounds on a simulated Twitter + Reddit"}
+{"type":"engine","at":"2026-11-25T08:04:21.581Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"interviews: one question to every simulated viewer"}
+{"type":"engine","at":"2026-11-25T08:05:41.022Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"closing the simulation"}
+{"type":"engine","at":"2026-11-25T08:05:41.530Z","slug":"sprigly-v2","stage":"audience","engine":"mirofish","text":"report: MiroFish writes its prediction"}
+{"type":"stage","at":"2026-11-25T08:09:17.601Z","slug":"sprigly-v2","stage":"audience","state":{"status":"running","started":"2026-11-25T07:48:44.723Z","error":null,"fallbacks":[],"engine":"inbox"}}
+{"type":"claude","at":"2026-11-25T08:09:17.603Z","slug":"sprigly-v2","stage":"audience","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer sprigly-v2 audience <file.json>"}
+{"type":"claude","at":"2026-11-25T08:09:51.681Z","slug":"sprigly-v2","stage":"memory-relabel","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer sprigly-v2 memory-relabel <file.json>"}
+{"type":"engine","at":"2026-11-25T08:10:26.730Z","slug":"sprigly-v2","stage":"memory","engine":"memory","text":"hindsight memory: 4 new lesson(s), 27 in total"}
+{"type":"stage","at":"2026-11-25T08:10:26.730Z","slug":"sprigly-v2","stage":"audience","state":{"status":"running","started":"2026-11-25T07:48:44.723Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["out/audience/setup.json","out/audience/dossier.md","out/audience/report.md","out/audience/verdict.json"]}}
+{"type":"stage","at":"2026-11-25T08:10:26.731Z","slug":"sprigly-v2","stage":"audience","state":{"status":"done","started":"2026-11-25T07:48:44.723Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["out/audience/setup.json","out/audience/dossier.md","out/audience/report.md","out/audience/verdict.json"],"finished":"2026-11-25T08:10:26.731Z","ms":1302008,"summary":"stop 3 · watch 4 · recall 3 · trust 3 · click 2 · hook C · $0.27","warnings":[],"result":{"costUsd":0.2677,"stats":{"agents":16,"rounds":24,"actions":465,"twitter":181,"reddit":284}}}}
+{"type":"job","at":"2026-11-25T08:10:26.731Z","slug":"sprigly-v2","kind":"end"}
+{"type":"production","at":"2026-11-25T08:10:49.907Z","slug":"sprigly-v2","kind":"plan"}
