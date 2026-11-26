@@ -41,10 +41,11 @@
   },
   {
     "id": "l11",
-    "text": "That click? Your ears just matched the sky."
+    "text": "That click? Your ears just caught up with the sky."
   },
   {
     "id": "l12",
-    "text": "Follow for the next tiny why."
+    "text": "Follow for the next tiny why.",
+    "asr": "Follow for the next tiny Y."
   }
 ]

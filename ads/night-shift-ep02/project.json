@@ -2,7 +2,7 @@
   "slug": "night-shift-ep02",
   "title": "Night Shift · Ep 2",
   "created": "2026-11-26T08:25:51.184Z",
-  "updated": "2026-11-26T08:25:51.184Z",
+  "updated": "2026-11-26T08:39:18.171Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -53,37 +53,172 @@
       "status": "idle"
     },
     "story": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:32.663Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:38:33.668Z",
+      "ms": 1005,
+      "summary": "dread · turn: The last chart entry is written in her handwriting.",
+      "warnings": [],
+      "result": {}
     },
     "brandmap": {
-      "status": "idle"
+      "status": "skipped"
     },
     "style": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:33.669Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-26T08:38:33.671Z",
+      "ms": 2,
+      "summary": "ad-manga-panels",
+      "warnings": [],
+      "result": {}
     },
     "direction": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:33.672Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:38:35.679Z",
+      "ms": 2007,
+      "summary": "7 shots · did she write it, and when?",
+      "warnings": [],
+      "result": {}
     },
     "bible": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:35.679Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:38:37.689Z",
+      "ms": 2010,
+      "summary": "7 shots, 6 voice lines, 34.5s",
+      "warnings": [],
+      "result": {}
     },
     "world": {
-      "status": "idle"
+      "status": "skipped"
     },
     "episodes": {
-      "status": "idle"
+      "status": "skipped"
     },
     "frames": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:37.690Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_2.04.jpg",
+        "frames/f_6.4.jpg",
+        "frames/f_11.04.jpg",
+        "frames/f_16.04.jpg",
+        "frames/f_21.2.jpg",
+        "frames/f_25.96.jpg",
+        "frames/f_30.32.jpg",
+        "frames/f_33.5.jpg",
+        "frames/sheet.jpg",
+        "frames/w_2.04.jpg",
+        "frames/w_21.2.jpg",
+        "frames/w_33.5.jpg"
+      ],
+      "finished": "2026-11-26T08:38:41.472Z",
+      "ms": 3782,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "notes": [],
+          "changed": false,
+          "reason": "Faces read in every panel, the evidence inserts are clear, and the cards sit below the faces."
+        }
+      }
     },
     "voice": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:41.472Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-26T08:38:41.474Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/cues.json",
+        "out/night-shift-ep02.srt"
+      ],
+      "finished": "2026-11-26T08:38:55.246Z",
+      "ms": 13774,
+      "summary": "6 lines by kokoro; speech check: pass",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 0.91,
+          "l02": 1.813,
+          "l03": 1.035,
+          "l04": 1.198,
+          "l05": 1.862,
+          "l06": 1.312
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | It rang again. → It rang again. \nOK   l02 | Mara. Do not go in there at night. → Mara, do not go in there at night. \nOK   l03 | The sheets are warm. → The sheets are warm. \nOK   l04 | That is my name tag. → That is my name tag. \nOK   l05 | Last entry, two in the morning. → Last entry, two in the morning. \nOK   l06 | That is my handwriting. → That is my handwriting. \nmismatches: 0 (lang=en, model=base)"
+        }
+      }
     },
     "animatic": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:38:55.246Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-26T08:39:18.171Z",
+      "ms": 22925,
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:c1              at 0.00s   11 chars  need 2.23s  got 3.40s  \"IT RANG\\nAGAIN\"\nOK  s5:c2              at 18.24s    4 chars  need 1.77s  got 5.00s  \"MARA\"\nOK  end:logo           at 32.16s    5 chars  need 1.83s  got 2.34s  \"Part 3\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
     },
     "final": {
-      "status": "idle"
+      "status": "running",
+      "started": "2026-11-26T08:39:18.171Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null
     },
     "scorecard": {
       "status": "idle"

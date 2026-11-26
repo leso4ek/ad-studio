@@ -1,0 +1,349 @@
+{
+  "stage": "bible",
+  "at": "2026-11-26T08:38:37.688Z",
+  "output": {
+    "slug": "night-shift-ep02",
+    "title": "Night Shift · Ep 2: Warm sheets",
+    "style": "ad-manga-panels",
+    "dur": 34.5,
+    "cast": {
+      "mara": {
+        "skin": "#C68B67",
+        "hair": "#1E1612",
+        "hairStyle": "bun",
+        "top": "#7FB3D5",
+        "bottom": "#2C3E50",
+        "build": "slim",
+        "role": "she, 30s, a night-shift nurse who never misses a detail",
+        "voice": "af_bella"
+      },
+      "dev": {
+        "skin": "#8D5B3E",
+        "hair": "#0F0F0F",
+        "hairStyle": "short",
+        "top": "#556B2F",
+        "bottom": "#333333",
+        "build": "round",
+        "role": "he, 40s, the night porter who knows the old wing",
+        "voice": "am_adam"
+      }
+    },
+    "places": {
+      "ward": {
+        "kind": "office",
+        "time": "night"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.4,
+        "act": 1,
+        "beat": "hook",
+        "place": "ward",
+        "camera": {
+          "size": "WS",
+          "subject": "lamp",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "establishing",
+        "reason": "The call light buzzes again.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "lamp",
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 0.9,
+            "anim": [
+              "pulse"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "hook",
+            "text": "IT RANG\nAGAIN",
+            "x": 0.47,
+            "y": 0.645,
+            "size": 0.11,
+            "w": 0.76
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s2",
+        "t0": 3.4,
+        "t1": 8.4,
+        "act": 1,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MS",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "truck-r"
+        },
+        "function": "relation",
+        "reason": "Mara walks toward Room 9; Dev calls after her.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.45,
+            "y": 0.92,
+            "scale": 1,
+            "pose": "neutral",
+            "face": "right",
+            "anim": [
+              "slide-r"
+            ]
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s3",
+        "t0": 8.4,
+        "t1": 12.8,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "reaction",
+        "reason": "Dev, from the desk.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "point",
+            "face": "left"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s4",
+        "t0": 12.8,
+        "t1": 18.2,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "WS",
+          "subject": "bed",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reveal",
+        "reason": "An empty bed, the sheets still warm.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "bed",
+            "x": 0.5,
+            "y": 0.72,
+            "scale": 1.2
+          },
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.2,
+            "y": 0.95,
+            "scale": 0.8,
+            "pose": "think",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s5",
+        "t0": 18.2,
+        "t1": 23.2,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "book",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "insert",
+        "reason": "Her own name tag on the pillow.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "book",
+            "x": 0.5,
+            "y": 0.62,
+            "scale": 1.2
+          },
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "MARA",
+            "x": 0.47,
+            "y": 0.645,
+            "size": 0.09,
+            "w": 0.76
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s6",
+        "t0": 23.2,
+        "t1": 27.8,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "reaction",
+        "reason": "She opens the chart.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.42,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "surprised",
+            "face": "front"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s7",
+        "t0": 27.8,
+        "t1": 32,
+        "act": 4,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "book",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reveal",
+        "reason": "The last entry is in her handwriting.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "book",
+            "x": 0.5,
+            "y": 0.6,
+            "scale": 1.4,
+            "anim": [
+              "pulse"
+            ]
+          }
+        ],
+        "route": "kit"
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "lines": [
+        {
+          "id": "l01",
+          "text": "It rang again.",
+          "at": 0.4,
+          "speaker": "mara"
+        },
+        {
+          "id": "l02",
+          "text": "Mara. Do not go in there at night.",
+          "at": 8.7,
+          "speaker": "dev"
+        },
+        {
+          "id": "l03",
+          "text": "The sheets are warm.",
+          "at": 13.4,
+          "speaker": "mara"
+        },
+        {
+          "id": "l04",
+          "text": "That is my name tag.",
+          "at": 18.6,
+          "speaker": "mara"
+        },
+        {
+          "id": "l05",
+          "text": "Last entry, two in the morning.",
+          "at": 23.6,
+          "speaker": "mara"
+        },
+        {
+          "id": "l06",
+          "text": "That is my handwriting.",
+          "at": 29.4,
+          "speaker": "mara"
+        }
+      ]
+    },
+    "captions": true,
+    "endcard": {
+      "t0": 32,
+      "logo": "Part 3"
+    },
+    "music": {
+      "mood": "tender",
+      "bpm": 70
+    },
+    "sfx": [
+      {
+        "t": 31.8,
+        "type": "sting"
+      }
+    ],
+    "reason": "Episode 2: seven panels from the outline; the cliffhanger line lands at the end and the episode cuts on it.",
+    "format": "drama-episode",
+    "captionMode": "words",
+    "palette": {
+      "accent": "#E63946"
+    }
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwwhvqldqat",
+      "Lmwvtnh4eijd"
+    ]
+  },
+  "warnings": []
+}

@@ -100,3 +100,11 @@ test('short drama: an episode board reuses the character sheets approved in anot
   assert.ok(fs.existsSync(path.join(tmp, 's-ep02', a2.chosen)));
   fs.rmSync(tmp, { recursive: true, force: true });
 });
+
+test('speech check: a Whisper diff only in number spelling is not a misread; a wrong name still is', async () => {
+  const V = await import('../server/engines/voice.mjs');
+  const d = V.whisperDiffs('OK   l02 | a → a\nDIFF l05 | Room nine has been empty for years. → Room 9 has been empty for years. \nDIFF l01 | Mara Okafor. → Mara Akafer. ');
+  assert.deepEqual(d.map(x => x.id), ['l05', 'l01']);
+  assert.equal(V.sameSpoken(d[0].want, d[0].heard), true);
+  assert.equal(V.sameSpoken(d[1].want, d[1].heard), false);
+});

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "l01",
+    "text": "It rang again.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Mara. Do not go in there at night.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "The sheets are warm.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "That is my name tag.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "Last entry, two in the morning.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "That is my handwriting.",
+    "voice": "af_bella",
+    "speed": 0.95
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T08:38:33.666Z",
+  "output": {
+    "spine": [
+      "Every night Mara works the ward.",
+      "Every night Room 9 stays empty.",
+      "Mara walks to Room 9 while Dev calls after her.",
+      "The room is empty, but the sheets are warm.",
+      "Her own name tag lies on the pillow.",
+      "The last chart entry is written in her handwriting."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.4,
+        "beats": "The call light buzzes again; Mara is already walking toward it."
+      },
+      {
+        "act": 2,
+        "name": "Question",
+        "t0": 3.4,
+        "t1": 12.8,
+        "beats": "The room is empty, but the sheets are warm."
+      },
+      {
+        "act": 3,
+        "name": "Pressure",
+        "t0": 12.8,
+        "t1": 18.2,
+        "beats": "Her own name tag lies on the pillow."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 18.2,
+        "t1": 27.8,
+        "beats": "The last chart entry is written in her handwriting."
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 27.8,
+        "t1": 32,
+        "beats": "she turns the chart toward us: the last entry is in her handwriting"
+      }
+    ],
+    "turn": "The last chart entry is written in her handwriting.",
+    "emotion": "dread",
+    "reason": "Episode 2 follows its outline beat for beat and cuts on the cliffhanger at 32 s."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

@@ -552,7 +552,7 @@
         },
         {
           "id": "l11",
-          "text": "That click? Your ears just matched the sky.",
+          "text": "That click? Your ears just caught up with the sky.",
           "at": 35.6,
           "speaker": "narrator"
         },
@@ -560,7 +560,8 @@
           "id": "l12",
           "text": "Follow for the next tiny why.",
           "at": 41.9,
-          "speaker": "narrator"
+          "speaker": "narrator",
+          "asr": "Follow for the next tiny Y."
         }
       ]
     },

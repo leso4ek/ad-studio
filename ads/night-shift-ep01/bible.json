@@ -1,6 +1,6 @@
 {
   "slug": "night-shift-ep01",
-  "title": "Night Shift · Ep 1: Room 9",
+  "title": "Night Shift \u00b7 Ep 1: Room 9",
   "style": "ad-manga-panels",
   "dur": 34.5,
   "cast": {
@@ -272,7 +272,8 @@
         "id": "l01",
         "text": "Room nine. Mara Okafor. Admitted tonight.",
         "at": 0.4,
-        "speaker": "mara"
+        "speaker": "mara",
+        "asr": "Room nine. Mara Akafer. Admitted tonight."
       },
       {
         "id": "l02",

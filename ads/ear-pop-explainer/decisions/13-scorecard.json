@@ -1,0 +1,58 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-26T08:37:28.975Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 hook",
+        "score": 4,
+        "note": "The question lands at 0.3 s over a matching image."
+      },
+      {
+        "rule": "2 one clear question answered",
+        "score": 5,
+        "note": "Why ears pop and why landing is worse, both answered."
+      },
+      {
+        "rule": "3 the chain",
+        "score": 5,
+        "note": "Every beat causes the next: pocket, tube, balance, climb, pop, landing, swallow."
+      },
+      {
+        "rule": "4 facts accurate and sourced",
+        "score": 5,
+        "note": "Only the five sourced facts; no invented numbers."
+      },
+      {
+        "rule": "5 retention",
+        "score": 4,
+        "note": "A new card every 3-4 s; the landing reversal at 56 %."
+      },
+      {
+        "rule": "6 visual clarity",
+        "score": 3,
+        "note": "The kit has no ear diagram; arrows and sparkles stand in for the tube."
+      },
+      {
+        "rule": "7 the ending",
+        "score": 4,
+        "note": "\"Your ears just matched the sky\" closes the loop; the CTA promises part 2."
+      }
+    ],
+    "total": 30,
+    "verdict": "A clear, honest 45 s explainer; the kit needs a simple anatomy prop to show the tube itself.",
+    "fixes": [
+      "Add an ear/tube cross-section prop to the kit so s2-s3 show the mechanism instead of an arrow.",
+      "Put one hard number at about 40 % (cabin pressure like 6,000-8,000 ft).",
+      "Try hook C (\"Landing hurts more\") as the variant: it leads with the paradox."
+    ],
+    "bestHook": "A",
+    "reason": "Strong chain and accuracy; visual clarity is limited by the props available."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002
+  },
+  "warnings": []
+}

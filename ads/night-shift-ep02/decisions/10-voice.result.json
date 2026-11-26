@@ -1,0 +1,20 @@
+{
+  "stage": "voice",
+  "at": "2026-11-26T08:38:55.246Z",
+  "summary": "6 lines by kokoro; speech check: pass",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 0.91,
+    "l02": 1.813,
+    "l03": 1.035,
+    "l04": 1.198,
+    "l05": 1.862,
+    "l06": 1.312
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": true,
+    "report": "OK   l01 | It rang again. → It rang again. \nOK   l02 | Mara. Do not go in there at night. → Mara, do not go in there at night. \nOK   l03 | The sheets are warm. → The sheets are warm. \nOK   l04 | That is my name tag. → That is my name tag. \nOK   l05 | Last entry, two in the morning. → Last entry, two in the morning. \nOK   l06 | That is my handwriting. → That is my handwriting. \nmismatches: 0 (lang=en, model=base)"
+  },
+  "warnings": []
+}

@@ -105,11 +105,20 @@ export async function checkSpeech(cfg, lines, outDir, { chain, signal, slug, sta
       const lj = path.join(outDir, 'asr-lines.json'); writeJSON(lj, lines.map(L => ({ id: L.id, text: L.text, ...(L.asr ? { asr: L.asr } : {}) })));
       const r = await run(path.join(cfg.lib, '.venv', 'bin', 'python'), ['-I', path.join(cfg.lib, 'core', 'tts', 'asr_check.py'), lj, outDir, '--lang', 'en', '--model', cfg.whisperModel || 'base'], { cwd: cfg.lib, signal });
       if (/No module named|ModuleNotFoundError/.test(r.err)) { emit('engine', { slug, stage, engine: 'asr', text: 'whisper not installed → no speech check' }); continue; }
-      return { engine: 'whisper', pass: r.code === 0, report: (r.out + r.err).trim().split('\n').slice(-20).join('\n'), words: readJSON(path.join(outDir, 'words.json'), null) };
+      const report = (r.out + r.err).trim().split('\n').slice(-20).join('\n'), diffs = whisperDiffs(report);
+      // a DIFF that only differs in how numbers are written ("nine" vs "9") is not a misread
+      const real = diffs.filter(d => !sameSpoken(d.want, d.heard));
+      const pass = r.code === 0 || (diffs.length > 0 && real.length === 0);
+      return { engine: 'whisper', pass, report: real.length < diffs.length ? `${report}\n(${diffs.length - real.length} diff(s) only in number spelling: counted as OK)` : report, words: readJSON(path.join(outDir, 'words.json'), null) };
     }
   }
   return { engine: 'none', pass: null, report: 'no speech-to-text engine available' };
 }
+const NUM = 'zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split(' ');
+/** Parses the library checker's "DIFF id | wanted → heard" lines. Pure. */
+export function whisperDiffs(report) { return String(report).split('\n').map(l => l.match(/^DIFF\s+(\S+)\s*\|\s*(.*?)\s*→\s*(.*)$/)).filter(Boolean).map(m => ({ id: m[1], want: m[2], heard: m[3] })); }
+/** Same words once case, punctuation and number spelling (words ↔ digits, 0-20) are ignored. Pure. */
+export function sameSpoken(a, b) { const n = s => norm(s).split(' ').map(w => (NUM.indexOf(w) >= 0 ? String(NUM.indexOf(w)) : w)).join(' '); return n(a) === n(b); }
 const norm = s => String(s).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
 function same(a, b) { const A = norm(a).split(' '), B = norm(b).split(' '); let hit = 0; for (const w of B) if (A.includes(w)) hit++; return hit / Math.max(1, B.length) >= .85; }
 
