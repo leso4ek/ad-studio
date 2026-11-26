@@ -1,0 +1,23 @@
+{
+  "stage": "final",
+  "at": "2026-11-26T08:51:13.972Z",
+  "summary": "2 file(s): night-shift-ep03-9x16.mp4, night-shift-ep03-16x9.mp4",
+  "probes": {
+    "9x16": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 34.5,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep03/out/night-shift-ep03-9x16.mp4\n    I:         -14.4 LUFS\n    LRA:         4.8 LU\n    Peak:       -1.5 dBFS"
+    },
+    "16x9": {
+      "w": 1920,
+      "h": 1080,
+      "fps": "24/1",
+      "dur": 34.5,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep03/out/night-shift-ep03-16x9.mp4\n    I:         -14.4 LUFS\n    LRA:         4.8 LU\n    Peak:       -1.5 dBFS"
+    }
+  }
+}

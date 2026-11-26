@@ -1,6 +1,6 @@
 {
   "stage": "frames",
-  "at": "2026-11-26T08:24:03.942Z",
+  "at": "2026-11-26T08:51:00.337Z",
   "summary": "approved as drawn",
   "review": {
     "verdict": "approve",
@@ -14,6 +14,11 @@
         "shot": "s1",
         "issue": "the hook card hid her head",
         "fix": "she moved lower and smaller; the card now sits clear of the face"
+      },
+      {
+        "shot": "s1",
+        "issue": "the wide-shot hook card sat on her shirt in dark script, hard to read on frame 1",
+        "fix": "card moved to the sky (y 0.26); the lower zone stays for medium and close shots"
       }
     ],
     "changed": false,

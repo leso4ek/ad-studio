@@ -2,7 +2,7 @@
   "slug": "ear-pop-explainer",
   "title": "Ear pop explainer",
   "created": "2026-11-26T08:22:47.292Z",
-  "updated": "2026-11-26T08:40:27.205Z",
+  "updated": "2026-11-26T08:57:29.918Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -130,7 +130,7 @@
     },
     "frames": {
       "status": "done",
-      "started": "2026-11-26T08:23:59.436Z",
+      "started": "2026-11-26T08:50:54.601Z",
       "error": null,
       "fallbacks": [],
       "engine": "inbox",
@@ -150,8 +150,8 @@
         "frames/w_20.08.jpg",
         "frames/w_43.jpg"
       ],
-      "finished": "2026-11-26T08:24:03.943Z",
-      "ms": 4507,
+      "finished": "2026-11-26T08:51:00.338Z",
+      "ms": 5737,
       "summary": "approved as drawn",
       "warnings": [],
       "result": {
@@ -167,23 +167,28 @@
               "shot": "s1",
               "issue": "the hook card hid her head",
               "fix": "she moved lower and smaller; the card now sits clear of the face"
+            },
+            {
+              "shot": "s1",
+              "issue": "the wide-shot hook card sat on her shirt in dark script, hard to read on frame 1",
+              "fix": "card moved to the sky (y 0.26); the lower zone stays for medium and close shots"
             }
           ],
           "changed": false,
           "reason": "After moving the cards off the faces, every frame shows one idea with its card readable and the face visible; the two sky shots keep their cards at the top."
         }
       },
-      "note": "cards moved off the faces"
+      "note": "wide-shot hook card sat on her shirt; moved to the sky (y .26)"
     },
     "voice": {
       "status": "done",
-      "started": "2026-11-26T08:38:46.822Z",
+      "started": "2026-11-26T08:51:00.341Z",
       "error": null,
       "fallbacks": [
         {
           "engine": "voicestudio",
           "why": "no VoiceStudio backend at http://127.0.0.1:3900",
-          "at": "2026-11-26T08:38:46.828Z"
+          "at": "2026-11-26T08:51:00.354Z"
         }
       ],
       "engine": "kokoro",
@@ -203,8 +208,8 @@
         "voice/cues.json",
         "out/ear-pop-explainer.srt"
       ],
-      "finished": "2026-11-26T08:39:32.950Z",
-      "ms": 46128,
+      "finished": "2026-11-26T08:51:31.102Z",
+      "ms": 30761,
       "summary": "12 lines by kokoro; speech check: pass",
       "warnings": [],
       "result": {
@@ -233,17 +238,17 @@
     },
     "animatic": {
       "status": "done",
-      "started": "2026-11-26T08:39:32.953Z",
+      "started": "2026-11-26T08:51:31.102Z",
       "error": null,
       "fallbacks": [],
       "engine": null,
-      "ms": 54251,
+      "ms": 28601,
       "outputs": [
         "out/animatic.mp4",
         "audio/mix.wav",
         "out/checks.json"
       ],
-      "finished": "2026-11-26T08:40:27.204Z",
+      "finished": "2026-11-26T08:51:59.703Z",
       "summary": "reading time and safe zones pass",
       "warnings": [],
       "result": {
@@ -260,8 +265,8 @@
       }
     },
     "final": {
-      "status": "running",
-      "started": "2026-11-26T08:40:27.205Z",
+      "status": "done",
+      "started": "2026-11-26T08:51:59.706Z",
       "error": null,
       "fallbacks": [],
       "engine": null,
@@ -272,8 +277,8 @@
         "out/ear-pop-explainer.srt",
         "out/final-sheet.jpg"
       ],
-      "finished": "2026-11-26T08:37:26.953Z",
-      "ms": 439355,
+      "finished": "2026-11-26T08:57:24.898Z",
+      "ms": 325192,
       "summary": "2 file(s): ear-pop-explainer-9x16.mp4, ear-pop-explainer-16x9.mp4",
       "warnings": [],
       "result": {
@@ -298,13 +303,13 @@
       }
     },
     "scorecard": {
-      "status": "stale",
-      "started": "2026-11-26T08:37:26.960Z",
+      "status": "done",
+      "started": "2026-11-26T08:57:24.898Z",
       "error": null,
       "fallbacks": [],
       "engine": "inbox",
-      "finished": "2026-11-26T08:37:30.995Z",
-      "ms": 4035,
+      "finished": "2026-11-26T08:57:29.918Z",
+      "ms": 5020,
       "summary": "30/35 · A clear, honest 45 s explainer; the kit needs a simple anatomy prop to show the tube itself.",
       "warnings": [],
       "result": {

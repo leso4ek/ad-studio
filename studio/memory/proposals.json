@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "PLmwxavw0kaxj",
+    "lessonId": "Lmwxavw0kaxj",
+    "stage": "bible",
+    "rule": "For a drama series, put the place-specific props (chart, call light, ward phone) on the kit list before writing episodes; generic props weaken the evidence beats.",
+    "when": "drama-episode",
+    "ads": [
+      "night-shift-ep01",
+      "night-shift-ep02",
+      "night-shift-ep03"
+    ],
+    "status": "pending",
+    "created": "2026-11-26T08:51:17.989Z"
+  }
+]

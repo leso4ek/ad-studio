@@ -11,5 +11,23 @@
   "safe16x9": {
     "pass": true,
     "out": []
+  },
+  "probes": {
+    "9x16": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 45,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/ear-pop-explainer/out/ear-pop-explainer-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.5 dBFS"
+    },
+    "16x9": {
+      "w": 1920,
+      "h": 1080,
+      "fps": "24/1",
+      "dur": 45,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/ear-pop-explainer/out/ear-pop-explainer-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         2.0 LU\n    Peak:       -1.5 dBFS"
+    }
   }
 }

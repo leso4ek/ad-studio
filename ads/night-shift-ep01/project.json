@@ -2,7 +2,7 @@
   "slug": "night-shift-ep01",
   "title": "Night Shift · Ep 1",
   "created": "2026-11-26T08:25:51.184Z",
-  "updated": "2026-11-26T08:38:32.662Z",
+  "updated": "2026-11-26T08:57:54.362Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -143,17 +143,17 @@
       }
     },
     "voice": {
-      "status": "done",
-      "started": "2026-11-26T08:32:56.919Z",
+      "status": "running",
+      "started": "2026-11-26T08:57:54.355Z",
       "error": null,
       "fallbacks": [
         {
           "engine": "voicestudio",
           "why": "no VoiceStudio backend at http://127.0.0.1:3900",
-          "at": "2026-11-26T08:32:56.925Z"
+          "at": "2026-11-26T08:57:54.362Z"
         }
       ],
-      "engine": "kokoro",
+      "engine": null,
       "outputs": [
         "voice/lines/l01.wav",
         "voice/lines/l02.wav",
@@ -183,10 +183,11 @@
           "pass": false,
           "report": "DIFF l01 | Room nine. Mara Okafor. Admitted tonight. → Room 9, Mara Akafer, admitted tonight. \nOK   l02 | Dev. Did you admit someone to nine? → Dev, did you admit someone to nine? \nOK   l03 | Nobody goes in nine. → Nobody goes in nine. \nOK   l04 | It has my name on it. → It has my name on it. \nOK   l05 | Room nine has been empty for years. → Room 9 has been empty for years. \nOK   l06 | Then who just pressed the call button? → Then who just pressed the call button? \nmismatches: 1 (lang=en, model=base)"
         }
-      }
+      },
+      "note": "Whisper spells the name Akafer; asr spelling added"
     },
     "animatic": {
-      "status": "done",
+      "status": "stale",
       "started": "2026-11-26T08:33:38.369Z",
       "error": null,
       "fallbacks": [],
@@ -214,7 +215,7 @@
       }
     },
     "final": {
-      "status": "done",
+      "status": "stale",
       "started": "2026-11-26T08:34:08.852Z",
       "error": null,
       "fallbacks": [],
@@ -252,7 +253,7 @@
       }
     },
     "scorecard": {
-      "status": "done",
+      "status": "stale",
       "started": "2026-11-26T08:38:29.651Z",
       "error": null,
       "fallbacks": [],

@@ -2,7 +2,7 @@
   "slug": "night-shift-ep03",
   "title": "Night Shift · Ep 3",
   "created": "2026-11-26T08:25:51.184Z",
-  "updated": "2026-11-26T08:44:51.004Z",
+  "updated": "2026-11-26T08:51:17.997Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -143,7 +143,7 @@
       }
     },
     "voice": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T08:44:51.002Z",
       "error": null,
       "fallbacks": [
@@ -153,19 +153,120 @@
           "at": "2026-11-26T08:44:51.004Z"
         }
       ],
-      "engine": null
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/cues.json",
+        "out/night-shift-ep03.srt"
+      ],
+      "finished": "2026-11-26T08:45:35.925Z",
+      "ms": 44923,
+      "summary": "6 lines by kokoro; speech check: pass",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 1.15,
+          "l02": 1.553,
+          "l03": 2.876,
+          "l04": 1.551,
+          "l05": 0.974,
+          "l06": 1.739
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | Explain this, Dev. → Explain this, Dev. \nOK   l02 | I wrote them. To warn you. → I wrote them to warn you. \nOK   l03 | You worked a double last month. You do not remember it. → You worked a double last month, you do not remember it. \nOK   l04 | This one is dated tomorrow. → This one is dated tomorrow. \nOK   l05 | Hello? Yes. → Hello, yes. \nOK   l06 | Room nine is asking for you. → Room 9 is asking for you. \nmismatches: 0 (lang=en, model=base)"
+        }
+      }
     },
     "animatic": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:45:35.933Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-26T08:46:06.129Z",
+      "ms": 30196,
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:c1              at 0.00s   11 chars  need 2.23s  got 3.60s  \"EXPLAIN\\nTHIS\"\nOK  s5:c2              at 19.64s    8 chars  need 2.03s  got 4.60s  \"TOMORROW\"\nOK  end:logo           at 32.16s   10 chars  need 2.17s  got 2.34s  \"Night Shift\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
     },
     "final": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:46:06.129Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/night-shift-ep03-9x16.mp4",
+        "out/night-shift-ep03-16x9.mp4",
+        "out/night-shift-ep03-poster.jpg",
+        "out/night-shift-ep03.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-26T08:51:13.972Z",
+      "ms": 307843,
+      "summary": "2 file(s): night-shift-ep03-9x16.mp4, night-shift-ep03-16x9.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 34.5,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep03/out/night-shift-ep03-9x16.mp4\n    I:         -14.4 LUFS\n    LRA:         4.8 LU\n    Peak:       -1.5 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 34.5,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep03/out/night-shift-ep03-16x9.mp4\n    I:         -14.4 LUFS\n    LRA:         4.8 LU\n    Peak:       -1.5 dBFS"
+          }
+        }
+      }
     },
     "scorecard": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:51:13.973Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:51:17.993Z",
+      "ms": 4020,
+      "summary": "31/35 · Episode 3 cuts on its strongest moment and re-hooks cleanly.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
     },
     "audience": {
-      "status": "idle"
+      "status": "skipped"
     }
   }
 }

@@ -26,7 +26,7 @@ undefined · ad-midcentury-toon · 45 s · made with Ad Studio (all LLM decision
 | 4 facts accurate and sourced | 5 | Only the five sourced facts; no invented numbers. |
 | 5 retention | 4 | A new card every 3-4 s; the landing reversal at 56 %. |
 | 6 visual clarity | 3 | The kit has no ear diagram; arrows and sparkles stand in for the tube. |
-| 7 the ending | 4 | "Your ears just matched the sky" closes the loop; the CTA promises part 2. |
+| 7 the ending | 4 | "Your ears just caught up with the sky" closes the loop; the CTA promises part 2. |
 
 Verdict: A clear, honest 45 s explainer; the kit needs a simple anatomy prop to show the tube itself.
 
