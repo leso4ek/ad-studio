@@ -14,7 +14,7 @@ Research use only: watch, describe, quote briefly; never re-upload.
 import json, os, re, sys, urllib.parse
 HERE = os.path.dirname(os.path.abspath(__file__))
 VENV_PY = os.path.join(HERE, '.venv', 'bin', 'python')
-if os.path.exists(VENV_PY) and os.path.realpath(sys.executable) != os.path.realpath(VENV_PY) and not os.environ.get('VIDGET_NOREEXEC'):
+if os.path.exists(VENV_PY) and os.path.realpath(sys.prefix) != os.path.realpath(os.path.join(HERE, '.venv')) and not os.environ.get('VIDGET_NOREEXEC'):   # the venv's python is a link to the system one, so compare prefixes
     os.environ['VIDGET_NOREEXEC'] = '1'; os.execv(VENV_PY, [VENV_PY, '-I', os.path.abspath(__file__), *sys.argv[1:]])
 
 def vid_id(url):
