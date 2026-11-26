@@ -1,0 +1,209 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T08:44:44.441Z",
+  "output": {
+    "thesis": "who is waiting in Room 9 tomorrow?",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.6,
+        "learns": "She holds up the chart."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.6,
+        "t1": 9,
+        "learns": "Dev sits down heavily."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 9,
+        "t1": 14.6,
+        "learns": "I wrote them. To warn you."
+      },
+      {
+        "id": "b4",
+        "block": "turn",
+        "t0": 14.6,
+        "t1": 19.6,
+        "learns": "The double shift she cannot remember."
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 19.6,
+        "t1": 24.2,
+        "learns": "The newest chart is dated tomorrow."
+      },
+      {
+        "id": "b6",
+        "block": "proof",
+        "t0": 24.2,
+        "t1": 28,
+        "learns": "The ward phone rings."
+      },
+      {
+        "id": "b7",
+        "block": "payoff",
+        "t0": 28,
+        "t1": 32,
+        "learns": "Dev listens, then holds it out to her."
+      }
+    ],
+    "book": {
+      "grammar": "Manga panels: close faces, inserts of evidence, one wide per episode for the reveal; push-ins on realisations.",
+      "light": "Night ward: one cold overhead, the red call light the only colour.",
+      "palette": "Black, white, screentone grey; red only for the call light and the phone.",
+      "performance": "Quiet and held: Mara steady until the evidence, Dev evasive.",
+      "rhythm": "A cut every 4-5 s, faster into the cliffhanger.",
+      "sound": "Ward hum, a call-light buzz, one hard sting on the cut."
+    },
+    "locks": {
+      "identity": {
+        "mara": "Mara: 30s, dark bun, pale-blue scrubs top, navy trousers",
+        "dev": "Dev: 40s, short black hair, olive top"
+      },
+      "productSide": "centre",
+      "screenDirection": "Mara left facing right, Dev right facing left",
+      "light": "cold overhead light"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "beat": "b1",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "mara",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "She holds up the chart.",
+        "reason": "She holds up the chart.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 9,
+        "beat": "b2",
+        "function": "relation",
+        "size": "MS",
+        "subject": "dev",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Dev sits down heavily.",
+        "reason": "Dev sits down heavily.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 9,
+        "t1": 14.6,
+        "beat": "b3",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "dev",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "I wrote them. To warn you.",
+        "reason": "I wrote them. To warn you.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 14.6,
+        "t1": 19.6,
+        "beat": "b4",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "mara",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The double shift she cannot remember.",
+        "reason": "The double shift she cannot remember.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 19.6,
+        "t1": 24.2,
+        "beat": "b5",
+        "function": "insert",
+        "size": "CU",
+        "subject": "book",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The newest chart is dated tomorrow.",
+        "reason": "The newest chart is dated tomorrow.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 24.2,
+        "t1": 28,
+        "beat": "b6",
+        "function": "reveal",
+        "size": "WS",
+        "subject": "phone",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The ward phone rings.",
+        "reason": "The ward phone rings.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 28,
+        "t1": 32,
+        "beat": "b7",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "dev",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Dev listens, then holds it out to her.",
+        "reason": "Dev listens, then holds it out to her.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Seven panels per episode alternating faces and evidence; the last panel lands on the cliffhanger line and the cut follows it."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}

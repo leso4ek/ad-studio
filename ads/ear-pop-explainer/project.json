@@ -2,7 +2,7 @@
   "slug": "ear-pop-explainer",
   "title": "Ear pop explainer",
   "created": "2026-11-26T08:22:47.292Z",
-  "updated": "2026-11-26T08:39:32.953Z",
+  "updated": "2026-11-26T08:40:27.205Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -232,18 +232,18 @@
       "note": "l11 lost its -ed under Whisper (matched → match); reworded"
     },
     "animatic": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T08:39:32.953Z",
       "error": null,
       "fallbacks": [],
       "engine": null,
-      "ms": 29011,
+      "ms": 54251,
       "outputs": [
         "out/animatic.mp4",
         "audio/mix.wav",
         "out/checks.json"
       ],
-      "finished": "2026-11-26T08:24:52.267Z",
+      "finished": "2026-11-26T08:40:27.204Z",
       "summary": "reading time and safe zones pass",
       "warnings": [],
       "result": {
@@ -260,8 +260,8 @@
       }
     },
     "final": {
-      "status": "stale",
-      "started": "2026-11-26T08:30:07.598Z",
+      "status": "running",
+      "started": "2026-11-26T08:40:27.205Z",
       "error": null,
       "fallbacks": [],
       "engine": null,

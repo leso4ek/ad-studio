@@ -1,0 +1,354 @@
+{
+  "stage": "bible",
+  "at": "2026-11-26T08:44:46.452Z",
+  "output": {
+    "slug": "night-shift-ep03",
+    "title": "Night Shift · Ep 3: Tomorrow",
+    "style": "ad-manga-panels",
+    "dur": 34.5,
+    "cast": {
+      "mara": {
+        "skin": "#C68B67",
+        "hair": "#1E1612",
+        "hairStyle": "bun",
+        "top": "#7FB3D5",
+        "bottom": "#2C3E50",
+        "build": "slim",
+        "role": "she, 30s, a night-shift nurse who never misses a detail",
+        "voice": "af_bella"
+      },
+      "dev": {
+        "skin": "#8D5B3E",
+        "hair": "#0F0F0F",
+        "hairStyle": "short",
+        "top": "#556B2F",
+        "bottom": "#333333",
+        "build": "round",
+        "role": "he, 40s, the night porter who knows the old wing",
+        "voice": "am_adam"
+      }
+    },
+    "places": {
+      "ward": {
+        "kind": "office",
+        "time": "night"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "act": 1,
+        "beat": "hook",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "close-up",
+        "reason": "She holds up the chart.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.42,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "annoyed",
+            "face": "right"
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "hook",
+            "text": "EXPLAIN\nTHIS",
+            "x": 0.47,
+            "y": 0.645,
+            "size": 0.11,
+            "w": 0.76
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 9,
+        "act": 1,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MS",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "relation",
+        "reason": "Dev sits down heavily.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.55,
+            "y": 0.92,
+            "scale": 1.05,
+            "pose": "tired",
+            "face": "left"
+          },
+          {
+            "type": "prop",
+            "kind": "desk",
+            "x": 0.25,
+            "y": 0.84,
+            "scale": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s3",
+        "t0": 9,
+        "t1": 14.6,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "close-up",
+        "reason": "I wrote them. To warn you.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.2,
+            "pose": "sad",
+            "face": "front"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s4",
+        "t0": 14.6,
+        "t1": 19.6,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "reaction",
+        "reason": "The double shift she cannot remember.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.42,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "sad",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s5",
+        "t0": 19.6,
+        "t1": 24.2,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "book",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "insert",
+        "reason": "The newest chart is dated tomorrow.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "book",
+            "x": 0.5,
+            "y": 0.6,
+            "scale": 1.3
+          },
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "TOMORROW",
+            "x": 0.47,
+            "y": 0.645,
+            "size": 0.09,
+            "w": 0.76
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s6",
+        "t0": 24.2,
+        "t1": 28,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "WS",
+          "subject": "phone",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "reveal",
+        "reason": "The ward phone rings.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "phone",
+            "x": 0.5,
+            "y": 0.58,
+            "scale": 0.9,
+            "anim": [
+              "shake"
+            ]
+          },
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.75,
+            "y": 0.95,
+            "scale": 0.8,
+            "pose": "surprised",
+            "face": "left"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s7",
+        "t0": 28,
+        "t1": 32,
+        "act": 4,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reaction",
+        "reason": "Dev listens, then holds it out to her.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "hold",
+            "face": "left"
+          }
+        ],
+        "route": "kit"
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "lines": [
+        {
+          "id": "l01",
+          "text": "Explain this, Dev.",
+          "at": 0.4,
+          "speaker": "mara"
+        },
+        {
+          "id": "l02",
+          "text": "I wrote them. To warn you.",
+          "at": 9.4,
+          "speaker": "dev"
+        },
+        {
+          "id": "l03",
+          "text": "You worked a double last month. You do not remember it.",
+          "at": 14.8,
+          "speaker": "dev"
+        },
+        {
+          "id": "l04",
+          "text": "This one is dated tomorrow.",
+          "at": 20,
+          "speaker": "mara"
+        },
+        {
+          "id": "l05",
+          "text": "Hello? Yes.",
+          "at": 25.2,
+          "speaker": "dev"
+        },
+        {
+          "id": "l06",
+          "text": "Room nine is asking for you.",
+          "at": 29.8,
+          "speaker": "dev"
+        }
+      ]
+    },
+    "captions": true,
+    "endcard": {
+      "t0": 32,
+      "logo": "Night Shift"
+    },
+    "music": {
+      "mood": "tender",
+      "bpm": 70
+    },
+    "sfx": [
+      {
+        "t": 31.8,
+        "type": "sting"
+      }
+    ],
+    "reason": "Episode 3: seven panels from the outline; the cliffhanger line lands at the end and the episode cuts on it.",
+    "format": "drama-episode",
+    "captionMode": "words",
+    "palette": {
+      "accent": "#E63946"
+    }
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwwhvqldqat",
+      "Lmwvtnh4eijd"
+    ]
+  },
+  "warnings": []
+}

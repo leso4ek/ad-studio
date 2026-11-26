@@ -1,6 +1,6 @@
 {
   "stage": "animatic",
-  "at": "2026-11-26T08:24:52.267Z",
+  "at": "2026-11-26T08:40:27.200Z",
   "summary": "reading time and safe zones pass",
   "checks": {
     "readcheck": true,

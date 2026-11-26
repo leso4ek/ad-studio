@@ -87,3 +87,45 @@
 {"type":"engine","at":"2026-11-26T08:39:38.685Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 60/207  16s"}
 {"type":"engine","at":"2026-11-26T08:39:39.892Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 60/207  17s"}
 {"type":"engine","at":"2026-11-26T08:39:40.832Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 60/207  18s"}
+{"type":"engine","at":"2026-11-26T08:40:04.320Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 120/207  41s"}
+{"type":"engine","at":"2026-11-26T08:40:04.940Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 120/207  42s"}
+{"type":"engine","at":"2026-11-26T08:40:04.940Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 120/207  42s"}
+{"type":"engine","at":"2026-11-26T08:40:04.984Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 120/207  42s"}
+{"type":"engine","at":"2026-11-26T08:40:21.237Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 180/207  58s"}
+{"type":"engine","at":"2026-11-26T08:40:21.977Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 180/207  59s"}
+{"type":"engine","at":"2026-11-26T08:40:23.481Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 180/207  60s"}
+{"type":"engine","at":"2026-11-26T08:40:24.001Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 180/207  61s"}
+{"type":"engine","at":"2026-11-26T08:40:42.890Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"done /home/user/scifi-explainer-studio/ads/night-shift-ep02/out/video-9x16.mp4 828 frames 80s"}
+{"type":"engine","at":"2026-11-26T08:42:08.927Z","slug":"night-shift-ep02","stage":"final","engine":"mux","text":"I:         -14.1 LUFS"}
+{"type":"engine","at":"2026-11-26T08:42:08.928Z","slug":"night-shift-ep02","stage":"final","engine":"mux","text":"Peak:       -1.5 dBFS"}
+{"type":"engine","at":"2026-11-26T08:42:09.116Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"rendering video-16x9.mp4 (1920x1080, 24 fps) …"}
+{"type":"engine","at":"2026-11-26T08:42:11.008Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 0/207  1s"}
+{"type":"engine","at":"2026-11-26T08:42:11.013Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 0/207  1s"}
+{"type":"engine","at":"2026-11-26T08:42:11.064Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 0/207  1s"}
+{"type":"engine","at":"2026-11-26T08:42:11.292Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 0/207  1s"}
+{"type":"engine","at":"2026-11-26T08:42:26.412Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 60/207  16s"}
+{"type":"engine","at":"2026-11-26T08:42:26.763Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 60/207  17s"}
+{"type":"engine","at":"2026-11-26T08:42:28.804Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 60/207  19s"}
+{"type":"engine","at":"2026-11-26T08:42:31.120Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 60/207  21s"}
+{"type":"engine","at":"2026-11-26T08:42:47.144Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 120/207  37s"}
+{"type":"engine","at":"2026-11-26T08:42:47.796Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 120/207  38s"}
+{"type":"engine","at":"2026-11-26T08:42:49.635Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 120/207  40s"}
+{"type":"engine","at":"2026-11-26T08:42:53.578Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 120/207  43s"}
+{"type":"engine","at":"2026-11-26T08:43:07.456Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w2 180/207  57s"}
+{"type":"engine","at":"2026-11-26T08:43:08.758Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w3 180/207  59s"}
+{"type":"engine","at":"2026-11-26T08:43:09.868Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w1 180/207  60s"}
+{"type":"engine","at":"2026-11-26T08:43:14.253Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"w0 180/207  64s"}
+{"type":"engine","at":"2026-11-26T08:43:28.556Z","slug":"night-shift-ep02","stage":"final","engine":"lemo","text":"done /home/user/scifi-explainer-studio/ads/night-shift-ep02/out/video-16x9.mp4 828 frames 78s"}
+{"type":"engine","at":"2026-11-26T08:44:32.389Z","slug":"night-shift-ep02","stage":"final","engine":"mux","text":"I:         -14.1 LUFS"}
+{"type":"engine","at":"2026-11-26T08:44:32.390Z","slug":"night-shift-ep02","stage":"final","engine":"mux","text":"Peak:       -1.5 dBFS"}
+{"type":"stage","at":"2026-11-26T08:44:38.404Z","slug":"night-shift-ep02","stage":"final","state":{"status":"running","started":"2026-11-26T08:39:18.171Z","error":null,"fallbacks":[],"engine":null,"outputs":["out/night-shift-ep02-9x16.mp4","out/night-shift-ep02-16x9.mp4","out/night-shift-ep02-poster.jpg","out/night-shift-ep02.srt","out/final-sheet.jpg"]}}
+{"type":"stage","at":"2026-11-26T08:44:38.405Z","slug":"night-shift-ep02","stage":"final","state":{"status":"done","started":"2026-11-26T08:39:18.171Z","error":null,"fallbacks":[],"engine":null,"outputs":["out/night-shift-ep02-9x16.mp4","out/night-shift-ep02-16x9.mp4","out/night-shift-ep02-poster.jpg","out/night-shift-ep02.srt","out/final-sheet.jpg"],"finished":"2026-11-26T08:44:38.405Z","ms":320234,"summary":"2 file(s): night-shift-ep02-9x16.mp4, night-shift-ep02-16x9.mp4","warnings":[],"result":{"probes":{"9x16":{"w":1080,"h":1920,"fps":"24/1","dur":34.5,"audio":true,"log":"/home/user/scifi-explainer-studio/ads/night-shift-ep02/out/night-shift-ep02-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         4.5 LU\n    Peak:       -1.5 dBFS"},"16x9":{"w":1920,"h":1080,"fps":"24/1","dur":34.5,"audio":true,"log":"/home/user/scifi-explainer-studio/ads/night-shift-ep02/out/night-shift-ep02-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         4.5 LU\n    Peak:       -1.5 dBFS"}}}}}
+{"type":"stage","at":"2026-11-26T08:44:38.405Z","slug":"night-shift-ep02","stage":"scorecard","state":{"status":"running","started":"2026-11-26T08:44:38.405Z","error":null,"fallbacks":[],"engine":null}}
+{"type":"stage","at":"2026-11-26T08:44:38.406Z","slug":"night-shift-ep02","stage":"scorecard","state":{"status":"running","started":"2026-11-26T08:44:38.405Z","error":null,"fallbacks":[],"engine":"inbox"}}
+{"type":"claude","at":"2026-11-26T08:44:38.407Z","slug":"night-shift-ep02","stage":"scorecard","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer night-shift-ep02 scorecard <file.json>"}
+{"type":"decision","at":"2026-11-26T08:44:39.410Z","slug":"night-shift-ep02","stage":"scorecard","kind":"made","record":{"stage":"scorecard","at":"2026-11-26T08:44:39.409Z","output":{"scores":[{"rule":"1 hook / re-hook","score":4,"note":"The call light buzzes again; Mara is already walking toward it."},{"rule":"2 stakes","score":4,"note":"Her own name, an empty room."},{"rule":"3 a character we care about","score":4,"note":"Mara is steady until the evidence."},{"rule":"4 tension curve","score":4,"note":"Each panel adds one piece of evidence."},{"rule":"5 the cliffhanger","score":5,"note":"Cuts on \"That is my handwriting.\""},{"rule":"6 continuity","score":5,"note":"Same cast, voices, ward and palette (locked by code)."},{"rule":"7 one emotion","score":5,"note":"Dread throughout."}],"total":31,"verdict":"Episode 2 cuts on its strongest moment and re-hooks cleanly.","fixes":["The kit has no hospital props; the chart reads as a book.","Add a call-light prop so the red light is unmistakable."],"bestHook":"A","reason":"The structure works; the kit's props are generic for a hospital."},"meta":{"engine":"inbox","answeredBy":"claude-session","ms":1001},"warnings":[]}}
+{"type":"claude","at":"2026-11-26T08:44:39.415Z","slug":"night-shift-ep02","stage":"memory-relabel","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer night-shift-ep02 memory-relabel <file.json>"}
+{"type":"engine","at":"2026-11-26T08:44:41.419Z","slug":"night-shift-ep02","stage":"memory","engine":"memory","text":"hindsight memory: 0 new lesson(s), 36 in total"}
+{"type":"stage","at":"2026-11-26T08:44:41.421Z","slug":"night-shift-ep02","stage":"scorecard","state":{"status":"done","started":"2026-11-26T08:44:38.405Z","error":null,"fallbacks":[],"engine":"inbox","finished":"2026-11-26T08:44:41.419Z","ms":3014,"summary":"31/35 · Episode 2 cuts on its strongest moment and re-hooks cleanly.","warnings":[],"result":{"report":"out/REPORT.md"}}}
+{"type":"stage","at":"2026-11-26T08:44:41.422Z","slug":"night-shift-ep02","stage":"audience","state":{"status":"skipped"}}
+{"type":"job","at":"2026-11-26T08:44:41.422Z","slug":"night-shift-ep02","kind":"end"}

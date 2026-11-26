@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T08:44:42.427Z",
+  "output": {
+    "spine": [
+      "Every night Mara works the ward.",
+      "Every night Room 9 stays empty.",
+      "Dev admits he has been writing the charts to warn her.",
+      "Last month she worked a double shift she cannot remember.",
+      "The newest chart is dated tomorrow.",
+      "The ward phone rings: Room 9 is asking for her."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.6,
+        "beats": "Mara holds up the chart: \"Explain this, Dev.\""
+      },
+      {
+        "act": 2,
+        "name": "Question",
+        "t0": 3.6,
+        "t1": 14.6,
+        "beats": "Last month she worked a double shift she cannot remember."
+      },
+      {
+        "act": 3,
+        "name": "Pressure",
+        "t0": 14.6,
+        "t1": 19.6,
+        "beats": "The newest chart is dated tomorrow."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 19.6,
+        "t1": 28,
+        "beats": "The ward phone rings: Room 9 is asking for her."
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 28,
+        "t1": 32,
+        "beats": "the ward phone rings; Dev listens, then holds it out to her"
+      }
+    ],
+    "turn": "The ward phone rings: Room 9 is asking for her.",
+    "emotion": "dread",
+    "reason": "Episode 3 follows its outline beat for beat and cuts on the cliffhanger at 32 s."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

@@ -2,7 +2,7 @@
   "slug": "night-shift-ep02",
   "title": "Night Shift · Ep 2",
   "created": "2026-11-26T08:25:51.184Z",
-  "updated": "2026-11-26T08:39:18.171Z",
+  "updated": "2026-11-26T08:44:41.421Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -214,17 +214,59 @@
       }
     },
     "final": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T08:39:18.171Z",
       "error": null,
       "fallbacks": [],
-      "engine": null
+      "engine": null,
+      "outputs": [
+        "out/night-shift-ep02-9x16.mp4",
+        "out/night-shift-ep02-16x9.mp4",
+        "out/night-shift-ep02-poster.jpg",
+        "out/night-shift-ep02.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-26T08:44:38.405Z",
+      "ms": 320234,
+      "summary": "2 file(s): night-shift-ep02-9x16.mp4, night-shift-ep02-16x9.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 34.5,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep02/out/night-shift-ep02-9x16.mp4\n    I:         -14.1 LUFS\n    LRA:         4.5 LU\n    Peak:       -1.5 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 34.5,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/night-shift-ep02/out/night-shift-ep02-16x9.mp4\n    I:         -14.1 LUFS\n    LRA:         4.5 LU\n    Peak:       -1.5 dBFS"
+          }
+        }
+      }
     },
     "scorecard": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:38.405Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:44:41.419Z",
+      "ms": 3014,
+      "summary": "31/35 · Episode 2 cuts on its strongest moment and re-hooks cleanly.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
     },
     "audience": {
-      "status": "idle"
+      "status": "skipped"
     }
   }
 }

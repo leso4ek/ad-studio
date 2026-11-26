@@ -1,0 +1,57 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-26T08:44:39.409Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 hook / re-hook",
+        "score": 4,
+        "note": "The call light buzzes again; Mara is already walking toward it."
+      },
+      {
+        "rule": "2 stakes",
+        "score": 4,
+        "note": "Her own name, an empty room."
+      },
+      {
+        "rule": "3 a character we care about",
+        "score": 4,
+        "note": "Mara is steady until the evidence."
+      },
+      {
+        "rule": "4 tension curve",
+        "score": 4,
+        "note": "Each panel adds one piece of evidence."
+      },
+      {
+        "rule": "5 the cliffhanger",
+        "score": 5,
+        "note": "Cuts on \"That is my handwriting.\""
+      },
+      {
+        "rule": "6 continuity",
+        "score": 5,
+        "note": "Same cast, voices, ward and palette (locked by code)."
+      },
+      {
+        "rule": "7 one emotion",
+        "score": 5,
+        "note": "Dread throughout."
+      }
+    ],
+    "total": 31,
+    "verdict": "Episode 2 cuts on its strongest moment and re-hooks cleanly.",
+    "fixes": [
+      "The kit has no hospital props; the chart reads as a book.",
+      "Add a call-light prop so the red light is unmistakable."
+    ],
+    "bestHook": "A",
+    "reason": "The structure works; the kit's props are generic for a hospital."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001
+  },
+  "warnings": []
+}

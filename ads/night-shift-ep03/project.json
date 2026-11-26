@@ -2,7 +2,7 @@
   "slug": "night-shift-ep03",
   "title": "Night Shift · Ep 3",
   "created": "2026-11-26T08:25:51.184Z",
-  "updated": "2026-11-26T08:25:51.184Z",
+  "updated": "2026-11-26T08:44:51.004Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -53,31 +53,107 @@
       "status": "idle"
     },
     "story": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:41.422Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:44:42.429Z",
+      "ms": 1007,
+      "summary": "dread · turn: The ward phone rings: Room 9 is asking for her.",
+      "warnings": [],
+      "result": {}
     },
     "brandmap": {
-      "status": "idle"
+      "status": "skipped"
     },
     "style": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:42.430Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-26T08:44:42.435Z",
+      "ms": 5,
+      "summary": "ad-manga-panels",
+      "warnings": [],
+      "result": {}
     },
     "direction": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:42.435Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:44:44.443Z",
+      "ms": 2008,
+      "summary": "7 shots · who is waiting in Room 9 tomorrow?",
+      "warnings": [],
+      "result": {}
     },
     "bible": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:44.445Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:44:46.454Z",
+      "ms": 2009,
+      "summary": "7 shots, 6 voice lines, 34.5s",
+      "warnings": [],
+      "result": {}
     },
     "world": {
-      "status": "idle"
+      "status": "skipped"
     },
     "episodes": {
-      "status": "idle"
+      "status": "skipped"
     },
     "frames": {
-      "status": "idle"
+      "status": "done",
+      "started": "2026-11-26T08:44:46.455Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_2.16.jpg",
+        "frames/f_6.84.jpg",
+        "frames/f_12.36.jpg",
+        "frames/f_17.6.jpg",
+        "frames/f_22.36.jpg",
+        "frames/f_26.48.jpg",
+        "frames/f_30.4.jpg",
+        "frames/f_33.5.jpg",
+        "frames/sheet.jpg",
+        "frames/w_2.16.jpg",
+        "frames/w_22.36.jpg",
+        "frames/w_33.5.jpg"
+      ],
+      "finished": "2026-11-26T08:44:51.001Z",
+      "ms": 4546,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "notes": [],
+          "changed": false,
+          "reason": "Faces read in every panel, the evidence inserts are clear, and the cards sit below the faces."
+        }
+      }
     },
     "voice": {
-      "status": "idle"
+      "status": "running",
+      "started": "2026-11-26T08:44:51.002Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-26T08:44:51.004Z"
+        }
+      ],
+      "engine": null
     },
     "animatic": {
       "status": "idle"
