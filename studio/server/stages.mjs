@@ -64,7 +64,7 @@ export function seriesLocks(ctx, o) {
   const cast = Object.fromEntries(e.sb.characters.map(c => [c.id, { ...c.look, role: c.role, voice: c.voice }]));
   const style = parentDecision(ctx, 'style');
   return { ...o, format: 'drama-episode', cast, places: { ...e.sb.places, ...(o.places || {}) }, ...(style?.palette ? { palette: style.palette } : {}), ...(style?.style ? { style: style.style } : {}),
-    endcard: { ...(o.endcard || {}), logo: e.last ? e.sb.title : `Part ${e.n + 1}`, line: undefined, cta: undefined } };
+    endcard: (({ line, cta, ...rest }) => ({ ...rest, logo: e.last ? e.sb.title : `Part ${e.n + 1}` }))(o.endcard || {}) };   // the tag shows only "Part N"
 }
 /** cliffhanger rules: the episode cuts on its most interesting moment */
 export function checkDrama(b) {

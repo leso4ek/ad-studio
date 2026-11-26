@@ -39,3 +39,4 @@ ads/*/production/source/
 ads/*/out/.*_segs-*/
 ads/*/out/*.lock
 downloads/
+ads/*/source/refvideos/

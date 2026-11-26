@@ -1,0 +1,220 @@
+{
+  "source": "ref-mwxagyia.mp4",
+  "duration": 20,
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "aspect": "9:16",
+  "audio": {
+    "integratedLufs": -14.3,
+    "speech": true,
+    "words": 38,
+    "wordsPerSec": 1.9,
+    "musicLikely": true,
+    "gapLufs": -18.9,
+    "transcript": "Every Sunday, same standoff, same guessing, a splash, a glug, still sulking, read the cap, the Sprigly cap. So, one cap full per liter, every two weeks. Spraying in summer, standoff over. Sprigly, one cap full, no guessing."
+  },
+  "codec": "h264",
+  "size": 5941786,
+  "analysedAt": "2026-11-26T08:27:37.511Z",
+  "cuts": 7,
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 3,
+      "motion": {
+        "score": 0.188,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0209,
+        "residual": 0.0209
+      },
+      "stills": [
+        "ref1/stills/s1_first.jpg",
+        "ref1/stills/s1_mid.jpg",
+        "ref1/stills/s1_last.jpg"
+      ],
+      "voice": "Every Sunday, same standoff, same guessing,",
+      "wordsPerSec": 2
+    },
+    {
+      "id": "s2",
+      "t0": 3,
+      "t1": 5.5,
+      "motion": {
+        "score": 0.085,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0095,
+        "residual": 0.0095
+      },
+      "stills": [
+        "ref1/stills/s2_first.jpg",
+        "ref1/stills/s2_mid.jpg",
+        "ref1/stills/s2_last.jpg"
+      ],
+      "voice": "a splash, a glug, still",
+      "wordsPerSec": 2
+    },
+    {
+      "id": "s3",
+      "t0": 5.5,
+      "t1": 8,
+      "motion": {
+        "score": 0.047,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0053,
+        "residual": 0.0053
+      },
+      "stills": [
+        "ref1/stills/s3_first.jpg",
+        "ref1/stills/s3_mid.jpg",
+        "ref1/stills/s3_last.jpg"
+      ],
+      "voice": "sulking, read",
+      "wordsPerSec": 0.8
+    },
+    {
+      "id": "s4",
+      "t0": 8,
+      "t1": 11.5,
+      "motion": {
+        "score": 0.171,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.019,
+        "residual": 0.019
+      },
+      "stills": [
+        "ref1/stills/s4_first.jpg",
+        "ref1/stills/s4_mid.jpg",
+        "ref1/stills/s4_last.jpg"
+      ],
+      "voice": "the cap, the Sprigly cap. So, one cap",
+      "wordsPerSec": 2.29
+    },
+    {
+      "id": "s5",
+      "t0": 11.5,
+      "t1": 12.708,
+      "motion": {
+        "score": 0.095,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0105,
+        "residual": 0.0105
+      },
+      "stills": [
+        "ref1/stills/s5_first.jpg",
+        "ref1/stills/s5_mid.jpg",
+        "ref1/stills/s5_last.jpg"
+      ],
+      "voice": "full per liter, every",
+      "wordsPerSec": 3.31
+    },
+    {
+      "id": "s6",
+      "t0": 12.708,
+      "t1": 14,
+      "motion": {
+        "score": 0.177,
+        "camera": "static",
+        "subject": "small",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0197,
+        "residual": 0.0197
+      },
+      "stills": [
+        "ref1/stills/s6_first.jpg",
+        "ref1/stills/s6_mid.jpg",
+        "ref1/stills/s6_last.jpg"
+      ],
+      "voice": "two weeks. Spraying",
+      "wordsPerSec": 2.32
+    },
+    {
+      "id": "s7",
+      "t0": 14,
+      "t1": 16.5,
+      "motion": {
+        "score": 0.087,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0097,
+        "residual": 0.0097
+      },
+      "stills": [
+        "ref1/stills/s7_first.jpg",
+        "ref1/stills/s7_mid.jpg",
+        "ref1/stills/s7_last.jpg"
+      ],
+      "voice": "in summer, standoff over.",
+      "wordsPerSec": 1.6
+    },
+    {
+      "id": "s8",
+      "t0": 16.5,
+      "t1": 20,
+      "motion": {
+        "score": 0.073,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0081,
+        "residual": 0.0081
+      },
+      "stills": [
+        "ref1/stills/s8_first.jpg",
+        "ref1/stills/s8_mid.jpg",
+        "ref1/stills/s8_last.jpg"
+      ],
+      "voice": "Sprigly, one cap full, no guessing.",
+      "wordsPerSec": 1.71
+    }
+  ],
+  "sheets": [
+    "ref1/sheet_1.jpg"
+  ],
+  "rhythm": {
+    "shots": 8,
+    "cutsPer10s": 3.5,
+    "firstCut": 3,
+    "meanShot": 2.5
+  },
+  "motion": {
+    "mean": 0.115,
+    "moving": 0
+  }
+}

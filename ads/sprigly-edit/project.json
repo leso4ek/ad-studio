@@ -1,0 +1,167 @@
+{
+  "slug": "sprigly-edit",
+  "title": "Sprigly edit",
+  "created": "2026-11-26T08:26:55.171Z",
+  "updated": "2026-11-26T08:29:27.953Z",
+  "mode": "autopilot",
+  "autoGates": false,
+  "decider": "inbox",
+  "format": "edit",
+  "userBrief": {},
+  "stages": {
+    "source": {
+      "status": "done",
+      "started": "2026-11-26T08:26:56.114Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "source/analysis/sheet_1.jpg",
+        "source/analysis/analysis.json"
+      ],
+      "finished": "2026-11-26T08:27:12.918Z",
+      "ms": 16804,
+      "summary": "5 shots in 20.0 s (2 cuts per 10 s), 45 words, motion 0.05",
+      "warnings": [],
+      "result": {
+        "shots": 5,
+        "duration": 20
+      }
+    },
+    "edit-style": {
+      "status": "done",
+      "started": "2026-11-26T08:27:12.918Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "edit/style.md",
+        "edit/style.json"
+      ],
+      "finished": "2026-11-26T08:28:09.564Z",
+      "ms": 56646,
+      "summary": "Archivo Black 2-word captions at y 66 %, pauses ≤ 0.35 s, bright music at -24 dB",
+      "warnings": [],
+      "result": {}
+    },
+    "clip-source": {
+      "status": "skipped"
+    },
+    "clip-find": {
+      "status": "skipped"
+    },
+    "clip-pick": {
+      "status": "skipped"
+    },
+    "clip-render": {
+      "status": "skipped"
+    },
+    "edit-plan": {
+      "status": "done",
+      "started": "2026-11-26T08:29:07.502Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "edit/edl-v2.json",
+        "edit/facts.json"
+      ],
+      "finished": "2026-11-26T08:29:09.758Z",
+      "ms": 2256,
+      "summary": "v2: keeps 11.7 of 20.0 s in 8 ranges · title \"Day 14. Still guessing.\"",
+      "warnings": [],
+      "result": {
+        "version": 2
+      },
+      "note": "end on Standoff over, drop the tag line"
+    },
+    "edit-render": {
+      "status": "done",
+      "started": "2026-11-26T08:29:09.758Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "edit/draft-v2.mp4",
+        "edit/edit-notes-v2.md",
+        "edit/draft-v1.mp4",
+        "edit/edit-notes-v1.md"
+      ],
+      "finished": "2026-11-26T08:29:27.952Z",
+      "ms": 18194,
+      "summary": "draft v2: 11.72 s, 1080×1920, word captions, −14 LUFS",
+      "warnings": [],
+      "result": {
+        "version": 2
+      }
+    },
+    "analysis": {
+      "status": "skipped"
+    },
+    "series": {
+      "status": "skipped"
+    },
+    "brief": {
+      "status": "skipped"
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "skipped"
+    },
+    "story": {
+      "status": "skipped"
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "skipped"
+    },
+    "direction": {
+      "status": "skipped"
+    },
+    "bible": {
+      "status": "skipped"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "skipped"
+    },
+    "voice": {
+      "status": "skipped"
+    },
+    "animatic": {
+      "status": "skipped"
+    },
+    "final": {
+      "status": "skipped"
+    },
+    "scorecard": {
+      "status": "skipped"
+    },
+    "audience": {
+      "status": "skipped"
+    }
+  },
+  "recreate": {
+    "mode": "remake",
+    "target": "story-ad",
+    "rights": false,
+    "refs": [],
+    "prompt": {
+      "notes": "a tight 15 s TikTok cut of this ad; keep the cap reveal; energetic"
+    },
+    "source": "source/original.mp4",
+    "refVideos": [
+      "source/refvideos/ref-mwxagyia.mp4",
+      "source/refvideos/ref-mwxagyjg.mp4"
+    ]
+  }
+}

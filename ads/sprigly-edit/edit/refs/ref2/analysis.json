@@ -1,0 +1,82 @@
+{
+  "source": "ref-mwxagyjg.mp4",
+  "duration": 18.5,
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "aspect": "9:16",
+  "audio": {
+    "integratedLufs": -14.1,
+    "speech": true,
+    "words": 41,
+    "wordsPerSec": 2.22,
+    "musicLikely": true,
+    "gapLufs": -22.8,
+    "transcript": "If you water a fern, where does it all go? The topsoil soaks it up first, but only the roots can drink it. So the extra sinks through the gravel and drains into the saucer. Sprigly, one cap full per liter."
+  },
+  "codec": "h264",
+  "size": 11082083,
+  "analysedAt": "2026-11-26T08:27:56.534Z",
+  "cuts": 1,
+  "shots": [
+    {
+      "id": "s1",
+      "t0": 0,
+      "t1": 15,
+      "motion": {
+        "score": 0.387,
+        "camera": "static",
+        "subject": "moving",
+        "pan": [
+          0.001,
+          -0.016
+        ],
+        "raw": 0.038,
+        "residual": 0.0368
+      },
+      "stills": [
+        "ref2/stills/s1_first.jpg",
+        "ref2/stills/s1_mid.jpg",
+        "ref2/stills/s1_last.jpg"
+      ],
+      "voice": "If you water a fern, where does it all go? The topsoil soaks it up first, but only the roots can drink it. So the extra sinks through the gravel and drains into the saucer.",
+      "wordsPerSec": 2.33
+    },
+    {
+      "id": "s2",
+      "t0": 15,
+      "t1": 18.5,
+      "motion": {
+        "score": 0.078,
+        "camera": "static",
+        "subject": "still",
+        "pan": [
+          0,
+          0
+        ],
+        "raw": 0.0086,
+        "residual": 0.0086
+      },
+      "stills": [
+        "ref2/stills/s2_first.jpg",
+        "ref2/stills/s2_mid.jpg",
+        "ref2/stills/s2_last.jpg"
+      ],
+      "voice": "Sprigly, one cap full per liter.",
+      "wordsPerSec": 1.71
+    }
+  ],
+  "sheets": [
+    "ref2/sheet_1.jpg"
+  ],
+  "rhythm": {
+    "shots": 2,
+    "cutsPer10s": 0.54,
+    "firstCut": 15,
+    "meanShot": 9.25
+  },
+  "motion": {
+    "mean": 0.233,
+    "moving": 0
+  }
+}

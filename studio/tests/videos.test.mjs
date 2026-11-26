@@ -79,7 +79,7 @@ test('short drama: the episodes stage creates child projects that inherit cast, 
   assert.equal(S.STAGES.find(s => s.id === 'style').fixed(ectx).style, 'ad-scifi-toon');
   const locked = S.seriesLocks(ectx, { title: 't', cast: { someone: {} }, places: {}, endcard: { t0: 40, logo: 'x', line: 'buy', cta: 'now' }, shots: [] });
   assert.deepEqual(Object.keys(locked.cast), ['mara', 'dev']); assert.equal(locked.cast.dev.voice, 'am_michael');
-  assert.equal(locked.palette.accent, '#00FFAA'); assert.equal(locked.endcard.logo, 'Part 3'); assert.equal(locked.endcard.cta, undefined);
+  assert.equal(locked.palette.accent, '#00FFAA'); assert.equal(locked.endcard.logo, 'Part 3'); assert.ok(!('cta' in locked.endcard) && !('line' in locked.endcard), 'no line or cta keys at all');
   assert.equal(S.seriesLocks({ ...ectx, project: P.project(eps[2].slug) }, { endcard: { t0: 1, logo: 'x' }, shots: [] }).endcard.logo, 'Night Shift', 'the finale shows the series title');
   fs.rmSync(tmp, { recursive: true, force: true });
 });

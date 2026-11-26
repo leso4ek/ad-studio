@@ -1,0 +1,63 @@
+{
+  "keep": [
+    {
+      "t0": 0,
+      "t1": 0.98,
+      "why": "the hook line"
+    },
+    {
+      "t0": 1.34,
+      "t1": 3.02
+    },
+    {
+      "t0": 3.36,
+      "t1": 5.16
+    },
+    {
+      "t0": 5.68,
+      "t1": 7.18
+    },
+    {
+      "t0": 8.16,
+      "t1": 9.46,
+      "why": "the cap reveal"
+    },
+    {
+      "t0": 9.88,
+      "t1": 11.02
+    },
+    {
+      "t0": 11.44,
+      "t1": 13.54
+    },
+    {
+      "t0": 14.08,
+      "t1": 15.3
+    }
+  ],
+  "emphasis": [
+    "standoff",
+    "sulks",
+    "cap",
+    "Sprigly",
+    "guessing"
+  ],
+  "title": {
+    "text": "Day 14. Still guessing.",
+    "t0": 0,
+    "t1": 1.8
+  },
+  "music": {
+    "use": false
+  },
+  "reframe": "blur",
+  "notes": [
+    "v2: ended on \"Stand off over.\" as asked; the tag line is cut.",
+    "Kept the cap reveal (8.2-11.0 s) whole.",
+    "Whisper heard the name as \"Juneau\"; the captions use the transcript, so the caption shows that spelling: check it.",
+    "No music added: the source carries its own score."
+  ],
+  "reason": "The note asked to end on the payoff, so the last range (the tag line) is removed.",
+  "version": 2,
+  "note": "end on Standoff over, drop the tag line"
+}

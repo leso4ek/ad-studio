@@ -1,0 +1,87 @@
+{"type":"ad","at":"2026-11-26T08:26:55.171Z","slug":"sprigly-edit","kind":"created","title":"Sprigly edit"}
+{"type":"job","at":"2026-11-26T08:26:56.114Z","slug":"sprigly-edit","kind":"start","from":"source"}
+{"type":"stage","at":"2026-11-26T08:26:56.115Z","slug":"sprigly-edit","stage":"source","state":{"status":"running","started":"2026-11-26T08:26:56.114Z","error":null,"fallbacks":[],"engine":null}}
+{"type":"engine","at":"2026-11-26T08:26:56.203Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"1920×1080, 24 fps, 20.0 s, with audio"}
+{"type":"engine","at":"2026-11-26T08:26:58.605Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"5 shot(s) found (4 scene changes)"}
+{"type":"engine","at":"2026-11-26T08:27:07.863Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"transcribing (faster-whisper, local)"}
+{"type":"engine","at":"2026-11-26T08:27:12.917Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"analysis done: 5 shots, 2 cuts per 10 s, 45 words, motion 0.05"}
+{"type":"stage","at":"2026-11-26T08:27:12.917Z","slug":"sprigly-edit","stage":"source","state":{"status":"running","started":"2026-11-26T08:26:56.114Z","error":null,"fallbacks":[],"engine":null,"outputs":["source/analysis/sheet_1.jpg","source/analysis/analysis.json"]}}
+{"type":"stage","at":"2026-11-26T08:27:12.918Z","slug":"sprigly-edit","stage":"source","state":{"status":"done","started":"2026-11-26T08:26:56.114Z","error":null,"fallbacks":[],"engine":null,"outputs":["source/analysis/sheet_1.jpg","source/analysis/analysis.json"],"finished":"2026-11-26T08:27:12.918Z","ms":16804,"summary":"5 shots in 20.0 s (2 cuts per 10 s), 45 words, motion 0.05","warnings":[],"result":{"shots":5,"duration":20}}}
+{"type":"stage","at":"2026-11-26T08:27:12.918Z","slug":"sprigly-edit","stage":"edit-style","state":{"status":"running","started":"2026-11-26T08:27:12.918Z","error":null,"fallbacks":[],"engine":null}}
+{"type":"engine","at":"2026-11-26T08:27:12.985Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"1080×1920, 24 fps, 20.0 s, with audio"}
+{"type":"engine","at":"2026-11-26T08:27:15.053Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"8 shot(s) found (7 scene changes)"}
+{"type":"engine","at":"2026-11-26T08:27:28.436Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"transcribing (faster-whisper, local)"}
+{"type":"engine","at":"2026-11-26T08:27:37.511Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"analysis done: 8 shots, 3.5 cuts per 10 s, 38 words, motion 0.115"}
+{"type":"engine","at":"2026-11-26T08:27:37.589Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"1080×1920, 24 fps, 18.5 s, with audio"}
+{"type":"engine","at":"2026-11-26T08:27:40.699Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"2 shot(s) found (1 scene changes)"}
+{"type":"engine","at":"2026-11-26T08:27:47.852Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"transcribing (faster-whisper, local)"}
+{"type":"engine","at":"2026-11-26T08:27:56.534Z","slug":"sprigly-edit","stage":"source","engine":"analyse","text":"analysis done: 2 shots, 0.54 cuts per 10 s, 41 words, motion 0.233"}
+{"type":"stage","at":"2026-11-26T08:27:56.535Z","slug":"sprigly-edit","stage":"edit-style","state":{"status":"running","started":"2026-11-26T08:27:12.918Z","error":null,"fallbacks":[],"engine":"inbox"}}
+{"type":"claude","at":"2026-11-26T08:27:56.535Z","slug":"sprigly-edit","stage":"edit-style","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer sprigly-edit edit-style <file.json>"}
+{"type":"stage","at":"2026-11-26T08:28:09.563Z","slug":"sprigly-edit","stage":"edit-style","state":{"status":"running","started":"2026-11-26T08:27:12.918Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/style.md","edit/style.json"]}}
+{"type":"stage","at":"2026-11-26T08:28:09.564Z","slug":"sprigly-edit","stage":"edit-style","state":{"status":"done","started":"2026-11-26T08:27:12.918Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/style.md","edit/style.json"],"finished":"2026-11-26T08:28:09.564Z","ms":56646,"summary":"Archivo Black 2-word captions at y 66 %, pauses ≤ 0.35 s, bright music at -24 dB","warnings":[],"result":{}}}
+{"type":"stage","at":"2026-11-26T08:28:09.564Z","slug":"sprigly-edit","stage":"clip-source","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:09.565Z","slug":"sprigly-edit","stage":"clip-find","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:09.568Z","slug":"sprigly-edit","stage":"clip-pick","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:09.569Z","slug":"sprigly-edit","stage":"clip-render","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:09.569Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:28:09.569Z","error":null,"fallbacks":[],"engine":null}}
+{"type":"engine","at":"2026-11-26T08:28:18.413Z","slug":"sprigly-edit","stage":"edit","engine":"edit","text":"45 words, 0 pauses, proposed cut keeps 13.78 of 20.0 s"}
+{"type":"stage","at":"2026-11-26T08:28:18.413Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:28:09.569Z","error":null,"fallbacks":[],"engine":"inbox"}}
+{"type":"claude","at":"2026-11-26T08:28:18.414Z","slug":"sprigly-edit","stage":"edit-plan","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer sprigly-edit edit-plan <file.json>"}
+{"type":"stage","at":"2026-11-26T08:28:34.437Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:28:09.569Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v1.json","edit/facts.json"]}}
+{"type":"stage","at":"2026-11-26T08:28:34.438Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"done","started":"2026-11-26T08:28:09.569Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v1.json","edit/facts.json"],"finished":"2026-11-26T08:28:34.437Z","ms":24868,"summary":"v1: keeps 13.8 of 20.0 s in 9 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":1}}}
+{"type":"stage","at":"2026-11-26T08:28:34.438Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"running","started":"2026-11-26T08:28:34.438Z","error":null,"fallbacks":[],"engine":null}}
+{"type":"engine","at":"2026-11-26T08:28:34.630Z","slug":"sprigly-edit","stage":"edit","engine":"edit","text":"rendering 9 kept range(s), 13.8 s, reframe blur"}
+{"type":"stage","at":"2026-11-26T08:28:56.564Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"running","started":"2026-11-26T08:28:34.438Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v1.mp4","edit/edit-notes-v1.md"]}}
+{"type":"stage","at":"2026-11-26T08:28:56.568Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"done","started":"2026-11-26T08:28:34.438Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v1.mp4","edit/edit-notes-v1.md"],"finished":"2026-11-26T08:28:56.564Z","ms":22126,"summary":"draft v1: 13.78 s, 1080×1920, word captions, −14 LUFS","warnings":[],"result":{"version":1}}}
+{"type":"stage","at":"2026-11-26T08:28:56.572Z","slug":"sprigly-edit","stage":"analysis","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.576Z","slug":"sprigly-edit","stage":"series","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.578Z","slug":"sprigly-edit","stage":"brief","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.580Z","slug":"sprigly-edit","stage":"premises","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.584Z","slug":"sprigly-edit","stage":"hooks","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.588Z","slug":"sprigly-edit","stage":"story","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.592Z","slug":"sprigly-edit","stage":"brandmap","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.594Z","slug":"sprigly-edit","stage":"style","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.595Z","slug":"sprigly-edit","stage":"direction","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.600Z","slug":"sprigly-edit","stage":"bible","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.604Z","slug":"sprigly-edit","stage":"world","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.607Z","slug":"sprigly-edit","stage":"episodes","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.607Z","slug":"sprigly-edit","stage":"frames","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.608Z","slug":"sprigly-edit","stage":"voice","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.608Z","slug":"sprigly-edit","stage":"animatic","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.609Z","slug":"sprigly-edit","stage":"final","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.610Z","slug":"sprigly-edit","stage":"scorecard","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:28:56.610Z","slug":"sprigly-edit","stage":"audience","state":{"status":"skipped"}}
+{"type":"job","at":"2026-11-26T08:28:56.610Z","slug":"sprigly-edit","kind":"end"}
+{"type":"stage","at":"2026-11-26T08:29:07.500Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"idle","started":"2026-11-26T08:28:09.569Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v1.json","edit/facts.json"],"finished":"2026-11-26T08:28:34.437Z","ms":24868,"summary":"v1: keeps 13.8 of 20.0 s in 9 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":1},"note":"end on Standoff over, drop the tag line"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"stale","started":"2026-11-26T08:28:34.438Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v1.mp4","edit/edit-notes-v1.md"],"finished":"2026-11-26T08:28:56.564Z","ms":22126,"summary":"draft v1: 13.78 s, 1080×1920, word captions, −14 LUFS","warnings":[],"result":{"version":1}}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"analysis","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"series","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"brief","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"premises","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"hooks","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"story","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.501Z","slug":"sprigly-edit","stage":"brandmap","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"style","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"direction","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"bible","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"world","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"episodes","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"frames","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"voice","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"animatic","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"final","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"scorecard","state":{"status":"skipped"}}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"audience","state":{"status":"skipped"}}
+{"type":"job","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","kind":"start","from":"edit-plan"}
+{"type":"stage","at":"2026-11-26T08:29:07.502Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:29:07.502Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/edl-v1.json","edit/facts.json"],"finished":"2026-11-26T08:28:34.437Z","ms":24868,"summary":"v1: keeps 13.8 of 20.0 s in 9 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":1},"note":"end on Standoff over, drop the tag line"}}
+{"type":"engine","at":"2026-11-26T08:29:07.751Z","slug":"sprigly-edit","stage":"edit","engine":"edit","text":"45 words, 0 pauses, proposed cut keeps 13.78 of 20.0 s"}
+{"type":"stage","at":"2026-11-26T08:29:07.752Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:29:07.502Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v1.json","edit/facts.json"],"finished":"2026-11-26T08:28:34.437Z","ms":24868,"summary":"v1: keeps 13.8 of 20.0 s in 9 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":1},"note":"end on Standoff over, drop the tag line"}}
+{"type":"claude","at":"2026-11-26T08:29:07.752Z","slug":"sprigly-edit","stage":"edit-plan","kind":"inbox","text":"waiting in the decision inbox: answer with  node studio/bin/inbox.mjs answer sprigly-edit edit-plan <file.json>"}
+{"type":"stage","at":"2026-11-26T08:29:09.757Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"running","started":"2026-11-26T08:29:07.502Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v2.json","edit/facts.json"],"finished":"2026-11-26T08:28:34.437Z","ms":24868,"summary":"v1: keeps 13.8 of 20.0 s in 9 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":1},"note":"end on Standoff over, drop the tag line"}}
+{"type":"stage","at":"2026-11-26T08:29:09.758Z","slug":"sprigly-edit","stage":"edit-plan","state":{"status":"done","started":"2026-11-26T08:29:07.502Z","error":null,"fallbacks":[],"engine":"inbox","outputs":["edit/edl-v2.json","edit/facts.json"],"finished":"2026-11-26T08:29:09.758Z","ms":2256,"summary":"v2: keeps 11.7 of 20.0 s in 8 ranges · title \"Day 14. Still guessing.\"","warnings":[],"result":{"version":2},"note":"end on Standoff over, drop the tag line"}}
+{"type":"stage","at":"2026-11-26T08:29:09.758Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"running","started":"2026-11-26T08:29:09.758Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v1.mp4","edit/edit-notes-v1.md"],"finished":"2026-11-26T08:28:56.564Z","ms":22126,"summary":"draft v1: 13.78 s, 1080×1920, word captions, −14 LUFS","warnings":[],"result":{"version":1}}}
+{"type":"engine","at":"2026-11-26T08:29:09.937Z","slug":"sprigly-edit","stage":"edit","engine":"edit","text":"rendering 8 kept range(s), 11.7 s, reframe blur"}
+{"type":"stage","at":"2026-11-26T08:29:27.952Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"running","started":"2026-11-26T08:29:09.758Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v2.mp4","edit/edit-notes-v2.md","edit/draft-v1.mp4","edit/edit-notes-v1.md"],"finished":"2026-11-26T08:28:56.564Z","ms":22126,"summary":"draft v1: 13.78 s, 1080×1920, word captions, −14 LUFS","warnings":[],"result":{"version":1}}}
+{"type":"stage","at":"2026-11-26T08:29:27.953Z","slug":"sprigly-edit","stage":"edit-render","state":{"status":"done","started":"2026-11-26T08:29:09.758Z","error":null,"fallbacks":[],"engine":null,"outputs":["edit/draft-v2.mp4","edit/edit-notes-v2.md","edit/draft-v1.mp4","edit/edit-notes-v1.md"],"finished":"2026-11-26T08:29:27.952Z","ms":18194,"summary":"draft v2: 11.72 s, 1080×1920, word captions, −14 LUFS","warnings":[],"result":{"version":2}}}
+{"type":"job","at":"2026-11-26T08:29:27.954Z","slug":"sprigly-edit","kind":"end"}
