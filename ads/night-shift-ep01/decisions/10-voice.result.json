@@ -1,7 +1,7 @@
 {
   "stage": "voice",
-  "at": "2026-11-26T08:33:38.368Z",
-  "summary": "6 lines by kokoro; speech check: FAIL",
+  "at": "2026-11-26T08:58:28.432Z",
+  "summary": "6 lines by kokoro; speech check: pass",
   "engine": "kokoro",
   "durs": {
     "l01": 2.985,
@@ -13,8 +13,8 @@
   },
   "check": {
     "engine": "whisper",
-    "pass": false,
-    "report": "DIFF l01 | Room nine. Mara Okafor. Admitted tonight. → Room 9, Mara Akafer, admitted tonight. \nOK   l02 | Dev. Did you admit someone to nine? → Dev, did you admit someone to nine? \nOK   l03 | Nobody goes in nine. → Nobody goes in nine. \nOK   l04 | It has my name on it. → It has my name on it. \nOK   l05 | Room nine has been empty for years. → Room 9 has been empty for years. \nOK   l06 | Then who just pressed the call button? → Then who just pressed the call button? \nmismatches: 1 (lang=en, model=base)"
+    "pass": true,
+    "report": "OK   l01 | Room nine. Mara Akafer. Admitted tonight. → Room 9, Mara Akafer, admitted tonight. \nOK   l02 | Dev. Did you admit someone to nine? → Dev, did you admit someone to nine? \nOK   l03 | Nobody goes in nine. → Nobody goes in nine. \nOK   l04 | It has my name on it. → It has my name on it. \nOK   l05 | Room nine has been empty for years. → Room 9 has been empty for years. \nOK   l06 | Then who just pressed the call button? → Then who just pressed the call button? \nmismatches: 0 (lang=en, model=base)"
   },
   "warnings": []
 }

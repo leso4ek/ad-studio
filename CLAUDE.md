@@ -253,9 +253,10 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - Stream mode: chat bursts (z-score) → peaks → delay estimate (6 s Twitch/Kick, 10 s YouTube) → windows of about 10 s build-up + 7 s reaction → snapped to sentences → Claude picks with the rubric (`research/viral/clip-rubric.md`) → 9:16 render with a solid headline box held 9 s and no speech captions.
   - Normal mode: OpenClip (`install_openclip.sh`). **It can't install in the cloud** (download.pytorch.org and the Whisper host are blocked), so the cloud falls back to Claude ranking transcript windows. Real Twitch/YouTube/Kick runs happen on the PC.
 - **Viral research** (`research/viral/`, the watch skill on TikTok): 9 explainers, 8 skits, 10 short drama, 8 ads, 14 clips, each with a SUMMARY. The playbook `skills/ad-studio-director/reference/viral-playbook.md` has one section per format; `playbook(format)` puts only that section into the prompts. YouTube Shorts list for the PC: `research/watch-kit/README.md`.
-- **Proofs (all $0):** `ads/ear-pop-explainer/`, `ads/night-shift/` + `-ep01…03`, `ads/sprigly-edit/` (v1 13.8 s → v2 11.7 s from one note), `ads/stream-clips/` (both chat bursts found, delay 6 s vs. true 5 s, 2 clips).
+- **Proofs (all $0):** `ads/ear-pop-explainer/` (45 s, 30/35), `ads/night-shift/` + `-ep01…03` (manga panels, 34.5 s each, 31/35 each), `ads/sprigly-edit/` (v1 13.8 s → v2 11.7 s from one note), `ads/stream-clips/` (both chat bursts found, delay 6 s vs. true 5 s, 2 clips).
 - **Lessons:**
-  - Cards on medium and close character shots go in the lower zone (y ≈ .645); a top card sat on her eyes.
+  - Cards on medium and close character shots go in the lower zone (y ≈ .645); a top card sat on her eyes. On wide shots the character stands low, so the card goes in the sky (y ≈ .26), or it lands on her shirt.
+  - Whisper writes numbers either way ("nine"/"9"): the speech check now ignores number spelling. Names still need an `asr` spelling.
   - `render.stills` needs an absolute ad folder path.
   - Restarting the server re-opens the running stage's inbox request: re-stage the answer for the feeder.
 

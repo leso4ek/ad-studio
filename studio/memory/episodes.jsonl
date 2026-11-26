@@ -279,3 +279,4 @@
 {"type":"signal","at":"2026-11-26T08:57:27.910Z","ad":"ear-pop-explainer","stage":"brief","kind":"rule","value":4,"note":"7 the ending: \"Your ears just caught up with the sky\" closes the loop; the CTA promises part 2."}
 {"type":"signal","at":"2026-11-26T08:57:54.351Z","ad":"night-shift-ep01","stage":"voice","kind":"redo","value":1,"note":"Whisper spells the name Akafer; asr spelling added"}
 {"type":"signal","at":"2026-11-26T08:57:54.368Z","ad":"stream-clips","stage":"clip-render","kind":"redo","value":1,"note":"solid headline box held 9 s"}
+{"type":"signal","at":"2026-11-26T08:58:28.432Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"speech check pass"}
