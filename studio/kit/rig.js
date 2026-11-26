@@ -71,7 +71,7 @@ const rotAbout = (cx, cy, a) => (x, y) => { const c = Math.cos(a), s = Math.sin(
 // ---------- tables ----------
 // body landmarks in heads from the top of the head, and the figure's height in heads
 export const PROPORTIONS = {
-  drama: { heads: 6.75, chin: 1, sh: 1.28, chest: 1.95, waist: 2.6, hip: 3.1, crotch: 3.38, knee: 4.85, ankle: 6.45, upper: 1.42, fore: 1.22, hand: .62, thigh: .62, w: 1, neck: .3 },
+  drama: { heads: 6.75, chin: 1, sh: 1.19, chest: 1.95, waist: 2.6, hip: 3.1, crotch: 3.38, knee: 4.85, ankle: 6.45, upper: 1.42, fore: 1.22, hand: .62, thigh: .62, w: 1, neck: .3 },
   toon:  { heads: 4.6, chin: 1, sh: 1.24, chest: 1.65, waist: 2.05, hip: 2.4, crotch: 2.56, knee: 3.55, ankle: 4.38, upper: .98, fore: .86, hand: .46, thigh: .5, w: .92, neck: .2 },
   chibi: { heads: 3.1, chin: 1, sh: 1.1, chest: 1.35, waist: 1.6, hip: 1.82, crotch: 1.92, knee: 2.5, ankle: 2.95, upper: .62, fore: .55, hand: .34, thigh: .42, w: .8, neck: .1 },
 };
