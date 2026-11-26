@@ -2,7 +2,7 @@
   "slug": "stream-clips",
   "title": "Stream clips",
   "created": "2026-11-26T08:16:48.481Z",
-  "updated": "2026-11-26T08:57:54.371Z",
+  "updated": "2026-11-26T08:58:53.332Z",
   "mode": "autopilot",
   "autoGates": false,
   "decider": "inbox",
@@ -61,7 +61,7 @@
       "result": {}
     },
     "clip-render": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T08:57:54.370Z",
       "error": null,
       "fallbacks": [],
@@ -71,8 +71,8 @@
         "clips/clip-01.mp4",
         "clips/clips.json"
       ],
-      "finished": "2026-11-26T08:19:52.926Z",
-      "ms": 31339,
+      "finished": "2026-11-26T08:58:53.332Z",
+      "ms": 58962,
       "summary": "2 clip(s), best: \"Where does the water go?\" (22/25)",
       "warnings": [],
       "result": {

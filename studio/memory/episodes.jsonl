@@ -280,3 +280,18 @@
 {"type":"signal","at":"2026-11-26T08:57:54.351Z","ad":"night-shift-ep01","stage":"voice","kind":"redo","value":1,"note":"Whisper spells the name Akafer; asr spelling added"}
 {"type":"signal","at":"2026-11-26T08:57:54.368Z","ad":"stream-clips","stage":"clip-render","kind":"redo","value":1,"note":"solid headline box held 9 s"}
 {"type":"signal","at":"2026-11-26T08:58:28.432Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"speech check pass"}
+{"type":"signal","at":"2026-11-26T08:58:55.063Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"readcheck pass"}
+{"type":"signal","at":"2026-11-26T08:58:55.063Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"safe9x16 pass"}
+{"type":"signal","at":"2026-11-26T08:58:55.063Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"safe16x9 pass"}
+{"type":"episode","id":"night-shift-ep01:scorecard:mwxbqiv6","at":"2026-11-26T09:02:21.954Z","ad":"night-shift-ep01","stage":"scorecard","goal":"an honest score that matches what viewers do","style":"ad-manga-panels","product":null,"attempt":2,"action":"31/35; fixes: The kit has no hospital props; the chart reads as a book.; Add a call-light prop so the red light is unmistakable."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"hooks","kind":"rule","value":4,"note":"1 hook / re-hook: A chart slides off the trolley: tonight's admission is Mara herself."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"direction","kind":"rule","value":4,"note":"1 hook / re-hook: A chart slides off the trolley: tonight's admission is Mara herself."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"story","kind":"rule","value":4,"note":"2 stakes: Her own name, an empty room."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"story","kind":"rule","value":4,"note":"3 a character we care about: Mara is steady until the evidence."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"premises","kind":"rule","value":4,"note":"3 a character we care about: Mara is steady until the evidence."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"story","kind":"rule","value":4,"note":"4 tension curve: Each panel adds one piece of evidence."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"direction","kind":"rule","value":4,"note":"4 tension curve: Each panel adds one piece of evidence."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"premises","kind":"rule","value":4,"note":"4 tension curve: Each panel adds one piece of evidence."}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"brandmap","kind":"rule","value":5,"note":"5 the cliffhanger: Cuts on \"Then who just pressed the call button?\""}
+{"type":"signal","at":"2026-11-26T09:02:21.959Z","ad":"night-shift-ep01","stage":"story","kind":"rule","value":5,"note":"6 continuity: Same cast, voices, ward and palette (locked by code)."}
+{"type":"signal","at":"2026-11-26T09:02:21.960Z","ad":"night-shift-ep01","stage":"brief","kind":"rule","value":5,"note":"7 one emotion: Dread throughout."}
