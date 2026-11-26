@@ -110,6 +110,36 @@ Switch the header to **Shot board** after the bible is approved. Each shot goes 
   - Spending has its own hard cap, `budget.higgsfieldCapUsd` (default $5), and its own ledger entries.
   - Set `higgsfield.mock: true` (or `ADSTUDIO_MOCK=1`) to test the flow for free with tinted placeholder clips.
 
+## More than ads (round 13): explainers, short drama, an edit tool, a clipper
+**New video** now offers 8 formats. The 4 new ones:
+
+1. **Explainer.** Type a topic.
+   - Claude writes a topic brief with **sourced facts**, then a question-led chain, in any kit style.
+   - No product: the end card shows your channel and a CTA.
+   - Free.
+2. **Short drama.** Type a story idea, pick the episode count (1–20), the length (30–50 s) and a style, or describe your own.
+   - Claude writes the series bible: the characters, the arc, and every episode's cliffhanger.
+   - Each episode becomes its own video, with the cast, voices, places and palette locked by code.
+   - Use **Run next** or **Run all** in the Episodes stage.
+   - Each episode cuts on its most interesting moment, then shows a "Part N" tag.
+3. **Edit a video.** Upload footage and 3–5 reference reels; Claude edits like the @viralex.aii workflow:
+   1. the style is measured from the reels (`style.md`);
+   2. pauses and slips are cut (never inside a word);
+   3. word-by-word captions in the style (libass), a music bed ducked under the voice, a hook title, 9:16 at −14 LUFS.
+   - You get `draft-v1`. Type notes in plain words for v2.
+4. **Clip a stream.** Paste a Twitch, YouTube or Kick VOD, or upload a recording plus a chat log (TwitchDownloader, chat-downloader, YouTube live_chat, Kick, CSV).
+   - **Streams:** the chat finds the moments (message rate, laughter, hype and "clip it" against a 3-min baseline). The chat delay is estimated from the audio. Each clip keeps about **10 s of build-up and 7 s of reaction** (measured on 14 viral clips).
+   - **Normal videos:** OpenClip ranks the transcript (installed on your PC), or Claude ranks sentence windows.
+   - Claude picks and trims with the clip rubric (`skills/clip-director`). Each clip renders 9:16 with a headline.
+- **Install the clipper's tools** (OpenClip in `~/openclip`, plus chat-downloader):
+
+  ```bash
+  bash studio/scripts/install_openclip.sh
+  ```
+
+  OpenClip's LLM is OpenRouter (a cheap model, about cents per video), under your existing cap.
+- **The viral playbook** (`skills/ad-studio-director/reference/viral-playbook.md`) comes from watching 45+ trending TikToks with the watch skill (`research/viral/`). Every Direction and Bible prompt reads the section for its format.
+
 ## Audience test: simulated viewers with MiroFish (stage 13, optional, paid)
 After the final, **Run the audience test (≤ $1)** shows the finished ad, as text, to a swarm of simulated viewers in [MiroFish](https://github.com/666ghj/MiroFish). It then reads MiroFish's report back as a verdict card:
 - scores for stop-scroll, watch-through, brand recall, trust and click intent;

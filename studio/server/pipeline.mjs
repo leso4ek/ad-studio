@@ -210,6 +210,8 @@ const slim = r => { const o = { ...r }; delete o.summary; delete o.warnings; ret
 
 function summaryOf(id, o) {
   switch (id) {
+    case 'series': return `${o.title}: ${(o.episodes || []).length} episodes · ${(o.characters || []).map(c => c.name).join(', ')}`;
+    case 'clip-pick': return `${(o.clips || []).length} clip(s): ${(o.clips || []).map(c => c.title || c.id).join(' · ')}`;
     case 'analysis': return `${o.kind} · ${(o.shots || []).length} shots · recommends ${o.recommend?.mode} as ${o.recommend?.target}`;
     case 'brief': return o.topic ? `${o.topic} · ${o.question}` : `${o.product?.name}: ${o.product?.what}`;
     case 'premises': return (o.premises || []).find(p => p.id === o.chosen)?.logline || '';

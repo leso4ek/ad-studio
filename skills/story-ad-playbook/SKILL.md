@@ -59,7 +59,7 @@ Map the spine to the length (seconds; adjust by a beat or two):
 | 4 Falling action | 11–13 | 22–26 | 44–52 | 66–80 | We see the change land: a reaction, a smile, a consequence |
 | 5 Resolution + tag | 13–15 | 26–30 | 52–60 | 80–90 | The new normal, an echo of the opening; brand tag + call to action |
 
-For a serial: each episode is its own five acts and ends on a question (a cliffhanger); the product is planted in episode 1, recurs in every episode, and causes the payoff in the finale; give viewers a choice to comment on (who should she pick?) because participation drove the fruit-drama trend.
+For a serial (Ad Studio's short-drama series, see ad-studio-director §Short-drama): each episode is its own five acts and ends on a question (a cliffhanger) — cut 1.5–4 s after the shortest, sharpest line, no recap at the next episode's start, re-hook within 3 s; the product is planted in episode 1, recurs in every episode, and causes the payoff in the finale; give viewers a choice to comment on (who should she pick?) because participation drove the fruit-drama trend.
 
 ### 5. The brand map
 A table of every brand moment: second, what is seen, what is heard, and its job.

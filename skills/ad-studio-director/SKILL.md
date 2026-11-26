@@ -276,6 +276,47 @@ Leave `route` out and code decides (`engines/analyse.mjs routeFor`); set it only
 - The prompt is **short**: 1–3 sentences, ≤ 400 characters, saying who becomes whom, what they wear and hold, and the product, and that the motion, timing and camera stay. The reference images carry identity: the user's `ref-*` uploads first, up to 8 images.
 - Picked clips become **plates** under our words, captions, voice and end card ("Use picked clips in the edit", then re-run Animatic and Final).
 
+## Videos that aren't ads (round 13)
+Every Brief, Direction and Bible prompt embeds the **viral playbook** section for its format (`reference/viral-playbook.md`, from 45+ watched TikToks in `research/viral/`). Follow it unless the brief clearly needs otherwise.
+
+### Explainer (format `explainer`)
+- **Topic brief** (`topicBrief`): the topic, the one question, the angle, and 3–8 facts, **each with a checkable source**. Add the channel name and a CTA. A sponsor is optional.
+- **No premises and no brand map.** Hooks ask the question three ways.
+- **The story** is a chain built only from the brief's facts. Put the reversal at 50–60 %, with the longest hold.
+- **No product:**
+  - omit `bible.product`;
+  - the end card shows the channel name, a line and the CTA;
+  - the end card needs 3.5 s or more so its line and CTA can be read (checked).
+- **Cards on medium and close shots of a character go in the lower zone** (y ≈ 0.645). Top cards cover the face there.
+
+### Short-drama series (format `drama-series` → `drama-episode`)
+- **The series stages:**
+  1. **Series bible:** characters with a want, a fear, a secret, a look and a Kokoro voice (each voice used once); places; the arc; and per episode the hook, 3–7 beats and the **cliffhanger** (the moment, the last line, the open question).
+  2. **Style**, shared by every episode. For a described style, set `palette` and write a `customLook` for Seedance.
+  3. **Episodes:** creates the child projects.
+- **Each episode** runs story → direction → bible → frames → voice → animatic → final → scorecard.
+- **Locked by code from the series:** the cast, the voices, the places, the palette and the "Part N" tag.
+- **Cliffhanger rules (checked):**
+  - the episode runs 30–50 s;
+  - the last line ends within 2.5 s of the cut, with nothing resolved after it;
+  - the tag runs 2–3 s and shows only "Part N" (the finale shows the series title).
+- **From the research:**
+  - a title card on frame 1;
+  - no recap: re-hook within 3 s;
+  - the peak line is the shortest;
+  - cut 1.5–4 s after it.
+
+### Edit tool (format `edit`)
+- **The stages:** Source (your footage) → **Edit style** (the reference reels measured by code; you write `style.json` + `style.md` with exact values) → **Edit plan** (word times, pauses and the code's proposed cuts; you return the keep ranges, emphasis words, a hook title and notes) → **Draft** (the render).
+- **The cuts:** never inside a word (checked). Keep meaningful pauses, and never speed the voice up.
+- **Revisions:** redo "Edit plan" with the user's note to make draft v(N+1).
+
+### Clipper (format `clip`)
+Follow `skills/clip-director/SKILL.md`. The code finds the candidates: chat peaks for streams, OpenClip or sentence windows for normal videos. In **clip-pick** you pick and trim:
+- stay within 15 s of the candidate window;
+- 10–90 s for streams, 15–90 s otherwise;
+- no cut inside a word (checked).
+
 ## Running and extending Ad Studio
 - **Start:**
 

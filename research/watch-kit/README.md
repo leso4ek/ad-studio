@@ -46,3 +46,14 @@ Pick **the most-viewed of the last 12 months**: prefer ≥ 1M views on TikTok/Yo
 - Research only: watch, describe and quote briefly. Never re-upload or re-edit the videos. Keep frames small (360 px) and few (≤ 6 per video).
 - Write facts you saw, with timestamps. When you infer something, mark it "our read".
 - If a download fails, note it in INDEX.md (status: failed + reason) and move on. Don't use cookies or logins unless I say so.
+
+
+## Round 13: YouTube Shorts for your PC session (TikTok is done in the cloud)
+The cloud watched 45+ TikToks (`research/viral/`), but YouTube is blocked there. On your PC, with the watch skill, tear down about 15 YouTube Shorts with the same template. Save them in `research/viral/youtube/`, then add a "YouTube" line to each group's SUMMARY.
+
+| Group | How many | Search with yt-dlp |
+|---|---|---|
+| Explainers | 4 | `yt-dlp "ytsearch20:how it works shorts" --get-id --get-title` (pick ≥ 1M views) |
+| Short drama | 4 | `ytsearch20:minidrama episode 1 shorts` and `ytsearch20:short drama part 2` |
+| Skits | 3 | `ytsearch20:skit shorts comedy POV` |
+| Stream clips | 4 | `ytsearch20:streamer reaction clip shorts` (measure setup before the peak and tail after it, as in `research/viral/clip-rubric.md`) |
