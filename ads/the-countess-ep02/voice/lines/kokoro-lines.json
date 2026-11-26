@@ -1,0 +1,62 @@
+[
+  {
+    "id": "l01",
+    "text": "Six years, and you still count the bars.",
+    "voice": "bm_george",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Twenty-two. Same as yesterday.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "Give me your hand.",
+    "voice": "bm_george",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "Twenty-four words. Learn them. Then wash them off.",
+    "voice": "bm_george",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "What are they?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "Eleven million dollars. Nobody knows it exists.",
+    "voice": "bm_george",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "Spend it on a life, Edie. Not on them.",
+    "voice": "bm_george",
+    "speed": 0.95
+  },
+  {
+    "id": "l08",
+    "text": "Ivo? Ivo.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l09",
+    "text": "My old firm. For sale.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l10",
+    "text": "Buy it.",
+    "voice": "af_heart",
+    "speed": 0.95
+  }
+]

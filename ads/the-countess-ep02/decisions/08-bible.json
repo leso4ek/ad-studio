@@ -1,0 +1,688 @@
+{
+  "stage": "bible",
+  "at": "2026-11-26T14:29:32.080Z",
+  "output": {
+    "slug": "the-countess-ep02",
+    "title": "The Countess · Ep 2: Cell 34",
+    "style": "ad-paper-cutout",
+    "dur": 39,
+    "rig": "v2",
+    "cast": {
+      "edie": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Edie",
+        "skin": "#D9A27E",
+        "hair": "#3B2416",
+        "hairStyle": "long-wavy",
+        "build": "slim",
+        "jaw": "heart",
+        "eyes": {
+          "shape": "almond",
+          "color": "#5A3A22"
+        },
+        "lashes": true,
+        "brows": "medium",
+        "nose": "small",
+        "lips": "medium",
+        "top": "#F2EDE4",
+        "top2": "#26324A",
+        "bottom": "#26324A",
+        "shoe": "#151515",
+        "accent": "#B23A48",
+        "outfit": {
+          "top": "blazer",
+          "bottom": "trousers",
+          "accessories": [
+            "badge",
+            "watch"
+          ]
+        },
+        "details": [
+          "earrings"
+        ],
+        "role": "she, 27, analyst at Pharaon Capital, promoted to VP tonight",
+        "voice": "af_heart"
+      },
+      "edie6": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Edie",
+        "skin": "#D9A27E",
+        "hair": "#3B2416",
+        "hairStyle": "bun",
+        "build": "slim",
+        "jaw": "heart",
+        "eyes": {
+          "shape": "almond",
+          "color": "#5A3A22"
+        },
+        "brows": "medium",
+        "nose": "small",
+        "lips": "thin",
+        "top": "#D9823B",
+        "bottom": "#D9823B",
+        "shoe": "#3a3a3a",
+        "accent": "#D9823B",
+        "outfit": {
+          "top": "scrubs",
+          "bottom": "trousers"
+        },
+        "details": [
+          "scar"
+        ],
+        "role": "she, 33, the same Edie after six years in cell 34",
+        "voice": "af_heart"
+      },
+      "fern": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Fern",
+        "skin": "#C99272",
+        "hair": "#1A1010",
+        "hairStyle": "bob",
+        "build": "petite",
+        "jaw": "oval",
+        "eyes": {
+          "shape": "round",
+          "color": "#2A1A10"
+        },
+        "lashes": true,
+        "brows": "thin",
+        "nose": "straight",
+        "lips": "full",
+        "top": "#B23A48",
+        "bottom": "#1F1F24",
+        "shoe": "#111111",
+        "accent": "#C9A86A",
+        "outfit": {
+          "top": "blouse",
+          "bottom": "skirt",
+          "accessories": [
+            "necklace"
+          ]
+        },
+        "role": "she, 27, Edie's best friend since school, junior at Pharaon",
+        "voice": "af_bella"
+      },
+      "dan": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Dan",
+        "skin": "#F1C7A6",
+        "hair": "#6B5A48",
+        "hairStyle": "slick-back",
+        "build": "round",
+        "jaw": "square",
+        "eyes": {
+          "shape": "almond",
+          "color": "#3D5A6C"
+        },
+        "brows": "thick",
+        "nose": "broad",
+        "lips": "thin",
+        "top": "#E9EEF2",
+        "top2": "#4A4F57",
+        "bottom": "#4A4F57",
+        "shoe": "#2A1A10",
+        "accent": "#2C5F8A",
+        "outfit": {
+          "top": "suit",
+          "bottom": "trousers",
+          "accessories": [
+            "watch"
+          ]
+        },
+        "details": [
+          "glasses",
+          "age-lines"
+        ],
+        "role": "he, 41, Edie's team lead, who wanted her promotion",
+        "voice": "am_michael"
+      },
+      "valerie": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Valerie",
+        "skin": "#E2B08F",
+        "hair": "#B8B4AE",
+        "hairStyle": "pixie",
+        "build": "slim",
+        "jaw": "square",
+        "eyes": {
+          "shape": "almond",
+          "color": "#4A5A3A"
+        },
+        "brows": "thin",
+        "nose": "aquiline",
+        "lips": "thin",
+        "top": "#E9E4DA",
+        "top2": "#1C1C22",
+        "bottom": "#1C1C22",
+        "shoe": "#111111",
+        "accent": "#8A8A8A",
+        "outfit": {
+          "top": "blazer",
+          "bottom": "skirt",
+          "accessories": [
+            "necklace"
+          ]
+        },
+        "details": [
+          "earrings",
+          "age-lines"
+        ],
+        "role": "she, 45, Pharaon's general counsel",
+        "voice": "bf_emma"
+      },
+      "faria": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Ivo",
+        "skin": "#B07A55",
+        "hair": "#D8D4CC",
+        "hairStyle": "crew",
+        "build": "slim",
+        "jaw": "oval",
+        "eyes": {
+          "shape": "almond",
+          "color": "#2A1A10"
+        },
+        "brows": "thick",
+        "nose": "aquiline",
+        "lips": "thin",
+        "top": "#D9823B",
+        "bottom": "#D9823B",
+        "shoe": "#3a3a3a",
+        "accent": "#D9823B",
+        "outfit": {
+          "top": "scrubs",
+          "bottom": "trousers"
+        },
+        "details": [
+          "beard",
+          "age-lines"
+        ],
+        "role": "he, 71, a jailed ex-banker in the next bunk",
+        "voice": "bm_george"
+      }
+    },
+    "places": {
+      "pharaon": {
+        "kind": "office",
+        "time": "dusk"
+      },
+      "cell34": {
+        "kind": "cell",
+        "time": "day"
+      },
+      "board": {
+        "kind": "boardroom",
+        "time": "day"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "act": 1,
+        "beat": "hook",
+        "place": "cell34",
+        "camera": {
+          "size": "WS",
+          "subject": "faria",
+          "angle": "eye",
+          "move": "static",
+          "at": [
+            0.6,
+            0.45
+          ]
+        },
+        "function": "establishing",
+        "reason": "Six years later. Cell 34.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "faria",
+            "x": 0.6,
+            "y": 0.93,
+            "scale": 1.1,
+            "pose": "sit",
+            "view": "34",
+            "face": "left",
+            "expression": "warm"
+          },
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.42,
+            "y": 0.93,
+            "scale": 1.1,
+            "pose": "arms-crossed",
+            "view": "34",
+            "face": "right",
+            "expression": "determined"
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "card",
+            "text": "6 YEARS LATER\nCELL 34",
+            "x": 0.5,
+            "y": 0.6,
+            "size": 0.085,
+            "w": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 6.8,
+        "act": 1,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "CU",
+          "subject": "edie6",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "close-up",
+        "reason": "She counts the bars.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "suspicious"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s3",
+        "t0": 6.8,
+        "t1": 9.8,
+        "act": 2,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "MCU",
+          "subject": "faria",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "close-up",
+        "reason": "Ivo asks for her hand.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "faria",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "talk",
+            "view": "34",
+            "face": "left",
+            "expression": "sad"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s4",
+        "t0": 9.8,
+        "t1": 13.4,
+        "act": 2,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "CU",
+          "subject": "document",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "insert",
+        "reason": "24 words on her palm.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "document",
+            "x": 0.5,
+            "y": 0.8,
+            "scale": 1.3
+          },
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "24 WORDS",
+            "x": 0.5,
+            "y": 0.2,
+            "size": 0.085,
+            "w": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s5",
+        "t0": 13.4,
+        "t1": 16,
+        "act": 3,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "MCU",
+          "subject": "edie6",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "reaction",
+        "reason": "What are they?",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "reading-phone",
+            "view": "34",
+            "face": "right",
+            "expression": "shocked"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s6",
+        "t0": 16,
+        "t1": 23.6,
+        "act": 3,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "CU",
+          "subject": "faria",
+          "angle": "eye",
+          "move": "push",
+          "rate": 3,
+          "ease": "in"
+        },
+        "function": "close-up",
+        "reason": "Eleven million. For a life, not for them.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "faria",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "left",
+            "expression": "warm",
+            "expressionAt": [
+              {
+                "t": 3.4,
+                "e": "determined"
+              }
+            ]
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s7",
+        "t0": 23.6,
+        "t1": 27.4,
+        "act": 4,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "CU",
+          "subject": "edie6",
+          "angle": "eye",
+          "move": "handheld",
+          "shake": 0.25
+        },
+        "function": "reaction",
+        "reason": "He is gone.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "left",
+            "expression": "heartbroken"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s8",
+        "t0": 27.4,
+        "t1": 33,
+        "act": 4,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "MS",
+          "subject": "edie6",
+          "angle": "eye",
+          "move": "push",
+          "rate": 3,
+          "ease": "out"
+        },
+        "function": "reveal",
+        "reason": "Release day. Her phone: Pharaon is for sale.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "reading-phone",
+            "view": "34",
+            "face": "right",
+            "expression": "suspicious",
+            "expressionAt": [
+              {
+                "t": 2.4,
+                "e": "determined"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c3",
+            "role": "card",
+            "text": "PHARAON CAPITAL\nFOR SALE",
+            "x": 0.5,
+            "y": 0.6,
+            "size": 0.085,
+            "w": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s9",
+        "t0": 33,
+        "t1": 36.5,
+        "act": 5,
+        "beat": "story",
+        "place": "cell34",
+        "camera": {
+          "size": "CU",
+          "subject": "edie6",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "reaction",
+        "reason": "Two words.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie6",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "determined",
+            "gaze": [
+              0.3,
+              0.5
+            ]
+          }
+        ],
+        "route": "kit"
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "spellings": {
+        "Edie": [
+          "Eddie",
+          "Eddy"
+        ],
+        "Fern": [
+          "Furn"
+        ],
+        "Ivo": [
+          "Evo",
+          "Eva"
+        ]
+      },
+      "lines": [
+        {
+          "id": "l01",
+          "text": "Six years, and you still count the bars.",
+          "at": 0.5,
+          "speaker": "faria"
+        },
+        {
+          "id": "l02",
+          "text": "Twenty-two. Same as yesterday.",
+          "at": 3.9,
+          "speaker": "edie6"
+        },
+        {
+          "id": "l03",
+          "text": "Give me your hand.",
+          "at": 7.1,
+          "speaker": "faria"
+        },
+        {
+          "id": "l04",
+          "text": "Twenty-four words. Learn them. Then wash them off.",
+          "at": 10,
+          "speaker": "faria"
+        },
+        {
+          "id": "l05",
+          "text": "What are they?",
+          "at": 13.7,
+          "speaker": "edie6"
+        },
+        {
+          "id": "l06",
+          "text": "Eleven million dollars. Nobody knows it exists.",
+          "at": 16.3,
+          "speaker": "faria"
+        },
+        {
+          "id": "l07",
+          "text": "Spend it on a life, Edie. Not on them.",
+          "at": 19.6,
+          "speaker": "faria"
+        },
+        {
+          "id": "l08",
+          "text": "Ivo? Ivo.",
+          "at": 24.4,
+          "speaker": "edie6"
+        },
+        {
+          "id": "l09",
+          "text": "My old firm. For sale.",
+          "at": 29.4,
+          "speaker": "edie6"
+        },
+        {
+          "id": "l10",
+          "text": "Buy it.",
+          "at": 34.6,
+          "speaker": "edie6"
+        }
+      ]
+    },
+    "captions": true,
+    "captionMode": "words",
+    "endcard": {
+      "t0": 36.5,
+      "logo": "Part 3"
+    },
+    "music": {
+      "mood": "lofi",
+      "bpm": 72
+    },
+    "sfx": [
+      {
+        "t": 36.4,
+        "type": "sting"
+      }
+    ],
+    "reason": "Episode 2: one place, one piece of evidence (24 words written on her palm), the cut on \"Buy it.\".",
+    "format": "drama-episode",
+    "palette": {
+      "accent": "#B23A48"
+    }
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwxaukflhg1",
+      "Lmwwhvqldqat"
+    ]
+  },
+  "warnings": [],
+  "note": "Whisper spellings for names and numbers; no spoken Pharaon; credit tag long enough to read"
+}

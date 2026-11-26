@@ -1,0 +1,25 @@
+{
+  "stage": "style",
+  "at": "2026-11-26T14:24:54.118Z",
+  "output": {
+    "style": "ad-paper-cutout",
+    "reason": "Layered paper with soft shadows gives the new characters depth and keeps faces readable in close-ups; the one red (Fern, the USB stick) carries the betrayal.",
+    "alternatives": [
+      {
+        "style": "ad-manga-panels",
+        "why_not": "black and white loses the red evidence colour"
+      },
+      {
+        "style": "ad-midcentury-toon",
+        "why_not": "too playful for revenge"
+      }
+    ],
+    "palette": {
+      "accent": "#B23A48"
+    }
+  },
+  "meta": {
+    "engine": "format"
+  },
+  "warnings": []
+}

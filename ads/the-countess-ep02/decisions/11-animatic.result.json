@@ -1,0 +1,33 @@
+{
+  "stage": "animatic",
+  "at": "2026-11-26T14:29:26.793Z",
+  "summary": "checks to look at: safe zone 9:16",
+  "checks": {
+    "readcheck": true,
+    "safe9x16": false,
+    "safe16x9": true
+  },
+  "details": {
+    "readcheck": "OK  s1:c1              at 0.00s   17 chars  need 2.63s  got 3.60s  \"6 YEARS LATER\\nCELL 34\"\nOK  s4:c2              at 9.84s    7 chars  need 1.97s  got 3.60s  \"24 WORDS\"\nOK  s8:c3              at 27.44s   21 chars  need 2.90s  got 5.60s  \"PHARAON CAPITAL\\nFOR SALE\"\nOK  end:logo           at 36.68s    5 chars  need 1.83s  got 2.32s  \"Part 3\"\n(node:13711) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+    "safe9x16": [
+      {
+        "t": 27.4,
+        "id": "s8:c3",
+        "text": "PHARAON CAPITAL\nFOR SALE",
+        "box": [
+          135,
+          1056,
+          945,
+          1248
+        ],
+        "safe": [
+          54,
+          269,
+          929,
+          1536
+        ]
+      }
+    ],
+    "safe16x9": []
+  }
+}

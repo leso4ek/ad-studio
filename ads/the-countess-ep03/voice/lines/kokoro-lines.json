@@ -1,0 +1,62 @@
+[
+  {
+    "id": "l01",
+    "text": "The buyer paid forty million. Cash. No name.",
+    "voice": "am_michael",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Everyone has a name, Dan.",
+    "voice": "bf_emma",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "Whoever it is, they knew our numbers.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "Welcome. And you are?",
+    "voice": "am_michael",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "The new owner.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "You'll recognise this.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "Edie Marsh. You got nine years.",
+    "voice": "bf_emma",
+    "speed": 0.95
+  },
+  {
+    "id": "l08",
+    "text": "I got out in six. Good behaviour.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l09",
+    "text": "What do you want?",
+    "voice": "am_michael",
+    "speed": 0.95
+  },
+  {
+    "id": "l10",
+    "text": "Hello, Fern.",
+    "voice": "af_heart",
+    "speed": 0.95
+  }
+]

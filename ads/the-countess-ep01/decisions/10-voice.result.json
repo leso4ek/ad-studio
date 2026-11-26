@@ -1,0 +1,24 @@
+{
+  "stage": "voice",
+  "at": "2026-11-26T14:30:24.958Z",
+  "summary": "10 lines by kokoro; speech check: pass",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 3.004,
+    "l02": 2.093,
+    "l03": 0.817,
+    "l04": 0.844,
+    "l05": 3.749,
+    "l06": 1.93,
+    "l07": 1.426,
+    "l08": 1.337,
+    "l09": 1.092,
+    "l10": 0.817
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": true,
+    "report": "OK   l01 | 602. I'm the youngest VP they've ever had. → 602, I'm the youngest VP they've ever had. \nOK   l02 | From Dan. Plug it in, VP. → From Dan, Plug it in VP. \nOK   l03 | What's on it? → What's on it? \nOK   l04 | Your future. → your future \nDIFF l05 | Edie. Police. Four point two million left your login. → Eddie Police, 4.2 million left your login. \nOK   l06 | That's not me. Check the logs. → That's not me, check the logs. \nOK   l07 | Dad. What did you do? → Dad, what did you do? \nOK   l08 | Nobody saw this. → Nobody saw this. \nDIFF l09 | Fern. Tell them. → Furn, tell them. \nOK   l10 | I don't know her. → I don't know her. \nmismatches: 2 (lang=en, model=base)\n(2 diff(s) only in number, US/UK or name spelling: counted as OK)"
+  },
+  "warnings": []
+}

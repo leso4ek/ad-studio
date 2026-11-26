@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T14:24:54.107Z",
+  "output": {
+    "spine": [
+      "Ivo, dying, asks for her hand.",
+      "He writes 24 words on her palm: a wallet nobody knows.",
+      "Eleven million dollars, \"for a life, not for them\".",
+      "Ivo dies; release day comes.",
+      "Her phone: Pharaon Capital is for sale.",
+      "her thumb on the send button"
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.6,
+        "beats": "Six years later, cell 34: \"Six years, and you still count the bars.\""
+      },
+      {
+        "act": 2,
+        "name": "Setup",
+        "t0": 3.6,
+        "t1": 13.4,
+        "beats": "He writes 24 words on her palm: a wallet nobody knows."
+      },
+      {
+        "act": 3,
+        "name": "Turn",
+        "t0": 13.4,
+        "t1": 23.6,
+        "beats": "Eleven million dollars, \"for a life, not for them\"."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 23.6,
+        "t1": 27.4,
+        "beats": "Ivo dies; release day comes."
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 27.4,
+        "t1": 36.5,
+        "beats": "her thumb on the send button"
+      }
+    ],
+    "turn": "Eleven million dollars, \"for a life, not for them\".",
+    "emotion": "grief turning to purpose",
+    "reason": "Episode 2 follows its outline; every line was checked against content-principles (each line makes the next necessary; numbers instead of summaries) and it cuts on its shortest line."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

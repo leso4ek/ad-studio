@@ -1,0 +1,261 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T14:24:56.116Z",
+  "output": {
+    "thesis": "what will she do with the company that destroyed her?",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.6,
+        "learns": "Six years later. Cell 34."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.6,
+        "t1": 6.8,
+        "learns": "She counts the bars."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 6.8,
+        "t1": 9.8,
+        "learns": "Ivo asks for her hand."
+      },
+      {
+        "id": "b4",
+        "block": "problem",
+        "t0": 9.8,
+        "t1": 13.4,
+        "learns": "24 words on her palm."
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 13.4,
+        "t1": 16,
+        "learns": "What are they?"
+      },
+      {
+        "id": "b6",
+        "block": "turn",
+        "t0": 16,
+        "t1": 23.6,
+        "learns": "Eleven million. For a life, not for them."
+      },
+      {
+        "id": "b7",
+        "block": "proof",
+        "t0": 23.6,
+        "t1": 27.4,
+        "learns": "He is gone."
+      },
+      {
+        "id": "b8",
+        "block": "proof",
+        "t0": 27.4,
+        "t1": 33,
+        "learns": "Release day. Her phone: Pharaon is for sale."
+      },
+      {
+        "id": "b9",
+        "block": "payoff",
+        "t0": 33,
+        "t1": 36.5,
+        "learns": "Two words."
+      }
+    ],
+    "book": {
+      "grammar": "Close-ups carry the betrayal; one wide per episode for the reveal; inserts only for evidence (the stick, the words, the headline). The camera holds still and pushes in only on a turn (about 4 % a second, eased, from the 30 fps study).",
+      "light": "Dusk office, cold cell daylight, flat boardroom light.",
+      "palette": "Navy and cream; red only for Fern and the USB stick.",
+      "performance": "Edie open in episode 1, closed in 2, controlled in 3; Fern smiles when she lies.",
+      "rhythm": "About 2.5 cuts per 10 s, faster into the cliffhanger.",
+      "sound": "Office hum, a cell door, a boardroom clock; one hard sting on the cut."
+    },
+    "locks": {
+      "identity": {
+        "edie": "Edie: she, 27, analyst at Pharaon Capital, promoted to VP tonight",
+        "edie6": "Edie: she, 33, the same Edie after six years in cell 34",
+        "fern": "Fern: she, 27, Edie's best friend since school, junior at Pharaon",
+        "dan": "Dan: he, 41, Edie's team lead, who wanted her promotion",
+        "valerie": "Valerie: she, 45, Pharaon's general counsel",
+        "faria": "Ivo: he, 71, a jailed ex-banker in the next bunk"
+      },
+      "productSide": "centre",
+      "screenDirection": "Edie faces right in episode 1, left when she has power in episode 3",
+      "light": "soft key from the left"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "faria",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Six years later. Cell 34.",
+        "reason": "Six years later. Cell 34.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 6.8,
+        "beat": "b2",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "edie6",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "She counts the bars.",
+        "reason": "She counts the bars.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 6.8,
+        "t1": 9.8,
+        "beat": "b3",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "faria",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Ivo asks for her hand.",
+        "reason": "Ivo asks for her hand.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 9.8,
+        "t1": 13.4,
+        "beat": "b4",
+        "function": "insert",
+        "size": "CU",
+        "subject": "document",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "24 words on her palm.",
+        "reason": "24 words on her palm.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 13.4,
+        "t1": 16,
+        "beat": "b5",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "edie6",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "What are they?",
+        "reason": "What are they?",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 16,
+        "t1": 23.6,
+        "beat": "b6",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "faria",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Eleven million. For a life, not for them.",
+        "reason": "Eleven million. For a life, not for them.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 23.6,
+        "t1": 27.4,
+        "beat": "b7",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "edie6",
+        "angle": "eye",
+        "move": "handheld",
+        "blocking": "He is gone.",
+        "reason": "He is gone.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s8",
+        "t0": 27.4,
+        "t1": 33,
+        "beat": "b8",
+        "function": "reveal",
+        "size": "MS",
+        "subject": "edie6",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Release day. Her phone: Pharaon is for sale.",
+        "reason": "Release day. Her phone: Pharaon is for sale.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s9",
+        "t0": 33,
+        "t1": 36.5,
+        "beat": "b9",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "edie6",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Two words.",
+        "reason": "Two words.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Faces and evidence alternate; the last shot lands on the cliffhanger line and the cut follows it."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}

@@ -1,0 +1,42 @@
+{
+  "stage": "frames",
+  "at": "2026-11-26T14:29:42.401Z",
+  "summary": "revised: first pass: close-ups cropped the top of the head (v2 heads are smaller than the framing table assumed); first pass: the 6:08 PM and FROM: R. FORT cards sat on Dan's and Valerie's faces; the USB stick was the style's orange; first pass: the arrest shot showed her holding a phone; the champagne flute is outside the MCU frame; Fern's eyes are shut in this still",
+  "review": {
+    "verdict": "approve",
+    "changed": true,
+    "notes": [
+      {
+        "shot": "s4, s6, s8, s10",
+        "issue": "first pass: close-ups cropped the top of the head (v2 heads are smaller than the framing table assumed)",
+        "fix": "camera table for v2 drama people raised (CU look .9, frame .31 of the figure); heads now whole"
+      },
+      {
+        "shot": "s5, s7",
+        "issue": "first pass: the 6:08 PM and FROM: R. FORT cards sat on Dan's and Valerie's faces",
+        "fix": "cards moved to y .58-.6 in wides and mediums; faces clear"
+      },
+      {
+        "shot": "s2, s3",
+        "issue": "the USB stick was the style's orange",
+        "fix": "coloured red (#B23A48), the one evidence colour"
+      },
+      {
+        "shot": "s9",
+        "issue": "first pass: the arrest shot showed her holding a phone",
+        "fix": "new cuffed pose with steel cuffs on both wrists"
+      },
+      {
+        "shot": "s1",
+        "issue": "the champagne flute is outside the MCU frame",
+        "fix": "left as is: the laugh and the toast line carry it"
+      },
+      {
+        "shot": "s10",
+        "issue": "Fern's eyes are shut in this still",
+        "fix": "a blink caught by the still; in motion her look away reads"
+      }
+    ],
+    "reason": "Faces act in every close-up (laugh, fear, crying, shock, resolve, contempt), the evidence is red and readable, cards are clear of faces, the badge names Edie and the tag credits Dumas."
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "t0": 0.4,
+    "t1": 1.98,
+    "text": "The buyer paid forty million.",
+    "speaker": "dan",
+    "line": "l01"
+  },
+  {
+    "t0": 2.24,
+    "t1": 2.88,
+    "text": "Cash.",
+    "speaker": "dan",
+    "line": "l01"
+  },
+  {
+    "t0": 2.88,
+    "t1": 3.52,
+    "text": "No name.",
+    "speaker": "dan",
+    "line": "l01"
+  },
+  {
+    "t0": 4,
+    "t1": 5.52,
+    "text": "Everyone has a name, Dan.",
+    "speaker": "valerie",
+    "line": "l02"
+  },
+  {
+    "t0": 7.1,
+    "t1": 8.9,
+    "text": "Whoever it is, they knew our numbers.",
+    "speaker": "fern",
+    "line": "l03"
+  },
+  {
+    "t0": 12.6,
+    "t1": 13,
+    "text": "Welcome.",
+    "speaker": "dan",
+    "line": "l04"
+  },
+  {
+    "t0": 13,
+    "t1": 13.84,
+    "text": "And you are?",
+    "speaker": "dan",
+    "line": "l04"
+  },
+  {
+    "t0": 15.6,
+    "t1": 16.3,
+    "text": "The new owner.",
+    "speaker": "edie",
+    "line": "l05"
+  },
+  {
+    "t0": 19.2,
+    "t1": 20.42,
+    "text": "You'll recognise this.",
+    "speaker": "edie",
+    "line": "l06"
+  },
+  {
+    "t0": 22.3,
+    "t1": 23.16,
+    "text": "Edie Marsh.",
+    "speaker": "valerie",
+    "line": "l07"
+  },
+  {
+    "t0": 23.16,
+    "t1": 24.18,
+    "text": "You got nine years.",
+    "speaker": "valerie",
+    "line": "l07"
+  },
+  {
+    "t0": 25.9,
+    "t1": 27.22,
+    "text": "I got out in six.",
+    "speaker": "edie",
+    "line": "l08"
+  },
+  {
+    "t0": 27.22,
+    "t1": 27.94,
+    "text": "Good behaviour.",
+    "speaker": "edie",
+    "line": "l08"
+  },
+  {
+    "t0": 29.8,
+    "t1": 30.74,
+    "text": "What do you want?",
+    "speaker": "dan",
+    "line": "l09"
+  },
+  {
+    "t0": 33.4,
+    "t1": 34.2,
+    "text": "Hello, Fern.",
+    "speaker": "edie",
+    "line": "l10"
+  }
+]

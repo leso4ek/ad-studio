@@ -1,0 +1,27 @@
+{
+  "stage": "frames",
+  "at": "2026-11-26T14:29:42.035Z",
+  "summary": "revised: first pass: Edie was pushed off the left edge of the opening wide; first pass: Ivo's beard covered his mouth like a mask; Ivo's eyes are shut in this still",
+  "review": {
+    "verdict": "approve",
+    "changed": true,
+    "notes": [
+      {
+        "shot": "s1",
+        "issue": "first pass: Edie was pushed off the left edge of the opening wide",
+        "fix": "framed on the pair (x .42 / .6); both cellmates in frame, card over the floor"
+      },
+      {
+        "shot": "s3, s6",
+        "issue": "first pass: Ivo's beard covered his mouth like a mask",
+        "fix": "facial hair now draws under the nose and mouth, with the mouth area left clear"
+      },
+      {
+        "shot": "s6",
+        "issue": "Ivo's eyes are shut in this still",
+        "fix": "a blink at the sample point; it also reads as a dying man closing his eyes, which fits the beat"
+      }
+    ],
+    "reason": "One cell, one piece of evidence (24 words), every face acts (suspicion, shock, grief, resolve); the release-day headline is readable and the episode cuts on 'Buy it.'"
+  }
+}

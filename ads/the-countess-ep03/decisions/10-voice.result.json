@@ -1,0 +1,24 @@
+{
+  "stage": "voice",
+  "at": "2026-11-26T14:30:22.075Z",
+  "summary": "10 lines by kokoro; speech check: pass",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 3.116,
+    "l02": 1.726,
+    "l03": 2.001,
+    "l04": 1.304,
+    "l05": 0.828,
+    "l06": 1.329,
+    "l07": 2.027,
+    "l08": 2.16,
+    "l09": 1.041,
+    "l10": 0.919
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": true,
+    "report": "OK   l01 | The buyer paid forty million. Cash. No name. → The buyer paid 40 million, cash, no name. \nOK   l02 | Everyone has a name, Dan. → Everyone has a name, Dan. \nOK   l03 | Whoever it is, they knew our numbers. → Whoever it is, they knew our numbers. \nOK   l04 | Welcome. And you are? → Welcome and you are! \nOK   l05 | The new owner. → The new owner \nDIFF l06 | You'll recognise this. → You'll recognize this. \nDIFF l07 | Edie Marsh. You got nine years. → Eddie Marsh, you got 9 years. \nDIFF l08 | I got out in six. Good behaviour. → I got out in six. Good behavior. \nOK   l09 | What do you want? → What do you want? \nOK   l10 | Hello, Fern. → Hello, Fern. \nmismatches: 3 (lang=en, model=base)\n(3 diff(s) only in number, US/UK or name spelling: counted as OK)"
+  },
+  "warnings": []
+}

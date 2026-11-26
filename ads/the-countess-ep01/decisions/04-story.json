@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T14:23:04.508Z",
+  "output": {
+    "spine": [
+      "Edie toasts her promotion at 6:02 pm.",
+      "Fern hands her a red USB stick \"from Dan\".",
+      "At 6:08 Dan brings the police: $4.2 million left under her login.",
+      "Valerie finds the email that clears her, sees her father's name and deletes it.",
+      "In cuffs, Edie begs Fern to speak.",
+      "Fern, close, looking away from Edie"
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.6,
+        "beats": "6:02 pm, her promotion toast: \"I'm the youngest VP they've ever had.\""
+      },
+      {
+        "act": 2,
+        "name": "Setup",
+        "t0": 3.6,
+        "t1": 12.4,
+        "beats": "Fern hands her a red USB stick \"from Dan\"."
+      },
+      {
+        "act": 3,
+        "name": "Turn",
+        "t0": 12.4,
+        "t1": 21.4,
+        "beats": "At 6:08 Dan brings the police: $4.2 million left under her login."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 21.4,
+        "t1": 30.4,
+        "beats": "Valerie finds the email that clears her, sees her father's name and deletes it."
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 30.4,
+        "t1": 38.5,
+        "beats": "Fern, close, looking away from Edie"
+      }
+    ],
+    "turn": "At 6:08 Dan brings the police: $4.2 million left under her login.",
+    "emotion": "betrayal",
+    "reason": "Episode 1 follows its outline; every line was checked against content-principles (each line makes the next necessary; numbers instead of summaries) and it cuts on its shortest line."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

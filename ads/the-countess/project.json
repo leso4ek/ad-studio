@@ -1,0 +1,138 @@
+{
+  "slug": "the-countess",
+  "title": "The Countess",
+  "created": "2026-11-26T14:21:59.901Z",
+  "updated": "2026-11-26T14:22:41.490Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "drama-series",
+  "userBrief": {
+    "idea": "A young analyst framed for fraud by her best friend on the night of her promotion returns years later to buy the firm.",
+    "episodes": 3,
+    "seconds": 38,
+    "genre": "revenge drama",
+    "tone": "cold, precise",
+    "source": {
+      "book": "The Count of Monte Cristo"
+    }
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "done",
+      "started": "2026-11-26T14:22:37.247Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:22:39.471Z",
+      "ms": 2224,
+      "summary": "The Countess: 3 episodes · Edie, Edie, Fern, Dan, Valerie, Ivo",
+      "warnings": [],
+      "result": {}
+    },
+    "brief": {
+      "status": "skipped"
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "skipped"
+    },
+    "story": {
+      "status": "skipped"
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-26T14:22:39.473Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:22:41.482Z",
+      "ms": 2009,
+      "summary": "ad-paper-cutout",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "skipped"
+    },
+    "bible": {
+      "status": "skipped"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "done",
+      "started": "2026-11-26T14:22:41.484Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "../the-countess-ep01",
+        "../the-countess-ep02",
+        "../the-countess-ep03"
+      ],
+      "finished": "2026-11-26T14:22:41.488Z",
+      "ms": 4,
+      "summary": "3 episode(s): the-countess-ep01, the-countess-ep02, the-countess-ep03",
+      "warnings": [],
+      "result": {
+        "episodes": [
+          "the-countess-ep01",
+          "the-countess-ep02",
+          "the-countess-ep03"
+        ]
+      }
+    },
+    "frames": {
+      "status": "skipped"
+    },
+    "voice": {
+      "status": "skipped"
+    },
+    "animatic": {
+      "status": "skipped"
+    },
+    "final": {
+      "status": "skipped"
+    },
+    "scorecard": {
+      "status": "skipped"
+    },
+    "audience": {
+      "status": "skipped"
+    }
+  }
+}

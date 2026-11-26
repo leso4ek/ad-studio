@@ -1,0 +1,22 @@
+{
+  "stage": "frames",
+  "at": "2026-11-26T14:29:37.845Z",
+  "summary": "approved as drawn",
+  "review": {
+    "verdict": "approve",
+    "changed": false,
+    "notes": [
+      {
+        "shot": "s5, s1",
+        "issue": "Edie (s5) and Fern (s1) have shut eyes in these stills",
+        "fix": "checked: the 60 % sample point lands on their blink (the rig draws the eyes open for smirk and neutral); in motion it is a normal blink"
+      },
+      {
+        "shot": "s4",
+        "issue": "the entrance is small in the wide and the card sits over her legs",
+        "fix": "kept: the wide is the reveal of a stranger, the close-up follows at 15.2 s"
+      }
+    ],
+    "reason": "The boardroom reads at once (three betrayers, one table), every close-up acts (contempt, fear, shock), the red stick returns as the evidence, the badge still says EDIE, and the finale tag shows the series title."
+  }
+}

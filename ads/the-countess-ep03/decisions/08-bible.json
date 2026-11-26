@@ -1,0 +1,717 @@
+{
+  "stage": "bible",
+  "at": "2026-11-26T14:29:32.106Z",
+  "output": {
+    "slug": "the-countess-ep03",
+    "title": "The Countess · Ep 3: The Countess",
+    "style": "ad-paper-cutout",
+    "dur": 37.9,
+    "rig": "v2",
+    "cast": {
+      "edie": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Edie",
+        "skin": "#D9A27E",
+        "hair": "#3B2416",
+        "hairStyle": "long-wavy",
+        "build": "slim",
+        "jaw": "heart",
+        "eyes": {
+          "shape": "almond",
+          "color": "#5A3A22"
+        },
+        "lashes": true,
+        "brows": "medium",
+        "nose": "small",
+        "lips": "medium",
+        "top": "#F2EDE4",
+        "top2": "#26324A",
+        "bottom": "#26324A",
+        "shoe": "#151515",
+        "accent": "#B23A48",
+        "outfit": {
+          "top": "blazer",
+          "bottom": "trousers",
+          "accessories": [
+            "badge",
+            "watch"
+          ]
+        },
+        "details": [
+          "earrings"
+        ],
+        "role": "she, 27, analyst at Pharaon Capital, promoted to VP tonight",
+        "voice": "af_heart"
+      },
+      "edie6": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Edie",
+        "skin": "#D9A27E",
+        "hair": "#3B2416",
+        "hairStyle": "bun",
+        "build": "slim",
+        "jaw": "heart",
+        "eyes": {
+          "shape": "almond",
+          "color": "#5A3A22"
+        },
+        "brows": "medium",
+        "nose": "small",
+        "lips": "thin",
+        "top": "#D9823B",
+        "bottom": "#D9823B",
+        "shoe": "#3a3a3a",
+        "accent": "#D9823B",
+        "outfit": {
+          "top": "scrubs",
+          "bottom": "trousers"
+        },
+        "details": [
+          "scar"
+        ],
+        "role": "she, 33, the same Edie after six years in cell 34",
+        "voice": "af_heart"
+      },
+      "fern": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Fern",
+        "skin": "#C99272",
+        "hair": "#1A1010",
+        "hairStyle": "bob",
+        "build": "petite",
+        "jaw": "oval",
+        "eyes": {
+          "shape": "round",
+          "color": "#2A1A10"
+        },
+        "lashes": true,
+        "brows": "thin",
+        "nose": "straight",
+        "lips": "full",
+        "top": "#B23A48",
+        "bottom": "#1F1F24",
+        "shoe": "#111111",
+        "accent": "#C9A86A",
+        "outfit": {
+          "top": "blouse",
+          "bottom": "skirt",
+          "accessories": [
+            "necklace"
+          ]
+        },
+        "role": "she, 27, Edie's best friend since school, junior at Pharaon",
+        "voice": "af_bella"
+      },
+      "dan": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Dan",
+        "skin": "#F1C7A6",
+        "hair": "#6B5A48",
+        "hairStyle": "slick-back",
+        "build": "round",
+        "jaw": "square",
+        "eyes": {
+          "shape": "almond",
+          "color": "#3D5A6C"
+        },
+        "brows": "thick",
+        "nose": "broad",
+        "lips": "thin",
+        "top": "#E9EEF2",
+        "top2": "#4A4F57",
+        "bottom": "#4A4F57",
+        "shoe": "#2A1A10",
+        "accent": "#2C5F8A",
+        "outfit": {
+          "top": "suit",
+          "bottom": "trousers",
+          "accessories": [
+            "watch"
+          ]
+        },
+        "details": [
+          "glasses",
+          "age-lines"
+        ],
+        "role": "he, 41, Edie's team lead, who wanted her promotion",
+        "voice": "am_michael"
+      },
+      "valerie": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Valerie",
+        "skin": "#E2B08F",
+        "hair": "#B8B4AE",
+        "hairStyle": "pixie",
+        "build": "slim",
+        "jaw": "square",
+        "eyes": {
+          "shape": "almond",
+          "color": "#4A5A3A"
+        },
+        "brows": "thin",
+        "nose": "aquiline",
+        "lips": "thin",
+        "top": "#E9E4DA",
+        "top2": "#1C1C22",
+        "bottom": "#1C1C22",
+        "shoe": "#111111",
+        "accent": "#8A8A8A",
+        "outfit": {
+          "top": "blazer",
+          "bottom": "skirt",
+          "accessories": [
+            "necklace"
+          ]
+        },
+        "details": [
+          "earrings",
+          "age-lines"
+        ],
+        "role": "she, 45, Pharaon's general counsel",
+        "voice": "bf_emma"
+      },
+      "faria": {
+        "rig": "v2",
+        "proportions": "drama",
+        "name": "Ivo",
+        "skin": "#B07A55",
+        "hair": "#D8D4CC",
+        "hairStyle": "crew",
+        "build": "slim",
+        "jaw": "oval",
+        "eyes": {
+          "shape": "almond",
+          "color": "#2A1A10"
+        },
+        "brows": "thick",
+        "nose": "aquiline",
+        "lips": "thin",
+        "top": "#D9823B",
+        "bottom": "#D9823B",
+        "shoe": "#3a3a3a",
+        "accent": "#D9823B",
+        "outfit": {
+          "top": "scrubs",
+          "bottom": "trousers"
+        },
+        "details": [
+          "beard",
+          "age-lines"
+        ],
+        "role": "he, 71, a jailed ex-banker in the next bunk",
+        "voice": "bm_george"
+      }
+    },
+    "places": {
+      "pharaon": {
+        "kind": "office",
+        "time": "dusk"
+      },
+      "cell34": {
+        "kind": "cell",
+        "time": "day"
+      },
+      "board": {
+        "kind": "boardroom",
+        "time": "day"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.8,
+        "act": 1,
+        "beat": "hook",
+        "place": "board",
+        "camera": {
+          "size": "WS",
+          "subject": "dan",
+          "angle": "eye",
+          "move": "static",
+          "at": [
+            0.5,
+            0.45
+          ]
+        },
+        "function": "establishing",
+        "reason": "The board waits for the buyer.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "valerie",
+            "x": 0.26,
+            "y": 0.93,
+            "scale": 1.05,
+            "pose": "arms-crossed",
+            "view": "34",
+            "face": "right",
+            "expression": "suspicious"
+          },
+          {
+            "type": "char",
+            "id": "dan",
+            "x": 0.52,
+            "y": 0.93,
+            "scale": 1.1,
+            "pose": "talk",
+            "view": "front",
+            "expression": "neutral"
+          },
+          {
+            "type": "char",
+            "id": "fern",
+            "x": 0.77,
+            "y": 0.93,
+            "scale": 1,
+            "pose": "reading-phone",
+            "view": "34",
+            "face": "left",
+            "expression": "neutral"
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "card",
+            "text": "$40,000,000\nCASH. NO NAME.",
+            "x": 0.5,
+            "y": 0.6,
+            "size": 0.085,
+            "w": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s2",
+        "t0": 3.8,
+        "t1": 6.8,
+        "act": 1,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "CU",
+          "subject": "valerie",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "close-up",
+        "reason": "Everyone has a name.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "valerie",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "contempt"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s3",
+        "t0": 6.8,
+        "t1": 10.6,
+        "act": 2,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "MCU",
+          "subject": "fern",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "close-up",
+        "reason": "Fern is uneasy.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "fern",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "hand-to-mouth",
+            "view": "34",
+            "face": "left",
+            "expression": "afraid"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s4",
+        "t0": 10.6,
+        "t1": 15.2,
+        "act": 2,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "WS",
+          "subject": "edie",
+          "angle": "eye",
+          "move": "static",
+          "at": [
+            0.5,
+            0.45
+          ]
+        },
+        "function": "reveal",
+        "reason": "The new owner walks in: Edie, in the same blazer.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie",
+            "x": 0.5,
+            "y": 0.93,
+            "scale": 1.2,
+            "pose": "walk",
+            "view": "front",
+            "expression": "determined",
+            "move": [
+              0,
+              0.02
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c2",
+            "role": "card",
+            "text": "M. CRISTO HOLDINGS",
+            "x": 0.5,
+            "y": 0.6,
+            "size": 0.085,
+            "w": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s5",
+        "t0": 15.2,
+        "t1": 18.6,
+        "act": 3,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "MCU",
+          "subject": "edie",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "close-up",
+        "reason": "The new owner.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "left",
+            "expression": "smirk"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s6",
+        "t0": 18.6,
+        "t1": 22,
+        "act": 3,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "CU",
+          "subject": "usb",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "insert",
+        "reason": "The same red stick, on the table.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "usb",
+            "x": 0.5,
+            "y": 0.74,
+            "scale": 1.5,
+            "color": "#B23A48"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s7",
+        "t0": 22,
+        "t1": 25.6,
+        "act": 4,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "CU",
+          "subject": "valerie",
+          "angle": "eye",
+          "move": "push",
+          "rate": 4,
+          "ease": "in"
+        },
+        "function": "reaction",
+        "reason": "Valerie knows her.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "valerie",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "shocked"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s8",
+        "t0": 25.6,
+        "t1": 29.4,
+        "act": 4,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "MCU",
+          "subject": "edie",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "close-up",
+        "reason": "Out in six.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "arms-crossed",
+            "view": "34",
+            "face": "left",
+            "expression": "contempt"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s9",
+        "t0": 29.4,
+        "t1": 32.8,
+        "act": 5,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "CU",
+          "subject": "dan",
+          "angle": "eye",
+          "move": "handheld",
+          "shake": 0.25
+        },
+        "function": "reaction",
+        "reason": "Dan is afraid.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dan",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "afraid"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s10",
+        "t0": 32.8,
+        "t1": 35.4,
+        "act": 5,
+        "beat": "story",
+        "place": "board",
+        "camera": {
+          "size": "CU",
+          "subject": "edie",
+          "angle": "eye",
+          "move": "push",
+          "rate": 5,
+          "ease": "in"
+        },
+        "function": "reaction",
+        "reason": "She turns to Fern.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "edie",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "idle",
+            "view": "34",
+            "face": "right",
+            "expression": "neutral",
+            "gaze": [
+              0.6,
+              0
+            ]
+          }
+        ],
+        "route": "kit"
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "spellings": {
+        "Edie": [
+          "Eddie",
+          "Eddy"
+        ],
+        "Fern": [
+          "Furn"
+        ],
+        "Ivo": [
+          "Evo",
+          "Eva"
+        ]
+      },
+      "lines": [
+        {
+          "id": "l01",
+          "text": "The buyer paid forty million. Cash. No name.",
+          "at": 0.4,
+          "speaker": "dan"
+        },
+        {
+          "id": "l02",
+          "text": "Everyone has a name, Dan.",
+          "at": 4,
+          "speaker": "valerie"
+        },
+        {
+          "id": "l03",
+          "text": "Whoever it is, they knew our numbers.",
+          "at": 7.1,
+          "speaker": "fern"
+        },
+        {
+          "id": "l04",
+          "text": "Welcome. And you are?",
+          "at": 12.6,
+          "speaker": "dan"
+        },
+        {
+          "id": "l05",
+          "text": "The new owner.",
+          "at": 15.6,
+          "speaker": "edie"
+        },
+        {
+          "id": "l06",
+          "text": "You'll recognise this.",
+          "at": 19.2,
+          "speaker": "edie"
+        },
+        {
+          "id": "l07",
+          "text": "Edie Marsh. You got nine years.",
+          "at": 22.3,
+          "speaker": "valerie"
+        },
+        {
+          "id": "l08",
+          "text": "I got out in six. Good behaviour.",
+          "at": 25.9,
+          "speaker": "edie"
+        },
+        {
+          "id": "l09",
+          "text": "What do you want?",
+          "at": 29.8,
+          "speaker": "dan"
+        },
+        {
+          "id": "l10",
+          "text": "Hello, Fern.",
+          "at": 33.4,
+          "speaker": "edie"
+        }
+      ]
+    },
+    "captions": true,
+    "captionMode": "words",
+    "endcard": {
+      "t0": 35.4,
+      "logo": "The Countess"
+    },
+    "music": {
+      "mood": "lofi",
+      "bpm": 72
+    },
+    "sfx": [
+      {
+        "t": 35.3,
+        "type": "sting"
+      }
+    ],
+    "reason": "Episode 3: one place, one piece of evidence (the same red USB stick), the cut on \"Hello, Fern.\".",
+    "format": "drama-episode",
+    "palette": {
+      "accent": "#B23A48"
+    }
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1000,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwxaukflhg1",
+      "Lmwwhvqldqat"
+    ]
+  },
+  "warnings": [
+    "s1.c1: price on screen: check it is real and current (\"$4\")"
+  ],
+  "note": "Whisper spellings for names and numbers; no spoken Pharaon; credit tag long enough to read"
+}

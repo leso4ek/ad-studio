@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T14:24:54.116Z",
+  "output": {
+    "spine": [
+      "Dan, Valerie and Fern wait for the anonymous buyer.",
+      "The new owner walks in: Edie, in the same blazer.",
+      "She puts the red USB stick on the table.",
+      "Valerie: \"You got nine years.\" Edie: \"I got out in six.\"",
+      "She turns to Fern.",
+      "Edie, close, turning to Fern"
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.8,
+        "beats": "The buyer paid forty million in cash, and nobody knows the name."
+      },
+      {
+        "act": 2,
+        "name": "Setup",
+        "t0": 3.8,
+        "t1": 15.2,
+        "beats": "The new owner walks in: Edie, in the same blazer."
+      },
+      {
+        "act": 3,
+        "name": "Turn",
+        "t0": 15.2,
+        "t1": 22,
+        "beats": "She puts the red USB stick on the table."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 22,
+        "t1": 29.4,
+        "beats": "Valerie: \"You got nine years.\" Edie: \"I got out in six.\""
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 29.4,
+        "t1": 35.4,
+        "beats": "Edie, close, turning to Fern"
+      }
+    ],
+    "turn": "She puts the red USB stick on the table.",
+    "emotion": "cold triumph",
+    "reason": "Episode 3 follows its outline; every line was checked against content-principles (each line makes the next necessary; numbers instead of summaries) and it cuts on its shortest line."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

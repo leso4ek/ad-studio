@@ -1,0 +1,274 @@
+{
+  "slug": "the-countess-ep01",
+  "title": "The Countess · Ep 1",
+  "created": "2026-11-26T14:22:41.486Z",
+  "updated": "2026-11-26T14:30:24.960Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "drama-episode",
+  "parent": "the-countess",
+  "episode": 1,
+  "userBrief": {
+    "seconds": 38.5
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "idle"
+    },
+    "premises": {
+      "status": "idle"
+    },
+    "hooks": {
+      "status": "idle"
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-26T14:23:02.503Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:23:04.509Z",
+      "ms": 2006,
+      "summary": "betrayal · turn: At 6:08 Dan brings the police: $4.2 million left under her login.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-26T14:23:04.510Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-26T14:23:04.513Z",
+      "ms": 3,
+      "summary": "ad-paper-cutout",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-26T14:24:25.444Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:24:26.455Z",
+      "ms": 1011,
+      "summary": "10 shots · why would her best friend betray her?",
+      "warnings": [],
+      "result": {},
+      "note": "cards moved off faces; red evidence colour; cuffed pose"
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-26T14:29:31.005Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:29:32.052Z",
+      "ms": 1047,
+      "summary": "10 shots, 10 voice lines, 43.7s",
+      "warnings": [],
+      "result": {},
+      "note": "Whisper spellings for names and numbers; no spoken Pharaon; credit tag long enough to read"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-26T14:29:32.053Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_2.16.jpg",
+        "frames/f_6.jpg",
+        "frames/f_8.8.jpg",
+        "frames/f_11.28.jpg",
+        "frames/f_15.28.jpg",
+        "frames/f_19.72.jpg",
+        "frames/f_24.4.jpg",
+        "frames/f_28.8.jpg",
+        "frames/f_32.92.jpg",
+        "frames/f_36.94.jpg",
+        "frames/f_40.jpg",
+        "frames/sheet.jpg",
+        "frames/w_2.16.jpg",
+        "frames/w_19.72.jpg",
+        "frames/w_40.jpg"
+      ],
+      "finished": "2026-11-26T14:29:42.405Z",
+      "ms": 10352,
+      "summary": "revised: first pass: close-ups cropped the top of the head (v2 heads are smaller than the framing table assumed); first pass: the 6:08 PM and FROM: R. FORT cards sat on Dan's and Valerie's faces; the USB stick was the style's orange; first pass: the arrest shot showed her holding a phone; the champagne flute is outside the MCU frame; Fern's eyes are shut in this still",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "changed": true,
+          "notes": [
+            {
+              "shot": "s4, s6, s8, s10",
+              "issue": "first pass: close-ups cropped the top of the head (v2 heads are smaller than the framing table assumed)",
+              "fix": "camera table for v2 drama people raised (CU look .9, frame .31 of the figure); heads now whole"
+            },
+            {
+              "shot": "s5, s7",
+              "issue": "first pass: the 6:08 PM and FROM: R. FORT cards sat on Dan's and Valerie's faces",
+              "fix": "cards moved to y .58-.6 in wides and mediums; faces clear"
+            },
+            {
+              "shot": "s2, s3",
+              "issue": "the USB stick was the style's orange",
+              "fix": "coloured red (#B23A48), the one evidence colour"
+            },
+            {
+              "shot": "s9",
+              "issue": "first pass: the arrest shot showed her holding a phone",
+              "fix": "new cuffed pose with steel cuffs on both wrists"
+            },
+            {
+              "shot": "s1",
+              "issue": "the champagne flute is outside the MCU frame",
+              "fix": "left as is: the laugh and the toast line carry it"
+            },
+            {
+              "shot": "s10",
+              "issue": "Fern's eyes are shut in this still",
+              "fix": "a blink caught by the still; in motion her look away reads"
+            }
+          ],
+          "reason": "Faces act in every close-up (laugh, fear, crying, shock, resolve, contempt), the evidence is red and readable, cards are clear of faces, the badge names Edie and the tag credits Dumas."
+        }
+      }
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-26T14:29:42.409Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-26T14:29:42.443Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/lines/l08.wav",
+        "voice/lines/l09.wav",
+        "voice/lines/l10.wav",
+        "voice/cues.json",
+        "out/the-countess-ep01.srt"
+      ],
+      "finished": "2026-11-26T14:30:24.959Z",
+      "ms": 42550,
+      "summary": "10 lines by kokoro; speech check: pass",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 3.004,
+          "l02": 2.093,
+          "l03": 0.817,
+          "l04": 0.844,
+          "l05": 3.749,
+          "l06": 1.93,
+          "l07": 1.426,
+          "l08": 1.337,
+          "l09": 1.092,
+          "l10": 0.817
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | 602. I'm the youngest VP they've ever had. → 602, I'm the youngest VP they've ever had. \nOK   l02 | From Dan. Plug it in, VP. → From Dan, Plug it in VP. \nOK   l03 | What's on it? → What's on it? \nOK   l04 | Your future. → your future \nDIFF l05 | Edie. Police. Four point two million left your login. → Eddie Police, 4.2 million left your login. \nOK   l06 | That's not me. Check the logs. → That's not me, check the logs. \nOK   l07 | Dad. What did you do? → Dad, what did you do? \nOK   l08 | Nobody saw this. → Nobody saw this. \nDIFF l09 | Fern. Tell them. → Furn, tell them. \nOK   l10 | I don't know her. → I don't know her. \nmismatches: 2 (lang=en, model=base)\n(2 diff(s) only in number, US/UK or name spelling: counted as OK)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "running",
+      "started": "2026-11-26T14:30:24.960Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-26T14:26:08.645Z",
+      "ms": 30633,
+      "summary": "checks to look at: reading time",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": false,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s3:c1              at 7.60s    7 chars  need 1.97s  got 2.04s  \"FROM DAN\"\nOK  s5:c2              at 12.44s    6 chars  need 1.90s  got 4.80s  \"6:08 PM\"\nOK  s7:c3              at 21.44s   11 chars  need 2.23s  got 5.00s  \"FROM: R. FORT\"\nOK  end:logo           at 38.68s    5 chars  need 1.83s  got 2.32s  \"Part 2\"\nBAD end:credit         at 38.84s   47 chars  need 4.63s  got 2.16s  \"Inspired by The Count of\"\n(node:9253) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
+    },
+    "final": {
+      "status": "idle",
+      "started": "2026-11-26T14:26:08.649Z",
+      "error": "interrupted by a server restart: press Continue",
+      "fallbacks": [],
+      "engine": null
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

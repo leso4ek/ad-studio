@@ -1,0 +1,286 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T14:24:26.452Z",
+  "output": {
+    "thesis": "why would her best friend betray her?",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.6,
+        "learns": "Her toast: the happiest second of her life."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.6,
+        "t1": 7.6,
+        "learns": "Fern hands her the red stick between them."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 7.6,
+        "t1": 9.6,
+        "learns": "The evidence: a red USB stick."
+      },
+      {
+        "id": "b4",
+        "block": "problem",
+        "t0": 9.6,
+        "t1": 12.4,
+        "learns": "Fern smiles when she lies."
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 12.4,
+        "t1": 17.2,
+        "learns": "6:08. Dan brings the police."
+      },
+      {
+        "id": "b6",
+        "block": "turn",
+        "t0": 17.2,
+        "t1": 21.4,
+        "learns": "Not me."
+      },
+      {
+        "id": "b7",
+        "block": "proof",
+        "t0": 21.4,
+        "t1": 26.4,
+        "learns": "In the glass room Valerie reads the email that clears her, and sees her father's name."
+      },
+      {
+        "id": "b8",
+        "block": "proof",
+        "t0": 26.4,
+        "t1": 30.4,
+        "learns": "She deletes it."
+      },
+      {
+        "id": "b9",
+        "block": "payoff",
+        "t0": 30.4,
+        "t1": 34.6,
+        "learns": "Cuffed, she begs her best friend."
+      },
+      {
+        "id": "b10",
+        "block": "payoff",
+        "t0": 34.6,
+        "t1": 38.5,
+        "learns": "Fern looks away."
+      }
+    ],
+    "book": {
+      "grammar": "Close-ups carry the betrayal; one wide per episode for the reveal; inserts only for evidence (the stick, the words, the headline). The camera holds still and pushes in only on a turn (about 4 % a second, eased, from the 30 fps study).",
+      "light": "Dusk office, cold cell daylight, flat boardroom light.",
+      "palette": "Navy and cream; red only for Fern and the USB stick.",
+      "performance": "Edie open in episode 1, closed in 2, controlled in 3; Fern smiles when she lies.",
+      "rhythm": "About 2.5 cuts per 10 s, faster into the cliffhanger.",
+      "sound": "Office hum, a cell door, a boardroom clock; one hard sting on the cut."
+    },
+    "locks": {
+      "identity": {
+        "edie": "Edie: she, 27, analyst at Pharaon Capital, promoted to VP tonight",
+        "edie6": "Edie: she, 33, the same Edie after six years in cell 34",
+        "fern": "Fern: she, 27, Edie's best friend since school, junior at Pharaon",
+        "dan": "Dan: he, 41, Edie's team lead, who wanted her promotion",
+        "valerie": "Valerie: she, 45, Pharaon's general counsel",
+        "faria": "Ivo: he, 71, a jailed ex-banker in the next bunk"
+      },
+      "productSide": "centre",
+      "screenDirection": "Edie faces right in episode 1, left when she has power in episode 3",
+      "light": "soft key from the left"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "beat": "b1",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Her toast: the happiest second of her life.",
+        "reason": "Her toast: the happiest second of her life.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 7.6,
+        "beat": "b2",
+        "function": "relation",
+        "size": "WS",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Fern hands her the red stick between them.",
+        "reason": "Fern hands her the red stick between them.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 7.6,
+        "t1": 9.6,
+        "beat": "b3",
+        "function": "insert",
+        "size": "CU",
+        "subject": "usb",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The evidence: a red USB stick.",
+        "reason": "The evidence: a red USB stick.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 9.6,
+        "t1": 12.4,
+        "beat": "b4",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Fern smiles when she lies.",
+        "reason": "Fern smiles when she lies.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 12.4,
+        "t1": 17.2,
+        "beat": "b5",
+        "function": "reveal",
+        "size": "WS",
+        "subject": "dan",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "6:08. Dan brings the police.",
+        "reason": "6:08. Dan brings the police.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 17.2,
+        "t1": 21.4,
+        "beat": "b6",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Not me.",
+        "reason": "Not me.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 21.4,
+        "t1": 26.4,
+        "beat": "b7",
+        "function": "reveal",
+        "size": "MS",
+        "subject": "valerie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "In the glass room Valerie reads the email that clears her, and sees her father's name.",
+        "reason": "In the glass room Valerie reads the email that clears her, and sees her father's name.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s8",
+        "t0": 26.4,
+        "t1": 30.4,
+        "beat": "b8",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "valerie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "She deletes it.",
+        "reason": "She deletes it.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s9",
+        "t0": 30.4,
+        "t1": 34.6,
+        "beat": "b9",
+        "function": "reaction",
+        "size": "MS",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "handheld",
+        "blocking": "Cuffed, she begs her best friend.",
+        "reason": "Cuffed, she begs her best friend.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s10",
+        "t0": 34.6,
+        "t1": 38.5,
+        "beat": "b10",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Fern looks away.",
+        "reason": "Fern looks away.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Faces and evidence alternate; the last shot lands on the cliffhanger line and the cut follows it."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1001,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": [],
+  "note": "cards moved off faces; red evidence colour; cuffed pose"
+}

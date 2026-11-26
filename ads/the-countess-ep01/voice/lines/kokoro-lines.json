@@ -1,0 +1,62 @@
+[
+  {
+    "id": "l01",
+    "text": "Six oh two. I'm the youngest VP they've ever had.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "From Dan. Plug it in, VP.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "What's on it?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "Your future.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "Edie. Police. Four point two million left your login.",
+    "voice": "am_michael",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "That's not me. Check the logs.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "Dad. What did you do?",
+    "voice": "bf_emma",
+    "speed": 0.95
+  },
+  {
+    "id": "l08",
+    "text": "Nobody saw this.",
+    "voice": "bf_emma",
+    "speed": 0.95
+  },
+  {
+    "id": "l09",
+    "text": "Fern. Tell them.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l10",
+    "text": "I don't know her.",
+    "voice": "af_bella",
+    "speed": 0.95
+  }
+]

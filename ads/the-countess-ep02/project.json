@@ -1,0 +1,277 @@
+{
+  "slug": "the-countess-ep02",
+  "title": "The Countess · Ep 2",
+  "created": "2026-11-26T14:22:41.486Z",
+  "updated": "2026-11-26T14:30:30.497Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "drama-episode",
+  "parent": "the-countess",
+  "episode": 2,
+  "userBrief": {
+    "seconds": 36.5
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "idle"
+    },
+    "premises": {
+      "status": "idle"
+    },
+    "hooks": {
+      "status": "idle"
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-26T14:24:52.101Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:24:54.108Z",
+      "ms": 2007,
+      "summary": "grief turning to purpose · turn: Eleven million dollars, \"for a life, not for them\".",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-26T14:24:54.109Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "finished": "2026-11-26T14:24:54.112Z",
+      "ms": 3,
+      "summary": "ad-paper-cutout",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-26T14:24:54.112Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:24:56.118Z",
+      "ms": 2006,
+      "summary": "9 shots · what will she do with the company that destroyed her?",
+      "warnings": [],
+      "result": {}
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-26T14:29:31.070Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:29:32.081Z",
+      "ms": 1011,
+      "summary": "9 shots, 10 voice lines, 39s",
+      "warnings": [],
+      "result": {},
+      "note": "Whisper spellings for names and numbers; no spoken Pharaon; credit tag long enough to read"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-26T14:29:32.082Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_2.16.jpg",
+        "frames/f_5.52.jpg",
+        "frames/f_8.6.jpg",
+        "frames/f_11.96.jpg",
+        "frames/f_14.96.jpg",
+        "frames/f_20.56.jpg",
+        "frames/f_25.88.jpg",
+        "frames/f_30.76.jpg",
+        "frames/f_35.1.jpg",
+        "frames/f_38.jpg",
+        "frames/sheet.jpg",
+        "frames/w_2.16.jpg",
+        "frames/w_20.56.jpg",
+        "frames/w_38.jpg"
+      ],
+      "ms": 9954,
+      "finished": "2026-11-26T14:29:42.036Z",
+      "summary": "revised: first pass: Edie was pushed off the left edge of the opening wide; first pass: Ivo's beard covered his mouth like a mask; Ivo's eyes are shut in this still",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "changed": true,
+          "notes": [
+            {
+              "shot": "s1",
+              "issue": "first pass: Edie was pushed off the left edge of the opening wide",
+              "fix": "framed on the pair (x .42 / .6); both cellmates in frame, card over the floor"
+            },
+            {
+              "shot": "s3, s6",
+              "issue": "first pass: Ivo's beard covered his mouth like a mask",
+              "fix": "facial hair now draws under the nose and mouth, with the mouth area left clear"
+            },
+            {
+              "shot": "s6",
+              "issue": "Ivo's eyes are shut in this still",
+              "fix": "a blink at the sample point; it also reads as a dying man closing his eyes, which fits the beat"
+            }
+          ],
+          "reason": "One cell, one piece of evidence (24 words), every face acts (suspicion, shock, grief, resolve); the release-day headline is readable and the episode cuts on 'Buy it.'"
+        }
+      }
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-26T14:29:42.037Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-26T14:29:42.086Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/lines/l08.wav",
+        "voice/lines/l09.wav",
+        "voice/lines/l10.wav",
+        "voice/cues.json",
+        "out/the-countess-ep02.srt"
+      ],
+      "finished": "2026-11-26T14:30:30.496Z",
+      "ms": 48459,
+      "summary": "10 lines by kokoro; speech check: pass; 1 timing warning(s)",
+      "warnings": [
+        "l06 ends at 19.80 s, after the next line/end (19.6)"
+      ],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 2.657,
+          "l02": 1.988,
+          "l03": 1.282,
+          "l04": 3.568,
+          "l05": 0.729,
+          "l06": 3.495,
+          "l07": 2.867,
+          "l08": 1.27,
+          "l09": 1.567,
+          "l10": 0.627
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": true,
+          "report": "OK   l01 | Six years, and you still count the bars. → 6 years, and you still count the bars. \nOK   l02 | Twenty-two. Same as yesterday. → 22, same as yesterday. \nOK   l03 | Give me your hand. → Give me your hand. \nOK   l04 | Twenty-four words. Learn them. Then wash them off. → 24 words, learn them, then wash them off. \nOK   l05 | What are they? → What are they? \nDIFF l06 | Eleven million dollars. Nobody knows it exists. → $11 million, nobody knows it exists. \nDIFF l07 | Spend it on a life, Edie. Not on them. → Spend it on a life eddy, not on them. \nOK   l08 | Ivo? Ivo. → Ivo, Ivo \nOK   l09 | My old firm. For sale. → My old firm for sale. \nOK   l10 | Buy it. → Buy it! \nmismatches: 2 (lang=en, model=base)\n(2 diff(s) only in number, US/UK or name spelling: counted as OK)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "running",
+      "started": "2026-11-26T14:30:30.497Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-26T14:29:26.793Z",
+      "ms": 72533,
+      "summary": "checks to look at: safe zone 9:16",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": false,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:c1              at 0.00s   17 chars  need 2.63s  got 3.60s  \"6 YEARS LATER\\nCELL 34\"\nOK  s4:c2              at 9.84s    7 chars  need 1.97s  got 3.60s  \"24 WORDS\"\nOK  s8:c3              at 27.44s   21 chars  need 2.90s  got 5.60s  \"PHARAON CAPITAL\\nFOR SALE\"\nOK  end:logo           at 36.68s    5 chars  need 1.83s  got 2.32s  \"Part 3\"\n(node:13711) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [
+            {
+              "t": 27.4,
+              "id": "s8:c3",
+              "text": "PHARAON CAPITAL\nFOR SALE",
+              "box": [
+                135,
+                1056,
+                945,
+                1248
+              ],
+              "safe": [
+                54,
+                269,
+                929,
+                1536
+              ]
+            }
+          ],
+          "safe16x9": []
+        }
+      }
+    },
+    "final": {
+      "status": "idle",
+      "started": "2026-11-26T14:29:26.794Z",
+      "error": "interrupted by a server restart: press Continue",
+      "fallbacks": [],
+      "engine": null
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T14:24:56.124Z",
+  "output": {
+    "thesis": "what will revenge cost her?",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.8,
+        "learns": "The board waits for the buyer."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.8,
+        "t1": 6.8,
+        "learns": "Everyone has a name."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 6.8,
+        "t1": 10.6,
+        "learns": "Fern is uneasy."
+      },
+      {
+        "id": "b4",
+        "block": "problem",
+        "t0": 10.6,
+        "t1": 15.2,
+        "learns": "The new owner walks in: Edie, in the same blazer."
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 15.2,
+        "t1": 18.6,
+        "learns": "The new owner."
+      },
+      {
+        "id": "b6",
+        "block": "turn",
+        "t0": 18.6,
+        "t1": 22,
+        "learns": "The same red stick, on the table."
+      },
+      {
+        "id": "b7",
+        "block": "proof",
+        "t0": 22,
+        "t1": 25.6,
+        "learns": "Valerie knows her."
+      },
+      {
+        "id": "b8",
+        "block": "proof",
+        "t0": 25.6,
+        "t1": 29.4,
+        "learns": "Out in six."
+      },
+      {
+        "id": "b9",
+        "block": "payoff",
+        "t0": 29.4,
+        "t1": 32.8,
+        "learns": "Dan is afraid."
+      },
+      {
+        "id": "b10",
+        "block": "payoff",
+        "t0": 32.8,
+        "t1": 35.4,
+        "learns": "She turns to Fern."
+      }
+    ],
+    "book": {
+      "grammar": "Close-ups carry the betrayal; one wide per episode for the reveal; inserts only for evidence (the stick, the words, the headline). The camera holds still and pushes in only on a turn (about 4 % a second, eased, from the 30 fps study).",
+      "light": "Dusk office, cold cell daylight, flat boardroom light.",
+      "palette": "Navy and cream; red only for Fern and the USB stick.",
+      "performance": "Edie open in episode 1, closed in 2, controlled in 3; Fern smiles when she lies.",
+      "rhythm": "About 2.5 cuts per 10 s, faster into the cliffhanger.",
+      "sound": "Office hum, a cell door, a boardroom clock; one hard sting on the cut."
+    },
+    "locks": {
+      "identity": {
+        "edie": "Edie: she, 27, analyst at Pharaon Capital, promoted to VP tonight",
+        "edie6": "Edie: she, 33, the same Edie after six years in cell 34",
+        "fern": "Fern: she, 27, Edie's best friend since school, junior at Pharaon",
+        "dan": "Dan: he, 41, Edie's team lead, who wanted her promotion",
+        "valerie": "Valerie: she, 45, Pharaon's general counsel",
+        "faria": "Ivo: he, 71, a jailed ex-banker in the next bunk"
+      },
+      "productSide": "centre",
+      "screenDirection": "Edie faces right in episode 1, left when she has power in episode 3",
+      "light": "soft key from the left"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.8,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "dan",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The board waits for the buyer.",
+        "reason": "The board waits for the buyer.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.8,
+        "t1": 6.8,
+        "beat": "b2",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "valerie",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Everyone has a name.",
+        "reason": "Everyone has a name.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 6.8,
+        "t1": 10.6,
+        "beat": "b3",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "fern",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Fern is uneasy.",
+        "reason": "Fern is uneasy.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 10.6,
+        "t1": 15.2,
+        "beat": "b4",
+        "function": "reveal",
+        "size": "WS",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The new owner walks in: Edie, in the same blazer.",
+        "reason": "The new owner walks in: Edie, in the same blazer.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 15.2,
+        "t1": 18.6,
+        "beat": "b5",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The new owner.",
+        "reason": "The new owner.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 18.6,
+        "t1": 22,
+        "beat": "b6",
+        "function": "insert",
+        "size": "CU",
+        "subject": "usb",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The same red stick, on the table.",
+        "reason": "The same red stick, on the table.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 22,
+        "t1": 25.6,
+        "beat": "b7",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "valerie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Valerie knows her.",
+        "reason": "Valerie knows her.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s8",
+        "t0": 25.6,
+        "t1": 29.4,
+        "beat": "b8",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Out in six.",
+        "reason": "Out in six.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s9",
+        "t0": 29.4,
+        "t1": 32.8,
+        "beat": "b9",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "dan",
+        "angle": "eye",
+        "move": "handheld",
+        "blocking": "Dan is afraid.",
+        "reason": "Dan is afraid.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s10",
+        "t0": 32.8,
+        "t1": 35.4,
+        "beat": "b10",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "edie",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "She turns to Fern.",
+        "reason": "She turns to Fern.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Faces and evidence alternate; the last shot lands on the cliffhanger line and the cut follows it."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}

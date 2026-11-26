@@ -1,0 +1,26 @@
+{
+  "stage": "voice",
+  "at": "2026-11-26T14:30:30.496Z",
+  "summary": "10 lines by kokoro; speech check: pass; 1 timing warning(s)",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 2.657,
+    "l02": 1.988,
+    "l03": 1.282,
+    "l04": 3.568,
+    "l05": 0.729,
+    "l06": 3.495,
+    "l07": 2.867,
+    "l08": 1.27,
+    "l09": 1.567,
+    "l10": 0.627
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": true,
+    "report": "OK   l01 | Six years, and you still count the bars. → 6 years, and you still count the bars. \nOK   l02 | Twenty-two. Same as yesterday. → 22, same as yesterday. \nOK   l03 | Give me your hand. → Give me your hand. \nOK   l04 | Twenty-four words. Learn them. Then wash them off. → 24 words, learn them, then wash them off. \nOK   l05 | What are they? → What are they? \nDIFF l06 | Eleven million dollars. Nobody knows it exists. → $11 million, nobody knows it exists. \nDIFF l07 | Spend it on a life, Edie. Not on them. → Spend it on a life eddy, not on them. \nOK   l08 | Ivo? Ivo. → Ivo, Ivo \nOK   l09 | My old firm. For sale. → My old firm for sale. \nOK   l10 | Buy it. → Buy it! \nmismatches: 2 (lang=en, model=base)\n(2 diff(s) only in number, US/UK or name spelling: counted as OK)"
+  },
+  "warnings": [
+    "l06 ends at 19.80 s, after the next line/end (19.6)"
+  ]
+}
