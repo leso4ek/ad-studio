@@ -1,6 +1,6 @@
 {
   "stage": "bible",
-  "at": "2026-11-26T14:29:32.080Z",
+  "at": "2026-11-26T14:45:04.693Z",
   "output": {
     "slug": "the-countess-ep02",
     "title": "The Countess · Ep 2: Cell 34",
@@ -524,10 +524,10 @@
             "id": "c3",
             "role": "card",
             "text": "PHARAON CAPITAL\nFOR SALE",
-            "x": 0.5,
+            "x": 0.45,
             "y": 0.6,
             "size": 0.085,
-            "w": 0.8
+            "w": 0.7
           }
         ],
         "route": "kit"
@@ -626,7 +626,7 @@
         {
           "id": "l07",
           "text": "Spend it on a life, Edie. Not on them.",
-          "at": 19.6,
+          "at": 20.1,
           "speaker": "faria"
         },
         {
@@ -674,7 +674,7 @@
   "meta": {
     "engine": "inbox",
     "answeredBy": "claude-session",
-    "ms": 1001,
+    "ms": 2002,
     "lessons": [
       "Lmwvsri18vng",
       "Lmwvtnh4ew2o",
@@ -684,5 +684,5 @@
     ]
   },
   "warnings": [],
-  "note": "Whisper spellings for names and numbers; no spoken Pharaon; credit tag long enough to read"
+  "note": "release-day card inside the 9:16 safe zone; line 7 starts after line 6 ends"
 }

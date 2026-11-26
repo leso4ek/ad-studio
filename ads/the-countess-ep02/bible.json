@@ -521,10 +521,10 @@
           "id": "c3",
           "role": "card",
           "text": "PHARAON CAPITAL\nFOR SALE",
-          "x": 0.5,
+          "x": 0.45,
           "y": 0.6,
           "size": 0.085,
-          "w": 0.8
+          "w": 0.7
         }
       ],
       "route": "kit"
@@ -623,7 +623,7 @@
       {
         "id": "l07",
         "text": "Spend it on a life, Edie. Not on them.",
-        "at": 19.6,
+        "at": 20.1,
         "speaker": "faria"
       },
       {

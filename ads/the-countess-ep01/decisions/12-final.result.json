@@ -1,0 +1,23 @@
+{
+  "stage": "final",
+  "at": "2026-11-26T14:44:29.702Z",
+  "summary": "2 file(s): the-countess-ep01-9x16.mp4, the-countess-ep01-16x9.mp4",
+  "probes": {
+    "9x16": {
+      "w": 1080,
+      "h": 1920,
+      "fps": "24/1",
+      "dur": 43.7,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/the-countess-ep01/out/the-countess-ep01-9x16.mp4\n    I:         -14.2 LUFS\n    LRA:         3.4 LU\n    Peak:       -1.6 dBFS"
+    },
+    "16x9": {
+      "w": 1920,
+      "h": 1080,
+      "fps": "24/1",
+      "dur": 43.7,
+      "audio": true,
+      "log": "/home/user/scifi-explainer-studio/ads/the-countess-ep01/out/the-countess-ep01-16x9.mp4\n    I:         -14.2 LUFS\n    LRA:         3.4 LU\n    Peak:       -1.6 dBFS"
+    }
+  }
+}

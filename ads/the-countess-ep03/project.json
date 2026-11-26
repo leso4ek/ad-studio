@@ -2,7 +2,7 @@
   "slug": "the-countess-ep03",
   "title": "The Countess · Ep 3",
   "created": "2026-11-26T14:22:41.487Z",
-  "updated": "2026-11-26T14:30:22.078Z",
+  "updated": "2026-11-26T14:51:13.578Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -211,7 +211,7 @@
       }
     },
     "animatic": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T14:30:22.078Z",
       "error": null,
       "fallbacks": [],
@@ -221,8 +221,8 @@
         "audio/mix.wav",
         "out/checks.json"
       ],
-      "finished": "2026-11-26T14:27:58.062Z",
-      "ms": 55308,
+      "finished": "2026-11-26T14:31:20.259Z",
+      "ms": 58181,
       "summary": "reading time and safe zones pass",
       "warnings": [],
       "result": {
@@ -232,24 +232,67 @@
           "safe16x9": true
         },
         "details": {
-          "readcheck": "OK  s1:c1              at 0.00s   23 chars  need 3.03s  got 3.80s  \"$40,000,000\\nCASH. NO NAM\"\nOK  s4:c2              at 10.64s   16 chars  need 2.57s  got 4.60s  \"M. CRISTO HOLDINGS\"\nOK  end:logo           at 35.56s   11 chars  need 2.23s  got 2.34s  \"The Countess\"\n(node:11736) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "readcheck": "OK  s1:c1              at 0.00s   23 chars  need 3.03s  got 3.80s  \"$40,000,000\\nCASH. NO NAM\"\nOK  s4:c2              at 10.64s   16 chars  need 2.57s  got 4.60s  \"M. CRISTO HOLDINGS\"\nOK  end:logo           at 35.56s   11 chars  need 2.23s  got 2.34s  \"The Countess\"\n(node:18188) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.\n(Use `node --trace-warnings ...` to show where the warning was created)\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
           "safe9x16": [],
           "safe16x9": []
         }
       }
     },
     "final": {
-      "status": "idle",
-      "started": "2026-11-26T14:27:58.064Z",
-      "error": "interrupted by a server restart: press Continue",
+      "status": "running",
+      "started": "2026-11-26T14:51:13.578Z",
+      "error": null,
       "fallbacks": [],
-      "engine": null
+      "engine": null,
+      "outputs": [
+        "out/the-countess-ep03-9x16.mp4",
+        "out/the-countess-ep03-16x9.mp4",
+        "out/the-countess-ep03-poster.jpg",
+        "out/the-countess-ep03.srt",
+        "out/final-sheet.jpg"
+      ],
+      "finished": "2026-11-26T14:43:31.273Z",
+      "ms": 731013,
+      "summary": "2 file(s): the-countess-ep03-9x16.mp4, the-countess-ep03-16x9.mp4",
+      "warnings": [],
+      "result": {
+        "probes": {
+          "9x16": {
+            "w": 1080,
+            "h": 1920,
+            "fps": "24/1",
+            "dur": 37.9,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/the-countess-ep03/out/the-countess-ep03-9x16.mp4\n    I:         -14.2 LUFS\n    LRA:         3.5 LU\n    Peak:       -1.6 dBFS"
+          },
+          "16x9": {
+            "w": 1920,
+            "h": 1080,
+            "fps": "24/1",
+            "dur": 37.9,
+            "audio": true,
+            "log": "/home/user/scifi-explainer-studio/ads/the-countess-ep03/out/the-countess-ep03-16x9.mp4\n    I:         -14.2 LUFS\n    LRA:         3.5 LU\n    Peak:       -1.6 dBFS"
+          }
+        }
+      },
+      "note": "necks shortened in the rig (drama shoulders 1.19 heads)"
     },
     "scorecard": {
-      "status": "idle"
+      "status": "stale",
+      "started": "2026-11-26T14:43:31.277Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T14:46:05.522Z",
+      "ms": 154245,
+      "summary": "30/35 · A satisfying return; quieter than the arrest.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
     },
     "audience": {
-      "status": "idle"
+      "status": "skipped"
     }
   }
 }

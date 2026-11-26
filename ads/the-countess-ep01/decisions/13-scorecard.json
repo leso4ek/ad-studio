@@ -1,0 +1,58 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-26T14:45:35.740Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 hook / re-hook",
+        "score": 4,
+        "note": "Opens on a concrete toast (\"Six oh two\", the youngest VP): specific, but the danger only starts at 4 s."
+      },
+      {
+        "rule": "2 clear stakes",
+        "score": 5,
+        "note": "$4.2 million under her login, on her promotion night."
+      },
+      {
+        "rule": "3 a character we care about",
+        "score": 4,
+        "note": "Edie laughs, pleads, cries; the badge with her name makes her real. She needs one private detail."
+      },
+      {
+        "rule": "4 a rising tension curve",
+        "score": 5,
+        "note": "Six minutes from toast to cuffs, one blow per shot."
+      },
+      {
+        "rule": "5 the cliffhanger",
+        "score": 5,
+        "note": "Cuts on the shortest line, \"I don't know her.\", on Fern's face."
+      },
+      {
+        "rule": "6 continuity",
+        "score": 5,
+        "note": "Cast, voices, office, the red stick and the credit locked by code."
+      },
+      {
+        "rule": "7 one emotion, honest content",
+        "score": 4,
+        "note": "Betrayal throughout; the cuffed shot is clear without violence."
+      }
+    ],
+    "total": 32,
+    "verdict": "The strongest episode: one place, one piece of evidence, cut on the betrayal.",
+    "fixes": [
+      "Necks read too long in close-ups (rig: shorten the neck by about a quarter for drama proportions).",
+      "Captions sometimes sit on the name badge in close-ups (move the caption band or the badge).",
+      "Give Edie one private detail (the dress she chose) in the first 10 s."
+    ],
+    "bestHook": "A",
+    "reason": "Judged from the final frames: the faces act and the evidence reads; the rig still shows long necks."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 66036
+  },
+  "warnings": []
+}

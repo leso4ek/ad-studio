@@ -1,0 +1,58 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-26T14:45:35.472Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 hook / re-hook",
+        "score": 4,
+        "note": "\"$40,000,000. Cash. No name.\" answers \"Buy it.\" at once."
+      },
+      {
+        "rule": "2 clear stakes",
+        "score": 4,
+        "note": "The three betrayers in one room with the woman they buried; her plan is still unstated."
+      },
+      {
+        "rule": "3 a character we care about",
+        "score": 4,
+        "note": "Edie controlled, Valerie shocked, Dan afraid: readable, but nobody is sympathetic here."
+      },
+      {
+        "rule": "4 a rising tension curve",
+        "score": 4,
+        "note": "A talky boardroom; the red stick on the table is the turn."
+      },
+      {
+        "rule": "5 the cliffhanger",
+        "score": 4,
+        "note": "\"Hello, Fern.\" lands on her turn; quieter than episode 1."
+      },
+      {
+        "rule": "6 continuity",
+        "score": 5,
+        "note": "Same blazer, same badge, same red stick as episode 1."
+      },
+      {
+        "rule": "7 one emotion, honest content",
+        "score": 5,
+        "note": "Cold triumph, no violence."
+      }
+    ],
+    "total": 30,
+    "verdict": "A satisfying return; quieter than the arrest.",
+    "fixes": [
+      "The boardroom needs the table in front of the cast (they stand in front of it).",
+      "Necks read too long in close-ups.",
+      "End on a physical action (Edie slides the stick to Fern) instead of a look."
+    ],
+    "bestHook": "A",
+    "reason": "Judged from the final frames."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 124189
+  },
+  "warnings": []
+}
