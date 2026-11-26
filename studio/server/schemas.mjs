@@ -7,9 +7,9 @@ const arr = (items, min, max) => ({ type: 'array', items, ...(min !== undefined 
 
 export const STYLES = ['ad-paper-cutout', 'ad-riso-print', 'ad-midcentury-toon', 'ad-kinetic-type', 'ad-toy-3d', 'ad-manga-panels', 'ad-scifi-toon', 'ad-crayon-book', 'ad-voxel-3d'];
 // round 12: what an ad is made as, and how each shot is made
-export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-series', 'drama-episode', 'edit'];
+export const FORMATS = ['story-ad', 'explainer', '3d-explainer', '3d-skit', 'recreate', 'drama-series', 'drama-episode', 'edit', 'clip'];
 /** formats that are tools around real footage: only stages that name them run */
-export const TOOL_FORMATS = ['edit'];
+export const TOOL_FORMATS = ['edit', 'clip'];
 /** formats that sell nothing by default (a sponsor product stays optional) */
 export const VIDEO_FORMATS = ['explainer', 'drama-episode'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
@@ -232,4 +232,12 @@ export const editPlan = S({
   notes: arr(str('edit-notes.md lines: what was cut and why, doubtful words'), 0, 20), reason: str(),
 }, ['keep', 'emphasis', 'title', 'notes', 'reason']);
 
-export const SCHEMAS = { analysis, world, topicBrief, seriesBible, editStyle, editPlan, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
+// the clipper: Claude picks and trims the candidates with the clip rubric (skills/clip-director)
+const s15 = { type: 'integer', minimum: 1, maximum: 5 };
+export const clipPick = S({
+  clips: arr(S({ id: str('the candidate id'), t0: num(), t1: num(), title: str('the hook title card for the first 1-2 s, ≤ 6 words, or ""'), emphasis: arr(str(), 0, 10),
+    scores: S({ hook: s15, setup: s15, peak: s15, payoff: s15, standalone: s15 }), why: str('why a viewer would stop and stay, one sentence') }, ['id', 't0', 't1', 'title', 'scores', 'why']), 1, 20),
+  skipped: arr(S({ id: str(), why: str() }), 0, 40), reason: str(),
+}, ['clips', 'reason']);
+
+export const SCHEMAS = { analysis, world, topicBrief, seriesBible, editStyle, editPlan, clipPick, brief, premises, hooks, story, brandmap, style, direction, bible, frames, scorecard, audienceSetup, audience };
