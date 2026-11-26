@@ -1,0 +1,74 @@
+[
+  {
+    "id": "l01",
+    "text": "Why do your ears pop on a plane?",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Behind each eardrum is a tiny pocket of air.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "It connects to your throat through a thin tube.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "On the ground, the pressure on both sides matches.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "But as the plane climbs, the cabin air thins out.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "The air behind your eardrum pushes outward.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l07",
+    "text": "So the tube pops open and lets it escape.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l08",
+    "text": "Landing is the opposite, and it is harder.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l09",
+    "text": "The outside air pushes in, and the tube stays shut.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l10",
+    "text": "So swallow, yawn, or chew to pull it open.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l11",
+    "text": "That click? Your ears just matched the sky.",
+    "voice": "af_heart",
+    "speed": 0.95
+  },
+  {
+    "id": "l12",
+    "text": "Follow for the next tiny why.",
+    "voice": "af_heart",
+    "speed": 0.95
+  }
+]

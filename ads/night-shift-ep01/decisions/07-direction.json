@@ -1,0 +1,209 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T08:26:03.158Z",
+  "output": {
+    "thesis": "who is in the empty room?",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.6,
+        "learns": "A chart slides out: her own name."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.6,
+        "t1": 8.4,
+        "learns": "Mara reads it twice."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 8.4,
+        "t1": 13.2,
+        "learns": "She asks Dev; he keeps pushing his trolley."
+      },
+      {
+        "id": "b4",
+        "block": "turn",
+        "t0": 13.2,
+        "t1": 18.4,
+        "learns": "Who admitted me?"
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 18.4,
+        "t1": 23.6,
+        "learns": "Dev goes still."
+      },
+      {
+        "id": "b6",
+        "block": "proof",
+        "t0": 23.6,
+        "t1": 27.6,
+        "learns": "Down the corridor the call light of Room 9 blinks on."
+      },
+      {
+        "id": "b7",
+        "block": "payoff",
+        "t0": 27.6,
+        "t1": 32,
+        "learns": "She turns back to Dev."
+      }
+    ],
+    "book": {
+      "grammar": "Manga panels: close faces, inserts of evidence, one wide per episode for the reveal; push-ins on realisations.",
+      "light": "Night ward: one cold overhead, the red call light the only colour.",
+      "palette": "Black, white, screentone grey; red only for the call light and the phone.",
+      "performance": "Quiet and held: Mara steady until the evidence, Dev evasive.",
+      "rhythm": "A cut every 4-5 s, faster into the cliffhanger.",
+      "sound": "Ward hum, a call-light buzz, one hard sting on the cut."
+    },
+    "locks": {
+      "identity": {
+        "mara": "Mara: 30s, dark bun, pale-blue scrubs top, navy trousers",
+        "dev": "Dev: 40s, short black hair, olive top"
+      },
+      "productSide": "centre",
+      "screenDirection": "Mara left facing right, Dev right facing left",
+      "light": "cold overhead light"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "beat": "b1",
+        "function": "insert",
+        "size": "CU",
+        "subject": "book",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "A chart slides out: her own name.",
+        "reason": "A chart slides out: her own name.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 8.4,
+        "beat": "b2",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "mara",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Mara reads it twice.",
+        "reason": "Mara reads it twice.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 8.4,
+        "t1": 13.2,
+        "beat": "b3",
+        "function": "relation",
+        "size": "MS",
+        "subject": "dev",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "She asks Dev; he keeps pushing his trolley.",
+        "reason": "She asks Dev; he keeps pushing his trolley.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 13.2,
+        "t1": 18.4,
+        "beat": "b4",
+        "function": "close-up",
+        "size": "MCU",
+        "subject": "mara",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Who admitted me?",
+        "reason": "Who admitted me?",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 18.4,
+        "t1": 23.6,
+        "beat": "b5",
+        "function": "reaction",
+        "size": "CU",
+        "subject": "dev",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Dev goes still.",
+        "reason": "Dev goes still.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 23.6,
+        "t1": 27.6,
+        "beat": "b6",
+        "function": "reveal",
+        "size": "WS",
+        "subject": "lamp",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "Down the corridor the call light of Room 9 blinks on.",
+        "reason": "Down the corridor the call light of Room 9 blinks on.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 27.6,
+        "t1": 32,
+        "beat": "b7",
+        "function": "reaction",
+        "size": "MCU",
+        "subject": "mara",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "She turns back to Dev.",
+        "reason": "She turns back to Dev.",
+        "textZone": "bottom",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Seven panels per episode alternating faces and evidence; the last panel lands on the cliffhanger line and the cut follows it."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ecv9",
+      "Lmwvtnh4ez43"
+    ]
+  },
+  "warnings": []
+}

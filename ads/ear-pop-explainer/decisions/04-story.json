@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T08:22:54.320Z",
+  "output": {
+    "spine": [
+      "Every flight, your ears pop.",
+      "You never wonder why.",
+      "Until you learn there is a pocket of air behind each eardrum.",
+      "Because of that, the climb lets air out and you hear a pop.",
+      "Because of that, landing has to push air back in, and the tube resists.",
+      "Until finally a swallow pulls it open and your ears match the sky."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "The question",
+        "t0": 0,
+        "t1": 3.6,
+        "beats": "Why do your ears pop on a plane?"
+      },
+      {
+        "act": 2,
+        "name": "The pocket",
+        "t0": 3.6,
+        "t1": 14.2,
+        "beats": "A tiny air pocket behind the eardrum, a thin tube to the throat, balanced on the ground."
+      },
+      {
+        "act": 3,
+        "name": "The climb",
+        "t0": 14.2,
+        "t1": 25,
+        "beats": "But the cabin air thins; the trapped air pushes out; so the tube pops open."
+      },
+      {
+        "act": 4,
+        "name": "The landing",
+        "t0": 25,
+        "t1": 35.4,
+        "beats": "But landing is the opposite and harder; so swallow, yawn or chew to pull the tube open."
+      },
+      {
+        "act": 5,
+        "name": "The click",
+        "t0": 35.4,
+        "t1": 45,
+        "beats": "That click is your ears matching the sky. End card: Tiny Whys, follow for part 2."
+      }
+    ],
+    "turn": "The landing is harder because the tube lets air out easily but lets it in reluctantly; a swallow is what pulls it open.",
+    "emotion": "curiosity",
+    "reason": "An If/But/So chain built only from the five sourced facts: each beat answers the last and raises the next, with the reversal (landing is worse) at about 55 %."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

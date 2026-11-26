@@ -1,0 +1,25 @@
+{
+  "stage": "style",
+  "at": "2026-11-26T08:22:56.326Z",
+  "output": {
+    "style": "ad-midcentury-toon",
+    "reason": "Flat mid-century planes and labels read like a friendly diagram; the sky and the passenger stay simple enough for one idea per frame.",
+    "alternatives": [
+      {
+        "style": "ad-crayon-book",
+        "why_not": "warmer but less diagram-like"
+      },
+      {
+        "style": "ad-kinetic-type",
+        "why_not": "words only; the ear needs a picture"
+      }
+    ],
+    "seedanceStyle": "midcentury-modern"
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2002
+  },
+  "warnings": []
+}

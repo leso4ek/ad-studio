@@ -1,0 +1,26 @@
+{
+  "stage": "voice",
+  "at": "2026-11-26T08:24:23.255Z",
+  "summary": "12 lines by kokoro; speech check: FAIL",
+  "engine": "kokoro",
+  "durs": {
+    "l01": 1.747,
+    "l02": 2.915,
+    "l03": 2.193,
+    "l04": 2.702,
+    "l05": 2.95,
+    "l06": 2.201,
+    "l07": 2.341,
+    "l08": 2.486,
+    "l09": 2.978,
+    "l10": 2.725,
+    "l11": 2.28,
+    "l12": 1.661
+  },
+  "check": {
+    "engine": "whisper",
+    "pass": false,
+    "report": "OK   l01 | Why do your ears pop on a plane? → Why do your ears pop on a plane? \nOK   l02 | Behind each eardrum is a tiny pocket of air. → Behind each eardrum is a tiny pocket of air. \nOK   l03 | It connects to your throat through a thin tube. → It connects to your throat through a thin tube. \nOK   l04 | On the ground, the pressure on both sides matches. → On the ground, the pressure on both sides matches. \nOK   l05 | But as the plane climbs, the cabin air thins out. → But as the plane climbs, the cabin air thins out. \nOK   l06 | The air behind your eardrum pushes outward. → The air behind your eardrum pushes outward. \nOK   l07 | So the tube pops open and lets it escape. → So the tube pops open and lets it escape. \nOK   l08 | Landing is the opposite, and it is harder. → Landing is the opposite, and it is harder. \nOK   l09 | The outside air pushes in, and the tube stays shut. → The outside air pushes in and the tube stays shut. \nOK   l10 | So swallow, yawn, or chew to pull it open. → So swallow, yawn or chew to pull it open. \nDIFF l11 | That click? Your ears just matched the sky. → That click, your ears just match the sky. \nDIFF l12 | Follow for the next tiny why. → Follow for the next tiny Y. \nmismatches: 2 (lang=en, model=base)"
+  },
+  "warnings": []
+}

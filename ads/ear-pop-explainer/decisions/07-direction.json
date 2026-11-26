@@ -1,0 +1,256 @@
+{
+  "stage": "direction",
+  "at": "2026-11-26T08:22:58.334Z",
+  "output": {
+    "thesis": "A tiny tube behind your eardrum lets air out easily and in reluctantly, so landing hurts more and a swallow fixes it.",
+    "lens": "none",
+    "beats": [
+      {
+        "id": "b1",
+        "block": "hook",
+        "t0": 0,
+        "t1": 3.6,
+        "learns": "She sits by the window as the plane climbs; her hand goes to her ear."
+      },
+      {
+        "id": "b2",
+        "block": "problem",
+        "t0": 3.6,
+        "t1": 7.1,
+        "learns": "Behind the eardrum sits a pocket of air."
+      },
+      {
+        "id": "b3",
+        "block": "problem",
+        "t0": 7.1,
+        "t1": 10.6,
+        "learns": "A thin tube runs from that pocket to the throat."
+      },
+      {
+        "id": "b4",
+        "block": "demonstration",
+        "t0": 10.6,
+        "t1": 14.2,
+        "learns": "On the ground both sides are balanced."
+      },
+      {
+        "id": "b5",
+        "block": "turn",
+        "t0": 14.2,
+        "t1": 18.1,
+        "learns": "The climb thins the cabin air."
+      },
+      {
+        "id": "b6",
+        "block": "turn",
+        "t0": 18.1,
+        "t1": 21.4,
+        "learns": "The trapped air pushes outward."
+      },
+      {
+        "id": "b7",
+        "block": "proof",
+        "t0": 21.4,
+        "t1": 25,
+        "learns": "The tube pops open and the air escapes: pop."
+      },
+      {
+        "id": "b8",
+        "block": "turn",
+        "t0": 25,
+        "t1": 31.8,
+        "learns": "Landing is the opposite, and the tube stays shut."
+      },
+      {
+        "id": "b9",
+        "block": "payoff",
+        "t0": 31.8,
+        "t1": 41.5,
+        "learns": "Swallow, yawn or chew: the tube opens and her ears match the sky."
+      }
+    ],
+    "book": {
+      "grammar": "A friendly diagram: one idea per frame, a push on each realisation, a pull for the relief at the end.",
+      "light": "Flat daylight, soft sky gradient.",
+      "palette": "Sky blues and cream; a warm accent only on the ear and the pop.",
+      "performance": "Small: a hand to the ear, a wince on the landing, relief at the swallow.",
+      "rhythm": "A new card every 3-4 s; the landing beat holds longer for the reversal.",
+      "sound": "A soft pop at 22 s, a cabin hum under everything."
+    },
+    "locks": {
+      "identity": {
+        "ava": "Ava: 30s, dark bob, teal top, navy trousers; window seat, facing right"
+      },
+      "productSide": "centre",
+      "screenDirection": "Ava screen left facing right toward the window",
+      "light": "daylight from the window side"
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "beat": "b1",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "She sits by the window as the plane climbs; her hand goes to her ear.",
+        "reason": "She sits by the window as the plane climbs; her hand goes to her ear.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 7.1,
+        "beat": "b2",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "Behind the eardrum sits a pocket of air.",
+        "reason": "Behind the eardrum sits a pocket of air.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s3",
+        "t0": 7.1,
+        "t1": 10.6,
+        "beat": "b3",
+        "function": "insert",
+        "size": "MS",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "pan-r",
+        "blocking": "A thin tube runs from that pocket to the throat.",
+        "reason": "A thin tube runs from that pocket to the throat.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s4",
+        "t0": 10.6,
+        "t1": 14.2,
+        "beat": "b4",
+        "function": "establishing",
+        "size": "WS",
+        "subject": "cloud",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "On the ground both sides are balanced.",
+        "reason": "On the ground both sides are balanced.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s5",
+        "t0": 14.2,
+        "t1": 18.1,
+        "beat": "b5",
+        "function": "reaction",
+        "size": "MS",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The climb thins the cabin air.",
+        "reason": "The climb thins the cabin air.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s6",
+        "t0": 18.1,
+        "t1": 21.4,
+        "beat": "b6",
+        "function": "close-up",
+        "size": "CU",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "push",
+        "blocking": "The trapped air pushes outward.",
+        "reason": "The trapped air pushes outward.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s7",
+        "t0": 21.4,
+        "t1": 25,
+        "beat": "b7",
+        "function": "reveal",
+        "size": "MCU",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "static",
+        "blocking": "The tube pops open and the air escapes: pop.",
+        "reason": "The tube pops open and the air escapes: pop.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s8",
+        "t0": 25,
+        "t1": 31.8,
+        "beat": "b8",
+        "function": "transition",
+        "size": "WS",
+        "subject": "cloud",
+        "angle": "eye",
+        "move": "tilt-down",
+        "blocking": "Landing is the opposite, and the tube stays shut.",
+        "reason": "Landing is the opposite, and the tube stays shut.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      },
+      {
+        "id": "s9",
+        "t0": 31.8,
+        "t1": 41.5,
+        "beat": "b9",
+        "function": "aftermath",
+        "size": "MS",
+        "subject": "ava",
+        "angle": "eye",
+        "move": "pull",
+        "blocking": "Swallow, yawn or chew: the tube opens and her ears match the sky.",
+        "reason": "Swallow, yawn or chew: the tube opens and her ears match the sky.",
+        "textZone": "top",
+        "trans": "cut",
+        "route": "kit",
+        "complexity": "low"
+      }
+    ],
+    "reason": "Nine stops of about 4 s, one fact each, timed to the narration; the landing reversal gets the longest hold and the swallow gets the relieved pull-out."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18pvl",
+      "Lmwvtnh4ez43",
+      "Lmwvtnh4ecv9"
+    ]
+  },
+  "warnings": []
+}

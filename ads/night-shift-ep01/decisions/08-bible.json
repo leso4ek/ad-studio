@@ -1,0 +1,347 @@
+{
+  "stage": "bible",
+  "at": "2026-11-26T08:32:50.957Z",
+  "output": {
+    "slug": "night-shift-ep01",
+    "title": "Night Shift · Ep 1: Room 9",
+    "style": "ad-manga-panels",
+    "dur": 34.5,
+    "cast": {
+      "mara": {
+        "skin": "#C68B67",
+        "hair": "#1E1612",
+        "hairStyle": "bun",
+        "top": "#7FB3D5",
+        "bottom": "#2C3E50",
+        "build": "slim",
+        "role": "she, 30s, a night-shift nurse who never misses a detail",
+        "voice": "af_bella"
+      },
+      "dev": {
+        "skin": "#8D5B3E",
+        "hair": "#0F0F0F",
+        "hairStyle": "short",
+        "top": "#556B2F",
+        "bottom": "#333333",
+        "build": "round",
+        "role": "he, 40s, the night porter who knows the old wing",
+        "voice": "am_adam"
+      }
+    },
+    "places": {
+      "ward": {
+        "kind": "office",
+        "time": "night"
+      }
+    },
+    "shots": [
+      {
+        "id": "s1",
+        "t0": 0,
+        "t1": 3.6,
+        "act": 1,
+        "beat": "hook",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "book",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "insert",
+        "reason": "A chart slides out: her own name.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "book",
+            "x": 0.5,
+            "y": 0.62,
+            "scale": 1.3,
+            "anim": [
+              "drop"
+            ]
+          },
+          {
+            "type": "text",
+            "id": "c1",
+            "role": "hook",
+            "text": "ROOM 9:\nMARA",
+            "x": 0.47,
+            "y": 0.645,
+            "size": 0.11,
+            "w": 0.76
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s2",
+        "t0": 3.6,
+        "t1": 8.4,
+        "act": 1,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reaction",
+        "reason": "Mara reads it twice.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.45,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "surprised",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s3",
+        "t0": 8.4,
+        "t1": 13.2,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MS",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "relation",
+        "reason": "She asks Dev; he keeps pushing his trolley.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.55,
+            "y": 0.92,
+            "scale": 1.05,
+            "pose": "neutral",
+            "face": "left"
+          },
+          {
+            "type": "prop",
+            "kind": "desk",
+            "x": 0.25,
+            "y": 0.84,
+            "scale": 0.8
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s4",
+        "t0": 13.2,
+        "t1": 18.4,
+        "act": 2,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "static"
+        },
+        "function": "close-up",
+        "reason": "Who admitted me?",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.42,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "think",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s5",
+        "t0": 18.4,
+        "t1": 23.6,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "CU",
+          "subject": "dev",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reaction",
+        "reason": "Dev goes still.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "dev",
+            "x": 0.5,
+            "y": 0.95,
+            "scale": 1.2,
+            "pose": "sad",
+            "face": "front"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s6",
+        "t0": 23.6,
+        "t1": 27.6,
+        "act": 3,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "WS",
+          "subject": "lamp",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reveal",
+        "reason": "Down the corridor the call light of Room 9 blinks on.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "prop",
+            "kind": "lamp",
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 0.9,
+            "anim": [
+              "pulse"
+            ]
+          },
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.25,
+            "y": 0.95,
+            "scale": 0.8,
+            "pose": "surprised",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      },
+      {
+        "id": "s7",
+        "t0": 27.6,
+        "t1": 32,
+        "act": 4,
+        "beat": "story",
+        "place": "ward",
+        "camera": {
+          "size": "MCU",
+          "subject": "mara",
+          "angle": "eye",
+          "move": "push"
+        },
+        "function": "reaction",
+        "reason": "She turns back to Dev.",
+        "textZone": "bottom",
+        "layers": [
+          {
+            "type": "char",
+            "id": "mara",
+            "x": 0.42,
+            "y": 0.95,
+            "scale": 1.15,
+            "pose": "surprised",
+            "face": "right"
+          }
+        ],
+        "route": "kit"
+      }
+    ],
+    "vo": {
+      "voice": "af_heart",
+      "speed": 0.95,
+      "lines": [
+        {
+          "id": "l01",
+          "text": "Room nine. Mara Okafor. Admitted tonight.",
+          "at": 0.4,
+          "speaker": "mara"
+        },
+        {
+          "id": "l02",
+          "text": "Dev. Did you admit someone to nine?",
+          "at": 8.6,
+          "speaker": "mara"
+        },
+        {
+          "id": "l03",
+          "text": "Nobody goes in nine.",
+          "at": 11.3,
+          "speaker": "dev"
+        },
+        {
+          "id": "l04",
+          "text": "It has my name on it.",
+          "at": 13.6,
+          "speaker": "mara"
+        },
+        {
+          "id": "l05",
+          "text": "Room nine has been empty for years.",
+          "at": 18.8,
+          "speaker": "dev"
+        },
+        {
+          "id": "l06",
+          "text": "Then who just pressed the call button?",
+          "at": 28.6,
+          "speaker": "mara"
+        }
+      ]
+    },
+    "captions": true,
+    "endcard": {
+      "t0": 32,
+      "logo": "Part 2"
+    },
+    "music": {
+      "mood": "tender",
+      "bpm": 70
+    },
+    "sfx": [
+      {
+        "t": 31.8,
+        "type": "sting"
+      }
+    ],
+    "reason": "Episode 1: seven panels from the outline; the cliffhanger line lands at the end and the episode cuts on it.",
+    "format": "drama-episode",
+    "captionMode": "words",
+    "palette": {
+      "accent": "#E63946"
+    }
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 163289,
+    "lessons": [
+      "Lmwvsri18vng",
+      "Lmwvtnh4ew2o",
+      "Lmwwhvqldd3v",
+      "Lmwwhvqldqat",
+      "Lmwvtnh4eijd"
+    ]
+  },
+  "warnings": []
+}

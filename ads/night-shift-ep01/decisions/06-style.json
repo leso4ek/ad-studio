@@ -1,0 +1,25 @@
+{
+  "stage": "style",
+  "at": "2026-11-26T08:26:01.153Z",
+  "output": {
+    "style": "ad-manga-panels",
+    "reason": "Black-and-white panels, screentone and focus lines carry suspense; the brand colour slot becomes the one colour of the call light.",
+    "alternatives": [
+      {
+        "style": "ad-scifi-toon",
+        "why_not": "deadpan comedy, not suspense"
+      },
+      {
+        "style": "ad-crayon-book",
+        "why_not": "too tender for a mystery"
+      }
+    ],
+    "palette": {
+      "accent": "#E63946"
+    }
+  },
+  "meta": {
+    "engine": "format"
+  },
+  "warnings": []
+}

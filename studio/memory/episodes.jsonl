@@ -172,3 +172,7 @@
 {"type":"signal","at":"2026-11-26T08:29:07.500Z","ad":"sprigly-edit","stage":"edit-plan","kind":"redo","value":1,"note":"end on Standoff over, drop the tag line"}
 {"type":"episode","id":"night-shift-ep01:bible:mwxaokct","at":"2026-11-26T08:32:50.957Z","ad":"night-shift-ep01","stage":"bible","goal":"a bible that passes every check first time and implements the direction (no repairs; readcheck and safe zones pass)","style":"ad-manga-panels","product":null,"attempt":1,"action":"7 shots (CU, MCU, MS, MCU, CU, WS, MCU); cards: \"ROOM 9: MARA\"; vo lines 6","lessonsUsed":["Lmwvsri18vng","Lmwvtnh4ew2o","Lmwwhvqldd3v","Lmwwhvqldqat","Lmwvtnh4eijd"]}
 {"type":"signal","at":"2026-11-26T08:32:56.918Z","ad":"night-shift-ep01","stage":"direction","kind":"review","value":0,"note":"approved as drawn"}
+{"type":"signal","at":"2026-11-26T08:33:38.368Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":false,"note":"speech check FAIL"}
+{"type":"signal","at":"2026-11-26T08:34:08.851Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"readcheck pass"}
+{"type":"signal","at":"2026-11-26T08:34:08.852Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"safe9x16 pass"}
+{"type":"signal","at":"2026-11-26T08:34:08.852Z","ad":"night-shift-ep01","stage":"bible","kind":"check","value":true,"note":"safe16x9 pass"}

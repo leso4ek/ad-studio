@@ -1,0 +1,114 @@
+{
+  "stage": "series",
+  "at": "2026-11-26T08:25:49.138Z",
+  "output": {
+    "title": "Night Shift",
+    "logline": "A night nurse finds a chart for an empty room with her own name on it, and the porter who knows why will not say.",
+    "genre": "mystery",
+    "tone": "quiet, tense, a little eerie",
+    "hookPromise": "who wrote her name, and what happened in Room 9",
+    "characters": [
+      {
+        "id": "mara",
+        "name": "Mara",
+        "role": "she, 30s, a night-shift nurse who never misses a detail",
+        "want": "to know who wrote her name on the chart",
+        "fear": "that she is losing time she cannot remember",
+        "secret": "she worked a double shift last month and remembers none of it",
+        "look": {
+          "skin": "#C68B67",
+          "hair": "#1E1612",
+          "hairStyle": "bun",
+          "top": "#7FB3D5",
+          "bottom": "#2C3E50",
+          "build": "slim"
+        },
+        "voice": "af_bella"
+      },
+      {
+        "id": "dev",
+        "name": "Dev",
+        "role": "he, 40s, the night porter who knows the old wing",
+        "want": "to keep Mara away from Room 9",
+        "fear": "that she will find out what happened last month",
+        "secret": "he has been writing the charts to warn her",
+        "look": {
+          "skin": "#8D5B3E",
+          "hair": "#0F0F0F",
+          "hairStyle": "short",
+          "top": "#556B2F",
+          "bottom": "#333333",
+          "build": "round"
+        },
+        "voice": "am_adam"
+      }
+    ],
+    "places": {
+      "ward": {
+        "kind": "office",
+        "time": "night"
+      }
+    },
+    "arc": "Mara finds her name on a chart for an empty room. Each night the room shows her more of a shift she cannot remember. Dev has been warning her the only way he can. The finale reveals the chart is dated tomorrow and the room is calling for her.",
+    "episodes": [
+      {
+        "n": 1,
+        "title": "Room 9",
+        "hook": "A chart slides off the trolley: tonight's admission is Mara herself.",
+        "beats": [
+          "Mara finds a chart for Room 9 with her own name, admitted tonight.",
+          "She asks Dev who admitted her.",
+          "Dev goes still: Room 9 has been empty for years.",
+          "Down the dark corridor, the call light of Room 9 blinks on."
+        ],
+        "cliffhanger": {
+          "moment": "the call light of Room 9 blinks on in the dark",
+          "line": "Then who just pressed the call button?",
+          "question": "who is in the empty room?"
+        },
+        "seconds": 32
+      },
+      {
+        "n": 2,
+        "title": "Warm sheets",
+        "hook": "The call light buzzes again; Mara is already walking toward it.",
+        "beats": [
+          "Mara walks to Room 9 while Dev calls after her.",
+          "The room is empty, but the sheets are warm.",
+          "Her own name tag lies on the pillow.",
+          "The last chart entry is written in her handwriting."
+        ],
+        "cliffhanger": {
+          "moment": "she turns the chart toward us: the last entry is in her handwriting",
+          "line": "That is my handwriting.",
+          "question": "did she write it, and when?"
+        },
+        "seconds": 32
+      },
+      {
+        "n": 3,
+        "title": "Tomorrow",
+        "hook": "Mara holds up the chart: \"Explain this, Dev.\"",
+        "beats": [
+          "Dev admits he has been writing the charts to warn her.",
+          "Last month she worked a double shift she cannot remember.",
+          "The newest chart is dated tomorrow.",
+          "The ward phone rings: Room 9 is asking for her."
+        ],
+        "cliffhanger": {
+          "moment": "the ward phone rings; Dev listens, then holds it out to her",
+          "line": "Room 9 is asking for you.",
+          "question": "who is waiting in Room 9 tomorrow?"
+        },
+        "seconds": 32
+      }
+    ],
+    "reason": "Two characters with opposite wants in one ward; every episode ends on a new piece of physical evidence (the call light, her handwriting, the phone), each re-hooked in the next cold open."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001
+  },
+  "warnings": []
+}

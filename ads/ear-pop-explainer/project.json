@@ -1,0 +1,275 @@
+{
+  "slug": "ear-pop-explainer",
+  "title": "Ear pop explainer",
+  "created": "2026-11-26T08:22:47.292Z",
+  "updated": "2026-11-26T08:30:07.599Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "explainer",
+  "userBrief": {
+    "topic": "why your ears pop on a plane",
+    "seconds": 45,
+    "aspect": "9:16",
+    "style": "ad-midcentury-toon"
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "done",
+      "started": "2026-11-26T08:22:47.293Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:22:50.309Z",
+      "ms": 3016,
+      "summary": "why your ears pop on a plane · Why do your ears pop on a plane, and why is landing worse?",
+      "warnings": [],
+      "result": {}
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "done",
+      "started": "2026-11-26T08:22:50.310Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:22:52.316Z",
+      "ms": 2006,
+      "summary": "lead A: \"Why do ears pop?\"",
+      "warnings": [],
+      "result": {}
+    },
+    "story": {
+      "status": "done",
+      "started": "2026-11-26T08:22:52.317Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:22:54.321Z",
+      "ms": 2004,
+      "summary": "curiosity · turn: The landing is harder because the tube lets air out easily but lets it in reluctantly; a swallow is what pulls it open.",
+      "warnings": [],
+      "result": {}
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-26T08:22:54.322Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:22:56.327Z",
+      "ms": 2005,
+      "summary": "ad-midcentury-toon",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "done",
+      "started": "2026-11-26T08:22:56.328Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:22:58.335Z",
+      "ms": 2007,
+      "summary": "9 shots · A tiny tube behind your eardrum lets air out easily and in reluctantly, so landing hurts more and a swallow fixes it.",
+      "warnings": [],
+      "result": {}
+    },
+    "bible": {
+      "status": "done",
+      "started": "2026-11-26T08:22:58.336Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:23:00.346Z",
+      "ms": 2010,
+      "summary": "9 shots, 12 voice lines, 45s",
+      "warnings": [],
+      "result": {}
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "done",
+      "started": "2026-11-26T08:23:59.436Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "outputs": [
+        "frames/f_2.16.jpg",
+        "frames/f_5.7.jpg",
+        "frames/f_9.2.jpg",
+        "frames/f_12.76.jpg",
+        "frames/f_16.54.jpg",
+        "frames/f_20.08.jpg",
+        "frames/f_23.56.jpg",
+        "frames/f_29.08.jpg",
+        "frames/f_37.62.jpg",
+        "frames/f_43.jpg",
+        "frames/sheet.jpg",
+        "frames/w_2.16.jpg",
+        "frames/w_20.08.jpg",
+        "frames/w_43.jpg"
+      ],
+      "finished": "2026-11-26T08:24:03.943Z",
+      "ms": 4507,
+      "summary": "approved as drawn",
+      "warnings": [],
+      "result": {
+        "review": {
+          "verdict": "approve",
+          "notes": [
+            {
+              "shot": "s2, s3, s5, s6, s7, s9",
+              "issue": "in the first pass the top cards covered her face in every medium and close shot ('Pop!' sat on her eyes)",
+              "fix": "cards moved to the lower zone (y 0.645) on those shots; checked again before this review"
+            },
+            {
+              "shot": "s1",
+              "issue": "the hook card hid her head",
+              "fix": "she moved lower and smaller; the card now sits clear of the face"
+            }
+          ],
+          "changed": false,
+          "reason": "After moving the cards off the faces, every frame shows one idea with its card readable and the face visible; the two sky shots keep their cards at the top."
+        }
+      },
+      "note": "cards moved off the faces"
+    },
+    "voice": {
+      "status": "done",
+      "started": "2026-11-26T08:24:03.943Z",
+      "error": null,
+      "fallbacks": [
+        {
+          "engine": "voicestudio",
+          "why": "no VoiceStudio backend at http://127.0.0.1:3900",
+          "at": "2026-11-26T08:24:03.951Z"
+        }
+      ],
+      "engine": "kokoro",
+      "outputs": [
+        "voice/lines/l01.wav",
+        "voice/lines/l02.wav",
+        "voice/lines/l03.wav",
+        "voice/lines/l04.wav",
+        "voice/lines/l05.wav",
+        "voice/lines/l06.wav",
+        "voice/lines/l07.wav",
+        "voice/lines/l08.wav",
+        "voice/lines/l09.wav",
+        "voice/lines/l10.wav",
+        "voice/lines/l11.wav",
+        "voice/lines/l12.wav",
+        "voice/cues.json",
+        "out/ear-pop-explainer.srt"
+      ],
+      "finished": "2026-11-26T08:24:23.255Z",
+      "ms": 19312,
+      "summary": "12 lines by kokoro; speech check: FAIL",
+      "warnings": [],
+      "result": {
+        "engine": "kokoro",
+        "durs": {
+          "l01": 1.747,
+          "l02": 2.915,
+          "l03": 2.193,
+          "l04": 2.702,
+          "l05": 2.95,
+          "l06": 2.201,
+          "l07": 2.341,
+          "l08": 2.486,
+          "l09": 2.978,
+          "l10": 2.725,
+          "l11": 2.28,
+          "l12": 1.661
+        },
+        "check": {
+          "engine": "whisper",
+          "pass": false,
+          "report": "OK   l01 | Why do your ears pop on a plane? → Why do your ears pop on a plane? \nOK   l02 | Behind each eardrum is a tiny pocket of air. → Behind each eardrum is a tiny pocket of air. \nOK   l03 | It connects to your throat through a thin tube. → It connects to your throat through a thin tube. \nOK   l04 | On the ground, the pressure on both sides matches. → On the ground, the pressure on both sides matches. \nOK   l05 | But as the plane climbs, the cabin air thins out. → But as the plane climbs, the cabin air thins out. \nOK   l06 | The air behind your eardrum pushes outward. → The air behind your eardrum pushes outward. \nOK   l07 | So the tube pops open and lets it escape. → So the tube pops open and lets it escape. \nOK   l08 | Landing is the opposite, and it is harder. → Landing is the opposite, and it is harder. \nOK   l09 | The outside air pushes in, and the tube stays shut. → The outside air pushes in and the tube stays shut. \nOK   l10 | So swallow, yawn, or chew to pull it open. → So swallow, yawn or chew to pull it open. \nDIFF l11 | That click? Your ears just matched the sky. → That click, your ears just match the sky. \nDIFF l12 | Follow for the next tiny why. → Follow for the next tiny Y. \nmismatches: 2 (lang=en, model=base)"
+        }
+      }
+    },
+    "animatic": {
+      "status": "done",
+      "started": "2026-11-26T08:24:23.256Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "ms": 29011,
+      "outputs": [
+        "out/animatic.mp4",
+        "audio/mix.wav",
+        "out/checks.json"
+      ],
+      "finished": "2026-11-26T08:24:52.267Z",
+      "summary": "reading time and safe zones pass",
+      "warnings": [],
+      "result": {
+        "checks": {
+          "readcheck": true,
+          "safe9x16": true,
+          "safe16x9": true
+        },
+        "details": {
+          "readcheck": "OK  s1:c1              at 0.00s   13 chars  need 2.37s  got 3.60s  \"Why do\\nears pop?\"\nOK  s2:c2              at 3.60s   14 chars  need 2.43s  got 3.52s  \"A tiny\\nair pocket\"\nOK  s3:c3              at 7.12s   21 chars  need 2.90s  got 3.52s  \"A thin tube\\nto your thro\"\nOK  s4:c4              at 10.64s   20 chars  need 2.83s  got 3.60s  \"On the ground:\\nbalanced\"\nOK  s5:c5              at 14.24s   14 chars  need 2.43s  got 3.88s  \"Climb:\\nair thins\"\nOK  s6:c6              at 18.12s   13 chars  need 2.37s  got 3.32s  \"Pushes\\noutward\"\nOK  s7:c7              at 21.44s    4 chars  need 1.77s  got 3.60s  \"Pop!\"\nOK  s8:c8              at 25.04s   15 chars  need 2.50s  got 6.80s  \"Landing\\nis harder\"\nOK  s9:c9              at 31.84s   17 chars  need 2.63s  got 9.68s  \"Swallow,\\nyawn, chew\"\nOK  end:logo           at 41.68s    8 chars  need 2.03s  got 3.32s  \"Tiny Whys\"\nOK  end:line           at 41.96s   15 chars  need 2.50s  got 3.04s  \"Ears, explained.\"\nOK  end:cta            at 42.28s   14 chars  need 2.43s  got 2.72s  \"Follow for part 2\"\n[note] WebGL runs on software rendering (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftSh): 3D/CRT demos will be slow. macOS: LEMO_ANGLE=metal; Linux: needs GPU drivers. See core/README.md.",
+          "safe9x16": [],
+          "safe16x9": []
+        }
+      }
+    },
+    "final": {
+      "status": "running",
+      "started": "2026-11-26T08:30:07.598Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

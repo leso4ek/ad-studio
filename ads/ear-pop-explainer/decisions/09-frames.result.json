@@ -1,0 +1,22 @@
+{
+  "stage": "frames",
+  "at": "2026-11-26T08:24:03.942Z",
+  "summary": "approved as drawn",
+  "review": {
+    "verdict": "approve",
+    "notes": [
+      {
+        "shot": "s2, s3, s5, s6, s7, s9",
+        "issue": "in the first pass the top cards covered her face in every medium and close shot ('Pop!' sat on her eyes)",
+        "fix": "cards moved to the lower zone (y 0.645) on those shots; checked again before this review"
+      },
+      {
+        "shot": "s1",
+        "issue": "the hook card hid her head",
+        "fix": "she moved lower and smaller; the card now sits clear of the face"
+      }
+    ],
+    "changed": false,
+    "reason": "After moving the cards off the faces, every frame shows one idea with its card readable and the face visible; the two sky shots keep their cards at the top."
+  }
+}

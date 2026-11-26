@@ -1,0 +1,67 @@
+{
+  "stage": "story",
+  "at": "2026-11-26T08:26:01.143Z",
+  "output": {
+    "spine": [
+      "Every night Mara works the ward.",
+      "Every night Room 9 stays empty.",
+      "Mara finds a chart for Room 9 with her own name, admitted tonight.",
+      "She asks Dev who admitted her.",
+      "Dev goes still: Room 9 has been empty for years.",
+      "Down the dark corridor, the call light of Room 9 blinks on."
+    ],
+    "acts": [
+      {
+        "act": 1,
+        "name": "Hook",
+        "t0": 0,
+        "t1": 3.6,
+        "beats": "A chart slides off the trolley: tonight's admission is Mara herself."
+      },
+      {
+        "act": 2,
+        "name": "Question",
+        "t0": 3.6,
+        "t1": 13.2,
+        "beats": "She asks Dev who admitted her."
+      },
+      {
+        "act": 3,
+        "name": "Pressure",
+        "t0": 13.2,
+        "t1": 18.4,
+        "beats": "Dev goes still: Room 9 has been empty for years."
+      },
+      {
+        "act": 4,
+        "name": "Evidence",
+        "t0": 18.4,
+        "t1": 27.6,
+        "beats": "Down the dark corridor, the call light of Room 9 blinks on."
+      },
+      {
+        "act": 5,
+        "name": "Cliffhanger",
+        "t0": 27.6,
+        "t1": 32,
+        "beats": "the call light of Room 9 blinks on in the dark"
+      }
+    ],
+    "turn": "Down the dark corridor, the call light of Room 9 blinks on.",
+    "emotion": "dread",
+    "reason": "Episode 1 follows its outline beat for beat and cuts on the cliffhanger at 32 s."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2001,
+    "lessons": [
+      "Lmwvsri18w55",
+      "Lmwvtnh4elr2",
+      "Lmwwhvqldsq5",
+      "Lmwwju8qhoop",
+      "Lmwvsri18vpf"
+    ]
+  },
+  "warnings": []
+}

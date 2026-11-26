@@ -1,0 +1,54 @@
+{
+  "stage": "brief",
+  "at": "2026-11-26T08:22:50.307Z",
+  "output": {
+    "topic": "why your ears pop on a plane",
+    "question": "Why do your ears pop on a plane, and why is landing worse?",
+    "audience": {
+      "who": "adults who fly a few times a year",
+      "knows": "that swallowing sometimes helps, not why"
+    },
+    "angle": "a tiny tube you never think about is doing pressure maths behind your eardrum",
+    "facts": [
+      {
+        "fact": "The middle ear is an air-filled space behind the eardrum, linked to the back of the throat by the Eustachian tube.",
+        "source": "NHS, \"Ear problems when flying\" / Mayo Clinic, \"Airplane ear\""
+      },
+      {
+        "fact": "Airliner cabins are pressurised to roughly the air pressure at 6,000-8,000 feet, lower than on the ground.",
+        "source": "FAA cabin-altitude rules (14 CFR 25.841)"
+      },
+      {
+        "fact": "As the cabin pressure drops on the climb, air in the middle ear expands and escapes through the tube fairly easily.",
+        "source": "Mayo Clinic, \"Airplane ear\""
+      },
+      {
+        "fact": "On descent the outside pressure rises and the tube must open to let air in, which it does less easily, so landing usually hurts more.",
+        "source": "Mayo Clinic, \"Airplane ear\"; NHS"
+      },
+      {
+        "fact": "Swallowing, yawning and chewing open the Eustachian tube and help the pressure equalise.",
+        "source": "NHS, \"Ear problems when flying\""
+      }
+    ],
+    "format": {
+      "aspect": "9:16",
+      "seconds": 45
+    },
+    "tone": "curious, warm, a little playful",
+    "channel": "Tiny Whys",
+    "cta": "Follow for part 2",
+    "reason": "An everyday sensation with a surprising mechanism, answerable in 45 s from five checkable facts; the \"landing is worse\" turn gives the chain its But."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 3003,
+    "lessons": [
+      "Lmwvsri187t7",
+      "Lmwvsri18pzv",
+      "Lmwvufwh3jg8"
+    ]
+  },
+  "warnings": []
+}

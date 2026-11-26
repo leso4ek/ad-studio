@@ -1,0 +1,95 @@
+{
+  "slug": "night-shift-ep02",
+  "title": "Night Shift · Ep 2",
+  "created": "2026-11-26T08:25:51.184Z",
+  "updated": "2026-11-26T08:25:51.184Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "drama-episode",
+  "parent": "night-shift",
+  "episode": 2,
+  "userBrief": {
+    "seconds": 32
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "idle"
+    },
+    "brief": {
+      "status": "idle"
+    },
+    "premises": {
+      "status": "idle"
+    },
+    "hooks": {
+      "status": "idle"
+    },
+    "story": {
+      "status": "idle"
+    },
+    "brandmap": {
+      "status": "idle"
+    },
+    "style": {
+      "status": "idle"
+    },
+    "direction": {
+      "status": "idle"
+    },
+    "bible": {
+      "status": "idle"
+    },
+    "world": {
+      "status": "idle"
+    },
+    "episodes": {
+      "status": "idle"
+    },
+    "frames": {
+      "status": "idle"
+    },
+    "voice": {
+      "status": "idle"
+    },
+    "animatic": {
+      "status": "idle"
+    },
+    "final": {
+      "status": "idle"
+    },
+    "scorecard": {
+      "status": "idle"
+    },
+    "audience": {
+      "status": "idle"
+    }
+  }
+}

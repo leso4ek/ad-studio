@@ -1,0 +1,38 @@
+[
+  {
+    "id": "l01",
+    "text": "Room nine. Mara Okafor. Admitted tonight.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l02",
+    "text": "Dev. Did you admit someone to nine?",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l03",
+    "text": "Nobody goes in nine.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l04",
+    "text": "It has my name on it.",
+    "voice": "af_bella",
+    "speed": 0.95
+  },
+  {
+    "id": "l05",
+    "text": "Room nine has been empty for years.",
+    "voice": "am_adam",
+    "speed": 0.95
+  },
+  {
+    "id": "l06",
+    "text": "Then who just pressed the call button?",
+    "voice": "af_bella",
+    "speed": 0.95
+  }
+]

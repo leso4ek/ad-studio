@@ -1,0 +1,135 @@
+{
+  "slug": "night-shift",
+  "title": "Night Shift",
+  "created": "2026-11-26T08:25:47.127Z",
+  "updated": "2026-11-26T08:25:51.193Z",
+  "mode": "autopilot",
+  "autoGates": true,
+  "decider": "inbox",
+  "format": "drama-series",
+  "userBrief": {
+    "idea": "a night nurse finds her own name on a chart for an empty room",
+    "episodes": 3,
+    "seconds": 32,
+    "genre": "mystery, quiet and tense",
+    "style": "ad-manga-panels"
+  },
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "idle"
+    },
+    "clip-find": {
+      "status": "idle"
+    },
+    "clip-pick": {
+      "status": "idle"
+    },
+    "clip-render": {
+      "status": "idle"
+    },
+    "edit-plan": {
+      "status": "idle"
+    },
+    "edit-render": {
+      "status": "idle"
+    },
+    "analysis": {
+      "status": "idle"
+    },
+    "series": {
+      "status": "done",
+      "started": "2026-11-26T08:25:47.127Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:25:49.139Z",
+      "ms": 2012,
+      "summary": "",
+      "warnings": [],
+      "result": {}
+    },
+    "brief": {
+      "status": "skipped"
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "skipped"
+    },
+    "story": {
+      "status": "skipped"
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "done",
+      "started": "2026-11-26T08:25:49.160Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:25:51.175Z",
+      "ms": 2015,
+      "summary": "ad-manga-panels",
+      "warnings": [],
+      "result": {}
+    },
+    "direction": {
+      "status": "skipped"
+    },
+    "bible": {
+      "status": "skipped"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "done",
+      "started": "2026-11-26T08:25:51.181Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "../night-shift-ep01",
+        "../night-shift-ep02",
+        "../night-shift-ep03"
+      ],
+      "finished": "2026-11-26T08:25:51.185Z",
+      "ms": 4,
+      "summary": "3 episode(s): night-shift-ep01, night-shift-ep02, night-shift-ep03",
+      "warnings": [],
+      "result": {
+        "episodes": [
+          "night-shift-ep01",
+          "night-shift-ep02",
+          "night-shift-ep03"
+        ]
+      }
+    },
+    "frames": {
+      "status": "skipped"
+    },
+    "voice": {
+      "status": "skipped"
+    },
+    "animatic": {
+      "status": "skipped"
+    },
+    "final": {
+      "status": "skipped"
+    },
+    "scorecard": {
+      "status": "skipped"
+    },
+    "audience": {
+      "status": "skipped"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "stage": "hooks",
+  "at": "2026-11-26T08:22:52.315Z",
+  "output": {
+    "hooks": [
+      {
+        "id": "A",
+        "type": "question",
+        "onScreen": "Why do ears pop?",
+        "visual": "A nervous flyer at a plane window, hand to her ear as the clouds drop away.",
+        "vo": "Why do your ears pop on a plane?"
+      },
+      {
+        "id": "B",
+        "type": "surprising fact",
+        "onScreen": "Your ear has a tube",
+        "visual": "Close on her ear, a dotted line running down to her throat.",
+        "vo": "Why do your ears pop on a plane?"
+      },
+      {
+        "id": "C",
+        "type": "\"you never noticed\"",
+        "onScreen": "Landing hurts more",
+        "visual": "She winces as the plane descends through clouds.",
+        "vo": "Why do your ears pop on a plane?"
+      }
+    ],
+    "lead": "A",
+    "reason": "A asks the exact question the viewer has felt; B and C test a surprising fact and the landing paradox."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 2003,
+    "lessons": [
+      "Lmwvsri18maj",
+      "Lmwvsri18gbt",
+      "Lmwvufwh2ztj",
+      "Lmwvufwh3ksy"
+    ]
+  },
+  "warnings": []
+}
