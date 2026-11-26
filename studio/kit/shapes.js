@@ -166,6 +166,13 @@ export function prop(kind, color) {
     case 'clock': o.push({ s: 'ellipse', x: 0, y: -.5, rx: .48, ry: .48, m: 'propA' }, { s: 'ellipse', x: 0, y: -.5, rx: .4, ry: .4, m: 'white' }, { s: 'stroke', pts: [[0, -.5], [0, -.78]], w: .05, m: 'ink' }, { s: 'stroke', pts: [[0, -.5], [.18, -.42]], w: .05, m: 'ink' }); break;
     case 'alarm': o.push({ s: 'ellipse', x: -.3, y: -.86, rx: .16, ry: .12, m: 'propB' }, { s: 'ellipse', x: .3, y: -.86, rx: .16, ry: .12, m: 'propB' }, ...prop('clock'), { s: 'cap', x1: -.3, y1: -.08, x2: -.38, y2: 0, r: .04, m: 'propB' }, { s: 'cap', x1: .3, y1: -.08, x2: .38, y2: 0, r: .04, m: 'propB' }); break;
     case 'phone': o.push({ s: 'rrect', x: 0, y: -.5, w: .5, h: 1, r: .08, m: 'ink' }, { s: 'rrect', x: 0, y: -.5, w: .42, h: .86, r: .05, m: 'screen' }); break;
+    // drama evidence props (round 14)
+    case 'usb': o.push({ s: 'rrect', x: 0, y: -.32, w: .34, h: .64, r: .06, m: 'propA' }, { s: 'rrect', x: 0, y: -.78, w: .22, h: .28, r: .02, m: 'metal' }, { s: 'rrect', x: -.05, y: -.8, w: .05, h: .07, r: 0, m: 'ink' }, { s: 'rrect', x: .05, y: -.8, w: .05, h: .07, r: 0, m: 'ink' }, { s: 'ellipse', x: 0, y: -.15, rx: .05, ry: .05, m: 'white' }); break;
+    case 'cuffs': for (const sx of [-.28, .28]) o.push({ s: 'stroke', pts: Array.from({ length: 17 }, (_, i) => [sx + Math.cos(i / 16 * 6.283) * .24, -.4 + Math.sin(i / 16 * 6.283) * .24]), w: .07, m: 'metal' }); o.push({ s: 'stroke', pts: [[-.06, -.4], [0, -.46], [.06, -.4]], w: .05, m: 'metal' }); break;
+    case 'flute': o.push({ s: 'poly', m: 'glass', pts: [[-.16, -1], [.16, -1], [.1, -.55], [-.1, -.55]] }, { s: 'poly', m: 'propB', pts: [[-.13, -.86], [.13, -.86], [.1, -.58], [-.1, -.58]] }, { s: 'rrect', x: 0, y: -.3, w: .04, h: .5, r: 0, m: 'glass' }, { s: 'ellipse', x: 0, y: -.03, rx: .17, ry: .04, m: 'glass' }); break;
+    case 'document': o.push({ s: 'rrect', x: 0, y: -.5, w: .76, h: 1, r: .02, m: 'white' }); for (let i = 0; i < 6; i++) o.push({ s: 'stroke', pts: [[-.28, -.84 + i * .12], [.28 - (i % 3) * .1, -.84 + i * .12]], w: .03, m: 'ink' }); o.push({ s: 'stroke', pts: [[-.25, -.14], [-.1, -.2], [.05, -.12], [.22, -.2]], w: .035, m: 'propA' }); break;
+    case 'ring': o.push({ s: 'stroke', pts: Array.from({ length: 17 }, (_, i) => [Math.cos(i / 16 * 6.283) * .3, -.32 + Math.sin(i / 16 * 6.283) * .3]), w: .08, m: 'metal' }, { s: 'poly', m: 'white', pts: [[-.1, -.62], [.1, -.62], [.14, -.7], [0, -.8], [-.14, -.7]] }); break;
+    case 'bars': for (let i = -3; i <= 3; i++) o.push({ s: 'rrect', x: i * .3, y: -1, w: .07, h: 2, r: .03, m: 'metal' }); o.push({ s: 'rrect', x: 0, y: -1.9, w: 2.1, h: .08, r: .02, m: 'metal' }, { s: 'rrect', x: 0, y: -.15, w: 2.1, h: .08, r: .02, m: 'metal' }); break;
     case 'plant': o.push({ s: 'poly', m: 'propB', pts: [[-.22, 0], [.22, 0], [.28, -.35], [-.28, -.35]] }); for (const [a, l] of [[-.6, .55], [-.2, .7], [.25, .65], [.65, .5]]) o.push({ s: 'ellipse', x: Math.sin(a) * l * .55, y: -.35 - Math.cos(a) * l * .55, rx: .1, ry: .26, rot: a, m: 'plant' }); break;
     case 'fern': case 'fern-droopy': {
       const droop = kind === 'fern-droopy';
@@ -244,6 +251,15 @@ export function place(kind, W, H, seed = 1) {
     case 'office':
       wall(); for (let i = 0; i < 3; i++) win(W * (.2 + i * .3), H * .3, W * .22, H * .22, 'metal');
       floor(); break;
+    case 'cell':   // a prison cell: block wall, a high barred window, a bunk
+      wall(); for (let r = 0; r < 9; r++) for (let c = -2; c < 8; c++) far.push({ s: 'rrect', x: c * W * .2 + (r % 2) * W * .1, y: fl - H * .04 - r * H * .075, w: W * .19, h: H * .07, r: H * .004, m: 'wall2' });
+      win(W * .5, H * .18, W * .3, H * .1, 'metal'); for (let i = 0; i < 5; i++) far.push({ s: 'rrect', x: W * (.38 + i * .06), y: H * .18, w: H * .006, h: H * .1, r: 0, m: 'metal' });
+      floor(); mid.push({ s: 'rrect', x: W * .82, y: fl - H * .06, w: W * .5, h: H * .05, r: H * .008, m: 'metal' }, { s: 'rrect', x: W * .82, y: fl - H * .09, w: W * .46, h: H * .03, r: H * .01, m: 'white' });
+      break;
+    case 'boardroom':   // glass wall over the city, a long table
+      wall(); win(W * .5, H * .3, W * 1.1, H * .36, 'metal');
+      floor(); mid.push({ s: 'rrect', x: W * .5, y: fl + H * .02, w: W * 1.2, h: H * .05, r: H * .01, m: 'wood' }, { s: 'rrect', x: W * .5, y: fl + H * .06, w: W * 1.1, h: H * .03, r: 0, m: 'floor2' });
+      break;
     case 'bathroom':
       wall(); for (let r = 0; r < 8; r++) for (let c = -2; c < 10; c++) far.push({ s: 'rrect', x: c * W * .14 + (r % 2) * W * .07, y: fl - H * .03 - r * H * .045, w: W * .13, h: H * .04, r: H * .004, m: 'wall2' });
       far.push({ s: 'rrect', x: W * .5, y: H * .24, w: W * .4, h: H * .2, r: H * .02, m: 'glass' });

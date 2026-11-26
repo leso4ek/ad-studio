@@ -72,6 +72,7 @@ What the most-viewed TikToks of the last 12 months do, measured by watching them
 - **Pace:** about 2 cuts per 10 s; when cuts are slow, dialogue carries it at 3.3–5.4 words/s.
 - **Across episodes:** alternate two storylines and let each ending name the other one.
 - **Length:** hits run long (median 131 s). Our 30–50 s episodes keep only the strongest beat per scene: one location, one turn, one piece of evidence.
+- **Camera (30 fps study of 9 outliers, `research/viral/camera/`):** hold still about 60 % of the time; push in only on the turn, about 4 % zoom per second, eased (`camera.rate: 4`, `ease: "in"`); handheld drift only on tense close-ups; pull out to reveal who else is there; no decorative pans; about 2 cuts per 10 s, rising toward the cliffhanger.
 
 ## Ads (story ads that don't feel like ads)
 - **Brand early:** seen or heard by 1.5 s in 6 of 8 ads (median 0.5 s). Product launches reveal the product at 11–16 %; parodies and stories reveal what is sold at 60–85 %.

@@ -134,6 +134,7 @@ export const POSES = {
   sit:        { R: [.05, 1.85], L: [.05, 1.85], hR: 'open', hL: 'open', sit: true, frontR: true, frontL: true },
   lean:       { R: [.22, 2.6], L: [.22, 2.6], hR: 'open', hL: 'open', lean: .07, bendOut: .05 },
   walk:       { R: [.22, 2.6], L: [.22, 2.6], hR: 'open', hL: 'open', walk: true, bendOut: .05 },
+  cuffed:     { R: [-.38, 1.85], L: [-.38, 1.85], hR: 'cuffed', hL: 'cuffed', frontR: true, frontL: true, bendOut: 0, look: [0, .5] },
   recoil:     { R: [.45, .35], L: [.45, .35], hR: 'open', hL: 'open', frontR: true, frontL: true, lean: -.08 },
   // the v1 pose names, mapped
   neutral: 'idle', happy: 'idle', sad: 'idle', tired: 'idle', surprised: 'recoil', wave: 'talk', think: 'hand-to-mouth', cheer: 'recoil', hold: 'reading-phone', annoyed: 'arms-crossed',
@@ -270,6 +271,7 @@ function handPrims(at, ang, kind, side, k, acc, spec) {
   const u = k * .62 / 1, ps = [], [x, y] = at, c = Math.cos(ang), s = Math.sin(ang);
   const T = (a, b) => [x + a * c - b * s, y + a * s + b * c];                        // a along the forearm, b across
   const L = u * .11;
+  const cuffed = kind === 'cuffed'; if (cuffed) kind = 'fist';
   if (kind === 'fist') {
     ps.push({ s: 'poly', m: 'skin', pts: spline([T(-L * .2, -L * .9), T(L * 1.6, -L * .95), T(L * 1.9, 0), T(L * 1.6, L * .95), T(-L * .2, L * .9)], true, 3) });
     ps.push({ s: 'stroke', m: 'skinLine', w: L * .25, flat: true, pts: [T(L * 1.2, -L * .6), T(L * 1.25, L * .6)] });
@@ -282,6 +284,7 @@ function handPrims(at, ang, kind, side, k, acc, spec) {
     ps.push({ s: 'poly', m: 'skin', pts: ribbon([T(L * .6, side * L * .7), T(L * 1.7, side * L * 1.45)], L * .5, L * .38) });
     for (const b of [-.35, .05, .45]) ps.push({ s: 'stroke', m: 'skinLine', w: L * .14, flat: true, pts: [T(L * 1.9, b * L), T(L * 2.85, b * L * 1.1)] });
   }
+  if (cuffed) ps.push({ s: 'stroke', m: 'metal', w: L * .3, pts: Array.from({ length: 13 }, (_, i) => T(-L * .35 + Math.cos(i / 12 * 2 * P) * L * .22, Math.sin(i / 12 * 2 * P) * L * 1.1)) });   // a steel cuff on the wrist
   if (kind === 'phone' || kind === 'phone-flat' || (acc.has('phone') && kind === 'phone')) {
     const pw = L * 2.2, ph = L * 4.2;
     ps.push({ s: 'rrect', m: 'ink', x: x + c * L * 1.2, y: y + s * L * 1.2 - (kind === 'phone' ? ph * .35 : 0), w: pw, h: ph, r: L * .4, rot: kind === 'phone' ? 0 : ang - P / 2 });
@@ -368,6 +371,13 @@ function headPrims(spec, E, opts, g) {
   // cel shade on the side away from the light (and under the hairline)
   const sd = turn > .3 ? -D : light < 0 ? 1 : -1;
   ps.push({ s: 'poly', m: 'skinShade', flat: true, pts: spline([H(sd * .36, -.15), H(sd * .37, .05), H(sd * .33, .28), H(sd * .2 + fc * .3, .44), H(sd * .27 + fc * .2, .28), H(sd * .31, .05), H(sd * .31, -.13)], true, 3) });
+  // facial hair under the features (the mouth and nose draw over it)
+  const det = new Set(spec.details || []);
+  if (det.has('stubble') || det.has('beard')) {
+    // the jaw part of the outline itself, closed by a curve around the mouth: it can never stick out of the face
+    const jawPts = outline.filter(([x, y]) => y > hy + .12 * hh), inner = [H(fc * 1.25 + .2, .3), H(fc * 1.25, .4), H(fc * 1.25 - .2, .3)];
+    if (jawPts.length > 3) ps.push({ s: 'poly', m: det.has('beard') ? 'hair' : 'stubble', flat: true, pts: [...jawPts.sort((a, b) => a[0] - b[0]), ...inner] });
+  }
   // ---- eyes ----
   const shape = spec.eyes?.shape || 'almond', ey = .02, ew = shape === 'round' ? .12 : .135, ehh = shape === 'round' ? .095 : .075;
   const blink = opts.blink;
@@ -423,12 +433,6 @@ function headPrims(spec, E, opts, g) {
   // ---- mouth ----
   ps.push(...mouthPrims(spec, E, opts, { H, fc, turn, D, hh }));
   // ---- details ----
-  const det = new Set(spec.details || []);
-  if (det.has('stubble') || det.has('beard')) {
-    // the jaw part of the outline itself, closed by a curve around the mouth: it can never stick out of the face
-    const jawPts = outline.filter(([x, y]) => y > hy + .12 * hh), inner = [H(fc * 1.25 + .2, .3), H(fc * 1.25, .4), H(fc * 1.25 - .2, .3)];
-    if (jawPts.length > 3) ps.push({ s: 'poly', m: det.has('beard') ? 'hair' : 'stubble', flat: true, pts: [...jawPts.sort((a, b) => a[0] - b[0]), ...(det.has('beard') ? [] : inner)] });
-  }
   if (det.has('moustache') || det.has('beard')) ps.push({ s: 'poly', m: 'hair', pts: ribbon(spline([[fc * 1.2 - .12, .3], [fc * 1.2, .265], [fc * 1.2 + .12, .3]], false, 3).map(([x, y]) => H(x, y)), .04 * hh, .02 * hh) });
   if (det.has('freckles')) for (const [a, b] of [[-.2, .12], [-.15, .16], [-.24, .17], [.2, .12], [.15, .16], [.24, .17]]) if (turn < .8 || a * D > 0) ps.push({ s: 'ellipse', m: 'skinLine', flat: true, x: H(a * (1 - turn * .3) + fc, 0)[0], y: H(0, b)[1], rx: .008 * hh, ry: .008 * hh });
   if (det.has('mole')) ps.push({ s: 'ellipse', m: 'ink', flat: true, x: H(fc + .14, 0)[0], y: H(0, .3)[1], rx: .01 * hh, ry: .01 * hh });

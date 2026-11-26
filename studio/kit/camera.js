@@ -19,7 +19,7 @@ export const MOVES = ['static', 'push', 'pull', 'pan-l', 'pan-r', 'tilt-up', 'ti
 const FRAME = {
   person: { EWS: [5, .5], WS: [1.55, .5], MS: [1.15, .64], MCU: [.85, .72], CU: [.62, .78], ECU: [.4, .82] },  // kit people have big heads
   // rig v2 people (round 14): smaller heads, so close sizes frame higher and tighter on the body
-  'person-drama': { EWS: [5, .5], WS: [1.3, .5], MS: [.62, .73], MCU: [.42, .8], CU: [.27, .88], ECU: [.15, .9] },
+  'person-drama': { EWS: [5, .5], WS: [1.3, .5], MS: [.62, .75], MCU: [.44, .83], CU: [.31, .9], ECU: [.18, .925] },
   'person-toon':  { EWS: [5, .5], WS: [1.35, .5], MS: [.78, .68], MCU: [.56, .76], CU: [.4, .84], ECU: [.24, .87] },
   'person-chibi': { EWS: [5, .5], WS: [1.45, .5], MS: [1.0, .64], MCU: [.78, .72], CU: [.56, .8], ECU: [.36, .84] },
   thing:  { EWS: [6, .5], WS: [3.2, .5], MS: [2.1, .5], MCU: [1.6, .5], CU: [1.25, .48], ECU: [.85, .42] },
@@ -40,7 +40,7 @@ export function subjectBox(shot, subject, { stage, L = l => l, personOf }) {
 /** The framing (zoom + offsets) that puts `size` of the subject at screen point `at`. */
 export function frame(box, size, { W, H, at }) {
   const [mult, look] = FRAME[box.kind][size] || FRAME[box.kind].MS;
-  const zoom = clamp(H / (box.h * mult), 1, 7);  // never zoom out past the drawn set
+  const zoom = clamp(H / (box.h * mult), 1, box.kind.startsWith('person-') ? 10 : 7);  // never zoom out past the drawn set
   const fx = box.x, fy = box.yBase - box.h * look;
   const sx = (at?.[0] ?? .5) * W, sy = (at?.[1] ?? (box.kind.startsWith('person') ? .42 : .48)) * H;
   // the style transform maps world P to cx + (P.x - cx + px*W) * zoom: with cx = sx, px = (sx - fx)/W, P = F lands on sx

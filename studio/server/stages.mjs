@@ -71,7 +71,8 @@ export function seriesLocks(ctx, o) {
 export function checkDrama(b) {
   const errs = [], end = b.endcard?.t0 ?? b.dur, lines = [...(b.vo?.lines || [])].sort((x, y) => x.at - y.at);
   if (b.dur < 30 || b.dur > 52) errs.push(`a drama episode runs 30-50 s (+ the tag); this one is ${b.dur} s`);
-  if (b.endcard && (b.dur - end < 2 || b.dur - end > 3)) errs.push('the "Part N" tag runs 2-3 s');
+  const tagMax = b.endcard?.credit ? 3 + b.endcard.credit.length / 15 : 3;   // a credited episode holds its tag long enough to read the credit
+  if (b.endcard && (b.dur - end < 2 || b.dur - end > tagMax + .01)) errs.push(`the "Part N" tag runs 2-${tagMax.toFixed(1)} s`);
   if (b.endcard?.line || b.endcard?.cta) errs.push('the tag shows only "Part N": no line, no call to action after the cliffhanger');
   const last = lines.at(-1);
   if (last) {
@@ -275,7 +276,7 @@ export function checkBible(b) {
   for (let i = 0; i < shots.length - 1; i++) if (Math.abs(shots[i].t1 - shots[i + 1].t0) > .01) errs.push(`gap or overlap between ${shots[i].id} and ${shots[i + 1].id}`);
   const last = shots[shots.length - 1];
   if (last && b.endcard && Math.abs(last.t1 - b.endcard.t0) > .01) errs.push(`the last shot must end at endcard.t0 (${b.endcard.t0})`);
-  if (b.endcard && (b.dur - b.endcard.t0 < 2 || b.dur - b.endcard.t0 > 4.5)) errs.push('the end card should run 2-4.5 s');
+  if (b.endcard && (b.dur - b.endcard.t0 < 2 || b.dur - b.endcard.t0 > (b.endcard.credit ? 6.5 : 4.5))) errs.push('the end card should run 2-4.5 s (6.5 with a credit)');
   // the end card's texts enter late (line at +0.45 s, cta at +0.75 s: kit/page.js endTexts) and must still be readable (chars/15 + 1.5 s)
   if (b.endcard) for (const [k, at] of [['line', .45], ['cta', .75]]) {
     const t = b.endcard[k]; if (!t) continue;
@@ -596,7 +597,7 @@ Check against the bible and the style: is the hook readable at a glance, is the 
     }
     if (!durs) throw new Error('no voice engine worked');
     ctx.engine('voice', used);
-    const check = await checkSpeech(ctx.cfg, lines, dir, { chain: ctx.cfg.chains.asr, signal: ctx.signal, slug: ctx.slug, stage: 'voice' });
+    const check = await checkSpeech(ctx.cfg, lines, dir, { chain: ctx.cfg.chains.asr, signal: ctx.signal, slug: ctx.slug, stage: 'voice', spellings: b.vo?.spellings });
     const words = readJSON(path.join(dir, 'words.json'), null);
     const cues = buildCues(lines, durs, words);
     writeJSON(path.join(ctx.adDir, 'voice', 'cues.json'), cues);

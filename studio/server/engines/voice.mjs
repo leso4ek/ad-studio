@@ -94,7 +94,7 @@ export function castVoices(bible) {
   });
 }
 
-export async function checkSpeech(cfg, lines, outDir, { chain, signal, slug, stage }) {
+export async function checkSpeech(cfg, lines, outDir, { chain, signal, slug, stage, spellings }) {
   for (const name of chain) {
     if (name === 'voicestudio') {
       const a = await engines.voicestudio.available(cfg); if (!a.ok) { emit('engine', { slug, stage, engine: 'asr', text: `voicestudio: ${a.why} → next` }); continue; }
@@ -107,9 +107,9 @@ export async function checkSpeech(cfg, lines, outDir, { chain, signal, slug, sta
       if (/No module named|ModuleNotFoundError/.test(r.err)) { emit('engine', { slug, stage, engine: 'asr', text: 'whisper not installed → no speech check' }); continue; }
       const report = (r.out + r.err).trim().split('\n').slice(-20).join('\n'), diffs = whisperDiffs(report);
       // a DIFF that only differs in how numbers are written ("nine" vs "9") is not a misread
-      const real = diffs.filter(d => !sameSpoken(d.want, d.heard));
+      const real = diffs.filter(d => !sameSpoken(d.want, d.heard, spellings));
       const pass = r.code === 0 || (diffs.length > 0 && real.length === 0);
-      return { engine: 'whisper', pass, report: real.length < diffs.length ? `${report}\n(${diffs.length - real.length} diff(s) only in number spelling: counted as OK)` : report, words: readJSON(path.join(outDir, 'words.json'), null) };
+      return { engine: 'whisper', pass, report: real.length < diffs.length ? `${report}\n(${diffs.length - real.length} diff(s) only in number, US/UK or name spelling: counted as OK)` : report, words: readJSON(path.join(outDir, 'words.json'), null) };
     }
   }
   return { engine: 'none', pass: null, report: 'no speech-to-text engine available' };
@@ -118,7 +118,16 @@ const NUM = 'zero one two three four five six seven eight nine ten eleven twelve
 /** Parses the library checker's "DIFF id | wanted → heard" lines. Pure. */
 export function whisperDiffs(report) { return String(report).split('\n').map(l => l.match(/^DIFF\s+(\S+)\s*\|\s*(.*?)\s*→\s*(.*)$/)).filter(Boolean).map(m => ({ id: m[1], want: m[2], heard: m[3] })); }
 /** Same words once case, punctuation and number spelling (words ↔ digits, 0-20) are ignored. Pure. */
-export function sameSpoken(a, b) { const n = s => norm(s).split(' ').map(w => (NUM.indexOf(w) >= 0 ? String(NUM.indexOf(w)) : w)).join(' '); return n(a) === n(b); }
+const TENS = { thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
+/** Same words once case, punctuation, number spelling ("four point two" = "4.2", "eleven million dollars" = "$11 million"),
+ * US/UK spelling (-ise/-ize, -our/-or) and the bible's name spellings ({Edie: ['Eddie', 'Eddy']}) are ignored. Pure. */
+export function sameSpoken(a, b, spellings = {}) {
+  const alias = {}; for (const [k, vs] of Object.entries(spellings || {})) for (const v of [].concat(vs)) alias[norm(v)] = norm(k);
+  const n = s => { let t = ' ' + norm(s) + ' '; for (const [v, k] of Object.entries(alias)) t = t.split(' ' + v + ' ').join(' ' + k + ' ');
+    return t.trim().split(' ').map(w => NUM.indexOf(w) >= 0 ? String(NUM.indexOf(w)) : TENS[w] != null ? String(TENS[w]) : w).filter(w => !['point', 'dollars', 'dollar'].includes(w))
+      .map(w => w.replace(/is(e|ed|ing|ation)$/, 'iz$1').replace(/our$/, 'or')).join(' '); };
+  return n(a) === n(b);
+}
 const norm = s => String(s).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
 function same(a, b) { const A = norm(a).split(' '), B = norm(b).split(' '); let hit = 0; for (const w of B) if (A.includes(w)) hit++; return hit / Math.max(1, B.length) >= .85; }
 

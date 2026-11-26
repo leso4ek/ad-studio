@@ -15,10 +15,10 @@ export const VIDEO_FORMATS = ['explainer', 'drama-episode'];
 export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedance', 'genjutsu'];
 export const RECREATE_MODES = ['remake', 'transfer', 'mixed'];
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
-export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'];
+export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio', 'cell', 'boardroom'];
 export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed',
   // rig v2 (round 14) poses
-  'idle', 'talk', 'arms-crossed', 'hands-on-hips', 'hand-to-mouth', 'phone-to-ear', 'reading-phone', 'sit', 'lean', 'walk', 'recoil'];
+  'idle', 'talk', 'cuffed', 'arms-crossed', 'hands-on-hips', 'hand-to-mouth', 'phone-to-ear', 'reading-phone', 'sit', 'lean', 'walk', 'recoil'];
 export const EXPRESSIONS = ['neutral', 'smile', 'warm', 'smirk', 'laugh', 'sad', 'crying', 'angry', 'furious', 'afraid', 'shocked', 'disgusted', 'contempt', 'suspicious', 'determined', 'heartbroken'];
 const HAIRSTYLES = ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail', 'buzz', 'crew', 'side-part', 'slick-back', 'curly-top', 'afro', 'pixie', 'lob', 'long-straight', 'long-wavy', 'braids', 'headscarf'];
 // the v2 character fields (studio/kit/rig.js): optional, so v1 casts stay valid
@@ -30,7 +30,7 @@ const RIG_FIELDS = {
   outfit: { type: 'object', properties: { top: { type: 'string', enum: ['tee', 'shirt', 'blouse', 'blazer', 'suit', 'hoodie', 'knit', 'scrubs', 'dress', 'coat'] }, bottom: { type: 'string', enum: ['trousers', 'jeans', 'skirt'] }, accessories: { type: 'array', items: { type: 'string', enum: ['badge', 'watch', 'phone', 'bag', 'necklace', 'tie'] } } } },
   top2: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$', description: 'jacket / coat colour over the top' }, accent: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$', description: 'tie, badge strap, scarf, bag' }, legwear: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' },
 };
-export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree', 'watering-can', 'capful'];
+export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree', 'watering-can', 'capful', 'usb', 'cuffs', 'flute', 'document', 'ring', 'bars'];
 export const ANIMS = ['bob', 'float', 'breathe', 'pop', 'pulse', 'slide-l', 'slide-r', 'slide-up', 'drop', 'exit-l', 'exit-r', 'shake', 'wobble', 'spin', 'wave', 'talk', 'reveal', 'fade-in', 'fade-out'];
 const hex = { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' };
 
@@ -161,7 +161,7 @@ export const bible = S({
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
   palette: { type: 'object' },
   shots: arr(shot, 3, 18),
-  vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id') }, ['id', 'text', 'at']), 1, 14) }, ['lines']),
+  vo: S({ voice: str('Kokoro voice id, e.g. af_heart, am_michael, bf_emma'), speed: num(), lines: arr(S({ id: str(), text: str(), at: num('start second'), speaker: str('narrator or a cast id'), asr: str('how Whisper spells this line when the spoken words are right (e.g. 602 for six oh two)') }, ['id', 'text', 'at']), 1, 14), spellings: { type: 'object', additionalProperties: arr(str()), description: 'names the speech check accepts in other spellings, e.g. {"Edie": ["Eddie", "Eddy"]}' } }, ['lines']),
   captions: { type: 'boolean' },
   format: { type: 'string', enum: FORMATS },
   captionMode: { type: 'string', enum: ['block', 'words'], description: 'words: 1-3 words at a time, centre, one yellow emphasis word' },
