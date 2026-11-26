@@ -16,7 +16,20 @@ export const ROUTES = ['kit', 'three', 'blender', 'blender→genjutsu', 'seedanc
 export const RECREATE_MODES = ['remake', 'transfer', 'mixed'];
 export const PRODUCT_KINDS = ['bottle', 'jar', 'box', 'tube', 'can', 'pouch', 'cup', 'device', 'brush'];
 export const PLACE_KINDS = ['kitchen', 'bedroom', 'office', 'bathroom', 'cafe', 'street', 'park', 'sky', 'studio'];
-export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed'];
+export const POSES = ['neutral', 'happy', 'sad', 'tired', 'surprised', 'point', 'wave', 'think', 'cheer', 'hold', 'annoyed',
+  // rig v2 (round 14) poses
+  'idle', 'talk', 'arms-crossed', 'hands-on-hips', 'hand-to-mouth', 'phone-to-ear', 'reading-phone', 'sit', 'lean', 'walk', 'recoil'];
+export const EXPRESSIONS = ['neutral', 'smile', 'warm', 'smirk', 'laugh', 'sad', 'crying', 'angry', 'furious', 'afraid', 'shocked', 'disgusted', 'contempt', 'suspicious', 'determined', 'heartbroken'];
+const HAIRSTYLES = ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail', 'buzz', 'crew', 'side-part', 'slick-back', 'curly-top', 'afro', 'pixie', 'lob', 'long-straight', 'long-wavy', 'braids', 'headscarf'];
+// the v2 character fields (studio/kit/rig.js): optional, so v1 casts stay valid
+const RIG_FIELDS = {
+  rig: { type: 'string', enum: ['v1', 'v2'] }, proportions: { type: 'string', enum: ['drama', 'toon', 'chibi'] }, height: { type: 'number', minimum: .7, maximum: 1.12 }, name: { type: 'string' },
+  jaw: { type: 'string', enum: ['oval', 'square', 'heart', 'round'] }, eyes: { type: 'object', properties: { shape: { type: 'string', enum: ['almond', 'round'] }, color: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' } } },
+  lashes: { type: 'boolean' }, brows: { type: 'string', enum: ['thin', 'medium', 'thick'] }, nose: { type: 'string', enum: ['small', 'straight', 'broad', 'aquiline'] }, lips: { type: 'string', enum: ['thin', 'medium', 'full'] },
+  details: { type: 'array', items: { type: 'string', enum: ['glasses', 'stubble', 'beard', 'moustache', 'freckles', 'mole', 'earrings', 'age-lines', 'scar'] } },
+  outfit: { type: 'object', properties: { top: { type: 'string', enum: ['tee', 'shirt', 'blouse', 'blazer', 'suit', 'hoodie', 'knit', 'scrubs', 'dress', 'coat'] }, bottom: { type: 'string', enum: ['trousers', 'jeans', 'skirt'] }, accessories: { type: 'array', items: { type: 'string', enum: ['badge', 'watch', 'phone', 'bag', 'necklace', 'tie'] } } } },
+  top2: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$', description: 'jacket / coat colour over the top' }, accent: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$', description: 'tie, badge strap, scarf, bag' }, legwear: { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' },
+};
 export const PROPS = ['mug', 'steam', 'clock', 'alarm', 'phone', 'plant', 'fern', 'fern-droopy', 'lamp', 'bed', 'desk', 'laptop', 'book', 'bag', 'sun', 'moon', 'cloud', 'star', 'sparkle', 'heart', 'arrow', 'drop', 'leaf', 'zzz', 'chair', 'sofa', 'tree', 'watering-can', 'capful'];
 export const ANIMS = ['bob', 'float', 'breathe', 'pop', 'pulse', 'slide-l', 'slide-r', 'slide-up', 'drop', 'exit-l', 'exit-r', 'shake', 'wobble', 'spin', 'wave', 'talk', 'reveal', 'fade-in', 'fade-out'];
 const hex = { type: 'string', pattern: '^#[0-9A-Fa-f]{6}$' };
@@ -43,8 +56,8 @@ export const topicBrief = S({
 }, ['topic', 'question', 'audience', 'angle', 'facts', 'format', 'tone', 'channel', 'cta', 'reason']);
 
 // short-drama series: one series bible, then N episode projects that share its cast, places and style
-const look = S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex,
-  build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, kind: { type: 'string', enum: ['person', 'plant'] } }, ['skin', 'hairStyle']);
+const look = S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: HAIRSTYLES }, top: hex, bottom: hex, shoe: hex,
+  build: { type: 'string', enum: ['slim', 'round', 'tall', 'average', 'broad', 'curvy', 'petite'] }, age: { type: 'string', enum: ['adult', 'kid'] }, kind: { type: 'string', enum: ['person', 'plant'] }, ...RIG_FIELDS }, ['skin', 'hairStyle']);
 export const seriesBible = S({
   title: str('the series title'), logline: str('one sentence: who wants what, against what'), genre: str(), tone: str(), hookPromise: str('what the viewer is promised if they keep watching'),
   characters: arr(S({ id: str('lowercase cast id'), name: str(), role: str('she/he/they, age, what they do'), want: str(), fear: str(), secret: str(), look, voice: str('a Kokoro voice id, e.g. af_heart, am_michael, bf_emma, bm_george') },
@@ -121,6 +134,8 @@ const layer = {
   properties: {
     type: { type: 'string', enum: ['char', 'product', 'prop', 'text'] }, id: str(), kind: { type: 'string', enum: PROPS }, x: num(), y: num(), scale: num(), z: num(),
     pose: { type: 'string', enum: POSES }, face: { type: 'string', enum: ['left', 'right', 'front'] }, flip: { type: 'boolean' },
+    expression: { type: 'string', enum: EXPRESSIONS, description: 'rig v2: the face (and the body language that goes with it)' }, expressionAt: arr(S({ t: num(), e: { type: 'string', enum: EXPRESSIONS } }), 1, 6),
+    view: { type: 'string', enum: ['front', '34', 'profile'], description: 'rig v2: front, three-quarter or profile; face left/right gives the direction' }, gaze: arr(num(), 2, 2), light: { type: 'string', enum: ['left', 'right'] },
     anim: arr({ type: 'string', pattern: `^(${ANIMS.join('|')})(:[0-9.]+)?$` }), move: arr(num(), 1, 2), moveT: arr(num(), 2, 2), t0: num(), t1: num(),
     text: str(), role: { type: 'string', enum: ['hook', 'card', 'label', 'price', 'sub', 'small', 'cta'] }, size: num(), w: num(), align: { type: 'string', enum: ['left', 'center', 'right'] },
     color: str(), bg: { type: 'boolean' }, bgColor: str(), rot: num(), l16: { type: 'object' }, pass: { type: 'boolean' }, carry: { type: 'boolean', description: 'repeat the same text layer (same id, text, x, y) in consecutive shots: one card held across the cuts' },
@@ -139,7 +154,8 @@ export const bible = S({
   slug: str(), title: str(), style: { type: 'string', enum: STYLES }, dur: { type: 'number', minimum: 8, maximum: 60 },
   stylePara: str('the locked style paragraph'),
   product: S({ name: str(), kind: { type: 'string', enum: PRODUCT_KINDS }, label: str(), colors: { type: 'object' } }, ['name', 'kind']),
-  cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: ['short', 'bob', 'long', 'bun', 'curly', 'bald', 'cap', 'ponytail'] }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str(), kind: { type: 'string', enum: ['person', 'plant'], description: 'plant: a talking potted fern (ad-voxel-3d only); top = leaves, bottom = pot' } }, ['skin', 'hairStyle']) },
+  rig: { type: 'string', enum: ['v1', 'v2'], description: 'v2 = the round-14 character rig for every human in cast (real proportions, views, 16 expressions)' },
+  cast: { type: 'object', additionalProperties: S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: HAIRSTYLES }, top: hex, bottom: hex, shoe: hex, build: { type: 'string', enum: ['slim', 'round', 'tall', 'average', 'broad', 'curvy', 'petite'] }, age: { type: 'string', enum: ['adult', 'kid'] }, role: str(), kind: { type: 'string', enum: ['person', 'plant'], description: 'plant: a talking potted fern (ad-voxel-3d only); top = leaves, bottom = pot' }, ...RIG_FIELDS }, ['skin', 'hairStyle']) },
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] }, props: arr({ type: 'object' }) }, ['kind']) },
   palette: { type: 'object' },
   shots: arr(shot, 3, 18),

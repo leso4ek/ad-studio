@@ -169,7 +169,7 @@ function paint(R, prims, m, info) {
   const { g } = R, place = info.kind === 'place', char = info.kind === 'char';
   const ph = PH[(drawing + hashStr(info.key) % 3) % 3];
   for (const [i, p] of prims.entries()) {
-    if (char && p.flat) continue;                 // faces are redrawn below in the toon way
+    if (char && p.flat && !p.v2) continue;        // v1 faces are redrawn below in the toon way (the v2 rig draws its own)
     const col = m[p.m] || m.ink;
     if (p.s === 'text') { primText(g, p, col, '"Archivo Black"', 400); continue; }
     const sz = size(p), big = place && sz > R.H * .3;
@@ -194,7 +194,7 @@ function paint(R, prims, m, info) {
     if (info.kind === 'product' && i === 0) productShine(g, p, b);
     trace(g, b); g.strokeStyle = INK; g.lineWidth = lw; g.stroke();
   }
-  if (char) face(R, prims, m, info);
+  if (char && !prims[0]?.v2) face(R, prims, m, info);
   if (info.kind === 'product') productFx(R, prims, info);
   if (place) decorate(R, m, info);
 }

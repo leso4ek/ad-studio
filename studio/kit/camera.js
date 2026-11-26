@@ -18,19 +18,23 @@ export const MOVES = ['static', 'push', 'pull', 'pan-l', 'pan-r', 'tilt-up', 'ti
 // visible frame height as a multiple of the subject's height, and where on the subject the camera looks (0 = feet/base, 1 = top)
 const FRAME = {
   person: { EWS: [5, .5], WS: [1.55, .5], MS: [1.15, .64], MCU: [.85, .72], CU: [.62, .78], ECU: [.4, .82] },  // kit people have big heads
+  // rig v2 people (round 14): smaller heads, so close sizes frame higher and tighter on the body
+  'person-drama': { EWS: [5, .5], WS: [1.3, .5], MS: [.62, .73], MCU: [.42, .8], CU: [.27, .88], ECU: [.15, .9] },
+  'person-toon':  { EWS: [5, .5], WS: [1.35, .5], MS: [.78, .68], MCU: [.56, .76], CU: [.4, .84], ECU: [.24, .87] },
+  'person-chibi': { EWS: [5, .5], WS: [1.45, .5], MS: [1.0, .64], MCU: [.78, .72], CU: [.56, .8], ECU: [.36, .84] },
   thing:  { EWS: [6, .5], WS: [3.2, .5], MS: [2.1, .5], MCU: [1.6, .5], CU: [1.25, .48], ECU: [.85, .42] },
 };
 const BASE_H = { char: .42, product: .3, prop: .12 };
 
 /** The subject's box in pixels {x (centre), yBase, h, kind} from the shot's layers, or null. */
-export function subjectBox(shot, subject, { stage, L = l => l }) {
+export function subjectBox(shot, subject, { stage, L = l => l, personOf }) {
   if (!subject) return null;
   const layers = shot.layers || [];
   const lay = layers.find(l => l.id === subject && l.type !== 'text') || (subject === 'product' && layers.find(l => l.type === 'product'))
     || layers.find(l => l.type === 'prop' && l.kind === subject) || layers.find(l => l.type === 'char' && subject === 'character');
   if (!lay) return null;
   const ly = L(lay), h = (ly.scale ?? 1) * (BASE_H[lay.type] || .12) * stage.h;
-  return { x: stage.x0 + (ly.x ?? .5) * stage.w, yBase: stage.y0 + (ly.y ?? .72) * stage.h, h, kind: lay.type === 'char' ? 'person' : 'thing' };
+  return { x: stage.x0 + (ly.x ?? .5) * stage.w, yBase: stage.y0 + (ly.y ?? .72) * stage.h, h, kind: lay.type === 'char' ? (personOf ? personOf(lay.id) : 'person') : 'thing' };
 }
 
 /** The framing (zoom + offsets) that puts `size` of the subject at screen point `at`. */
@@ -38,7 +42,7 @@ export function frame(box, size, { W, H, at }) {
   const [mult, look] = FRAME[box.kind][size] || FRAME[box.kind].MS;
   const zoom = clamp(H / (box.h * mult), 1, 7);  // never zoom out past the drawn set
   const fx = box.x, fy = box.yBase - box.h * look;
-  const sx = (at?.[0] ?? .5) * W, sy = (at?.[1] ?? (box.kind === 'person' ? .42 : .48)) * H;
+  const sx = (at?.[0] ?? .5) * W, sy = (at?.[1] ?? (box.kind.startsWith('person') ? .42 : .48)) * H;
   // the style transform maps world P to cx + (P.x - cx + px*W) * zoom: with cx = sx, px = (sx - fx)/W, P = F lands on sx
   return { zoom, cx: sx, cy: sy, px: (sx - fx) / W, py: (sy - fy) / H };
 }
@@ -51,11 +55,11 @@ export function directCamera(shot, lt, { W, H, stage, L }) {
     const px = c.pan ? lerp(c.pan[0][0], c.pan[1][0], p) : 0, py = c.pan ? lerp(c.pan[0][1], c.pan[1][1], p) : 0;
     return { zoom: z, px, py, cx: W / 2 + (c.focus?.[0] ?? 0) * W, cy: H * (c.focus?.[1] ?? .55) };
   }
-  const box = subjectBox(shot, c.subject, { stage, L }) || { x: stage.x0 + stage.w / 2, yBase: stage.y0 + stage.h * .72, h: stage.h * .42, kind: 'person' };
+  const box = subjectBox(shot, c.subject, { stage, L, personOf: arguments[2].personOf }) || { x: stage.x0 + stage.w / 2, yBase: stage.y0 + stage.h * .72, h: stage.h * .42, kind: 'person' };
   let at = c.at ? [...c.at] : null;
   // angle: a low camera puts the subject higher in frame and drops the horizon; a high camera does the opposite
   const tiltY = c.angle === 'low' ? -.07 : c.angle === 'high' ? .07 : 0;
-  if (tiltY) at = [at?.[0] ?? .5, (at?.[1] ?? (box.kind === 'person' ? .42 : .48)) + tiltY];
+  if (tiltY) at = [at?.[0] ?? .5, (at?.[1] ?? (box.kind.startsWith('person') ? .42 : .48)) + tiltY];
   const f = frame(box, c.size, { W, H, at });
   const k = c.amount ?? .5, cam = { ...f, angle: c.angle || 'eye' };
   switch (c.move || 'static') {

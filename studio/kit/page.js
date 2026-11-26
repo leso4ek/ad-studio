@@ -3,6 +3,7 @@
 // Query: ?hook=B (hook variant) &nosub=1 (no captions) &guides=1 (draw safe zones) &layout=16x9|9x16 (default: from the viewport)
 import { clamp, lerp, seg, eo, eio, back, ss } from '/core/lib.js';
 import { character, product, prop, place } from './shapes.js';
+import { rig, rigMats, visemeOf } from './rig.js';
 import { directCamera } from './camera.js';
 
 const qs = new URLSearchParams(location.search);
@@ -46,8 +47,24 @@ const L = (layer) => LANDSCAPE && layer.l16 ? { ...layer, ...layer.l16 } : layer
 
 // ---------- materials ----------
 const castColors = id => ({ ...(style.defaultCast || {}), ...(bible.cast?.[id] || {}) });
+// rig v2 (round 14): a cast entry with rig:'v2', or every human when the bible sets rig:'v2' (plants and v1 casts keep the old figure)
+const isV2 = id => { const c = bible.cast?.[id] || {}; return c.kind !== 'plant' && (c.rig === 'v2' || (bible.rig === 'v2' && c.rig !== 'v1')); };
+/** The expression at shot time lt: layer.expression is a name or [[t, name], …]; changes blend over 0.2 s. */
+function exprAt(layer, lt) {
+  const e = layer.expressionAt ? [[0, layer.expression || 'neutral'], ...layer.expressionAt.map(x => [x.t, x.e])] : layer.expression; if (!Array.isArray(e)) return { expr: e || null };
+  let cur = null, prev = null, at = 0;
+  for (const [t, n] of e) if (lt >= t) { prev = cur; cur = n; at = t; }
+  return { expr: cur || e[0]?.[1], exprFrom: prev || undefined, exprMix: prev ? Math.min(1, (lt - at) / .2) : 1 };
+}
+/** The mouth shape: the letter of the speaker's current cue at the voice's position. */
+function visemeAt(id, t) {
+  const c = cues.find(q => q.speaker === id && t >= q.t0 && t < q.t1); if (!c) return null;
+  const i = Math.floor((t - c.t0) / Math.max(.05, c.t1 - c.t0) * c.text.length); return visemeOf(c.text[Math.min(c.text.length - 1, i)]);
+}
+const viewOf = layer => { const f = layer.face; return { view: layer.view || (f === 'left' || f === 'right' ? '34' : 'front'), dir: (layer.dir ?? (f === 'left' ? -1 : 1)) * (L(layer).flip ? -1 : 1) }; };   // flip turns the figure (text on it stays readable)
 function mats(kind, ref, time) {
   const base = style.palette(time || 'day', bible.palette || {});
+  if (kind === 'char' && isV2(ref)) { const c = castColors(ref); return { ...base, ...rigMats(base, c), ...(c.mats || {}) }; }
   if (kind === 'char') { const c = castColors(ref); return { ...base, skin: c.skin || base.skin, hair: c.hair || base.hair, hairInk: c.hairInk || c.hair || base.ink, top: c.top || base.top, bottom: c.bottom || base.bottom, shoe: c.shoe || base.shoe }; }
   if (kind === 'product') { const c = bible.product?.colors || {}; return { ...base, body: c.body || base.accent, cap: c.cap || base.ink, label: c.label || base.white, labelInk: c.labelInk || base.ink, accent: c.accent || base.accent2 || base.accent }; }
   return base;
@@ -130,7 +147,11 @@ function resolveLayers(shot, lt) {
     const llt = lt - t0, a = animate(layer, llt, t1 - t0);
     const time = shot.time || bible.places?.[shot.place]?.time || 'day';
     let prims = null, xf = null, m = null;
-    if (layer.type === 'char') { prims = character(castColors(layer.id), { pose: layer.pose, face: layer.face, blink: a.blink, armSwing: a.armSwing, mouthOpen: a.mouthOpen }); xf = unitXf(layer, a, .42); m = mats('char', layer.id, time); }
+    if (layer.type === 'char' && isV2(layer.id)) {
+      prims = rig(castColors(layer.id), { pose: layer.pose, ...viewOf(layer), ...exprAt(layer, llt), gaze: layer.gaze, blink: a.blink, mouthOpen: a.mouthOpen, viseme: a.mouthOpen > .05 ? visemeAt(layer.id, R.t) : null, walk: llt, breath: R.t + H01(layer.id) * 3, light: layer.light });
+      xf = unitXf(layer, a, .42); if (xf.flip === -1) { xf.flip = 1; } m = mats('char', layer.id, time);
+    }
+    else if (layer.type === 'char') { prims = character(castColors(layer.id), { pose: layer.pose, face: layer.face, blink: a.blink, armSwing: a.armSwing, mouthOpen: a.mouthOpen }); xf = unitXf(layer, a, .42); m = mats('char', layer.id, time); }
     else if (layer.type === 'product') { prims = product(bible.product || {}); xf = unitXf(layer, a, .3); m = mats('product', null, time); }
     else if (layer.type === 'prop') { prims = prop(layer.kind, layer.color); xf = unitXf(layer, a, .12); m = { ...mats('prop', null, time), ...(layer.color ? { propA: layer.color, custom: layer.color } : {}) }; }
     out.push({ layer, a, llt, prims, xf, m, z: layer.z ?? (layer.type === 'text' ? 100 : (L(layer).y ?? .7)) });
@@ -138,7 +159,7 @@ function resolveLayers(shot, lt) {
   return out.sort((p, q) => p.z - q.z);
 }
 
-function camera(shot, lt) { return directCamera(shot, lt, { W, H, stage, L }); }
+function camera(shot, lt) { return directCamera(shot, lt, { W, H, stage, L, personOf: id => isV2(id) ? 'person-' + ((bible.cast?.[id] || {}).proportions || 'drama') : 'person' }); }
 
 // whip-pan smear and over-the-shoulder silhouette: drawn by the page over any style
 function cameraPost(cam) {
