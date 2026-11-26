@@ -1,0 +1,13 @@
+{
+  "source": "source/original.mp4",
+  "chat": "source/chat.json",
+  "mode": "stream",
+  "duration": 317,
+  "w": 540,
+  "h": 960,
+  "fps": 30,
+  "aspect": "9:16",
+  "audio": true,
+  "codec": "h264",
+  "size": 22071737
+}

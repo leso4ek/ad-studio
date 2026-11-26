@@ -75,17 +75,19 @@ const assEsc = s => String(s).replace(/[{}\\]/g, '').replace(/\n/g, '\\N');
  * Word-by-word captions as ASS on the output timeline (1080×1920): chunks of N words, the current word in the
  * highlight colour, emphasis words always highlighted, an optional title card at the top. Pure.
  */
-export function buildAss(words, keep, style = DEFAULT_STYLE, { emphasis = [], title = null, W = 1080, H = 1920 } = {}) {
+export function buildAss(words, keep, style = DEFAULT_STYLE, { emphasis = [], title = null, captions = true, W = 1080, H = 1920 } = {}) {
   const c = { ...DEFAULT_STYLE.caption, ...(style.caption || {}) }, tt = { ...DEFAULT_STYLE.title, ...(style.title || {}) };
   const size = Math.round(H * c.sizePct / 100), y = Math.round(H * c.yPct / 100);
   const head = `[Script Info]\nScriptType: v4.00+\nPlayResX: ${W}\nPlayResY: ${H}\nWrapStyle: 2\nScaledBorderAndShadow: yes\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n` +
     `Style: Cap,${c.font},${size},${assColor(c.color)},${assColor(c.highlight)},${assColor(c.outline)},&H80000000,0,0,0,0,100,100,0,0,1,${c.outlinePx},2,5,60,60,0,1\n` +
     `Style: Title,${tt.font},${Math.round(H * tt.sizePct / 100)},${assColor(tt.color)},${assColor(tt.color)},${assColor('#000000')},${assColor(tt.box || '#000000AA')},0,0,0,0,100,100,0,0,3,18,0,8,80,80,${Math.round(H * tt.yPct / 100)},1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`;
   const ev = [], emph = new Set(emphasis.map(e => String(e).toLowerCase().replace(/[^\p{L}\p{N}']/gu, '')));
-  const kept = words.map(w => ({ ...w, a: mapTime(w.t0, keep), b: mapTime(w.t1, keep) })).filter(w => w.a !== null && w.b !== null && w.b > w.a);
+  const kept = captions ? words.map(w => ({ ...w, a: mapTime(w.t0, keep), b: mapTime(w.t1, keep) })).filter(w => w.a !== null && w.b !== null && w.b > w.a) : [];
   const n = Math.max(1, Math.min(4, c.wordsPerCaption | 0 || 2));
-  for (let i = 0; i < kept.length; i += n) {
-    const chunk = kept.slice(i, i + n), t0 = chunk[0].a, t1 = Math.max(chunk.at(-1).b, t0 + .25), end = kept[i + n]?.a ?? t1 + .3;
+  // chunks of up to n words that never run across a sentence or clause end
+  const chunks = []; for (const w of kept) { const cur = chunks.at(-1); if (!cur || cur.length >= n || /[.!?,;:]$/.test(cur.at(-1).w)) chunks.push([w]); else cur.push(w); }
+  for (let ci = 0, i = 0; ci < chunks.length; i += chunks[ci].length, ci++) {
+    const chunk = chunks[ci], t0 = chunk[0].a, t1 = Math.max(chunk.at(-1).b, t0 + .25), end = chunks[ci + 1]?.[0].a ?? t1 + .3;
     chunk.forEach((w, j) => {
       const a = w.a, b = j < chunk.length - 1 ? chunk[j + 1].a : Math.min(end, t1 + .3);
       const text = chunk.map((x, k) => { const raw = c.uppercase ? x.w.toUpperCase() : x.w, hot = k === j || emph.has(x.w.toLowerCase().replace(/[^\p{L}\p{N}']/gu, '')); return hot ? `{\\c${assColor(c.highlight)}}${assEsc(raw)}{\\c${assColor(c.color)}}` : assEsc(raw); }).join(' ');
@@ -115,7 +117,7 @@ export async function render(cfg, src, words, edl, out, { style = DEFAULT_STYLE,
   const keep = edl.keep?.length ? edl.keep : [{ t0: 0, t1: meta.duration }];
   const total = keep.reduce((s, k) => s + (k.t1 - k.t0), 0);
   const ass = path.join(dir, path.basename(out).replace(/\.mp4$/, '.ass'));
-  fs.writeFileSync(ass, buildAss(words, keep, style, { emphasis: edl.emphasis || [], title: edl.title }));
+  fs.writeFileSync(ass, buildAss(words, keep, style, { emphasis: edl.emphasis || [], title: edl.title, captions: edl.captions !== false }));
   // video + audio per kept range, concatenated
   const parts = keep.map((k, i) => `[0:v]trim=${k.t0}:${k.t1},setpts=PTS-STARTPTS[v${i}];${meta.audio ? `[0:a]atrim=${k.t0}:${k.t1},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,afade=t=out:st=${Math.max(0, k.t1 - k.t0 - .02)}:d=0.02[a${i}];` : ''}`).join('');
   const cat = keep.map((_, i) => `[v${i}]${meta.audio ? `[a${i}]` : ''}`).join('') + `concat=n=${keep.length}:v=1:a=${meta.audio ? 1 : 0}[vc]${meta.audio ? '[ac]' : ''}`;

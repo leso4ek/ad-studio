@@ -33,7 +33,9 @@ test('ASS: word-by-word captions on the output timeline, highlight on the curren
   const lines = ass.split('\n').filter(l => l.startsWith('Dialogue: 0'));
   assert.equal(lines.length, words.length, 'one event per word');
   assert.match(lines[0], /SO/); assert.match(ass, /Title,,0,0,0,,Ears, explained/);
-  const air = lines.find(l => /\}BECAUSE\{/.test(l) && /AIR/.test(l)); assert.ok(air && air.includes('{\\c&H0000D4FF}AIR'), 'the emphasis word stays highlighted while another word is current');
+  const air = lines.find(l => /\}MOVES\.\{/.test(l) && /AIR/.test(l)); assert.ok(air && air.includes('{\\c&H0000D4FF}AIR'), 'the emphasis word stays highlighted while another word is current');
+  assert.ok(!lines.some(l => /POP\?.*UM|POP\? UM/.test(l)), 'a chunk never runs across a sentence end');
+  assert.ok(!E.buildAss(words, keep, E.DEFAULT_STYLE, { captions: false, title: { text: 'T' } }).includes('Dialogue: 0'), 'captions can be turned off, the title stays');
   const t = l => l.split(',')[1]; assert.ok(t(lines[5]) < '0:00:01.80', 'the cut pause is removed from the timeline');
 });
 

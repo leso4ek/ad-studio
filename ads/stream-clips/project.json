@@ -1,0 +1,190 @@
+{
+  "slug": "stream-clips",
+  "title": "Stream clips",
+  "created": "2026-11-26T08:16:48.481Z",
+  "updated": "2026-11-26T08:19:52.926Z",
+  "mode": "autopilot",
+  "autoGates": false,
+  "decider": "inbox",
+  "format": "clip",
+  "userBrief": {},
+  "stages": {
+    "source": {
+      "status": "idle"
+    },
+    "edit-style": {
+      "status": "idle"
+    },
+    "clip-source": {
+      "status": "done",
+      "started": "2026-11-26T08:16:48.599Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "source/original.mp4",
+        "source/chat.json"
+      ],
+      "finished": "2026-11-26T08:16:48.694Z",
+      "ms": 96,
+      "summary": "5.3 min video + chat replay (stream mode)",
+      "warnings": [],
+      "result": {}
+    },
+    "clip-find": {
+      "status": "done",
+      "started": "2026-11-26T08:19:00.163Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "clips/candidates.json",
+        "clips/chat-series.json"
+      ],
+      "finished": "2026-11-26T08:19:09.561Z",
+      "ms": 9398,
+      "summary": "2 candidate(s) from chat peaks (chat delay 6 s, 10 s build-up, 7 s reaction)",
+      "warnings": [],
+      "result": {},
+      "note": "research numbers: 10 s build-up, 7 s reaction"
+    },
+    "clip-pick": {
+      "status": "done",
+      "started": "2026-11-26T08:19:09.562Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": "inbox",
+      "finished": "2026-11-26T08:19:21.586Z",
+      "ms": 12024,
+      "summary": "",
+      "warnings": [],
+      "result": {}
+    },
+    "clip-render": {
+      "status": "done",
+      "started": "2026-11-26T08:19:21.587Z",
+      "error": null,
+      "fallbacks": [],
+      "engine": null,
+      "outputs": [
+        "clips/clip-02.mp4",
+        "clips/clip-01.mp4",
+        "clips/clips.json"
+      ],
+      "finished": "2026-11-26T08:19:52.926Z",
+      "ms": 31339,
+      "summary": "2 clip(s), best: \"Where does the water go?\" (22/25)",
+      "warnings": [],
+      "result": {
+        "clips": [
+          {
+            "file": "clips/clip-02.mp4",
+            "id": "c2",
+            "t0": 218.4,
+            "t1": 233.5,
+            "title": "Where does the water go?",
+            "why": "Opens on the question itself and ends on the answer chat reacted to ('clip it' at the saucer); no context needed.",
+            "scores": {
+              "hook": 5,
+              "setup": 4,
+              "peak": 4,
+              "payoff": 4,
+              "standalone": 5
+            },
+            "total": 22
+          },
+          {
+            "file": "clips/clip-01.mp4",
+            "id": "c1",
+            "t0": 40.05,
+            "t1": 58.9,
+            "title": "The fern answers back",
+            "why": "A complete two-hander in 19 s: the standoff, the guess, the fern's deadpan 'still sulking' and the cap that ends it; chat laughed at the payoff.",
+            "scores": {
+              "hook": 4,
+              "setup": 5,
+              "peak": 4,
+              "payoff": 4,
+              "standalone": 4
+            },
+            "total": 21
+          }
+        ]
+      }
+    },
+    "edit-plan": {
+      "status": "skipped"
+    },
+    "edit-render": {
+      "status": "skipped"
+    },
+    "analysis": {
+      "status": "skipped"
+    },
+    "series": {
+      "status": "skipped"
+    },
+    "brief": {
+      "status": "skipped"
+    },
+    "premises": {
+      "status": "skipped"
+    },
+    "hooks": {
+      "status": "skipped"
+    },
+    "story": {
+      "status": "skipped"
+    },
+    "brandmap": {
+      "status": "skipped"
+    },
+    "style": {
+      "status": "skipped"
+    },
+    "direction": {
+      "status": "skipped"
+    },
+    "bible": {
+      "status": "skipped"
+    },
+    "world": {
+      "status": "skipped"
+    },
+    "episodes": {
+      "status": "skipped"
+    },
+    "frames": {
+      "status": "skipped"
+    },
+    "voice": {
+      "status": "skipped"
+    },
+    "animatic": {
+      "status": "skipped"
+    },
+    "final": {
+      "status": "skipped"
+    },
+    "scorecard": {
+      "status": "skipped"
+    },
+    "audience": {
+      "status": "skipped"
+    }
+  },
+  "recreate": {
+    "mode": "remake",
+    "target": "story-ad",
+    "rights": false,
+    "refs": [],
+    "prompt": {},
+    "source": "source/original.mp4",
+    "chat": "source/chat.json",
+    "clip": {
+      "mode": "stream",
+      "maxClips": 2,
+      "intent": "the funniest reactions"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "clip-pick",
+  "at": "2026-11-26T08:19:21.584Z",
+  "output": {
+    "clips": [
+      {
+        "id": "c1",
+        "t0": 40.05,
+        "t1": 58.9,
+        "title": "The fern answers back",
+        "emphasis": [
+          "standoff",
+          "glug",
+          "Sprigly"
+        ],
+        "scores": {
+          "hook": 4,
+          "setup": 5,
+          "peak": 4,
+          "payoff": 4,
+          "standalone": 4
+        },
+        "why": "A complete two-hander in 19 s: the standoff, the guess, the fern's deadpan 'still sulking' and the cap that ends it; chat laughed at the payoff."
+      },
+      {
+        "id": "c2",
+        "t0": 218.4,
+        "t1": 233.5,
+        "title": "Where does the water go?",
+        "emphasis": [
+          "roots",
+          "saucer"
+        ],
+        "scores": {
+          "hook": 5,
+          "setup": 4,
+          "peak": 4,
+          "payoff": 4,
+          "standalone": 5
+        },
+        "why": "Opens on the question itself and ends on the answer chat reacted to ('clip it' at the saucer); no context needed."
+      }
+    ],
+    "skipped": [],
+    "reason": "Both chat peaks are real moments: c1 starts at the sentence that opens the skit (40.1 s) and ends right after the payoff line instead of the chat window's later end; c2 starts on the explainer's question and cuts on the reveal the chat clipped. Both are self-contained and 15-19 s."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 12017
+  },
+  "warnings": []
+}

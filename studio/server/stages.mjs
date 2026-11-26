@@ -141,7 +141,7 @@ export const STAGES = [
 Mode: ${c.mode} (${c.mode === 'stream' ? `chat peaks; the chat delay was estimated at ${c.delay} s, so each window already holds the build-up before the moment and the reaction after it` : 'a normal video: ranked by OpenClip or transcript windows'}). Source ${c.duration?.toFixed?.(0)} s.
 The user's intent: ${J(k.intent || 'the moments people would share')}. Pick up to ${k.maxClips || 5} clips.
 Candidates (times in seconds; text = what is said; chat = sample messages at the peak): ${J(c.candidates.map(x => ({ id: x.id, t0: x.t0, t1: x.t1, moment: x.moment, z: x.z, title: x.title, why: x.why, text: (x.text || '').slice(0, 700), chat: x.chat })))}
-For each clip: keep the candidate id, set t0/t1 within 15 s of the candidate's window (a sentence start; enough setup that a stranger understands it; end right after the reaction or punchline), 15-90 s long; a hook title for the first 1-2 s (≤ 6 words, or "" when the first line hooks on its own); the emphasis words; scores 1-5 for hook, setup, peak, payoff, standalone; one line of why. Skip candidates that need context the clip can't give.${playbook('clip')}`; } },
+For each clip: keep the candidate id, set t0/t1 within 15 s of the candidate's window (a sentence start; enough setup that a stranger understands it; end right after the reaction or punchline), 15-90 s long (stream clips may be 10 s; viral ones run ~18 s, podcast ones ~30-50 s); a hook title for the first 1-2 s (≤ 6 words, or "" when the first line hooks on its own); the emphasis words; scores 1-5 for hook, setup, peak, payoff, standalone; one line of why. Skip candidates that need context the clip can't give.${playbook('clip')}`; } },
   { id: 'clip-render', n: 3, title: 'Clips', kind: 'auto', formats: ['clip'] },
   { id: 'edit-plan', n: 2, title: 'Edit plan', kind: 'auto', formats: ['edit'] },
   { id: 'edit-render', n: 3, title: 'Draft', kind: 'auto', formats: ['edit'] },
@@ -356,7 +356,9 @@ export const AUTO = {
     const k = rc(ctx).clip || {}, s = readJSON(path.join(ctx.adDir, 'clips', 'source.json')), src = path.join(ctx.adDir, s.source), dir = path.join(ctx.adDir, 'clips');
     const loud = await AN.loudness(ctx.cfg, src), perSec = new Array(Math.ceil(s.duration)).fill(-70);
     for (const [t, v] of loud.points) { const i = Math.floor(t); if (i < perSec.length) perSec[i] = Math.max(perSec[i], v); }
-    const tune = { pre: 25, post: 8, ...(ctx.cfg.clip || {}) };
+    // research/viral/clip-rubric.md: viral stream clips keep ~10 s of build-up and ~7 s of reaction (medians of 8 clips);
+    // chat lags the video ~6 s on Twitch/Kick and ~10 s on YouTube Live (calibrated per VOD from the audio when it can be)
+    const tune = { pre: 10, post: 7, minChatPerHour: 500, ...(ctx.cfg.clip || {}) }, platformDelay = /youtu/.test(k.url || '') ? 10 : 6;
     const segWords = async (t0, t1) => {   // transcribe only the window (long VODs stay cheap)
       const ff = await ffmpeg7(ctx.cfg), a = Math.max(0, t0 - 8), wav = path.join(dir, `.seg_${Math.round(a)}.wav`);
       await run(ff, ['-y', '-v', 'error', '-ss', String(a), '-t', String(t1 - a + 8), '-i', src, '-vn', '-ac', '1', '-ar', '16000', wav]);
@@ -364,10 +366,11 @@ export const AUTO = {
       return (tr?.words || []).map(w => ({ ...w, t0: +(w.t0 + a).toFixed(3), t1: +(w.t1 + a).toFixed(3) }));
     };
     let candidates = [], delay = null, series = null;
+    let msgs = s.mode === 'stream' ? CHAT.parseChat(fs.readFileSync(path.join(ctx.adDir, s.chat), 'utf8'), { startIso: readJSON(path.join(ctx.adDir, s.chat), {})?.start }) : [];
+    if (s.mode === 'stream' && msgs.length / (s.duration / 3600) < tune.minChatPerHour) { emit('engine', { slug: ctx.slug, stage: 'clip-find', engine: 'chat', text: `only ${msgs.length} chat messages: too quiet to find peaks → transcript mode`, level: 'warn' }); s.mode = 'video'; }
     if (s.mode === 'stream') {
-      const msgs = CHAT.parseChat(fs.readFileSync(path.join(ctx.adDir, s.chat), 'utf8'), { startIso: readJSON(path.join(ctx.adDir, s.chat), {})?.start });
       const sig = CHAT.signals(msgs, s.duration), score = CHAT.burst(sig), pk = CHAT.peaks(score, { top: (k.maxClips || 5) * 2 });
-      delay = CHAT.estimateDelay(sig.n, perSec);
+      delay = CHAT.estimateDelay(sig.n, perSec, { fallback: platformDelay });
       for (const w of CHAT.windows(pk, { delay, pre: tune.pre, post: tune.post, dur: s.duration })) {
         const words = await segWords(w.t0, w.t1), snapped = CHAT.snap(w, words);
         const chat = msgs.filter(m => m.t >= w.peak - 4 && m.t <= w.peak + 10).slice(0, 10).map(m => m.msg.slice(0, 60));
@@ -393,6 +396,7 @@ export const AUTO = {
       for (const c of candidates) { c.words = all.filter(w => w.t0 >= c.t0 - 15 && w.t1 <= c.t1 + 15); c.text = all.filter(w => w.t0 >= c.t0 && w.t1 <= c.t1).map(w => w.w).join(' '); }
     }
     writeJSON(path.join(dir, 'candidates.json'), { mode: s.mode, delay, duration: s.duration, tune, candidates });
+    writeJSON(path.join(dir, 'source.json'), s);
     if (series) writeJSON(path.join(dir, 'chat-series.json'), series);
     ctx.files('clip-find', ['clips/candidates.json', ...(series ? ['clips/chat-series.json'] : [])]);
     return { summary: `${candidates.length} candidate(s)${s.mode === 'stream' ? ` from chat peaks (chat delay ${delay} s, ${tune.pre} s build-up, ${tune.post} s reaction)` : ''}` };
@@ -409,7 +413,9 @@ export const AUTO = {
       if (cut.code !== 0) throw new Error(`cut failed: ${cut.err.slice(-200)}`);
       const words = (cand.words || []).filter(w => w.t0 >= p.t0 && w.t1 <= p.t1).map(w => ({ ...w, t0: +(w.t0 - p.t0).toFixed(3), t1: +(w.t1 - p.t0).toFixed(3) }));
       const file = path.join(dir, `clip-${String(i + 1).padStart(2, '0')}.mp4`);
-      await EDIT.render(ctx.cfg, seg, words, { keep: [{ t0: 0, t1: len }], emphasis: p.emphasis || [], title: p.title ? { text: p.title, t0: 0, t1: 1.8 } : null, music: { use: false }, reframe: (rc(ctx).clip || {}).reframe || 'blur' }, file, { style, slug: ctx.slug, stage: 'clip-render', signal: ctx.signal });
+      // captions: viral podcast clips all burn word captions; 7 of 8 viral stream clips carry none (the headline box does the work)
+      const k = rc(ctx).clip || {}, captions = k.captions ?? c.mode !== 'stream';
+      await EDIT.render(ctx.cfg, seg, words, { keep: [{ t0: 0, t1: len }], emphasis: p.emphasis || [], title: p.title ? { text: p.title, t0: 0, t1: 1.8 } : null, captions, music: { use: false }, reframe: k.reframe || 'blur' }, file, { style, slug: ctx.slug, stage: 'clip-render', signal: ctx.signal });
       fs.rmSync(seg, { force: true });
       out.push({ file: `clips/${path.basename(file)}`, id: p.id, t0: p.t0, t1: p.t1, title: p.title, why: p.why, scores: p.scores, total: Object.values(p.scores).reduce((a, b) => a + b, 0) });
     }
@@ -734,7 +740,7 @@ export function checkClips(out, adDir) {
     const cand = c.candidates.find(x => x.id === p.id);
     if (!cand) { errs.push(`${p.id}: not a candidate id`); continue; }
     if (p.t0 < cand.t0 - 15.01 || p.t1 > cand.t1 + 15.01) errs.push(`${p.id}: stay within 15 s of the candidate window ${cand.t0}-${cand.t1}`);
-    if (p.t1 - p.t0 < 15 || p.t1 - p.t0 > 90) errs.push(`${p.id}: ${(p.t1 - p.t0).toFixed(1)} s; a clip runs 15-90 s`);
+    const min = c.mode === 'stream' ? 10 : 15; if (p.t1 - p.t0 < min || p.t1 - p.t0 > 90) errs.push(`${p.id}: ${(p.t1 - p.t0).toFixed(1)} s; a clip runs ${min}-90 s`);
     errs.push(...EDIT.checkKeep([{ t0: p.t0, t1: p.t1 }], cand.words || []).map(e => `${p.id}: ${e.replace('range 1 ', '')}`));
   }
   return errs;
