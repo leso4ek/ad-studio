@@ -295,6 +295,20 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - Name spellings go in `vo.spellings` (`{"Edie": ["Eddie", "Eddy"]}`).
   - Invented names Kokoro says wrong ("Pharaon" heard as "ferry on") stay on cards, not in speech.
 
+### Round 15: "24601", a MAGI-2 short drama on Higgsfield (26 Nov 2026)
+- **What:** *Les Misérables* → New York today (`research/books/les-miserables.md`). Season of 5 scripted in `ads/24601/SCRIPT.md`; **Part 1 "The Candlesticks" made**: `ads/24601/out/` (41.4 s, 9:16 1080p 30 fps, −14.4 LUFS, `.srt`, poster, `REPORT.md`). Look described in our own words (comic-book halftone animation); the user's reference images were never uploaded.
+- **Skills:** youtube-agent-skill (MIT, Jake Schincariol) linked by bootstrap: yt-script, yt-shorts, yt-edit, yt-package.
+- **Spend:** 102 of 110 Higgsfield credits (casting 12 with Nano Banana 2, MAGI-2 90); **8 left**. Ledger `ads/24601/production/ledger.jsonl`. Part 2 needs about 100.
+- **MAGI-2 (`magi_2`) facts:**
+  - 2.5 credits/s, 4–30 s, 1080p, 9:16, 25 fps output; `generate_audio` gives dialogue, ambience and SFX;
+  - up to 10 `image_references` + 5 `audio_references` (2–30 s, upload as MP3); refs are named in the prompt as "Image N" / "Audio N" in upload order;
+  - a 300–360-word block prompt (FORMAT, STYLE, REFERENCES, SHOT n with times, lines in quotes with the speaker and "in the voice of Audio N", SOUND, CONTINUITY) held cuts within 0.3 s, identity across clips, legible "24601" text and the right lips per speaker;
+  - **audio refs mostly work** (pitch within ~10 % of the reference), **but a short line by a character whose face is hidden can get the other speaker's voice** (clip 2 "You should"). Check every line's pitch against its reference.
+  - Rendering takes about 5 min a clip; two can run in parallel.
+- **The edit** (`ads/24601/production/edit/build.mjs`): pass 1 cuts, patches and cards (ASS: comic caption boxes black on yellow, SFX lettering) → pass 2 the app's `engines/edit.mjs render` (word captions) → a measured second loudnorm pass. Re-voice a wrong line: mute the window, lay room tone from the same clip, place the ElevenLabs take.
+- **Lessons:** Whisper starts the first word of a line about 0.35 s late after a pause: snap it to the silencedetect onset (highpass 150 Hz, −32 dB). The engine's one-pass loudnorm lands about 1 LU low. libass needs TTF (Bangers converted from woff2 into `studio/kit/fonts/`).
+- **Hosts added** to the Default environment: `d8j0ntlcm91z4.cloudfront.net` (Higgsfield results), `upload.higgsfield.ai`.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.

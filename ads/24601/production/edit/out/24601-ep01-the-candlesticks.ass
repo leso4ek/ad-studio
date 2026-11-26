@@ -1,0 +1,63 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Bangers,146,&H00FFFFFF,&H0000D4FF,&H002A0A12,&H80000000,0,0,0,0,100,100,0,0,1,7,2,5,60,60,0,1
+Style: Title,Archivo Black,100,&H00FFFFFF,&H00FFFFFF,&H00000000,&H55000000,0,0,0,0,100,100,0,0,3,18,0,8,80,80,346,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.40,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}ONE{\c&H00FFFFFF} MORE
+Dialogue: 0,0:00:00.40,0:00:00.60,Cap,,0,0,0,,{\pos(540,1574)}ONE {\c&H0000D4FF}MORE{\c&H00FFFFFF}
+Dialogue: 0,0:00:00.60,0:00:01.18,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}MISTAKE,{\c&H00FFFFFF}
+Dialogue: 0,0:00:01.18,0:00:01.32,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}I{\c&H00FFFFFF} DIE
+Dialogue: 0,0:00:01.32,0:00:01.50,Cap,,0,0,0,,{\pos(540,1574)}I {\c&H0000D4FF}DIE{\c&H00FFFFFF}
+Dialogue: 0,0:00:01.50,0:00:01.66,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}IN{\c&H00FFFFFF} A
+Dialogue: 0,0:00:01.66,0:00:01.80,Cap,,0,0,0,,{\pos(540,1574)}IN {\c&H0000D4FF}A{\c&H00FFFFFF}
+Dialogue: 0,0:00:01.80,0:00:02.36,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}CELL.{\c&H00FFFFFF}
+Dialogue: 0,0:00:02.62,0:00:02.82,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}SO{\c&H00FFFFFF} WHY
+Dialogue: 0,0:00:02.82,0:00:03.08,Cap,,0,0,0,,{\pos(540,1574)}SO {\c&H0000D4FF}WHY{\c&H00FFFFFF}
+Dialogue: 0,0:00:03.08,0:00:03.22,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}AM{\c&H00FFFFFF} I
+Dialogue: 0,0:00:03.22,0:00:03.40,Cap,,0,0,0,,{\pos(540,1574)}AM {\c&H0000D4FF}I{\c&H00FFFFFF}
+Dialogue: 0,0:00:03.40,0:00:03.68,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}HOLDING{\c&H00FFFFFF} HIS
+Dialogue: 0,0:00:03.68,0:00:03.94,Cap,,0,0,0,,{\pos(540,1574)}HOLDING {\c&H0000D4FF}HIS{\c&H00FFFFFF}
+Dialogue: 0,0:00:03.94,0:00:04.58,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}SILVER?{\c&H00FFFFFF}
+Dialogue: 0,0:00:05.10,0:00:05.68,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}WE'RE{\c&H00FFFFFF} CLOSED.
+Dialogue: 0,0:00:05.68,0:00:06.38,Cap,,0,0,0,,{\pos(540,1574)}WE'RE {\c&H0000D4FF}CLOSED.{\c&H00FFFFFF}
+Dialogue: 0,0:00:06.65,0:00:06.74,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}THE{\c&H00FFFFFF} SIGN
+Dialogue: 0,0:00:06.74,0:00:06.98,Cap,,0,0,0,,{\pos(540,1574)}THE {\c&H0000D4FF}SIGN{\c&H00FFFFFF}
+Dialogue: 0,0:00:06.98,0:00:07.24,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}SAYS{\c&H00FFFFFF} OPEN.
+Dialogue: 0,0:00:07.24,0:00:07.88,Cap,,0,0,0,,{\pos(540,1574)}SAYS {\c&H0000D4FF}OPEN.{\c&H00FFFFFF}
+Dialogue: 0,0:00:08.00,0:00:08.14,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}NOT{\c&H00FFFFFF} FOR
+Dialogue: 0,0:00:08.14,0:00:08.34,Cap,,0,0,0,,{\pos(540,1574)}NOT {\c&H0000D4FF}FOR{\c&H00FFFFFF}
+Dialogue: 0,0:00:08.34,0:00:08.92,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}YOU.{\c&H00FFFFFF}
+Dialogue: 0,0:00:16.80,0:00:17.35,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}EAT.{\c&H00FFFFFF}
+Dialogue: 0,0:00:17.66,0:00:17.80,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}NOBODY{\c&H00FFFFFF} HERE
+Dialogue: 0,0:00:17.80,0:00:18.24,Cap,,0,0,0,,{\pos(540,1574)}NOBODY {\c&H0000D4FF}HERE{\c&H00FFFFFF}
+Dialogue: 0,0:00:18.24,0:00:18.64,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}ASKS{\c&H00FFFFFF} WHAT
+Dialogue: 0,0:00:18.64,0:00:18.96,Cap,,0,0,0,,{\pos(540,1574)}ASKS {\c&H0000D4FF}WHAT{\c&H00FFFFFF}
+Dialogue: 0,0:00:18.96,0:00:19.18,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}YOU{\c&H00FFFFFF} DID.
+Dialogue: 0,0:00:19.18,0:00:19.74,Cap,,0,0,0,,{\pos(540,1574)}YOU {\c&H0000D4FF}DID.{\c&H00FFFFFF}
+Dialogue: 0,0:00:19.74,0:00:19.92,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}YOU{\c&H00FFFFFF} SHOULD.
+Dialogue: 0,0:00:19.92,0:00:20.54,Cap,,0,0,0,,{\pos(540,1574)}YOU {\c&H0000D4FF}SHOULD.{\c&H00FFFFFF}
+Dialogue: 0,0:00:25.93,0:00:26.75,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}SORRY,{\c&H00FFFFFF}
+Dialogue: 0,0:00:26.75,0:00:27.30,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}FATHER.{\c&H00FFFFFF}
+Dialogue: 0,0:00:29.73,0:00:30.07,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}STOLEN{\c&H00FFFFFF} FROM
+Dialogue: 0,0:00:30.07,0:00:30.31,Cap,,0,0,0,,{\pos(540,1574)}STOLEN {\c&H0000D4FF}FROM{\c&H00FFFFFF}
+Dialogue: 0,0:00:30.31,0:00:30.47,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}A{\c&H00FFFFFF} CHURCH?
+Dialogue: 0,0:00:30.47,0:00:30.99,Cap,,0,0,0,,{\pos(540,1574)}A {\c&H0000D4FF}CHURCH?{\c&H00FFFFFF}
+Dialogue: 0,0:00:31.47,0:00:32.05,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}GIVEN.{\c&H00FFFFFF}
+Dialogue: 0,0:00:32.23,0:00:32.33,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}HE{\c&H00FFFFFF} FORGOT
+Dialogue: 0,0:00:32.33,0:00:32.61,Cap,,0,0,0,,{\pos(540,1574)}HE {\c&H0000D4FF}FORGOT{\c&H00FFFFFF}
+Dialogue: 0,0:00:32.61,0:00:32.83,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}THE{\c&H00FFFFFF} LIGHTER.
+Dialogue: 0,0:00:32.83,0:00:33.41,Cap,,0,0,0,,{\pos(540,1574)}THE {\c&H0000D4FF}LIGHTER.{\c&H00FFFFFF}
+Dialogue: 0,0:00:33.76,0:00:33.87,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}BE{\c&H00FFFFFF} SOMEONE
+Dialogue: 0,0:00:33.87,0:00:34.21,Cap,,0,0,0,,{\pos(540,1574)}BE {\c&H0000D4FF}SOMEONE{\c&H00FFFFFF}
+Dialogue: 0,0:00:34.21,0:00:34.83,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}ELSE.{\c&H00FFFFFF}
+Dialogue: 0,0:00:36.73,0:00:37.30,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}TWENTY-FOUR{\c&H00FFFFFF} {\c&H0000D4FF}SIX-OH-ONE.{\c&H00FFFFFF}
+Dialogue: 0,0:00:37.30,0:00:38.86,Cap,,0,0,0,,{\pos(540,1574)}{\c&H0000D4FF}TWENTY-FOUR{\c&H00FFFFFF} {\c&H0000D4FF}SIX-OH-ONE.{\c&H00FFFFFF}

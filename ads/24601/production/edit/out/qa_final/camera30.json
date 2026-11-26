@@ -1,0 +1,330 @@
+{
+ "file": "24601-ep01-the-candlesticks.mp4",
+ "fps": 30,
+ "frames": 1242,
+ "duration": 41.4,
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 4.8,
+   "dur": 4.8,
+   "move": "push-in",
+   "moves": [
+    "push-in"
+   ],
+   "ease": "ease-out",
+   "speed": 3.057,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.001,
+    "y": 0.017,
+    "scale_pct": 15.7,
+    "roll_deg": 0.0
+   },
+   "shake": 0.118,
+   "segments": [
+    {
+     "t0": 0.0,
+     "move": "push-in",
+     "ease": "constant",
+     "speed": 3.687,
+     "shake": 0.11
+    },
+    {
+     "t0": 2.0,
+     "move": "push-in",
+     "ease": "ease-out",
+     "speed": 2.89,
+     "shake": 0.124
+    }
+   ]
+  },
+  {
+   "t0": 4.8,
+   "t1": 9.167,
+   "dur": 4.367,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.005,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.021,
+    "y": -0.004,
+    "scale_pct": -1.0,
+    "roll_deg": 0.1
+   },
+   "shake": 0.049,
+   "segments": [
+    {
+     "t0": 4.8,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.008,
+     "shake": 0.065
+    },
+    {
+     "t0": 6.8,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.004,
+     "shake": 0.032
+    }
+   ]
+  },
+  {
+   "t0": 9.167,
+   "t1": 12.533,
+   "dur": 3.367,
+   "move": "push-in",
+   "moves": [
+    "push-in"
+   ],
+   "ease": "ease-in",
+   "speed": 3.55,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.01,
+    "scale_pct": 12.6,
+    "roll_deg": 0.0
+   },
+   "shake": 0.014
+  },
+  {
+   "t0": 12.533,
+   "t1": 13.633,
+   "dur": 1.1,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.0
+  },
+  {
+   "t0": 13.633,
+   "t1": 14.567,
+   "dur": 0.933,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.006
+  },
+  {
+   "t0": 14.567,
+   "t1": 16.267,
+   "dur": 1.7,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.001,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.001,
+    "y": 0.001,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.01
+  },
+  {
+   "t0": 16.267,
+   "t1": 21.333,
+   "dur": 5.067,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.005,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.02,
+    "y": 0.012,
+    "scale_pct": -1.8,
+    "roll_deg": -0.1
+   },
+   "shake": 0.08,
+   "segments": [
+    {
+     "t0": 16.27,
+     "move": "pull-out",
+     "ease": "constant",
+     "speed": 1.625,
+     "shake": 0.123
+    },
+    {
+     "t0": 18.27,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.007,
+     "shake": 0.032
+    },
+    {
+     "t0": 20.27,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.008
+    }
+   ]
+  },
+  {
+   "t0": 21.333,
+   "t1": 24.033,
+   "dur": 2.7,
+   "move": "push-in",
+   "moves": [
+    "push-in"
+   ],
+   "ease": "constant",
+   "speed": 6.03,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.0,
+    "y": -0.001,
+    "scale_pct": 17.4,
+    "roll_deg": 0.0
+   },
+   "shake": 0.005
+  },
+  {
+   "t0": 24.033,
+   "t1": 28.267,
+   "dur": 4.233,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.006,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.001,
+    "y": -0.027,
+    "scale_pct": -2.5,
+    "roll_deg": 1.6
+   },
+   "shake": 0.069,
+   "segments": [
+    {
+     "t0": 24.03,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.01,
+     "shake": 0.091
+    },
+    {
+     "t0": 26.03,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.004,
+     "shake": 0.041
+    }
+   ]
+  },
+  {
+   "t0": 28.267,
+   "t1": 31.167,
+   "dur": 2.9,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.001,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.001,
+    "y": 0.003,
+    "scale_pct": 0.2,
+    "roll_deg": 0.0
+   },
+   "shake": 0.009
+  },
+  {
+   "t0": 31.167,
+   "t1": 34.433,
+   "dur": 3.267,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.019,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.022,
+    "y": -0.056,
+    "scale_pct": 0.6,
+    "roll_deg": -0.2
+   },
+   "shake": 0.089
+  },
+  {
+   "t0": 34.433,
+   "t1": 38.867,
+   "dur": 4.433,
+   "move": "push-in",
+   "moves": [
+    "push-in",
+    "tilt-up"
+   ],
+   "ease": "ease-in-out",
+   "speed": 8.669,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.005,
+    "y": 0.148,
+    "scale_pct": 46.4,
+    "roll_deg": 0.9
+   },
+   "shake": 0.076,
+   "segments": [
+    {
+     "t0": 34.43,
+     "move": "push-in",
+     "ease": "ease-in",
+     "speed": 9.034,
+     "shake": 0.075
+    },
+    {
+     "t0": 36.43,
+     "move": "push-in",
+     "ease": "ease-out",
+     "speed": 10.037,
+     "shake": 0.086
+    }
+   ]
+  },
+  {
+   "t0": 38.867,
+   "t1": 41.4,
+   "dur": 2.533,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.0
+  }
+ ],
+ "cuts_per_10s": 2.9,
+ "mix": {
+  "push-in": 4,
+  "static": 9
+ }
+}

@@ -41,3 +41,4 @@ ads/*/out/*.lock
 downloads/
 ads/*/source/refvideos/
 ads/*/out/*.part.mp4
+ads/*/production/edit/out/*.mp4

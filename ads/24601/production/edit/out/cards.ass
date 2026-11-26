@@ -1,0 +1,24 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Box,Bangers,96,&H00101010,&H00101010,&H0000D4FF,&H00000000,0,0,0,0,100,100,4,0,3,22,10,5,40,40,0,1
+Style: BoxL,Bangers,84,&H00101010,&H00101010,&H0000D4FF,&H00000000,0,0,0,0,100,100,3,0,3,18,8,4,40,40,0,1
+Style: Sfx,Bangers,150,&H00FFFFFF,&H00FFFFFF,&H00B400FF,&H00000000,0,0,0,0,100,100,6,0,1,10,8,5,40,40,0,1
+Style: Tag,Bangers,230,&H0000D4FF,&H0000D4FF,&H00000000,&H00000000,0,0,0,0,100,100,8,0,1,12,10,5,40,40,0,1
+Style: Credit,Archivo Black,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:01.90,Box,,0,0,0,,{\pos(300,290)\fs170}24601
+Dialogue: 1,0:00:00.95,0:00:01.75,Sfx,,0,0,0,,{\pos(300,1330)\frz9\t(0,180,\fscx118\fscy118)\t(180,360,\fscx100\fscy100)}CLANG!
+Dialogue: 1,0:00:03.30,0:00:04.80,Box,,0,0,0,,{\pos(320,290)\fs92}4 HOURS\NEARLIER
+Dialogue: 1,0:00:24.10,0:00:25.70,BoxL,,0,0,0,,{\pos(70,300)\fs84}3 A.M.
+Dialogue: 1,0:00:28.30,0:00:29.80,BoxL,,0,0,0,,{\pos(70,300)\fs84}DAWN
+Dialogue: 1,0:00:38.95,0:00:41.40,Tag,,0,0,0,,{\pos(540,860)\fs230\fad(120,0)}PART 2
+Dialogue: 1,0:00:39.15,0:00:41.40,Credit,,0,0,0,,{\pos(540,1060)}Inspired by Les Misérables\Nby Victor Hugo

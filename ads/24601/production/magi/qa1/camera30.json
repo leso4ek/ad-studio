@@ -1,0 +1,119 @@
+{
+ "file": "clip1.mp4",
+ "fps": 30,
+ "frames": 367,
+ "duration": 12.23,
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 4.867,
+   "dur": 4.867,
+   "move": "pan-right",
+   "moves": [
+    "pan-right"
+   ],
+   "ease": "constant",
+   "speed": 0.013,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.06,
+    "y": -0.007,
+    "scale_pct": -0.6,
+    "roll_deg": 0.1
+   },
+   "shake": 0.069,
+   "segments": [
+    {
+     "t0": 0.0,
+     "move": "pan-right",
+     "ease": "ease-out",
+     "speed": 0.033,
+     "shake": 0.097
+    },
+    {
+     "t0": 2.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.038
+    }
+   ]
+  },
+  {
+   "t0": 4.867,
+   "t1": 8.233,
+   "dur": 3.367,
+   "move": "push-in",
+   "moves": [
+    "push-in"
+   ],
+   "ease": "ease-in",
+   "speed": 3.522,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.01,
+    "scale_pct": 12.5,
+    "roll_deg": 0.0
+   },
+   "shake": 0.015
+  },
+  {
+   "t0": 8.233,
+   "t1": 9.367,
+   "dur": 1.133,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.0
+  },
+  {
+   "t0": 9.367,
+   "t1": 10.267,
+   "dur": 0.9,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.006
+  },
+  {
+   "t0": 10.267,
+   "t1": 12.233,
+   "dur": 1.967,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.001,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.001,
+    "y": 0.001,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.01
+  }
+ ],
+ "cuts_per_10s": 3.27,
+ "mix": {
+  "pan-right": 1,
+  "push-in": 1,
+  "static": 3
+ }
+}
