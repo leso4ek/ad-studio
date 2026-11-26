@@ -276,6 +276,18 @@ Leave `route` out and code decides (`engines/analyse.mjs routeFor`); set it only
 - The prompt is **short**: 1–3 sentences, ≤ 400 characters, saying who becomes whom, what they wear and hold, and the product, and that the motion, timing and camera stay. The reference images carry identity: the user's `ref-*` uploads first, up to 8 images.
 - Picked clips become **plates** under our words, captions, voice and end card ("Use picked clips in the edit", then re-run Animatic and Final).
 
+## Characters v2 and book dramas (round 14)
+- **Write with the content-principles skill** (linked by bootstrap). Every line must make the next one necessary. Put a number, name or date in the first 10 s, keep sentences under about 9 words, and open the next question before the last one closes. `checkScript` checks what code can measure.
+- **People use the v2 rig** (`studio/kit/rig.js`): set `rig: "v2"` on the bible or the cast entry.
+  - **Cast fields:** `proportions` (drama | toon | chibi), `build`, `height`, `jaw`, `eyes{shape,color}`, `lashes`, `brows`, `nose`, `lips`, `hairStyle` (19), `details[]` (glasses, stubble, beard, freckles, scar…), `outfit{top, bottom, accessories[]}` (`badge` prints `name`), and the colours `skin/hair/top/top2/bottom/shoe/accent`.
+  - **Char layer fields:** `pose` (idle, talk, point, arms-crossed, hands-on-hips, hand-to-mouth, phone-to-ear, reading-phone, cuffed, sit, lean, walk, recoil), `view` (front | 34 | profile) + `face` (left | right), `expression` (16: neutral, smile, warm, smirk, laugh, sad, crying, angry, furious, afraid, shocked, disgusted, contempt, suspicious, determined, heartbroken), `expressionAt: [{t, e}]` for a change mid-shot, and `gaze: [x, y]`.
+  - **Framing:** close-ups carry drama. Cards in wides and mediums go low (y ≈ 0.58–0.62), because v2 heads sit high in the frame. Give evidence props a colour (`color`).
+- **Camera** (from `research/viral/camera/SUMMARY.md`): hold still about 60 % of the time; push in on the turn with `camera.rate: 4, ease: "in"`; use handheld drift only on tense close-ups (`shake` 0.2–0.3).
+- **Book dramas** (`research/books/`):
+  - Public domain only. Keep the engine and the reversals, and modernise the world, jobs, amounts and objects.
+  - Fill `source.credit`; the episode-1 tag shows it, held long enough to read.
+  - Speak invented names only if Kokoro says them right; otherwise keep them on cards. Add Whisper spellings of names to `vo.spellings`.
+
 ## Videos that aren't ads (round 13)
 Every Brief, Direction and Bible prompt embeds the **viral playbook** section for its format (`reference/viral-playbook.md`, from 45+ watched TikToks in `research/viral/`). Follow it unless the brief clearly needs otherwise.
 

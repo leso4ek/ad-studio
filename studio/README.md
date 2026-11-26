@@ -110,6 +110,11 @@ Switch the header to **Shot board** after the bible is approved. Each shot goes 
   - Spending has its own hard cap, `budget.higgsfieldCapUsd` (default $5), and its own ledger entries.
   - Set `higgsfield.mock: true` (or `ADSTUDIO_MOCK=1`) to test the flow for free with tinted placeholder clips.
 
+## Round 14: characters v2, book dramas, outlier research
+- **Characters:** a new rig (`kit/rig.js`) with real proportions, 5 views, 16 expressions, lip shapes from the dialogue, 19 hair styles, outfits, name badges and 13 poses. Preview it in any style with `node studio/bin/castsheet.mjs ad-paper-cutout --what expressions` (or `views`, `outfits`, `poses`, `hair`).
+- **Short drama from a book:** the New video dialog has a "Inspired by a book" field (public domain). The series keeps the book's dramatic engine in modern life and credits it on episode 1. Example: `ads/the-countess/`.
+- **Research tools:** `research/tools/outliers.py @account …` finds a creator's unusually successful posts; `research/tools/camera30.py video.mp4 --out dir` reads its camera moves at 30 fps.
+
 ## More than ads (round 13): explainers, short drama, an edit tool, a clipper
 **New video** now offers 8 formats. The 4 new ones:
 

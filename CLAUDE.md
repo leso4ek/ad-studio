@@ -260,6 +260,41 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - `render.stills` needs an absolute ad folder path.
   - Restarting the server re-opens the running stage's inbox request: re-stage the answer for the feeder.
 
+### Round 14: real characters, content-principles, book dramas, 30 fps camera research (26 Nov 2026)
+- **The user's feedback:** "the design of the character is really poor and the story also".
+- **content-principles** (aiwithremy, **no licence: linked by `bootstrap.sh`, never copied**):
+  - every writing prompt points to it (`formatBlock`);
+  - `checkScript` (stages.mjs) checks voiced bibles for drama, explainer, story-ad and 3d-skit: average sentence ≤ about 9 words, a number, name or date in the first 10 s, no preamble in the first 3 s, and for drama an open or short line in the last 45 %.
+- **Character rig v2** (`studio/kit/rig.js`; tests in `tests/rig.test.mjs`; sheets with `node studio/bin/castsheet.mjs <style> --what expressions|views|outfits|poses|hair`; samples in `studio/kit/rig-sheets/`):
+  - **Body and views:** proportions drama (6.75 heads), toon and chibi; 5 views (front, ¾ and profile, each direction).
+  - **Faces:** 16 expressions, blended over 0.2 s by `expressionAt`; lids, irises, brows, nose, lips; visemes from the cue text.
+  - **Hair and clothes:** 19 hair styles; outfits (blazer, suit, hoodie, scrubs, dress…); accessories, and a badge that shows the name.
+  - **Poses:** 13 IK poses, `cuffed` included.
+  - **Where it applies:** `cast.rig:"v2"` or `bible.rig:"v2"`; drama episodes default to v2 through `seriesLocks`. v1 figures are unchanged.
+  - The camera frames v2 people with the `person-drama|toon|chibi` tables.
+  - **Lessons:**
+    - in ¾ view the far eye is on the side the face turns to;
+    - facial hair draws under the mouth;
+    - sci-fi toon must skip its own face overlay for v2 (`p.v2`);
+    - stills can land on a blink (normal in motion).
+- **Outlier research (the user's uploaded guide, rebuilt independently, no Virlo API):**
+  - `research/tools/outliers.py` computes creator lift = views ÷ median of the creator's other mature posts (≥ 10, floor 500), plus a robust z, with diversity.
+  - `research/tools/camera30.py` reads moves at 30 fps (pan/tilt/push/pull/truck/handheld/whip/snap/roll, speed, easing, shake, 2 s segments), tested by `test_camera30.py`.
+  - Study of 9 outliers in `research/viral/camera/SUMMARY.md`: 62 % static, push-ins about 4 % zoom per second and eased, median 2 cuts per 10 s.
+  - The kit camera gained `ease` and `rate`.
+  - The venv re-exec compares `sys.prefix`, because the venv python links to the system one.
+- **Book dramas:**
+  - `research/books/` holds Monte Cristo, Hamlet and Anna Karenina: the engine, the reversals and a modern mapping. Public domain only, credited.
+  - The series brief takes `source`; the New video dialog has a book field.
+  - The series bible's characters get `object`, `habit` and a v2 look; episodes get `evidence`, `openLoop` and `place`.
+  - The credit appears on episode 1's tag (`endcard.credit`; the tag may run longer to be readable).
+  - New props: usb, cuffs, flute, document, ring, bars. New places: cell, boardroom.
+  - **Proof:** `ads/the-countess` + `-ep01…03` (Monte Cristo → a framed fintech analyst; paper cut-out), with my frame reviews and fixes recorded in each episode's frames decision.
+- **Speech check:**
+  - DIFF lines that differ only in number, US/UK or name spelling are re-judged as OK.
+  - Name spellings go in `vo.spellings` (`{"Edie": ["Eddie", "Eddy"]}`).
+  - Invented names Kokoro says wrong ("Pharaon" heard as "ferry on") stay on cards, not in speech.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.
