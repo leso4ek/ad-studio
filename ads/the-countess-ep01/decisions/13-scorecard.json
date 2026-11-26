@@ -1,6 +1,6 @@
 {
   "stage": "scorecard",
-  "at": "2026-11-26T14:45:35.740Z",
+  "at": "2026-11-26T15:03:52.641Z",
   "output": {
     "scores": [
       {
@@ -42,9 +42,9 @@
     "total": 32,
     "verdict": "The strongest episode: one place, one piece of evidence, cut on the betrayal.",
     "fixes": [
-      "Necks read too long in close-ups (rig: shorten the neck by about a quarter for drama proportions).",
       "Captions sometimes sit on the name badge in close-ups (move the caption band or the badge).",
-      "Give Edie one private detail (the dress she chose) in the first 10 s."
+      "Give Edie one private detail (the dress she chose) in the first 10 s.",
+      "Done in this cut: necks shortened (drama shoulders at 1.19 heads), re-rendered."
     ],
     "bestHook": "A",
     "reason": "Judged from the final frames: the faces act and the evidence reads; the rig still shows long necks."
@@ -52,7 +52,7 @@
   "meta": {
     "engine": "inbox",
     "answeredBy": "claude-session",
-    "ms": 66036
+    "ms": 1001
   },
   "warnings": []
 }

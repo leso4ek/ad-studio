@@ -31,9 +31,9 @@ undefined · ad-paper-cutout · 43.7 s · made with Ad Studio (all LLM decisions
 Verdict: The strongest episode: one place, one piece of evidence, cut on the betrayal.
 
 Test first: hook A. Fixes for a next cut:
-- Necks read too long in close-ups (rig: shorten the neck by about a quarter for drama proportions).
 - Captions sometimes sit on the name badge in close-ups (move the caption band or the badge).
 - Give Edie one private detail (the dress she chose) in the first 10 s.
+- Done in this cut: necks shortened (drama shoulders at 1.19 heads), re-rendered.
 
 ## Checks
 - Reading time: pass

@@ -2,7 +2,7 @@
   "slug": "the-countess-ep01",
   "title": "The Countess · Ep 1",
   "created": "2026-11-26T14:22:41.486Z",
-  "updated": "2026-11-26T14:51:13.543Z",
+  "updated": "2026-11-26T15:03:54.655Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -258,7 +258,7 @@
       }
     },
     "final": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T14:51:13.543Z",
       "error": null,
       "fallbacks": [],
@@ -270,8 +270,8 @@
         "out/the-countess-ep01.srt",
         "out/final-sheet.jpg"
       ],
-      "finished": "2026-11-26T14:44:29.702Z",
-      "ms": 782203,
+      "finished": "2026-11-26T15:03:51.637Z",
+      "ms": 758094,
       "summary": "2 file(s): the-countess-ep01-9x16.mp4, the-countess-ep01-16x9.mp4",
       "warnings": [],
       "result": {
@@ -297,13 +297,13 @@
       "note": "necks shortened in the rig (drama shoulders 1.19 heads)"
     },
     "scorecard": {
-      "status": "stale",
-      "started": "2026-11-26T14:44:29.703Z",
+      "status": "done",
+      "started": "2026-11-26T15:03:51.638Z",
       "error": null,
       "fallbacks": [],
       "engine": "inbox",
-      "finished": "2026-11-26T14:46:05.784Z",
-      "ms": 96081,
+      "finished": "2026-11-26T15:03:54.655Z",
+      "ms": 3017,
       "summary": "32/35 · The strongest episode: one place, one piece of evidence, cut on the betrayal.",
       "warnings": [],
       "result": {

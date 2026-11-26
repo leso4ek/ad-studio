@@ -2,7 +2,7 @@
   "slug": "the-countess-ep03",
   "title": "The Countess · Ep 3",
   "created": "2026-11-26T14:22:41.487Z",
-  "updated": "2026-11-26T14:51:13.578Z",
+  "updated": "2026-11-26T15:03:08.532Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -239,7 +239,7 @@
       }
     },
     "final": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T14:51:13.578Z",
       "error": null,
       "fallbacks": [],
@@ -251,8 +251,8 @@
         "out/the-countess-ep03.srt",
         "out/final-sheet.jpg"
       ],
-      "finished": "2026-11-26T14:43:31.273Z",
-      "ms": 731013,
+      "finished": "2026-11-26T15:03:05.489Z",
+      "ms": 711911,
       "summary": "2 file(s): the-countess-ep03-9x16.mp4, the-countess-ep03-16x9.mp4",
       "warnings": [],
       "result": {
@@ -278,13 +278,13 @@
       "note": "necks shortened in the rig (drama shoulders 1.19 heads)"
     },
     "scorecard": {
-      "status": "stale",
-      "started": "2026-11-26T14:43:31.277Z",
+      "status": "done",
+      "started": "2026-11-26T15:03:05.493Z",
       "error": null,
       "fallbacks": [],
       "engine": "inbox",
-      "finished": "2026-11-26T14:46:05.522Z",
-      "ms": 154245,
+      "finished": "2026-11-26T15:03:08.532Z",
+      "ms": 3039,
       "summary": "30/35 · A satisfying return; quieter than the arrest.",
       "warnings": [],
       "result": {

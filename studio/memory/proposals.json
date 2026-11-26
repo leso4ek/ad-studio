@@ -12,5 +12,61 @@
     ],
     "status": "pending",
     "created": "2026-11-26T08:51:17.989Z"
+  },
+  {
+    "id": "PLmwxo0k3z3hg",
+    "lessonId": "Lmwxo0k3z3hg",
+    "stage": "bible",
+    "rule": "With the v2 rig put cards in wide and medium shots at y 0.58-0.62; at y 0.24 they covered faces, the redo cleared them.",
+    "when": "drama-episode",
+    "ads": [
+      "the-countess-ep03",
+      "the-countess-ep01",
+      "the-countess-ep02"
+    ],
+    "status": "pending",
+    "created": "2026-11-26T15:31:37.024Z"
+  },
+  {
+    "id": "PLmwxo0k3zqw5",
+    "lessonId": "Lmwxo0k3zqw5",
+    "stage": "bible",
+    "rule": "Put Whisper spellings of names in vo.spellings and keep invented names Kokoro mispronounces on cards, not in dialogue.",
+    "when": "drama-episode",
+    "ads": [
+      "the-countess-ep03",
+      "the-countess-ep01",
+      "the-countess-ep02"
+    ],
+    "status": "pending",
+    "created": "2026-11-26T15:31:37.024Z"
+  },
+  {
+    "id": "PLmwxo0k3zw72",
+    "lessonId": "Lmwxo0k3zw72",
+    "stage": "story",
+    "rule": "Cut on the shortest line of the episode, spoken over the betrayer's face, with one physical piece of evidence planted earlier.",
+    "when": "drama-episode",
+    "ads": [
+      "the-countess-ep03",
+      "the-countess-ep01",
+      "the-countess-ep02"
+    ],
+    "status": "pending",
+    "created": "2026-11-26T15:31:37.024Z"
+  },
+  {
+    "id": "PLmwxo0k3zais",
+    "lessonId": "Lmwxo0k3zais",
+    "stage": "direction",
+    "rule": "End a talky episode on a physical action (sliding the evidence across the table), not only on a look.",
+    "when": "drama-episode",
+    "ads": [
+      "the-countess-ep03",
+      "the-countess-ep01",
+      "the-countess-ep02"
+    ],
+    "status": "pending",
+    "created": "2026-11-26T15:31:37.024Z"
   }
 ]

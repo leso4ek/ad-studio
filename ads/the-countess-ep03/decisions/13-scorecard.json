@@ -1,6 +1,6 @@
 {
   "stage": "scorecard",
-  "at": "2026-11-26T14:45:35.472Z",
+  "at": "2026-11-26T15:03:06.505Z",
   "output": {
     "scores": [
       {
@@ -43,8 +43,8 @@
     "verdict": "A satisfying return; quieter than the arrest.",
     "fixes": [
       "The boardroom needs the table in front of the cast (they stand in front of it).",
-      "Necks read too long in close-ups.",
-      "End on a physical action (Edie slides the stick to Fern) instead of a look."
+      "End on a physical action (Edie slides the stick to Fern) instead of a look.",
+      "Done in this cut: necks shortened (drama shoulders at 1.19 heads), re-rendered."
     ],
     "bestHook": "A",
     "reason": "Judged from the final frames."
@@ -52,7 +52,7 @@
   "meta": {
     "engine": "inbox",
     "answeredBy": "claude-session",
-    "ms": 124189
+    "ms": 1002
   },
   "warnings": []
 }

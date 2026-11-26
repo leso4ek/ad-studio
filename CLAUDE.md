@@ -289,7 +289,7 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - The series bible's characters get `object`, `habit` and a v2 look; episodes get `evidence`, `openLoop` and `place`.
   - The credit appears on episode 1's tag (`endcard.credit`; the tag may run longer to be readable).
   - New props: usb, cuffs, flute, document, ring, bars. New places: cell, boardroom.
-  - **Proof:** `ads/the-countess` + `-ep01…03` (Monte Cristo → a framed fintech analyst; paper cut-out), with my frame reviews and fixes recorded in each episode's frames decision.
+  - **Proof:** `ads/the-countess` + `-ep01…03` (Monte Cristo → a framed fintech analyst; paper cut-out). Episodes run 43.7 / 39 / 37.9 s (ep1 holds the credit), −14.1 to −14.2 LUFS, all checks pass. Scorecards 32 / 31 / 30 (honest, from the final frames). The frames reviews record two fix rounds: close-up framing, cards over faces, red evidence, the cuffed pose, beards and the opening wide. Then the neck was shortened (drama shoulders at 1.19 heads) and all three were re-rendered. Open fixes: captions sit on the name badge in close-ups; the 24 words should be on her palm; end episode 3 on an action.
 - **Speech check:**
   - DIFF lines that differ only in number, US/UK or name spelling are re-judged as OK.
   - Name spellings go in `vo.spellings` (`{"Edie": ["Eddie", "Eddy"]}`).

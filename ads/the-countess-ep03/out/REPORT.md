@@ -32,8 +32,8 @@ Verdict: A satisfying return; quieter than the arrest.
 
 Test first: hook A. Fixes for a next cut:
 - The boardroom needs the table in front of the cast (they stand in front of it).
-- Necks read too long in close-ups.
 - End on a physical action (Edie slides the stick to Fern) instead of a look.
+- Done in this cut: necks shortened (drama shoulders at 1.19 heads), re-rendered.
 
 ## Checks
 - Reading time: pass

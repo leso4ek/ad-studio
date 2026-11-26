@@ -2,7 +2,7 @@
   "slug": "the-countess-ep02",
   "title": "The Countess · Ep 2",
   "created": "2026-11-26T14:22:41.486Z",
-  "updated": "2026-11-26T14:51:13.561Z",
+  "updated": "2026-11-26T15:31:37.027Z",
   "mode": "autopilot",
   "autoGates": true,
   "decider": "inbox",
@@ -241,7 +241,7 @@
       }
     },
     "final": {
-      "status": "running",
+      "status": "done",
       "started": "2026-11-26T14:51:13.561Z",
       "error": null,
       "fallbacks": [],
@@ -253,8 +253,8 @@
         "out/the-countess-ep02.srt",
         "out/final-sheet.jpg"
       ],
-      "finished": "2026-11-26T14:50:27.992Z",
-      "ms": 269640,
+      "finished": "2026-11-26T15:03:35.860Z",
+      "ms": 742299,
       "summary": "2 file(s): the-countess-ep02-9x16.mp4, the-countess-ep02-16x9.mp4",
       "warnings": [],
       "result": {
@@ -280,15 +280,21 @@
       "note": "necks shortened in the rig (drama shoulders 1.19 heads)"
     },
     "scorecard": {
-      "status": "idle",
-      "started": "2026-11-26T14:50:27.993Z",
-      "error": "cancelled",
+      "status": "done",
+      "started": "2026-11-26T15:03:35.861Z",
+      "error": null,
       "fallbacks": [],
       "engine": "inbox",
-      "ms": 44060
+      "ms": 1681164,
+      "finished": "2026-11-26T15:31:37.025Z",
+      "summary": "31/35 · The heart of the season: a mentor, a fortune, a choice.",
+      "warnings": [],
+      "result": {
+        "report": "out/REPORT.md"
+      }
     },
     "audience": {
-      "status": "idle"
+      "status": "skipped"
     }
   }
 }

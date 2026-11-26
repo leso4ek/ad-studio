@@ -1,0 +1,57 @@
+{
+  "stage": "scorecard",
+  "at": "2026-11-26T15:31:35.997Z",
+  "output": {
+    "scores": [
+      {
+        "rule": "1 hook / re-hook",
+        "score": 4,
+        "note": "\"6 years later, cell 34\" plus \"you still count the bars\": the consequence of the arrest at once."
+      },
+      {
+        "rule": "2 clear stakes",
+        "score": 4,
+        "note": "Eleven million and a way out, against \"not for them\"."
+      },
+      {
+        "rule": "3 a character we care about",
+        "score": 5,
+        "note": "Ivo is warm and dying; Edie cries for him: the season's first tenderness."
+      },
+      {
+        "rule": "4 a rising tension curve",
+        "score": 4,
+        "note": "Gift, death, headline: three beats, the death lands softly."
+      },
+      {
+        "rule": "5 the cliffhanger",
+        "score": 4,
+        "note": "\"Buy it.\" is short and clear; the open question is what she will do with the firm."
+      },
+      {
+        "rule": "6 continuity",
+        "score": 5,
+        "note": "Same Edie (bun, scar), same voice, credit only on episode 1."
+      },
+      {
+        "rule": "7 one emotion, honest content",
+        "score": 5,
+        "note": "Grief turning to purpose, no violence."
+      }
+    ],
+    "total": 31,
+    "verdict": "The heart of the season: a mentor, a fortune, a choice.",
+    "fixes": [
+      "The 24-words insert is a paper, not her palm: draw it on a hand next time.",
+      "Show the release-day phone screen closer (MCU on the phone)."
+    ],
+    "bestHook": "A",
+    "reason": "Judged from the final frames, after the neck fix."
+  },
+  "meta": {
+    "engine": "inbox",
+    "answeredBy": "claude-session",
+    "ms": 1680132
+  },
+  "warnings": []
+}
