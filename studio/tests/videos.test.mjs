@@ -108,3 +108,12 @@ test('speech check: a Whisper diff only in number spelling is not a misread; a w
   assert.equal(V.sameSpoken(d[0].want, d[0].heard), true);
   assert.equal(V.sameSpoken(d[1].want, d[1].heard), false);
 });
+
+test('content-principles checks: short sentences, an early concrete fact, no preamble, an open loop late in drama', async () => {
+  const S = await import('../server/stages.mjs');
+  const ok = { format: 'drama-episode', dur: 40, endcard: { t0: 38 }, vo: { lines: [{ id: 'l1', text: 'Room nine. Admitted at 3 a.m.', at: .5 }, { id: 'l2', text: 'Who signed it?', at: 30 }] } };
+  assert.deepEqual(S.checkScript(ok), []);
+  assert.ok(S.checkScript({ ...ok, vo: { lines: [{ id: 'l1', text: 'So today we look at something that happened at work and what it all means for everybody.', at: .5 }] } }).length >= 2);
+  assert.ok(S.checkScript({ ...ok, vo: { lines: [{ id: 'l1', text: 'It is late. She is tired.', at: .5 }, { id: 'l2', text: 'Who signed it?', at: 30 }] } }).some(e => /concrete fact/.test(e)));
+  assert.ok(S.checkScript({ ...ok, vo: { lines: [{ id: 'l1', text: 'Room nine at 3 a.m.', at: .5 }, { id: 'l2', text: 'and then everything was quietly resolved for everyone.', at: 30 }] } }).some(e => /open question/.test(e)));
+});

@@ -79,6 +79,26 @@ export function checkDrama(b) {
   }
   return errs;
 }
+/** The content-principles checks we can measure in code (our wording; the skill itself is linked, never copied).
+ * Short sentences, a concrete fact (number, name or date) in the first 10 s, no preamble in the first 3 s,
+ * and for drama a short or open line late in the episode, so the loop carries into the next one. */
+const NUMWORD = /\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|thirty|forty|fifty|hundred|thousand|million|billion|half|dozen|first|second|third|monday|tuesday|wednesday|thursday|friday|saturday|sunday|january|february|march|april|may|june|july|august|september|october|november|december|tonight|yesterday)\b/i;
+const PREAMBLE = /\b(so today|in this video|let me tell you|hey guys|welcome back|before we start|have you ever wondered|did you know)\b/i;
+export function checkScript(b) {
+  const errs = [], lines = [...(b.vo?.lines || [])].sort((x, y) => x.at - y.at); if (!lines.length) return errs;
+  const sents = lines.flatMap(l => l.text.split(/(?<=[.!?…])\s+/).map(t => t.trim()).filter(Boolean));
+  const avg = sents.reduce((n, t) => n + t.split(/\s+/).length, 0) / Math.max(1, sents.length);
+  if (avg > 9.5) errs.push(`spoken sentences average ${avg.toFixed(1)} words: keep them under about 9 (split the long ones)`);
+  const early = [...lines.filter(l => l.at < 10).map(l => l.text), ...(b.shots || []).filter(s => s.t0 < 10).flatMap(s => (s.layers || []).filter(l => l.type === 'text').map(l => l.text))];
+  const concrete = t => /\d/.test(t) || NUMWORD.test(t) || /(?:^|[^.!?]\s)[A-Z][a-z]{2,}/.test(t.replace(/^\W*\w+/, ''));
+  if (!early.some(concrete)) errs.push('no concrete fact (a number, a name or a date) in the first 10 s: make the opening specific');
+  const pre = lines.find(l => l.at < 3 && PREAMBLE.test(l.text)); if (pre) errs.push(`line ${pre.id} spends the first 3 s on preamble ("${pre.text}"): open on the promise`);
+  if (b.format === 'drama-episode') {
+    const end = b.endcard?.t0 ?? b.dur, late = lines.filter(l => l.at >= end * .55);
+    if (!late.some(l => /\?\s*$/.test(l.text) || l.text.split(/\s+/).length <= 6)) errs.push('no open question or short reveal line in the last 45 %: open the next loop before this one closes');
+  }
+  return errs;
+}
 const FORMAT_RULES = {
   '3d-skit': 'FORMAT 3D skit (voxel stage): two characters built from boxes talk it through on a dark stage with soft bokeh lights; the product is a voxel prop. Dialogue: short lines that alternate between the two (speaker = their cast id), close-ups that alternate between speakers with slow push-ins, a wide for the reveal; about 2-3 cuts per 10 s. When the story is a method, number it: overlay.steps = [{t0, t1, label "STEP 1", title 1-2 words}] at the top (y 0.14-0.20), so while a step shows put cards at y 0.285 or lower. Captions are 1-3 words at a time (captionMode "words"). A non-human speaker is a cast entry with kind "plant" (top = leaves, bottom = pot; skin = leaf colour, hairStyle "bald").',
   '3d-explainer': 'FORMAT 3D explainer: ONE continuous camera (no cuts) glides through a 3D world that is built layer by layer, dips into a cutaway (a cross-section of the ground or the object) and comes back. Narration is a chain: "If you… But… So…", a new problem every 4-6 s and the part that fixes it appears on that beat; about 2.8 words per second; one recurring small prop for continuity. Every fact must be true and sourced (put the sources in reason). Captions: one word at a time in the centre (captionMode "words"). The shots of the bible are the BEATS of that one camera move: the picture comes from one Blender render, so shot layers are texts only.',
@@ -89,6 +109,7 @@ const FORMAT_RULES = {
 function formatBlock(ctx) {
   const t = target(ctx), r = rc(ctx), out = [];
   if (FORMAT_RULES[t]) out.push(FORMAT_RULES[t]);
+  if (!['clip', 'edit'].includes(fmt(ctx))) out.push('WRITING: apply the content-principles skill (~/.claude/skills/content-principles/SKILL.md) silently: one specific viewer; every line earns the next; open the next question before the last one closes and never deflate one; a number, name or date instead of a summary; a concrete surprising fact in the first 10 s; sentences under about 9 words; cut anything that does not serve the hook\'s promise. The code checks sentence length, the early concrete fact and preamble.');
   const e = fmt(ctx) === 'drama-episode' && episodeOf(ctx);
   if (e) {
     out.push(`SERIES "${e.sb.title}": ${e.sb.logline} Genre ${e.sb.genre}; tone ${e.sb.tone}. Arc: ${e.sb.arc}`);
@@ -273,6 +294,7 @@ export function checkBible(b) {
   }
   errs.push(...checkDirected(b, b.format));
   if (b.format === 'drama-episode') errs.push(...checkDrama(b));
+  if (['drama-episode', 'explainer', 'story-ad', '3d-skit'].includes(b.format)) errs.push(...checkScript(b));
   return errs;
 }
 
