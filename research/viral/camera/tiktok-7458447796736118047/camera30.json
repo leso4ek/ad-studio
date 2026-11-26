@@ -1,0 +1,92 @@
+{
+ "file": "video.mp4",
+ "fps": 30,
+ "frames": 263,
+ "duration": 8.77,
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 1.2,
+   "dur": 1.2,
+   "move": "pull-out",
+   "moves": [
+    "handheld",
+    "pull-out"
+   ],
+   "ease": "constant",
+   "speed": 2.816,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": -0.012,
+    "y": -0.02,
+    "scale_pct": -3.2,
+    "roll_deg": 2.1
+   },
+   "shake": 0.605
+  },
+  {
+   "t0": 1.2,
+   "t1": 5.933,
+   "dur": 4.733,
+   "move": "truck-left",
+   "moves": [
+    "handheld",
+    "truck-left",
+    "pull-out"
+   ],
+   "ease": "constant",
+   "speed": 0.047,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.217,
+    "y": 0.036,
+    "scale_pct": -9.3,
+    "roll_deg": -0.4
+   },
+   "shake": 0.572,
+   "segments": [
+    {
+     "t0": 1.2,
+     "move": "truck-left",
+     "ease": "ease-in",
+     "speed": 0.047,
+     "shake": 0.596
+    },
+    {
+     "t0": 3.2,
+     "move": "roll",
+     "ease": "constant",
+     "speed": 0.038,
+     "shake": 0.45
+    }
+   ]
+  },
+  {
+   "t0": 5.933,
+   "t1": 8.767,
+   "dur": 2.833,
+   "move": "snap-zoom-in",
+   "moves": [
+    "handheld",
+    "snap-zoom-in",
+    "tilt-down"
+   ],
+   "ease": "constant",
+   "speed": 0.027,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.037,
+    "y": -0.066,
+    "scale_pct": 2.3,
+    "roll_deg": 2.4
+   },
+   "shake": 0.697
+  }
+ ],
+ "cuts_per_10s": 2.28,
+ "mix": {
+  "pull-out": 1,
+  "snap-zoom-in": 1,
+  "truck-left": 1
+ }
+}

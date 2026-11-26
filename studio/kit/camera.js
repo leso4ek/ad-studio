@@ -49,7 +49,9 @@ export function frame(box, size, { W, H, at }) {
 
 /** The camera for frame lt (seconds into the shot). Old {zoom, pan, focus} shots keep their exact behaviour. */
 export function directCamera(shot, lt, { W, H, stage, L }) {
-  const c = shot.camera || {}, d = Math.max(.01, shot.t1 - shot.t0), p = eio(seg(lt, 0, d));
+  const c = shot.camera || {}, d = Math.max(.01, shot.t1 - shot.t0), u = seg(lt, 0, d);
+  // easing measured on viral shorts (research/viral/camera): pushes ease in or out about equally, rarely constant
+  const p = c.ease === 'in' ? u * u * u : c.ease === 'out' ? 1 - Math.pow(1 - u, 3) : c.ease === 'linear' ? u : eio(u);
   if (!c.size) {
     const z = c.zoom ? lerp(c.zoom[0], c.zoom[1], p) : 1;
     const px = c.pan ? lerp(c.pan[0][0], c.pan[1][0], p) : 0, py = c.pan ? lerp(c.pan[0][1], c.pan[1][1], p) : 0;
@@ -61,7 +63,8 @@ export function directCamera(shot, lt, { W, H, stage, L }) {
   const tiltY = c.angle === 'low' ? -.07 : c.angle === 'high' ? .07 : 0;
   if (tiltY) at = [at?.[0] ?? .5, (at?.[1] ?? (box.kind.startsWith('person') ? .42 : .48)) + tiltY];
   const f = frame(box, c.size, { W, H, at });
-  const k = c.amount ?? .5, cam = { ...f, angle: c.angle || 'eye' };
+  // rate: % zoom per second (hits push at about 4 %/s); otherwise amount 0-1 (0.5 ≈ 14 % over the shot)
+  const k = c.rate != null && (c.move === 'push' || c.move === 'pull') ? Math.min(2.5, c.rate / 100 * d / .28) : (c.amount ?? .5), cam = { ...f, angle: c.angle || 'eye' };
   switch (c.move || 'static') {
     case 'push': cam.zoom = f.zoom * lerp(1 - .28 * k, 1, p); break;
     case 'pull': cam.zoom = f.zoom * lerp(1, 1 - .28 * k, p); break;

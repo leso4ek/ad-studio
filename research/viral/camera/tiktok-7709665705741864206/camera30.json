@@ -1,0 +1,115 @@
+{
+ "file": "video.mp4",
+ "fps": 30,
+ "frames": 456,
+ "duration": 15.2,
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 4.867,
+   "dur": 4.867,
+   "move": "pull-out",
+   "moves": [
+    "pull-out"
+   ],
+   "ease": "ease-in-out",
+   "speed": 0.691,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": -0.0,
+    "y": -0.002,
+    "scale_pct": -3.3,
+    "roll_deg": -0.6
+   },
+   "shake": 0.02,
+   "segments": [
+    {
+     "t0": 0.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.018
+    },
+    {
+     "t0": 2.0,
+     "move": "pull-out",
+     "ease": "ease-out",
+     "speed": 1.524,
+     "shake": 0.022
+    }
+   ]
+  },
+  {
+   "t0": 4.867,
+   "t1": 9.9,
+   "dur": 5.033,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.001,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.007,
+    "y": -0.003,
+    "scale_pct": 0.5,
+    "roll_deg": -0.1
+   },
+   "shake": 0.018,
+   "segments": [
+    {
+     "t0": 4.87,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.018
+    },
+    {
+     "t0": 6.87,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.012
+    }
+   ]
+  },
+  {
+   "t0": 9.9,
+   "t1": 13.2,
+   "dur": 3.3,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": -0.0,
+    "scale_pct": -0.3,
+    "roll_deg": 0.0
+   },
+   "shake": 0.015
+  },
+  {
+   "t0": 13.2,
+   "t1": 15.2,
+   "dur": 2.0,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.001,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.002,
+    "y": 0.001,
+    "scale_pct": -0.2,
+    "roll_deg": 0.0
+   },
+   "shake": 0.017
+  }
+ ],
+ "cuts_per_10s": 1.97,
+ "mix": {
+  "pull-out": 1,
+  "static": 3
+ }
+}

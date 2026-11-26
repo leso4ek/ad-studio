@@ -60,15 +60,17 @@ const look = S({ skin: hex, hair: hex, hairStyle: { type: 'string', enum: HAIRST
   build: { type: 'string', enum: ['slim', 'round', 'tall', 'average', 'broad', 'curvy', 'petite'] }, age: { type: 'string', enum: ['adult', 'kid'] }, kind: { type: 'string', enum: ['person', 'plant'] }, ...RIG_FIELDS }, ['skin', 'hairStyle']);
 export const seriesBible = S({
   title: str('the series title'), logline: str('one sentence: who wants what, against what'), genre: str(), tone: str(), hookPromise: str('what the viewer is promised if they keep watching'),
-  characters: arr(S({ id: str('lowercase cast id'), name: str(), role: str('she/he/they, age, what they do'), want: str(), fear: str(), secret: str(), look, voice: str('a Kokoro voice id, e.g. af_heart, am_michael, bf_emma, bm_george') },
+  source: S({ book: str(), author: str(), year: str(), credit: str('Inspired by <Title> by <Author>'), engine: str('the machine kept from the book: betrayal, debt, secret, vow… and its reversals') }, ['book', 'author', 'credit', 'engine']),
+  characters: arr(S({ id: str('lowercase cast id'), name: str(), role: str('she/he/they, age, what they do'), want: str(), fear: str(), secret: str(), object: str('one thing we can film that is theirs: a badge, a ring, a pen'), habit: str(), look, voice: str('a Kokoro voice id, e.g. af_heart, am_michael, bf_emma, bm_george') },
     ['id', 'name', 'role', 'want', 'fear', 'look', 'voice']), 2, 6),
   places: { type: 'object', additionalProperties: S({ kind: { type: 'string', enum: PLACE_KINDS }, time: { type: 'string', enum: ['day', 'dusk', 'night'] } }, ['kind']) },
   arc: str('the season arc in 3-5 sentences'),
   episodes: arr(S({ n: { type: 'integer', minimum: 1 }, title: str(), hook: str('the first 2-3 s: from episode 2 on, it re-hooks the last cliffhanger'), beats: arr(str(), 3, 7),
-    cliffhanger: S({ moment: str('what we see in the last second'), line: str('the last spoken line, or ""'), question: str('the open question the viewer is left with') }), seconds: { type: 'number', minimum: 30, maximum: 50 } },
+    cliffhanger: S({ moment: str('what we see in the last second'), line: str('the last spoken line, or ""'), question: str('the open question the viewer is left with') }), seconds: { type: 'number', minimum: 30, maximum: 50 },
+    evidence: str('the one object or fact this episode turns on'), openLoop: str('the question opened at 60-70 %, before the old one closes'), place: str('the one location') },
     ['n', 'title', 'hook', 'beats', 'cliffhanger', 'seconds']), 1, 20),
   reason: str(),
-}, ['title', 'logline', 'genre', 'tone', 'hookPromise', 'characters', 'places', 'arc', 'episodes', 'reason']);
+}, ['title', 'logline', 'genre', 'tone', 'hookPromise', 'characters', 'places', 'arc', 'episodes', 'reason']);   // source: optional (book dramas)
 
 export const premises = S({
   premises: arr(S({ id: str(), logline: str(), emotion: str(), productRole: str('how the product causes the turn'), hookIdea: str() }), 6, 12),
@@ -108,7 +110,7 @@ const camera = {
   type: 'object',
   properties: {
     size: { type: 'string', enum: SHOT_SIZES }, subject: str('a cast id, "product", a prop kind or a layer id'), angle: { type: 'string', enum: ['eye', 'low', 'high'] },
-    move: { type: 'string', enum: CAM_MOVES }, amount: num('0..1, default 0.5'), at: arr(num(), 2, 2), ots: { type: 'string', enum: ['left', 'right'] },
+    move: { type: 'string', enum: CAM_MOVES }, amount: num('0..1, default 0.5'), ease: { type: 'string', enum: ['in-out', 'in', 'out', 'linear'], description: 'measured on viral shorts: pushes ease in or out' }, rate: num('push/pull speed in % zoom per second (viral shorts: about 4)'), at: arr(num(), 2, 2), ots: { type: 'string', enum: ['left', 'right'] },
     zoom: arr(num(), 2, 2), pan: { type: 'array' }, focus: arr(num(), 2, 2),
   },
 };

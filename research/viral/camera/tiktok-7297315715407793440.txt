@@ -1,0 +1,28 @@
+{"file": "video.mp4", "duration": 60.03, "cuts_per_10s": 4.33, "mix": {"handheld": 1, "pan-right": 1, "pull-out": 2, "push-in": 2, "roll": 2, "static": 18, "tilt-up": 1}}
+  0.00-  5.60  push-in        constant     speed 0.666 % scale/s  shake 0.03  
+  5.60-  6.90  static         constant     speed 0.005 frame widths/s  shake 0.019  
+  6.90-  8.93  static         constant     speed 0.002 frame widths/s  shake 0.033  
+  8.93- 11.90  static         constant     speed 0.003 frame widths/s  shake 0.018  
+ 11.90- 13.87  static         constant     speed 0.003 frame widths/s  shake 0.043  
+ 13.87- 15.53  static         constant     speed 0.012 frame widths/s  shake 0.04  
+ 15.53- 17.07  roll           ease-out     speed 0.021 frame widths/s  shake 0.051  
+ 17.07- 18.10  static         constant     speed 0.017 frame widths/s  shake 0.023  
+ 18.10- 20.43  static         constant     speed 0.003 frame widths/s  shake 0.047  
+ 20.43- 22.50  static         constant     speed 0.005 frame widths/s  shake 0.076  
+ 22.50- 23.90  static         constant     speed 0.009 frame widths/s  shake 0.027  
+ 23.90- 25.40  static         constant     speed 0.023 frame widths/s  shake 0.04  
+ 25.40- 26.87  static         constant     speed 0.002 frame widths/s  shake 0.017  
+ 26.87- 29.03  static         constant     speed 0.012 frame widths/s  shake 0.054  
+ 29.03- 32.33  static         constant     speed 0.005 frame widths/s  shake 0.038  
+ 32.33- 33.90  static         constant     speed 0.01 frame widths/s  shake 0.031  
+ 33.90- 35.27  static         constant     speed 0.009 frame widths/s  shake 0.033  
+ 35.27- 37.17  pull-out       ease-out     speed 2.993 % scale/s  shake 0.032  
+ 37.17- 38.33  pull-out       ease-in      speed 4.426 % scale/s  shake 0.043  
+ 38.33- 39.37  static         constant     speed 0.017 frame widths/s  shake 0.118  
+ 39.37- 41.43  handheld       constant     speed 0.008 frame widths/s  shake 0.141  
+ 41.43- 44.47  tilt-up        ease-in      speed 0.072 frame widths/s  shake 0.23  tilt-up+roll+pull-out
+ 44.47- 46.10  roll           ease-in      speed 0.027 frame widths/s  shake 0.059  push-in
+ 46.10- 48.03  push-in        ease-out     speed 5.817 % scale/s  shake 0.083  roll+truck-right
+ 48.03- 51.60  static         constant     speed 0.005 frame widths/s  shake 0.014  
+ 51.60- 54.80  pan-right      ease-out     speed 0.081 frame widths/s  shake 0.272  handheld
+ 54.80- 60.03  static         constant     speed 0.006 frame widths/s  shake 0.013  

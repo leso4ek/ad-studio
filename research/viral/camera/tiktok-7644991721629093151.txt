@@ -1,0 +1,21 @@
+{"file": "video.mp4", "duration": 59.13, "cuts_per_10s": 3.21, "mix": {"handheld": 5, "pull-out": 1, "push-in": 2, "roll": 1, "static": 11}}
+  0.00-  1.33  static         constant     speed 0.012 frame widths/s  shake 0.059  
+  1.33-  3.50  static         constant     speed 0.011 frame widths/s  shake 0.114  
+  3.50-  5.20  handheld       ease-in-out  speed 0.013 frame widths/s  shake 0.133  
+  5.20-  6.77  static         constant     speed 0.007 frame widths/s  shake 0.023  
+  6.77-  8.00  static         constant     speed 0.015 frame widths/s  shake 0.04  
+  8.00- 21.47  push-in        constant     speed 0.279 % scale/s  shake 0.074  
+ 21.47- 22.03  handheld       constant     speed 0.039 frame widths/s  shake 0.148  
+ 22.03- 27.33  static         constant     speed 0.009 frame widths/s  shake 0.052  
+ 27.33- 29.93  handheld       constant     speed 0.016 frame widths/s  shake 0.193  
+ 29.93- 33.63  static         constant     speed 0.003 frame widths/s  shake 0.028  
+ 33.63- 34.90  pull-out       ease-out     speed 2.47 % scale/s  shake 0.175  pull-out
+ 34.90- 38.80  push-in        ease-out     speed 1.182 % scale/s  shake 0.059  
+ 38.80- 41.03  static         constant     speed 0.003 frame widths/s  shake 0.082  
+ 41.03- 41.70  handheld       constant     speed 0.015 frame widths/s  shake 0.151  
+ 41.70- 45.17  static         constant     speed 0.001 frame widths/s  shake 0.012  
+ 45.17- 46.83  static         constant     speed 0.008 frame widths/s  shake 0.016  
+ 46.83- 55.57  static         constant     speed 0.002 frame widths/s  shake 0.034  
+ 55.57- 56.87  roll           constant     speed 0.03 frame widths/s  shake 0.068  
+ 56.87- 58.37  static         constant     speed 0.006 frame widths/s  shake 0.03  
+ 58.37- 59.13  handheld       constant     speed 0.062 frame widths/s  shake 0.844  

@@ -1,0 +1,11 @@
+{"file": "video.mp4", "duration": 58.87, "cuts_per_10s": 1.53, "mix": {"handheld": 5, "pull-out": 5}}
+  0.00-  6.83  pull-out       ease-in      speed 0.515 % scale/s  shake 0.092  
+  6.83- 10.60  handheld       constant     speed 0.005 frame widths/s  shake 0.253  
+ 10.60- 18.63  pull-out       ease-out     speed 0.473 % scale/s  shake 0.22  pull-out
+ 18.63- 25.37  pull-out       constant     speed 0.895 % scale/s  shake 0.15  handheld
+ 25.37- 28.50  handheld       constant     speed 0.006 frame widths/s  shake 0.168  
+ 28.50- 36.20  pull-out       constant     speed 0.922 % scale/s  shake 0.128  handheld
+ 36.20- 41.27  handheld       constant     speed 0.006 frame widths/s  shake 0.16  
+ 41.27- 47.07  handheld       constant     speed 0.005 frame widths/s  shake 0.183  
+ 47.07- 55.60  pull-out       ease-out     speed 0.503 % scale/s  shake 0.219  pull-out+truck-right
+ 55.60- 58.87  handheld       ease-out     speed 0.005 frame widths/s  shake 0.141  

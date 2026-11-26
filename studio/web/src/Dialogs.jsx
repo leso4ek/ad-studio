@@ -20,7 +20,7 @@ const FORMATS = [
   ['recreate', 'Recreate a video', 'Upload a video and references; it is analysed and rebuilt with our tools or Genjutsu.'],
 ];
 export function NewAd({ meta, onClose, onMade }) {
-  const [f, setF] = useState({ episodes: 3, genre: '', customStyle: '', format: 'story-ad', name: '', product: '', fictional: true, seconds: 20, aspect: '9:16', style: '', mode: 'autopilot', autoGates: false, decider: '' });
+  const [f, setF] = useState({ episodes: 3, genre: '', customStyle: '', book: '', format: 'story-ad', name: '', product: '', fictional: true, seconds: 20, aspect: '9:16', style: '', mode: 'autopilot', autoGates: false, decider: '' });
   const set = (k, v) => setF(o => ({ ...o, [k]: v }));
   const [busy, setBusy] = useState(false);
   const go = async () => {
@@ -28,7 +28,7 @@ export function NewAd({ meta, onClose, onMade }) {
     try {
       const ex = f.format === 'explainer', dr = f.format === 'drama-series';
       if (dr && !f.product.trim()) throw new Error('Write the story idea first');
-      const brief = dr ? { idea: f.product, episodes: +f.episodes, seconds: +f.seconds, genre: f.genre, ...(f.style ? { style: f.style } : {}), ...(f.customStyle ? { customStyle: f.customStyle } : {}) } : ex ? { topic: f.product, seconds: +f.seconds, aspect: f.aspect, ...(f.style ? { style: f.style } : {}) } : { fictional: f.fictional, seconds: +f.seconds, aspect: f.aspect, ...(f.product ? { product: f.product } : {}), ...(f.style ? { style: f.style } : {}) };
+      const brief = dr ? { idea: f.product, episodes: +f.episodes, seconds: +f.seconds, genre: f.genre, ...(f.style ? { style: f.style } : {}), ...(f.customStyle ? { customStyle: f.customStyle } : {}), ...(f.book ? { source: { book: f.book } } : {}) } : ex ? { topic: f.product, seconds: +f.seconds, aspect: f.aspect, ...(f.style ? { style: f.style } : {}) } : { fictional: f.fictional, seconds: +f.seconds, aspect: f.aspect, ...(f.product ? { product: f.product } : {}), ...(f.style ? { style: f.style } : {}) };
       if (ex && !f.product.trim()) throw new Error('Write the topic first');
       const rec = f.format === 'recreate' || f.format === 'edit' || f.format === 'clip';
       const p = await api.create({ name: f.name || (f.format === 'clip' ? 'Clips' : f.format === 'edit' ? 'Edit' : rec ? 'Recreated video' : dr ? f.product.slice(0, 40) : ex ? f.product.slice(0, 40) : f.fictional ? 'Fictional product ad' : f.product), brief, mode: f.mode, autoGates: f.autoGates, decider: f.decider || null, format: f.format, ...(rec ? { start: false } : {}) });
@@ -46,6 +46,9 @@ export function NewAd({ meta, onClose, onMade }) {
         <label>Story idea (Claude writes the series bible: characters, arc, every episode's cliffhanger)<textarea rows={3} value={f.product} onChange={e => set('product', e.target.value)} placeholder="e.g. a night-shift nurse finds her name on a patient's chart" /></label>
         <div className="row"><label style={{ flex: 1 }}>Episodes<input type="number" min={1} max={20} value={f.episodes} onChange={e => set('episodes', e.target.value)} /></label>
           <label style={{ flex: 2 }}>Genre and tone<input type="text" value={f.genre} onChange={e => set('genre', e.target.value)} placeholder="e.g. mystery, tense, a little funny" /></label></div>
+        <label>Inspired by a book (optional, public domain: Claude keeps its dramatic engine and moves it into modern life, credited on episode 1)
+          <input type="text" list="books" value={f.book} onChange={e => set('book', e.target.value)} placeholder="e.g. The Count of Monte Cristo" />
+          <datalist id="books">{['The Count of Monte Cristo', 'Hamlet', 'Anna Karenina', 'Macbeth', 'Othello', 'Crime and Punishment', 'Les Misérables', 'Wuthering Heights', 'Jane Eyre', 'Medea', 'Frankenstein', 'Madame Bovary'].map(b => <option key={b} value={b} />)}</datalist></label>
         <label>Your own style (optional: describe it; Claude maps it onto the closest kit style + colours, and writes a Seedance look)<input type="text" value={f.customStyle} onChange={e => set('customStyle', e.target.value)} placeholder="e.g. rainy neon city, muted teal and magenta, film grain" /></label>
       </>}
       {f.format === 'clip' && <p style={{ color: 'var(--muted)', fontSize: 13 }}>Next you paste the VOD or video link (or upload a recording and a chat log) and say how many clips you want.</p>}

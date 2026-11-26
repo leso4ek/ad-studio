@@ -221,6 +221,8 @@ function endTexts() {
   if (e.logo) o.push({ type: 'text', id: 'logo', role: 'logo', text: e.logo, x, y: y.logo, w: .8, t0: .15, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
   if (e.line) o.push({ type: 'text', id: 'line', role: 'sub', text: e.line, x, y: y.line, w: .78, t0: .45, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
   if (e.cta) o.push({ type: 'text', id: 'cta', role: 'cta', text: e.cta, x, y: y.cta, w: .7, t0: .75, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
+  // a book drama credits its source in small type (round 14): "Inspired by The Count of Monte Cristo by Alexandre Dumas"
+  if (e.credit) o.push({ type: 'text', id: 'credit', role: 'small', text: e.credit, x, y: LANDSCAPE ? .78 : .62, w: .8, t0: .3, ...(LANDSCAPE ? { x: 1.05, w: .9 } : {}) });
   return o;
 }
 R.endTexts = endTexts;

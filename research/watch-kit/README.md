@@ -57,3 +57,10 @@ The cloud watched 45+ TikToks (`research/viral/`), but YouTube is blocked there.
 | Short drama | 4 | `ytsearch20:minidrama episode 1 shorts` and `ytsearch20:short drama part 2` |
 | Skits | 3 | `ytsearch20:skit shorts comedy POV` |
 | Stream clips | 4 | `ytsearch20:streamer reaction clip shorts` (measure setup before the peak and tail after it, as in `research/viral/clip-rubric.md`) |
+
+
+## Round 14: outliers and camera at 30 fps (also on the PC)
+1. Score a list of accounts: `python3 research/tools/outliers.py @account1 @account2 … --posts 60 --top 20`. For YouTube, pass channel URLs (`https://www.youtube.com/@name/shorts`). It writes `research/viral/outliers/<date>.json`.
+2. Download the top posts: `python3 research/tools/vidget.py <url> --out downloads`.
+3. Read the camera: `python3 research/tools/camera30.py downloads/<id>/video.mp4 --out research/viral/camera/<id>`.
+4. Watch the same file with the watch skill for hooks and words. Delete the video after the teardown.

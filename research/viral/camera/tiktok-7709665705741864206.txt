@@ -1,0 +1,5 @@
+{"file": "video.mp4", "duration": 15.2, "cuts_per_10s": 1.97, "mix": {"pull-out": 1, "static": 3}}
+  0.00-  4.87  pull-out       ease-in-out  speed 0.691 % scale/s  shake 0.02  
+  4.87-  9.90  static         constant     speed 0.001 frame widths/s  shake 0.018  
+  9.90- 13.20  static         constant     speed 0.0 frame widths/s  shake 0.015  
+ 13.20- 15.20  static         constant     speed 0.001 frame widths/s  shake 0.017  

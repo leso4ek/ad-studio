@@ -1,0 +1,4 @@
+{"file": "video.mp4", "duration": 8.77, "cuts_per_10s": 2.28, "mix": {"pull-out": 1, "snap-zoom-in": 1, "truck-left": 1}}
+  0.00-  1.20  pull-out       constant     speed 2.816 % scale/s  shake 0.605  pull-out
+  1.20-  5.93  truck-left     constant     speed 0.047 frame widths/s  shake 0.572  truck-left+pull-out
+  5.93-  8.77  snap-zoom-in   constant     speed 0.027 frame widths/s  shake 0.697  snap-zoom-in+tilt-down

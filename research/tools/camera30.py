@@ -31,17 +31,24 @@ def frames(path, fps=30, width=160):
     col = np.frombuffer(raw[:n * width * h * 3], np.uint8).reshape(n, h, width, 3)
     return col, width, h
 
-def cuts(col, fps):
-    """Shot starts (frame indices) from local peaks of the colour-histogram distance."""
-    hs = []
+def cuts(col, fps, track=None):
+    """Shot starts (frame indices) from local peaks of a cut score: colour-histogram distance + grey frame difference
+    (+ the share of tracked corners lost, when given). Local peaks catch cuts inside one room that a fixed threshold misses."""
+    hs, grey = [], []
     for f in col:
         hsv = cv2.cvtColor(f, cv2.COLOR_BGR2HSV); hh = cv2.calcHist([hsv], [0, 1], None, [16, 8], [0, 180, 0, 256]); cv2.normalize(hh, hh); hs.append(hh)
-    d = np.array([0.0] + [cv2.compareHist(hs[i - 1], hs[i], cv2.HISTCMP_BHATTACHARYYA) for i in range(1, len(hs))])
-    out, win = [0], max(3, fps // 3)
+        grey.append(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).astype(np.float32))
+    d = np.zeros(len(col))
+    for i in range(1, len(col)):
+        hd = cv2.compareHist(hs[i - 1], hs[i], cv2.HISTCMP_BHATTACHARYYA)
+        md = float(np.mean(np.abs(grey[i] - grey[i - 1]))) / 40
+        lost = track[i - 1] if track is not None and i - 1 < len(track) else 0
+        d[i] = .55 * hd + .3 * min(1.5, md) + .15 * lost
+    out, win = [0], max(4, fps // 2)
     for i in range(1, len(d)):
         lo, hi = max(0, i - win), min(len(d), i + win + 1)
         local = np.median(d[lo:hi])
-        if d[i] == d[lo:hi].max() and d[i] > max(.28, local * 3) and i - out[-1] >= fps // 3: out.append(i)
+        if d[i] == d[lo:hi].max() and d[i] > max(.16, local * 3.2) and i - out[-1] >= fps // 3: out.append(i)
     return out
 
 def pair_motion(a, b):
@@ -59,7 +66,14 @@ def pair_motion(a, b):
                 # translation of the frame centre (so a zoom about the centre is not read as a pan)
                 tx = M[0, 0] * cx + M[0, 1] * cy + M[0, 2] - cx; ty = M[1, 0] * cx + M[1, 1] * cy + M[1, 2] - cy
                 pred = (p0 @ M[:, :2].T) + M[:, 2]; res = float(np.median(np.linalg.norm(pred - p1, axis=1)))
-                return tx, ty, s, r, res, int(inl.sum()) if inl is not None else len(p0)
+                n_in = int(inl.sum()) if inl is not None else len(p0)
+                if n_in < 25: return 0.0, 0.0, 1.0, 0.0, res, n_in          # too few corners: no reading rather than noise
+                # noise floor: sub-pixel jitter and tiny scale/roll readings are compression noise that would pile up over a long take
+                if abs(tx) < .05: tx = 0.0
+                if abs(ty) < .05: ty = 0.0
+                if abs(math.log(s)) < .0012: s = 1.0
+                if abs(r) < .0012: r = 0.0
+                return tx, ty, s, r, res, n_in
     (tx, ty), _ = cv2.phaseCorrelate(np.float32(a), np.float32(b))
     return tx, ty, 1.0, 0.0, 0.0, 0
 
@@ -113,12 +127,18 @@ def classify(seg, fps, w):
 def analyse(path, fps=30, width=160, strip=3, out=None):
     col, w, h = frames(path, fps, width)
     grey = [cv2.cvtColor(f, cv2.COLOR_BGR2GRAY) for f in col]
-    starts = cuts(col, fps) + [len(col)]
-    pairs = np.array([pair_motion(grey[i - 1], grey[i])[:5] for i in range(1, len(grey))]) if len(grey) > 1 else np.zeros((0, 5))
+    full = np.array([pair_motion(grey[i - 1], grey[i]) for i in range(1, len(grey))]) if len(grey) > 1 else np.zeros((0, 6))
+    pairs = full[:, :5]
+    track = 1 - np.clip(full[:, 5] / 120, 0, 1) if len(full) else None
+    starts = cuts(col, fps, track) + [len(col)]
     shots = []
     for a, b in zip(starts[:-1], starts[1:]):
         seg = pairs[a:max(a, b - 1)]           # pairs inside the shot (the cut pair itself is excluded)
-        shots.append({'t0': round(a / fps, 3), 't1': round(b / fps, 3), 'dur': round((b - a) / fps, 3), **classify(seg, fps, w)})
+        shot = {'t0': round(a / fps, 3), 't1': round(b / fps, 3), 'dur': round((b - a) / fps, 3), **classify(seg, fps, w)}
+        if (b - a) > 4 * fps:   # a long take: what the camera does in each 2 s of it
+            step = 2 * fps
+            shot['segments'] = [{'t0': round((a + k) / fps, 2), **{x: v for x, v in classify(seg[k:k + step], fps, w).items() if x in ('move', 'ease', 'speed', 'shake')}} for k in range(0, len(seg) - fps, step)]
+        shots.append(shot)
     res = {'file': os.path.basename(path), 'fps': fps, 'frames': len(col), 'duration': round(len(col) / fps, 2), 'shots': shots,
            'cuts_per_10s': round((len(shots) - 1) / max(.1, len(col) / fps) * 10, 2),
            'mix': {m: sum(1 for s in shots if s['move'] == m) for m in sorted({s['move'] for s in shots})}}
