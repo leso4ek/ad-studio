@@ -26,8 +26,9 @@ for d in "$REPO"/skills/*/; do ln -sfn "${d%/}" "$SKILLS/$(basename "$d")"; done
 #     and cinematic-director (MIT, wuwangzhang1216/DirectorSKILL: the Direction stage reads its references)
 #     i-have-adhd (MIT, ayghri: how Claude talks to the user) and watch (bradautomates/claude-video: frames + transcript of a video)
 #     content-principles (aiwithremy, no licence file: linked only, never copied; the writing rules for every script)
+#     youtube-agent-skill (MIT, Jake Schincariol): yt-script, yt-shorts, yt-edit, yt-package (adapted to reels)
 EXT="$HOME/.cache/ad-studio-skills"; mkdir -p "$EXT"
-for r in leonxlnx/taste-skill heydamir/unslop wuwangzhang1216/DirectorSKILL ayghri/i-have-adhd bradautomates/claude-video aiwithremy/content-principles; do
+for r in leonxlnx/taste-skill heydamir/unslop wuwangzhang1216/DirectorSKILL ayghri/i-have-adhd bradautomates/claude-video aiwithremy/content-principles jakeschincariol/youtube-agent-skill; do
   d="$EXT/$(basename $r)"
   [ -d "$d/.git" ] && git -C "$d" pull -q --ff-only || git clone -q --depth 1 "https://github.com/$r" "$d" || echo "could not fetch $r (offline?)"
 done
@@ -37,6 +38,7 @@ done
 [ -f "$EXT/i-have-adhd/skills/i-have-adhd/SKILL.md" ] && ln -sfn "$EXT/i-have-adhd/skills/i-have-adhd" "$SKILLS/i-have-adhd"
 [ -d "$EXT/claude-video/skills/watch" ] && ln -sfn "$EXT/claude-video/skills/watch" "$SKILLS/watch"
 [ -f "$EXT/content-principles/content-principles/SKILL.md" ] && ln -sfn "$EXT/content-principles/content-principles" "$SKILLS/content-principles"
+for k in yt-script yt-shorts yt-edit yt-package; do [ -d "$EXT/youtube-agent-skill/skills/$k" ] && ln -sfn "$EXT/youtube-agent-skill/skills/$k" "$SKILLS/$k"; done
 
 # 3. our styles, registered where the library looks for user styles
 mkdir -p "$HOME/lemo-my-styles"
