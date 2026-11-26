@@ -60,3 +60,26 @@ What the most-viewed TikToks of the last 12 months do, measured by watching them
   - never ends mid-conversation (the weakest hits did);
   - one moment, one emotion.
 - **Publish threshold:** a rubric score of 70/100 or more, with no criterion at 0 (`research/viral/clip-rubric.md`).
+
+## Short drama (series episodes)
+- **Frame 1:** a title card in 9 of 9 episodes (series name + episode, or the episode's question).
+- **Opening:** no recap and no replay of the last line (0 of 6 transitions). Re-hook within 3 s by jumping straight into the consequence. Pay off the previous cliffhanger late: at about 80 %, or in the last 12 s.
+- **The cut:**
+  - cut 1.5–4 s after the last line, on the evidence or a face;
+  - the peak line is the shortest line ("OK.", "Sorry, what?");
+  - a vow spoken early is broken before the end.
+- **Characters:** tell them apart by colour and a name on a prop, not captions (0 of 9 had subtitles). A new face gets a name, a trait, then a threat, about every 6–16 s.
+- **Pace:** about 2 cuts per 10 s; when cuts are slow, dialogue carries it at 3.3–5.4 words/s.
+- **Across episodes:** alternate two storylines and let each ending name the other one.
+- **Length:** hits run long (median 131 s). Our 30–50 s episodes keep only the strongest beat per scene: one location, one turn, one piece of evidence.
+
+## Ads (story ads that don't feel like ads)
+- **Brand early:** seen or heard by 1.5 s in 6 of 8 ads (median 0.5 s). Product launches reveal the product at 11–16 %; parodies and stories reveal what is sold at 60–85 %.
+- **Format:** borrow one the viewer knows (an infomercial, an anthem, a sitcom song, a reply to a comment, a genre parody, a series episode). Switch format once at about 20 % to reset attention.
+- **Story:** "But then…" escalates every 4–6 s. The product is the hero's way to win a personal fight, and the plot proves the feature (no demo). A twist comes after the product moment.
+- **Fine print:** written as a joke.
+- **What earns likes:**
+  - answering customers on camera: 10.7 %;
+  - mascot skits: 12.6 %;
+  - produced spots: 0.5–2.5 %.
+- **Pace:** about 54 s, 3 cuts per 10 s, 3.8 words/s while speaking.
