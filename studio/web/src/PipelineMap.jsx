@@ -39,7 +39,7 @@ export default function PipelineMap({ stages, state, selected, onSelect }) {
         return (
           <button key={s.id} className={`node st-${x.status}`} aria-current={selected === s.id} onClick={() => onSelect(s.id)}
             title={`${s.title}: ${LABEL[x.status] || x.status}${x.error ? ` — ${x.error}` : ''}`}>
-            <span className="dot">{x.status === 'done' ? '✓' : x.status === 'error' ? '!' : s.n === 0 ? 'R' : s.n}</span>
+            <span className="dot">{x.status === 'done' ? '✓' : x.status === 'error' ? '!' : s.i || s.n}</span>
             <span>
               <span className="t">{s.title}
                 {s.kind === 'decide' && <span className="chip claude" title="Claude decides">Claude</span>}

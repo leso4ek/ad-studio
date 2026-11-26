@@ -9,8 +9,8 @@ import { ClipSource, ClipCandidates, ClipGallery } from './Clips.jsx';
 const STATUS = { skipped: 'not part of this format', offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
 
-export default function StageDetail({ ad, meta, id, bust, onNow, refresh, onOpen }) {
-  const st = meta?.stages.find(s => s.id === id); if (!st) return null;
+export default function StageDetail({ ad, meta, stages, id, bust, onNow, refresh, onOpen }) {
+  const list = stages || meta?.stages || [], st = list.find(s => s.id === id) || meta?.stages.find(s => s.id === id); if (!st) return null;
   const x = ad.project.stages[id] || { status: 'idle' }, rec = ad.decisions[id], slug = ad.project.slug;
   const waiting = x.status === 'gate' || x.status === 'review';
   const [note, setNote] = useState(''), [redo, setRedo] = useState(false), [busy, setBusy] = useState(false);
@@ -22,7 +22,7 @@ export default function StageDetail({ ad, meta, id, bust, onNow, refresh, onOpen
     <div>
       <div className="row" style={{ justifyContent: 'space-between', marginBottom: 12 }}>
         <div>
-          <h2>Stage {st.n} of {meta.stages.length} · {st.kind === 'decide' ? 'Claude decides' : 'engines'}{st.gate ? ' · gate' : ''}{st.optional ? ' · optional' : ''}{st.paid ? ' · paid' : ''}</h2>
+          <h2>Stage {st.i || st.n} of {list.length} · {st.kind === 'decide' ? 'Claude decides' : 'engines'}{st.gate ? ' · gate' : ''}{st.optional ? ' · optional' : ''}{st.paid ? ' · paid' : ''}</h2>
           <h3>{st.title}</h3>
           <div className="row" style={{ color: 'var(--muted)' }}>
             <span className={`chip ${x.status === 'done' ? 'ok' : x.status === 'error' ? 'err' : waiting ? 'gate' : ''}`}>{STATUS[x.status] || x.status}</span>

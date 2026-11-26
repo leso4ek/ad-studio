@@ -60,8 +60,10 @@ export default function App() {
   // follow the pipeline: select the running stage, else the first that waits for the user
   // only the stages of this ad's format (recreate adds Source + Analysis; the 3D explainer adds the world; recreate skips Premises)
   const fmtOf = p => p?.format || 'story-ad', tgtOf = p => fmtOf(p) === 'recreate' ? (p.recreate?.target || 'story-ad') : fmtOf(p);
-  const stages = (s.meta?.stages || []).filter(x => { const sf = s.meta?.stageFormats?.[x.id]; return !sf || sf.formats.includes(fmtOf(s.ad?.project)) || sf.targets.includes(tgtOf(s.ad?.project)); });
   const st = s.ad?.project?.stages || {};
+  // stages this format skips are hidden, so the map shows only the work that will happen
+  const stages = (s.meta?.stages || []).filter(x => { const sf = s.meta?.stageFormats?.[x.id]; return (!sf || sf.formats.includes(fmtOf(s.ad?.project)) || sf.targets.includes(tgtOf(s.ad?.project))) && st[x.id]?.status !== 'skipped'; })
+    .map((x, i) => ({ ...x, i: i + 1 }));
   const focus = useMemo(() => {
     const running = stages.find(x => st[x.id]?.status === 'running');
     const waiting = stages.find(x => ['gate', 'review', 'error'].includes(st[x.id]?.status));
@@ -118,7 +120,7 @@ export default function App() {
             <motion.div key={(s.slug || '') + view + (view === 'pipeline' ? selected : '')} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: .18 }}>
               {s.ad && view === 'board' ? <ShotBoard slug={s.slug} events={s.events} />
                 : view === 'memory' ? <Memory slug={s.slug} />
-                : s.ad ? <StageDetail ad={s.ad} meta={s.meta} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} onOpen={slug => { d({ type: 'slug', slug }); setFollow(true); }} />
+                : s.ad ? <StageDetail ad={s.ad} meta={s.meta} stages={stages} id={selected} bust={s.bust} onNow={setNow} refresh={refresh} onOpen={slug => { d({ type: 'slug', slug }); setFollow(true); }} />
                 : <div className="empty">{s.ads.length ? 'Loading…' : <>No ads yet. <button className="btn primary" onClick={() => setDlg('new')}>Make the first ad</button></>}</div>}
             </motion.div>
           </AnimatePresence>

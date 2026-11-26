@@ -415,7 +415,7 @@ export const AUTO = {
       const file = path.join(dir, `clip-${String(i + 1).padStart(2, '0')}.mp4`);
       // captions: viral podcast clips all burn word captions; 7 of 8 viral stream clips carry none (the headline box does the work)
       const k = rc(ctx).clip || {}, captions = k.captions ?? c.mode !== 'stream';
-      await EDIT.render(ctx.cfg, seg, words, { keep: [{ t0: 0, t1: len }], emphasis: p.emphasis || [], title: p.title ? { text: p.title, t0: 0, t1: 1.8 } : null, captions, music: { use: false }, reframe: k.reframe || 'blur' }, file, { style, slug: ctx.slug, stage: 'clip-render', signal: ctx.signal });
+      await EDIT.render(ctx.cfg, seg, words, { keep: [{ t0: 0, t1: len }], emphasis: p.emphasis || [], title: p.title ? { text: p.title, t0: 0, t1: c.mode === 'stream' ? Math.min(9, len) : 1.8 } : null, captions, music: { use: false }, reframe: k.reframe || 'blur' }, file, { style: { ...style, title: { ...style.title, box: '#000000' } }, slug: ctx.slug, stage: 'clip-render', signal: ctx.signal });
       fs.rmSync(seg, { force: true });
       out.push({ file: `clips/${path.basename(file)}`, id: p.id, t0: p.t0, t1: p.t1, title: p.title, why: p.why, scores: p.scores, total: Object.values(p.scores).reduce((a, b) => a + b, 0) });
     }

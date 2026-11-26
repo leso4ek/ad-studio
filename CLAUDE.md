@@ -238,6 +238,27 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
   - A stage marked done is skipped by "run from": use Redo.
   - `ffmpeg7()` now swaps its link atomically, because parallel tests raced on it.
 
+### Round 13: more than ads (26 Nov 2026)
+- **"New video"** offers 8 kinds: story ad, short drama, explainer, 3D skit, 3D explainer, clip a stream, edit a video, recreate.
+  - `edit` and `clip` are **tool formats** (`TOOL_FORMATS`): they run only the stages that name them.
+  - Stages a format skips are hidden in the pipeline map, and stages are numbered per format.
+- **Explainer** (`format: explainer`): a topic brief (`topicBrief`, ≥ 3 sourced facts) → hooks → story → style → direction → bible → … → scorecard (explainer rubric). No product: the end card shows the channel name and a CTA.
+- **Short drama:**
+  - The series project (`drama-series`) runs series bible → style → **episodes**, which creates child projects `<slug>-epNN` (`drama-episode`, `parent` link).
+  - `seriesLocks` forces cast, voices, palette and a "Part N" end card (the finale shows the series title). It must **delete** `line`/`cta` keys, never set them to undefined.
+  - `checkDrama`: 30–50 s; the last line lands just before the cut; only "Part N" on the end card.
+  - `runSeries` / "Run all in order" in the Series view. Episode boards reuse character sheets approved in a sibling.
+- **Edit tool** (`engines/edit.mjs`, the @viralex.aii workflow): faster-whisper words → `silencedetect` + `proposeCuts` → Claude's edit plan (`checkKeep`: no cut inside a word) → concat + libass word captions + music bed with ducking + −14 LUFS. Notes in plain words make v2, v3…
+- **Clipper** (`engines/chat.mjs`, `engines/openclip.mjs`, skill `clip-director`):
+  - Stream mode: chat bursts (z-score) → peaks → delay estimate (6 s Twitch/Kick, 10 s YouTube) → windows of about 10 s build-up + 7 s reaction → snapped to sentences → Claude picks with the rubric (`research/viral/clip-rubric.md`) → 9:16 render with a solid headline box held 9 s and no speech captions.
+  - Normal mode: OpenClip (`install_openclip.sh`). **It can't install in the cloud** (download.pytorch.org and the Whisper host are blocked), so the cloud falls back to Claude ranking transcript windows. Real Twitch/YouTube/Kick runs happen on the PC.
+- **Viral research** (`research/viral/`, the watch skill on TikTok): 9 explainers, 8 skits, 10 short drama, 8 ads, 14 clips, each with a SUMMARY. The playbook `skills/ad-studio-director/reference/viral-playbook.md` has one section per format; `playbook(format)` puts only that section into the prompts. YouTube Shorts list for the PC: `research/watch-kit/README.md`.
+- **Proofs (all $0):** `ads/ear-pop-explainer/`, `ads/night-shift/` + `-ep01…03`, `ads/sprigly-edit/` (v1 13.8 s → v2 11.7 s from one note), `ads/stream-clips/` (both chat bursts found, delay 6 s vs. true 5 s, 2 clips).
+- **Lessons:**
+  - Cards on medium and close character shots go in the lower zone (y ≈ .645); a top card sat on her eyes.
+  - `render.stills` needs an absolute ad folder path.
+  - Restarting the server re-opens the running stage's inbox request: re-stage the answer for the feeder.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.
