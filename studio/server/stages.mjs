@@ -115,9 +115,9 @@ export const RUBRIC = {
 export function playbook(format, max = 1800) {
   try {
     const f = path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..', 'skills', 'ad-studio-director', 'reference', 'viral-playbook.md');
-    const md = fs.readFileSync(f, 'utf8'), keys = { explainer: ['explainer'], '3d-explainer': ['explainer'], '3d-skit': ['skit'], 'story-ad': ['ad'], recreate: ['ad'], 'drama-episode': ['drama'], series: ['drama'], clip: ['clip'] }[format] || [format];
+    const md = fs.readFileSync(f, 'utf8'), keys = { explainer: ['Explainers'], '3d-explainer': ['Explainers'], '3d-skit': ['Skits'], 'story-ad': ['Ads'], recreate: ['Ads'], 'drama-episode': ['Short drama'], series: ['Short drama'], clip: ['Clips'] }[format] || [format];   // the section headings, matched as prefixes
     for (const k of keys) {
-      const m = new RegExp(`^## [^\\n]*\\b${k}[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))`, 'im').exec(md);
+      const m = new RegExp(`^## ${k}\\b[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))`, 'im').exec(md);
       if (m) return `\n\nVIRAL PLAYBOOK (${k}, from the research in research/viral/): ${m[1].trim().slice(0, max)}`;
     }
   } catch { /* no playbook yet */ }
