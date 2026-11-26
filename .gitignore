@@ -40,3 +40,4 @@ ads/*/out/.*_segs-*/
 ads/*/out/*.lock
 downloads/
 ads/*/source/refvideos/
+ads/*/out/*.part.mp4
