@@ -51,3 +51,24 @@ test('snap: windows start at a sentence and end after the reaction sentence', ()
   const s = C.snap({ t0: 11.5, t1: 13 }, words);
   assert.equal(s.t0, 11); assert.equal(s.t1, 12.75);
 });
+
+test('clip picks: near a candidate, 15-90 s, never inside a word; OpenClip output parsing', async () => {
+  const fs = await import('fs'), os = await import('os'), path = await import('path');
+  const { checkClips } = await import('../server/stages.mjs'), OC = await import('../server/engines/openclip.mjs');
+  const ad = fs.mkdtempSync(path.join(os.tmpdir(), 'clip-')); fs.mkdirSync(path.join(ad, 'clips'));
+  const words = [{ w: 'He', t0: 100, t1: 100.3 }, { w: 'jumps', t0: 100.4, t1: 100.9 }, { w: 'and', t0: 130, t1: 130.2 }, { w: 'falls!', t0: 130.3, t1: 130.9 }];
+  fs.writeFileSync(path.join(ad, 'clips', 'candidates.json'), JSON.stringify({ candidates: [{ id: 'c1', t0: 100, t1: 131, words }] }));
+  const pick = (t0, t1, id = 'c1') => ({ clips: [{ id, t0, t1, title: 'x', scores: { hook: 4, setup: 4, peak: 4, payoff: 4, standalone: 4 }, why: 'y' }] });
+  assert.deepEqual(checkClips(pick(99.9, 131.1), ad), []);
+  assert.ok(checkClips(pick(100.6, 131.1), ad).some(e => /inside the word "jumps"/.test(e)));
+  assert.ok(checkClips(pick(100, 108), ad).some(e => /15-90 s/.test(e)));
+  assert.ok(checkClips(pick(60, 131), ad).some(e => /within 15 s/.test(e)));
+  assert.ok(checkClips(pick(100, 131, 'zz'), ad).some(e => /not a candidate/.test(e)));
+  const m = OC.parseMoments({ top_engaging_moments: [{ rank: 2, title: 'T', start_time: '00:01:30', end_time: '02:45', why_engaging: 'w', tags: ['a'] }, { rank: 1, title: 'bad', start_time: '00:00:10', end_time: '00:00:05' }] });
+  assert.deepEqual(m, [{ id: 'o2', t0: 90, t1: 165, title: 'T', why: 'w', tags: ['a'], rank: 2, source: 'openclip' }]);
+  process.env.ADSTUDIO_MOCK = '1';
+  assert.equal((await OC.available({})).ok, true);
+  const mm = await OC.moments({}, '/nonexistent.mp4', path.join(ad, 'oc')); assert.equal(mm[0].t0, 2);
+  delete process.env.ADSTUDIO_MOCK;
+  fs.rmSync(ad, { recursive: true, force: true });
+});

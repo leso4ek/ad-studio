@@ -15,7 +15,9 @@ import * as AN from './engines/analyse.mjs';
 import * as blender from './engines/blender.mjs';
 import * as EDIT from './engines/edit.mjs';
 import { TOOL_FORMATS } from './schemas.mjs';
-import { ffmpeg7 } from './util.mjs';
+import { ffmpeg7, STUDIO } from './util.mjs';
+import * as CHAT from './engines/chat.mjs';
+import * as OCLIP from './engines/openclip.mjs';
 
 export const STYLE_LINES = {
   'ad-paper-cutout': 'Paper Cut-out: layered card stock, soft shadows, stop-motion on twos. Warm, handmade, homely products, food, family.',
@@ -130,6 +132,17 @@ export const STAGES = [
   { id: 'source', n: 0, title: 'Source video', kind: 'auto', formats: ['recreate', 'edit'] },
   // the edit tool (the @viralex.aii workflow): a style from your reference reels, Claude's edit decision list, the render
   { id: 'edit-style', n: 1, title: 'Edit style', kind: 'auto', formats: ['edit'] },
+  // the clipper: a stream VOD (chat explodes → the moment and its build-up) or a normal long video (OpenClip / transcript)
+  { id: 'clip-source', n: 0, title: 'Video and chat', kind: 'auto', formats: ['clip'] },
+  { id: 'clip-find', n: 1, title: 'Candidates', kind: 'auto', formats: ['clip'] },
+  { id: 'clip-pick', n: 2, title: 'Pick clips', kind: 'decide', schema: 'clipPick', formats: ['clip'], checkWith: (out, adDir) => checkClips(out, adDir),
+    prompt: ctx => { const c = readJSON(path.join(ctx.adDir, 'clips', 'candidates.json'), { candidates: [] }), k = rc(ctx).clip || {};
+      return `Clipper · pick and trim the clips (skill clip-director: read skills/clip-director/SKILL.md).
+Mode: ${c.mode} (${c.mode === 'stream' ? `chat peaks; the chat delay was estimated at ${c.delay} s, so each window already holds the build-up before the moment and the reaction after it` : 'a normal video: ranked by OpenClip or transcript windows'}). Source ${c.duration?.toFixed?.(0)} s.
+The user's intent: ${J(k.intent || 'the moments people would share')}. Pick up to ${k.maxClips || 5} clips.
+Candidates (times in seconds; text = what is said; chat = sample messages at the peak): ${J(c.candidates.map(x => ({ id: x.id, t0: x.t0, t1: x.t1, moment: x.moment, z: x.z, title: x.title, why: x.why, text: (x.text || '').slice(0, 700), chat: x.chat })))}
+For each clip: keep the candidate id, set t0/t1 within 15 s of the candidate's window (a sentence start; enough setup that a stranger understands it; end right after the reaction or punchline), 15-90 s long; a hook title for the first 1-2 s (≤ 6 words, or "" when the first line hooks on its own); the emphasis words; scores 1-5 for hook, setup, peak, payoff, standalone; one line of why. Skip candidates that need context the clip can't give.${playbook('clip')}`; } },
+  { id: 'clip-render', n: 3, title: 'Clips', kind: 'auto', formats: ['clip'] },
   { id: 'edit-plan', n: 2, title: 'Edit plan', kind: 'auto', formats: ['edit'] },
   { id: 'edit-render', n: 3, title: 'Draft', kind: 'auto', formats: ['edit'] },
   { id: 'analysis', n: 0, title: 'Analysis', kind: 'decide', schema: 'analysis', formats: ['recreate'],
@@ -314,6 +327,99 @@ export function routeShots(ctx, o) {
 
 // ---------- automatic stages ----------
 export const AUTO = {
+  /** clipper · the video (a URL via yt-dlp, or the upload) and, for streams, the chat replay (chat-downloader / Kick API / upload) */
+  async 'clip-source'(ctx) {
+    const r = rc(ctx), k = r.clip || {}, src0 = r.source && path.join(ctx.adDir, r.source);
+    let src = src0 && fs.existsSync(src0) ? src0 : null;
+    if (!src && k.url) {
+      const ytdlp = [path.join(STUDIO, '.tools', 'chatenv', 'bin', 'yt-dlp'), path.join(STUDIO, '..', 'research', 'tools', '.venv', 'bin', 'yt-dlp')].find(f => fs.existsSync(f)) || 'yt-dlp';
+      const out = path.join(ctx.adDir, 'source', 'original.%(ext)s'); fs.mkdirSync(path.dirname(out), { recursive: true });
+      emit('engine', { slug: ctx.slug, stage: 'clip-source', engine: 'yt-dlp', text: `downloading ${k.url}` });
+      const d = await run(ytdlp, ['-f', 'bv*[height<=1080]+ba/b[height<=1080]/b', '--merge-output-format', 'mp4', '-o', out, k.url], { signal: ctx.signal, onLine: l => /\[download\].*%/.test(l) && Math.random() < .05 && emit('engine', { slug: ctx.slug, stage: 'clip-source', engine: 'yt-dlp', text: l.trim().slice(0, 120) }) });
+      const f = fs.readdirSync(path.dirname(out)).find(x => /^original\./.test(x)); if (d.code !== 0 || !f) throw new Error(`download failed: ${(d.err || d.out).split('\n').filter(Boolean).at(-1)?.slice(0, 300)}`);
+      src = path.join(ctx.adDir, 'source', f);   // later stages read it from clips/source.json
+    }
+    if (!src) throw new Error('give a VOD/video URL or upload the video first');
+    let chat = r.chat && fs.existsSync(path.join(ctx.adDir, r.chat)) ? r.chat : null;
+    if (!chat && (k.mode || 'stream') === 'stream' && k.url) {
+      try { await CHAT.fetchChat(ctx.cfg, k.url, path.join(ctx.adDir, 'source', 'chat.json')); chat = 'source/chat.json'; }
+      catch (e) { emit('engine', { slug: ctx.slug, stage: 'clip-source', engine: 'chat', text: `no chat replay: ${e.message.slice(0, 200)} → normal mode`, level: 'warn' }); }
+    }
+    const meta = await AN.probe(src);
+    writeJSON(path.join(ctx.adDir, 'clips', 'source.json'), { source: path.relative(ctx.adDir, src), chat, mode: chat ? 'stream' : 'video', ...meta });
+    ctx.files('clip-source', [path.relative(ctx.adDir, src), ...(chat ? [chat] : [])]);
+    return { summary: `${(meta.duration / 60).toFixed(1)} min video${chat ? ' + chat replay (stream mode)' : ' (normal mode)'}` };
+  },
+
+  /** clipper · candidates: chat bursts → windows with the build-up (stream), or OpenClip / transcript windows (normal) */
+  async 'clip-find'(ctx) {
+    const k = rc(ctx).clip || {}, s = readJSON(path.join(ctx.adDir, 'clips', 'source.json')), src = path.join(ctx.adDir, s.source), dir = path.join(ctx.adDir, 'clips');
+    const loud = await AN.loudness(ctx.cfg, src), perSec = new Array(Math.ceil(s.duration)).fill(-70);
+    for (const [t, v] of loud.points) { const i = Math.floor(t); if (i < perSec.length) perSec[i] = Math.max(perSec[i], v); }
+    const tune = { pre: 25, post: 8, ...(ctx.cfg.clip || {}) };
+    const segWords = async (t0, t1) => {   // transcribe only the window (long VODs stay cheap)
+      const ff = await ffmpeg7(ctx.cfg), a = Math.max(0, t0 - 8), wav = path.join(dir, `.seg_${Math.round(a)}.wav`);
+      await run(ff, ['-y', '-v', 'error', '-ss', String(a), '-t', String(t1 - a + 8), '-i', src, '-vn', '-ac', '1', '-ar', '16000', wav]);
+      const tr = await AN.transcribe(ctx.cfg, wav, wav.replace('.wav', '.json'), { signal: ctx.signal }); fs.rmSync(wav, { force: true }); fs.rmSync(wav.replace('.wav', '.json'), { force: true });
+      return (tr?.words || []).map(w => ({ ...w, t0: +(w.t0 + a).toFixed(3), t1: +(w.t1 + a).toFixed(3) }));
+    };
+    let candidates = [], delay = null, series = null;
+    if (s.mode === 'stream') {
+      const msgs = CHAT.parseChat(fs.readFileSync(path.join(ctx.adDir, s.chat), 'utf8'), { startIso: readJSON(path.join(ctx.adDir, s.chat), {})?.start });
+      const sig = CHAT.signals(msgs, s.duration), score = CHAT.burst(sig), pk = CHAT.peaks(score, { top: (k.maxClips || 5) * 2 });
+      delay = CHAT.estimateDelay(sig.n, perSec);
+      for (const w of CHAT.windows(pk, { delay, pre: tune.pre, post: tune.post, dur: s.duration })) {
+        const words = await segWords(w.t0, w.t1), snapped = CHAT.snap(w, words);
+        const chat = msgs.filter(m => m.t >= w.peak - 4 && m.t <= w.peak + 10).slice(0, 10).map(m => m.msg.slice(0, 60));
+        candidates.push({ ...snapped, text: words.filter(x => x.t0 >= snapped.t0 && x.t1 <= snapped.t1).map(x => x.w).join(' '), chat, words });
+      }
+      series = Array.from({ length: Math.ceil(s.duration / 5) }, (_, i) => ({ t: i * 5, rate: +(sig.n.slice(i * 5, i * 5 + 5).reduce((a, b) => a + b, 0) / 5).toFixed(2), z: +Math.max(...score.slice(i * 5, i * 5 + 5)).toFixed(2) }));
+    } else {
+      const oc = await OCLIP.available(ctx.cfg);
+      if (oc.ok) {
+        try { candidates = await OCLIP.moments(ctx.cfg, src, path.join(dir, 'openclip'), { intent: `${k.intent || ''} ${'Standalone moments with a clear setup, a peak and a payoff, 20-60 s.'}`, maxClips: (k.maxClips || 5) * 2, slug: ctx.slug, signal: ctx.signal }); }
+        catch (e) { emit('engine', { slug: ctx.slug, stage: 'clip-find', engine: 'openclip', text: `${e.message.slice(0, 200)} → transcript windows`, level: 'warn' }); }
+      } else emit('engine', { slug: ctx.slug, stage: 'clip-find', engine: 'openclip', text: `${oc.why} → transcript windows`, level: 'warn' });
+      const all = await segWords(0, s.duration);
+      if (!candidates.length) {   // windows of whole sentences, about 30-60 s, every ~20 s; Claude ranks them in clip-pick
+        const starts = all.filter((w, i) => i === 0 || /[.!?]$/.test(all[i - 1].w)).map(w => w.t0);
+        for (const t0 of starts) {
+          if (candidates.length && t0 - candidates.at(-1).t0 < 20) continue;
+          const end = all.filter(w => /[.!?]$/.test(w.w) && w.t1 - t0 >= 25 && w.t1 - t0 <= 60).at(-1)?.t1; if (!end) continue;
+          const energy = perSec.slice(Math.floor(t0), Math.ceil(end)); candidates.push({ id: `w${candidates.length + 1}`, t0: +t0.toFixed(2), t1: +(end + .15).toFixed(2), loud: +(energy.reduce((a, b) => a + b, 0) / energy.length).toFixed(1) });
+          if (candidates.length >= 40) break;
+        }
+      }
+      for (const c of candidates) { c.words = all.filter(w => w.t0 >= c.t0 - 15 && w.t1 <= c.t1 + 15); c.text = all.filter(w => w.t0 >= c.t0 && w.t1 <= c.t1).map(w => w.w).join(' '); }
+    }
+    writeJSON(path.join(dir, 'candidates.json'), { mode: s.mode, delay, duration: s.duration, tune, candidates });
+    if (series) writeJSON(path.join(dir, 'chat-series.json'), series);
+    ctx.files('clip-find', ['clips/candidates.json', ...(series ? ['clips/chat-series.json'] : [])]);
+    return { summary: `${candidates.length} candidate(s)${s.mode === 'stream' ? ` from chat peaks (chat delay ${delay} s, ${tune.pre} s build-up, ${tune.post} s reaction)` : ''}` };
+  },
+
+  /** clipper · render each picked clip: input-seek cut, then the edit engine (9:16, word captions, the hook title) */
+  async 'clip-render'(ctx) {
+    const dir = path.join(ctx.adDir, 'clips'), s = readJSON(path.join(dir, 'source.json')), src = path.join(ctx.adDir, s.source), c = readJSON(path.join(dir, 'candidates.json'));
+    const pick = ctx.decision('clip-pick')?.output; if (!pick) throw new Error('no picks');
+    const ff = await ffmpeg7(ctx.cfg), out = [], style = { ...EDIT.DEFAULT_STYLE, ...(readJSON(path.join(dir, 'style.json'), {})) };
+    for (const [i, p] of pick.clips.entries()) {
+      const cand = c.candidates.find(x => x.id === p.id) || {}, len = p.t1 - p.t0, seg = path.join(dir, `.seg${i + 1}.mp4`);
+      const cut = await run(ff, ['-y', '-v', 'error', '-ss', String(p.t0), '-t', String(len), '-i', src, '-c:v', 'libx264', '-crf', '17', '-preset', 'veryfast', '-c:a', 'aac', seg], { signal: ctx.signal });
+      if (cut.code !== 0) throw new Error(`cut failed: ${cut.err.slice(-200)}`);
+      const words = (cand.words || []).filter(w => w.t0 >= p.t0 && w.t1 <= p.t1).map(w => ({ ...w, t0: +(w.t0 - p.t0).toFixed(3), t1: +(w.t1 - p.t0).toFixed(3) }));
+      const file = path.join(dir, `clip-${String(i + 1).padStart(2, '0')}.mp4`);
+      await EDIT.render(ctx.cfg, seg, words, { keep: [{ t0: 0, t1: len }], emphasis: p.emphasis || [], title: p.title ? { text: p.title, t0: 0, t1: 1.8 } : null, music: { use: false }, reframe: (rc(ctx).clip || {}).reframe || 'blur' }, file, { style, slug: ctx.slug, stage: 'clip-render', signal: ctx.signal });
+      fs.rmSync(seg, { force: true });
+      out.push({ file: `clips/${path.basename(file)}`, id: p.id, t0: p.t0, t1: p.t1, title: p.title, why: p.why, scores: p.scores, total: Object.values(p.scores).reduce((a, b) => a + b, 0) });
+    }
+    out.sort((a, b) => b.total - a.total);
+    writeJSON(path.join(dir, 'clips.json'), out);
+    if (out[0]) { fs.mkdirSync(path.join(ctx.adDir, 'out'), { recursive: true }); fs.copyFileSync(path.join(ctx.adDir, out[0].file), path.join(ctx.adDir, 'out', `${ctx.slug}-9x16.mp4`)); }
+    ctx.files('clip-render', [...out.map(o => o.file), 'clips/clips.json']);
+    return { summary: `${out.length} clip(s), best: "${out[0]?.title || out[0]?.id}" (${out[0]?.total}/25)`, clips: out };
+  },
+
   /** edit tool · style: reference reels measured by code, then Claude writes the exact values (style.md + style.json) */
   async 'edit-style'(ctx) {
     const r = rc(ctx), dir = path.join(ctx.adDir, 'edit'); fs.mkdirSync(dir, { recursive: true });
@@ -619,4 +725,17 @@ export async function platesFromVideo(cfg, video, outDir, { fps = 24, w = 1080, 
   const r = await run(ff, ['-y', '-v', 'error', '-i', video, '-vf', `fps=${fps},scale=${w}:${h}:force_original_aspect_ratio=increase:flags=lanczos,crop=${w}:${h}`, '-q:v', '3', path.join(outDir, 'f_%05d.jpg')]);
   if (r.code !== 0) throw new Error(`plate frames failed: ${r.err.slice(-300)}`);
   return fs.readdirSync(outDir).filter(f => f.endsWith('.jpg')).length;
+}
+
+/** clip picks must stay near a candidate, run 15-90 s, and never start or end inside a word */
+export function checkClips(out, adDir) {
+  const c = readJSON(path.join(adDir, 'clips', 'candidates.json'), { candidates: [] }), errs = [];
+  for (const p of out.clips || []) {
+    const cand = c.candidates.find(x => x.id === p.id);
+    if (!cand) { errs.push(`${p.id}: not a candidate id`); continue; }
+    if (p.t0 < cand.t0 - 15.01 || p.t1 > cand.t1 + 15.01) errs.push(`${p.id}: stay within 15 s of the candidate window ${cand.t0}-${cand.t1}`);
+    if (p.t1 - p.t0 < 15 || p.t1 - p.t0 > 90) errs.push(`${p.id}: ${(p.t1 - p.t0).toFixed(1)} s; a clip runs 15-90 s`);
+    errs.push(...EDIT.checkKeep([{ t0: p.t0, t1: p.t1 }], cand.words || []).map(e => `${p.id}: ${e.replace('range 1 ', '')}`));
+  }
+  return errs;
 }

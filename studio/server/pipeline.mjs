@@ -150,6 +150,7 @@ function issues(st, out, proj = {}) {
   if (st.lint) for (const i of (st.id === 'bible' ? lintBible(out) : lintObject(out))) (i.level === 'error' ? errors : warnings).push(`${i.where}: ${i.why} ("${i.match}")`);
   if (st.check === 'bible' && !errors.length) errors.push(...checkBible({ format: proj.format, ...out }));
   if (st.check === 'direction' && !errors.length) errors.push(...checkDirection(out, undefined, proj.format));
+  if (st.checkWith && !errors.length) errors.push(...st.checkWith(out, adDir(proj.slug)));
   if (st.id === 'premises' && out.premises && !out.premises.some(p => p.id === out.chosen)) errors.push('chosen is not one of the premise ids');
   return { errors, warnings };
 }
@@ -280,16 +281,18 @@ export const decideFor = (slug, stage, prompt, schema, signal, opts) => decide(s
 
 /** recreate: store the upload (video, reference images) under ads/<slug>/source/ and update project.recreate */
 export function saveSource(slug, { kind, name, buf, label, role }) {
-  const dir = path.join(adDir(slug), 'source', kind === 'video' ? '' : kind === 'refvideo' ? 'refvideos' : 'refs'); fs.mkdirSync(dir, { recursive: true });
+  const dir = path.join(adDir(slug), 'source', ['video', 'chat'].includes(kind) ? '' : kind === 'refvideo' ? 'refvideos' : 'refs'); fs.mkdirSync(dir, { recursive: true });
   const ext = (path.extname(name || '').toLowerCase() || (kind === 'video' ? '.mp4' : '.png')).replace(/[^.a-z0-9]/g, '');
-  if (kind !== 'ref' && !['.mp4', '.mov', '.webm', '.m4v'].includes(ext)) throw new Error('upload an MP4, MOV or WebM video');
+  if (kind === 'chat' && !['.json', '.jsonl', '.csv', '.tsv', '.txt', '.log'].includes(ext)) throw new Error('a chat log is JSON, CSV, TSV or text');
+  if (!['ref', 'chat'].includes(kind) && !['.mp4', '.mov', '.webm', '.m4v', '.mkv'].includes(ext)) throw new Error('upload an MP4, MOV, MKV or WebM video');
   if (kind === 'ref' && !['.png', '.jpg', '.jpeg', '.webp'].includes(ext)) throw new Error('reference images must be PNG, JPEG or WebP');
-  const base = kind === 'video' ? `original${ext}` : kind === 'refvideo' ? `ref-${Date.now().toString(36)}${ext}` : `${slugify(path.basename(name || 'ref', path.extname(name || ''))).slice(0, 32) || 'ref'}-${Date.now().toString(36)}${ext}`;
+  const base = kind === 'chat' ? `chat${ext}` : kind === 'video' ? `original${ext}` : kind === 'refvideo' ? `ref-${Date.now().toString(36)}${ext}` : `${slugify(path.basename(name || 'ref', path.extname(name || ''))).slice(0, 32) || 'ref'}-${Date.now().toString(36)}${ext}`;
   fs.writeFileSync(path.join(dir, base), buf);
   const rel = path.relative(adDir(slug), path.join(dir, base));
   return saveProject(slug, p => {
     p.recreate ||= { mode: 'remake', target: 'story-ad', rights: false, refs: [], prompt: {} };
     if (kind === 'video') { p.recreate.source = rel; for (const id of ['source', 'analysis', 'edit-plan']) if (p.stages[id]) p.stages[id].status = 'idle'; }
+    else if (kind === 'chat') p.recreate.chat = rel;
     else if (kind === 'refvideo') p.recreate.refVideos = [...(p.recreate.refVideos || []), rel].slice(-5);
     else p.recreate.refs = [...(p.recreate.refs || []), { file: rel, label: label || '', role: role || 'other' }].slice(-12);
   });
@@ -298,6 +301,7 @@ export function patchRecreate(slug, patch) {
   return saveProject(slug, p => {
     p.recreate ||= { refs: [], prompt: {} };
     for (const k of ['mode', 'target', 'rights', 'style', 'seedanceStyle', 'photoreal']) if (k in patch) p.recreate[k] = patch[k];
+    if (patch.clip) p.recreate.clip = { ...(p.recreate.clip || {}), ...patch.clip };
     if (patch.mode && !RECREATE_MODES.includes(patch.mode)) throw new Error('mode must be remake, transfer or mixed');
     if (patch.mode === 'transfer' && !(patch.rights ?? p.recreate.rights)) throw new Error('motion transfer reuses the footage: tick "I own this video or have the rights to it" first');
     if (patch.prompt) p.recreate.prompt = { ...(p.recreate.prompt || {}), ...patch.prompt };

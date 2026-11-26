@@ -84,7 +84,7 @@ const routes = [
   }],
   // recreate: upload the source video / reference images (raw body; ?kind=video|ref&name=&label=&role=), the settings, the analysis
   ['POST', /^\/api\/ads\/([\w-]+)\/source$/, async (req, res, [, s]) => {
-    const q = new URL(req.url, 'http://x').searchParams, kind = ['video', 'refvideo'].includes(q.get('kind')) ? q.get('kind') : 'ref';
+    const q = new URL(req.url, 'http://x').searchParams, kind = ['video', 'refvideo', 'chat'].includes(q.get('kind')) ? q.get('kind') : 'ref';
     const len = +(req.headers['content-length'] || 0); if (len > (kind === 'ref' ? 30e6 : 2e9)) return send(res, 413, { error: kind === 'ref' ? 'images up to 30 MB' : 'videos up to 2 GB' });
     try { const p = P.saveSource(s, { kind, name: q.get('name') || '', buf: await body(req, true), label: q.get('label') || '', role: q.get('role') || '' }); send(res, 200, { recreate: p.recreate }); }
     catch (e) { send(res, 400, { error: e.message }); }

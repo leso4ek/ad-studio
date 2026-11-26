@@ -4,6 +4,7 @@ import { api, file } from './api.js';
 import { RecreateSource, AnalysisDecision } from './Recreate.jsx';
 import { SeriesBible, Episodes } from './Series.jsx';
 import { EditSource, EditDrafts } from './Edit.jsx';
+import { ClipSource, ClipCandidates, ClipGallery } from './Clips.jsx';
 
 const STATUS = { skipped: 'not part of this format', offer: 'optional: start it when you want', idle: 'waiting', running: 'running…', review: 'waiting for your review', gate: 'waiting for your approval', done: 'done', error: 'error', stale: 'stale: an earlier stage changed' };
 const sec = ms => ms ? `${(ms / 1000).toFixed(1)} s` : '';
@@ -64,6 +65,10 @@ function Body({ id, ad, meta, rec, x, slug, bust, onNow, choose, waiting, refres
   switch (id) {
     case 'series': return o ? <SeriesBible rec={rec} /> : <Pending x={x} />;
     case 'episodes': return <Episodes slug={slug} onOpen={onOpen} />;
+    case 'clip-source': return <ClipSource ad={ad} slug={slug} x={x} refresh={refresh} />;
+    case 'clip-find': return <ClipCandidates slug={slug} x={x} bust={bust} />;
+    case 'clip-pick': return o ? <div className="card hero"><div className="who">◆ Claude{rec.meta?.engine === 'inbox' ? ' (via the decision inbox)' : ''}</div><div className="reason">Picked {o.clips.length}: {o.clips.map(c => `${c.title || c.id} (${c.t0.toFixed(0)}–${c.t1.toFixed(0)} s)`).join(' · ')}. {o.reason}</div></div> : <Pending x={x} />;
+    case 'clip-render': return <ClipGallery slug={slug} x={x} bust={bust} />;
     case 'edit-style': return x.summary ? <div className="card"><h2>The edit style</h2><p>{x.summary}</p><a className="btn" href={file(slug, 'edit/style.md', bust)} target="_blank" rel="noreferrer">Open style.md</a></div> : <Pending x={x} />;
     case 'edit-plan': return x.summary ? <div className="card"><h2>The edit plan</h2><p>{x.summary}</p></div> : <Pending x={x} />;
     case 'edit-render': return <EditDrafts ad={ad} slug={slug} x={x} bust={bust} refresh={refresh} />;
