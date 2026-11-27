@@ -43,3 +43,10 @@ ads/*/source/refvideos/
 ads/*/out/*.part.mp4
 ads/*/production/edit/out/*.mp4
 scripts/hindsight/.synced.json
+ads/*/out/part*.mp4
+ads/*/out/part*.log
+ads/*/out/chunks.txt
+ads/*/out/parts.txt
+ads/*/out/picture.mp4
+ads/*/audio/mix.wav
+ads/*/audio/lines/
