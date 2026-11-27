@@ -314,6 +314,26 @@ The user dropped YouTube kids' videos as too expensive and went back to **story 
 - **Lessons:** Whisper starts the first word of a line about 0.35 s late after a pause: snap it to the silencedetect onset (highpass 150 Hz, −32 dB). The engine's one-pass loudnorm lands about 1 LU low. libass needs TTF (Bangers converted from woff2 into `studio/kit/fonts/`).
 - **Hosts added** to the Default environment: `d8j0ntlcm91z4.cloudfront.net` (Higgsfield results), `upload.higgsfield.ai`.
 
+### Round 16: Hindsight memory + a stickman what-if video (27 Nov 2026)
+- **The user's feedback on 24601:** "totally AI slop, the style is completely off". Keep using **Seedance** for AI video, not MAGI-2.
+- **Hindsight** (vectorize-io/hindsight, MIT) is the project's long-term memory. The kit is in `scripts/hindsight/`:
+  - `install_pc.sh`: uv venv in `~/.hindsight`, embedded Postgres, ONNX embeddings, LLM = the `claude-code` provider (Haiku 5.5) or `--openrouter`; starts on :8888; syncs; `claude mcp add --transport http -s user hindsight …/mcp/scifi-explainer-studio/`.
+  - `sync_memory.py`: user rules + CLAUDE.md sections + our skills + Ad Studio lessons + every REPORT/SUMMARY, one document each (79). Only changed documents are re-sent. It also sets the bank's MCP instructions.
+  - The studio mirrors new lessons when `HINDSIGHT_URL` is set (`start_studio.sh` sets it when :8888 answers).
+  - **Cloud test:** works with OpenRouter deepseek flash, ONNX embeddings and the rrf reranker. Embedded Postgres refuses root, so the test ran as a non-root user; the CA file must be readable for that user. The PC install was not run: the user's PC was not connected this session.
+- **What-if format** (`research/what-if/IDEAS.md`): the big question is asked in the first 3 s and answered only at the end. Three smaller questions are answered on the way, pinned to a red-string board, then a twist bridges to the answer and the video ends on the next question.
+- **The Stick Toon look** (`styles/stick-toon/STYLE.md`) is three.js toon with ink hulls, the host Pip and a 2D card overlay. The film code lives in the ad folder, not in the kit: what-if scenes are custom worlds (the @whatif.sim approach).
+- **Video #1, "What If the Moon Vanished Tonight?"** (`ads/what-if-moon/`):
+  - 16:9, 1920×1080, 30 fps, 117.9 s;
+  - narration: ElevenLabs Brian, multilingual v2, 1,629 credits of the free tier;
+  - a jazzy bed from mix.py and 36 effects; word captions; thumbnail "GONE?"; sources in SCRIPT.md.
+- **Lessons:**
+  - canvas-texture cards need the fonts loaded *before* the scenes are built;
+  - night lighting turns the skin grey, so give it some emissive;
+  - a sub-line must count in the card width;
+  - for a tilt diagram, the axis must stick out well past the globe;
+  - lower the ambient light, or there is no visible night side.
+
 ## Environment notes
 - **Remote:** https://github.com/leso4ek/ad-studio (private, branch `main`; first pushed in round 8). The cloud checkout lives at `/home/user/scifi-explainer-studio`. The user's PC clones it to `~/scifi-explainer-studio` and installs **without** `--voicestudio` unless they choose it.
 - Cloud container, temporary: **commit and push** after each work block.

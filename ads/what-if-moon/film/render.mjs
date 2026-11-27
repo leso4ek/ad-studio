@@ -22,9 +22,11 @@ page.on('pageerror', e => console.error('pageerror:', e.message));
 await page.goto(base); await page.waitForFunction(() => window.FILM_READY === true, null, { timeout: 120000 });
 const dur = await page.evaluate(() => window.FILM.duration);
 const shot = async () => page.locator('#wrap').screenshot({ type: 'jpeg', quality: 92 });
-if (process.argv.includes('--stills')) {
+if (process.argv.includes('--times')) {
+  fs.writeFileSync(path.join(AD, 'out', 'times.json'), JSON.stringify(await page.evaluate(() => ({ T: window.FILM.T, SHOTS: window.FILM.SHOTS })), null, 1)); console.log('times written');
+} else if (process.argv.includes('--stills')) {
   const out = path.join(AD, 'out', 'stills'); fs.mkdirSync(out, { recursive: true });
-  for (const t of arg('--stills').split(',').map(Number)) { const sc = await page.evaluate(t => window.FILM.seek(t), t); fs.writeFileSync(path.join(out, `t${t.toFixed(2)}.jpg`), await shot()); console.log(t, sc); }
+  for (const t of arg('--stills').split(',').map(Number)) { const sc = await page.evaluate(([t, hud]) => window.FILM.seek(t, { hud }), [t, !process.argv.includes('--nohud')]); fs.writeFileSync(path.join(out, `t${t.toFixed(2)}.jpg`), await shot()); console.log(t, sc); }
 } else {
   const fps = +arg('--fps', 30), from = +arg('--from', 0), to = Math.min(+arg('--to', dur), dur), outF = arg('--out', path.join(AD, 'out', 'picture.mp4'));
   const ff = spawn(process.env.FFMPEG || 'ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', outF], { stdio: ['pipe', 'inherit', 'inherit'] });

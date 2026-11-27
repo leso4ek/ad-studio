@@ -348,11 +348,11 @@ function overlay(t) {
 let current = null;
 window.FILM = {
   T, SHOTS, duration: T.END,
-  seek(t) {
+  seek(t, o = {}) {
     const shot = SHOTS.find(([a, b]) => t >= a && t < b) || SHOTS.at(-1);
     const sc = S[shot[2]]; sc.update(t); current = shot[2];
     cam.aspect = W / H; cam.updateProjectionMatrix();
-    renderer.render(sc.scene, cam); overlay(t);
+    renderer.render(sc.scene, cam); if (o.hud === false) hud.clearRect(0, 0, W, H); else overlay(t);
     return shot[2];
   },
 };
