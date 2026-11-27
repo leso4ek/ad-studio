@@ -32,7 +32,7 @@ r = await run(ff, ['-y', '-v', 'error', '-i', pic, '-i', path.join(AD, 'audio', 
 if (r.code) throw new Error(r.err);
 const m = await run(ff, ['-hide_banner', '-nostats', '-i', tmp.replace('.mp4', '.mov'), '-vn', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-']);
 const j = JSON.parse(/\{[^{}]*"input_i"[^{}]*\}/.exec(m.err)[0]);
-r = await run(ff, ['-y', '-v', 'error', '-i', tmp.replace('.mp4', '.mov'), '-c:v', 'copy', '-af', `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${j.input_i}:measured_TP=${j.input_tp}:measured_LRA=${j.input_lra}:measured_thresh=${j.input_thresh}:offset=${j.target_offset}:linear=true,aresample=48000`, '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', final]);
+r = await run(ff, ['-y', '-v', 'error', '-i', tmp.replace('.mp4', '.mov'), '-c:v', 'copy', '-af', `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${j.input_i}:measured_TP=${j.input_tp}:measured_LRA=${j.input_lra}:measured_thresh=${j.input_thresh}:offset=${j.target_offset}:linear=true,aresample=48000,alimiter=limit=0.82:level=false:attack=2:release=60`, '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', final]);
 if (r.code) throw new Error(r.err);
 fs.rmSync(tmp.replace('.mp4', '.mov'));
 

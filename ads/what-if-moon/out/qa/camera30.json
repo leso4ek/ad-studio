@@ -1,0 +1,651 @@
+{
+ "file": "what-if-moon-vanished.mp4",
+ "fps": 30,
+ "frames": 3535,
+ "duration": 117.83,
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 4.6,
+   "dur": 4.6,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": -0.001,
+    "scale_pct": 1.2,
+    "roll_deg": -0.1
+   },
+   "shake": 0.006,
+   "segments": [
+    {
+     "t0": 0.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.009
+    },
+    {
+     "t0": 2.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    }
+   ]
+  },
+  {
+   "t0": 4.6,
+   "t1": 9.367,
+   "dur": 4.767,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": -0.001,
+    "scale_pct": -0.3,
+    "roll_deg": 0.6
+   },
+   "shake": 0.003,
+   "segments": [
+    {
+     "t0": 4.6,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.005
+    },
+    {
+     "t0": 6.6,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    }
+   ]
+  },
+  {
+   "t0": 9.367,
+   "t1": 23.2,
+   "dur": 13.833,
+   "move": "push-in",
+   "moves": [
+    "push-in"
+   ],
+   "ease": "ease-in-out",
+   "speed": 1.171,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.058,
+    "y": 0.004,
+    "scale_pct": 17.5,
+    "roll_deg": -0.4
+   },
+   "shake": 0.016,
+   "segments": [
+    {
+     "t0": 9.37,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.026
+    },
+    {
+     "t0": 11.37,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 13.37,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.007,
+     "shake": 0.012
+    },
+    {
+     "t0": 15.37,
+     "move": "push-in",
+     "ease": "constant",
+     "speed": 2.752,
+     "shake": 0.011
+    },
+    {
+     "t0": 17.37,
+     "move": "push-in",
+     "ease": "ease-in",
+     "speed": 4.607,
+     "shake": 0.026
+    },
+    {
+     "t0": 19.37,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.002,
+     "shake": 0.01
+    },
+    {
+     "t0": 21.37,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.002,
+     "shake": 0.015
+    }
+   ]
+  },
+  {
+   "t0": 23.2,
+   "t1": 31.533,
+   "dur": 8.333,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": -0.001,
+    "y": 0.0,
+    "scale_pct": -1.1,
+    "roll_deg": -0.1
+   },
+   "shake": 0.003,
+   "segments": [
+    {
+     "t0": 23.2,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.007
+    },
+    {
+     "t0": 25.2,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 27.2,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 29.2,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    }
+   ]
+  },
+  {
+   "t0": 31.533,
+   "t1": 37.8,
+   "dur": 6.267,
+   "move": "push-in",
+   "moves": [
+    "push-in",
+    "tilt-down"
+   ],
+   "ease": "ease-in",
+   "speed": 2.484,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.0,
+    "y": -0.225,
+    "scale_pct": 16.7,
+    "roll_deg": 0.4
+   },
+   "shake": 0.011,
+   "segments": [
+    {
+     "t0": 31.53,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 33.53,
+     "move": "push-in",
+     "ease": "constant",
+     "speed": 3.043,
+     "shake": 0.017
+    },
+    {
+     "t0": 35.53,
+     "move": "push-in",
+     "ease": "constant",
+     "speed": 4.535,
+     "shake": 0.018
+    }
+   ]
+  },
+  {
+   "t0": 37.8,
+   "t1": 40.067,
+   "dur": 2.267,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.0,
+    "scale_pct": 0.0,
+    "roll_deg": 0.0
+   },
+   "shake": 0.0
+  },
+  {
+   "t0": 40.067,
+   "t1": 57.933,
+   "dur": 17.867,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.002,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.036,
+    "y": 0.001,
+    "scale_pct": 2.2,
+    "roll_deg": -0.5
+   },
+   "shake": 0.013,
+   "segments": [
+    {
+     "t0": 40.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.017
+    },
+    {
+     "t0": 42.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.002,
+     "shake": 0.009
+    },
+    {
+     "t0": 44.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.015
+    },
+    {
+     "t0": 46.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.008
+    },
+    {
+     "t0": 48.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.009
+    },
+    {
+     "t0": 50.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.009
+    },
+    {
+     "t0": 52.07,
+     "move": "push-in",
+     "ease": "ease-in",
+     "speed": 1.975,
+     "shake": 0.018
+    },
+    {
+     "t0": 54.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.005,
+     "shake": 0.012
+    },
+    {
+     "t0": 56.07,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.019
+    }
+   ]
+  },
+  {
+   "t0": 57.933,
+   "t1": 67.767,
+   "dur": 9.833,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.0,
+    "y": 0.0,
+    "scale_pct": 0.5,
+    "roll_deg": -0.2
+   },
+   "shake": 0.0,
+   "segments": [
+    {
+     "t0": 57.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 59.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 61.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 63.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 65.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    }
+   ]
+  },
+  {
+   "t0": 67.767,
+   "t1": 80.467,
+   "dur": 12.7,
+   "move": "pull-out",
+   "moves": [
+    "pull-out"
+   ],
+   "ease": "ease-out",
+   "speed": 0.742,
+   "speed_unit": "% scale/s",
+   "net": {
+    "x": 0.044,
+    "y": 0.005,
+    "scale_pct": -9.0,
+    "roll_deg": 2.2
+   },
+   "shake": 0.021,
+   "segments": [
+    {
+     "t0": 67.77,
+     "move": "pull-out",
+     "ease": "ease-out",
+     "speed": 2.995,
+     "shake": 0.037
+    },
+    {
+     "t0": 69.77,
+     "move": "roll",
+     "ease": "ease-in-out",
+     "speed": 0.012,
+     "shake": 0.028
+    },
+    {
+     "t0": 71.77,
+     "move": "pull-out",
+     "ease": "constant",
+     "speed": 1.646,
+     "shake": 0.015
+    },
+    {
+     "t0": 73.77,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.011,
+     "shake": 0.019
+    },
+    {
+     "t0": 75.77,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.011,
+     "shake": 0.012
+    },
+    {
+     "t0": 77.77,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.009
+    }
+   ]
+  },
+  {
+   "t0": 80.467,
+   "t1": 103.0,
+   "dur": 22.533,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.005,
+    "y": 0.008,
+    "scale_pct": 2.6,
+    "roll_deg": 1.3
+   },
+   "shake": 0.015,
+   "segments": [
+    {
+     "t0": 80.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.002,
+     "shake": 0.04
+    },
+    {
+     "t0": 82.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 84.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.008
+    },
+    {
+     "t0": 86.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.006
+    },
+    {
+     "t0": 88.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 90.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.005
+    },
+    {
+     "t0": 92.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.011
+    },
+    {
+     "t0": 94.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.019
+    },
+    {
+     "t0": 96.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    },
+    {
+     "t0": 98.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.003,
+     "shake": 0.012
+    },
+    {
+     "t0": 100.47,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.006
+    }
+   ]
+  },
+  {
+   "t0": 103.0,
+   "t1": 108.033,
+   "dur": 5.033,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.008,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.041,
+    "y": -0.0,
+    "scale_pct": -0.6,
+    "roll_deg": -0.2
+   },
+   "shake": 0.015,
+   "segments": [
+    {
+     "t0": 103.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.005,
+     "shake": 0.008
+    },
+    {
+     "t0": 105.0,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.009,
+     "shake": 0.022
+    }
+   ]
+  },
+  {
+   "t0": 108.033,
+   "t1": 112.933,
+   "dur": 4.9,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.003,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.015,
+    "y": -0.002,
+    "scale_pct": 0.1,
+    "roll_deg": -0.1
+   },
+   "shake": 0.024,
+   "segments": [
+    {
+     "t0": 108.03,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.006,
+     "shake": 0.036
+    },
+    {
+     "t0": 110.03,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.002,
+     "shake": 0.007
+    }
+   ]
+  },
+  {
+   "t0": 112.933,
+   "t1": 117.833,
+   "dur": 4.9,
+   "move": "static",
+   "moves": [],
+   "ease": "constant",
+   "speed": 0.0,
+   "speed_unit": "frame widths/s",
+   "net": {
+    "x": 0.002,
+    "y": 0.0,
+    "scale_pct": -0.5,
+    "roll_deg": 0.0
+   },
+   "shake": 0.007,
+   "segments": [
+    {
+     "t0": 112.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.001,
+     "shake": 0.011
+    },
+    {
+     "t0": 114.93,
+     "move": "static",
+     "ease": "constant",
+     "speed": 0.0,
+     "shake": 0.0
+    }
+   ]
+  }
+ ],
+ "cuts_per_10s": 1.02,
+ "mix": {
+  "pull-out": 1,
+  "push-in": 2,
+  "static": 10
+ }
+}
