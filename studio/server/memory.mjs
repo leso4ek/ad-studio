@@ -145,7 +145,24 @@ export function storeLessons(ad, list) {
   fs.mkdirSync(memDir(), { recursive: true });
   fs.writeFileSync(F('lessons.jsonl'), all.map(x => JSON.stringify(x)).join('\n') + (all.length ? '\n' : ''));
   propose();
+  mirrorToHindsight(ad, list);
   return { added: added.length, total: all.length };
+}
+
+/**
+ * When a Hindsight server is set (HINDSIGHT_URL, e.g. http://127.0.0.1:8888; bank HINDSIGHT_BANK, default
+ * scifi-explainer-studio), new and updated lessons are also retained there, so every Claude session connected to the
+ * bank's MCP server recalls them. Fire-and-forget: the app never waits on it or fails because of it.
+ */
+function mirrorToHindsight(ad, list) {
+  const url = process.env.HINDSIGHT_URL; if (!url || !list?.length || process.env.NODE_TEST_CONTEXT) return;
+  const bank = process.env.HINDSIGHT_BANK || 'scifi-explainer-studio';
+  const items = list.map(l => ({
+    content: `Ad Studio lesson (${l.kind}, stage ${l.stage}, confidence ${l.confidence}) from the ad "${ad}": ${l.lesson} When: ${l.when}. Goal: ${l.goal}. Evidence: ${l.evidence}`,
+    context: 'learnings', timestamp: now(), tags: ['project:scifi-explainer-studio', 'lesson', `stage:${l.stage}`, `ad:${ad}`],
+  }));
+  fetch(`${url.replace(/\/$/, '')}/v1/default/banks/${bank}/memories`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items, async: true }) })
+    .catch(() => { /* Hindsight is optional */ });
 }
 export const lessons = () => readLines(F('lessons.jsonl'));
 

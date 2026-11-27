@@ -15,6 +15,11 @@ No preamble. The same goes for the app's short texts (stage summaries, live-pane
 ## Start of every session
 1. `sh scripts/bootstrap.sh`: installs the lemo-opuscar skill and library (`~/lemo-opuscar`, printed as `LIB=`), registers our style in `~/lemo-my-styles/`, links our skill into `.claude/skills/`, and installs the core + voice packages.
 2. For episode work, use the **scary-scifi-explainer** skill (`skills/scary-scifi-explainer/SKILL.md`). It layers the channel rules on top of `$LIB/AGENTS.md` + `$LIB/DIRECTOR.md`.
+3. **Memory = Hindsight** (round 16; `scripts/hindsight/`, bank `scifi-explainer-studio`, MCP server `hindsight`).
+   - When the `hindsight` MCP tools are connected (the user's PC), `recall` the task's topic before starting.
+   - After each work block, `retain` what was learned: context `learnings`, `procedures` or `preferences`, tag `project:scifi-explainer-studio`, full observations rather than summaries.
+   - After editing CLAUDE.md, skills or reports, run `python3 scripts/hindsight/sync_memory.py`.
+   - Cloud sessions have no Hindsight server. This file stays the source of truth and is synced into the bank.
 
 ## Layout
 | Path | What |
